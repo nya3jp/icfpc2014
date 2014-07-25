@@ -115,22 +115,37 @@ int main(void)
         string fst;
         ss >> fst;
 
-        if (fst != "JLT" && fst != "JEQ" && fst != "JGT") {
+        if (fst != "JLT" && fst != "JEQ" && fst != "JGT" && fst != "MOV") {
             cout << line << endl;
             continue;
         }
 
-        string snd;
-        ss >> snd;
-        string::size_type pos = snd.find(',');
-        if (pos == string::npos) {
-            cerr << "invalid instruction?" << endl;
-            return 1;
-        }
+        if (fst == "MOV") {
+            string snd;
+            ss >> snd;
+            string::size_type pos = snd.find(',');
+            if (pos == string::npos) {
+                cerr << "invalid instruction?" << endl;
+                return 1;
+            }
 
-        string labelName = snd.substr(0, pos);
-        cout << replaceString(line, labelName, to_string(pcMap[labelName]))
-             << "\t\t;" << trim(line) << endl;
+            string labelName = trim(snd.substr(pos + 1));
+            cout << replaceString(line, labelName, to_string(pcMap[labelName]))
+                 << "\t\t;" << trim(line) << endl;
+
+        } else {
+            string snd;
+            ss >> snd;
+            string::size_type pos = snd.find(',');
+            if (pos == string::npos) {
+                cerr << "invalid instruction?" << endl;
+                return 1;
+            }
+
+            string labelName = snd.substr(0, pos);
+            cout << replaceString(line, labelName, to_string(pcMap[labelName]))
+                 << "\t\t;" << trim(line) << endl;
+        }
     }
 
     return 0;
