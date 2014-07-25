@@ -1,0 +1,16 @@
+  DUM  2        ; 2 top-level declarations
+  LDC  2        ; declare constant down
+  LDF  step     ; declare function step 
+  LDF  init     ; init function
+  RAP  2        ; load declarations into environment and run init
+  RTN           ; final return
+  LDC  42       ; init(6)
+  LD   0 1      ; var step
+  CONS
+  RTN           ; return (42, step)
+  LD   0 0      ; var s ;step(10)
+  LDC  1
+  ADD
+  LD   1 0      ; var down
+  CONS
+  RTN           ; return (s+1, down)
