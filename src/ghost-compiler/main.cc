@@ -48,6 +48,17 @@ static string stripComment(string s)
     return trim(s.substr(0, pos));
 }
 
+static string stripWhiteSpace(string s)
+{
+    string result;
+    for (char c : s) {
+        if (c == ' ' || c == '\t')
+            continue;
+        result += c;
+    }
+    return result;
+}
+
 static bool isAllCapital(const string& s)
 {
     for (char c : s) {
@@ -124,9 +135,20 @@ int main(void)
     }
 
     for (const auto& line : lines) {
-        stringstream ss(line);
-        string fst;
-        ss >> fst;
+        if (line[0]  == ';') {
+            cout << line << endl;
+            continue;
+        }
+
+        string trimed = trim(line);
+        string::size_type pos = trimed.find(' ');
+        if (pos == string::npos) {
+            cout << line << endl;
+            continue;
+        }
+
+        string fst = trimed.substr(0, pos);
+        string snd = stripWhiteSpace(trimed.substr(pos + 1));
         fst = toUpper(fst);
 
         if (fst != "JLT" && fst != "JEQ" && fst != "JGT" && fst != "MOV") {
@@ -135,8 +157,6 @@ int main(void)
         }
 
         if (fst == "MOV") {
-            string snd;
-            ss >> snd;
             string::size_type pos = snd.find(',');
             if (pos == string::npos) {
                 cerr << "invalid instruction?" << endl;
@@ -145,15 +165,13 @@ int main(void)
 
             string labelName = trim(snd.substr(pos + 1));
             if (labelName.size() > 2) {
-                cout << replaceString(line, labelName, to_string(pcMap[labelName]))
-                     << "\t\t;" << trim(line) << endl;
+                string replaced = replaceString(line, labelName, to_string(pcMap[labelName]));
+                cout << replaced << "\t\t;" << trim(line) << endl;
             } else {
                 cout << line << endl;
             }
 
         } else {
-            string snd;
-            ss >> snd;
             string::size_type pos = snd.find(',');
             if (pos == string::npos) {
                 cerr << "invalid instruction?" << endl;
