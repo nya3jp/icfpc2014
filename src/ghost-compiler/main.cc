@@ -74,6 +74,15 @@ string replaceString(string s, const string& from, const string& to)
     return s;
 }
 
+string toUpper(string s) {
+    for (string::size_type i = 0; i < s.size(); ++i) {
+        if ('a' <= s[i] && s[i] <= 'z') {
+            s[i] -= 'a' - 'A';
+        }
+    }
+    return s;
+}
+
 int main(void)
 {
     string str;
@@ -118,7 +127,8 @@ int main(void)
         stringstream ss(line);
         string fst;
         ss >> fst;
-
+        fst = toUpper(fst);
+        
         if (fst != "JLT" && fst != "JEQ" && fst != "JGT" && fst != "MOV") {
             cout << line << endl;
             continue;
