@@ -51,8 +51,13 @@ static string stripComment(string s)
 static bool isAllCapital(const string& s)
 {
     for (char c : s) {
-        if (c < 'A' || 'Z' < c)
-            return false;
+        if ('A' <= c && c <= 'Z')
+            continue;
+        if ('0' <= c && c <= '9')
+            continue;
+        if (c == '_')
+            continue;
+        return false;
     }
 
     return true;
