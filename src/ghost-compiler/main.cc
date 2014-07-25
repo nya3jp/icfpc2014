@@ -5,6 +5,21 @@
 
 // LABEL should be all-capital, and end with:
 // LABEL:
+// label line should not contain any other things. (OK for comment)
+
+// e.g.
+// HOGE:
+//     MOV a,1
+// FUGA:
+//     JGT HOGE,a,b
+//
+// will be converted to
+//
+// ;HOGE
+//     MOV a,1
+// ;FUGA
+//     JGT 0,a,b        ;JGT HOGE,a,b
+//     JGT 1,a,b        ;JGT FUGA,a,b
 
 #include <iostream>
 #include <string>
