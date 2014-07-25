@@ -1,6 +1,3 @@
-; === startup ===
-
-; [100] = myX, [101] = myY, [102] = myDir, [103] = myVitality
 int 3
 int 5
 mov [100], a
@@ -9,11 +6,9 @@ int 3
 int 6
 mov [102], b
 mov [103], a
-; [110] = lambdaX, [111] = lambdaY
 int 1
 mov [110], a
 mov [111], b
-; [104+k] = type of adjacent cell k
 mov a, [100]
 mov b, [101]
 sub b, 1
@@ -34,54 +29,40 @@ mov b, [101]
 sub a, 1
 int 7
 mov [107], a
-
-
-; === main ===
-
-; dx{0} = lambdaX - myX, dy{1} = lambdaY - myY
 mov [0], [110]
 sub [0], [100]
 mov [1], [111]
 sub [1], [101]
-
-; ax{2} = abs(dx), ay{3} = abs(dy)
 mov [2], [0]
+jlt 39, [2], 128		;jlt ABS_AX, [2], 128
 xor [2], 255
 inc [2]
+;ABS_AX
 mov [3], [1]
+jlt 43, [3], 128		;jlt ABS_AY, [3], 128
 xor [3], 255
 inc [3]
-
-; if ax{2} >= ay{3}:
-;   if dx{0} >= 0:
-;     return 1
-;   else:
-;     return 3
-; else:
-;   if dy{1} >= 0:
-;     return 2
-;   else:
-;     return 0
-jlt MOVE_Y, [2], [3]
-MOVE_X:
-jlt MOVE_WEST, [0], 0
-MOVE_EAST:
+;ABS_AY
+jlt 51, [2], [3]		;jlt MOVE_Y, [2], [3]
+;MOVE_X
+jlt 48, [0], 0		;jlt MOVE_WEST, [0], 0
+;MOVE_EAST
 mov a, 1
 int 0
-mov pc, END
-MOVE_WEST:
+mov pc,58		;mov pc,END
+;MOVE_WEST
 mov a, 3
 int 0
-mov pc, END
-MOVE_Y:
-jlt MOVE_NORTH, [1], 0
-MOVE_SOUTH:
+mov pc,58		;mov pc,END
+;MOVE_Y
+jlt 55, [1], 0		;jlt MOVE_NORTH, [1], 0
+;MOVE_SOUTH
 mov a, 2
 int 0
-mov pc, END
-MOVE_NORTH:
+mov pc,58		;mov pc,END
+;MOVE_NORTH
 mov a, 0
 int 0
-mov pc, END
-END:
+mov pc,58		;mov pc,END
+;END
 hlt
