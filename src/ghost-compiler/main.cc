@@ -100,6 +100,10 @@ int main(void)
                 return 1;
             }
 
+            if (label.size() <= 2) {
+                cerr << "Please use more than 3 letters for label: " << label << endl;
+            }
+
             // OK
             pcMap[label] = pc;
             lines.push_back(";" + label);
@@ -130,8 +134,12 @@ int main(void)
             }
 
             string labelName = trim(snd.substr(pos + 1));
-            cout << replaceString(line, labelName, to_string(pcMap[labelName]))
-                 << "\t\t;" << trim(line) << endl;
+            if (labelName.size() <= 2) {
+                cout << replaceString(line, labelName, to_string(pcMap[labelName]))
+                     << "\t\t;" << trim(line) << endl;
+            } else {
+                cout << line << endl;
+            }
 
         } else {
             string snd;
