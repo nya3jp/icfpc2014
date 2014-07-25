@@ -1,0 +1,11 @@
+int 1
+mov [0], a
+int 3
+int 5
+mov [1], a
+mov a, 3
+jlt 8,[0],[1]
+mov a, 1
+int 0
+int 8
+hlt
