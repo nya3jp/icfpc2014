@@ -1,5 +1,5 @@
   DUM  2        ; 2 top-level declarations
-  LDC  1        ; declare constant left
+  LDC  1        ; declare constant right
   LDF  10     ; declare function step 
   LDF  6     ; init function
   RAP  2        ; load declarations into environment and run init
