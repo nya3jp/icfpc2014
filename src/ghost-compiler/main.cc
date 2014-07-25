@@ -128,7 +128,7 @@ int main(void)
         string fst;
         ss >> fst;
         fst = toUpper(fst);
-        
+
         if (fst != "JLT" && fst != "JEQ" && fst != "JGT" && fst != "MOV") {
             cout << line << endl;
             continue;
@@ -144,7 +144,7 @@ int main(void)
             }
 
             string labelName = trim(snd.substr(pos + 1));
-            if (labelName.size() <= 2) {
+            if (labelName.size() > 2) {
                 cout << replaceString(line, labelName, to_string(pcMap[labelName]))
                      << "\t\t;" << trim(line) << endl;
             } else {
