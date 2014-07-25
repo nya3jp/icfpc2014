@@ -1,0 +1,8 @@
+; 右手法
+int 3
+int 6
+add b, 1
+and b, 3
+mov a, b
+int 0
+hlt
