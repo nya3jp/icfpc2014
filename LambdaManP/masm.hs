@@ -4,11 +4,14 @@ import Data.Char
 import Data.Maybe
 
 main :: IO ()
-main = do
-  ls <- filter (not . null . words) . map removeComment  . lines <$> getContents
-  let (adr, codes) = collectAddress ls
+main = interact desugar
+
+desugar :: String -> String
+desugar s =
+  let ls = filter (not . null . words) . map removeComment  . lines $ s
+      (adr, codes) = collectAddress ls
       dest = map (subst adr) codes
-  mapM_ putStrLn dest
+  in unlines dest
 
 subst :: M.Map String Int -> String -> String
 subst m s =
