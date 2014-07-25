@@ -1,0 +1,10 @@
+    INT 3
+    ADD E, A
+    MUL E, 37
+    ADD E, 37
+    DIV E, 4
+    AND E, 3
+    MOV A, E
+    INT 0
+
+
