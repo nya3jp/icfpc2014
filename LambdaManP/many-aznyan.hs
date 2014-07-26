@@ -88,10 +88,12 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
 
         subScore = (dirValuePill (depth+1) (vrotR vect) world (vsub manp vect)
                  + dirValuePill (depth+1) (vrotL vect) world (vsub manp vect)) `div` 2
+        ghostVal :: Expr Int
+        ghostVal = (ite powerPillFlag (Const ghostPillParamF) (Const ghostPillParam))
     in 
     ite (depth .>= 3) 0 $
     ite (info .== 0) subScore $
-    ite (isGhostThere gss manp) (ite powerPillFlag 10000 (negate 5000))
+    ite (isGhostThere gss manp) ghostVal
     (tileValue info) + (dirValuePill depth vect world $ vadd manp vect)*9`div`10
 
 (dirValueGhost1 :: Expr Pos -> Expr GhostState -> Expr Int -> Expr Pos -> Expr Int, dirValueGhost1Def) = 
