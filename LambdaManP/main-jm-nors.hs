@@ -28,19 +28,23 @@ progn = do
 
   let  mapAt :: Expr [[Int]] -> Expr Int -> Expr Int -> Expr Int
        mapAt chizu ix iy = (call2 nth (call2 nth chizu iy) ix)
-  let mkSearch (dx,dy) = do 
+  let mkDirValuePill (dx,dy) = do 
         rec
-         (searchRet :: Expr ([[Int]] -> Int -> Int -> Int))
+         (dirValueRet :: Expr ([[Int]] -> Int -> Int -> Int))
            <- fun3 $ \chizu manX manY -> 
                      let info = (mapAt chizu manX manY) in
                      ite (info .== 0) 0 $ 
-                     (call1 tileValue info) + (call3 searchRet chizu (manX+dx)  (manY+dy))`div`2
-        return searchRet
+                     (call1 tileValue info) + (call3 dirValueRet chizu (manX+dx)  (manY+dy))`div`2
+        return dirValueRet
 
-  searchN  <- mkSearch (0,-1)
-  searchE  <- mkSearch (1,0)
-  searchS  <- mkSearch (0,1)
-  searchW  <- mkSearch (-1,0)
+
+  mkDirValueTotal (dx,dy) = 
+    
+
+  dirValueN  <- mkDirValueTotal (0,-1)
+  dirValueE  <- mkDirValueTotal (1,0)
+  dirValueS  <- mkDirValueTotal (0,1)
+  dirValueW  <- mkDirValueTotal (-1,0)
 
   (step :: Expr (AIState -> World -> (AIState,Int))) <- fun2 $ \aist world ->
     let manPos :: Expr Pos 
@@ -56,10 +60,10 @@ progn = do
 
         
         scoreN, scoreE, scoreS, scoreW :: Expr Int
-        scoreN = call3 searchN chizu manX manY
-        scoreE = call3 searchE chizu manX manY
-        scoreS = call3 searchS chizu manX manY
-        scoreW = call3 searchW chizu manX manY
+        scoreN = call3 dirValueN chizu manX manY
+        scoreE = call3 dirValueE chizu manX manY
+        scoreS = call3 dirValueS chizu manX manY
+        scoreW = call3 dirValueW chizu manX manY
 
         d2 :: Expr Int
         d2 = ite ((scoreN .>= scoreE) + (scoreN .>= scoreS) + (scoreN .>= scoreW) .== 3) 0 $
@@ -69,7 +73,7 @@ progn = do
 
     in
      
-    dbugn (call3 searchN chizu manX manY) `Seq`
+    dbugn (call3 dirValueN chizu manX manY) `Seq`
     cons aist d2
   expr $ cons (0 :: Expr AIState) step
 
