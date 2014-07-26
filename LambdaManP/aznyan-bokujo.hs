@@ -7,10 +7,12 @@ import Debug.Trace
 import System.Environment
 import System.IO.Unsafe
 import System.Random
+import System.Process
 import Unsafe.Coerce
 import Text.Printf
 import Desugar
 import DSL
+import System.Process
 
 -----
 type X = Int
@@ -203,8 +205,8 @@ main = do
       let indexStr :: String
           indexStr = printf "%010d" indexR
           gccFn, txtFn :: String
-          gccFn = (printf "../LambdaMan/gen/az%s.gcc" indexStr)
-          txtFn = (printf "../LambdaMan/gen/az%s.txt" indexStr)
+          gccFn = (printf "./LambdaMan/gen/az%s.gcc" indexStr)
+          txtFn = (printf "./LambdaMan/gen/az%s.txt" indexStr)
       writeFile gccFn $ compile progn
       writeFile txtFn $ unwords
         ["p" ,show pillParam, 
@@ -214,3 +216,7 @@ main = do
          "ga",show ghostAuraParam,   
          "fa",show ghostAuraParamF
           ]
+      str <- readProcess "./sim.sh"
+         ["--map=map/train.map",  "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc", "--lambda=" ++ gccFn] ""
+      print $ lines str
+      print $ last $ lines str
