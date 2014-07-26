@@ -6,7 +6,12 @@ SOURCES = \
 	simulator.ml
 RESULT  = simulator
 
-all: native-code
+OCAMLFLAGS = -g
+LDFLAGS = -g
+OCAMLLDFLAGS = -g
+all: byte-code
+
+# all: native-code
 
 OCAMLMAKEFILE = OCamlMakefile
 include $(OCAMLMAKEFILE)
