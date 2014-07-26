@@ -67,9 +67,16 @@ vinner pos vect = (car pos * car vect) + (cdr pos * cdr vect)
 
 
 (dirValueTotal:: Expr Pos -> Expr World -> Expr Int, dirValueTotalDef) =
-  def2 "dirValueTotal" $ \vect world ->
+  def2 "dirValueTotal" $ \vect world -> 
     let manP :: Expr Pos
-        manP = car $ cdr $ car $ cdr world      
+        manP = car $ cdr $ manState
+
+        manState :: Expr ManState
+        manState = car $ cdr world
+
+        powerPillFlag :: Expr Int
+        powerPillFlag = car manState
+   
         chizu :: Expr [[Int]]
         chizu = car world
         
@@ -80,18 +87,13 @@ vinner pos vect = (car pos * car vect) + (cdr pos * cdr vect)
         nextP = vadd manP vect
     in 
         ite (mapAt nextP chizu .== 0) int_min $
-        dirValuePill vect chizu manP + dirValueGhosts vect gss manP
+        dirValuePill vect chizu manP + 
+          (ite powerPillFlag (-1) 1) * dirValueGhosts vect gss manP
 
 
 (step :: Expr AIState -> Expr World -> Expr (AIState,Int), stepDef) =
   def2 "step" $ \aist world ->
-    let manPos :: Expr Pos
-        manPos = car $ cdr $ car $ cdr world
-
-        chizu :: Expr [[Int]]
-        chizu = car world
-
-        scoreN, scoreE, scoreS, scoreW :: Expr Int
+    let scoreN, scoreE, scoreS, scoreW :: Expr Int
         scoreN = dirValueTotal (cons 0 (-1)) world
         scoreE = dirValueTotal (cons 1    0) world
         scoreS = dirValueTotal (cons 0    1) world
