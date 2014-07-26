@@ -2,7 +2,7 @@ open Util
 
 module OrderedEventType = struct
   type t = int * int * int
-  let compare = Pervasives.compare
+  let compare : t -> t -> int = Pervasives.compare
 end;;
 module TQ = Set.Make(OrderedEventType);; (* tick, eventID, eventArg; in acsending order *)
 
@@ -124,7 +124,7 @@ let make field lambdaman_programs ghost_programs =
   }
 ;;
 
-let next_tick world = 
+let next_tick world =
   let (tick, event_id, event_arg) = TQ.min_elt world.wl in
   match event_id with
   | eFruitAppear ->
@@ -144,7 +144,7 @@ let next_tick world =
       | Field.CPowerPill -> (* Eat Power Pill *)
           schedule_tick world (tick, eLambdamanEatPowerPill, event_arg);
           true
-      | Field.CFruitLocation -> 
+      | Field.CFruitLocation ->
           schedule_tick world (tick, eLambdamanEatFruit, event_arg);
           world.fruit_exists
       | _ -> false
