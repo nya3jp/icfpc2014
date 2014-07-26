@@ -35,6 +35,7 @@ and frame = {
 }
 
 type address =
+  | AStop
   | AJoin of int
   | ARet of int
   | AFrame of frame list
@@ -71,6 +72,18 @@ let check_closure v =
 let check_join = function
   | AJoin x -> x
   | _ -> failwith "tag mismatch for join"
+
+let check_tag_ret = function
+  | ARet x -> x
+  | _ -> failwith "tag mismatch for ret"
+
+let is_tag_stop = function
+  | AStop -> true
+  | _ -> false
+
+let is_tag_ret = function
+  | ARet _ -> true
+  | _ -> false
 
 let check_dum e =
   if e.dummy then
@@ -195,6 +208,15 @@ let eval machine = function
      Stack.push (ARet (machine.c + 1)) machine.d;
      machine.e <- fp;
      machine.c <- f;
+  | LRtn ->
+     let x = Stack.pop machine.d in
+     if is_tag_stop x then
+       raise Exit;
+     let x = check_tag_ret x in
+     let y = Stack.pop machine.d in
+     let (AFrame yy) = y in
+     machine.e <- yy;
+     machine.c <- x;
   | LDbug ->
      let x = Stack.pop machine.s in
      print_value x;
