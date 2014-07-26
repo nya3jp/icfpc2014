@@ -5,10 +5,15 @@ import Data.Maybe
 import Data.Char
 import Debug.Trace
 import System.Environment
+import System.IO
+import System.IO.Unsafe
+import System.Random
+import System.Process
 import Unsafe.Coerce
-
+import Text.Printf
 import Desugar
 import DSL
+import System.Process
 
 -----
 type X = Int
@@ -22,12 +27,41 @@ type FruitState = Int
 type AIState = X
 type Pos = (Int, Int)
 
+randLIO :: (Double,Double) -> IO Int
+randLIO (lo,hi) = do
+  lgr <- randomRIO (log lo, log hi)
+  return $ round $ exp lgr
+
+{-# NOINLINE pillParam #-}
+pillParam ::  Int -- default: 100
+pillParam = unsafePerformIO $ randLIO (10,1000) 
+{-# NOINLINE powerPillParam #-}
+powerPillParam ::  Int -- 2000
+powerPillParam = pillParam * (unsafePerformIO $ randLIO (1,20) )
+{-# NOINLINE ghostPillParam #-}
+ghostPillParam ::  Int -- 5000
+ghostPillParam = negate $  unsafePerformIO $ randLIO (500,50000) 
+{-# NOINLINE ghostPillParamF #-}
+ghostPillParamF ::  Int --10000
+ghostPillParamF =  unsafePerformIO $ randLIO (1000,50000) 
+
+{-# NOINLINE ghostAuraParamF #-}
+ghostAuraParamF :: Int -- 1600
+ghostAuraParamF = unsafePerformIO $ randLIO (160,60000) 
+{-# NOINLINE ghostAuraParam #-}
+ghostAuraParam :: Int -- 800
+ghostAuraParam = negate $ unsafePerformIO $ randLIO (80,80000) 
+
+
 (tileValue :: Expr Int -> Expr Int, tileValueDef) = def1 "tileView" $ \i ->
-  ite (i.==0) 0 $ ite (i.==2) 100 $ ite (i.==3) 2000 $ 1
+  ite (i.==0) 0 $ 
+  ite (i.==2) (Const pillParam) $ 
+  ite (i.==3) (Const powerPillParam) $ 
+  1
 
 
-int_min :: Num a => a
-int_min = -2^(31)
+int_min :: Expr Int
+int_min = Const $ -2^(31)
 
 mapAt :: Expr Pos -> Expr [[Int]] -> Expr Int
 mapAt pos chizu = nth (car pos) $ nth (cdr pos) chizu
@@ -67,10 +101,12 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
 
         subScore = (dirValuePill (depth+1) (vrotR vect) world (vsub manp vect)
                  + dirValuePill (depth+1) (vrotL vect) world (vsub manp vect)) `div` 2
+        ghostVal :: Expr Int
+        ghostVal = (ite powerPillFlag (Const ghostPillParamF) (Const ghostPillParam))
     in 
     ite (depth .>= 3) 0 $
     ite (info .== 0) subScore $
-    ite (isGhostThere gss manp) (ite powerPillFlag 10000 (negate 5000))
+    ite (isGhostThere gss manp) ghostVal
     (tileValue info) + (dirValuePill depth vect world $ vadd manp vect)*9`div`10
 
 (dirValueGhost1 :: Expr Pos -> Expr GhostState -> Expr Int -> Expr Pos -> Expr Int, dirValueGhost1Def) = 
@@ -80,10 +116,10 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         
         vecDiff = vsub ghostp manp
         dist2 :: Expr Int
-        dist2 = vinner vecDiff vecDiff
+        dist2 = 1+vinner vecDiff vecDiff
         
-    in ite ppflag ((1600 * vinner vect vecDiff) `div` dist2)
-                  ((negate 800 * vinner vect vecDiff) `div` dist2)
+    in ite ppflag ((Const ghostAuraParamF * vinner vect vecDiff) `div` dist2)
+                  ((Const ghostAuraParam * vinner vect vecDiff) `div` dist2)
 
 
 (dirValueGhosts :: Expr Pos -> Expr [GhostState] -> Expr Int -> Expr Pos -> Expr Int, dirValueGhostsDef) = 
@@ -159,11 +195,65 @@ progn = do
 
   expr $ cons (0 :: Expr AIState) $ Closure "step"
 
+data TestConf = TestConf {cmdLineOpts::[String], scoreResult :: Int}
+  deriving (Eq, Ord)
+
+ppTestConf :: TestConf -> String
+ppTestConf tc = (show $ scoreResult tc) ++"\t./sim.sh " ++ unwords (cmdLineOpts tc)
+
+mkTestConfs :: String -> [TestConf]
+mkTestConfs gccfn = do -- List Monad
+  mapOpt <- ["--map=map/world-2.txt", "--map=map/world-8.map",  "--map=map/train.map"]
+  gOpt <-
+    [  "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc",
+       "--ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc",
+       "--ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc"]
+  let lOpt = "--lambda=" ++ gccfn
+
+  return $ TestConf {cmdLineOpts = [mapOpt,gOpt,lOpt], scoreResult = -1}
+
+performTest :: TestConf -> IO TestConf
+performTest tc = do
+  str <- readProcess "./sim.sh" (cmdLineOpts tc)   ""
+  let score :: Int
+      score = read $ last $ lines str  
+      ret = tc{scoreResult = score} 
+  hPutStrLn stderr $ ppTestConf ret
+  return $ tc{scoreResult = score}
+
 main :: IO ()
 main = do
   args <- getArgs
   case args of
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
-    _ -> do
-      writeFile "../LambdaMan/aznyan.gcc" $ compile progn
+    _ -> main2
+    
+main2 :: IO ()
+main2 = do
+  indexR <-randomRIO (0,2^31 :: Int)
+  let indexStr :: String
+      indexStr = printf "%010d" indexR
+      gccFn :: String
+      txtFn :: String
+      gccFn = printf "./LambdaMan/gen/az%s.gcc" indexStr
+      txtFn = printf "./LambdaMan/gen/az%s.txt" indexStr
+      logFn = printf "./LambdaMan/gen/az%s.log" indexStr      
+  writeFile gccFn $ compile progn
+  let tcs0 = mkTestConfs gccFn
+  print $ length tcs0
+  
+  tcs <- mapM performTest tcs0
+  
+  writeFile logFn $ unlines $ map ppTestConf tcs
+  let msg = unwords
+        [(show $ sum $ map scoreResult tcs), "/", (show $ length tcs),
+         "p" ,show pillParam, 
+         "P" ,show powerPillParam,
+         "gp",show ghostPillParam,   
+         "fp",show ghostPillParamF,   
+         "ga",show ghostAuraParam,   
+         "fa",show ghostAuraParamF
+          ]
+  writeFile txtFn $ msg
+  putStrLn $ msg

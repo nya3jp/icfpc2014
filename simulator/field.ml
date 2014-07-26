@@ -9,7 +9,10 @@ type cell =
 
 type t = cell array array
 
-let encode_cell = function
+let get t ~y ~x =
+  t.(y).(x)
+
+let int_of_cell  = function
   | CWall -> 0
   | CEmpty -> 1
   | CPill -> 2
