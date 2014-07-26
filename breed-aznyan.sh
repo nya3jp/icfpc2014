@@ -1,1 +1,4 @@
-runhaskell -iLambdaManP/ ./LambdaManP/aznyan-bokujo.hs
+while true
+do
+    time runhaskell -iLambdaManP/ ./LambdaManP/aznyan-bokujo.hs
+done;
