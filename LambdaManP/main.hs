@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo #-}
+{-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables #-}
 
 import Control.Monad.RWS hiding (local)
 import Control.Monad.State
@@ -8,46 +8,7 @@ import Data.Char
 import Debug.Trace
 import System.Environment
 
------
-
-desugar :: [String] -> [String]
-desugar s =
-  let ls = filter (not . null . words) . map removeComment $ s
-      (adr, codes) = collectAddress ls
-      dest = map (subst adr) codes
-  in dest
-
-subst :: M.Map String Int -> String -> String
-subst m s =
-  case words s of
-    (opc: opr) ->
-      unwords $ opc : map f opr
-  where
-    f name
-      | M.member name m = show $ fromJust $ M.lookup name m
-      | all isDigit name = name
-      | otherwise = error $ "undefined label: " ++ show name
-
-collectAddress :: [String] -> (M.Map String Int, [String])
-collectAddress = go 0 M.empty [] where
-  go adr addrs acc [] = (addrs, reverse acc)
-  go adr addrs acc (l:ls) =
-    case getLabel l of
-      Just name
-        | M.member name addrs ->
-          error $ "duplicate label: " ++ name
-        | otherwise ->
-          go adr (M.insert name adr addrs) acc ls
-      Nothing ->
-        go (adr+1) addrs (l:acc) ls
-
-getLabel l =
-  let l' = unwords $ words l
-  in if last l' == ':' && all isLabelChar (init l') then Just $ init l' else Nothing
-
-isLabelChar c = isAlpha c || isDigit c
-
-removeComment = takeWhile (/= ';')
+import Desugar
 
 -----
 
@@ -85,10 +46,12 @@ data Expr a where
 
   Ite :: Expr Int -> Expr a -> Expr a -> Expr a
   With :: Expr a -> (Expr a -> Expr r) -> Expr r
+  Assign :: Int -> Int -> Expr a -> Expr ()
 
   Seq :: Expr a -> Expr b -> Expr b
 
   Call1 :: Fun (a1 -> r) -> Expr a1 -> Expr r
+  Call2 :: Fun (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
 
 -- data Any = forall a . Any a
 
@@ -207,6 +170,11 @@ compileExpr e = case e of
     compileExpr e
     emitLabel jlabel
 
+  Assign i j e -> do
+    compileExpr e
+    lev <- gets csEnvLevel
+    tell ["LD " ++ show (lev - i) ++ " " ++ show j]
+
   With v f -> do
     l <- newLabel
     end <- newLabel
@@ -227,6 +195,12 @@ compileExpr e = case e of
     compileExpr v
     ld i j
     tell ["AP 1"]
+
+  Call2 (Fun i j) v1 v2 -> do
+    compileExpr v1
+    compileExpr v2
+    ld i j
+    tell ["AP 2"]
 
 incrLevel :: LMan ()
 incrLevel = do
@@ -293,25 +267,9 @@ emitLabel (Label l) = do
 ite :: Expr Int -> Expr a -> Expr a -> Expr a
 ite = Ite
 
-{-
-fun0 :: LMan () -> LMan Fun
-fun0 code = do
-  flabel <- newLabel
-  end <- newLabel
-  jmp end
-
-  emitLabel flabel
-  s <- get
-  put $ s { csEnvLevel = csEnvLevel s + 1 }
-  code
-  tell "RTN"
-  put s
-
-  emitLabel end
-
-  -- return $ Fun
-  undefined
--}
+(~=) :: Expr a -> Expr a -> Expr ()
+(Var i j) ~= v = Assign i j v
+_ ~= _ = error $ "Left hand side of := must be variable"
 
 codeGen :: LMan () -> [String]
 codeGen p =
@@ -322,50 +280,25 @@ codeGen p =
 
 data Fun t = Fun Int Int
 
--- call0 :: Fun r -> Expr r
--- call0 (Fun i) = undefined
-
-{-
-call1 :: Fun (a1 -> r) -> Expr a1 -> Expr r
-call1 (Fun i) e = do
-  compileExpr e
-  ld 0 i
-  tell ["AP"]
--}
-
 with :: Expr a -> (Expr a -> Expr r)  -> Expr r
 with = With
 
 -----
 
+footer :: LMan ()
+footer = do
+  tell ["RTN"]
+
 compile :: LMan () -> String
-compile = unlines . desugar . codeGen
+compile = unlines . desugar . codeGen . (>> footer)
 
 compile' :: LMan () -> String
-compile' = unlines . map f.  codeGen where
+compile' = unlines . map f.  codeGen . (>> footer) where
   f s
     | last s == ':' = s
     | otherwise = "  " ++ s
 
 -----
-
--- library
-
-
------
-
-{-
-fun1 :: (Expr a1 -> LMan r) -> LMan r
-fun1 f = do
-  s <- get
-  f (ld (csEnvLevel s + 1) 0)
-
-fact :: Func (Expr Int -> Expr Int)
-fact = fun $ \i -> do
-  ite (i .== 0)
-    (0)
-    (i * call1 fact (i - 1))
--}
 
 expr :: Expr a -> LMan ()
 expr e = compileExpr e
@@ -404,6 +337,20 @@ tests = do
     dbugn (i*i) `Seq`
     dbugn (i*i*i)
 
+  rec
+    (fact :: Fun (Int -> Int)) <- fun1 $ \i ->
+      ite (i .== 0) 1 (i * call1 fact (i - 1))
+
+    (mod :: Fun (Int -> Int -> Int)) <- fun2 $ \i j ->
+      i - i `div` j * j
+
+  -- foo <- fun1 $ \i -> i + i * i
+
+  expr $ dbugn $ call1 fact 10
+
+  expr $ dbugn $ call2 mod 42 8
+
+  return ()
   -}
 
   -- dbug $ call hoge 1 2 (cons 1 2)
@@ -435,20 +382,44 @@ fun1 f = do
   lev <- gets csEnvLevel
   return $ Fun lev 0
 
+fun2 :: (Expr a1 -> Expr a2 -> Expr r) -> LMan (Fun (a1 -> a2 -> r))
+fun2 f = do
+  fun <- newLabel
+  clo <- newLabel
+  end <- newLabel
+
+  tell ["DUM 1"]
+  incrLevel
+
+  jmp clo
+
+  emitLabel fun
+  local $ do
+    a1 <- innerVar 0
+    a2 <- innerVar 1
+    compileExpr $ f a1 a2
+    tell ["RTN"]
+
+  emitLabel clo
+  ldf fun
+  ldf end
+  tell ["TRAP 1"]
+
+  emitLabel end
+  lev <- gets csEnvLevel
+  return $ Fun lev 0
+
 call1 :: Fun (a1 -> r) -> Expr a1 -> Expr r
 call1 = Call1
 
+call2 :: Fun (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
+call2 = Call2
+
+-----
+
 progn :: LMan ()
 progn = do
-  rec
-    fact <- fun1 $ \i ->
-      ite (i .== 0) 1 (i * call1 fact (i - 1))
-
-  -- foo <- fun1 $ \i -> i + i * i
-
-  expr $ dbugn $ call1 fact 10
-
-  return ()
+  undefined
 
 main :: IO ()
 main = do
