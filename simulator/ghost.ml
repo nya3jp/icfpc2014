@@ -1,6 +1,6 @@
 open Util
 
-exception Halt_Exception
+exception Halt_exception
 
 type gvalue =
   | GVConst    of int
@@ -139,7 +139,7 @@ let rec eval_ginstruction env syscallback = function
   | GInt _ ->
      failwith "Unknown syscall"
   | GHlt ->
-     raise Halt_Exception
+     raise Halt_exception
 and set_gvalue env dst v =
   match dst with
   | GVConst _ ->
@@ -185,8 +185,13 @@ let make index x y program = {
 let eval t syscallback =
   (* ghost only consumes 1024 instructions *)
   t.env.pc <- 0;
-  for i = 0 to 1023 do
-    eval_ginstruction t.env syscallback t.program.(t.env.pc)
-  done;
+  begin
+    try
+      for i = 0 to 1023 do
+        eval_ginstruction t.env syscallback t.program.(t.env.pc)
+      done;
+    with
+    | Halt_exception -> ()
+  end;
   t.env.newDir
 ;;
