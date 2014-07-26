@@ -1,7 +1,3 @@
-(*
-  ghost is a
-*)
-
 type gvalue =
   | GVConst    of int
   | GVReg      of int
@@ -115,5 +111,3 @@ and set_gvalue env dst v =
   | GVIndReg r ->
      env.data.(env.reg.(r)) <- v
 ;;
-
-
