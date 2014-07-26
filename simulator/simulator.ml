@@ -44,7 +44,7 @@ let make field lambdaman_programs ghost_programs =
 ;;
 
 (* This is a callback when INT is called from ghost. *)
-let make_syscallback_for_ghost t (ghost : Ghost.t) =
+let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
   let syscallback_for_ghost n env =
     match n with
     | 0 ->
@@ -80,6 +80,8 @@ let make_syscallback_for_ghost t (ghost : Ghost.t) =
          env.Ghost.pc
          env.Ghost.reg.(0) env.Ghost.reg.(1) env.Ghost.reg.(2) env.Ghost.reg.(3)
          env.Ghost.reg.(4) env.Ghost.reg.(5) env.Ghost.reg.(6) env.Ghost.reg.(7)
+    | n ->
+       failwith ("Unknown INT number" ^ (string_of_int n))
   in
   syscallback_for_ghost
 ;;
