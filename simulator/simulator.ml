@@ -4,11 +4,11 @@
 type t = {
   lambdamans: Lambdaman.t array;
   ghosts:     Ghost.t array;
-  map:        World.map;
+  field:      Field.t;
   mutable fruitExists: bool;
 }
 
-let make map lambdaman_programs ghost_programs =
+let make field lambdaman_programs ghost_programs =
   if Array.length lambdaman_programs <= 0 || 2 < Array.length lambdaman_programs then
     failwith "# of lambdaman program is wrong";
 
@@ -24,24 +24,39 @@ let make map lambdaman_programs ghost_programs =
   Array.iteri ( fun y line ->
     Array.iteri (fun x cell ->
       match cell with
-      | World.CLambdaManStart ->
+      | Field.CLambdaManStart ->
          let t = Lambdaman.make !lambdaman_index x y lambdaman_programs.(!lambdaman_index) in
          lambdamans := t :: !lambdamans;
          incr lambdaman_index
-      | World.CGhostStart ->
+      | Field.CGhostStart ->
          let t = Ghost.make !ghost_index x y ghost_programs.(!ghost_index mod (Array.length ghost_programs)) in
          ghosts := t :: !ghosts;
          incr ghost_index
     ) line
-  ) map;
+  ) field;
 
   {
     lambdamans = Array.of_list (List.rev !lambdamans);
     ghosts = Array.of_list (List.rev !ghosts);
-    map = map;
+    field = field;
     fruitExists = false;
   }
 ;;
+
+(*---- SCORE TABLE ----*)
+(*
+let score_pill = 10
+let score_power_pill = 50
+let score_fruit field = match level_of_field 
+*)
+
+(*---- TICK TABLE ----*)
+
+type event_type =
+  | FruitAppear
+  | FruitDisappear
+  | LambdaManMove of int
+  | GhostMove of int
 
 (*
 let tick tick_id t =
