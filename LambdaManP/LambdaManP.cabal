@@ -27,3 +27,17 @@ executable LambdaManP
     , transformers
   -- hs-source-dirs:      
   default-language:    Haskell2010
+
+
+executable LambdaJM
+  main-is:             main-jm.hs
+  -- other-modules:       
+  -- other-extensions:    
+  build-depends:      
+      base >=4.7 && <4.8
+    , containers
+    , lens
+    , mtl
+    , transformers
+  -- hs-source-dirs:      
+  default-language:    Haskell2010
