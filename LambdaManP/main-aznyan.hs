@@ -33,6 +33,16 @@ vadd pos vect = cons (car pos + car vect) (cdr pos + cdr vect)
     ite (info .== 0) 0 $
       (tileValue info) + (dirValuePill vect chizu $ vadd manp vect)`div`2
 
+(dirValueTotal:: Expr (Int, Int) -> Expr World -> Expr Int, dirValueTotalDef) =
+  def2 "dirValueTotal" $ \vect world ->
+    let manP :: Expr Pos
+        manP = car $ cdr $ car $ cdr world      
+        chizu :: Expr [[Int]]
+        chizu = car world
+        
+    in dirValuePill vect chizu manP
+
+
 (step :: Expr AIState -> Expr World -> Expr (AIState,Int), stepDef) =
   def2 "step" $ \aist world ->
     let manPos :: Expr Pos
@@ -42,10 +52,10 @@ vadd pos vect = cons (car pos + car vect) (cdr pos + cdr vect)
         chizu = car world
 
         scoreN, scoreE, scoreS, scoreW :: Expr Int
-        scoreN = dirValuePill (cons 0 (-1)) chizu manPos
-        scoreE = dirValuePill (cons 1    0) chizu manPos
-        scoreS = dirValuePill (cons 0    1) chizu manPos
-        scoreW = dirValuePill (cons (-1) 0) chizu manPos
+        scoreN = dirValueTotal (cons 0 (-1)) world
+        scoreE = dirValueTotal (cons 1    0) world
+        scoreS = dirValueTotal (cons 0    1) world
+        scoreW = dirValueTotal (cons (-1) 0) world
 
         d2 :: Expr Int
         d2 = ite ((scoreN .>= scoreE) + (scoreN .>= scoreS) + (scoreN .>= scoreW) .== 3) 0 $
@@ -61,6 +71,7 @@ progn = do
   nthDef
   tileValueDef
   dirValuePillDef
+  dirValueTotalDef
   stepDef
 
   expr $ cons (0 :: Expr AIState) $ Closure "step"
@@ -72,4 +83,4 @@ main = do
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
     _ -> do
-      writeFile "../LambdaMan/joga-maya.gcc" $ compile progn
+      writeFile "../LambdaMan/aznyan.gcc" $ compile progn
