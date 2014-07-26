@@ -17,8 +17,8 @@ type instruction =
   | LLdf of int
   | LAp of int
   | LRtn
-  | LDum
-  | LStop
+  | LDum of int
+  | LRap of int
   | LTap
   | LTsel
   | LTrap
@@ -94,6 +94,11 @@ let value_of_int x = VInt (Int32.of_int x)
 
 let alloc_frame n = {
   dummy = false;
+  data = Array.make n (value_of_int 0);
+}
+
+let alloc_dummy_frame n = {
+  dummy = true;
   data = Array.make n (value_of_int 0);
 }
 
@@ -217,6 +222,34 @@ let eval machine = function
      let (AFrame yy) = y in
      machine.e <- yy;
      machine.c <- x;
+  | LDum n ->
+     let frame = alloc_dummy_frame n in
+     let fp = frame :: machine.e in
+     machine.e = fp;
+     machine.c <- machine.c + 1
+  | LRap n ->
+     let x = Stack.pop machine.s in
+     let (f, fp) = check_closure x in
+     let frame = List.hd machine.e in
+     if not frame.dummy then
+       failwith "tag_mismatch";
+     if Array.length frame.data <> n then
+       failwith "frame mismatch";
+     if machine.e != fp then (* physical equal *)
+       failwith "frame mismatch";
+     let i = ref (n - 1) in
+     while !i <> -1 do
+       let y = Stack.pop machine.s in
+       set_frame_value fp !i y;
+       decr i;
+     done;
+     let ep = List.tl machine.e in
+     Stack.push (AFrame ep) machine.d;
+     Stack.push (ARet (machine.c + 1)) machine.d;
+     let frame = List.hd fp in
+     frame.dummy <- false;
+     machine.e <- fp;
+     machine.c <- f
   | LDbug ->
      let x = Stack.pop machine.s in
      print_value x;
