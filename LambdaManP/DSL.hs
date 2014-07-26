@@ -424,6 +424,65 @@ fun2 f = do
   lev <- gets csEnvLevel
   return $ Closure lev 0
 
+fun3 :: (Expr a1 -> Expr a2 -> Expr a3 -> Expr r) -> LMan (Expr (a1 -> a2 -> a3 -> r))
+fun3 f = do
+  fun <- newLabel
+  clo <- newLabel
+  end <- newLabel
+
+  tell ["DUM 1"]
+  incrLevel
+
+  jmp clo
+
+  emitLabel fun
+  local $ do
+    a1 <- innerVar 0
+    a2 <- innerVar 1
+    a3 <- innerVar 2    
+    compileExpr $ f a1 a2 a3
+    tell ["RTN"]
+
+  emitLabel clo
+  ldf fun
+  ldf end
+  tell ["TRAP 1"]
+
+  emitLabel end
+  lev <- gets csEnvLevel
+  return $ Closure lev 0
+
+fun4 :: (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r) -> LMan (Expr (a1 -> a2 -> a3 -> a4 -> r))
+fun4 f = do
+  fun <- newLabel
+  clo <- newLabel
+  end <- newLabel
+
+  tell ["DUM 1"]
+  incrLevel
+
+  jmp clo
+
+  emitLabel fun
+  local $ do
+    a1 <- innerVar 0
+    a2 <- innerVar 1
+    a3 <- innerVar 2    
+    a4 <- innerVar 3    
+    compileExpr $ f a1 a2 a3 a4
+    tell ["RTN"]
+
+  emitLabel clo
+  ldf fun
+  ldf end
+  tell ["TRAP 1"]
+
+  emitLabel end
+  lev <- gets csEnvLevel
+  return $ Closure lev 0
+
+
+
 call1 :: Expr (a1 -> r) -> Expr a1 -> Expr r
 call1 = Call1
 
