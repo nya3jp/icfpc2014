@@ -22,8 +22,6 @@ progn :: LMan ()
 progn = do
   nth :: forall a. Expr ([a] -> Int -> a) <- nth'
   
-
-
   
   (step :: Expr (AIState -> World -> (AIState,Int))) <- fun2 $ \aist world ->
     let manPos :: Expr Pos 
@@ -32,7 +30,6 @@ progn = do
         manX = car manPos
         manY :: Expr Int
         manY = cdr manPos
-        d = ite (manY .<= 1) 3 $ ite (manX .< 17) 1 0 
         
         chizu :: Expr [[Int]]
         chizu = car world
@@ -40,15 +37,27 @@ progn = do
         mapAt :: Expr Int -> Expr Int -> Expr Int
         mapAt ix iy = (call2 nth (call2 nth chizu iy) ix)
         
-        d2 = ite (mapAt manX (manY-1) .== 2) 0 $
-             ite (mapAt manX (manY+1) .== 2) 2 $
-             ite (mapAt (manX+1) manY .== 2) 1 $
-             ite (mapAt (manX-1) manY .== 2) 3 $ d
+        calcScore :: (Expr Int, Expr Int) -> Expr Int
+        calcScore (dx,dy) = ite (mapAt (manX+dx) (manY+dy) .== 0) 0 $
+          ite (mapAt (manX+dx) (manY+dy)  .== 2) 1000 $ 40
+        
+        scoreN = calcScore (0,-1)
+        scoreE = calcScore (1,0)
+        scoreS = calcScore (0,1)
+        scoreW = calcScore (-1,0)
+        
+        d2 :: Expr Int
+        d2 = ite ((scoreN .>= scoreE) + (scoreN .>= scoreS) + (scoreN .>= scoreW) .== 3) 0 $
+             ite ((scoreE .>= scoreS) + (scoreE .>= scoreW) .== 2) 1 $
+             ite (scoreS .>= scoreW) 2 $
+             (3 :: Expr Int)
     in
      
      
-    dbugn manY `Seq` 
-    dbugn (mapAt 16 16)`Seq`
+    dbugn scoreN `Seq` 
+    dbugn scoreE `Seq` 
+    dbugn scoreW `Seq` 
+    dbugn scoreS `Seq` 
     cons aist d2
   expr $ cons (0 :: Expr AIState) step
 
