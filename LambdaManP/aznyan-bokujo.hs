@@ -243,7 +243,7 @@ main2 = do
   tcs <- mapM performTest tcs0
   
   writeFile logFn $ unlines $ map ppTestConf tcs
-  writeFile txtFn $ unwords
+  let msg = unwords
     [(show $ sum $ map scoreResult tcs), "/", (show $ length tcs),
      "p" ,show pillParam, 
      "P" ,show powerPillParam,
@@ -252,4 +252,5 @@ main2 = do
      "ga",show ghostAuraParam,   
      "fa",show ghostAuraParamF
       ]
-  
+  writeFile txtFn $ msg
+  putStrLn $ msg
