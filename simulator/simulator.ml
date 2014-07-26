@@ -133,6 +133,21 @@ let tick tick_id t =
 
 (* ---------------------------------------------------------------------- *)
 
+let encode_current_world t =
+  failwith "not implemented yet"
+;;
+
+(* TODO: implement this. Encode HLT now. *)
+let encode_ghost_program program =
+  Lambdaman.VCons (Lambdaman.value_of_int 14, Lambdaman.value_of_int 0)
+;;
+
+let encode_ghost_programs t =
+  let encoded = Array.map (fun ghost -> encode_ghost_program ghost.Ghost.program) t.ghosts in
+  Array.fold_right (fun x y -> Lambdaman.VCons (x, y)) encoded (Lambdaman.VInt (Int32.of_int 0))
+;;
+
 let run t =
+  (* First, run lambdaman and get *)
   failwith "not implemented yet"
 ;;
