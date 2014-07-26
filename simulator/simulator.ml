@@ -1,15 +1,18 @@
 (* *)
 let main () =
-  if Array.length Sys.argv <> 3 then
+  Printexc.record_backtrace true;
+  if Array.length Sys.argv <> 4 then
     failwith "usage: ./simulator map ai ghost-ai";
 
-  let fieldName = Sys.argv.(1) in
+  let mapName = Sys.argv.(1) in
   let lambdamanFilename = Sys.argv.(2) in
   let ghostFilename = Sys.argv.(3) in
 
-  let field = FieldReader.read fieldName in
-  let ai = LambdamanReader.read lambdamanFilename in
+  let map = MapReader.read mapName in
+(*  let ai = LambdamanReader.read lambdamanFilename in *)
   let ghost = GhostAiReader.read ghostFilename in
+
+  print_string (World.string_of_map map);
 
   failwith "not implemented yet"
 ;;
