@@ -23,8 +23,8 @@ let make field lambdaman_programs ghost_programs =
   let lambdamans = ref []
   and ghosts = ref [] in
 
-  let pill_cnt = ref 0 in
-  let powerpill_cnt = ref 0 in
+  let pill_cnt = ref 0
+  and powerpill_cnt = ref 0 in
 
   Array.iteri ( fun y line ->
     Array.iteri (fun x cell ->
