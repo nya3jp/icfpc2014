@@ -10,7 +10,7 @@ let main () =
 
   let map = MapReader.read mapName in
 (*  let ai = LambdamanReader.read lambdamanFilename in *)
-(*  let ghost = GhostAiReader.read ghostFilename in *)
+  let ghost = GhostAiReader.read ghostFilename in
 
   print_string (World.string_of_map map);
 
