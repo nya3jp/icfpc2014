@@ -24,6 +24,7 @@ type instruction =
   | LTrap of int
   | LSt   of int * int
   | LDbug
+  | LBrk
 
 type value =
   | VInt     of int32
@@ -294,6 +295,8 @@ let eval machine = function
   | LDbug ->
      let x = Stack.pop machine.s in
      print_value x;
+     machine.c <- machine.c + 1
+  | LBrk ->
      machine.c <- machine.c + 1
 
 (* unittest *)
