@@ -44,7 +44,7 @@ let make field lambdaman_programs ghost_programs =
 ;;
 
 (* This is a callback when INT is called from ghost. *)
-let make_syscallback_for_ghost t (ghost : Ghost.t) =
+let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
   let syscallback_for_ghost n env =
     match n with
     | 0 ->
