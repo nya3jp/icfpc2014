@@ -42,6 +42,6 @@ getLabel l =
   let l' = unwords $ words l
   in if last l' == ':' && all isLabelChar (init l') then Just $ init l' else Nothing
 
-isLabelChar c = isAlpha c || isDigit c
+isLabelChar c = isAlpha c || isDigit c || c == '_'
 
 removeComment = takeWhile (/= ';')

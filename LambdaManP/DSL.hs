@@ -1,9 +1,10 @@
-{-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables #-}
+{-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables, Rank2Types, LiberalTypeSynonyms, ImpredicativeTypes #-}
 
 module DSL where
 
 import Control.Monad.RWS hiding (local)
 import Control.Monad.State
+import Unsafe.Coerce
 
 import Desugar
 
@@ -38,6 +39,9 @@ data Expr a where
   Cgt   :: Expr Int -> Expr Int -> Expr Int
   Cgte  :: Expr Int -> Expr Int -> Expr Int
   Dbug  :: Expr a -> Expr ()
+
+  Lnull :: Expr [a]
+  Lcons :: Expr a -> Expr [a] -> Expr [a]
 
   Ite :: Expr Int -> Expr a -> Expr a -> Expr a
   With :: Expr a -> (Expr a -> Expr r) -> Expr r
@@ -249,6 +253,21 @@ car = Car
 cdr :: Expr (a, b) -> Expr b
 cdr = Cdr
 
+lnull :: Expr [a]
+lnull = unsafeCoerce $ Const 0
+
+lcons :: Expr a -> Expr [a] -> Expr [a]
+lcons = unsafeCoerce $ Cons
+
+list :: [Expr a] -> Expr [a]
+list = foldr lcons lnull
+
+lhead :: Expr [a] -> Expr a
+lhead = unsafeCoerce Car
+
+ltail :: Expr [a] -> Expr [a]
+ltail = unsafeCoerce Cdr
+
 tsel :: Label -> Label -> LMan ()
 tsel (Label t) (Label e) = do
   tell ["TSEL " ++ t ++ " " ++ e]
@@ -410,3 +429,31 @@ call1 = Call1
 
 call2 :: Expr (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
 call2 = Call2
+
+-----
+
+-- Library
+
+{-
+data Lib where
+  Lib :: { nth :: Expr ([a] -> Int -> a) } -> Lib
+
+lib :: LMan Li
+lib = do
+  rec
+    nth' <- fun2 $ \xs i ->
+      ite (i .== 0)
+        (lhead xs)
+        (call2 nth' (ltail xs) (i - 1))
+
+  return $ Lib { nth = nth' }
+-}
+
+nth' :: LMan (forall a. Expr ([a] -> Int -> a))
+nth' = do
+  rec
+    f <- fun2 $ \xs i ->
+      ite (i .== 0)
+        (lhead xs)
+        (call2 f (ltail xs) (i - 1))
+  return $ unsafeCoerce f
