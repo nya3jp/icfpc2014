@@ -10,12 +10,26 @@ import Desugar
 import DSL
 
 -----
+type X = Int
+type World = (X, (ManState, (X, X)))
+type ManState = (X, (Pos, X))
+type AIState = X
+type Pos = (Int, Int)
+
 
 progn :: LMan ()
 progn = do
-  (step :: Expr (Int -> Int -> (Int,Int))) <- fun2 $ \i j ->
-    cons i 1
-  expr $ cons (0 :: Expr Int) step
+  (step :: Expr (AIState -> World -> (AIState,Int))) <- fun2 $ \aist world ->
+    let manPos :: Expr Pos 
+        manPos = car $ cdr $ car $ cdr world
+        manX :: Expr Int
+        manX = car manPos
+        manY :: Expr Int
+        manY = cdr manPos
+        d = ite (manY .<= 1) 3 $ ite (manX .< 17) 1 0 
+    in
+    cons aist d
+  expr $ cons (0 :: Expr AIState) step
 
 
 
@@ -26,4 +40,4 @@ main = do
     ["debug"] -> do
       putStrLn $ compile' progn
     _ -> do
-      putStrLn $ compile progn
+      writeFile "../LambdaMan/joga-maya.gcc" $ compile progn
