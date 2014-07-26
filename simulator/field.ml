@@ -12,7 +12,7 @@ type t = cell array array
 let get t ~y ~x =
   t.(y).(x)
 
-let encode_cell = function
+let int_of_cell  = function
   | CWall -> 0
   | CEmpty -> 1
   | CPill -> 2
@@ -20,8 +20,6 @@ let encode_cell = function
   | CFruitLocation -> 4
   | CLambdaManStart -> 5
   | CGhostStart -> 6
-
-let int_of_cell = encode_cell
 
 let string_of_cell = function
   | CWall -> "#"

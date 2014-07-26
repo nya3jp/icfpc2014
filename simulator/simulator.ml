@@ -1,5 +1,11 @@
 open Util
 
+module OrderedEventType = struct
+  type t = int * int * int
+  let compare = Pervasives.compare
+end;;
+module TQ = Set.Make(OrderedEventType);; (* tick, eventID, eventArg; in acsending order *)
+
 (* simulator state *)
 type t = {
   lambdamans: Lambdaman.t array;
@@ -8,7 +14,59 @@ type t = {
   mutable fruit_exists: bool;
   mutable pill_count: int;
   mutable powerpill_count: int;
+  mutable wl: TQ.t; (* priority queue of tick events *)
 }
+
+(*---- SCORE TABLE ----*)
+let score_pill = 10
+let score_power_pill = 50
+let score_fruit field = match Field.level_of_field field with
+  |  1 ->  100
+  |  2 ->  300
+  |  3 ->  500
+  |  4 ->  500
+  |  5 ->  700
+  |  6 ->  700
+  |  7 -> 1000
+  |  8 -> 1000
+  |  9 -> 2000
+  | 10 -> 2000
+  | 11 -> 3000
+  | 12 -> 3000
+  | n when n > 12 -> 5000
+  | _ -> failwith "illegal level"
+
+let score_eat = function
+  | 1 ->  200
+  | 2 ->  400
+  | 3 ->  800
+  | n when n >= 3 -> 1600
+  | _ -> failwith "illegal nth"
+
+(*---- TICK TABLE ----*)
+let tick_EOL field = 127 * Field.width_of_field field * Field.height_of_field field * 16
+let tick_fruit_appear id (* 0 or 1 *) = 127 * 200 * (id+1)
+let tick_fruit_disappear id (* 0 or 1 *) = 127 * 200 * (id+1) + 80
+let tick_dur_fright = 127 * 20
+let tick_move_lambdaman is_eating = if is_eating then 137 else 127
+let tick_move_ghost ghost =
+  if ghost.Ghost.vitality = Ghost.FrightMode then
+    [|195; 198; 201; 204|].(ghost.Ghost.index mod 4)
+  else
+    [|130; 132; 134; 136|].(ghost.Ghost.index mod 4)
+
+let eLambdamanMove     = 100 (* lambdaman id *)
+let eGhostMove         = 101 (* ghost *)
+let eFruitAppear       = 200
+let eFruitDisappear    = 201
+let eFreightDeactivate = 202
+let eLambdamanEatPill  = 300
+let eLambdamanEatPowerPill  = 301
+let eLambdamanEatFruit  = 302
+let eEOL = 999999
+;;
+
+let schedule_tick world v = world.wl <- TQ.add v world.wl
 
 let make field lambdaman_programs ghost_programs =
   if Array.length lambdaman_programs <= 0 || 2 < Array.length lambdaman_programs then
@@ -47,15 +105,74 @@ let make field lambdaman_programs ghost_programs =
     ) line
   ) field;
 
+  let wl = ref TQ.empty in
+
+  wl := TQ.add (tick_EOL field, eEOL, 0) !wl;
+  List.iter (fun lambdaman -> wl := TQ.add (tick_move_lambdaman false, eLambdamanMove, lambdaman.Lambdaman.index) !wl) !lambdamans;
+  List.iter (fun ghost -> wl := TQ.add (tick_move_ghost ghost, eGhostMove, ghost.Ghost.index) !wl) !ghosts;
+  List.iter (fun i -> wl := TQ.add (tick_fruit_appear i, eFruitAppear, 0) !wl) [0; 1];
+  List.iter (fun i -> wl := TQ.add (tick_fruit_disappear i, eFruitDisappear, 0) !wl) [0; 1];
+
   {
     lambdamans = Array.of_list (List.rev !lambdamans);
     ghosts = Array.of_list (List.rev !ghosts);
     field = field;
     fruit_exists = false;
     pill_count = !pill_cnt;
-    powerpill_count = !powerpill_cnt
+    powerpill_count = !powerpill_cnt;
+    wl = !wl;
   }
 ;;
+
+let next_tick world = 
+  let (tick, event_id, event_arg) = TQ.min_elt world.wl in
+  match event_id with
+  | eFruitAppear ->
+      world.fruit_exists <- true;
+  | eFruitDisappear ->
+      world.fruit_exists <- false;
+  | eEOL ->
+      raise Exit (* FIXME *)
+  | eLambdamanMove ->
+      let lambdaman = world.lambdamans.(event_arg) in
+      (* FIXME: run program *)
+      (* FIXME: move lambdaman *)
+      let is_eating = begin match world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) with
+      | Field.CPill ->
+          schedule_tick world (tick, eLambdamanEatPill, event_arg);
+          true
+      | Field.CPowerPill -> (* Eat Power Pill *)
+          schedule_tick world (tick, eLambdamanEatPowerPill, event_arg);
+          true
+      | Field.CFruitLocation -> 
+          schedule_tick world (tick, eLambdamanEatFruit, event_arg);
+          world.fruit_exists
+      | _ -> false
+      end in
+      schedule_tick world ((tick + tick_move_lambdaman is_eating), eLambdamanMove, event_arg)
+  | eGhostMove ->
+      let ghost = world.ghosts.(event_arg) in
+      (* FIXME: run program *)
+      (* FIXME: move lambdaman *)
+      schedule_tick world ((tick + tick_move_ghost ghost), eGhostMove, event_arg)
+  | eLambdamanEatPill ->
+      let lambdaman = world.lambdamans.(event_arg) in
+      lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_pill;
+      (* FIXME: count remaining pills and schedule win event if 0 *)
+      world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) <- Field.CEmpty
+  | eLambdamanEatPowerPill ->
+      let lambdaman = world.lambdamans.(event_arg) in
+      lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_power_pill;
+      (* FIXME: activate fright mode *)
+      world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) <- Field.CEmpty
+  | eLambdamanEatFruit ->
+      if world.fruit_exists then
+        world.fruit_exists <- false;
+        let lambdaman = world.lambdamans.(event_arg) in
+        lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_fruit world.field
+(*  | eFreightDeactivate
+FIXME: add more
+*)
 
 (* This is a callback when INT is called from ghost. *)
 let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
@@ -115,14 +232,6 @@ let score_fruit field =
     5000
 ;;
 
-(*---- TICK TABLE ----*)
-
-type event_type =
-  | FruitAppear
-  | FruitDisappear
-  | LambdaManMove of int
-  | GhostMove of int
-
 (*
 let tick tick_id t =
   move_lambdamans_if_necessary tick_id t;
@@ -133,8 +242,33 @@ let tick tick_id t =
 
 (* ---------------------------------------------------------------------- *)
 
-let encode_current_world t =
+let encode_field field =
+  let zero = Lambdaman.value_of_int 0 in
+  Array.fold_right (fun x y ->
+    let x' = Array.fold_right (fun cell t ->
+      let v = Lambdaman.value_of_int (Field.int_of_cell cell) in
+      Lambdaman.VCons (v, t)
+    ) x zero in
+    Lambdaman.VCons (x', y)
+  ) field zero
+;;
+
+let encode_status t =
   failwith "not implemented yet"
+
+let encode_ghost t =
+  failwith "not implemented yet"
+
+let encode_fruit t =
+  failwith "not implemented yet"
+
+let encode_current_world t =
+  let field_encoded = encode_field t.field in
+  let status_encoded = encode_status t in
+  let status_ghost = encode_ghost t in
+  let status_fruit = encode_fruit t in
+  let zero = Lambdaman.value_of_int 0 in
+  List.fold_right (fun x y -> Lambdaman.VCons (x, y)) [field_encoded; status_encoded; status_ghost; status_fruit] zero
 ;;
 
 (* TODO: implement this. Encode HLT now. *)
