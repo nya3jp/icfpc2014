@@ -1,0 +1,8 @@
+LDC  0
+LDF  4
+CONS
+RTN
+LDC  0
+LDC  1
+CONS
+RTN
