@@ -7,7 +7,7 @@ type cell =
   | CLambdaManStart
   | CGhostStart
 
-type map = cell array array
+type t = cell array array
 
 let encode_cell = function
   | CWall -> 0
@@ -37,14 +37,12 @@ let cell_of_char = function
   | '=' -> CGhostStart
   | x -> failwith ("Illegal cell character: " ^ (Char.escaped x))
 
-let string_of_map_line l = Array.fold_left (fun str c -> str ^ (string_of_cell c)) "" l
+let string_of_field_line l = Array.fold_left (fun str c -> str ^ (string_of_cell c)) "" l
 
-let string_of_map m = Array.fold_left (fun str line -> str ^ (string_of_map_line line) ^ "\n") "" m
+let string_of_field m = Array.fold_left (fun str line -> str ^ (string_of_field_line line) ^ "\n") "" m
 
-type world = { map: map }
+let encode_field _ = ()
 
-let encode_map _ = ()
-
-let encode_world world =
-  encode_map (world.map)
-
+let width_of_field field = Array.length field.(0)
+let height_of_field field = Array.length field
+let level_of_field field = ((width_of_field field) * (height_of_field field) - 1) / 100 + 1

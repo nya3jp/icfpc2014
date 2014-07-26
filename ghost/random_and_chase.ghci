@@ -9,7 +9,6 @@
 
 ; Take the lambda-man's current position
     INT 1
-    INT 8
     MOV C,A
     MOV D,B
 ;
@@ -55,26 +54,22 @@ CHECK_X:
     JLT HOGE_X,A,128
     MOV A,1
     INT 0
-    INT 8
     HLT
 
 HOGE_X:
     MOV A,3
     INT 0
-    INT 8
     HLT
 
 CHECK_Y:
     JLT HOGE_Y,B,128
     MOV A,2
     INT 0
-    INT 8
     HLT
 
 HOGE_Y:
     MOV A,0
     INT 0
-    INT 8
     HLT
 
 RANDOM:
@@ -115,5 +110,4 @@ RANDOM:
     AND H, 3
     MOV A, H
     INT 0
-    INT 8
     HLT
