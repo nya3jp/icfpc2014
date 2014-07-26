@@ -7,7 +7,7 @@ type instruction =
   | LAdd
   | LSub
   | LMul
-  | LMiv
+  | LDiv
   | LCeq
   | LCgt
   | LCgte
@@ -53,18 +53,40 @@ let print_value = function
 
 let value_of_int x = VInt (Int32.of_int x)
 
+let eval_primitive machine op =
+     let y = Stack.pop machine.data in
+     let x = Stack.pop machine.data in
+     let (VInt xx) = x
+     and (VInt yy) = y in
+     let z = op xx yy in
+     Stack.push (VInt z) machine.data;
+     machine.pc <- machine.pc + 1
+;;
+
 let eval machine = function
   | LLdc n ->
      Stack.push (VInt n) machine.data;
      machine.pc <- machine.pc
   | LAdd ->
-     let y = Stack.pop machine.data in
-     let x = Stack.pop machine.data in
-     let (VInt xx) = x
-     and (VInt yy) = y in
-     let z = Int32.add xx yy in
-     Stack.push (VInt z) machine.data;
-     machine.pc <- machine.pc + 1
+     eval_primitive machine Int32.add
+  | LSub ->
+     eval_primitive machine Int32.sub
+  | LMul ->
+     eval_primitive machine Int32.mul
+  | LDiv ->
+     eval_primitive machine Int32.div
+  | LCeq ->
+     eval_primitive machine (fun x y ->
+       Int32.of_int (if x == y then 1 else 0)
+     )
+  | LCgt ->
+     eval_primitive machine (fun x y ->
+       Int32.of_int (if x > y then 1 else 0)
+     )
+  | LCgte ->
+     eval_primitive machine (fun x y ->
+       Int32.of_int (if x >= y then 1 else 0)
+     )
   | LAtom ->
      let x = Stack.pop machine.data in
      let v = begin match x with
