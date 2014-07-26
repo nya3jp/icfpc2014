@@ -18,7 +18,8 @@ let _ =
   Hashtbl.add table "JGT" JGT;
   Hashtbl.add table "INT" INT;
   Hashtbl.add table "HLT" HLT;
-  Hashtbl.add table "PC"  PC;
+  Hashtbl.add table "PC"  PC
+;;
 
 let token_of_string s =
   let upper = String.uppercase s in
