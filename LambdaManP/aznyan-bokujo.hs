@@ -5,6 +5,7 @@ import Data.Maybe
 import Data.Char
 import Debug.Trace
 import System.Environment
+import System.IO
 import System.IO.Unsafe
 import System.Random
 import System.Process
@@ -216,6 +217,8 @@ performTest tc = do
   str <- readProcess "./sim.sh" (cmdLineOpts tc)   ""
   let score :: Int
       score = read $ last $ lines str  
+      ret = tc{scoreResult = score} 
+  hPutStrLn stderr $ ppTestConf ret
   return $ tc{scoreResult = score}
 
 main :: IO ()
@@ -244,13 +247,13 @@ main2 = do
   
   writeFile logFn $ unlines $ map ppTestConf tcs
   let msg = unwords
-    [(show $ sum $ map scoreResult tcs), "/", (show $ length tcs),
-     "p" ,show pillParam, 
-     "P" ,show powerPillParam,
-     "gp",show ghostPillParam,   
-     "fp",show ghostPillParamF,   
-     "ga",show ghostAuraParam,   
-     "fa",show ghostAuraParamF
-      ]
+        [(show $ sum $ map scoreResult tcs), "/", (show $ length tcs),
+         "p" ,show pillParam, 
+         "P" ,show powerPillParam,
+         "gp",show ghostPillParam,   
+         "fp",show ghostPillParamF,   
+         "ga",show ghostAuraParam,   
+         "fa",show ghostAuraParamF
+          ]
   writeFile txtFn $ msg
   putStrLn $ msg
