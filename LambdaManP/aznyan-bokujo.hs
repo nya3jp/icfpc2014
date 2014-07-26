@@ -206,8 +206,8 @@ mkTestConfs gccfn = do -- List Monad
   mapOpt <- ["--map=map/world-2.txt", "--map=map/world-8.map",  "--map=map/train.map"]
   gOpt <-
     [  "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc",
-         "ghost/scatter.ghc,ghost/random_and_chase.ghc,--ghost=ghost/chase_with_random.ghc",
-           "ghost/random_and_chase.ghc,--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc"]
+       "--ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc",
+       "--ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc"]
   let lOpt = "--lambda=" ++ gccfn
 
   return $ TestConf {cmdLineOpts = [mapOpt,gOpt,lOpt], scoreResult = -1}
