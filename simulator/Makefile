@@ -1,4 +1,4 @@
-SOURCES = lambdaman.ml ghost.ml
+SOURCES = lambdaman.ml ghost.ml simulator.ml
 RESULT  = simulator
 
 all: native-code
