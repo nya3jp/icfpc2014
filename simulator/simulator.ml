@@ -101,11 +101,19 @@ let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
 ;;
 
 (*---- SCORE TABLE ----*)
-(*
+
 let score_pill = 10
 let score_power_pill = 50
-let score_fruit field = match level_of_field
-*)
+let score_fruit field =
+  let scores = [| 0; 100; 300; 500; 500; 700; 700; 1000; 1000; 2000; 2000; 3000; 3000; |] in
+  let level = Field.level_of_field field in
+  if level < 0 then
+    failwith ("Unexpected field level: " ^ (string_of_int level));
+  if level < 12 then
+    scores.(level)
+  else
+    5000
+;;
 
 (*---- TICK TABLE ----*)
 
