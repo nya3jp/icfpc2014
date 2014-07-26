@@ -118,24 +118,8 @@ let rec eval_ginstruction env syscallback = function
        env.pc <- t
      else
        env.pc <- env.pc + 1
-  | GInt 0 ->
-     env.newDir <- env.reg.(0)
-  | GInt 1 ->
-     failwith "not implemented"
-  | GInt 2 ->
-     failwith "not implemented"
-  | GInt 3 ->
-     failwith "not implemented"
-  | GInt 4 ->
-     failwith "not implemented"
-  | GInt 5 ->
-     failwith "not implemented"
-  | GInt 6 ->
-     failwith "not implemented"
-  | GInt 7 ->
-     failwith "not implemented"
-  | GInt 8 ->
-     failwith "not implemented"
+  | GInt n when 0 <= n && n <= 8 ->
+     syscallback n env;
   | GInt _ ->
      failwith "Unknown syscall"
   | GHlt ->
@@ -161,10 +145,18 @@ type vitality =
   | FrightMode (* TODO: should be here? *)
   | Invisible
 
+let int_of_vitality = function
+  | Standard -> 0
+  | FrightMode -> 1
+  | Invisible -> 2
+;;
+
 type t = {
   index: int;
   mutable x: int;
   mutable y: int;
+  initialX: int;
+  initialY: int;
   mutable d: direction; (* direction *)
   mutable vitality: vitality;
   program: gprogram;
@@ -175,6 +167,8 @@ let make index x y program = {
   index = index;
   x = x;
   y = y;
+  initialX = x;
+  initialY = y;
   d = Down;
   vitality = Standard;
   program = program;
