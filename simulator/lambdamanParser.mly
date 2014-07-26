@@ -71,6 +71,8 @@ instruction :
   | CDR { LCdr }
   | SEL value value { LSel ($2, $3) }
   | JOIN { LJoin }
+  | LDF value { LLdf $2 }
+  | AP value { LAp $2 }
   | RTN { LRtn }
   | DUM value { LDum $2 }
   | RAP value { LRap $2 }

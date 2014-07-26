@@ -131,4 +131,8 @@ let tick tick_id t =
   check_fruit_appearing tick_id t;
 *)
 
+(* ---------------------------------------------------------------------- *)
 
+let run t =
+  failwith "not implemented yet"
+;;
