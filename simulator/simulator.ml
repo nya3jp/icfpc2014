@@ -5,7 +5,7 @@ type t = {
   lambdamans: Lambdaman.t array;
   ghosts:     Ghost.t array;
   field:      Field.t;
-  mutable fruitExists: bool;
+  mutable fruit_exists: bool;
   mutable pill_count: int;
   mutable powerpill_count: int;
 }
@@ -51,7 +51,7 @@ let make field lambdaman_programs ghost_programs =
     lambdamans = Array.of_list (List.rev !lambdamans);
     ghosts = Array.of_list (List.rev !ghosts);
     field = field;
-    fruitExists = false;
+    fruit_exists = false;
     pill_count = !pill_cnt;
     powerpill_count = !powerpill_cnt
   }
