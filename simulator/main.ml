@@ -9,12 +9,13 @@ let main () =
   let ghostFilename = Sys.argv.(3) in
 
   let field = FieldReader.read fieldName in
-(*  let ai = LambdamanReader.read lambdamanFilename in *)
+  let ai = LambdamanReader.read lambdamanFilename in
   let ghost = GhostAiReader.read ghostFilename in
 
   print_string (Field.string_of_field field);
 
-  failwith "not implemented yet"
+  let simulator = Simulator.make field [|ai|] [|ghost|] in
+  Simulator.run simulator
 ;;
 
 let _ =
