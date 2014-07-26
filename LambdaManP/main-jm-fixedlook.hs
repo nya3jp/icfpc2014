@@ -40,12 +40,16 @@ progn = do
         mapAt :: Expr Int -> Expr Int -> Expr Int
         mapAt ix iy = (call2 nth (call2 nth chizu iy) ix)
         
+        d2 = ite (mapAt manX (manY-1) .== 2) 0 $
+             ite (mapAt manX (manY+1) .== 2) 2 $
+             ite (mapAt (manX+1) manY .== 2) 1 $
+             ite (mapAt (manX-1) manY .== 2) 3 $ d
     in
      
      
     dbugn manY `Seq` 
     dbugn (mapAt 16 16)`Seq`
-    cons aist d
+    cons aist d2
   expr $ cons (0 :: Expr AIState) step
 
 
