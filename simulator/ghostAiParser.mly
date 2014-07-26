@@ -2,14 +2,14 @@
 open Ghost
 
 let int_of_register = function
-  | "A" -> 0
-  | "B" -> 1
-  | "C" -> 2
-  | "D" -> 3
-  | "E" -> 4
-  | "F" -> 5
-  | "G" -> 6
-  | "H" -> 7
+  | "A" | "a" -> 0
+  | "B" | "b" -> 1
+  | "C" | "c" -> 2
+  | "D" | "d" -> 3
+  | "E" | "e" -> 4
+  | "F" | "f" -> 5
+  | "G" | "g" -> 6
+  | "H" | "h" -> 7
   | _ -> failwith "Unknown register"
 ;;
 
