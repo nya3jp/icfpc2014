@@ -52,15 +52,15 @@ var printBoard = function(state) {
 };
 
 var printState = function(state) {
-  console.log('====================================== %s', state.ticks);
+  console.log('====================================== [%s] Lives=%s Score=%s',
+              state.ticks, state.lives, state.score);
   printBoard(state);
-  console.log('Lives: %s, Score: %s', state.lives, state.score);
 };
 
 var main = function() {
   var state = initializeOrDie();
 
-  while(true) {
+  while (true) {
     if (state.error) {
       console.log(state.error);
       break;
