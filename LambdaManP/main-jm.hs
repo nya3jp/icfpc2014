@@ -36,13 +36,16 @@ progn = do
        <- fun3 $ \chizu manX manY -> 
                  call4 searchN2 (mapAt chizu manX manY) chizu manX manY
      (searchN2 :: Expr (Int -> [[Int]] -> Int -> Int -> Int))
-       <- fun4 $ \info chizu manX manY -> 
-         ite (info .== 2) 1 $ ite (info .== 0) 99 $ 44
+       <- fun4 $ \info chizu manX manY -> info
+      --   ite (info .== 2) 1 $ ite (info .== 0) 99 $ 44
       --     call3 searchN chizu manX (manY-1)
 
 
 
-
+  testFunc4 :: Expr (Int -> Int -> Int -> Int -> Int)
+    <- fun4 $ \a b c d -> a * b * c * d
+  testFunc32 :: Expr ([[Int]] -> Int -> Int -> Int)
+    <- fun3 $ \chizu manX manY ->  (mapAt chizu manX manY) 
 
   
   (step :: Expr (AIState -> World -> (AIState,Int))) <- fun2 $ \aist world ->
@@ -65,6 +68,8 @@ progn = do
      
      
     dbugn scoreN `Seq` 
+    dbugn (call4 testFunc4 manX manY 125 8) `Seq`
+    dbugn (call3 testFunc32 chizu manX manY)  `Seq`
     cons aist d
   expr $ cons (0 :: Expr AIState) step
 
