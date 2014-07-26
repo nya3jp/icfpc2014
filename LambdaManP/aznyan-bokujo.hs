@@ -254,6 +254,6 @@ main2 = do
          "fp",show ghostPillParamF,   
          "ga",show ghostAuraParam,   
          "fa",show ghostAuraParamF
-          ]
+          ] ++ "\n"
   writeFile txtFn $ msg
-  putStrLn $ msg
+  putStr $ msg

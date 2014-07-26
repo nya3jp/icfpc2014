@@ -1,0 +1,175 @@
+c,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0021690203.gcc
+210	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0021690203.gcc
+3790	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0021690203.gcc
+1910	./sim.sh --map=map/world-8.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0021690203.gcc
+aznyan-bokujo.hs: out of memory (requested 2097152 bytes)
+
+real	52m51.324s
+user	17m57.771s
+sys	0m9.825s
+9
+4980	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az1007568222.gcc
+2710	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az1007568222.gcc
+760	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az1007568222.gcc
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-8.map" "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc" "--lambda=./LambdaMan/gen/az1007568222.gcc" (exit -6): failed
+
+real	22m56.353s
+user	20m10.872s
+sys	0m7.492s
+9
+870	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0465765369.gcc
+220	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0465765369.gcc
+1070	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0465765369.gcc
+1140	./sim.sh --map=map/world-8.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0465765369.gcc
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-8.map" "--ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc" "--lambda=./LambdaMan/gen/az0465765369.gcc" (exit -6): failed
+
+real	16m34.328s
+user	16m15.173s
+sys	0m8.329s
+9
+6670	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0681935714.gcc
+3420	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0681935714.gcc
+70	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0681935714.gcc
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-8.map" "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc" "--lambda=./LambdaMan/gen/az0681935714.gcc" (exit -6): failed
+
+real	5m52.315s
+user	5m37.921s
+sys	0m4.620s
+9
+320	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0244415218.gcc
+1830	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0244415218.gcc
+1070	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0244415218.gcc
+2740	./sim.sh --map=map/world-8.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0244415218.gcc
+aznyan-bokujo.hs: out of memory (requested 2097152 bytes)
+
+real	21m22.276s
+user	14m22.786s
+sys	0m5.940s
+9
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-2.txt" "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc" "--lambda=./LambdaMan/gen/az0377927080.gcc" (exit -6): failed
+
+real	0m35.064s
+user	0m14.681s
+sys	0m3.820s
+9
+aznyan-bokujo.hs: out of memory (requested 1048576 bytes)
+
+real	0m21.989s
+user	0m1.348s
+sys	0m0.512s
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+9
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+100	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az1846376686.gcc
+290	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az1846376686.gcc
+70	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az1846376686.gcc
+90	./sim.sh --map=map/world-8.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az1846376686.gcc
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-8.map" "--ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc" "--lambda=./LambdaMan/gen/az1846376686.gcc" (exit -6): failed
+
+real	10m29.193s
+user	7m34.868s
+sys	0m7.984s
+9
+720	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0417420170.gcc
+1720	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0417420170.gcc
+360	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0417420170.gcc
+2570	./sim.sh --map=map/world-8.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0417420170.gcc
+2350	./sim.sh --map=map/world-8.map --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0417420170.gcc
+2830	./sim.sh --map=map/world-8.map --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0417420170.gcc
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/train.map" "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc" "--lambda=./LambdaMan/gen/az0417420170.gcc" (exit -6): failed
+
+real	134m0.087s
+user	129m6.228s
+sys	1m1.988s
+9
+810	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az2049383204.gcc
+630	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az2049383204.gcc
+530	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az2049383204.gcc
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-8.map" "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc" "--lambda=./LambdaMan/gen/az2049383204.gcc" (exit -6): failed
+
+real	16m52.625s
+user	16m34.018s
+sys	0m6.120s
+9
+aznyan-bokujo.hs: out of memory (requested 1048576 bytes)
+
+real	1m19.999s
+user	0m1.564s
+sys	0m0.672s
+aznyan-bokujo.hs: failed to create OS thread: Cannot allocate memory
+
+real	0m18.990s
+user	0m1.160s
+sys	0m3.124s
+9
+FATAL ERROR: Committing semi space failed. Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-2.txt" "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc" "--lambda=./LambdaMan/gen/az1600688177.gcc" (exit -6): failed
+aznyan-bokujo.hs: out of memory (requested 2097152 bytes)
+
+real	0m16.929s
+user	0m1.344s
+sys	0m3.216s
+9
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-2.txt" "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc" "--lambda=./LambdaMan/gen/az1167340895.gcc" (exit -6): failed
+
+real	0m50.033s
+user	0m23.709s
+sys	0m3.300s
+9
+aznyan-bokujo.hs: out of memory (requested 2097152 bytes)
+
+real	0m13.502s
+user	0m1.296s
+sys	0m0.644s
+cannot allocate TLS data structures for initial threadaznyan-bokujo.hs: aznyan-bokujo.hs: could not execute: /usr/bin/gcc
+aznyan-bokujo.hs: out of memory (requested 1048576 bytes)
+
+real	0m20.915s
+user	0m1.260s
+sys	0m3.368s
+9
+FATAL ERROR: Evacuation Allocation failed - process out of memory
+FATAL ERROR: Committing semi space failed. Allocation failed - process out of memory
+aznyan-bokujo.hs: readProcess: ./sim.sh "--map=map/world-2.txt" "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc" "--lambda=./LambdaMan/gen/az0049380972.gcc" (exit -6): failed
+
+real	0m19.382s
+user	0m2.588s
+sys	0m3.200s
+9
+
+events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+Error: write EPIPE
+    at errnoException (net.js:904:11)
+    at Object.afterWrite (net.js:720:19)
+aznyan-bokujo.hs: out of memory (requested 2097152 bytes)
+
+real	2m24.722s
+user	0m1.716s
+sys	0m1.980s
+9
+
+events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+Error: write EPIPE
+    at errnoException (net.js:904:11)
+    at Object.afterWrite (net.js:720:19)
+720	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az1676179686.gcc
+1720	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az1676179686.gcc
+360	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az1676179686.gcc
+1000	./sim.sh --map=map/world-8.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az1676179686.gcc
+^C
+real	20m28.451s
+user	17m45.151s
+sys	0m8.105s
+
