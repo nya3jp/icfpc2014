@@ -19,7 +19,7 @@ type instruction =
   | LRtn
   | LDum of int
   | LRap of int
-  | LTap
+  | LTap of int
   | LTsel of int * int
   | LTrap
   | LDbug
@@ -253,6 +253,19 @@ let eval machine = function
   | LTsel (t, f) ->
      let x = check_int (Stack.pop machine.s) in
      machine.c <- if x == Int32.zero then f else t
+  | LTap n ->
+     let x = Stack.pop machine.s in
+     let (f, e) = check_closure x in
+     let frame = alloc_frame n in
+     let fp = frame :: machine.e in
+     let i = ref (n - 1) in
+     while !i <> -1 do
+       let y = Stack.pop machine.s in
+       set_frame_value fp !i y;
+       decr i
+     done;
+     machine.e <- fp;
+     machine.c <- f
   | LDbug ->
      let x = Stack.pop machine.s in
      print_value x;
