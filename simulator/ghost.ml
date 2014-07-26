@@ -1,5 +1,7 @@
 open Util
 
+exception Halt_Exception
+
 type gvalue =
   | GVConst    of int
   | GVReg      of int
@@ -28,7 +30,7 @@ type genv = {
   mutable reg : int array;
   mutable pc  : int;
   mutable data: int array;
-  mutable dir : int;
+  mutable newDir: int;
 }
 
 type gprogram = ginstruction array
@@ -40,7 +42,7 @@ let make_initial_genv () =
     reg  = Array.make 8 0;
     pc   = 0;
     data = Array.make 256 0;
-    dir  = 0;
+    newDir  = 0;
   }
 
 let eval_gvalue env = function
@@ -50,7 +52,7 @@ let eval_gvalue env = function
   | GVIndConst x -> env.data.(x)
   | GVIndReg   r -> env.data.(r)
 
-let rec geval_instruction env = function
+let rec eval_ginstruction env syscallback = function
   | GMov (x1, x2) ->
      let v2 = eval_gvalue env x2 in
      set_gvalue env x1 v2
@@ -117,7 +119,7 @@ let rec geval_instruction env = function
      else
        env.pc <- env.pc + 1
   | GInt 0 ->
-     env.dir <- env.reg.(0)
+     env.newDir <- env.reg.(0)
   | GInt 1 ->
      failwith "not implemented"
   | GInt 2 ->
@@ -137,7 +139,7 @@ let rec geval_instruction env = function
   | GInt _ ->
      failwith "Unknown syscall"
   | GHlt ->
-     ()
+     raise Halt_Exception
 and set_gvalue env dst v =
   match dst with
   | GVConst _ ->
@@ -166,6 +168,7 @@ type t = {
   mutable d: direction; (* direction *)
   mutable vitality: vitality;
   program: gprogram;
+  env: genv;
 }
 
 let make index x y program = {
@@ -174,5 +177,15 @@ let make index x y program = {
   y = y;
   d = Down;
   vitality = Standard;
-  program = program
+  program = program;
+  env = make_initial_genv ()
 }
+
+let eval t syscallback =
+  (* ghost only consumes 1024 instructions *)
+  t.env.pc <- 0;
+  for i = 0 to 1023 do
+    eval_ginstruction t.env syscallback t.program.(t.env.pc)
+  done;
+  t.env.newDir
+;;
