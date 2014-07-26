@@ -5,7 +5,9 @@ type t = {
   lambdamans: Lambdaman.t array;
   ghosts:     Ghost.t array;
   field:      Field.t;
-  mutable fruitExists: bool;
+  mutable fruit_exists: bool;
+  mutable pill_count: int;
+  mutable powerpill_count: int;
 }
 
 let make field lambdaman_programs ghost_programs =
@@ -21,9 +23,16 @@ let make field lambdaman_programs ghost_programs =
   let lambdamans = ref []
   and ghosts = ref [] in
 
+  let pill_cnt = ref 0
+  and powerpill_cnt = ref 0 in
+
   Array.iteri ( fun y line ->
     Array.iteri (fun x cell ->
       match cell with
+      | Field.CPill ->
+         incr pill_cnt
+      | Field.CPowerPill ->
+         incr powerpill_cnt
       | Field.CLambdaManStart ->
          let t = Lambdaman.make !lambdaman_index x y lambdaman_programs.(!lambdaman_index) in
          lambdamans := t :: !lambdamans;
@@ -32,6 +41,9 @@ let make field lambdaman_programs ghost_programs =
          let t = Ghost.make !ghost_index x y ghost_programs.(!ghost_index mod (Array.length ghost_programs)) in
          ghosts := t :: !ghosts;
          incr ghost_index
+      | _ ->
+         (* Currently we don't do anything, Is there anything to do here? *)
+         ()
     ) line
   ) field;
 
@@ -39,7 +51,9 @@ let make field lambdaman_programs ghost_programs =
     lambdamans = Array.of_list (List.rev !lambdamans);
     ghosts = Array.of_list (List.rev !ghosts);
     field = field;
-    fruitExists = false;
+    fruit_exists = false;
+    pill_count = !pill_cnt;
+    powerpill_count = !powerpill_cnt
   }
 ;;
 
@@ -87,11 +101,19 @@ let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
 ;;
 
 (*---- SCORE TABLE ----*)
-(*
+
 let score_pill = 10
 let score_power_pill = 50
-let score_fruit field = match level_of_field
-*)
+let score_fruit field =
+  let scores = [| 0; 100; 300; 500; 500; 700; 700; 1000; 1000; 2000; 2000; 3000; 3000; |] in
+  let level = Field.level_of_field field in
+  if level < 0 then
+    failwith ("Unexpected field level: " ^ (string_of_int level));
+  if level < 12 then
+    scores.(level)
+  else
+    5000
+;;
 
 (*---- TICK TABLE ----*)
 
