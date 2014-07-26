@@ -1,3 +1,4 @@
+#!/usr/bin/env runhaskell
 import Control.Applicative
 import qualified Data.Map as M
 import Data.Char
