@@ -230,6 +230,22 @@ compileExpr e = case e of
     ld i j
     tell ["AP 2"]
 
+  Call3 (Closure i j) v1 v2 v3 -> do
+    compileExpr v1
+    compileExpr v2
+    compileExpr v3
+    ld i j
+    tell ["AP 3"]
+
+  Call4 (Closure i j) v1 v2 v3 v4-> do
+    compileExpr v1
+    compileExpr v2
+    compileExpr v3
+    compileExpr v4
+    ld i j
+    tell ["AP 4"]
+
+
 incrLevel :: LMan ()
 incrLevel = do
   s <- get

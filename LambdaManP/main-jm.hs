@@ -28,14 +28,19 @@ progn = do
 --     (esaN2 :: Expr (Int -> Int -> Int)) <- fun2 $ \iy atInfo ->
 --          ite (atInfo .== 2) 1 $ ite (atInfo .==0) 99 $ esaN (iy-1)
 
+
+  let  mapAt :: Expr [[Int]] -> Expr Int -> Expr Int -> Expr Int
+       mapAt chizu ix iy = (call2 nth (call2 nth chizu iy) ix)
   rec
-     (searchN :: Expr ((Int -> Int -> Int) -> Int -> Int -> Int))
+     (searchN :: Expr ([[Int]] -> Int -> Int -> Int))
        <- fun3 $ \chizu manX manY -> 
-                 call4 searchN2 (call2 chizu manX manY) chizu manX manY
-     (searchN2 :: Expr ((Int -> Int -> Int) -> Int -> Int -> Int -> Int))
+                 call4 searchN2 (mapAt chizu manX manY) chizu manX manY
+     (searchN2 :: Expr (Int -> [[Int]] -> Int -> Int -> Int))
        <- fun4 $ \info chizu manX manY -> 
          ite (info .== 2) 1 $ ite (info .== 0) 99 $ 
            call3 searchN chizu manX (manY-1)
+
+
 
 
 
@@ -52,14 +57,14 @@ progn = do
         chizu :: Expr [[Int]]
         chizu = car world
 
-        mapAt :: Expr Int -> Expr Int -> Expr Int
-        mapAt ix iy = (call2 nth (call2 nth chizu iy) ix)
+
         
+        scoreN :: Expr Int
+        scoreN = call3 searchN chizu manX manY
     in
      
      
-    dbugn manY `Seq` 
-    dbugn (mapAt 16 16)`Seq`
+    dbugn scoreN `Seq` 
     cons aist d
   expr $ cons (0 :: Expr AIState) step
 
