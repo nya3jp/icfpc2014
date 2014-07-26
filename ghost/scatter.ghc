@@ -1,0 +1,87 @@
+INT 3
+INT 5
+MOV [0], a
+MOV [1], b
+INT 3
+XOR a, 1
+INT 5
+MOV [2], a
+MOV [3], b
+MOV [4], [2]
+MOV [5], [3]
+SUB [4], [0]
+SUB [5], [1]
+XOR [4], 255
+ADD [4], 1
+XOR [5], 255
+ADD [5], 1
+MOV [6], [4]
+MOV [7], [5]
+JLT 22, [6], 128		;JLT X_POSITIVE, [6], 128
+XOR [6], 255
+ADD [6], 1
+;X_POSITIVE
+JLT 25, [7], 128		;JLT Y_POSITIVE, [7], 128
+XOR [7], 255
+ADD [7], 1
+;Y_POSITIVE
+MOV [100], 1
+MOV [101], 3
+MOV [102], 2
+MOV [103], 0
+JLT 33, [4], 128		;JLT PREFER_EAST, [4], 128
+MOV a, [100]
+MOV [100], [101]
+MOV [101], a
+;PREFER_EAST
+JLT 37, [5], 128		;JLT PREFER_SOUTH, [5], 128
+MOV a, [102]
+MOV [102], [103]
+MOV [103], a
+;PREFER_SOUTH
+JGT 44, [6], [7]		;JGT PREFER_X, [6], [7]
+MOV a, [100]
+MOV [100], [102]
+MOV [102], a
+MOV a, [101]
+MOV [101], [103]
+MOV [103], a
+;PREFER_X
+MOV a, [101]
+MOV [101], [102]
+MOV [102], a
+MOV h, 100
+;RETRY
+MOV d, [h]
+MOV [8], [0]
+MOV [9], [1]
+JEQ 55, d, 0		;JEQ TRY_NORTH, d, 0
+JEQ 57, d, 1		;JEQ TRY_EAST, d, 1
+JEQ 59, d, 2		;JEQ TRY_SOUTH, d, 2
+MOV pc, 61		;MOV pc, TRY_WEST
+;TRY_NORTH
+SUB [9], 1
+MOV pc, 63		;MOV pc, CHECK_CELL
+;TRY_EAST
+ADD [8], 1
+MOV pc, 63		;MOV pc, CHECK_CELL
+;TRY_SOUTH
+ADD [9], 1
+MOV pc, 63		;MOV pc, CHECK_CELL
+;TRY_WEST
+SUB [8], 1
+MOV pc, 63		;MOV pc, CHECK_CELL
+;CHECK_CELL
+MOV a, [8]
+MOV b, [9]
+INT 7
+MOV b, [8]
+MOV c, [9]
+INT 8
+JGT 72, a, 0		;JGT ACCEPT, a, 0
+ADD h, 1
+MOV pc, 48		;MOV pc, RETRY
+;ACCEPT
+MOV a, d
+INT 0
+HLT
