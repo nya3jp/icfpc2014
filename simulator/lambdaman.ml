@@ -51,6 +51,8 @@ let print_value = function
      print_endline (Int32.to_string x)
 ;;
 
+let value_of_int x = VInt (Int32.of_int x)
+
 let eval machine = function
   | LLdc n ->
      Stack.push (VInt n) machine.data;
@@ -63,16 +65,27 @@ let eval machine = function
      let z = Int32.add xx yy in
      Stack.push (VInt z) machine.data;
      machine.pc <- machine.pc + 1
+  | LAtom ->
+     let x = Stack.pop machine.data in
+     let v = begin match x with
+       | VInt _ -> VInt (Int32.of_int 1)
+       | _ -> VInt (Int32.of_int 0)
+     end in
+     Stack.push v machine.data;
+     machine.pc <- machine.pc + 1
   | LDbug ->
      let x = Stack.pop machine.data in
      print_value x;
      machine.pc <- machine.pc + 1
 
-(* *)
+(* unittest *)
 let _ =
   let machine = make_initial_machine () in
   eval machine (LLdc (Int32.of_int 1));
   eval machine (LLdc (Int32.of_int 2));
   eval machine LAdd;
+  eval machine LDbug;
+  eval machine (LLdc (Int32.of_int 3));
+  eval machine LAtom;
   eval machine LDbug;
 ;;
