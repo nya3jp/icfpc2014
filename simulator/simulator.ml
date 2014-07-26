@@ -6,6 +6,8 @@ type t = {
   ghosts:     Ghost.t array;
   field:      Field.t;
   mutable fruitExists: bool;
+  mutable pill_count: int;
+  mutable powerpill_count: int;
 }
 
 let make field lambdaman_programs ghost_programs =
@@ -21,9 +23,16 @@ let make field lambdaman_programs ghost_programs =
   let lambdamans = ref []
   and ghosts = ref [] in
 
+  let pill_cnt = ref 0 in
+  let powerpill_cnt = ref 0 in
+
   Array.iteri ( fun y line ->
     Array.iteri (fun x cell ->
       match cell with
+      | Field.CPill ->
+         incr pill_cnt
+      | Field.CPowerPill ->
+         incr powerpill_cnt
       | Field.CLambdaManStart ->
          let t = Lambdaman.make !lambdaman_index x y lambdaman_programs.(!lambdaman_index) in
          lambdamans := t :: !lambdamans;
@@ -32,6 +41,9 @@ let make field lambdaman_programs ghost_programs =
          let t = Ghost.make !ghost_index x y ghost_programs.(!ghost_index mod (Array.length ghost_programs)) in
          ghosts := t :: !ghosts;
          incr ghost_index
+      | _ ->
+         (* Currently we don't do anything, Is there anything to do here? *)
+         ()
     ) line
   ) field;
 
@@ -40,6 +52,8 @@ let make field lambdaman_programs ghost_programs =
     ghosts = Array.of_list (List.rev !ghosts);
     field = field;
     fruitExists = false;
+    pill_count = !pill_cnt;
+    powerpill_count = !powerpill_cnt
   }
 ;;
 
