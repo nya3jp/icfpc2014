@@ -5,6 +5,7 @@ import Data.Maybe
 import Data.Char
 import Debug.Trace
 import System.Environment
+import System.IO
 import System.IO.Unsafe
 import System.Random
 import System.Process
@@ -115,7 +116,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         
         vecDiff = vsub ghostp manp
         dist2 :: Expr Int
-        dist2 = vinner vecDiff vecDiff
+        dist2 = 1+vinner vecDiff vecDiff
         
     in ite ppflag ((Const ghostAuraParamF * vinner vect vecDiff) `div` dist2)
                   ((Const ghostAuraParam * vinner vect vecDiff) `div` dist2)
@@ -194,29 +195,65 @@ progn = do
 
   expr $ cons (0 :: Expr AIState) $ Closure "step"
 
+data TestConf = TestConf {cmdLineOpts::[String], scoreResult :: Int}
+  deriving (Eq, Ord)
+
+ppTestConf :: TestConf -> String
+ppTestConf tc = (show $ scoreResult tc) ++"\t./sim.sh " ++ unwords (cmdLineOpts tc)
+
+mkTestConfs :: String -> [TestConf]
+mkTestConfs gccfn = do -- List Monad
+  mapOpt <- ["--map=map/world-2.txt", "--map=map/world-8.map",  "--map=map/train.map"]
+  gOpt <-
+    [  "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc",
+         "ghost/scatter.ghc,ghost/random_and_chase.ghc,--ghost=ghost/chase_with_random.ghc",
+           "ghost/random_and_chase.ghc,--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc"]
+  let lOpt = "--lambda=" ++ gccfn
+
+  return $ TestConf {cmdLineOpts = [mapOpt,gOpt,lOpt], scoreResult = -1}
+
+performTest :: TestConf -> IO TestConf
+performTest tc = do
+  str <- readProcess "./sim.sh" (cmdLineOpts tc)   ""
+  let score :: Int
+      score = read $ last $ lines str  
+      ret = tc{scoreResult = score} 
+  hPutStrLn stderr $ ppTestConf ret
+  return $ tc{scoreResult = score}
+
 main :: IO ()
 main = do
   args <- getArgs
   case args of
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
-    _ -> do
-      indexR <-randomRIO (0,2^31 :: Int)
-      let indexStr :: String
-          indexStr = printf "%010d" indexR
-          gccFn, txtFn :: String
-          gccFn = (printf "./LambdaMan/gen/az%s.gcc" indexStr)
-          txtFn = (printf "./LambdaMan/gen/az%s.txt" indexStr)
-      writeFile gccFn $ compile progn
-      writeFile txtFn $ unwords
-        ["p" ,show pillParam, 
+    _ -> main2
+    
+main2 :: IO ()
+main2 = do
+  indexR <-randomRIO (0,2^31 :: Int)
+  let indexStr :: String
+      indexStr = printf "%010d" indexR
+      gccFn :: String
+      txtFn :: String
+      gccFn = printf "./LambdaMan/gen/az%s.gcc" indexStr
+      txtFn = printf "./LambdaMan/gen/az%s.txt" indexStr
+      logFn = printf "./LambdaMan/gen/az%s.log" indexStr      
+  writeFile gccFn $ compile progn
+  let tcs0 = mkTestConfs gccFn
+  print $ length tcs0
+  
+  tcs <- mapM performTest tcs0
+  
+  writeFile logFn $ unlines $ map ppTestConf tcs
+  let msg = unwords
+        [(show $ sum $ map scoreResult tcs), "/", (show $ length tcs),
+         "p" ,show pillParam, 
          "P" ,show powerPillParam,
          "gp",show ghostPillParam,   
          "fp",show ghostPillParamF,   
          "ga",show ghostAuraParam,   
          "fa",show ghostAuraParamF
           ]
-      str <- readProcess "./sim.sh"
-         ["--map=map/train.map",  "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc", "--lambda=" ++ gccFn] ""
-      print $ lines str
-      print $ last $ lines str
+  writeFile txtFn $ msg
+  putStrLn $ msg
