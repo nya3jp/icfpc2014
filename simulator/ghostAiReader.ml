@@ -6,7 +6,7 @@ let read filename : Ghost.ginstruction array =
   try
     while true do
       let line = String.trim (remove_comment (input_line in_chan)) in
-      if line != "" then begin
+      if line <> "" then begin
         let instr = GhostAiParser.instruction GhostAiLexer.token (Lexing.from_string line) in
         result := instr :: !result
       end
