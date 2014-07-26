@@ -1,0 +1,119 @@
+; 'random_and_chase' is to chase the lambda man if nearby (dist <= 6),
+; otherwise just do random walk.
+;
+; F contains the random value now.
+    INT 3
+    ADD F, A
+    MUL F, 37
+    ADD F, 37
+
+; Take the lambda-man's current position
+    INT 1
+    INT 8
+    MOV C,A
+    MOV D,B
+;
+; Take my current position
+;
+    INT 3
+    INT 5
+;
+; Get the relative position
+; (A, B) = lambda-man - current
+;
+    SUB A,C
+    SUB B,D
+;
+; copy
+;
+    MOV C,A
+    MOV D,B
+;
+; take abs(C), abs(D)
+;
+    JLT HOGE,C,128
+    MOV E,0
+    SUB E,C
+    MOV C,E
+HOGE:
+    JLT FUGA,D,128
+    MOV E,0
+    SUB E,D
+    MOV D,E
+
+FUGA:
+    MOV G,C
+    ADD G,D
+    JGT RANDOM,G,6 ; Random walk if the ghost is far from the lambda.
+    MOV G,F
+    DIV G,16
+    AND G,1
+    JEQ CHECK_X,G,0
+    MOV PC,CHECK_Y
+
+CHECK_X:
+    JLT HOGE_X,A,128
+    MOV A,1
+    INT 0
+    INT 8
+    HLT
+
+HOGE_X:
+    MOV A,3
+    INT 0
+    INT 8
+    HLT
+
+CHECK_Y:
+    JLT HOGE_Y,B,128
+    MOV A,2
+    INT 0
+    INT 8
+    HLT
+
+HOGE_Y:
+    MOV A,0
+    INT 0
+    INT 8
+    HLT
+
+RANDOM:
+    ; `H` register will be reused for the next execution.
+    ; First Lambda-Man's pos as random source 
+    INT 1
+    ADD H, A
+    MUL H, 37
+    ADD H, 37
+    DIV H, 4
+    AND H, 3
+    ;
+    ADD H, B
+    MUL H, 37
+    ADD H, 37
+    DIV H, 4
+    AND H, 3
+    ; This ghost's index as random source
+    INT 3
+    ADD H, A
+    MUL H, 37
+    ADD H, 37
+    DIV H, 4
+    AND H, 3
+    ; This ghost's pos as random source
+    INT 3
+    INT 5
+    ADD H, A
+    MUL H, 37
+    ADD H, 37
+    DIV H, 4
+    AND H, 3
+    ;
+    ADD H, B
+    MUL H, 37
+    ADD H, 37
+    DIV H, 4
+    AND H, 3
+    MOV A, H
+    INT 0
+    INT 8
+    HLT
