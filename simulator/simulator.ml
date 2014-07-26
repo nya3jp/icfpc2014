@@ -1,4 +1,4 @@
-(* simulator code will be here. *)
+open Util
 
 (* simulator state *)
 type t = {
@@ -43,11 +43,52 @@ let make field lambdaman_programs ghost_programs =
   }
 ;;
 
+(* This is a callback when INT is called from ghost. *)
+let make_syscallback_for_ghost t (ghost : Ghost.t) =
+  let syscallback_for_ghost n env =
+    match n with
+    | 0 ->
+       env.Ghost.newDir <- env.Ghost.reg.(0)
+    | 1 ->
+       env.Ghost.reg.(0) <- t.lambdamans.(0).x;
+       env.Ghost.reg.(1) <- t.lambdamans.(0).y
+    | 2 ->
+       if Array.length t.lambdamans < 2 then begin
+         env.Ghost.reg.(0) <- t.lambdamans.(1).Lambdaman.x;
+         env.Ghost.reg.(1) <- t.lambdamans.(1).Lambdaman.y
+       end
+    | 3 ->
+       env.Ghost.reg.(0) <- ghost.index
+    | 4 ->
+       let idx = env.reg.(0) in
+       env.Ghost.reg.(0) <- t.ghosts.(idx).Ghost.initialX;
+       env.Ghost.reg.(1) <- t.ghosts.(idx).Ghost.initialY;
+    | 5 ->
+       let idx = env.reg.(0) in
+       env.Ghost.reg.(0) <- t.ghosts.(idx).Ghost.x;
+       env.Ghost.reg.(1) <- t.ghosts.(idx).Ghost.y;
+    | 6 ->
+       let idx = env.reg.(0) in
+       env.Ghost.reg.(0) <- Ghost.int_of_vitality t.ghosts.(idx).vitality;
+       env.Ghost.reg.(1) <- int_of_direction (t.ghosts.(idx).d);
+    | 7 ->
+       let x = env.reg.(0)
+       and y = env.reg.(1) in
+       env.Ghost.reg.(0) <- Field.int_of_cell (Field.get t.field ~y ~x)
+    | 8 ->
+       Printf.printf "%d %d %d %d %d %d %d %d %d\n"
+         env.Ghost.pc
+         env.Ghost.reg.(0) env.Ghost.reg.(1) env.Ghost.reg.(2) env.Ghost.reg.(3)
+         env.Ghost.reg.(4) env.Ghost.reg.(5) env.Ghost.reg.(6) env.Ghost.reg.(7)
+  in
+  syscallback_for_ghost
+;;
+
 (*---- SCORE TABLE ----*)
 (*
 let score_pill = 10
 let score_power_pill = 50
-let score_fruit field = match level_of_field 
+let score_fruit field = match level_of_field
 *)
 
 (*---- TICK TABLE ----*)
