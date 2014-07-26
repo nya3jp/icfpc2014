@@ -6,6 +6,7 @@ import qualified Data.Map as M
 import Data.Maybe
 import Data.Char
 import Debug.Trace
+import System.Environment
 
 -----
 
@@ -340,6 +341,12 @@ with = With
 compile :: LMan () -> String
 compile = unlines . desugar . codeGen
 
+compile' :: LMan () -> String
+compile' = unlines . map f.  codeGen where
+  f s
+    | last s == ':' = s
+    | otherwise = "  " ++ s
+
 -----
 
 -- library
@@ -367,7 +374,7 @@ expr e = compileExpr e
 val :: Expr a -> LMan (Expr a)
 val e = do
   l <- newLabel
-  end <- newLabel
+ end <- newLabel
 
   compileExpr v
   ldf l
@@ -408,7 +415,11 @@ fun1 f = do
   clo <- newLabel
   end <- newLabel
 
-  jmp end
+  tell ["DUM 1"]
+  incrLevel
+
+  jmp clo
+
   emitLabel fun
   local $ do
     a <- innerVar 0
@@ -416,30 +427,34 @@ fun1 f = do
     tell ["RTN"]
 
   emitLabel clo
+  ldf fun
+  ldf end
+  tell ["TRAP 1"]
 
-  tell ["DUM 1"]
-  incrLevel
-  block $ do
-    ldf clo
-    ldf end
-    tell ["TRAP 1"]
-    emitLabel end
-    lev <- gets csEnvLevel
-    return $ Fun lev 0
+  emitLabel end
+  lev <- gets csEnvLevel
+  return $ Fun lev 0
 
 call1 :: Fun (a1 -> r) -> Expr a1 -> Expr r
 call1 = Call1
 
 progn :: LMan ()
 progn = do
-
   rec
     fact <- fun1 $ \i ->
       ite (i .== 0) 1 (i * call1 fact (i - 1))
+
+  -- foo <- fun1 $ \i -> i + i * i
 
   expr $ dbugn $ call1 fact 10
 
   return ()
 
 main :: IO ()
-main = putStrLn $ compile progn
+main = do
+  args <- getArgs
+  case args of
+    ["debug"] -> do
+      putStrLn $ compile' progn
+    _ -> do
+      putStrLn $ compile progn
