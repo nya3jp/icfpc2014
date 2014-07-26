@@ -23,7 +23,7 @@ type AIState = X
 type Pos = (Int, Int)
 
 (tileValue :: Expr Int -> Expr Int, tileValueDef) = def1 "tileView" $ \i ->
-  ite (i.==0) 0 $ ite (i.==2) 100 $ ite (i.==3) 1000 $ 1
+  ite (i.==0) 0 $ ite (i.==2) 100 $ ite (i.==3) 3000 $ 1
 
 
 int_min :: Num a => a
@@ -31,6 +31,10 @@ int_min = -2^(31)
 
 mapAt :: Expr Pos -> Expr [[Int]] -> Expr Int
 mapAt pos chizu = nth (car pos) $ nth (cdr pos) chizu
+
+veq :: Expr Pos -> Expr Pos -> Expr Int
+veq  pos vect = (car pos .== car vect) * (cdr pos .== cdr vect)
+
 
 vadd :: Expr Pos -> Expr Pos -> Expr Pos
 vadd pos vect = cons (car pos + car vect) (cdr pos + cdr vect)
@@ -41,11 +45,23 @@ vsub pos vect = cons (car pos - car vect) (cdr pos - cdr vect)
 vinner :: Expr Pos -> Expr Pos -> Expr Int
 vinner pos vect = (car pos * car vect) + (cdr pos * cdr vect)
 
-(dirValuePill:: Expr Pos -> Expr [[Int]] -> Expr Pos -> Expr Int, dirValuePillDef) =
-  def3 "dirValuePill" $ \vect chizu manp ->
-    let info = (mapAt manp chizu) in
-    ite (info .== 0) 0 $
-      (tileValue info) + (dirValuePill vect chizu $ vadd manp vect)`div`2
+vrotR :: Expr Pos -> Expr Pos
+vrotR vect = cons (negate $ cdr vect) (car vect)
+
+vrotL :: Expr Pos -> Expr Pos
+vrotL vect = cons (cdr vect) (negate $ car vect)
+
+(dirValuePill:: Expr Int -> Expr Pos -> Expr ([[Int]],[GhostState]) -> Expr Pos -> Expr Int, dirValuePillDef) =
+  def4 "dirValuePill" $ \depth vect chizu_ghost manp ->
+    let info = (mapAt manp chizu) 
+        chizu = car chizu_ghost
+        gss = cdr chizu_ghost
+        subScore = (dirValuePill (depth+1) (vrotR vect) chizu_ghost (vsub manp vect)
+                 + dirValuePill (depth+1) (vrotL vect) chizu_ghost (vsub manp vect)) `div` 2
+    in 
+    ite (depth .>= 3) 0 $
+    ite (info .== 0) subScore $
+    (tileValue info) + (dirValuePill depth vect chizu_ghost $ vadd manp vect)*9`div`10
 
 (dirValueGhost1 :: Expr Pos -> Expr GhostState -> Expr Int -> Expr Pos -> Expr Int, dirValueGhost1Def) = 
   def4 "dirValueGhost1" $ \vect gs1 ppflag manp ->
@@ -56,14 +72,23 @@ vinner pos vect = (car pos * car vect) + (cdr pos * cdr vect)
         dist2 :: Expr Int
         dist2 = vinner vecDiff vecDiff
         
-    in ite ppflag ((100 * vinner vect vecDiff))
-                  ((negate 100 * vinner vect vecDiff) `div` dist2)
+    in ite ppflag ((10000 * vinner vect vecDiff) `div` dist2)
+                  ((negate 600 * vinner vect vecDiff) `div` dist2)
 
 
 (dirValueGhosts :: Expr Pos -> Expr [GhostState] -> Expr Int -> Expr Pos -> Expr Int, dirValueGhostsDef) = 
   def4 "dirValueGhosts" $ \vect gss ppflag manp ->
     ite (atom gss) 0 $ dirValueGhost1 vect (lhead gss) ppflag manp + 
                        dirValueGhosts vect (ltail gss) ppflag manp  
+
+
+(isGhostThere :: Expr [GhostState] -> Expr Pos -> Expr Int, isGhostThereDef) = 
+  def2 "isGhostThere" $ \gss pos -> 
+  let gs1 = lhead gss
+      ghostPos = car $ cdr gs1
+      
+  in ite (atom gss) 0 $ 
+     ite (ghostPos `veq` pos) 1 $ isGhostThere (ltail gss) pos
 
 
 
@@ -88,8 +113,8 @@ vinner pos vect = (car pos * car vect) + (cdr pos * cdr vect)
         nextP = vadd manP vect
     in 
         ite (mapAt nextP chizu .== 0) int_min $
-        dirValuePill vect chizu manP + 
-          dirValueGhosts vect gss powerPillFlag manP
+        dirValuePill 0 vect (cons chizu gss) manP 
+          -- + dirValueGhosts vect gss powerPillFlag manP
 
 
 (step :: Expr AIState -> Expr World -> Expr (AIState,Int), stepDef) =
