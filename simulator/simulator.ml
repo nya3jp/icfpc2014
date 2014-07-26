@@ -133,8 +133,18 @@ let tick tick_id t =
 
 (* ---------------------------------------------------------------------- *)
 
+let encode_field t = failwith "not implemented yet"
+let encode_status t = failwith "not implemented yet"
+let encode_ghost t = failwith "not implemented yet"
+let encode_fruit t = failwith "not implemented yet"
+
 let encode_current_world t =
-  failwith "not implemented yet"
+  let field_encoded = encode_field t in
+  let status_encoded = encode_status t in
+  let status_ghost = encode_ghost t in
+  let status_fruit = encode_fruit t in
+  let zero = Lambdaman.value_of_int 0 in
+  List.fold_right (fun x y -> Lambdaman.VCons (x, y)) [field_encoded; status_encoded; status_ghost; status_fruit] zero
 ;;
 
 (* TODO: implement this. Encode HLT now. *)
