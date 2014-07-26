@@ -64,6 +64,10 @@ data Expr a where
 
   Call1 :: String -> Expr a1 -> Expr r
   Call2 :: String -> Expr a1 -> Expr a2 -> Expr r
+  Call3 :: String -> Expr a1 -> Expr a2 -> Expr a3 -> Expr r
+  Call4 :: String -> Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r
+
+  Closure :: String -> Expr a
 
 data Any = Any (forall a. Expr a)
 
@@ -227,6 +231,9 @@ compileExpr e = case e of
 
     emitLabel end
 
+  Closure name ->
+    ldclo name
+
   Call1 name v1 -> do
     compileExpr v1
     ldclo name
@@ -237,6 +244,22 @@ compileExpr e = case e of
     compileExpr v2
     ldclo name
     tellc "AP 2"
+
+  Call3 name v1 v2 v3 -> do
+    compileExpr v1
+    compileExpr v2
+    compileExpr v3
+    ldclo name
+    tellc "AP 3"
+
+  Call4 name v1 v2 v3 v4 -> do
+    compileExpr v1
+    compileExpr v2
+    compileExpr v3
+    compileExpr v4
+    ldclo name
+    tellc "AP 4"
+
 
 incrLevel :: LMan ()
 incrLevel = do
@@ -480,6 +503,48 @@ def2 fname f = (Call2 fname, go) where
 
     emitLabel end
     return ()
+
+def3 :: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr r, LMan ())
+def3 fname f = (Call3 fname, go) where
+  go = do
+    fun <- newLabel
+    end <- newLabel
+    addFunc fname fun
+
+    jmp end
+
+    emitLabel fun
+    local $ do
+      a1 <- innerVar 0
+      a2 <- innerVar 1
+      a3 <- innerVar 2
+      compileExpr $ f a1 a2 a3
+      tellc "RTN"
+
+    emitLabel end
+    return ()
+
+def4:: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r, LMan ())
+def4 fname f = (Call4 fname, go) where
+  go = do
+    fun <- newLabel
+    end <- newLabel
+    addFunc fname fun
+
+    jmp end
+
+    emitLabel fun
+    local $ do
+      a1 <- innerVar 0
+      a2 <- innerVar 1
+      a3 <- innerVar 2
+      a4 <- innerVar 3
+      compileExpr $ f a1 a2 a3 a4
+      tellc "RTN"
+
+    emitLabel end
+    return ()
+
 
 (nth, nthDef) =
   def2 "nth" $ \i xs ->
