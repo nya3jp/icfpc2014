@@ -1,3 +1,7 @@
 *.cmi
 *.cmx
 *.o
+._d
+simulator
+
+

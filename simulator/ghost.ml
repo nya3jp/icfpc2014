@@ -26,6 +26,7 @@ type genv = {
   mutable reg : int array;
   mutable pc  : int;
   mutable data: int array;
+  mutable dir : int;
 }
 
 type gprogram = ginstruction array
@@ -37,6 +38,7 @@ let make_initial_genv () =
     reg  = Array.make 8 0;
     pc   = 0;
     data = Array.make 256 0;
+    dir  = 0;
   }
 
 let eval_gvalue env = function
@@ -48,11 +50,14 @@ let eval_gvalue env = function
 
 let rec geval_instruction env = function
   | GMov (x1, x2) ->
-     failwith "not implemented"
+     let v2 = eval_gvalue env x2 in
+     set_gvalue env x1 v2
   | GInc x ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x in
+     set_gvalue env x ((vx + 1) land 0xFF)
   | GDec x ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x in
+     set_gvalue env x ((vx - 1) land 0xFF)
   | GAdd (x, y) ->
      let vx = eval_gvalue env x
      and vy = eval_gvalue env y in
@@ -89,13 +94,46 @@ let rec geval_instruction env = function
      set_gvalue env x ((vx lxor vy) land 0xFF);
      env.pc <- env.pc + 1;
   | GLlt (t, x, y) ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     if vx < vy then
+       env.pc <- t
+     else
+       env.pc <- env.pc + 1
   | GJeq (t, x, y) ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     if vx == vy then
+       env.pc <- t
+     else
+       env.pc <- env.pc + 1
   | GJgt (t, x, y) ->
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     if vx > vy then
+       env.pc <- t
+     else
+       env.pc <- env.pc + 1
+  | GInt 0 ->
+     env.dir <- env.reg.(0)
+  | GInt 1 ->
      failwith "not implemented"
-  | GInt x ->
+  | GInt 2 ->
      failwith "not implemented"
+  | GInt 3 ->
+     failwith "not implemented"
+  | GInt 4 ->
+     failwith "not implemented"
+  | GInt 5 ->
+     failwith "not implemented"
+  | GInt 6 ->
+     failwith "not implemented"
+  | GInt 7 ->
+     failwith "not implemented"
+  | GInt 8 ->
+     failwith "not implemented"
+  | GInt _ ->
+     failwith "Unknown syscall"
   | GHlt ->
      ()
 and set_gvalue env dst v =

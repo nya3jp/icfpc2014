@@ -1,21 +1,63 @@
-{-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables #-}
+{-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables, RecordWildCards, RankNTypes, ImpredicativeTypes #-}
 
 import qualified Data.Map as M
 import Data.Maybe
 import Data.Char
 import Debug.Trace
 import System.Environment
+import Unsafe.Coerce
 
 import Desugar
 import DSL
 
 -----
+type X = Int
+type World = ([[Int]], (ManState, (X, X)))
+type ManState = (X, (Pos, X))
+type AIState = X
+type Pos = (Int, Int)
+
 
 progn :: LMan ()
 progn = do
-  (step :: Expr (Int -> Int -> (Int,Int))) <- fun2 $ \i j ->
-    cons i 1
-  expr $ cons (0 :: Expr Int) step
+  nth :: forall a. Expr ([a] -> Int -> a) <- nth'
+  
+--   rec
+--     (esaN :: Expr (Int -> Int)) <- fun1 $ \iy -> 
+--          esaN2 iy (mapAt manX iy)
+--     (esaN2 :: Expr (Int -> Int -> Int)) <- fun2 $ \iy atInfo ->
+--          ite (atInfo .== 2) 1 $ ite (atInfo .==0) 99 $ esaN (iy-1)
+
+--   rec
+--     (searchN :: Expr (Int -> Int -> Int, Int, I)) <- fun1 $ \iy -> 
+--          esaN2 iy (mapAt manX iy)
+--     (esaN2 :: Expr (Int -> Int -> Int)) <- fun2 $ \iy atInfo ->
+--          ite (atInfo .== 2) 1 $ ite (atInfo .==0) 99 $ esaN (iy-1)
+
+
+  
+  (step :: Expr (AIState -> World -> (AIState,Int))) <- fun2 $ \aist world ->
+    let manPos :: Expr Pos 
+        manPos = car $ cdr $ car $ cdr world
+        manX :: Expr Int
+        manX = car manPos
+        manY :: Expr Int
+        manY = cdr manPos
+        d = ite (manY .<= 1) 3 $ ite (manX .< 17) 1 0 
+        
+        chizu :: Expr [[Int]]
+        chizu = car world
+
+        mapAt :: Expr Int -> Expr Int -> Expr Int
+        mapAt ix iy = (call2 nth (call2 nth chizu iy) ix)
+        
+    in
+     
+     
+    dbugn manY `Seq` 
+    dbugn (mapAt 16 16)`Seq`
+    cons aist d
+  expr $ cons (0 :: Expr AIState) step
 
 
 
@@ -26,4 +68,4 @@ main = do
     ["debug"] -> do
       putStrLn $ compile' progn
     _ -> do
-      putStrLn $ compile progn
+      writeFile "../LambdaMan/joga-maya.gcc" $ compile progn
