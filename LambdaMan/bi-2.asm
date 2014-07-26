@@ -28,6 +28,12 @@ step:
 	CAR	      ; ManState	 
 	CDR	      ; ((manX,manY)	,)
 	CAR	      ; (manX,manY)
+	DBUG
+	LD   0 1      ; world		 
+	CDR	      ; (ManState, ...)	 
+	CAR	      ; ManState	 
+	CDR	      ; ((manX,manY)	,)
+	CAR	      ; (manX,manY)
 	CAR	      ; manX
 	CGT	      ; 17 > manX
 	TSEL mada mou
