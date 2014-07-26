@@ -33,7 +33,7 @@ static string trim(const string& str)
 {
     string::size_type left = str.find_first_not_of(" \t\r\n");
     if (left == string::npos)
-        return str;
+        return "";
 
     string::size_type right = str.find_last_not_of(" \t\r\n");
     return str.substr(left, right - left + 1);
@@ -43,7 +43,7 @@ static string stripComment(string s)
 {
     string::size_type pos = s.find_first_of(";");
     if (pos == string::npos)
-        return s;
+        return trim(s);
 
     return trim(s.substr(0, pos));
 }
@@ -164,7 +164,7 @@ int main(void)
             }
 
             string labelName = trim(snd.substr(pos + 1));
-            if (labelName.size() > 2) {
+            if (pcMap.count(labelName) > 0) {
                 string replaced = replaceString(line, labelName, to_string(pcMap[labelName]));
                 cout << replaced << "\t\t;" << trim(line) << endl;
             } else {
