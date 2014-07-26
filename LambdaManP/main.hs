@@ -13,6 +13,11 @@ import DSL
 
 progn :: LMan ()
 progn = do
+  expr $ with 1 $ \i ->
+    dbugn i    `Seq`
+    (i ~= (i*2)) `Seq`
+    dbugn i
+
   return ()
 
 main :: IO ()
