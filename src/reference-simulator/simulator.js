@@ -78,7 +78,7 @@ var main = function() {
     printState(state);
     if (state.gameOver) {
       var victor = state.gameWin ? 'You won' : 'You lost';
-      console.log('＿人人人人人＿\n＞　%s　＜\n￣Y^Y^Y^Y￣', victor);
+      console.log('＿人人人人人＿\n＞ %s ＜\n￣Y^Y^Y^Y￣', victor);
       break;
     }
     game.step(state);
