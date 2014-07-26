@@ -19,8 +19,9 @@ subst m s =
   where
     f name
       | M.member name m = show $ fromJust $ M.lookup name m
-      | all isDigit name = name
+      | all isDigit' name = name
       | otherwise = error $ "undefined label: " ++ show name
+    isDigit' e = e `elem` "0123456789-"
 
 collectAddress :: [String] -> (M.Map String Int, [String])
 collectAddress = go 0 M.empty [] where
