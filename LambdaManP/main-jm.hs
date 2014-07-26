@@ -37,8 +37,8 @@ progn = do
                  call4 searchN2 (mapAt chizu manX manY) chizu manX manY
      (searchN2 :: Expr (Int -> [[Int]] -> Int -> Int -> Int))
        <- fun4 $ \info chizu manX manY -> 
-         ite (info .== 2) 1 $ ite (info .== 0) 99 $ 
-           call3 searchN chizu manX (manY-1)
+         ite (info .== 2) 1 $ ite (info .== 0) 99 $ 44
+      --     call3 searchN chizu manX (manY-1)
 
 
 
