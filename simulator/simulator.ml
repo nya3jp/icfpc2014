@@ -133,13 +133,28 @@ let tick tick_id t =
 
 (* ---------------------------------------------------------------------- *)
 
-let encode_field t = failwith "not implemented yet"
-let encode_status t = failwith "not implemented yet"
-let encode_ghost t = failwith "not implemented yet"
-let encode_fruit t = failwith "not implemented yet"
+let encode_field field =
+  let zero = Lambdaman.value_of_int 0 in
+  Array.fold_right (fun x y ->
+    let x' = Array.fold_right (fun cell t ->
+      let v = Lambdaman.value_of_int (Field.int_of_cell cell) in
+      Lambdaman.VCons (v, t)
+    ) x zero in
+    Lambdaman.VCons (x', y)
+  ) field zero
+;;
+
+let encode_status t =
+  failwith "not implemented yet"
+
+let encode_ghost t =
+  failwith "not implemented yet"
+
+let encode_fruit t =
+  failwith "not implemented yet"
 
 let encode_current_world t =
-  let field_encoded = encode_field t in
+  let field_encoded = encode_field t.field in
   let status_encoded = encode_status t in
   let status_ghost = encode_ghost t in
   let status_fruit = encode_fruit t in
