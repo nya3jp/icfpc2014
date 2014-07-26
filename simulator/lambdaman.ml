@@ -1,7 +1,3 @@
-type value =
-  | VInt of int32
-  | VCons of value * value
-
 type instruction =
   | LLdc of int32
   | LLd  of int * int
@@ -18,7 +14,7 @@ type instruction =
   | LCdr
   | LSel of int * int
   | LJoin
-  | LDdf
+  | LLdf of int
   | LAp
   | LRtn
   | LDum
@@ -28,7 +24,11 @@ type instruction =
   | LTrap
   | LDbug
 
-type environment = {
+type value =
+  | VInt     of int32
+  | VCons    of value * value
+  | VClosure of int * environment option
+and environment = {
   mutable dummy : bool;
   mutable parent : environment option;
   mutable data : value array;
@@ -159,6 +159,10 @@ let eval machine = function
      let x = Stack.pop machine.d in
      let xv = check_join x in
      machine.c <- xv
+  | LLdf f ->
+     let x = VClosure (f, machine.e) in
+     Stack.push x machine.s;
+     machine.c <- machine.c + 1
   | LDbug ->
      let x = Stack.pop machine.s in
      print_value x;
