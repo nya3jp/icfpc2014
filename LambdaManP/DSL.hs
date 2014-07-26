@@ -1,9 +1,10 @@
-{-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables, Rank2Types, LiberalTypeSynonyms, ImpredicativeTypes #-}
+{-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables, Rank2Types, LiberalTypeSynonyms, ImpredicativeTypes, NoMonoLocalBinds #-}
 
 module DSL where
 
-import Control.Monad.RWS hiding (local)
+import Control.Monad.RWS hiding (local, Any)
 import Control.Monad.State
+import Control.Monad.Writer hiding (Any)
 import Unsafe.Coerce
 
 import Desugar
@@ -38,7 +39,9 @@ data Expr a where
   Ceq   :: Expr Int -> Expr Int -> Expr Int
   Cgt   :: Expr Int -> Expr Int -> Expr Int
   Cgte  :: Expr Int -> Expr Int -> Expr Int
+  Atom  :: Expr a -> Expr Int
   Dbug  :: Expr a -> Expr ()
+  Nop   :: Expr ()
 
   Lnull :: Expr [a]
   Lcons :: Expr a -> Expr [a] -> Expr [a]
@@ -53,6 +56,18 @@ data Expr a where
 
   Call1 :: Expr (a1 -> r) -> Expr a1 -> Expr r
   Call2 :: Expr (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
+
+data Any = Any (forall a. Expr a)
+
+type CExpr = Writer [Any]
+
+e :: Expr a -> CExpr ()
+e x = tell [Any $ unsafeCoerce x]
+
+comp :: CExpr a -> Expr ()
+comp c =
+  let es = execWriter c
+  in foldr (\(Any f) e -> Seq f e) Nop es
 
 -- data Any = forall a . Any a
 
@@ -111,8 +126,13 @@ infix 4 .==, .<, .<=, .>, .>=
 (.>=) :: Expr Int -> Expr Int -> Expr Int
 (.>=) = Cgte
 
+atom :: Expr a -> Expr Int
+atom = Atom
+
 compileExpr :: Expr a -> LMan ()
 compileExpr e = case e of
+  Nop -> return ()
+
   Const n -> ldc n
 
   Var i j -> ld i j
@@ -150,6 +170,10 @@ compileExpr e = case e of
     compileExpr a
     compileExpr b
     tell ["CGTE"]
+
+  Atom e -> do
+    compileExpr e
+    tell ["ATOM"]
 
   Dbug e -> do
     compileExpr e
@@ -434,11 +458,10 @@ call2 = Call2
 
 -- Library
 
-{-
 data Lib where
   Lib :: { nth :: Expr ([a] -> Int -> a) } -> Lib
 
-lib :: LMan Li
+lib :: LMan Lib
 lib = do
   rec
     nth' <- fun2 $ \xs i ->
@@ -447,7 +470,6 @@ lib = do
         (call2 nth' (ltail xs) (i - 1))
 
   return $ Lib { nth = nth' }
--}
 
 nth' :: LMan (forall a. Expr ([a] -> Int -> a))
 nth' = do

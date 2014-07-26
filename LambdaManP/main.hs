@@ -13,23 +13,38 @@ import DSL
 
 -----
 
+data State = Int
+
+cadr = car . cdr
+caddr = car . cdr . cdr
+cdddr = cdr . cdr . cdr
+
+type WorldState = (Int, (Int, (Int, Int)))
+
 progn :: LMan ()
 progn = do
   -- Lib {..} <- lib
-  nth :: forall a. Expr ([a] -> Int -> a) <- nth'
+  -- nth :: forall a. Expr ([a] -> Int -> a) <- nth'
 
-  expr $ with 1 $ \i ->
-    dbugn i    `Seq`
-    (i ~= (i*2)) `Seq`
-    dbugn i
+  let mm = Var 0 0
 
-  f :: Expr (Int -> Int) <- fun1 $ \i -> i + 1
+  rec
+    (nth :: Expr ([Int] -> Int -> Int)) <- fun2 $ \xs i ->
+      ite (i .== 0)
+      (lhead xs)
+      (call2 nth (ltail xs) (i - 1))
 
-  expr $ dbug $ cons (0 :: Expr Int) f
+    (length :: Expr ([Int] -> Int)) <- fun1 $ \xs ->
+      ite (atom xs) 0 (1 + call1 length (ltail xs))
 
-  expr $ dbug (list [1, 3, 4, 5] :: Expr [Int])
-  expr $ dbugn $ call2 nth (list [1, 2, 3, 4, 5]) 3
-  expr $ dbug (call2 nth (list [list[1]]) 0 :: Expr [Int])
+  step <- fun2 $ \(state :: Expr State) (world :: Expr WorldState) -> comp $ do
+    e $ dbug world
+    e $ dbug $ car world
+    e $ dbug $ cadr world
+    e $ dbug $ caddr world
+    e $ dbug $ cdddr world
+
+  expr $ cons (0 :: Expr Int) step
   return ()
 
 main :: IO ()
