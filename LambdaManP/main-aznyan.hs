@@ -83,4 +83,4 @@ main = do
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
     _ -> do
-      writeFile "../LambdaMan/joga-maya.gcc" $ compile progn
+      writeFile "../LambdaMan/aznyan.gcc" $ compile progn
