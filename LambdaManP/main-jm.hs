@@ -13,9 +13,9 @@ import DSL
 
 progn :: LMan ()
 progn = do
-  (step :: Fun (Int -> Int -> (Int,Int))) <- fun2 $ \i j ->
+  (step :: Expr (Int -> Int -> (Int,Int))) <- fun2 $ \i j ->
     cons i 1
-  expr $ cons 0 step
+  expr $ cons (0 :: Expr Int) step
 
 
 
