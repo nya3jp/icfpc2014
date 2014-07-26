@@ -204,8 +204,8 @@ ppTestConf tc = (show $ scoreResult tc) ++"\t./sim.sh " ++ unwords (cmdLineOpts 
 
 mkTestConfs :: String -> [TestConf]
 mkTestConfs gccfn = do -- List Monad
---  mapOpt <- ["--map=map/world-2.txt" , "--map=map/world-8.map",  "--map=map/train.map"]
-  mapOpt <- ["--map=map/kichiku.map"]
+  mapOpt <- ["--map=map/world-2.txt" , "--map=map/world-8.map",  "--map=map/train.map"]
+--  mapOpt <- ["--map=map/kichiku.map"]
   gOpt <-
     [  "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc",
        "--ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc",

@@ -1,0 +1,3 @@
+40	./sim.sh --map=map/kichiku.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0332722302.gcc
+60	./sim.sh --map=map/kichiku.map --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0332722302.gcc
+100	./sim.sh --map=map/kichiku.map --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0332722302.gcc
