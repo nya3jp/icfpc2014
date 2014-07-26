@@ -133,7 +133,7 @@ let eval_primitive machine op =
 let eval machine = function
   | LLdc n ->
      Stack.push (VInt n) machine.s;
-     machine.c <- machine.c
+     machine.c <- machine.c + 1
   | LLd (n, i) ->
      let fp = get_nth_env_frame n machine.e in
      ignore(check_dum fp);
