@@ -12,16 +12,17 @@ type instruction =
   | LCons
   | LCar
   | LCdr
-  | LSel of int * int
+  | LSel  of int * int
   | LJoin
-  | LLdf of int
-  | LAp of int
+  | LLdf  of int
+  | LAp   of int
   | LRtn
-  | LDum of int
-  | LRap of int
-  | LTap of int
+  | LDum  of int
+  | LRap  of int
+  | LTap  of int
   | LTsel of int * int
-  | LTrap
+  | LTrap of int
+  | LSt   of int * int
   | LDbug
 
 type value =
@@ -115,10 +116,8 @@ let rec get_nth_env_frame n = function
      else get_nth_env_frame (n - 1) es
 ;;
 
-let set_frame_value fp i v =
-  match fp with
-  | [] -> failwith "no frame?"
-  | frame :: _ -> frame.data.(i) <- v
+let set_frame_value frame i v =
+  frame.data.(i) <- v
 
 let eval_primitive machine op =
      let y = Stack.pop machine.s in
@@ -206,7 +205,7 @@ let eval machine = function
      let i = ref (n - 1) in
      while !i <> -1 do
        let y = Stack.pop machine.s in
-       set_frame_value fp !i y;
+       set_frame_value (List.hd fp) !i y;
        decr i
      done;
      Stack.push (AFrame machine.e) machine.d;
@@ -225,7 +224,7 @@ let eval machine = function
   | LDum n ->
      let frame = alloc_dummy_frame n in
      let fp = frame :: machine.e in
-     machine.e = fp;
+     machine.e <- fp;
      machine.c <- machine.c + 1
   | LRap n ->
      let x = Stack.pop machine.s in
@@ -240,7 +239,7 @@ let eval machine = function
      let i = ref (n - 1) in
      while !i <> -1 do
        let y = Stack.pop machine.s in
-       set_frame_value fp !i y;
+       set_frame_value (List.hd fp) !i y;
        decr i;
      done;
      let ep = List.tl machine.e in
@@ -261,11 +260,37 @@ let eval machine = function
      let i = ref (n - 1) in
      while !i <> -1 do
        let y = Stack.pop machine.s in
-       set_frame_value fp !i y;
+       set_frame_value (List.hd fp) !i y;
        decr i
      done;
      machine.e <- fp;
      machine.c <- f
+  | LTrap n ->
+     let x = Stack.pop machine.s in
+     let (f, fp) = check_closure x in
+     let frame = List.hd fp in
+     if not frame.dummy then
+       failwith "tag_mismatch";
+     if Array.length frame.data <> n then
+       failwith "frame mismatch";
+     if machine.e != fp then (* physical equal *)
+       failwith "frame mismatch";
+     let i = ref (n - 1) in
+     while !i <> -1 do
+       let y = Stack.pop machine.s in
+       set_frame_value (List.hd fp) !i y;
+       decr i;
+     done;
+     let frame = List.hd fp in
+     frame.dummy <- false;
+     machine.e <- fp;
+     machine.c <- f
+  | LSt (n, i) ->
+     let frame = get_nth_env_frame n machine.e in
+     ignore(check_dum frame);
+     let v = Stack.pop machine.s in
+     set_frame_value frame i v;
+     machine.c <- machine.c + 1
   | LDbug ->
      let x = Stack.pop machine.s in
      print_value x;
