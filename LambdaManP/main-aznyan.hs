@@ -12,46 +12,88 @@ import DSL
 
 -----
 type X = Int
-type World = ([[Int]], (ManState, (X, X)))
-type ManState = (X, (Pos, X))
+type Direction = Int
+type World = ([[Int]], (ManState, ([GhostState], FruitState)))
+
+--               vit                    lives score
+type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
+type GhostState = (Int, (Pos , Direction))
+type FruitState = Int
 type AIState = X
 type Pos = (Int, Int)
 
 (tileValue :: Expr Int -> Expr Int, tileValueDef) = def1 "tileView" $ \i ->
-  ite (i.==0) 0 $ ite (i.==2) 1000 $ ite (i.==3) 10000 $ 1
+  ite (i.==0) 0 $ ite (i.==2) 100 $ ite (i.==3) 1000 $ 1
 
 
-mapAt :: Expr (Int, Int) -> Expr [[Int]] -> Expr Int
+int_min :: Num a => a
+int_min = -2^(31)
+
+mapAt :: Expr Pos -> Expr [[Int]] -> Expr Int
 mapAt pos chizu = nth (car pos) $ nth (cdr pos) chizu
 
-vadd :: Expr (Int, Int) -> Expr (Int, Int) -> Expr (Int, Int)
+vadd :: Expr Pos -> Expr Pos -> Expr Pos
 vadd pos vect = cons (car pos + car vect) (cdr pos + cdr vect)
 
-(dirValuePill:: Expr (Int, Int) -> Expr [[Int]] -> Expr (Int, Int) -> Expr Int, dirValuePillDef) =
+vsub :: Expr Pos -> Expr Pos -> Expr Pos
+vsub pos vect = cons (car pos - car vect) (cdr pos - cdr vect)
+
+vinner :: Expr Pos -> Expr Pos -> Expr Int
+vinner pos vect = (car pos * car vect) + (cdr pos * cdr vect)
+
+(dirValuePill:: Expr Pos -> Expr [[Int]] -> Expr Pos -> Expr Int, dirValuePillDef) =
   def3 "dirValuePill" $ \vect chizu manp ->
     let info = (mapAt manp chizu) in
     ite (info .== 0) 0 $
       (tileValue info) + (dirValuePill vect chizu $ vadd manp vect)`div`2
 
-(dirValueTotal:: Expr (Int, Int) -> Expr World -> Expr Int, dirValueTotalDef) =
-  def2 "dirValueTotal" $ \vect world ->
+(dirValueGhost1 :: Expr Pos -> Expr GhostState -> Expr Pos -> Expr Int, dirValueGhost1Def) = 
+  def3 "dirValueGhost1" $ \vect gs1 manp ->
+    let ghostp :: Expr Pos 
+        ghostp = car $ cdr gs1 
+        
+        vecDiff = vsub ghostp manp
+        dist2 :: Expr Int
+        dist2 = vinner vecDiff vecDiff
+        
+    in ((negate 100 * vinner vect vecDiff) `div` dist2)
+
+
+(dirValueGhosts :: Expr Pos -> Expr [GhostState] -> Expr Pos -> Expr Int, dirValueGhostsDef) = 
+  def3 "dirValueGhosts" $ \vect gss manp ->
+    ite (atom gss) 0 $ dirValueGhost1 vect (lhead gss) manp + 
+                       dirValueGhosts vect (ltail gss) manp 
+
+
+
+(dirValueTotal:: Expr Pos -> Expr World -> Expr Int, dirValueTotalDef) =
+  def2 "dirValueTotal" $ \vect world -> 
     let manP :: Expr Pos
-        manP = car $ cdr $ car $ cdr world      
+        manP = car $ cdr $ manState
+
+        manState :: Expr ManState
+        manState = car $ cdr world
+
+        powerPillFlag :: Expr Int
+        powerPillFlag = car manState
+   
         chizu :: Expr [[Int]]
         chizu = car world
         
-    in dirValuePill vect chizu manP
+        gss :: Expr [GhostState]
+        gss = car $ cdr $ cdr world
+        
+        nextP :: Expr Pos
+        nextP = vadd manP vect
+    in 
+        ite (mapAt nextP chizu .== 0) int_min $
+        dirValuePill vect chizu manP + 
+          (ite powerPillFlag (-1) 1) * dirValueGhosts vect gss manP
 
 
 (step :: Expr AIState -> Expr World -> Expr (AIState,Int), stepDef) =
   def2 "step" $ \aist world ->
-    let manPos :: Expr Pos
-        manPos = car $ cdr $ car $ cdr world
-
-        chizu :: Expr [[Int]]
-        chizu = car world
-
-        scoreN, scoreE, scoreS, scoreW :: Expr Int
+    let scoreN, scoreE, scoreS, scoreW :: Expr Int
         scoreN = dirValueTotal (cons 0 (-1)) world
         scoreE = dirValueTotal (cons 1    0) world
         scoreS = dirValueTotal (cons 0    1) world
@@ -71,6 +113,8 @@ progn = do
   nthDef
   tileValueDef
   dirValuePillDef
+  dirValueGhost1Def  
+  dirValueGhostsDef  
   dirValueTotalDef
   stepDef
 
