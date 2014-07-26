@@ -14,4 +14,5 @@ let main () =
   failwith "not implemented yet"
 ;;
 
-let _ = main ()
+let _ =
+  if not !Sys.interactive then main ()

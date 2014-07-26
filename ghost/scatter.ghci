@@ -1,0 +1,112 @@
+        ;; Scatter
+
+        ;; [0], [1] <- my X, Y
+        INT 3
+        INT 5
+        MOV [0], a
+        MOV [1], b
+
+        ;; [2], [3] <- buddy's X, Y
+        INT 3
+        XOR a, 1
+        INT 5
+        MOV [2], a
+        MOV [3], b
+
+        ;; [4], [5] <- delta to buddy's X, Y
+        MOV [4], [2]
+        MOV [5], [3]
+        SUB [4], [0]
+        SUB [5], [1]
+
+        ;; negate [4], [5] to scatter
+        XOR [4], 255
+        ADD [4], 1
+        XOR [5], 255
+        ADD [5], 1
+
+        ;; [6], [7] <- abs(delta)
+        MOV [6], [4]
+        MOV [7], [5]
+        JLT X_POSITIVE, [6], 128
+        XOR [6], 255
+        ADD [6], 1
+X_POSITIVE:
+        JLT Y_POSITIVE, [7], 128
+        XOR [7], 255
+        ADD [7], 1
+Y_POSITIVE:
+
+        ;; Sort directions by preferences: [100-103]
+        MOV [100], 1
+        MOV [101], 3
+        MOV [102], 2
+        MOV [103], 0
+        JLT PREFER_EAST, [4], 128
+        MOV a, [100]
+        MOV [100], [101]
+        MOV [101], a
+PREFER_EAST:
+        JLT PREFER_SOUTH, [5], 128
+        MOV a, [102]
+        MOV [102], [103]
+        MOV [103], a
+PREFER_SOUTH:
+        JGT PREFER_X, [6], [7]
+        MOV a, [100]
+        MOV [100], [102]
+        MOV [102], a
+        MOV a, [101]
+        MOV [101], [103]
+        MOV [103], a
+PREFER_X:
+        MOV a, [101]
+        MOV [101], [102]
+        MOV [102], a
+
+        ;; Try directions
+        MOV h, 100
+RETRY:
+        ;; register D contains direction to try next
+        MOV d, [h]
+        ;; Compute adjacent cell coordinate.
+        ;; [8], [9] <- adjacent X, Y
+        MOV [8], [0]
+        MOV [9], [1]
+        JEQ TRY_NORTH, d, 0
+        JEQ TRY_EAST, d, 1
+        JEQ TRY_SOUTH, d, 2
+        MOV pc, TRY_WEST
+TRY_NORTH:
+        SUB [9], 1
+        MOV pc, CHECK_CELL
+TRY_EAST:
+        ADD [8], 1
+        MOV pc, CHECK_CELL
+TRY_SOUTH:
+        ADD [9], 1
+        MOV pc, CHECK_CELL
+TRY_WEST:
+        SUB [8], 1
+        MOV pc, CHECK_CELL
+CHECK_CELL:
+        ;; Check if the adjacent cell is empty.
+        MOV a, [8]
+        MOV b, [9]
+        INT 7
+
+        ;; Debug output
+        MOV b, [8]
+        MOV c, [9]
+        INT 8
+
+        JGT ACCEPT, a, 0
+
+        ;; try next.
+        ADD h, 1
+        MOV pc, RETRY
+
+ACCEPT:
+        MOV a, d
+        INT 0
+        HLT

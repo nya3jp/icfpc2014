@@ -16,7 +16,7 @@ type ginstruction =
   | GAnd of gvalue * gvalue
   | GOr  of gvalue * gvalue
   | GXor of gvalue * gvalue
-  | GLlt of int * gvalue * gvalue
+  | GJlt of int * gvalue * gvalue
   | GJeq of int * gvalue * gvalue
   | GJgt of int * gvalue * gvalue
   | GInt of int
@@ -93,7 +93,7 @@ let rec geval_instruction env = function
      and vy = eval_gvalue env y in
      set_gvalue env x ((vx lxor vy) land 0xFF);
      env.pc <- env.pc + 1;
-  | GLlt (t, x, y) ->
+  | GJlt (t, x, y) ->
      let vx = eval_gvalue env x
      and vy = eval_gvalue env y in
      if vx < vy then
