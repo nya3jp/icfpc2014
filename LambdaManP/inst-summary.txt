@@ -1,0 +1,47 @@
+LD - load from environment
+
+ATOM - test if value is an integer
+
+SEL - conditional branch
+JOIN - return from branch
+
+LDF - load function
+AP - call function
+RTN - return from function call
+DUM - create empty environment frame
+RAP - recursive environment call function
+
+STOP - terminate co-processor execution
+
+Tail Call
+
+TSEL - tail-call conditional branch
+TAP - tail-call function
+TRAP - recursive environment tail-call function
+
+Pascal extensions
+
+ST - store to environment
+
+Debug extensions
+
+BRK - breakpoint debugging
+
+
+--
+
+ADD - integer addition
+SUB - integer subtraction
+MUL - integer multiplication
+DIV - integer division
+
+LDC - load constant
+CONS - allocate a CONS cell
+CAR - extract first element from CONS cell
+CDR - extract second element from CONS cell
+
+CEQ - compare equal
+CGT - compare greater than
+CGTE - compare greater than or equal
+
+DBUG - printf debugging
