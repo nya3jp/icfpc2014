@@ -1,4 +1,8 @@
-SOURCES = lambdaman.ml ghost.ml simulator.ml
+SOURCES = \
+	lambdaman.ml lambdamanReader.ml \
+	ghost.ml ghostAiReader.ml \
+	fieldReader.ml \
+	simulator.ml
 RESULT  = simulator
 
 all: native-code
