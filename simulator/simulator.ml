@@ -1,5 +1,6 @@
 (* *)
 let main () =
+  Printexc.record_backtrace true;
   if Array.length Sys.argv <> 4 then
     failwith "usage: ./simulator map ai ghost-ai";
 
