@@ -22,6 +22,19 @@ progn :: LMan ()
 progn = do
   nth :: forall a. Expr ([a] -> Int -> a) <- nth'
   
+--   rec
+--     (esaN :: Expr (Int -> Int)) <- fun1 $ \iy -> 
+--          esaN2 iy (mapAt manX iy)
+--     (esaN2 :: Expr (Int -> Int -> Int)) <- fun2 $ \iy atInfo ->
+--          ite (atInfo .== 2) 1 $ ite (atInfo .==0) 99 $ esaN (iy-1)
+
+--   rec
+--     (searchN :: Expr (Int -> Int -> Int, Int, I)) <- fun1 $ \iy -> 
+--          esaN2 iy (mapAt manX iy)
+--     (esaN2 :: Expr (Int -> Int -> Int)) <- fun2 $ \iy atInfo ->
+--          ite (atInfo .== 2) 1 $ ite (atInfo .==0) 99 $ esaN (iy-1)
+
+
   
   (step :: Expr (AIState -> World -> (AIState,Int))) <- fun2 $ \aist world ->
     let manPos :: Expr Pos 
@@ -34,11 +47,15 @@ progn = do
         
         chizu :: Expr [[Int]]
         chizu = car world
-        
+
+        mapAt :: Expr Int -> Expr Int -> Expr Int
+        mapAt ix iy = (call2 nth (call2 nth chizu iy) ix)
         
     in
+     
+     
     dbugn manY `Seq` 
-    dbugn (call2 nth (call2 nth chizu 16) 16) `Seq`
+    dbugn (mapAt 16 16)`Seq`
     cons aist d
   expr $ cons (0 :: Expr AIState) step
 
