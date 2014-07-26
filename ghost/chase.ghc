@@ -1,0 +1,19 @@
+; Always try to chase the our AI.
+
+; Notation:
+; (lx, ly) is the position of lambdaman.
+; (gx, gy) is the position of ghost.
+
+; Load the lambda-man's position (lx, ly)
+INT 2
+MOVE C, A
+MOVE D, B
+; Now C = lx, D = ly.
+
+INT 5
+; Now A = gx, B = gy
+SUB A, C
+SUB B, D
+
+; A = gx - lx, B = gy - ly
+
