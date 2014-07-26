@@ -1,3 +1,5 @@
+open Util
+
 type instruction =
   | LLdc of int32
   | LLd  of int * int
@@ -284,3 +286,27 @@ let _ =
   eval machine LAtom;
   eval machine LDbug;
 ;;
+
+(* ---------------------------------------------------------------------- *)
+
+type t = {
+  index: int;
+  mutable x: int;
+  mutable y: int;
+  mutable d: direction;
+  mutable vitality: int;
+  mutable lives: int;
+  mutable score: int;
+  program: program;
+}
+
+let make index x y program = {
+  index = index;
+  x = x;
+  y = y;
+  d = Down;
+  vitality = 0;
+  lives = 3;
+  score = 0;
+  program = program;
+}

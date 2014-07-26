@@ -1,3 +1,5 @@
+open Util
+
 type gvalue =
   | GVConst    of int
   | GVReg      of int
@@ -149,3 +151,28 @@ and set_gvalue env dst v =
   | GVIndReg r ->
      env.data.(env.reg.(r)) <- v
 ;;
+
+(* ---------------------------------------------------------------------- *)
+
+type vitality =
+  | Standard
+  | FrightMode (* TODO: should be here? *)
+  | Invisible
+
+type t = {
+  index: int;
+  mutable x: int;
+  mutable y: int;
+  mutable d: direction; (* direction *)
+  mutable vitality: vitality;
+  program: gprogram;
+}
+
+let make index x y program = {
+  index = index;
+  x = x;
+  y = y;
+  d = Down;
+  vitality = Standard;
+  program = program
+}
