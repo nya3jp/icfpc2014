@@ -28,23 +28,24 @@ progn = do
 
   let  mapAt :: Expr [[Int]] -> Expr Int -> Expr Int -> Expr Int
        mapAt chizu ix iy = (call2 nth (call2 nth chizu iy) ix)
-  let mkDirValuePill (dx,dy) = do 
-        rec
-         (dirValueRet :: Expr ([[Int]] -> Int -> Int -> Int))
-           <- fun3 $ \chizu manX manY -> 
-                     let info = (mapAt chizu manX manY) in
-                     ite (info .== 0) 0 $ 
-                     (call1 tileValue info) + (call3 dirValueRet chizu (manX+dx)  (manY+dy))`div`2
-        return dirValueRet
+       
+       
+  rec
+     (dirValuePill :: Expr ([[Int]] -> Int -> Int -> Int))
+       <- fun3 $ \chizu manX manY -> 
+                 let info = (mapAt chizu manX manY) in
+                 ite (info .== 0) 0 $ 
+                 (call1 tileValue info) + (call3 dirValuePill chizu (manX+dx)  (manY+dy))`div`2
 
 
-  mkDirValueTotal (dx,dy) = 
-    
 
-  dirValueN  <- mkDirValueTotal (0,-1)
-  dirValueE  <- mkDirValueTotal (1,0)
-  dirValueS  <- mkDirValueTotal (0,1)
-  dirValueW  <- mkDirValueTotal (-1,0)
+  dirValueTotal :: Expr ((Int, Int) -> World -> Int )
+  dirValuetotal <- fun2 $ \vec world ->
+    let chizu :: Expr [[Int]] 
+        chizu = car world
+        manPos :: Expr Pos 
+        manPos = car $ cdr $ car $ cdr world
+    in dirValuePill vec manPos chizu
 
   (step :: Expr (AIState -> World -> (AIState,Int))) <- fun2 $ \aist world ->
     let manPos :: Expr Pos 
@@ -60,10 +61,10 @@ progn = do
 
         
         scoreN, scoreE, scoreS, scoreW :: Expr Int
-        scoreN = call3 dirValueN chizu manX manY
-        scoreE = call3 dirValueE chizu manX manY
-        scoreS = call3 dirValueS chizu manX manY
-        scoreW = call3 dirValueW chizu manX manY
+        scoreN = call2 dirValueTotal  (cons (0, -1)) world 
+        scoreE = call2 dirValueTotal  (cons (1, 0) ) world 
+        scoreS = call2 dirValueTotal  (cons (0, 1) ) world 
+        scoreW = call2 dirValueTotal  (cons (-1, 0)) world 
 
         d2 :: Expr Int
         d2 = ite ((scoreN .>= scoreE) + (scoreN .>= scoreS) + (scoreN .>= scoreW) .== 3) 0 $
