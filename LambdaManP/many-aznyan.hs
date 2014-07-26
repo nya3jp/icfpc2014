@@ -5,8 +5,10 @@ import Data.Maybe
 import Data.Char
 import Debug.Trace
 import System.Environment
+import System.IO.Unsafe
+import System.Random
 import Unsafe.Coerce
-
+import Text.Printf
 import Desugar
 import DSL
 
@@ -22,22 +24,30 @@ type FruitState = Int
 type AIState = X
 type Pos = (Int, Int)
 
+randLIO :: (Double,Double) -> IO Int
+randLIO (lo,hi) = do
+  lgr <- randomRIO (log lo, log hi)
+  return $ round $ exp lgr
 
-pillParam ::  Int
-pillParam = 100
-powerPillParam ::  Int
-powerPillParam = 2000
-ghostPillParam ::  Int
-ghostPillParam = negate 5000
-ghostPillParamF ::  Int
-ghostPillParamF = 10000
+{-# NOINLINE pillParam #-}
+pillParam ::  Int -- default: 100
+pillParam = unsafePerformIO $ randLIO (10,1000) 
+{-# NOINLINE powerPillParam #-}
+powerPillParam ::  Int -- 2000
+powerPillParam = pillParam * (unsafePerformIO $ randLIO (1,20) )
+{-# NOINLINE ghostPillParam #-}
+ghostPillParam ::  Int -- 5000
+ghostPillParam = negate $  unsafePerformIO $ randLIO (500,50000) 
+{-# NOINLINE ghostPillParamF #-}
+ghostPillParamF ::  Int --10000
+ghostPillParamF =  unsafePerformIO $ randLIO (1000,50000) 
 
-
-ghostAuraParamF :: Int
-ghostAuraParamF = 1600
-
-ghostAuraParam :: Int
-ghostAuraParam = negate 800
+{-# NOINLINE ghostAuraParamF #-}
+ghostAuraParamF :: Int -- 1600
+ghostAuraParamF = unsafePerformIO $ randLIO (160,60000) 
+{-# NOINLINE ghostAuraParam #-}
+ghostAuraParam :: Int -- 800
+ghostAuraParam = negate $ unsafePerformIO $ randLIO (80,80000) 
 
 
 (tileValue :: Expr Int -> Expr Int, tileValueDef) = def1 "tileView" $ \i ->
@@ -47,8 +57,8 @@ ghostAuraParam = negate 800
   1
 
 
-int_min :: Num a => a
-int_min = -2^(31)
+int_min :: Expr Int
+int_min = Const $ -2^(31)
 
 mapAt :: Expr Pos -> Expr [[Int]] -> Expr Int
 mapAt pos chizu = nth (car pos) $ nth (cdr pos) chizu
@@ -189,4 +199,18 @@ main = do
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
     _ -> do
-      writeFile "../LambdaMan/aznyan.gcc" $ compile progn
+      indexR <-randomRIO (0,2^31 :: Int)
+      let indexStr :: String
+          indexStr = printf "%010d" indexR
+          gccFn, txtFn :: String
+          gccFn = (printf "../LambdaMan/gen/az%s.gcc" indexStr)
+          txtFn = (printf "../LambdaMan/gen/az%s.txt" indexStr)
+      writeFile gccFn $ compile progn
+      writeFile txtFn $ unwords
+        ["p" ,show pillParam, 
+         "P" ,show powerPillParam,
+         "gp",show ghostPillParam,   
+         "fp",show ghostPillParamF,   
+         "ga",show ghostAuraParam,   
+         "fa",show ghostAuraParamF
+          ]
