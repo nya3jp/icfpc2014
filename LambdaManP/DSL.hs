@@ -5,20 +5,30 @@ module DSL where
 import Control.Monad.RWS hiding (local, Any)
 import Control.Monad.State
 import Control.Monad.Writer hiding (Any)
+import Data.Maybe
+import Debug.Trace
 import Unsafe.Coerce
 
 import Desugar
 
-type LMan = RWS () [String] CompState
+type Env = [String]
+
+type LMan = RWS () [Env -> String] CompState
 
 data CompState
   = CompState
     { csUniq :: Int
     , csEnvLevel :: Int
+    , csFuncs :: [(String, Label)]
     }
 
 initState :: CompState
-initState = CompState 0 0
+initState = CompState 0 0 []
+
+addFunc :: String -> Label -> LMan ()
+addFunc name l = do
+  s <- get
+  put $ s { csFuncs = (name, l) : csFuncs s }
 
 data Label = Label String
 
@@ -52,12 +62,8 @@ data Expr a where
 
   Seq :: Expr a -> Expr b -> Expr b
 
-  Closure :: Int -> Int -> Expr f
-
-  Call1 :: Expr (a1 -> r) -> Expr a1 -> Expr r
-  Call2 :: Expr (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
-  Call3 :: Expr (a1 -> a2 -> a3 -> r) -> Expr a1 -> Expr a2 -> Expr a3 -> Expr r  
-  Call4 :: Expr (a1 -> a2 -> a3 -> a4 -> r) -> Expr a1 -> Expr a2 -> Expr a3 ->  Expr a4 ->Expr r    
+  Call1 :: String -> Expr a1 -> Expr r
+  Call2 :: String -> Expr a1 -> Expr a2 -> Expr r
 
 data Any = Any (forall a. Expr a)
 
@@ -131,6 +137,9 @@ infix 4 .==, .<, .<=, .>, .>=
 atom :: Expr a -> Expr Int
 atom = Atom
 
+tellc :: String -> LMan ()
+tellc s = tell [const s]
+
 compileExpr :: Expr a -> LMan ()
 compileExpr e = case e of
   Nop -> return ()
@@ -138,48 +147,47 @@ compileExpr e = case e of
   Const n -> ldc n
 
   Var i j -> ld i j
-  Closure i j -> ld i j
 
   Bin opr a b -> do
     compileExpr a
     compileExpr b
-    tell [show opr]
+    tellc $ show opr
 
   Cons a b -> do
     compileExpr a
     compileExpr b
-    tell ["CONS"]
+    tellc "CONS"
 
   Car a -> do
     compileExpr a
-    tell ["CAR"]
+    tellc "CAR"
 
   Cdr a -> do
     compileExpr a
-    tell ["CDR"]
+    tellc "CDR"
 
   Ceq a b -> do
     compileExpr a
     compileExpr b
-    tell ["CEQ"]
+    tellc "CEQ"
 
   Cgt a b -> do
     compileExpr a
     compileExpr b
-    tell ["CGT"]
+    tellc "CGT"
 
   Cgte a b -> do
     compileExpr a
     compileExpr b
-    tell ["CGTE"]
+    tellc "CGTE"
 
   Atom e -> do
     compileExpr e
-    tell ["ATOM"]
+    tellc "ATOM"
 
   Dbug e -> do
     compileExpr e
-    tell ["DBUG"]
+    tellc "DBUG"
 
   Seq a b -> do
     compileExpr a
@@ -201,50 +209,34 @@ compileExpr e = case e of
   Assign i j e -> do
     compileExpr e
     lev <- gets csEnvLevel
-    tell ["ST  " ++ show (lev - i) ++ " " ++ show j]
+    tellc $ "ST  " ++ show (lev - i) ++ " " ++ show j
 
   With v f -> do
     l <- newLabel
     end <- newLabel
     compileExpr v
     ldf l
-    tell ["AP 1"]
+    tellc "AP 1"
     jmp end
 
     emitLabel l
     block $ do
       v <- innerVar 0
       compileExpr $ f v
-      tell ["RTN"]
+      tellc "RTN"
 
     emitLabel end
 
-  Call1 (Closure i j) v -> do
-    compileExpr v
-    ld i j
-    tell ["AP 1"]
+  Call1 name v1 -> do
+    compileExpr v1
+    ldclo name
+    tellc "AP 1"
 
-  Call2 (Closure i j) v1 v2 -> do
+  Call2 name v1 v2 -> do
     compileExpr v1
     compileExpr v2
-    ld i j
-    tell ["AP 2"]
-
-  Call3 (Closure i j) v1 v2 v3 -> do
-    compileExpr v1
-    compileExpr v2
-    compileExpr v3
-    ld i j
-    tell ["AP 3"]
-
-  Call4 (Closure i j) v1 v2 v3 v4 -> do
-    compileExpr v1
-    compileExpr v2
-    compileExpr v3
-    compileExpr v4
-    ld i j
-    tell ["AP 4"]
-
+    ldclo name
+    tellc "AP 2"
 
 incrLevel :: LMan ()
 incrLevel = do
@@ -272,13 +264,21 @@ innerVar i = do
 ld :: Int -> Int -> LMan ()
 ld i j = do
   lev <- gets csEnvLevel
-  tell ["LD " ++ show (lev - i) ++ " " ++ show j]
+  tellc $ "LD " ++ show (lev - i) ++ " " ++ show j
+
+ldclo :: String -> LMan ()
+ldclo name = do
+  lev <- gets csEnvLevel
+  tell [ \tbl ->
+          let ix = fromMaybe (error $ "undefined function: " ++ name) $ lookup name $ zip tbl [0..]
+          in "LD " ++ show lev ++  " " ++ show ix
+       ]
 
 ldc :: Int -> LMan ()
-ldc n = tell ["LDC " ++ show n]
+ldc n = tellc $ "LDC " ++ show n
 
 ldf :: Label -> LMan ()
-ldf (Label l) = tell ["LDF " ++ l]
+ldf (Label l) = tellc $ "LDF " ++ l
 
 dbug :: Expr a -> Expr ()
 dbug e = Dbug e
@@ -312,16 +312,16 @@ ltail = unsafeCoerce Cdr
 
 tsel :: Label -> Label -> LMan ()
 tsel (Label t) (Label e) = do
-  tell ["TSEL " ++ t ++ " " ++ e]
+  tellc $ "TSEL " ++ t ++ " " ++ e
 
 jmp :: Label -> LMan ()
 jmp l = do
-  tell ["LDC 0"]
+  tellc "LDC 0"
   tsel l l
 
 emitLabel :: Label -> LMan ()
 emitLabel (Label l) = do
-  tell [l ++ ":"]
+  tellc $ l ++ ":"
 
 ite :: Expr Int -> Expr a -> Expr a -> Expr a
 ite = Ite
@@ -332,8 +332,21 @@ _ ~= _ = error $ "Left hand side of := must be variable"
 
 codeGen :: LMan () -> [String]
 codeGen p =
-  let ((), codes) = evalRWS p () initState
-  in codes
+  let (st, codes) = execRWS p () initState
+
+      funcs = csFuncs st
+
+      hdr = do
+        tellc $ "DUM " ++ show (length funcs)
+        forM_ funcs $ \(_name, Label l) -> do
+          tellc $ "LDF " ++ l
+
+        tellc "LDF main"
+        tellc $ "TRAP " ++ show (length funcs)
+        emitLabel $ Label "main"
+
+      (_, header) = execRWS hdr () st
+  in map (\f -> f $ map fst $ csFuncs st) $ header ++ codes
 
 -----
 
@@ -343,14 +356,17 @@ with = With
 -----
 
 footer :: LMan ()
-footer = do
-  tell ["RTN"]
+footer = tellc "RTN"
+
+header :: LMan ()
+header = do
+  undefined
 
 compile :: LMan () -> String
-compile = unlines . desugar . codeGen . (>> footer)
+compile = unlines . desugar . compile'
 
-compile' :: LMan () -> String
-compile' = unlines . map f.  codeGen . (>> footer) where
+compile' :: LMan () -> [String]
+compile' = map f.  codeGen . (>> footer) where
   f s
     | last s == ':' = s
     | otherwise = "  " ++ s
@@ -361,23 +377,34 @@ expr :: Expr a -> LMan ()
 expr e = compileExpr e
 
 {-
-val :: Expr a -> LMan (Expr a)
-val e = do
-  l <- newLabel
- end <- newLabel
+fun1 :: (Expr a1 -> Expr r) -> LMan (Expr (a1 -> r))
+fun1 f = do
+  fun <- newLabel
+  clo <- newLabel
+  end <- newLabel
 
-  compileExpr v
-  ldf l
-  tell ["AP 1"]
-  jmp end
-
-  emitLabel l
+  tell ["DUM 1"]
   incrLevel
-  v <- innerVar 0
-  tell ["RTN"]
+
+  jmp clo
+
+  emitLabel fun
+  local $ do
+    a <- innerVar 0
+    compileExpr $ f a
+    tell ["RTN"]
+
+  emitLabel clo
+  ldf fun
+  ldf end
+  tell ["TRAP 1"]
 
   emitLabel end
+  lev <- gets csEnvLevel
+  return $ traceShow ("fun", lev) $ Closure lev 0
 -}
+
+-----
 
 tests = do
   -- dbugn (3 - 2)
@@ -413,152 +440,47 @@ tests = do
   -- dbug $ call hoge 1 2 (cons 1 2)
   undefined
 
-fun1 :: (Expr a1 -> Expr r) -> LMan (Expr (a1 -> r))
-fun1 f = do
-  fun <- newLabel
-  clo <- newLabel
-  end <- newLabel
-
-  tell ["DUM 1"]
-  incrLevel
-
-  jmp clo
-
-  emitLabel fun
-  local $ do
-    a <- innerVar 0
-    compileExpr $ f a
-    tell ["RTN"]
-
-  emitLabel clo
-  ldf fun
-  ldf end
-  tell ["TRAP 1"]
-
-  emitLabel end
-  lev <- gets csEnvLevel
-  return $ Closure lev 0
-
-fun2 :: (Expr a1 -> Expr a2 -> Expr r) -> LMan (Expr (a1 -> a2 -> r))
-fun2 f = do
-  fun <- newLabel
-  clo <- newLabel
-  end <- newLabel
-
-  tell ["DUM 1"]
-  incrLevel
-
-  jmp clo
-
-  emitLabel fun
-  local $ do
-    a1 <- innerVar 0
-    a2 <- innerVar 1
-    compileExpr $ f a1 a2
-    tell ["RTN"]
-
-  emitLabel clo
-  ldf fun
-  ldf end
-  tell ["TRAP 1"]
-
-  emitLabel end
-  lev <- gets csEnvLevel
-  return $ Closure lev 0
-
-fun3 :: (Expr a1 -> Expr a2 -> Expr a3 -> Expr r) -> LMan (Expr (a1 -> a2 -> a3 -> r))
-fun3 f = do
-  fun <- newLabel
-  clo <- newLabel
-  end <- newLabel
-
-  tell ["DUM 1"]
-  incrLevel
-
-  jmp clo
-
-  emitLabel fun
-  local $ do
-    a1 <- innerVar 0
-    a2 <- innerVar 1
-    a3 <- innerVar 2    
-    compileExpr $ f a1 a2 a3
-    tell ["RTN"]
-
-  emitLabel clo
-  ldf fun
-  ldf end
-  tell ["TRAP 1"]
-
-  emitLabel end
-  lev <- gets csEnvLevel
-  return $ Closure lev 0
-
-fun4 :: (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r) -> LMan (Expr (a1 -> a2 -> a3 -> a4 -> r))
-fun4 f = do
-  fun <- newLabel
-  clo <- newLabel
-  end <- newLabel
-
-  tell ["DUM 1"]
-  incrLevel
-
-  jmp clo
-
-  emitLabel fun
-  local $ do
-    a1 <- innerVar 0
-    a2 <- innerVar 1
-    a3 <- innerVar 2    
-    a4 <- innerVar 3    
-    compileExpr $ f a1 a2 a3 a4
-    tell ["RTN"]
-
-  emitLabel clo
-  ldf fun
-  ldf end
-  tell ["TRAP 1"]
-
-  emitLabel end
-  lev <- gets csEnvLevel
-  return $ Closure lev 0
-
-
-
-call1 :: Expr (a1 -> r) -> Expr a1 -> Expr r
-call1 = Call1
-
-call2 :: Expr (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
-call2 = Call2
-
-call3 :: Expr (a1 -> a2 -> a3 -> r) -> Expr a1 -> Expr a2 ->  Expr a3 -> Expr r
-call3 = Call3
-
-call4 :: Expr (a1 -> a2 -> a3 -> a4 -> r) -> Expr a1 -> Expr a2 ->  Expr a3 ->  Expr a4 -> Expr r
-call4 = Call4
-
 -----
 
 -- Library
 
-data Lib where
-  Lib :: { nth :: Expr ([a] -> Int -> a) } -> Lib
+def1 :: String -> (Expr a1 -> Expr r) -> (Expr a1 -> Expr r, LMan ())
+def1 fname f = (Call1 fname, go) where
+  go = do
+    fun <- newLabel
+    end <- newLabel
+    addFunc fname fun
 
-lib :: LMan Lib
-lib = do
-  rec
-    nth' <- fun2 $ \xs i ->
-      ite (i .== 0)
-        (lhead xs)
-        (call2 nth' (ltail xs) (i - 1))
+    jmp end
 
-  return $ Lib { nth = nth' }
+    emitLabel fun
+    local $ do
+      a1 <- innerVar 0
+      compileExpr $ f a1
+      tellc "RTN"
 
-nth' :: LMan (forall a. Expr ([a] -> Int -> a))
-nth' = do
-  rec
-    f <- fun2 $ \xs i ->
-      ite (i .== 0)
-        (lhead xs)
-        (call2 f (ltail xs) (i - 1))
-  return $ unsafeCoerce f
+    emitLabel end
+    return ()
+
+def2 :: String -> (Expr a1 -> Expr a2 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr r, LMan ())
+def2 fname f = (Call2 fname, go) where
+  go = do
+    fun <- newLabel
+    end <- newLabel
+    addFunc fname fun
+
+    jmp end
+
+    emitLabel fun
+    local $ do
+      a1 <- innerVar 0
+      a2 <- innerVar 1
+      compileExpr $ f a1 a2
+      tellc "RTN"
+
+    emitLabel end
+    return ()
+
+(nth, nthDef) =
+  def2 "nth" $ \i xs ->
+    ite (i .== 0) (lhead xs) (nth (i-1) (ltail xs))
