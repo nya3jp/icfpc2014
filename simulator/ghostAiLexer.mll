@@ -36,10 +36,10 @@ let biga  = ['A' - 'Z']
 
 rule token = parse
     ws+ { token lexbuf }
+  | (alpha|biga)  { REGISTER (String.uppercase (Lexing.lexeme lexbuf)) }
   | (alpha|biga)+ { token_of_string (Lexing.lexeme lexbuf) }
   | "["   { LPAREN }
   | "]"   { RPAREN }
   | ","   { COMMA }
-  | biga  { REGISTER (Lexing.lexeme lexbuf) }
   | digit+ { INTEGER (int_of_string (Lexing.lexeme lexbuf)) }
   | _ { failwith ("Unknown Token " ^ Lexing.lexeme lexbuf) }
