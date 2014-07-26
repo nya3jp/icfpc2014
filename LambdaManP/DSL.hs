@@ -45,8 +45,10 @@ data Expr a where
 
   Seq :: Expr a -> Expr b -> Expr b
 
-  Call1 :: Fun (a1 -> r) -> Expr a1 -> Expr r
-  Call2 :: Fun (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
+  Closure :: Int -> Int -> Expr f
+
+  Call1 :: Expr (a1 -> r) -> Expr a1 -> Expr r
+  Call2 :: Expr (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
 
 -- data Any = forall a . Any a
 
@@ -110,6 +112,7 @@ compileExpr e = case e of
   Const n -> ldc n
 
   Var i j -> ld i j
+  Closure i j -> ld i j
 
   Bin opr a b -> do
     compileExpr a
@@ -168,7 +171,7 @@ compileExpr e = case e of
   Assign i j e -> do
     compileExpr e
     lev <- gets csEnvLevel
-    tell ["LD " ++ show (lev - i) ++ " " ++ show j]
+    tell ["ST  " ++ show (lev - i) ++ " " ++ show j]
 
   With v f -> do
     l <- newLabel
@@ -186,12 +189,12 @@ compileExpr e = case e of
 
     emitLabel end
 
-  Call1 (Fun i j) v -> do
+  Call1 (Closure i j) v -> do
     compileExpr v
     ld i j
     tell ["AP 1"]
 
-  Call2 (Fun i j) v1 v2 -> do
+  Call2 (Closure i j) v1 v2 -> do
     compileExpr v1
     compileExpr v2
     ld i j
@@ -273,8 +276,6 @@ codeGen p =
 
 -----
 
-data Fun t = Fun Int Int
-
 with :: Expr a -> (Expr a -> Expr r)  -> Expr r
 with = With
 
@@ -351,7 +352,7 @@ tests = do
   -- dbug $ call hoge 1 2 (cons 1 2)
   undefined
 
-fun1 :: (Expr a1 -> Expr r) -> LMan (Fun (a1 -> r))
+fun1 :: (Expr a1 -> Expr r) -> LMan (Expr (a1 -> r))
 fun1 f = do
   fun <- newLabel
   clo <- newLabel
@@ -375,9 +376,9 @@ fun1 f = do
 
   emitLabel end
   lev <- gets csEnvLevel
-  return $ Fun lev 0
+  return $ Closure lev 0
 
-fun2 :: (Expr a1 -> Expr a2 -> Expr r) -> LMan (Fun (a1 -> a2 -> r))
+fun2 :: (Expr a1 -> Expr a2 -> Expr r) -> LMan (Expr (a1 -> a2 -> r))
 fun2 f = do
   fun <- newLabel
   clo <- newLabel
@@ -402,10 +403,10 @@ fun2 f = do
 
   emitLabel end
   lev <- gets csEnvLevel
-  return $ Fun lev 0
+  return $ Closure lev 0
 
-call1 :: Fun (a1 -> r) -> Expr a1 -> Expr r
+call1 :: Expr (a1 -> r) -> Expr a1 -> Expr r
 call1 = Call1
 
-call2 :: Fun (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
+call2 :: Expr (a1 -> a2 -> r) -> Expr a1 -> Expr a2 -> Expr r
 call2 = Call2
