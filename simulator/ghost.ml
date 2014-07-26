@@ -181,6 +181,7 @@ let make index x y program = {
   env = make_initial_genv ()
 }
 
+(* eval and return the new direction. *)
 let eval t syscallback =
   (* ghost only consumes 1024 instructions *)
   t.env.pc <- 0;
