@@ -15,7 +15,6 @@ STOP - terminate co-processor execution
 
 Tail Call
 
-TSEL - tail-call conditional branch
 TAP - tail-call function
 TRAP - recursive environment tail-call function
 
@@ -45,3 +44,5 @@ CGT - compare greater than
 CGTE - compare greater than or equal
 
 DBUG - printf debugging
+
+TSEL - tail-call conditional branch
