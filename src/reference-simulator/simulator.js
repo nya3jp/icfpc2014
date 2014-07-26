@@ -35,7 +35,10 @@ var initializeOrDie = function() {
 
   var map = fs.readFileSync(flags.map, {encoding: 'utf-8'});
   var lambda = fs.readFileSync(flags.lambda, {encoding: 'utf-8'});
-  var ghosts = [fs.readFileSync(flags.ghost, {encoding: 'utf-8'})];
+  var ghosts = [];
+  flags.ghost.split(',').forEach(function(filename) {
+    ghosts.push(fs.readFileSync(filename, {encoding: 'utf-8'}));
+  });
 
   return game.init(map, lambda, ghosts);
 };
