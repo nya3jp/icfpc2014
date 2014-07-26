@@ -22,6 +22,8 @@ progn :: LMan ()
 progn = do
   nth :: forall a. Expr ([a] -> Int -> a) <- nth'
   
+  valOfItem :: Expr (Int -> Int)                     
+    <- fun1 $ \i -> ite (i.==0) 0 $  ite (i.==2) 1000 $ ite (i.==3) 10000 $ 40
   
   (step :: Expr (AIState -> World -> (AIState,Int))) <- fun2 $ \aist world ->
     let manPos :: Expr Pos 
@@ -38,8 +40,7 @@ progn = do
         mapAt ix iy = (call2 nth (call2 nth chizu iy) ix)
         
         calcScore :: (Expr Int, Expr Int) -> Expr Int
-        calcScore (dx,dy) = ite (mapAt (manX+dx) (manY+dy) .== 0) 0 $
-          ite (mapAt (manX+dx) (manY+dy)  .== 2) 1000 $ 40
+        calcScore (dx,dy) = call1 valOfItem (mapAt (manX+dx) (manY+dy))
         
         scoreN = calcScore (0,-1)
         scoreE = calcScore (1,0)
