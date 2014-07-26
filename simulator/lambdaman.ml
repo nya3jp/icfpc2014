@@ -71,13 +71,17 @@ let check_closure v =
   | VClosure (x, y) -> (x, y)
   | _ -> failwith "tag mismatch for closure"
 
-let check_join = function
+let check_tag_join = function
   | AJoin x -> x
   | _ -> failwith "tag mismatch for join"
 
 let check_tag_ret = function
   | ARet x -> x
   | _ -> failwith "tag mismatch for ret"
+
+let check_tag_frame = function
+  | AFrame x -> x
+  | _ -> failwith "tag mismatch for frame"
 
 let is_tag_stop = function
   | AStop -> true
@@ -87,8 +91,12 @@ let is_tag_ret = function
   | ARet _ -> true
   | _ -> false
 
-let check_dum e =
+let check_not_dum e =
   if e.dummy then
+    failwith "dummy"
+
+let check_dum e =
+  if not e.dummy then
     failwith "dummy"
 ;;
 
@@ -104,10 +112,13 @@ let alloc_dummy_frame n = {
   data = Array.make n (value_of_int 0);
 }
 
-let print_value = function
-  | VInt x -> print_endline (Int32.to_string x)
-  | _ -> failwith "not implemented yet"
+let rec string_of_value = function
+  | VInt x -> Int32.to_string x
+  | VCons(v1,v2) -> "(" ^ (string_of_value v1) ^ ", " ^ (string_of_value v2) ^ ")"
+  | VClosure(n,_) -> "{" ^ (string_of_int n) ^ " }" (* FIXME: should frame list displayed? *)
 ;;
+
+let print_value v = print_endline (string_of_value v)
 
 
 let rec get_nth_env_frame n = function
@@ -130,13 +141,13 @@ let eval_primitive machine op =
      machine.c <- machine.c + 1
 ;;
 
-let eval machine = function
+let rec eval machine = function
   | LLdc n ->
      Stack.push (VInt n) machine.s;
      machine.c <- machine.c + 1
   | LLd (n, i) ->
      let fp = get_nth_env_frame n machine.e in
-     ignore(check_dum fp);
+     ignore(check_not_dum fp);
      let v = fp.data.(i) in
      Stack.push v machine.s;
      machine.c <- machine.c + 1
@@ -185,41 +196,27 @@ let eval machine = function
      Stack.push snd machine.s;
      machine.c <- machine.c + 1
   | LSel (t, f) ->
-     let x = Stack.pop machine.s in
-     let xv = check_int x in
      Stack.push (AJoin (machine.c + 1)) machine.d;
-     if xv == (Int32.of_int 1) then
-       machine.c <- t
-     else
-       machine.c <- f
+     eval machine (LTsel(t, f))
   | LJoin ->
      let x = Stack.pop machine.d in
-     let xv = check_join x in
+     let xv = check_tag_join x in
      machine.c <- xv
   | LLdf f ->
      let x = VClosure (f, machine.e) in
      Stack.push x machine.s;
      machine.c <- machine.c + 1
   | LAp n ->
-     let (f, e) = check_closure(Stack.pop machine.s) in
-     let fp = (alloc_frame n) :: machine.e in
-     let i = ref (n - 1) in
-     while !i <> -1 do
-       let y = Stack.pop machine.s in
-       set_frame_value (List.hd fp) !i y;
-       decr i
-     done;
      Stack.push (AFrame machine.e) machine.d;
      Stack.push (ARet (machine.c + 1)) machine.d;
-     machine.e <- fp;
-     machine.c <- f;
+     eval machine (LTap(n))
   | LRtn ->
      let x = Stack.pop machine.d in
      if is_tag_stop x then
-       raise Exit;
+       raise Exit; (* FIXME *)
      let x = check_tag_ret x in
      let y = Stack.pop machine.d in
-     let (AFrame yy) = y in
+     let yy = check_tag_frame y in
      machine.e <- yy;
      machine.c <- x;
   | LDum n ->
@@ -228,36 +225,15 @@ let eval machine = function
      machine.e <- fp;
      machine.c <- machine.c + 1
   | LRap n ->
-     let x = Stack.pop machine.s in
-     let (f, fp) = check_closure x in
-     let frame = List.hd machine.e in
-     if not frame.dummy then
-       failwith "tag_mismatch";
-     if Array.length frame.data <> n then
-       failwith "frame mismatch";
-     if machine.e != fp then (* physical equal *)
-       failwith "frame mismatch";
-     let i = ref (n - 1) in
-     while !i <> -1 do
-       let y = Stack.pop machine.s in
-       set_frame_value (List.hd fp) !i y;
-       decr i;
-     done;
-     let ep = List.tl machine.e in
-     Stack.push (AFrame ep) machine.d;
+     Stack.push (AFrame (List.tl machine.e)) machine.d;
      Stack.push (ARet (machine.c + 1)) machine.d;
-     let frame = List.hd fp in
-     frame.dummy <- false;
-     machine.e <- fp;
-     machine.c <- f
+     eval machine (LTrap(n))
   | LTsel (t, f) ->
      let x = check_int (Stack.pop machine.s) in
      machine.c <- if x == Int32.zero then f else t
   | LTap n ->
-     let x = Stack.pop machine.s in
-     let (f, e) = check_closure x in
-     let frame = alloc_frame n in
-     let fp = frame :: machine.e in
+     let (f, e) = check_closure(Stack.pop machine.s) in
+     let fp = (alloc_frame n) :: machine.e in
      let i = ref (n - 1) in
      while !i <> -1 do
        let y = Stack.pop machine.s in
@@ -267,11 +243,9 @@ let eval machine = function
      machine.e <- fp;
      machine.c <- f
   | LTrap n ->
-     let x = Stack.pop machine.s in
-     let (f, fp) = check_closure x in
-     let frame = List.hd fp in
-     if not frame.dummy then
-       failwith "tag_mismatch";
+     let (f, fp) = check_closure (Stack.pop machine.s) in
+     let frame = List.hd machine.e in
+     ignore (check_dum frame);
      if Array.length frame.data <> n then
        failwith "frame mismatch";
      if machine.e != fp then (* physical equal *)
@@ -288,7 +262,7 @@ let eval machine = function
      machine.c <- f
   | LSt (n, i) ->
      let frame = get_nth_env_frame n machine.e in
-     ignore(check_dum frame);
+     ignore(check_not_dum frame);
      let v = Stack.pop machine.s in
      set_frame_value frame i v;
      machine.c <- machine.c + 1
