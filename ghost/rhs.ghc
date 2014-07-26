@@ -1,8 +1,61 @@
-; 右手法
-int 3
-int 6
-add b, 1
-and b, 3
-mov a, b
-int 0
-hlt
+INT 3
+INT 5
+MOV [0], a
+MOV [1], b
+INT 3
+INT 6
+MOV [2], b
+ADD [2], 1
+AND [2], 3
+MOV a, [0]
+MOV b, [1]
+MOV c, [2]
+MOV d, [3]
+MOV e, [4]
+MOV f, 200
+INT 8
+;RETRY
+MOV [3], [0]
+MOV [4], [1]
+JEQ 22, [2], 0		;JEQ MOVE_NORTH, [2], 0
+JEQ 24, [2], 1		;JEQ MOVE_EAST, [2], 1
+JEQ 26, [2], 2		;JEQ MOVE_SOUTH, [2], 2
+MOV pc, 28		;MOV pc, MOVE_WEST
+;MOVE_NORTH
+SUB [4], 1
+MOV pc, 30		;MOV pc, CHECK_CELL
+;MOVE_EAST
+ADD [3], 1
+MOV pc, 30		;MOV pc, CHECK_CELL
+;MOVE_SOUTH
+ADD [4], 1
+MOV pc, 30		;MOV pc, CHECK_CELL
+;MOVE_WEST
+SUB [3], 1
+MOV pc, 30		;MOV pc, CHECK_CELL
+;CHECK_CELL
+MOV a, [0]
+MOV b, [1]
+MOV c, [2]
+MOV d, [3]
+MOV e, [4]
+MOV f, 202
+INT 8
+MOV a, [3]
+MOV b, [4]
+INT 7
+JGT 44, a, 0		;JGT ACCEPT, a, 0
+ADD [2], 3
+AND [2], 3
+MOV pc, 16		;MOV pc, RETRY
+;ACCEPT
+MOV a, [2]
+INT 0
+MOV a, [0]
+MOV b, [1]
+MOV c, [2]
+MOV d, [3]
+MOV e, [4]
+MOV f, 203
+INT 8
+HLT
