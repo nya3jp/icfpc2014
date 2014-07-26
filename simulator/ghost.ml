@@ -34,6 +34,8 @@ type genv = {
 
 type gprogram = ginstruction array
 
+(* ---------------------------------------------------------------------- *)
+
 let make_initial_genv () =
   {
     reg  = Array.make 8 0;
@@ -47,7 +49,6 @@ let eval_gvalue env = function
   | GVPCReg      -> env.pc
   | GVIndConst x -> env.data.(x)
   | GVIndReg   r -> env.data.(r)
-;;
 
 let rec geval_instruction env = function
   | GMov (x1, x2) ->
@@ -57,22 +58,40 @@ let rec geval_instruction env = function
   | GDec x ->
      failwith "not implemented"
   | GAdd (x, y) ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     set_gvalue env x ((vx + vy) land 0xFF);
+     env.pc <- env.pc + 1;
   | GSub (x, y) ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     set_gvalue env x ((vx - vy) land 0xFF);
+     env.pc <- env.pc + 1;
   | GMul (x, y) ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     set_gvalue env x ((vx * vy) land 0xFF);
+     env.pc <- env.pc + 1;
   | GDiv (x, y) ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     set_gvalue env x ((vx / vy) land 0xFF);
+     env.pc <- env.pc + 1;
   | GAnd (x, y) ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     set_gvalue env x ((vx land vy) land 0xFF);
+     env.pc <- env.pc + 1;
   | GOr (x, y) ->
      let vx = eval_gvalue env x
      and vy = eval_gvalue env y in
      set_gvalue env x (vx lor vy);
      env.pc <- env.pc + 1
   | GXor (x, y) ->
-     failwith "not implemented"
+     let vx = eval_gvalue env x
+     and vy = eval_gvalue env y in
+     set_gvalue env x ((vx lxor vy) land 0xFF);
+     env.pc <- env.pc + 1;
   | GLlt (t, x, y) ->
      failwith "not implemented"
   | GJeq (t, x, y) ->
@@ -96,4 +115,5 @@ and set_gvalue env dst v =
   | GVIndReg r ->
      env.data.(env.reg.(r)) <- v
 ;;
+
 
