@@ -13,7 +13,11 @@ import DSL
 
 progn :: LMan ()
 progn = do
-  return ()
+  (step :: Fun (Int -> Int -> (Int,Int))) <- fun2 $ \i j ->
+    cons i 1
+  expr $ cons 0 step
+
+
 
 main :: IO ()
 main = do

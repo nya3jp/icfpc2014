@@ -29,7 +29,7 @@ executable LambdaManP
   default-language:    Haskell2010
 
 
-executable LambdaJM
+executable main-jm
   main-is:             main-jm.hs
   -- other-modules:       
   -- other-extensions:    
