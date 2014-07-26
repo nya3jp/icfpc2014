@@ -4,6 +4,7 @@ import qualified Data.Map as M
 import Data.Maybe
 import Data.Char
 import Debug.Trace
+import Safe
 import System.Environment
 import System.IO
 import System.IO.Unsafe
@@ -203,7 +204,8 @@ ppTestConf tc = (show $ scoreResult tc) ++"\t./sim.sh " ++ unwords (cmdLineOpts 
 
 mkTestConfs :: String -> [TestConf]
 mkTestConfs gccfn = do -- List Monad
-  mapOpt <- ["--map=map/world-2.txt", "--map=map/world-8.map",  "--map=map/train.map"]
+--  mapOpt <- ["--map=map/world-2.txt" , "--map=map/world-8.map",  "--map=map/train.map"]
+  mapOpt <- ["--map=map/kichiku.map"]
   gOpt <-
     [  "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc",
        "--ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc",
@@ -212,11 +214,26 @@ mkTestConfs gccfn = do -- List Monad
 
   return $ TestConf {cmdLineOpts = [mapOpt,gOpt,lOpt], scoreResult = -1}
 
+readLastLine :: Handle -> Int -> IO Int
+readLastLine h cand = do
+  b <- hIsEOF h
+  case b of
+    True -> return cand
+    False -> do
+      l <- hGetLine h
+      let mc = readMay l
+      case mc of
+        Just i -> readLastLine h i
+        Nothing -> readLastLine h cand
+
 performTest :: TestConf -> IO TestConf
 performTest tc = do
-  str <- readProcess "./sim.sh" (cmdLineOpts tc)   ""
-  let score :: Int
-      score = read $ last $ lines str  
+  
+  (_, Just hout, _, _) <-
+      createProcess (proc "./sim.sh" (cmdLineOpts tc) )
+        { std_out = CreatePipe }
+  score <- readLastLine hout 0
+  let 
       ret = tc{scoreResult = score} 
   hPutStrLn stderr $ ppTestConf ret
   return $ tc{scoreResult = score}
