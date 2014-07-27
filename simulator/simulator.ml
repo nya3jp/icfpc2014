@@ -352,11 +352,18 @@ let next_tick world =
       let lambdaman = world.lambdamans.(event_arg) in
       (* FIXME: run program *)
       (* FIXME: move lambdaman *)
-      let v = Lambdaman.eval_step lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
-      let (VCons (state, move)) = v in
-      let move = check_int move in
-      lambdaman.Lambdaman.state <- state;
-      schedule_tick world (tick, eLambdamanMoveCommit, event_arg, Int32.to_int move);
+      begin
+        try
+          let v = Lambdaman.eval_step lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
+          let (VCons (state, move)) = v in
+          let move = check_int move in
+          lambdaman.Lambdaman.state <- state;
+          schedule_tick world (tick, eLambdamanMoveCommit, event_arg, Int32.to_int move);
+        with
+        | Exception_cycleover ->
+           (* When cycle is over, we use the same move as the before *)
+           schedule_tick world (tick, eLambdamanMoveCommit, event_arg, int_of_direction lambdaman.d);
+      end
   | x when x = eLambdamanMoveCommit ->
       let lambdaman = world.lambdamans.(event_arg) in
       let move = event_arg2 in
