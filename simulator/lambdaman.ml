@@ -382,7 +382,7 @@ let eval_step program closure args =
 
   try
     while true do
-      print_endline (string_of_int machine.c);
+      (* print_endline (string_of_int machine.c); *)
       let inst = program.(machine.c) in
       eval_instruction machine inst
     done;
@@ -407,6 +407,8 @@ type t = {
   mutable lives: int;
   mutable score: int;
   program: program;
+  mutable state: value;
+  mutable stepFun: value;
 }
 
 let make index x y program = {
@@ -421,6 +423,8 @@ let make index x y program = {
   lives = 3;
   score = 0;
   program = program;
+  state = value_of_int 12345; (* dummy *)
+  stepFun = value_of_int 23456; (* dummy *)
 }
 
 let eaten lambdaman =
@@ -430,3 +434,11 @@ let eaten lambdaman =
   lambdaman.lives <- lambdaman.lives - 1
 
 let get_vitality lambdaman tick = max 0 (lambdaman.vitality_absolute - tick)
+
+let move lambdaman d =
+  lambdaman.d <- d;
+  match d with
+  | Up -> lambdaman.y <- lambdaman.y - 1
+  | Down -> lambdaman.y <- lambdaman.y + 1
+  | Left -> lambdaman.x <- lambdaman.x - 1
+  | Right -> lambdaman.x <- lambdaman.x + 1

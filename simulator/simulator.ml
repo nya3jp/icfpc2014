@@ -122,94 +122,6 @@ let make field lambdaman_programs ghost_programs =
   }
 ;;
 
-let next_tick world =
-  let (tick, event_id, event_arg) = TQ.min_elt world.wl in
-  begin match event_id with
-  | x when x == eFruitAppear ->
-      world.fruit_exists <- true;
-  | x when x == eFruitDisappear ->
-      world.fruit_exists <- false;
-  | x when x == eEOL ->
-      raise Exit (* FIXME *)
-  | x when x == eLambdamanMove ->
-      let lambdaman = world.lambdamans.(event_arg) in
-      (* FIXME: run program *)
-      (* FIXME: move lambdaman *)
-      let is_eating = begin match world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) with
-      | Field.CPill | Field.CPowerPill -> true
-      | Field.CFruitLocation -> world.fruit_exists
-      | _ -> false
-      end in
-      schedule_tick world (tick, eLambdamanPostprocess, event_arg);
-      schedule_tick world ((tick + tick_move_lambdaman is_eating), eLambdamanMove, event_arg)
-  | x when x == eGhostMove ->
-      let ghost = world.ghosts.(event_arg) in
-      (* FIXME: run program *)
-      (* FIXME: move lambdaman *)
-      schedule_tick world (tick, eLambdamanPostprocess, 0); (* FIXME *)
-      schedule_tick world ((tick + tick_move_ghost ghost), eGhostMove, event_arg)
-  | x when x == eFrightDeactivate ->
-      let lambdaman = world.lambdamans.(event_arg) in
-      if tick == lambdaman.Lambdaman.vitality_absolute then begin
-        Array.iter
-          (fun g -> g.Ghost.vitality <- Ghost.Standard)
-          world.ghosts
-      end
-  | x when x == eLambdamanPostprocess ->
-      let lambdaman = world.lambdamans.(event_arg) in
-      (* Step 3 *)
-      begin match world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) with
-      | Field.CPill ->
-          lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_pill;
-          world.pill_count <- world.pill_count - 1;
-          world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) <- Field.CEmpty
-      | Field.CPowerPill ->
-          lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_power_pill;
-          world.powerpill_count <- world.powerpill_count - 1;
-          (* FIXME: activate fright mode *)
-          lambdaman.Lambdaman.vitality_absolute <- tick + tick_dur_fright;
-          lambdaman.Lambdaman.eat_count <- 0;
-          Array.iter
-            (fun g ->
-              if g.Ghost.vitality == Ghost.Standard then g.Ghost.vitality <- Ghost.FrightMode;
-              g.Ghost.d <- reverse_direction g.Ghost.d (* FIXME: correct? *)
-            )
-            world.ghosts;
-          schedule_tick world (tick + tick_dur_fright, eFrightDeactivate, event_arg);
-          world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) <- Field.CEmpty
-      | Field.CFruitLocation ->
-          if world.fruit_exists then begin
-            lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_fruit world.field;
-            world.fruit_exists <- false
-          end
-      | _ -> ()
-      end;
-      (* Step 4 *)
-      Array.iter
-        (fun g ->
-          if g.Ghost.x == lambdaman.Lambdaman.x && g.Ghost.y == lambdaman.Lambdaman.y then match g.Ghost.vitality with
-          | Ghost.Standard -> (* Eaten... *)
-              Lambdaman.eaten lambdaman;
-              Array.iter Ghost.reset world.ghosts
-          | Ghost.FrightMode -> (* Eat ghost! *)
-              Ghost.eaten g;
-              lambdaman.Lambdaman.eat_count <- lambdaman.Lambdaman.eat_count + 1;
-              lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_eat lambdaman.Lambdaman.eat_count
-          | Ghost.Invisible -> () (* do nothing *)
-        )
-        world.ghosts;
-      (* Step 5 *)
-      if world.pill_count == 0 then
-        failwith "Win" (* FIXME *)
-      ;
-      (* Step 6 *)
-      if lambdaman.Lambdaman.lives <= 0 then
-        failwith "Lose" (* FIXME *)
-      ;
-  | _ -> failwith "invalid event_id"
-  end
-
-
 (* This is a callback when INT is called from ghost. *)
 let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
   let syscallback_for_ghost n env =
@@ -346,16 +258,123 @@ let encode_ghost_programs t =
   Array.fold_right (fun x y -> VCons (x, y)) encoded (VInt (Int32.of_int 0))
 ;;
 
+(* ---------------------------------------------------------------------- *)
+
+let next_tick world =
+  let (tick, event_id, event_arg) = TQ.min_elt world.wl in
+  world.wl <- TQ.remove (tick, event_id, event_arg) world.wl;
+  Printf.printf "DEBUG (xhl): tick=%d event=%d arg=%d\n%s" tick event_id event_arg (Field.string_of_field world.field);
+  begin match event_id with
+  | x when x == eFruitAppear ->
+      world.fruit_exists <- true;
+  | x when x == eFruitDisappear ->
+      world.fruit_exists <- false;
+  | x when x == eEOL ->
+      raise Exit (* FIXME *)
+  | x when x == eLambdamanMove ->
+      let lambdaman = world.lambdamans.(event_arg) in
+      (* FIXME: run program *)
+      (* FIXME: move lambdaman *)
+      let v = Lambdaman.eval_step lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
+      let (VCons (state, move)) = v in
+      let move = check_int move in
+      lambdaman.Lambdaman.state <- state;
+      Lambdaman.move lambdaman (direction_of_int (Int32.to_int move));
+      let is_eating = begin match world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) with
+      | Field.CWall -> failwith "kabenonakaniiru" (* FIXME: should be stop moving *)
+      | Field.CPill | Field.CPowerPill -> true
+      | Field.CFruitLocation -> world.fruit_exists
+      | _ -> false
+      end in
+      schedule_tick world (tick, eLambdamanPostprocess, event_arg);
+      schedule_tick world ((tick + tick_move_lambdaman is_eating), eLambdamanMove, event_arg)
+  | x when x == eGhostMove ->
+      let ghost = world.ghosts.(event_arg) in
+      (* FIXME: run program *)
+      (* FIXME: move lambdaman *)
+      schedule_tick world (tick, eLambdamanPostprocess, 0); (* FIXME *)
+      schedule_tick world ((tick + tick_move_ghost ghost), eGhostMove, event_arg)
+  | x when x == eFrightDeactivate ->
+      let lambdaman = world.lambdamans.(event_arg) in
+      if tick == lambdaman.Lambdaman.vitality_absolute then begin
+        Array.iter
+          (fun g -> g.Ghost.vitality <- Ghost.Standard)
+          world.ghosts
+      end
+  | x when x == eLambdamanPostprocess ->
+      let lambdaman = world.lambdamans.(event_arg) in
+      (* Step 3 *)
+      begin match world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) with
+      | Field.CPill ->
+          lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_pill;
+          world.pill_count <- world.pill_count - 1;
+          world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) <- Field.CEmpty
+      | Field.CPowerPill ->
+          lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_power_pill;
+          world.powerpill_count <- world.powerpill_count - 1;
+          (* FIXME: activate fright mode *)
+          lambdaman.Lambdaman.vitality_absolute <- tick + tick_dur_fright;
+          lambdaman.Lambdaman.eat_count <- 0;
+          Array.iter
+            (fun g ->
+              if g.Ghost.vitality == Ghost.Standard then g.Ghost.vitality <- Ghost.FrightMode;
+              g.Ghost.d <- reverse_direction g.Ghost.d (* FIXME: correct? *)
+            )
+            world.ghosts;
+          schedule_tick world (tick + tick_dur_fright, eFrightDeactivate, event_arg);
+          world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) <- Field.CEmpty
+      | Field.CFruitLocation ->
+          if world.fruit_exists then begin
+            lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_fruit world.field;
+            world.fruit_exists <- false
+          end
+      | _ -> ()
+      end;
+      (* Step 4 *)
+      Array.iter
+        (fun g ->
+          if g.Ghost.x == lambdaman.Lambdaman.x && g.Ghost.y == lambdaman.Lambdaman.y then match g.Ghost.vitality with
+          | Ghost.Standard -> (* Eaten... *)
+              Lambdaman.eaten lambdaman;
+              Array.iter Ghost.reset world.ghosts
+          | Ghost.FrightMode -> (* Eat ghost! *)
+              Ghost.eaten g;
+              lambdaman.Lambdaman.eat_count <- lambdaman.Lambdaman.eat_count + 1;
+              lambdaman.Lambdaman.score <- lambdaman.Lambdaman.score + score_eat lambdaman.Lambdaman.eat_count
+          | Ghost.Invisible -> () (* do nothing *)
+        )
+        world.ghosts;
+      (* Step 5 *)
+      if world.pill_count == 0 then
+        failwith "Win" (* FIXME *)
+      ;
+      (* Step 6 *)
+      if lambdaman.Lambdaman.lives <= 0 then
+        failwith "Lose" (* FIXME *)
+      ;
+  | _ -> failwith "invalid event_id"
+  end
+
 let run t =
   (* First, call lambdaman main. *)
-  let state = encode_current_world t 0
-  and ghosts = encode_ghost_programs t in
-  let v = Array.map (fun man ->
-    eval_main man.program [state; ghosts]
-  ) t.lambdamans in
+  let encoded_world = encode_current_world t 0
+  and ghost_programs = encode_ghost_programs t in
+  Array.iter (fun man ->
+    let v = Lambdaman.eval_main man.program [encoded_world; ghost_programs] in
+    let (VCons (state, stepFun)) = v in
+    man.state <- state;
+    man.stepFun <- stepFun
+  ) t.lambdamans;
 
-  print_value v.(0);
+  while true do
+    next_tick t
+  done;
 
+  (* Then, each next tick, call step and state. *)
+  failwith "not implemented yet"
+
+
+(*
   (* checking step func is callable. *)
   let (VCons (state, stepFun)) = v.(0) in
   print_value stepFun;
@@ -368,4 +387,5 @@ let run t =
 
   (* Then, each next tick, call step and state. *)
   failwith "not implemented yet"
+*)
 ;;
