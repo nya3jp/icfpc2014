@@ -315,8 +315,12 @@ let run t =
     let machine = Lambdaman.make_initial_machine () in
     Stack.push state machine.Lambdaman.s;
     Stack.push ghosts machine.Lambdaman.s;
-    Lambdaman.eval machine
+    Stack.push Lambdaman.AStop machine.Lambdaman.d;
+    Lambdaman.eval machine man.Lambdaman.program
   ) t.lambdamans in
+
+  Lambdaman.print_value (fst stepfunc_and_states.(0));
+  Lambdaman.print_value (snd stepfunc_and_states.(0));
 
   (* Then, each next tick, call step and state. *)
   failwith "not implemented yet"

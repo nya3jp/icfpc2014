@@ -122,7 +122,8 @@ let rec string_of_value = function
   | VClosure(n,_) -> "{" ^ (string_of_int n) ^ " }" (* FIXME: should frame list displayed? *)
 ;;
 
-let print_value v = print_endline (string_of_value v)
+let print_value v =
+  print_endline (string_of_value v)
 
 
 let rec get_nth_env_frame n = function
