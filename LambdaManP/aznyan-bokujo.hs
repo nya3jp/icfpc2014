@@ -353,7 +353,7 @@ main = do
   case args of
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
-    _ | sotaMode -> writeFile "aznyan-sota.gcc" $ compile progn
+    ["sota"] -> writeFile "aznyan-sota.gcc" $ compile progn
     _        -> main2
     
 main2 :: IO ()
