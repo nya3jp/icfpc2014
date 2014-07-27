@@ -44,7 +44,8 @@ class EvalJob(object):
     with open(stdoutpath, 'w') as stdout:
       with open(stderrpath, 'w') as stderr:
         p = subprocess.Popen(
-            ['ssh', FLAGS.remote_host, script],
+            'ssh %s "%s 2>&1 | gzip" | gzip -d' % (FLAGS.remote_host, script),
+            shell=True,
             stdin=subprocess.PIPE, stdout=stdout, stderr=stderr)
     p.stdin.write(code)
     p.stdin.close()
