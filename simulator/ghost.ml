@@ -55,15 +55,15 @@ let eval_gvalue env = function
 let rec eval_ginstruction env syscallback = function
   | GMov (x1, x2) ->
      let v2 = eval_gvalue env x2 in
-     set_gvalue env x1 v2
+     set_gvalue env x1 v2;
      env.pc <- env.pc + 1;
   | GInc x ->
      let vx = eval_gvalue env x in
-     set_gvalue env x ((vx + 1) land 0xFF)
+     set_gvalue env x ((vx + 1) land 0xFF);
      env.pc <- env.pc + 1;
   | GDec x ->
      let vx = eval_gvalue env x in
-     set_gvalue env x ((vx - 1) land 0xFF)
+     set_gvalue env x ((vx - 1) land 0xFF);
      env.pc <- env.pc + 1;
   | GAdd (x, y) ->
      let vx = eval_gvalue env x
