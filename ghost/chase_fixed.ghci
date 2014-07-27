@@ -1,0 +1,146 @@
+    MOV H,0
+    MOV [H],6DE6714E
+    INC H
+    MOV PC,GET_FIRST_LAMBDAMAN_DIR
+6DE6714E:
+    MOV [253],A
+    MOV [254],B
+    INT 3
+    INT 6
+    MOV A,B
+    INT 8
+    MOV [H],3EFEA81F
+    INC H
+    MOV PC,REVERSE_DIRECTION
+3EFEA81F:
+    INT 8
+    MOV [255],A
+    JEQ SECONDARY_DIR,[253],[255]
+    INT 8
+    INT 3
+    INT 5
+    MOV C,[253]
+    MOV [H],002FD14D
+    INC H
+    MOV PC,IS_ADJACENT_COORDINATE_NON_WALL_SQUARE
+002FD14D:
+    JEQ SECONDARY_DIR,A,0
+    INT 8
+    MOV A,[253]
+    INT 0
+    HLT
+SECONDARY_DIR:
+    INT 8
+    JEQ END,[254],[255]
+    INT 8
+    INT 3
+    INT 5
+    MOV C,[254]
+    MOV [H],F2976A05
+    INC H
+    MOV PC,IS_ADJACENT_COORDINATE_NON_WALL_SQUARE
+F2976A05:
+    JEQ END,A,0
+    INT 8
+    MOV A,[254]
+    INT 0
+END:
+    INT 8
+    HLT
+
+REVERSE_DIRECTION:
+    ADD A,2
+    AND A,3
+    DEC H
+    MOV PC,[H]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GET_FIRST_LAMBDAMAN_DIR: returns direction to the 1st lambdaman from this
+; ghost.
+;   - In: Register `E`, return address.
+;   - Out:
+;     - Register `A`, major direction to the 1st lambdaman (0 = north,
+;       1 = east, 2 = south, 3 = west).
+;     - Register `B`, minor direction to the 1st lambdaman (0 = north,
+;       1 = east, 2 = south, 3 = west).
+;   - Side effect: Register `C` and `D` are destroyed.
+;   - Notes: coordinate difference in the major direction is greater than or
+;            equal to one in minor direction.
+GET_FIRST_LAMBDAMAN_DIR:
+    INT 3
+    INT 5
+    MOV C,A
+    MOV D,B
+    INT 1
+    SUB A,C
+    SUB B,D
+    MOV C,A
+    MOV D,B
+    MOV A,0
+    JLT FC284D19,C,128
+    ; The first lambdaman is left from the ghost.
+    MOV A,2
+FC284D19:
+    ; The first lambdaman is right from the ghost.
+    ADD A,1
+    MOV B,0
+    JLT 0EF670EF,D,128
+    ; The first lambdaman is up from the ghost.
+    MOV B,254
+0EF670EF:
+    ; The 1st lambdaman is down from the ghost.
+    ADD B,2
+    ; MOV C,abs(C)
+    JLT 73FF22EB,C,128
+    XOR C,255
+    ADD C,1
+73FF22EB:
+    ; MOV C,abc(C)
+    JLT 30604BE8,D,128
+    XOR D,255
+    ADD D,1
+30604BE8:
+    JGT D1D395BD,C,D
+    MOV C,A
+    MOV A,B
+    MOV B,C
+D1D395BD:
+    DEC H
+    MOV PC,[H]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GET_ADJACENT_COORDINATE: For given coordinate and direction index, returns
+;                          the corresponding coordinate.
+;   - In:
+;     - Register `A`, X-ordinate.
+;     - Register `B`, Y-ordinate.
+;     - Register `C`, direction index (0 = north, 1 = east, 2 = south,
+;       3 = west)
+;     - Register `H`, return address.
+;   - Out:
+;     - Register `A`, X-ordinate.
+;     - Register `B`, Y-ordinate.
+;   - Side effect: Register `A`, `B`, `C`, `D`, `E` are destroyed.
+GET_ADJACENT_COORDINATE:
+    MOV D,C
+    MOV E,C
+    AND C,1
+    AND E,2
+    SUB E,1
+    MUL C,E
+    SUB A,C
+    SUB D,1
+    AND D,1
+    MUL D,E
+    ADD B,D
+    DEC H
+    MOV PC,[H]
+
+IS_ADJACENT_COORDINATE_NON_WALL_SQUARE:
+    MOV [H],A9F040E2
+    INC H
+    MOV PC,GET_ADJACENT_COORDINATE
+A9F040E2:
+    INT 7
+    DEC H
+    MOV PC,[H]
