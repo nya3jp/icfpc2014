@@ -355,17 +355,20 @@ performTest tc0 = do
          "ga",show ghostAuraParam,   
          "fa",show ghostAuraParamF,
          "damp" ,show dampingParam, 
-         "denp", show $ charFraction '.' mapContent1,
-         "denP", show $ charFraction 'o' mapContent1,
-         "denG", show $ charFraction '=' mapContent1,
+         "Np", show $ charCnt '.' mapContent1,
+         "NP", show $ charCnt 'o' mapContent1,
+         "NG", show $ charCnt '=' mapContent1,
+         "N", show $ length mapContent1,
 	  "# " ++ toCmdlineString tc1 
           ] 
       msg = unlines [msg0]
   writeFile statFn1 $ msg
   return $ ret
 
-charFraction :: Char -> String -> Double
-charFraction c s = (fromIntegral $ length $ filter (==c) s) / (fromIntegral $ length s)
+
+    where
+     charCnt :: Char -> String -> Int
+     charCnt c s =  length $ filter (==c) s
 
 main :: IO ()
 main = do
