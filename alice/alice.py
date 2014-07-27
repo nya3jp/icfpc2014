@@ -179,6 +179,10 @@ class Return(Stmt):
           len(self.values) <= 2,
           None,
           'A function returning multiple values must be marked with @rank')
+      compile_assert(
+          all(value.rank(ctx) == 1 for value in self.values),
+          None,
+          'Tried to return multiple values from rank-1 function')
       # TODO: Maybe missing some edge cases
       if len(self.values) == 2:
         ctx.emit('CONS')
