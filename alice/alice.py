@@ -1,6 +1,14 @@
 #!/usr/bin/python
+"""
+Alice - Python to GCC compiler
+
+Usage:
+alice.py input.py > output.gcc
+"""
 
 import ast
+import collections
+import re
 import sys
 import traceback
 
@@ -19,22 +27,27 @@ def compile_assert(cond, node, tmpl='UNDOCUMENTED ERROR', *args):
       column = getattr(node, 'col_offset', None)
     else:
       line, column = None, None
+    loc = ' at line %d, column %d' % (line, column) if line else ''
     msg = tmpl % args
-    raise CompileError('[line %s, column %s] %s' % (line, column, msg), line, column)
+    raise CompileError(msg + loc, line, column)
 
 
 class Context(object):
   def __init__(self):
     self.vars = {}
+    self.current_func = None
     self.funcs = {}
     self.current_loop = None
+    self.lines = []
     self._seq = [0]
 
   def copy(self):
     ctx = Context()
     ctx.vars = self.vars.copy()
+    ctx.current_func = self.current_func
     ctx.funcs = self.funcs.copy()
     ctx.current_loop = self.current_loop
+    ctx.lines = self.lines
     ctx._seq = self._seq
     return ctx
 
@@ -47,7 +60,10 @@ class Context(object):
     s = tmpl % args
     if s and s[0].isupper():
       s = '  %s' % s
-    print s
+    self.lines.append(s)
+
+  def output(self):
+    return '\n'.join(self.lines)
 
 
 class Syntax(object):
@@ -94,12 +110,18 @@ class Module(Syntax):
     for func in self.funcs:
       if func.rank is None:
         ranks = sorted(set(func.gather_func_ranks(ctx)))
-        compile_assert(
-            len(ranks) <= 1,
-            None,
-            'A function has multiple candidate ranks: %s',
-            ', '.join(str(rank) for rank in ranks))
-        func.rank = ranks[0] if ranks else 0
+        if len(ranks) == 0 or ranks == [0]:
+          func.rank = 0
+        elif ranks == [1]:
+          func.rank = 1
+        elif ranks == [2]:
+          # A function returning a pair.
+          func.rank = 1
+        else:
+          compile_assert(
+              False,
+              None,
+              'A function returning multiple values must be marked with @rank.')
     for func in self.funcs:
       func.compile(ctx)
 
@@ -115,6 +137,7 @@ class Function(Stmt):
 
   def compile(self, ctx):
     ctx = ctx.copy()
+    ctx.current_func = self
     locals = set(self.gather_func_vars())
     locals -= set(self.args)
     locals = sorted(locals)
@@ -166,6 +189,14 @@ class Return(Stmt):
   def compile(self, ctx):
     for value in self.values:
       value.compile(ctx)
+    if ctx.current_func.rank == 1:
+      compile_assert(
+          len(self.values) <= 2,
+          None,
+          'A function returning multiple values must be marked with @rank')
+      # TODO: Maybe missing some edge cases
+      if len(self.values) == 2:
+        ctx.emit('CONS')
     ctx.emit('RTN')
 
 
@@ -210,14 +241,18 @@ class While(Stmt):
     last_loop = ctx.current_loop
     label = ctx.make_label()
     loop = {'cond': '%s_cond' % label,
+            'next': '%s_next' % label,
             'body': '%s_body' % label,
             'exit': '%s_exit' % label}
     ctx.current_loop = loop
     ctx.emit('%s:', loop['cond'])
+    ctx.emit('%s:', loop['next'])
     self.test.compile(ctx)
     ctx.emit('TSEL %s %s', loop['body'], loop['exit'])
     ctx.emit('%s:', loop['body'])
     self.block.compile(ctx)
+    ctx.emit('LDC 283283283')
+    ctx.emit('TSEL %s_cond %s_cond', label, label)
     ctx.emit('%s:', loop['exit'])
     ctx.current_loop = last_loop
 
@@ -241,20 +276,21 @@ class ForN(Stmt):
             'next': '%s_next' % label,
             'body': '%s_body' % label,
             'exit': '%s_exit' % label}
+
     ctx.current_loop = loop
-    self.begin.compile(ctx)
     a, b = ctx.vars[self.target]
 
+    self.begin.compile(ctx)
     ctx.emit('ST %d %d  ; %s', a, b, self.target)
-
-    ctx.emit('%s:', loop['body'])
-    self.block.compile(ctx)
 
     ctx.emit('%s:', loop['cond'])
     self.end.compile(ctx)
     ctx.emit('LD %d %d  ; %s', a, b, self.target)
     ctx.emit('CGT')
-    ctx.emit('TSEL %s %s', loop['next'], loop['exit'])
+    ctx.emit('TSEL %s %s', loop['body'], loop['exit'])
+
+    ctx.emit('%s:', loop['body'])
+    self.block.compile(ctx)
 
     ctx.emit('%s:', loop['next'])
     ctx.emit('LD %d %d  ; %s', a, b, self.target)
@@ -262,7 +298,7 @@ class ForN(Stmt):
     ctx.emit('ADD')
     ctx.emit('ST %d %d  ; %s', a, b, self.target)
     ctx.emit('LDC 283283283')
-    ctx.emit('TSEL %s %s', loop['body'], loop['body'])
+    ctx.emit('TSEL %s %s', loop['cond'], loop['cond'])
 
     ctx.emit('%s:', loop['exit'])
 
@@ -276,7 +312,7 @@ class Continue(Stmt):
   def compile(self, ctx):
     compile_assert(ctx.current_loop, None, 'continue outside loop')
     ctx.emit('LDC 283283283')
-    ctx.emit('TSEL %s %s', ctx.current_loop['cond'], ctx.current_loop['cond'])
+    ctx.emit('TSEL %s %s', ctx.current_loop['next'], ctx.current_loop['next'])
 
 
 class Break(Stmt):
@@ -315,17 +351,36 @@ class Expr(Syntax):
     raise NotImplementedError()
 
 
+class UnaryOp(Expr):
+  def __init__(self, operand):
+    self.operand = operand
+
+  def rank(self, ctx):
+    compile_assert(self.operand.rank(ctx) == 1, None)
+    return 1
+
+  def compile(self, ctx):
+    raise NotImplementedError()
+
+
 class BinOp(Expr):
-  def __init__(self, inst, left, right):
-    self.inst = inst
+  def __init__(self, left, right):
     self.left = left
     self.right = right
 
   def rank(self, ctx):
-    left_rank = self.left.rank(ctx)
-    right_rank = self.right.rank(ctx)
-    compile_assert(left_rank == right_rank, None)
-    return left_rank
+    compile_assert(self.left.rank(ctx) == 1, None)
+    compile_assert(self.right.rank(ctx) == 1, None)
+    return 1
+
+  def compile(self, ctx):
+    raise NotImplementedError()
+
+
+class NumBinOp(BinOp):
+  def __init__(self, inst, left, right):
+    self.inst = inst
+    BinOp.__init__(self, left, right)
 
   def compile(self, ctx):
     if self.inst.startswith('!'):
@@ -361,12 +416,52 @@ class BinOp(Expr):
     return None
 
 
+class And(BinOp):
+  def compile(self, ctx):
+    ctx.emit('LDC 1')
+    self.left.compile(ctx)
+    ctx.emit('LDC 0')
+    ctx.emit('CEQ')
+    ctx.emit('SUB')
+    ctx.emit('LDC 1')
+    self.right.compile(ctx)
+    ctx.emit('LDC 0')
+    ctx.emit('CEQ')
+    ctx.emit('SUB')
+    ctx.emit('MUL')
+
+
+class Or(BinOp):
+  def compile(self, ctx):
+    ctx.emit('LDC 1')
+    self.left.compile(ctx)
+    ctx.emit('LDC 0')
+    ctx.emit('CEQ')
+    self.right.compile(ctx)
+    ctx.emit('LDC 0')
+    ctx.emit('CEQ')
+    ctx.emit('MUL')
+    ctx.emit('SUB')
+
+
+class Not(UnaryOp):
+  def compile(self, ctx):
+    self.operand.compile(ctx)
+    ctx.emit('LDC 0')
+    ctx.emit('CEQ')
+
+
 class Call(Expr):
   def __init__(self, func, args):
     self.func = func
     self.args = args
 
   def rank(self, ctx):
+    compile_assert(
+        self.func in ctx.funcs,
+        None,
+        'Undefined function %s',
+        self.func)
     compile_assert(
         ctx.funcs[self.func].rank is not None,
         None,
@@ -376,6 +471,11 @@ class Call(Expr):
     return ctx.funcs[self.func].rank
 
   def compile(self, ctx):
+    compile_assert(
+        self.func in ctx.funcs,
+        None,
+        'Undefined function %s',
+        self.func)
     for arg in self.args:
       arg.compile(ctx)
     ctx.emit('LDF %s', ctx.funcs[self.func].label)
@@ -446,6 +546,7 @@ class Name(Expr):
     if self.name in ctx.funcs:
       ctx.emit('LDF %s', ctx.funcs[self.name].label)
     else:
+      compile_assert(self.name in ctx.vars, None, 'Undefined variable: %s', self.name)
       a, b = ctx.vars[self.name]
       ctx.emit('LD %d %d  ; %s', a, b, self.name)
 
@@ -459,17 +560,6 @@ class Num(Expr):
 
   def compile(self, ctx):
     ctx.emit('LDC %d', self.n)
-
-
-class Assembly(Expr):
-  def __init__(self, code):
-    self.code = code
-
-  def rank(self, ctx):
-    return 0
-
-  def compile(self, ctx):
-    ctx.emit(code)
 
 
 def parse_module(module):
@@ -557,13 +647,29 @@ def parse_stmt(stmt):
 def parse_expr(expr):
   compile_assert(isinstance(expr, ast.expr), expr)
   if isinstance(expr, ast.BinOp):
-    inst = BinOp.op_to_inst(expr.op)
-    return BinOp(inst, parse_expr(expr.left), parse_expr(expr.right))
+    inst = NumBinOp.op_to_inst(expr.op)
+    return NumBinOp(inst, parse_expr(expr.left), parse_expr(expr.right))
+  if isinstance(expr, ast.BoolOp):
+    if isinstance(expr.op, ast.And):
+      result = parse_expr(expr.values[0])
+      for value in expr.values[1:]:
+        result = And(result, parse_expr(value))
+      return result
+    if isinstance(expr.op, ast.Or):
+      result = parse_expr(expr.values[0])
+      for value in expr.values[1:]:
+        result = Or(result, parse_expr(value))
+      return result
+    compile_assert(False, expr, 'Unsupported boolean operator')
+  if isinstance(expr, ast.UnaryOp):
+    if isinstance(expr.op, ast.Not):
+      return Not(parse_expr(expr.operand))
+    compile_assert(False, expr, 'Unsupported unary operator')
   if isinstance(expr, ast.Compare):
     compile_assert(len(expr.ops) == 1, expr, 'multiple comparison not supported')
     compile_assert(len(expr.comparators) == 1, expr, 'multiple comparison not supported')
-    inst = BinOp.op_to_inst(expr.ops[0])
-    return BinOp(inst, parse_expr(expr.left), parse_expr(expr.comparators[0]))
+    inst = NumBinOp.op_to_inst(expr.ops[0])
+    return NumBinOp(inst, parse_expr(expr.left), parse_expr(expr.comparators[0]))
   if isinstance(expr, ast.Call):
     compile_assert(not expr.keywords, expr, 'keywords not supported')
     compile_assert(not expr.kwargs, expr, 'keyword args not supported')
@@ -587,8 +693,6 @@ def parse_expr(expr):
     return Name(expr.id)
   if isinstance(expr, ast.Num):
     return Num(expr.n)
-  if isinstance(expr, ast.Str):
-    return Assembly(expr.s)
   compile_assert(False, expr, 'Unsupported expression %s', expr.__class__.__name__)
 
 
@@ -608,7 +712,30 @@ def unpair(pair):
 """
 
 
+def resolve_labels(asm):
+  lines = asm.splitlines()
+  pc = 0
+  label_map = collections.OrderedDict()
+  ops = []
+  for i, line in enumerate(lines):
+    s = re.sub(r';.*', '', line).strip()
+    if s.endswith(':'):
+      label = s.strip(':')
+      label_map[label] = pc
+    elif s:
+      ops.append(s)
+      pc += 1
+  for i, op in enumerate(ops):
+    for label, pc in label_map.iteritems():
+      op = re.sub(r'\b%s\b' % label, str(pc), op)
+    ops[i] = op
+  return '\n'.join(ops)
+
+
 def main():
+  if len(sys.argv) < 2:
+    print >>sys.stderr, 'usage: alice.py input.py'
+    return
   with open(sys.argv[1]) as f:
     code = f.read()
   code += PRELUDE
@@ -624,6 +751,10 @@ def main():
       prefix = '%d:' % e.line
       print >>sys.stderr, prefix + line
       print >>sys.stderr, ' ' * (len(prefix) + e.column) + '^'
+    return
+  asm = ctx.output()
+  asm = resolve_labels(asm)
+  print asm
 
 
 if __name__ == '__main__':
