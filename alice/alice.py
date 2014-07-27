@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 import ast
+import collections
+import re
 import sys
 import traceback
 
@@ -29,6 +31,7 @@ class Context(object):
     self.vars = {}
     self.funcs = {}
     self.current_loop = None
+    self.lines = []
     self._seq = [0]
 
   def copy(self):
@@ -36,6 +39,7 @@ class Context(object):
     ctx.vars = self.vars.copy()
     ctx.funcs = self.funcs.copy()
     ctx.current_loop = self.current_loop
+    ctx.lines = self.lines
     ctx._seq = self._seq
     return ctx
 
@@ -48,7 +52,10 @@ class Context(object):
     s = tmpl % args
     if s and s[0].isupper():
       s = '  %s' % s
-    print s
+    self.lines.append(s)
+
+  def output(self):
+    return '\n'.join(self.lines)
 
 
 class Syntax(object):
@@ -694,6 +701,26 @@ def unpair(pair):
 """
 
 
+def resolve_labels(asm):
+  lines = asm.splitlines()
+  pc = 0
+  label_map = collections.OrderedDict()
+  ops = []
+  for i, line in enumerate(lines):
+    s = re.sub(r';.*', '', line).strip()
+    if s.endswith(':'):
+      label = s.strip(':')
+      label_map[label] = pc
+    elif s:
+      ops.append(s)
+      pc += 1
+  for i, op in enumerate(ops):
+    for label, pc in label_map.iteritems():
+      op = re.sub(r'\b%s\b' % label, str(pc), op)
+    ops[i] = op
+  return '\n'.join(ops)
+
+
 def main():
   if len(sys.argv) < 2:
     print >>sys.stderr, 'usage: alice.py input.py'
@@ -713,6 +740,9 @@ def main():
       prefix = '%d:' % e.line
       print >>sys.stderr, prefix + line
       print >>sys.stderr, ' ' * (len(prefix) + e.column) + '^'
+  asm = ctx.output()
+  asm = resolve_labels(asm)
+  print asm
 
 
 if __name__ == '__main__':
