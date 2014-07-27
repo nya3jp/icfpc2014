@@ -120,6 +120,7 @@ let rec eval_ginstruction env syscallback = function
        env.pc <- env.pc + 1
   | GInt n when 0 <= n && n <= 8 ->
      syscallback n env;
+     env.pc <- env.pc + 1
   | GInt _ ->
      failwith "Unknown syscall"
   | GHlt ->
