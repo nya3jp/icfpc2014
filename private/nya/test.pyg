@@ -1,0 +1,29 @@
+# -*- mode: python -*-
+
+def main(world, ghosts):
+  step(1, [1, [2, 28]])
+  return (0, step)
+
+@rank(1)
+def fact(n):
+  if n == 0:
+    return 1
+  return n * fact(n - 1)
+
+def step(_, world):
+  i = world[1][1]
+  v = (2, 3)
+  fact(3)
+  while i < 10:
+    f = fact(i)
+    if f < 10:
+      pass
+    elif f <= 100:
+      i += 2
+      continue
+    else:
+      break
+    i += 1
+  a, b = unpair(v)
+  c = [1, 2 + 3, fact]
+  return (v, i)
