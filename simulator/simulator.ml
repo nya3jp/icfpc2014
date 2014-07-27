@@ -289,11 +289,11 @@ let encode_fruit t tick =
   Lambdaman.value_of_int v
 ;;
 
-let encode_current_world t =
+let encode_current_world t tick =
   let field_encoded = encode_field t.field in
   let status_encoded = encode_status t in
   let status_ghost = encode_ghost t in
-  let status_fruit = encode_fruit t 0 in
+  let status_fruit = encode_fruit t tick in
   encode_as_tuple [field_encoded; status_encoded; status_ghost; status_fruit]
 ;;
 
@@ -308,6 +308,16 @@ let encode_ghost_programs t =
 ;;
 
 let run t =
-  (* First, run lambdaman and get *)
+  (* First, call lambdaman main. *)
+  let state = encode_current_world t 0
+  and ghosts = encode_ghost_programs t in
+  let stepfunc_and_states = Array.map (fun man ->
+    let machine = Lambdaman.make_initial_machine () in
+    Stack.push state machine.Lambdaman.s;
+    Stack.push ghosts machine.Lambdaman.s;
+    Lambdaman.eval machine
+  ) t.lambdamans in
+
+  (* Then, each next tick, call step and state. *)
   failwith "not implemented yet"
 ;;
