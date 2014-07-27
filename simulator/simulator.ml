@@ -6,6 +6,7 @@ exception Game_end
 
 let conf_fright_compatible_mode = true
 let conf_lambdaman_invalid_move_mode = true
+let show_useful_info = true
 
 module OrderedEventType = struct
   type t = int * int * int * int
@@ -360,7 +361,7 @@ let next_tick world =
       (* FIXME: move lambdaman *)
       begin
         try
-          let v = Lambdaman.eval_step lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
+          let v = Lambdaman.eval_step show_useful_info lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
           let (state, move) = match v with
             | VCons (state, move) -> (state, move)
             | _ -> failwith "Lambdaman's step function didn't return CONS cell."
@@ -450,7 +451,8 @@ let next_tick world =
           if g.Ghost.x = lambdaman.Lambdaman.x && g.Ghost.y = lambdaman.Lambdaman.y then match g.Ghost.vitality with
           | Ghost.Standard -> (* Eaten... *)
               Lambdaman.eaten lambdaman;
-              Array.iter Ghost.reset world.ghosts
+              if lambdaman.Lambdaman.lives > 0 then
+                Array.iter Ghost.reset world.ghosts
           | Ghost.FrightMode -> (* Eat ghost! *)
               Ghost.eaten g;
               lambdaman.Lambdaman.eat_count <- lambdaman.Lambdaman.eat_count + 1;
@@ -462,8 +464,10 @@ let next_tick world =
       if world.pill_count = 0 then
         raise Game_win;
       (* Step 6 *)
-      if lambdaman.Lambdaman.lives <= 0 then
-        raise Game_lose;
+      if lambdaman.Lambdaman.lives <= 0 then begin
+        print_debug world (tick+1);
+        raise Game_lose
+      end;
       schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | _ -> failwith "invalid event_id"
   end
