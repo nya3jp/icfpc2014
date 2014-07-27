@@ -531,6 +531,19 @@ class Cdr(Expr):
     ctx.emit('CDR')
 
 
+class Atom(Expr):
+  def __init__(self, operand):
+    self.operand = operand
+    Expr.__init__(self, [operand])
+
+  def rank(self, ctx):
+    return 1
+
+  def compile(self, ctx):
+    self.operand.compile(ctx)
+    ctx.emit('ATOM')
+
+
 class Pair(Expr):
   def __init__(self, car, cdr):
     self.car = car
@@ -711,6 +724,9 @@ def parse_expr(expr):
     if expr.func.id == 'cdr':
       compile_assert(len(expr.args) == 1, expr, 'wrong number of args to cdr')
       return Cdr(parse_expr(expr.args[0]))
+    if expr.func.id == 'atom':
+      compile_assert(len(expr.args) == 1, expr, 'wrong number of args to atom')
+      return Atom(parse_expr(expr.args[0]))
     return Call(expr.func.id, [parse_expr(arg) for arg in expr.args])
   if isinstance(expr, ast.Subscript):
     return Call('_builtin_index',
