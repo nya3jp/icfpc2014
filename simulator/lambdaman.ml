@@ -119,7 +119,7 @@ let alloc_dummy_frame n = {
 let rec string_of_value = function
   | VInt x -> Int32.to_string x
   | VCons(v1,v2) -> "(" ^ (string_of_value v1) ^ ", " ^ (string_of_value v2) ^ ")"
-  | VClosure(n,_) -> "{" ^ (string_of_int n) ^ " }" (* FIXME: should frame list displayed? *)
+  | VClosure(n,_) -> "Closure{" ^ (string_of_int n) ^ "}" (* FIXME: should frame list displayed? *)
 ;;
 
 let print_value v =
