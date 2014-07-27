@@ -77,6 +77,7 @@ type Pos = (Int, Int)
 
   return ()
 
+{-
 progn :: LMan ()
 progn = do
   libDef
@@ -85,9 +86,22 @@ progn = do
   stepDef
 
   expr $ cons (0 :: Expr Int) (Closure "step")
+-}
 
+progn :: LMan ()
+progn = do
+  libDef
 
-{-
+  cexpr $ do
+    debug $ lreverse $ list [1, 2, 3, 4, 5 :: Expr Int]
+    debugn 1234
+
+    cwith 123 $ \i -> do
+      debugn i
+      debugn $ i * 2
+      i ~= i * i
+      debugn i
+
   expr $ do
     with (enqueue 1 emptyQueue :: Expr (Queue Int)) $ \q1 ->
       with (enqueue 2 q1) $ \q2 ->
@@ -100,7 +114,6 @@ progn = do
         debug r4
         debug r5
         debug r6
--}
 
 main :: IO ()
 main = do
