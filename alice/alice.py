@@ -118,12 +118,13 @@ class Module(Syntax):
 
 
 class Function(Stmt):
-  def __init__(self, name, args, block, rank):
+  def __init__(self, name, args, block, rank, nolocals):
     Stmt.__init__(self, block.children)
     self.name = name
     self.args = args
     self.block = block
     self.rank = rank
+    self.nolocals = nolocals
     self.label = name
 
   def compile(self, ctx):
@@ -133,18 +134,27 @@ class Function(Stmt):
     locals -= set(self.args)
     locals = sorted(locals)
     assert not ctx.vars
-    # TODO: handle case where there is no locals
-    for i, local in enumerate(locals):
-      ctx.vars[local] = (0, i)
-    for i, arg in enumerate(self.args):
-      ctx.vars[arg] = (1, i)
+    if self.nolocals:
+      compile_assert(
+          not locals,
+          None,
+          'Function %s is marked @nolocals but has locals', self.name)
+    if locals:
+      for i, local in enumerate(locals):
+        ctx.vars[local] = (0, i)
+      for i, arg in enumerate(self.args):
+        ctx.vars[arg] = (1, i)
+    else:
+      for i, arg in enumerate(self.args):
+        ctx.vars[arg] = (0, i)
     ctx.emit('%s:', ctx.funcs[self.name].label)
-    for local in locals:
-      ctx.emit('LDC 0  ; %s', local)
-    ctx.emit('LDF %s_body', ctx.funcs[self.name].label)
-    ctx.emit('AP %d', len(locals))
-    ctx.emit('RTN')
-    ctx.emit('%s_body:', ctx.funcs[self.name].label)
+    if locals:
+      for local in locals:
+        ctx.emit('LDC 0  ; %s', local)
+      ctx.emit('LDF %s_body', ctx.funcs[self.name].label)
+      ctx.emit('AP %d', len(locals))
+      ctx.emit('RTN')
+      ctx.emit('%s_body:', ctx.funcs[self.name].label)
     self.block.compile(ctx)
     ctx.emit('RTN')
 
@@ -645,18 +655,21 @@ def parse_module(module):
 def parse_func(func):
   compile_assert(isinstance(func, ast.FunctionDef), func)
   rank = None
+  nolocals = False
   for deco in func.decorator_list:
     if isinstance(deco, ast.Call) and deco.func.id == 'rank':
       compile_assert(len(deco.args) == 1, deco, 'wrong number of args to @rank')
       compile_assert(isinstance(deco.args[0], ast.Num), deco, '@rank arg must be constant')
       rank = deco.args[0].n
+    elif isinstance(deco, ast.Name) and deco.id == 'nolocals':
+      nolocals = True
   compile_assert(not func.args.defaults, func)
   compile_assert(not func.args.kwarg, func)
   compile_assert(not func.args.vararg, func)
   return Function(func.name,
                   [arg.id for arg in func.args.args],
                   parse_block(func.body),
-                  rank)
+                  rank, nolocals)
 
 
 def parse_block(block):
