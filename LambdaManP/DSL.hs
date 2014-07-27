@@ -80,8 +80,8 @@ comp c =
      then unsafeCoerce $ foldr (\(Any f) e -> Seq f e) Nop es
      else unsafeCoerce $ foldr (\(Any f) e -> Seq f e) (unAny $ last es) $ init es
 
-cexpr :: CExpr a -> LMan ()
-cexpr = expr . comp
+emitComp :: CExpr a -> LMan ()
+emitComp = emitExpr . comp
 
 while :: Expr Int -> Expr a -> CExpr ()
 while cond body = e $ While cond body
@@ -450,8 +450,11 @@ with = With
 cwith :: Expr a -> (Expr a -> CExpr ())  -> CExpr ()
 cwith a b = e $ With a $ comp . b
 
-expr :: Expr a -> LMan ()
-expr e = compileExpr e >> st 0 0
+emitExpr :: Expr a -> LMan ()
+emitExpr e = compileExpr e >> st 0 0
+
+rtn :: Expr a -> LMan ()
+rtn e = compileExpr e
 
 e :: Expr a -> CExpr ()
 e x = tell [Any $ unsafeCoerce x]

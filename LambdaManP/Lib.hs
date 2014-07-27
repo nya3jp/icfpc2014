@@ -24,6 +24,9 @@ libDef = do
   pokeDef
   pokeGoDef
 
+  toMatDef
+  toMatsDef
+
 (&&&) :: Expr Int -> Expr Int -> Expr Int
 a &&& b = a * b
 
@@ -129,3 +132,19 @@ pokeGo :: Expr Int -> Expr Int -> Expr Int -> Expr a -> Expr (Node a) -> Expr (N
       ite (ix .< m)
       (gcons (pokeGo ix l m v (gcar node)) (gcdr node))
       (gcons (gcar node) (pokeGo ix m r v (gcdr node)))
+
+type Mat a = Array (Array a)
+
+peekMat :: Expr Int -> Expr Int -> Expr (Mat a) -> Expr a
+peekMat x y m = peek x $ peek y m
+
+pokeMat :: Expr Int -> Expr Int -> Expr a -> Expr (Mat a) -> Expr (Mat a)
+pokeMat x y v m = poke y (poke x v $ peek y m) m
+
+toMat :: Expr [[a]] -> Expr (Mat a)
+(toMat, toMatDef) = def1 "toMat" $ \mm -> mkArray $ toMats mm
+
+toMats :: Expr [[a]] -> Expr [Array a]
+(toMats, toMatsDef) = def1 "toMats" $ \rows ->
+  ite (isNull rows) lnull $
+  lcons (mkArray $ lhead rows) (toMats $ ltail rows)
