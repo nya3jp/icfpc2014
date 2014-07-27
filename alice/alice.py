@@ -261,7 +261,7 @@ class ForN(Stmt):
     self.block = block
 
   def gather_func_vars(self):
-    return [self.target]
+    return [self.target] + Stmt.gather_func_vars(self)
 
   def compile(self, ctx):
     last_loop = ctx.current_loop
