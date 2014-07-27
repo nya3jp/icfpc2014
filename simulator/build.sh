@@ -1,3 +1,7 @@
+#!/bin/sh
+
+set -eu
+
 ocamlbuild -tag use_str main.native
 mv main.native simulator
 ocamlbuild lambdaman_run.native
