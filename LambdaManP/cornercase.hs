@@ -46,6 +46,7 @@ type Pos = (Int, Int)
         
         d = ite (gY .== 1) 2 1
     in 
+        dbugn d `Seq`
         cons aist d
       
 progn :: LMan ()
