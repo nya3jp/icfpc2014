@@ -467,12 +467,12 @@ let run t =
     done;
   with
   | Game_win ->
-     Printf.printf "Game win\n";
+     Printf.printf "＿人人人人人＿\n＞ You won ＜\n￣Y^Y^Y^Y￣\n";
      Array.iter (fun lambdaman ->
        Printf.printf "%d\n" (lambdaman.score * (lambdaman.lives + 1))
      ) t.lambdamans
   | Game_lose ->
-     Printf.printf "Game lost\n";
+     Printf.printf "＿人人人人人＿\n＞ You lost ＜\n￣Y^Y^Y^Y￣\n";
      Array.iter (fun lambdaman ->
        Printf.printf "%d\n" lambdaman.score
      ) t.lambdamans
