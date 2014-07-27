@@ -18,8 +18,15 @@ main = do
     
 progn :: LMan ()
 progn = do
-  expr $ dbug $ tempty  
-    
+  tinsertDef
+  tinsertNDef
+  
+  expr $ dbug $ tinsert 3 30 $ tempty  
+  expr $ dbug $ tinsert 3 3333 $ tinsert 3 30 $ tempty      
+  expr $ dbug $ tinsert 13 1313 $ tinsert 3 30 $ tempty        
+  expr $ dbug $ tinsert 8 8888 $ tinsert 3 30 $ tempty          
+
+
 main2 :: IO ()
 main2 = do
-  writeFile "tree-test.gcc" $ compile progn
+  writeFile "test-tree.gcc" $ compile progn
