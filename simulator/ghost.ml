@@ -226,4 +226,11 @@ let move ghost movable d =
   else if movable.(int_of_direction d_reverse) then move0 ghost d_reverse
   else ()
 
- 
+let dump (t : t) =
+  print_endline ("PC: " ^ (string_of_int t.env.pc));
+  print_string "REG: ";
+  print_endline (String.concat " " (Array.to_list (Array.map (fun reg -> string_of_int reg) t.env.reg)));
+  print_string "DATA: ";
+  print_endline (String.concat " " (Array.to_list (Array.map (fun d -> string_of_int d) t.env.data)));
+;;
+
