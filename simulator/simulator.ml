@@ -273,7 +273,7 @@ let score_fruit field =
 open Lambdaman
 
 let rec encode_as_tuple = function
-  | [] -> failwith ""
+  | [] -> failwith "tuple has no element?"
   | x :: [] -> x
   | x :: xs -> VCons (x, encode_as_tuple xs)
 ;;
@@ -281,10 +281,6 @@ let rec encode_as_tuple = function
 let rec encode_as_list = function
   | [] -> value_of_int 0
   | x :: xs -> VCons (x, encode_as_list xs)
-;;
-
-let encode_as_list list =
-  encode_as_tuple list
 ;;
 
 let encode_field field =
