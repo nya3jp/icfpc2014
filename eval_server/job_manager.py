@@ -78,7 +78,7 @@ class GhostEvalJob(object):
 
   def run(self):
     with g_lock:
-      time.sleep(1)
+      time.sleep(0.25)
     print 'started', self.name, self.evalset
     script = os.path.join(FLAGS.remote_root, 'eval_server', 'ghost_evalsets', '%s.sh' % self.evalset)
     codepath = os.path.join(
