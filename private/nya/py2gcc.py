@@ -2,6 +2,25 @@
 
 import ast
 import sys
+import traceback
+
+
+class CompileError(Exception):
+  def __init__(self, msg, line, column):
+    Exception.__init__(self, msg)
+    self.line = line
+    self.column = column
+
+
+def compile_assert(cond, node, tmpl='UNDOCUMENTED ERROR', *args):
+  if not cond:
+    if node:
+      line = getattr(node, 'lineno', None)
+      column = getattr(node, 'col_offset', None)
+    else:
+      line, column = None, None
+    msg = tmpl % args
+    raise CompileError('[line %s, column %s] %s' % (line, column, msg), line, column)
 
 
 class Context(object):
@@ -67,12 +86,19 @@ class Module(Syntax):
 
   def compile(self, ctx):
     ctx = ctx.copy()
-    assert self.funcs[0].name == 'main', 'First function must be named as "main"'
+    compile_assert(
+        self.funcs[0].name == 'main',
+        None,
+        'First function must be named as "main"')
     ctx.funcs = dict((func.name, func) for func in self.funcs)
     for func in self.funcs:
       if func.rank is None:
         ranks = sorted(set(func.gather_func_ranks(ctx)))
-        assert len(ranks) <= 1, 'A function has multiple candidate ranks: %s' % (', '.join(str(rank) for rank in ranks))
+        compile_assert(
+            len(ranks) <= 1,
+            None,
+            'A function has multiple candidate ranks: %s',
+            ', '.join(str(rank) for rank in ranks))
         func.rank = ranks[0] if ranks else 0
     for func in self.funcs:
       func.compile(ctx)
@@ -106,6 +132,7 @@ class Function(Stmt):
     ctx.emit('RTN')
     ctx.emit('%s_body:', ctx.funcs[self.name].label)
     self.block.compile(ctx)
+    ctx.emit('RTN')
 
 
 class If(Stmt):
@@ -182,16 +209,63 @@ class While(Stmt):
   def compile(self, ctx):
     last_loop = ctx.current_loop
     label = ctx.make_label()
-    loop = {'begin': '%s_begin' % label,
+    loop = {'cond': '%s_cond' % label,
             'body': '%s_body' % label,
-            'end': '%s_end' % label}
+            'exit': '%s_exit' % label}
     ctx.current_loop = loop
-    ctx.emit('%s:', loop['begin'])
+    ctx.emit('%s:', loop['cond'])
     self.test.compile(ctx)
-    ctx.emit('TSEL %s %s', loop['body'], loop['end'])
+    ctx.emit('TSEL %s %s', loop['body'], loop['exit'])
     ctx.emit('%s:', loop['body'])
     self.block.compile(ctx)
-    ctx.emit('%s:', loop['end'])
+    ctx.emit('%s:', loop['exit'])
+    ctx.current_loop = last_loop
+
+
+class ForN(Stmt):
+  def __init__(self, target, begin, end, step, block):
+    Stmt.__init__(self, block.children)
+    self.target = target
+    self.begin = begin
+    self.end = end
+    self.step = step
+    self.block = block
+
+  def gather_func_vars(self):
+    return [self.target]
+
+  def compile(self, ctx):
+    last_loop = ctx.current_loop
+    label = ctx.make_label()
+    loop = {'cond': '%s_cond' % label,
+            'next': '%s_next' % label,
+            'body': '%s_body' % label,
+            'exit': '%s_exit' % label}
+    ctx.current_loop = loop
+    self.begin.compile(ctx)
+    a, b = ctx.vars[self.target]
+
+    ctx.emit('ST %d %d  ; %s', a, b, self.target)
+
+    ctx.emit('%s:', loop['body'])
+    self.block.compile(ctx)
+
+    ctx.emit('%s:', loop['cond'])
+    self.end.compile(ctx)
+    ctx.emit('LD %d %d  ; %s', a, b, self.target)
+    ctx.emit('CGT')
+    ctx.emit('TSEL %s %s', loop['next'], loop['exit'])
+
+    ctx.emit('%s:', loop['next'])
+    ctx.emit('LD %d %d  ; %s', a, b, self.target)
+    self.step.compile(ctx)
+    ctx.emit('ADD')
+    ctx.emit('ST %d %d  ; %s', a, b, self.target)
+    ctx.emit('LDC 283283283')
+    ctx.emit('TSEL %s %s', loop['body'], loop['body'])
+
+    ctx.emit('%s:', loop['exit'])
+
     ctx.current_loop = last_loop
 
 
@@ -200,9 +274,9 @@ class Continue(Stmt):
     Stmt.__init__(self, [])
 
   def compile(self, ctx):
-    assert ctx.current_loop, 'continue outside loop'
+    compile_assert(ctx.current_loop, None, 'continue outside loop')
     ctx.emit('LDC 283283283')
-    ctx.emit('TSEL %s %s', ctx.current_loop['begin'], ctx.current_loop['begin'])
+    ctx.emit('TSEL %s %s', ctx.current_loop['cond'], ctx.current_loop['cond'])
 
 
 class Break(Stmt):
@@ -210,9 +284,22 @@ class Break(Stmt):
     Stmt.__init__(self, [])
 
   def compile(self, ctx):
-    assert ctx.current_loop, 'break outside loop'
+    compile_assert(ctx.current_loop, None, 'break outside loop')
     ctx.emit('LDC 283283283')
-    ctx.emit('TSEL %s %s', ctx.current_loop['end'], ctx.current_loop['end'])
+    ctx.emit('TSEL %s %s', ctx.current_loop['exit'], ctx.current_loop['exit'])
+
+
+class Print(Stmt):
+  def __init__(self, values):
+    Stmt.__init__(self, [])
+    self.values = values
+
+  def compile(self, ctx):
+    for i, value in enumerate(self.values):
+      value.compile(ctx)
+      if i > 0:
+        ctx.emit('CONS')
+    ctx.emit('DBUG')
 
 
 class Pass(Stmt):
@@ -237,7 +324,7 @@ class BinOp(Expr):
   def rank(self, ctx):
     left_rank = self.left.rank(ctx)
     right_rank = self.right.rank(ctx)
-    assert left_rank == right_rank
+    compile_assert(left_rank == right_rank, None)
     return left_rank
 
   def compile(self, ctx):
@@ -280,9 +367,12 @@ class Call(Expr):
     self.args = args
 
   def rank(self, ctx):
-    assert ctx.funcs[self.func].rank is not None, (
-      ('Could not determine function rank for %s. '
-       'Please annotate it with @rank(n).') % self.func)
+    compile_assert(
+        ctx.funcs[self.func].rank is not None,
+        None,
+        'Could not determine function rank for %s. '
+        'Please annotate it with @rank(n).',
+        self.func)
     return ctx.funcs[self.func].rank
 
   def compile(self, ctx):
@@ -383,21 +473,21 @@ class Assembly(Expr):
 
 
 def parse_module(module):
-  assert isinstance(module, ast.Module)
+  compile_assert(isinstance(module, ast.Module), module)
   return Module([parse_func(func) for func in module.body])
 
 
 def parse_func(func):
-  assert isinstance(func, ast.FunctionDef)
+  compile_assert(isinstance(func, ast.FunctionDef), func)
   rank = None
   for deco in func.decorator_list:
     if isinstance(deco, ast.Call) and deco.func.id == 'rank':
-      assert len(deco.args) == 1
-      assert isinstance(deco.args[0], ast.Num)
+      compile_assert(len(deco.args) == 1, deco, 'wrong number of args to @rank')
+      compile_assert(isinstance(deco.args[0], ast.Num), deco, '@rank arg must be constant')
       rank = deco.args[0].n
-  assert not func.args.defaults
-  assert not func.args.kwarg
-  assert not func.args.vararg
+  compile_assert(not func.args.defaults, func)
+  compile_assert(not func.args.kwarg, func)
+  compile_assert(not func.args.vararg, func)
   return Function(func.name,
                   [arg.id for arg in func.args.args],
                   parse_block(func.body),
@@ -409,7 +499,7 @@ def parse_block(block):
 
 
 def parse_stmt(stmt):
-  assert isinstance(stmt, ast.stmt)
+  compile_assert(isinstance(stmt, ast.stmt), stmt)
   if isinstance(stmt, ast.If):
     return If(parse_expr(stmt.test),
               parse_block(stmt.body),
@@ -421,14 +511,14 @@ def parse_stmt(stmt):
       return Return([parse_expr(el) for el in stmt.value.elts])
     return Return([parse_expr(stmt.value)])
   if isinstance(stmt, ast.Assign):
-    assert len(stmt.targets) == 1
+    compile_assert(len(stmt.targets) == 1, stmt)
     names = []
     if isinstance(stmt.targets[0], ast.Tuple):
       for el in stmt.targets[0].elts:
-        assert isinstance(el, ast.Name)
+        compile_assert(isinstance(el, ast.Name), stmt)
         names.append(el.id)
     else:
-      assert isinstance(stmt.targets[0], ast.Name)
+      compile_assert(isinstance(stmt.targets[0], ast.Name), stmt)
       names.append(stmt.targets[0].id)
     return Assign(names, parse_expr(stmt.value))
   if isinstance(stmt, ast.AugAssign):
@@ -437,43 +527,59 @@ def parse_stmt(stmt):
   if isinstance(stmt, ast.Expr):
     return Discard(parse_expr(stmt.value))
   if isinstance(stmt, ast.While):
-    assert not stmt.orelse
+    compile_assert(not stmt.orelse, stmt, 'while-else clause not supported')
     return While(parse_expr(stmt.test), parse_block(stmt.body))
   if isinstance(stmt, ast.Continue):
     return Continue()
   if isinstance(stmt, ast.Break):
     return Break()
+  if isinstance(stmt, ast.For):
+    compile_assert(not stmt.orelse, stmt, 'for-else clause not supported')
+    # for i in xrange(...):
+    if isinstance(stmt.iter, ast.Call) and stmt.iter.func.id in ('range', 'xrange'):
+      args = [parse_expr(arg) for arg in stmt.iter.args]
+      compile_assert(len(args) in (1, 2, 3), stmt, 'unsupported range args')
+      if len(args) == 1:
+        args = [Num(0), args[0], Num(1)]
+      if len(args) == 2:
+        args = [args[0], args[1], Num(1)]
+      return ForN(stmt.target.id, args[0], args[1], args[2],
+                  parse_block(stmt.body))
+    compile_assert(False, stmt, 'Unsupported form of for statement')
+  if isinstance(stmt, ast.Print):
+    compile_assert(not stmt.dest, stmt, 'print destination not supported')
+    return Print([parse_expr(value) for value in stmt.values])
   if isinstance(stmt, ast.Pass):
     return Pass()
-  raise NotImplementedError(stmt)
+  compile_assert(False, stmt, 'Unsupported statement %s', stmt.__class__.__name__)
 
 
 def parse_expr(expr):
-  assert isinstance(expr, ast.expr)
+  compile_assert(isinstance(expr, ast.expr), expr)
   if isinstance(expr, ast.BinOp):
     inst = BinOp.op_to_inst(expr.op)
     return BinOp(inst, parse_expr(expr.left), parse_expr(expr.right))
   if isinstance(expr, ast.Compare):
-    assert len(expr.ops) == 1
-    assert len(expr.comparators) == 1
+    compile_assert(len(expr.ops) == 1, expr, 'multiple comparison not supported')
+    compile_assert(len(expr.comparators) == 1, expr, 'multiple comparison not supported')
     inst = BinOp.op_to_inst(expr.ops[0])
     return BinOp(inst, parse_expr(expr.left), parse_expr(expr.comparators[0]))
   if isinstance(expr, ast.Call):
-    assert not expr.keywords
-    assert not expr.kwargs
-    assert not expr.starargs
+    compile_assert(not expr.keywords, expr, 'keywords not supported')
+    compile_assert(not expr.kwargs, expr, 'keyword args not supported')
+    compile_assert(not expr.starargs, expr, 'star args not supported')
     if expr.func.id == 'car':
-      assert len(expr.args) == 1
+      compile_assert(len(expr.args) == 1, expr, 'wrong number of args to car')
       return Car(parse_expr(expr.args[0]))
     if expr.func.id == 'cdr':
-      assert len(expr.args) == 1
+      compile_assert(len(expr.args) == 1, expr, 'wrong number of args to cdr')
       return Cdr(parse_expr(expr.args[0]))
     return Call(expr.func.id, [parse_expr(arg) for arg in expr.args])
   if isinstance(expr, ast.Subscript):
     return Call('_builtin_index',
                 [parse_expr(expr.value), parse_expr(expr.slice.value)])
   if isinstance(expr, ast.Tuple):
-    assert len(expr.elts) == 2, 'Only 2-tuples are allowed'
+    compile_assert(len(expr.elts) == 2, expr, 'Only 2-tuples are allowed')
     return Pair(parse_expr(expr.elts[0]), parse_expr(expr.elts[1]))
   if isinstance(expr, ast.List):
     return List([parse_expr(el) for el in expr.elts])
@@ -483,7 +589,7 @@ def parse_expr(expr):
     return Num(expr.n)
   if isinstance(expr, ast.Str):
     return Assembly(expr.s)
-  raise NotImplementedError(expr)
+  compile_assert(False, expr, 'Unsupported expression %s', expr.__class__.__name__)
 
 
 PRELUDE = """
@@ -507,8 +613,17 @@ def main():
     code = f.read()
   code += PRELUDE
   root = ast.parse(code)
-  module = parse_module(root)
-  module.compile(Context())
+  ctx = Context()
+  try:
+    module = parse_module(root)
+    module.compile(ctx)
+  except CompileError as e:
+    traceback.print_exc()
+    if e.line is not None:
+      line = code.splitlines()[e.line - 1]
+      prefix = '%d:' % e.line
+      print >>sys.stderr, prefix + line
+      print >>sys.stderr, ' ' * (len(prefix) + e.column) + '^'
 
 
 if __name__ == '__main__':
