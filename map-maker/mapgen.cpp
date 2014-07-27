@@ -187,17 +187,26 @@ void genMat() {
       if(theMat[y][x]==' ' && drand() < ppDensity) theMat[y][x] = '.';
     }
   }
-  for(int i =0;i<numGhost;++i) {
-    matAt(vprand())='=';
-  }
   matAt(vprand())='%';
   pt lmPos = vprand();
   matAt(lmPos)='\\';
+  for(int i =0;i<numGhost;++i) {
+    int thre=100;
+    pt gPos;
+    for(;;){
+      gPos = vprand();
+      if (norm(gPos-lmPos) < thre){
+	--thre;
+	continue;
+      }else{break;}
+    }
+    matAt(gPos)='=';
+
+  }
+
 
   for(int i =0;i<numPP;++i) {
-    pt gPos = vprand();
-    if (norm(gPos-lmPos) < 100) continue;
-    matAt(gPos)='o';
+    matAt(vprand())='o';
   }
 
 
