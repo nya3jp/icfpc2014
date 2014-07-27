@@ -1,5 +1,5 @@
 let parse_ghosts ghosts =
-  let list = Str.split (Str.regexp ",") ghosts in
+  let list = [ghosts] in
   Array.of_list list
 ;;
 

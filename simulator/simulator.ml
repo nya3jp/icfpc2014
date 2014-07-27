@@ -1,8 +1,8 @@
 open Util
 
-exception Game_win
-exception Game_lose
-exception Game_end
+exception Game_win of int
+exception Game_lose of int
+exception Game_end of int
 
 let conf_fright_compatible_mode = true
 let conf_lambdaman_invalid_move_mode = true
@@ -172,7 +172,13 @@ let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
     | 7 ->
        let x = env.Ghost.reg.(0)
        and y = env.Ghost.reg.(1) in
-       env.Ghost.reg.(0) <- Field.int_of_cell (Field.get t.field ~y ~x)
+       begin try
+         let cell = Field.get t.field ~y ~x in
+         let cell = if cell = Field.CFruitLocation && not t.fruit_exists then Field.CEmpty else cell in
+         env.Ghost.reg.(0) <- Field.int_of_cell cell
+       with _ -> 
+         env.Ghost.reg.(0) <- 0
+       end
     | 8 ->
        Printf.printf "; trace ghost%d: %d %d %d %d %d %d %d %d %d\n"
          ghost.Ghost.index
@@ -360,7 +366,7 @@ let next_tick world =
       world.fruit_exists <- false;
       schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x = eEOL ->
-      raise Game_end
+      raise (Game_end tick)
   | x when x = eLambdamanMove ->
       let lambdaman = world.lambdamans.(event_arg) in
       (* FIXME: run program *)
@@ -467,12 +473,12 @@ let next_tick world =
         )
         world.ghosts;
       (* Step 5 *)
-      if world.pill_count = 0 then
-        raise Game_win;
+      if world.pill_count = 0 then begin
+        raise (Game_win (tick+1));
+      end;
       (* Step 6 *)
       if lambdaman.Lambdaman.lives <= 0 then begin
-        print_debug world (tick+1);
-        raise Game_lose
+        raise (Game_lose (tick+1));
       end;
       schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | _ -> failwith "invalid event_id"
@@ -497,17 +503,23 @@ let run t =
       next_tick t
     done;
   with
-  | Game_win ->
+  | Game_win(tick) ->
+     Array.iter (fun lambdaman ->
+       lambdaman.score <- lambdaman.score * (lambdaman.lives + 1)
+     ) t.lambdamans;
+     print_debug t tick;
      Printf.printf "＿人人人人人＿\n＞ You won ＜\n￣Y^Y^Y^Y￣\n";
      Array.iter (fun lambdaman ->
-       Printf.printf "%d\n" (lambdaman.score * (lambdaman.lives + 1))
-     ) t.lambdamans
-  | Game_lose ->
+       Printf.printf "%d\n" lambdaman.score
+     ) t.lambdamans;
+  | Game_lose(tick) ->
+     print_debug t tick;
      Printf.printf "＿人人人人人＿\n＞ You lost ＜\n￣Y^Y^Y^Y￣\n";
      Array.iter (fun lambdaman ->
        Printf.printf "%d\n" lambdaman.score
      ) t.lambdamans
-  | Game_end ->
+  | Game_end(tick) ->
+     print_debug t tick;
      Printf.printf "Game end\n";
      Array.iter (fun lambdaman ->
        Printf.printf "%d\n" lambdaman.score
