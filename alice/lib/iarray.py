@@ -6,6 +6,7 @@ def make_array(n, value):
     width *= 2
   return (depth, _make_tree(depth, value))
 
+@nolocals
 def _make_tree(depth, value):
   if depth == 0:
     return value
@@ -41,6 +42,7 @@ def set_array(array, index, value):
     left_size = 0
   return (depth, _set_tree_impl(tree, index, value, left_size))
 
+@nolocals
 def _set_tree_impl(tree, index, value, left_size):
   if left_size == 0:
     return value
