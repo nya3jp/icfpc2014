@@ -6,3 +6,5 @@ DIV E, 4
 AND E, 3
 MOV A, E
 INT 0
+HLT
+

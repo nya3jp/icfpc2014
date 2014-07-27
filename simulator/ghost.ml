@@ -27,8 +27,8 @@ type ginstruction =
   | GHlt
 
 type genv = {
-  mutable reg : int array;
-  mutable pc  : int;
+  mutable reg: int array;
+  mutable pc: int;
   mutable data: int array;
   mutable newDir: int;
 }
@@ -55,13 +55,17 @@ let eval_gvalue env = function
 let rec eval_ginstruction env syscallback = function
   | GMov (x1, x2) ->
      let v2 = eval_gvalue env x2 in
-     set_gvalue env x1 v2
+     set_gvalue env x1 v2;
+     if x1 <> GVPCReg then
+       env.pc <- env.pc + 1;
   | GInc x ->
      let vx = eval_gvalue env x in
-     set_gvalue env x ((vx + 1) land 0xFF)
+     set_gvalue env x ((vx + 1) land 0xFF);
+     env.pc <- env.pc + 1;
   | GDec x ->
      let vx = eval_gvalue env x in
-     set_gvalue env x ((vx - 1) land 0xFF)
+     set_gvalue env x ((vx - 1) land 0xFF);
+     env.pc <- env.pc + 1;
   | GAdd (x, y) ->
      let vx = eval_gvalue env x
      and vy = eval_gvalue env y in
@@ -120,6 +124,7 @@ let rec eval_ginstruction env syscallback = function
        env.pc <- env.pc + 1
   | GInt n when 0 <= n && n <= 8 ->
      syscallback n env;
+     env.pc <- env.pc + 1
   | GInt _ ->
      failwith "Unknown syscall"
   | GHlt ->
@@ -191,10 +196,13 @@ let eval t syscallback =
   begin
     try
       for i = 0 to 1023 do
+        if t.env.pc < 0 || (Array.length t.program) <  t.env.pc then
+          failwith ("program count is out of bound: " ^ (string_of_int t.env.pc));
         eval_ginstruction t.env syscallback t.program.(t.env.pc)
       done;
     with
     | Halt_exception -> ()
+    | x -> Printf.printf "Unexpected exception for ghost: %s\n" (Printexc.to_string x)
   end;
   t.env.newDir
 ;;
