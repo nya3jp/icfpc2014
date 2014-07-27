@@ -436,9 +436,17 @@ let eaten lambdaman =
 let get_vitality lambdaman tick = max 0 (lambdaman.vitality_absolute - tick)
 
 let move lambdaman d =
+  let revert = (lambdaman.d, lambdaman.x, lambdaman.y) in
   lambdaman.d <- d;
-  match d with
+  begin match d with
   | Up -> lambdaman.y <- lambdaman.y - 1
   | Down -> lambdaman.y <- lambdaman.y + 1
   | Left -> lambdaman.x <- lambdaman.x - 1
   | Right -> lambdaman.x <- lambdaman.x + 1
+  end;
+  revert
+
+let revert_move lambdaman (d,x,y) =
+  lambdaman.d <- d;
+  lambdaman.x <- x;
+  lambdaman.y <- y

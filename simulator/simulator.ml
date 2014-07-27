@@ -1,6 +1,7 @@
 open Util
 
 exception Game_end of string
+let conf_fright_compatible_mode = true
 
 module OrderedEventType = struct
   type t = int * int * int * int
@@ -356,15 +357,17 @@ let next_tick world =
   | x when x = eLambdamanMoveCommit ->
       let lambdaman = world.lambdamans.(event_arg) in
       let move = event_arg2 in
-      Lambdaman.move lambdaman (direction_of_int move);
+      let revert = Lambdaman.move lambdaman (direction_of_int move) in
       let is_eating = begin match world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) with
-      | Field.CWall -> failwith "kabenonakaniiru" (* FIXME: should be stop moving *)
+      | Field.CWall -> Lambdaman.revert_move lambdaman revert; false (* FIXME: should be stop moving *)
       | Field.CPill | Field.CPowerPill -> true
       | Field.CFruitLocation -> world.fruit_exists
       | _ -> false
       end in
       schedule_tick world (tick, eLambdamanPostprocess, event_arg, 0);
-      schedule_tick world ((tick + tick_move_lambdaman is_eating), eLambdamanMove, event_arg, 0)
+      schedule_tick world ((tick + tick_move_lambdaman is_eating), eLambdamanMove, event_arg, 0);
+      if conf_fright_compatible_mode then
+        schedule_tick world (tick, eFrightDeactivate, 0, 0);
   | x when x = eGhostMove ->
       let ghost = world.ghosts.(event_arg) in
       (* FIXME: run program *)
@@ -380,10 +383,12 @@ let next_tick world =
       let movable_right = world.field.(ghost.Ghost.y  ).(ghost.Ghost.x+1) <> Field.CWall in
       Ghost.move ghost [|movable_up; movable_right; movable_down; movable_left|] v;
       schedule_tick world (tick, eLambdamanPostprocess, 0, 0); (* FIXME *)
-      schedule_tick world ((tick + tick_move_ghost ghost), eGhostMove, event_arg, 0)
+      schedule_tick world ((tick + tick_move_ghost ghost), eGhostMove, event_arg, 0);
+      if conf_fright_compatible_mode then
+        schedule_tick world (tick, eFrightDeactivate, 0, 0);
   | x when x = eFrightDeactivate ->
       let lambdaman = world.lambdamans.(event_arg) in
-      if tick = lambdaman.Lambdaman.vitality_absolute then begin
+      if tick >= lambdaman.Lambdaman.vitality_absolute then begin
         Array.iter
           (fun g -> g.Ghost.vitality <- Ghost.Standard)
           world.ghosts
@@ -408,7 +413,8 @@ let next_tick world =
               g.Ghost.d <- reverse_direction g.Ghost.d (* FIXME: correct? *)
             )
             world.ghosts;
-          schedule_tick world (tick + tick_dur_fright, eFrightDeactivate, event_arg, 0);
+          if not conf_fright_compatible_mode then
+            schedule_tick world (tick + tick_dur_fright, eFrightDeactivate, event_arg, 0);
           world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) <- Field.CEmpty
       | Field.CFruitLocation ->
           if world.fruit_exists then begin
