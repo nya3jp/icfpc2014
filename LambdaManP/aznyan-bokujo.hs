@@ -357,10 +357,10 @@ performTest tc0 = do
          "damp" ,show dampingParam, 
          "denp", show $ charFraction '.' mapContent1,
          "denP", show $ charFraction 'o' mapContent1,
-         "denG", show $ charFraction '=' mapContent1 
+         "denG", show $ charFraction '=' mapContent1,
+	  "# " ++ toCmdlineString tc1 
           ] 
-      msg1 = toCmdlineString tc1
-      msg = unlines [msg0,msg1]
+      msg = unlines [msg0]
   writeFile statFn1 $ msg
   return $ ret
 
