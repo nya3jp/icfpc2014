@@ -1,4 +1,4 @@
 while true
 do
-    time runhaskell -iLambdaManP/ ./LambdaManP/aznyan-bokujo.hs
+    time  ./LambdaManP/dist/build/aznyan-bokujo/aznyan-bokujo
 done;
