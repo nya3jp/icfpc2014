@@ -42,7 +42,7 @@ def flatten_results(entries):
     results_map = {}
     for result in entry['results']:
       results_map[result['evalset']] = result
-    entry['results'] = [results_map.get(result['evalset']) for result in entry['results']]
+    entry['results'] = [results_map.get(evalset) for evalset in evalsets]
   return evalsets
 
 
