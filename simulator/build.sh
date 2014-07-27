@@ -1,4 +1,4 @@
 ocamlbuild main.native
 mv main.native simulator
-ocamlbuild lambdaman_executor.native
-mv lambdaman_executor.native lambdaman_executor
+ocamlbuild lambdaman_run.native
+mv lambdaman_run.native lambdaman_run

@@ -68,12 +68,17 @@ data Expr a where
 
 data Any = Any (forall a. Expr a)
 
+unAny :: Any -> a
+unAny (Any v) = unsafeCoerce v
+
 type CExpr = Writer [Any]
 
 comp :: CExpr a -> Expr b
 comp c =
   let es = execWriter c
-  in unsafeCoerce $ foldr (\(Any f) e -> Seq f e) Nop es
+  in if null es
+     then unsafeCoerce $ foldr (\(Any f) e -> Seq f e) Nop es
+     else unsafeCoerce $ foldr (\(Any f) e -> Seq f e) (unAny $ last es) $ init es
 
 cexpr :: CExpr a -> LMan ()
 cexpr = expr . comp
@@ -360,7 +365,8 @@ compile' = map f.  codeGen . (>> footer) where
 -----
 
 def' fname call = do
-  fun <- newLabel
+  -- fun <- newLabel
+  let fun = Label fname
   end <- newLabel
   addFunc fname fun
 
@@ -452,3 +458,22 @@ e x = tell [Any $ unsafeCoerce x]
 
 -- ret :: Expr a -> CExpr a
 -- ret x = tell [Any $ unsafeCoerce x]
+
+gcons :: Expr a -> Expr b -> Expr c
+gcons = unsafeCoerce cons
+
+gcar :: Expr a -> Expr b
+gcar = unsafeCoerce car
+
+gcdr :: Expr a -> Expr b
+gcdr = unsafeCoerce cdr
+
+cast :: Expr a -> Expr b
+cast = unsafeCoerce
+
+for :: Expr Int -> Expr Int -> (Expr Int -> CExpr ()) -> CExpr ()
+for f t body =
+  cwith f $ \i -> do
+    while (i .< t) $ comp $ do
+      body i
+      i ~= i + 1
