@@ -18,7 +18,6 @@ import Text.Printf
 import Desugar
 import DSL
 import Lib
-import Tree
 import System.Process
 
 sotaMode :: Bool

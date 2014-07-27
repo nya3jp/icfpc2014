@@ -798,6 +798,13 @@ def _builtin_index(array, index):
 @rank(2)
 def unpair(pair):
   return car(pair), cdr(pair)
+
+@rank(1)
+def len(list):
+  n = 0
+  for _ in list:
+    n += 1
+  return n
 """
 
 
