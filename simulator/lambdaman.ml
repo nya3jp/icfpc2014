@@ -64,15 +64,18 @@ let make_initial_machine () = {
 
 let check_int = function
   | VInt x -> x
-  | _ -> failwith "tag mismatch for int"
+  | VCons _ -> failwith "tag mismatch for int (cons came)"
+  | VClosure _ -> failwith "tag mismatch for int (closure came)"
 
 let check_cons = function
+  | VInt _ -> failwith "tag mismatch for cons (int came)"
   | VCons (x, y) -> (x, y)
-  | _ -> failwith "tag mismatch for cons"
+  | VClosure _ -> failwith "tag mismatch for cons (closure came)"
 
 let check_closure = function
+  | VInt _ -> failwith "tag mismatch for closure (int came)"
+  | VCons _ -> failwith "tag mismatch for closure (cons came)"
   | VClosure (x, y) -> (x, y)
-  | _ -> failwith "tag mismatch for closure"
 
 let is_closure = function
   | VClosure _ -> true
@@ -131,7 +134,7 @@ let print_value v =
 let rec get_nth_env_frame n = function
   | [] -> failwith "no environment ?"
   | e :: es ->
-     if n == 0 then e
+     if n = 0 then e
      else get_nth_env_frame (n - 1) es
 ;;
 
@@ -168,7 +171,7 @@ let rec eval_instruction machine = function
      eval_primitive machine Int32.div
   | LCeq ->
      eval_primitive machine (fun x y ->
-       Int32.of_int (if x == y then 1 else 0)
+       Int32.of_int (if x = y then 1 else 0)
      )
   | LCgt ->
      eval_primitive machine (fun x y ->
@@ -240,7 +243,7 @@ let rec eval_instruction machine = function
      machine.c <- if x = Int32.zero then f else t
   | LTap n ->
      let (f, e) = check_closure(Stack.pop machine.s) in
-     let fp = (alloc_frame n) :: machine.e in
+     let fp = (alloc_frame n) :: e in
      let i = ref (n - 1) in
      while !i <> -1 do
        let y = Stack.pop machine.s in
@@ -322,6 +325,7 @@ let eval_step program closure args =
 
   try
     while true do
+      print_endline (string_of_int machine.c);
       let inst = program.(machine.c) in
       eval_instruction machine inst
     done;

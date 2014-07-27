@@ -314,6 +314,10 @@ let run t =
   (* checking step func is callable. *)
   let (VCons (state, stepFun)) = v.(0) in
   print_value stepFun;
+  let _ =
+    let VClosure (n, fp) = stepFun in
+    print_endline ("CLOSURE: " ^ (string_of_int (List.length fp)));
+  in
   let v = eval_step t.lambdamans.(0).program stepFun [state; encode_current_world t 1] in
   print_value v;
 
