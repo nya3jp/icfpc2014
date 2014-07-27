@@ -49,5 +49,5 @@ let biga  = ['A' - 'Z']
 rule token = parse
     ws+ { token lexbuf }
   | (alpha | biga)+ { token_of_string (Lexing.lexeme lexbuf) }
-  | digit+ { INTEGER (int_of_string (Lexing.lexeme lexbuf)) }
+  | '-'? digit+ { INTEGER (Int32.of_string (Lexing.lexeme lexbuf)) }
   | _ { failwith ("Unknown Token " ^ Lexing.lexeme lexbuf) }
