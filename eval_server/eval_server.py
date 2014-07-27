@@ -42,7 +42,7 @@ def flatten_results(entries):
     results_map = {}
     for result in entry['results']:
       results_map[result['evalset']] = result
-    entry['results'] = [results_map.get(result['evalset']) for result in entry['results']]
+    entry['results'] = [results_map.get(evalset) for evalset in evalsets]
   return evalsets
 
 
@@ -70,7 +70,7 @@ def submit_handler():
   code = bottle.request.files['code'].file.read()
   assert re.search(r'^[a-zA-z0-9_-]+$', user)
   now = datetime.datetime.now()
-  name = '%s-%s' % (now.strftime('%Y%m%d%H%M%S'), user)
+  name = '%s-%s' % (now.strftime('%Y%m%d-%H%M%S-%f'), user)
   data = {
       'name': name,
       'title': now.strftime('%Y-%m-%d %H:%M:%S') + ' by ' + user,
