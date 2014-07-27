@@ -354,7 +354,7 @@ let eval_main program args =
   Stack.push AStop machine.d;
   machine.e <- frame :: machine.e;
   try
-    let maxSteps = 307200 * 60 in
+    let maxSteps = 3072000 * 60 in
     let i = ref 0 in
     while !i < maxSteps do
       let inst = program.(machine.c) in
@@ -388,7 +388,7 @@ let eval_step show_useful_info program closure args =
 
   let i = ref 0 in
   try
-    let maxSteps = 307200 in
+    let maxSteps = 3072000 in
     while !i < maxSteps do
       let inst = program.(machine.c) in
       eval_instruction machine inst;
