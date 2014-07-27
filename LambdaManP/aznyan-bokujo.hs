@@ -255,8 +255,8 @@ ppTestConf tc = (show $ scoreResult tc) ++"\t" ++ toCmdlineString tc
 
 mkTestConfs :: String -> [TestConf]
 mkTestConfs gccfn = do -- List Monad
---  mapOpt <- ["map/train-1.map", "map/train-2.map", "map/train-3.map"]
-  mapOpt <- ["map/kichiku.map"]
+  mapOpt <- ["map/train-1.map", "map/train-2.map", "map/train-3.map"]
+--  mapOpt <- ["map/kichiku.map"]
   gOpt <-
     [ ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
     , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
@@ -310,8 +310,7 @@ performTest :: TestConf -> IO TestConf
 performTest tc0 = do
   indexR <- randomRIO (0,2^30::Int)
   let mapFn0 = mapFile tc0
-      (fnB, _)  = splitExtension mapFn0
-      mapFn1 = printf "%s-%010d.map" fnB indexR
+      mapFn1 = printf "%s-%010d.map" fnLM indexR
       (fnLM, _)  = splitExtension (lambdaManFile tc0)
       statFn1 = printf "%s-%010d.stat" fnLM indexR      
       tc1 = tc0 {mapFile = mapFn1}

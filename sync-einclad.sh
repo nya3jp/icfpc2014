@@ -1,1 +1,1 @@
-rsync -avz LambdaMan/gen/ nushio@einclad.coders.jp:gen/
+rsync -avz LambdaMan/gen2/ nushio@einclad.coders.jp:gen2/
