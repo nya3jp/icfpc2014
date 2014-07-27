@@ -255,7 +255,7 @@ compileExpr ee = case ee of
     jmp end
 
     emitLabel l
-    block $ do
+    local $ do
       v <- innerVar 0
       compileExpr $ f v
       tellc "RTN"
@@ -293,7 +293,7 @@ ld i j = do
 st :: Int -> Int -> LMan ()
 st i j = do
   lev <- gets csEnvLevel
-  tellc $ "ST  " ++ show (lev - i) ++ " " ++ show j
+  tellc $ "ST " ++ show (lev - i) ++ " " ++ show j
 
 ldclo :: String -> LMan ()
 ldclo name = do
@@ -389,7 +389,6 @@ def4 fname f = (\v1 v2 v3 v4 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafe
 def5 :: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> Expr r, LMan ())
 def5 fname f = (\v1 v2 v3 v4 v5 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafeCoerce v2, Any $ unsafeCoerce v3, Any $ unsafeCoerce v4, Any $ unsafeCoerce v5], def' fname (do a1 <- innerVar 0; a2 <- innerVar 1; a3 <- innerVar 2; a4 <- innerVar 3; a5 <- innerVar 4; compileExpr $ f a1 a2 a3 a4 a5))
 
-
 -----
 
 dbug :: Expr a -> Expr ()
@@ -434,6 +433,7 @@ ltail = unsafeCoerce Cdr
 ite :: Expr Int -> Expr a -> Expr a -> Expr a
 ite = Ite
 
+infix 5 ~=
 (~=) :: Expr a -> Expr a -> CExpr () -- Expr ()
 (Var i j) ~= v = e $ Assign i j v
 _ ~= _ = error $ "Left hand side of := must be variable"
@@ -446,3 +446,6 @@ expr e = compileExpr e
 
 e :: Expr a -> CExpr ()
 e x = tell [Any $ unsafeCoerce x]
+
+-- ret :: Expr a -> CExpr a
+-- ret x = tell [Any $ unsafeCoerce x]
