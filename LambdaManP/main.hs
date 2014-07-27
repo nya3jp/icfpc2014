@@ -102,18 +102,16 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
   -- trace ghostPoss
   -- trace $ toQueue ghostPoss
 
-  -- trace (c 10001, nearestGhost bd ghostPoss lmanPos)
+  trace (c 10001, nearestGhost bd ghostPoss lmanPos)
 
   -- for 0 1000 $ \i -> do
   --   e $ peekMat 0 0 bd
 
-  -- cwith (peek 0 bd) $ \row -> do
-  --  for 0 1000 $ \i -> do
-  --    e $ peek 0 row
+  with (peek 0 bd) $ \row -> do
+    for 0 1000 $ \i -> do
+      e $ peek 0 row
 
-  -- e $ cons bd (c 0)
-
-  return ()
+  e $ cons bd (c 0)
 
 arrLength :: Expr (Array a) -> Expr Int
 arrLength = car
