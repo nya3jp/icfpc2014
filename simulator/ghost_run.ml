@@ -1,7 +1,7 @@
 (* run only ghost program *)
 
 let syscallback n env =
-  Printf.printf "syscall is not implemented for ghost_run"
+  Printf.printf "syscall is not implemented for ghost_run (%d)\n" n
 ;;
 
 let run_program () =
