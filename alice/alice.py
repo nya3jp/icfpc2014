@@ -35,6 +35,7 @@ def compile_assert(cond, node, tmpl='UNDOCUMENTED ERROR', *args):
 class Context(object):
   def __init__(self):
     self.vars = {}
+    self.current_func = None
     self.funcs = {}
     self.current_loop = None
     self.lines = []
@@ -43,6 +44,7 @@ class Context(object):
   def copy(self):
     ctx = Context()
     ctx.vars = self.vars.copy()
+    ctx.current_func = self.current_func
     ctx.funcs = self.funcs.copy()
     ctx.current_loop = self.current_loop
     ctx.lines = self.lines
@@ -108,12 +110,18 @@ class Module(Syntax):
     for func in self.funcs:
       if func.rank is None:
         ranks = sorted(set(func.gather_func_ranks(ctx)))
-        compile_assert(
-            len(ranks) <= 1,
-            None,
-            'A function has multiple candidate ranks: %s',
-            ', '.join(str(rank) for rank in ranks))
-        func.rank = ranks[0] if ranks else 0
+        if len(ranks) == 0 or ranks == [0]:
+          func.rank = 0
+        elif ranks == [1]:
+          func.rank = 1
+        elif ranks == [2]:
+          # A function returning a pair.
+          func.rank = 1
+        else:
+          compile_assert(
+              False,
+              None,
+              'A function returning multiple values must be marked with @rank.')
     for func in self.funcs:
       func.compile(ctx)
 
@@ -129,6 +137,7 @@ class Function(Stmt):
 
   def compile(self, ctx):
     ctx = ctx.copy()
+    ctx.current_func = self
     locals = set(self.gather_func_vars())
     locals -= set(self.args)
     locals = sorted(locals)
@@ -180,6 +189,14 @@ class Return(Stmt):
   def compile(self, ctx):
     for value in self.values:
       value.compile(ctx)
+    if ctx.current_func.rank == 1:
+      compile_assert(
+          len(self.values) <= 2,
+          None,
+          'A function returning multiple values must be marked with @rank')
+      # TODO: Maybe missing some edge cases
+      if len(self.values) == 2:
+        ctx.emit('CONS')
     ctx.emit('RTN')
 
 
@@ -529,6 +546,7 @@ class Name(Expr):
     if self.name in ctx.funcs:
       ctx.emit('LDF %s', ctx.funcs[self.name].label)
     else:
+      compile_assert(self.name in ctx.vars, None, 'Undefined variable: %s', self.name)
       a, b = ctx.vars[self.name]
       ctx.emit('LD %d %d  ; %s', a, b, self.name)
 
@@ -542,17 +560,6 @@ class Num(Expr):
 
   def compile(self, ctx):
     ctx.emit('LDC %d', self.n)
-
-
-class Assembly(Expr):
-  def __init__(self, code):
-    self.code = code
-
-  def rank(self, ctx):
-    return 0
-
-  def compile(self, ctx):
-    ctx.emit(code)
 
 
 def parse_module(module):
@@ -686,8 +693,6 @@ def parse_expr(expr):
     return Name(expr.id)
   if isinstance(expr, ast.Num):
     return Num(expr.n)
-  #if isinstance(expr, ast.Str):
-  #  return Assembly(expr.s)
   compile_assert(False, expr, 'Unsupported expression %s', expr.__class__.__name__)
 
 
@@ -746,6 +751,7 @@ def main():
       prefix = '%d:' % e.line
       print >>sys.stderr, prefix + line
       print >>sys.stderr, ' ' * (len(prefix) + e.column) + '^'
+    return
   asm = ctx.output()
   asm = resolve_labels(asm)
   print asm
