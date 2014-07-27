@@ -55,6 +55,7 @@ let tick_move_ghost ghost =
   else
     [|130; 132; 134; 136|].(ghost.Ghost.index mod 4)
 
+let eDebug             = -1
 let eLambdamanMove     = 100 (* lambdaman id *)
 let eGhostMove         = 101 (* ghost *)
 let eFruitAppear       = 200
@@ -103,23 +104,23 @@ let make field lambdaman_programs ghost_programs =
     ) line
   ) field;
 
-  let wl = ref TQ.empty in
-
-  wl := TQ.add (tick_EOL field, eEOL, 0) !wl;
-  List.iter (fun lambdaman -> wl := TQ.add (tick_move_lambdaman false, eLambdamanMove, lambdaman.Lambdaman.index) !wl) !lambdamans;
-  List.iter (fun ghost -> wl := TQ.add (tick_move_ghost ghost, eGhostMove, ghost.Ghost.index) !wl) !ghosts;
-  List.iter (fun i -> wl := TQ.add (tick_fruit_appear i, eFruitAppear, 0) !wl) [0; 1];
-  List.iter (fun i -> wl := TQ.add (tick_fruit_disappear i, eFruitDisappear, 0) !wl) [0; 1];
-
-  {
+  let world = {
     lambdamans = Array.of_list (List.rev !lambdamans);
     ghosts = Array.of_list (List.rev !ghosts);
     field = field;
     fruit_exists = false;
     pill_count = !pill_cnt;
     powerpill_count = !powerpill_cnt;
-    wl = !wl;
-  }
+    wl = TQ.empty;
+  } in
+  schedule_tick world (tick_EOL field, eEOL, 0);
+  List.iter (fun lambdaman -> schedule_tick world (tick_move_lambdaman false, eLambdamanMove, lambdaman.Lambdaman.index)) !lambdamans;
+  List.iter (fun ghost -> schedule_tick world (tick_move_ghost ghost, eGhostMove, ghost.Ghost.index)) !ghosts;
+  List.iter (fun i -> schedule_tick world (tick_fruit_appear i, eFruitAppear, 0)) [0; 1];
+  List.iter (fun i -> schedule_tick world (tick_fruit_disappear i, eFruitDisappear, 0)) [0; 1];
+  schedule_tick world (0, eDebug, 0); (* FIXME *)
+  schedule_tick world (1, eDebug, 0); (* FIXME *)
+  world
 ;;
 
 (* This is a callback when INT is called from ghost. *)
@@ -260,11 +261,40 @@ let encode_ghost_programs t =
 
 (* ---------------------------------------------------------------------- *)
 
+(* for debug, which reflect current positions of agents *)
+
+let string_of_cell_debug world x y cell = 
+  let index = Array.fold_left (fun index ghost -> if (ghost.Ghost.x == x && ghost.Ghost.y == y) then ghost.Ghost.index else index) (-1) world.ghosts in
+  match cell with
+  | _ when index >= 0
+      -> Char.escaped (Char.chr (Char.code 'A' + index))
+  | _ when Array.fold_left (fun is_lambdaman lambdaman -> is_lambdaman || (lambdaman.Lambdaman.x == x && lambdaman.Lambdaman.y == y)) false world.lambdamans
+      -> "@"
+  | Field.CWall -> "#"
+  | Field.CEmpty -> " "
+  | Field.CPill -> "."
+  | Field.CPowerPill -> "o"
+  | Field.CFruitLocation -> if world.fruit_exists then "%" else " "
+  | Field.CLambdaManStart -> " "
+  | Field.CGhostStart -> " "
+
+let string_of_field_line_debug world y l = snd (Array.fold_left (fun (x,str) c -> x+1, str ^ (string_of_cell_debug world x y c)) (0,"") l)
+
+let string_of_field_debug world = snd (Array.fold_left (fun (y,str) line -> y+1, str ^ (string_of_field_line_debug world y line) ^ "\n") (0,"") world.field)
+
 let next_tick world =
   let (tick, event_id, event_arg) = TQ.min_elt world.wl in
   world.wl <- TQ.remove (tick, event_id, event_arg) world.wl;
-  Printf.printf "DEBUG (xhl): tick=%d event=%d arg=%d\n%s" tick event_id event_arg (Field.string_of_field world.field);
+(*       "DEBUG (xhl): tick=%d event=%d arg=%d\n%s" tick event_id event_arg ; *)
   begin match event_id with
+  | x when x == eDebug ->
+      Printf.printf
+        "====================================== [%d] Lives=%d Score=%d\n%s\n"
+        tick
+        world.lambdamans.(0).lives
+        world.lambdamans.(0).score
+        (string_of_field_debug world)
+      ;
   | x when x == eFruitAppear ->
       world.fruit_exists <- true;
   | x when x == eFruitDisappear ->
@@ -352,6 +382,7 @@ let next_tick world =
       if lambdaman.Lambdaman.lives <= 0 then
         failwith "Lose" (* FIXME *)
       ;
+      schedule_tick world (tick+1, eDebug, 0); (* FIXME *)
   | _ -> failwith "invalid event_id"
   end
 
