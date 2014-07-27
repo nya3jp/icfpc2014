@@ -176,7 +176,7 @@ let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
          let cell = Field.get t.field ~y ~x in
          let cell = if cell = Field.CFruitLocation && not t.fruit_exists then Field.CEmpty else cell in
          env.Ghost.reg.(0) <- Field.int_of_cell cell
-       with _ -> 
+       with _ ->
          env.Ghost.reg.(0) <- 0
        end
     | 8 ->
@@ -489,7 +489,7 @@ let run t =
   let encoded_world = encode_current_world t 0
   and ghost_programs = encode_ghost_programs t in
   Array.iter (fun man ->
-    let v = Lambdaman.eval_main man.program [encoded_world; ghost_programs] in
+    let v = Lambdaman.eval_main show_useful_info man.program [encoded_world; ghost_programs] in
     let (state, stepFun) = match v with
       | VCons (state, stepFun) -> (state, stepFun)
       | _ -> failwith "Lambdaman's main function didn't return CONS cell"

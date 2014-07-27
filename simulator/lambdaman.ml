@@ -343,7 +343,7 @@ let eval_program program =
      print_machine machine
 ;;
 
-let eval_main program args =
+let eval_main show_useful_info program args =
   let machine = make_initial_machine () in
 
   (* make a frame to call main function *)
@@ -353,9 +353,9 @@ let eval_main program args =
   ) args;
   Stack.push AStop machine.d;
   machine.e <- frame :: machine.e;
+  let i = ref 0 in
   try
     let maxSteps = 3072000 * 60 in
-    let i = ref 0 in
     while !i < maxSteps do
       let inst = program.(machine.c) in
       eval_instruction machine inst;
@@ -365,6 +365,8 @@ let eval_main program args =
     failwith (Printf.sprintf "Over cycle limit! main function didn't end after %d cycles\n" maxSteps)
   with
   | Exception_exit ->
+     if show_useful_info then
+       Printf.printf "Used %d cycles.\n" !i;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
 ;;
