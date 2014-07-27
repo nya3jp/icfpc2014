@@ -1,7 +1,7 @@
 open Util
 
 module OrderedEventType = struct
-  type t = int * int * int
+  type t = int * int * int * int
   let compare : t -> t -> int = Pervasives.compare
 end;;
 module TQ = Set.Make(OrderedEventType);; (* tick, eventID, eventArg; in acsending order *)
@@ -46,7 +46,7 @@ let score_eat = function
 (*---- TICK TABLE ----*)
 let tick_EOL field = 127 * Field.width_of_field field * Field.height_of_field field * 16
 let tick_fruit_appear id (* 0 or 1 *) = 127 * 200 * (id+1)
-let tick_fruit_disappear id (* 0 or 1 *) = 127 * 200 * (id+1) + 80
+let tick_fruit_disappear id (* 0 or 1 *) = 127 * 200 * (id+1) + 127 * 80
 let tick_dur_fright = 127 * 20
 let tick_move_lambdaman is_eating = if is_eating then 137 else 127
 let tick_move_ghost ghost =
@@ -58,6 +58,8 @@ let tick_move_ghost ghost =
 let eDebug             = -1
 let eLambdamanMove     = 100 (* lambdaman id *)
 let eGhostMove         = 101 (* ghost *)
+let eLambdamanMoveCommit     = 150 (* lambdaman id *)
+let eGhostMoveCommit         = 151 (* ghost *)
 let eFruitAppear       = 200
 let eFruitDisappear    = 201
 let eFrightDeactivate = 202
@@ -113,13 +115,13 @@ let make field lambdaman_programs ghost_programs =
     powerpill_count = !powerpill_cnt;
     wl = TQ.empty;
   } in
-  schedule_tick world (tick_EOL field, eEOL, 0);
-  List.iter (fun lambdaman -> schedule_tick world (tick_move_lambdaman false, eLambdamanMove, lambdaman.Lambdaman.index)) !lambdamans;
-  List.iter (fun ghost -> schedule_tick world (tick_move_ghost ghost, eGhostMove, ghost.Ghost.index)) !ghosts;
-  List.iter (fun i -> schedule_tick world (tick_fruit_appear i, eFruitAppear, 0)) [0; 1];
-  List.iter (fun i -> schedule_tick world (tick_fruit_disappear i, eFruitDisappear, 0)) [0; 1];
-  schedule_tick world (0, eDebug, 0); (* FIXME *)
-  schedule_tick world (1, eDebug, 0); (* FIXME *)
+  schedule_tick world (tick_EOL field, eEOL, 0, 0);
+  List.iter (fun lambdaman -> schedule_tick world (tick_move_lambdaman false, eLambdamanMove, lambdaman.Lambdaman.index, 0)) !lambdamans;
+  List.iter (fun ghost -> schedule_tick world (tick_move_ghost ghost, eGhostMove, ghost.Ghost.index, 0)) !ghosts;
+  List.iter (fun i -> schedule_tick world (tick_fruit_appear i, eFruitAppear, 0, 0)) [0; 1];
+  List.iter (fun i -> schedule_tick world (tick_fruit_disappear i, eFruitDisappear, 0, 0)) [0; 1];
+  schedule_tick world (0, eDebug, 0, 0); (* FIXME *)
+  schedule_tick world (1, eDebug, 0, 0); (* FIXME *)
   world
 ;;
 
@@ -284,8 +286,8 @@ let string_of_field_line_debug world y l = snd (Array.fold_left (fun (x,str) c -
 let string_of_field_debug world = snd (Array.fold_left (fun (y,str) line -> y+1, str ^ (string_of_field_line_debug world y line) ^ "\n") (0,"") world.field)
 
 let next_tick world =
-  let (tick, event_id, event_arg) = TQ.min_elt world.wl in
-  world.wl <- TQ.remove (tick, event_id, event_arg) world.wl;
+  let (tick, event_id, event_arg, event_arg2) = TQ.min_elt world.wl in
+  world.wl <- TQ.remove (tick, event_id, event_arg, event_arg2) world.wl;
 (*       "DEBUG (xhl): tick=%d event=%d arg=%d\n%s" tick event_id event_arg ; *)
   begin match event_id with
   | x when x == eDebug ->
@@ -310,8 +312,10 @@ let next_tick world =
 *)
   | x when x == eFruitAppear ->
       world.fruit_exists <- true;
+      schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x == eFruitDisappear ->
       world.fruit_exists <- false;
+      schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x == eEOL ->
       raise Exit (* FIXME *)
   | x when x == eLambdamanMove ->
@@ -322,35 +326,44 @@ let next_tick world =
       let (VCons (state, move)) = v in
       let move = check_int move in
       lambdaman.Lambdaman.state <- state;
-      Lambdaman.move lambdaman (direction_of_int (Int32.to_int move));
+      schedule_tick world (tick, eLambdamanMoveCommit, event_arg, Int32.to_int move);
+  | x when x == eLambdamanMoveCommit ->
+      let lambdaman = world.lambdamans.(event_arg) in
+      let move = event_arg2 in
+      Lambdaman.move lambdaman (direction_of_int move);
       let is_eating = begin match world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) with
       | Field.CWall -> failwith "kabenonakaniiru" (* FIXME: should be stop moving *)
       | Field.CPill | Field.CPowerPill -> true
       | Field.CFruitLocation -> world.fruit_exists
       | _ -> false
       end in
-      schedule_tick world (tick, eLambdamanPostprocess, event_arg);
-      schedule_tick world ((tick + tick_move_lambdaman is_eating), eLambdamanMove, event_arg)
+      schedule_tick world (tick, eLambdamanPostprocess, event_arg, 0);
+      schedule_tick world ((tick + tick_move_lambdaman is_eating), eLambdamanMove, event_arg, 0)
   | x when x == eGhostMove ->
       let ghost = world.ghosts.(event_arg) in
       (* FIXME: run program *)
       (* FIXME: move lambdaman *)
       let v = Ghost.eval ghost (make_syscallback_for_ghost world ghost) in
+      schedule_tick world (tick, eGhostMoveCommit, event_arg, v);
+  | x when x == eGhostMoveCommit ->
+      let ghost = world.ghosts.(event_arg) in
+      let v = event_arg2 in
       let movable_down  = world.field.(ghost.Ghost.y+1).(ghost.Ghost.x  ) <> Field.CWall in
       let movable_up    = world.field.(ghost.Ghost.y-1).(ghost.Ghost.x  ) <> Field.CWall in
       let movable_left  = world.field.(ghost.Ghost.y  ).(ghost.Ghost.x-1) <> Field.CWall in
       let movable_right = world.field.(ghost.Ghost.y  ).(ghost.Ghost.x+1) <> Field.CWall in
       (* Printf.printf "DEBUG: ghost %d move: %d\n" ghost.Ghost.index v; *)
       Ghost.move ghost [|movable_up; movable_right; movable_down; movable_left|] v;
-      schedule_tick world (tick, eLambdamanPostprocess, 0); (* FIXME *)
-      schedule_tick world ((tick + tick_move_ghost ghost), eGhostMove, event_arg)
+      schedule_tick world (tick, eLambdamanPostprocess, 0, 0); (* FIXME *)
+      schedule_tick world ((tick + tick_move_ghost ghost), eGhostMove, event_arg, 0)
   | x when x == eFrightDeactivate ->
       let lambdaman = world.lambdamans.(event_arg) in
       if tick == lambdaman.Lambdaman.vitality_absolute then begin
         Array.iter
           (fun g -> g.Ghost.vitality <- Ghost.Standard)
           world.ghosts
-      end
+      end;
+      schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x == eLambdamanPostprocess ->
       let lambdaman = world.lambdamans.(event_arg) in
       (* Step 3 *)
@@ -371,7 +384,7 @@ let next_tick world =
               g.Ghost.d <- reverse_direction g.Ghost.d (* FIXME: correct? *)
             )
             world.ghosts;
-          schedule_tick world (tick + tick_dur_fright, eFrightDeactivate, event_arg);
+          schedule_tick world (tick + tick_dur_fright, eFrightDeactivate, event_arg, 0);
           world.field.(lambdaman.Lambdaman.y).(lambdaman.Lambdaman.x) <- Field.CEmpty
       | Field.CFruitLocation ->
           if world.fruit_exists then begin
@@ -402,7 +415,7 @@ let next_tick world =
       if lambdaman.Lambdaman.lives <= 0 then
         failwith "Lose" (* FIXME *)
       ;
-      schedule_tick world (tick+1, eDebug, 0); (* FIXME *)
+      schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | _ -> failwith "invalid event_id"
   end
 

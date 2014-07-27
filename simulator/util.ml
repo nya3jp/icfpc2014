@@ -24,3 +24,9 @@ let reverse_direction = function
   | Left -> Right
 ;;
 
+let div_int32_toward_negative x y =
+  let q = Int32.div x y in
+  if Int32.mul q y > x then
+    Int32.pred q
+  else
+    q

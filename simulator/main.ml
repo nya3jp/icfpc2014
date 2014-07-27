@@ -12,7 +12,7 @@ let main () =
   let ai = LambdamanReader.read lambdamanFilename in
   let ghost = GhostAiReader.read ghostFilename in
 
-  print_string (Field.string_of_field field);
+  (* print_string (Field.string_of_field field); *)
 
   let simulator = Simulator.make field [|ai|] [|ghost|] in
   Simulator.run simulator

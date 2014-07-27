@@ -209,7 +209,7 @@ let rec eval_instruction machine = function
   | LMul ->
      eval_primitive machine Int32.mul
   | LDiv ->
-     eval_primitive machine Int32.div
+     eval_primitive machine div_int32_toward_negative
   | LCeq ->
      eval_primitive machine (fun x y ->
        Int32.of_int (if x = y then 1 else 0)
