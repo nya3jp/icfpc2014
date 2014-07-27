@@ -225,8 +225,8 @@ let rec eval_instruction machine = function
   | LAtom ->
      let x = Stack.pop machine.s in
      let v = begin match x with
-       | VInt _ -> VInt (Int32.of_int 1)
-       | _ -> VInt (Int32.of_int 0)
+       | VInt _ -> value_of_int 1
+       | _ -> value_of_int 0
      end in
      Stack.push v machine.s;
      machine.c <- machine.c + 1
@@ -323,6 +323,19 @@ let rec eval_instruction machine = function
      machine.c <- machine.c + 1
   | LBrk ->
      machine.c <- machine.c + 1
+;;
+
+let eval_program program =
+  let machine = make_initial_machine () in
+  Stack.push AStop machine.d;
+  try
+    while true do
+      let inst = program.(machine.c) in
+      eval_instruction machine inst
+    done;
+  with
+  | Exception_exit ->
+     print_machine machine
 ;;
 
 let eval_main program args =

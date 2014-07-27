@@ -236,9 +236,9 @@ let score_fruit field =
 
 open Lambdaman
 
-let encode_as_tuple list =
-  let zero = value_of_int 0 in
-  List.fold_right (fun x y -> VCons (x, y)) list zero
+let rec encode_as_tuple = function
+  | [] -> value_of_int 0
+  | x :: xs -> VCons (x, encode_as_tuple xs)
 ;;
 
 let encode_as_list list =
