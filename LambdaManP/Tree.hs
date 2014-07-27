@@ -26,6 +26,10 @@ tsingleton x = unsafeCoerce $ x
 tisSingleton :: Expr Tree -> Expr Int
 tisSingleton = atom
 
+tfromSingleton :: Expr Tree -> Expr Int
+tfromSingleton = unsafeCoerce
+
+
 
 tcons :: Expr Tree ->  Expr Tree ->  Expr Tree 
 tcons =  unsafeCoerce $ Cons 
@@ -60,5 +64,22 @@ tright =  unsafeCoerce $ Cdr
       ite (tisSingleton t) zeroCase $
       ite (key .< (div n 2)) (tinsertN (div n 2) key value (tleft t) >< tright t) $
       (tleft t >< tinsertN (div n 2) (key - (div n 2)) value (tright t))
+    
+
+
+--          key         
+(tlookup :: Expr Int -> Expr Tree -> Expr Int, tlookupDef) =
+  def2 "tlookup" $ \key t -> tlookupN (Const defaultTreeSize) key t
+
+
+(tlookupN :: Expr Int -> Expr Int -> Expr Tree -> Expr Int, tlookupNDef) =
+  def3 "tlookupN" $ \n key t -> 
+    let
+      zeroCase = Const 0
+      in 
+      ite (n .<= 1) (tfromSingleton t) $
+      ite (tisSingleton t) zeroCase $
+      ite (key .< (div n 2)) (tlookupN (div n 2) key (tleft t)) $
+      (tlookupN (div n 2) (key - (div n 2)) (tright t))
     
 
