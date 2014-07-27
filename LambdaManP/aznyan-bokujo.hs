@@ -216,7 +216,8 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
              ite (scoreS .>= scoreW) 2 $
              (3 :: Expr Int)
 
-    in dbug (list [scoreN, scoreE, scoreS, scoreW])
+    in dbug (list [scoreN, scoreE, scoreS, scoreW]) `Seq`
+       dbug world
         `Seq` cons aist d2
 
 progn :: LMan ()
