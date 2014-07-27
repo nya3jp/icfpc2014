@@ -81,11 +81,8 @@ class Stmt(Syntax):
       vars.extend(stmt.gather_func_vars())
     return vars
 
-  def gather_func_ranks(self, ctx):
-    ranks = []
-    for stmt in self.children:
-      ranks.extend(stmt.gather_func_ranks(ctx))
-    return ranks
+  def has_return_with_value(self):
+    return any(stmt.has_return_with_value() for stmt in self.children)
 
   def compile(self, ctx):
     for stmt in self.children:
@@ -109,19 +106,7 @@ class Module(Syntax):
     ctx.funcs = dict((func.name, func) for func in self.funcs)
     for func in self.funcs:
       if func.rank is None:
-        ranks = sorted(set(func.gather_func_ranks(ctx)))
-        if len(ranks) == 0 or ranks == [0]:
-          func.rank = 0
-        elif ranks == [1]:
-          func.rank = 1
-        elif ranks == [2]:
-          # A function returning a pair.
-          func.rank = 1
-        else:
-          compile_assert(
-              False,
-              None,
-              'A function returning multiple values must be marked with @rank.')
+        func.rank = 1 if func.has_return_with_value() else 0
     for func in self.funcs:
       func.compile(ctx)
 
@@ -183,8 +168,8 @@ class Return(Stmt):
     Stmt.__init__(self, [])
     self.values = values
 
-  def gather_func_ranks(self, ctx):
-    return [len(self.values)]
+  def has_return_with_value(self):
+    return bool(self.values)
 
   def compile(self, ctx):
     for value in self.values:
@@ -194,9 +179,18 @@ class Return(Stmt):
           len(self.values) <= 2,
           None,
           'A function returning multiple values must be marked with @rank')
+      compile_assert(
+          all(value.rank(ctx) == 1 for value in self.values),
+          None,
+          'Tried to return multiple values from rank-1 function')
       # TODO: Maybe missing some edge cases
       if len(self.values) == 2:
         ctx.emit('CONS')
+    else:
+      compile_assert(
+          sum(value.rank(ctx) for value in self.values) == ctx.current_func.rank,
+          None,
+          'Number of function return values does not match with rank')
     ctx.emit('RTN')
 
 
@@ -476,6 +470,10 @@ class Call(Expr):
         None,
         'Undefined function %s',
         self.func)
+    compile_assert(
+        sum(arg.rank(ctx) for arg in self.args) == len(ctx.funcs[self.func].args),
+        None,
+        'Number of arguments does not match on function call of %s', self.func)
     for arg in self.args:
       arg.compile(ctx)
     ctx.emit('LDF %s', ctx.funcs[self.func].label)
