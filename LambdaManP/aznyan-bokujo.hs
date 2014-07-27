@@ -18,7 +18,6 @@ import Text.Printf
 import Desugar
 import DSL
 import Lib
-import Tree
 import System.Process
 
 sotaMode :: Bool
@@ -30,7 +29,7 @@ sotaMode = unsafePerformIO $ do
 type X = Int
 type Direction = Int
 type World0 = ([[Int]], (ManState, ([GhostState], FruitState)))
-type World = (Tree, (ManState, ([GhostState], FruitState)))
+type World = ((Mat Int), (ManState, ([GhostState], FruitState)))
 
 --               vit                    lives score
 type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
@@ -98,8 +97,8 @@ dampingParam
 int_min :: Expr Int
 int_min = Const $ -2^(31)
 
-mapAt :: Expr Pos -> Expr Tree -> Expr Int
-mapAt pos chizu = tlookup (car pos + 256 * cdr pos) chizu
+mapAt :: Expr Pos -> Expr (Mat Int) -> Expr Int
+mapAt pos chizu = peekMat (car pos) (cdr pos) chizu
 
 
 veq :: Expr Pos -> Expr Pos -> Expr Int
@@ -124,7 +123,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
 (dirValuePill:: Expr Int -> Expr Pos -> Expr World -> Expr Pos -> Expr Int, dirValuePillDef) =
   def4 "dirValuePill" $ \juice vect world manp ->
     let info = (mapAt manp chizu) 
-        chizu :: Expr Tree
+        chizu :: Expr (Mat Int)
         chizu = car world
         gss :: Expr [GhostState]
         gss = car $ cdr $ cdr world
@@ -187,7 +186,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         powerPillFlag :: Expr Int
         powerPillFlag = car manState
    
-        chizu :: Expr Tree
+        chizu :: Expr (Mat Int)
         chizu = car world
         
         gss :: Expr [GhostState]
@@ -201,10 +200,8 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
           + dirValueGhosts vect gss powerPillFlag manP
 
 
-
-
 (step :: Expr AIState -> Expr World0 -> Expr (AIState,Int), stepDef) =
-  def2 "step" $ \aist world0 -> with (toTree2D (car world0)) $ \chizu -> 
+  def2 "step" $ \aist world0 -> with (toMat (car world0)) $ \chizu -> 
     let world = cons chizu (cdr world0)
         
         scoreN, scoreE, scoreS, scoreW :: Expr Int
@@ -231,11 +228,6 @@ progn = do
   dirValueTotalDef
   isGhostThereDef
   stepDef
- 
-  tlookupDef 
-  tinsertDef
-  tlookupNDef 
-  tinsertNDef  
   
   libDef
 
