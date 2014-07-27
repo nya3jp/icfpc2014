@@ -107,7 +107,7 @@ let rec eval_ginstruction env syscallback = function
   | GJeq (t, x, y) ->
      let vx = eval_gvalue env x
      and vy = eval_gvalue env y in
-     if vx == vy then
+     if vx = vy then
        env.pc <- t
      else
        env.pc <- env.pc + 1
