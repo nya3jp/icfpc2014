@@ -83,8 +83,8 @@ comp c =
 emitComp :: CExpr a -> LMan ()
 emitComp = emitExpr . comp
 
-while :: Expr Int -> Expr a -> CExpr ()
-while cond body = e $ While cond body
+while :: Expr Int -> CExpr () -> CExpr ()
+while cond body = e $ While cond (comp body)
 
 -- data Any = forall a . Any a
 
@@ -412,8 +412,8 @@ debugn = e . dbugn
 cons :: Expr a -> Expr b -> Expr (a, b)
 cons = Cons
 
-i :: Expr Int -> Expr Int
-i = id
+c :: Expr Int -> Expr Int
+c = id
 
 car :: Expr (a, b) -> Expr a
 car = Car
@@ -477,6 +477,27 @@ cast = unsafeCoerce
 for :: Expr Int -> Expr Int -> (Expr Int -> CExpr ()) -> CExpr ()
 for f t body =
   cwith f $ \i -> do
-    while (i .< t) $ comp $ do
+    while (i .< t) $ do
       body i
       i ~= i + 1
+
+class Debuggable a where
+  trace :: a -> CExpr ()
+
+instance Debuggable (Expr a) where
+  trace = debug
+
+instance Debuggable (Expr a1, Expr a2) where
+  trace (v1, v2) = debug $ cons v1 v2
+
+instance Debuggable (Expr a1, Expr a2, Expr a3) where
+  trace (v1, v2, v3) = debug $ cons v1 $ cons v2 v3
+
+instance Debuggable (Expr a1, Expr a2, Expr a3, Expr a4) where
+  trace (v1, v2, v3, v4) = debug $ cons v1 $ cons v2 $ cons v3 v4
+
+instance Debuggable (Expr a1, Expr a2, Expr a3, Expr a4, Expr a5) where
+  trace (v1, v2, v3, v4, v5) = debug $ cons v1 $ cons v2 $ cons v3 $ cons v4 v5
+
+instance Debuggable (Expr a1, Expr a2, Expr a3, Expr a4, Expr a5, Expr a6) where
+  trace (v1, v2, v3, v4, v5, v6) = debug $ cons v1 $ cons v2 $ cons v3 $ cons v4 $ cons v5 v6
