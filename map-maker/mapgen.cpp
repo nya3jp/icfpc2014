@@ -190,11 +190,16 @@ void genMat() {
   for(int i =0;i<numGhost;++i) {
     matAt(vprand())='=';
   }
-  for(int i =0;i<numPP;++i) {
-    matAt(vprand())='o';
-  }
   matAt(vprand())='%';
-  matAt(vprand())='\\';
+  pt lmPos = vprand();
+  matAt(lmPos)='\\';
+
+  for(int i =0;i<numPP;++i) {
+    pt gPos = vprand();
+    if (norm(gPos-lmPos) < 100) continue;
+    matAt(gPos)='o';
+  }
+
 
   matAt(vprand())='.'; // at least one pill
   return;
