@@ -64,15 +64,18 @@ let make_initial_machine () = {
 
 let check_int = function
   | VInt x -> x
-  | _ -> failwith "tag mismatch for int"
+  | VCons _ -> failwith "tag mismatch for int (cons came)"
+  | VClosure _ -> failwith "tag mismatch for int (closure came)"
 
 let check_cons = function
+  | VInt _ -> failwith "tag mismatch for cons (int came)"
   | VCons (x, y) -> (x, y)
-  | _ -> failwith "tag mismatch for cons"
+  | VClosure _ -> failwith "tag mismatch for cons (closure came)"
 
 let check_closure = function
+  | VInt _ -> failwith "tag mismatch for closure (int came)"
+  | VCons _ -> failwith "tag mismatch for closure (cons came)"
   | VClosure (x, y) -> (x, y)
-  | _ -> failwith "tag mismatch for closure"
 
 let is_closure = function
   | VClosure _ -> true
@@ -125,13 +128,54 @@ let rec string_of_value = function
   | VClosure(n,_) -> "Closure{" ^ (string_of_int n) ^ "}" (* FIXME: should frame list displayed? *)
 ;;
 
+let string_of_address = function
+  | AStop -> "stop"
+  | AJoin x -> ("join:" ^ (string_of_int x))
+  | ARet x -> ("ret:" ^ (string_of_int x))
+  | AFrame fp -> ("frame")
+;;
+
+let string_of_frame frame =
+  let buf = Buffer.create 10 in
+  Buffer.add_string buf "dummy=";
+  Buffer.add_string buf (if frame.dummy then "t" else "f");
+  Buffer.add_string buf " / ";
+  Buffer.add_string buf (String.concat " " (Array.to_list (Array.map (fun v -> string_of_value v) frame.data)));
+  Buffer.contents buf
+;;
+
 let print_value v =
   print_endline (string_of_value v)
+
+let print_machine machine =
+  Printf.printf "c = %d\n" machine.c;
+  Printf.printf "s = %s\n" (
+    let buf = Buffer.create 10 in
+    Stack.iter (fun v ->
+      Buffer.add_string buf (string_of_value v);
+      Buffer.add_string buf " ";
+    ) machine.s;
+    Buffer.contents buf
+  );
+  Printf.printf "d = %s\n" (
+    let buf = Buffer.create 10 in
+    Stack.iter (fun a ->
+      Buffer.add_string buf (string_of_address a);
+      Buffer.add_string buf " ";
+    ) machine.d;
+    Buffer.contents buf
+  );
+  Printf.printf "e = %s\n" (
+    String.concat " / " (List.map (fun frame ->
+      (string_of_frame frame);
+    ) machine.e)
+  )
+;;
 
 let rec get_nth_env_frame n = function
   | [] -> failwith "no environment ?"
   | e :: es ->
-     if n == 0 then e
+     if n = 0 then e
      else get_nth_env_frame (n - 1) es
 ;;
 
@@ -168,7 +212,7 @@ let rec eval_instruction machine = function
      eval_primitive machine Int32.div
   | LCeq ->
      eval_primitive machine (fun x y ->
-       Int32.of_int (if x == y then 1 else 0)
+       Int32.of_int (if x = y then 1 else 0)
      )
   | LCgt ->
      eval_primitive machine (fun x y ->
@@ -181,8 +225,8 @@ let rec eval_instruction machine = function
   | LAtom ->
      let x = Stack.pop machine.s in
      let v = begin match x with
-       | VInt _ -> VInt (Int32.of_int 1)
-       | _ -> VInt (Int32.of_int 0)
+       | VInt _ -> value_of_int 1
+       | _ -> value_of_int 0
      end in
      Stack.push v machine.s;
      machine.c <- machine.c + 1
@@ -281,6 +325,19 @@ let rec eval_instruction machine = function
      machine.c <- machine.c + 1
 ;;
 
+let eval_program program =
+  let machine = make_initial_machine () in
+  Stack.push AStop machine.d;
+  try
+    while true do
+      let inst = program.(machine.c) in
+      eval_instruction machine inst
+    done;
+  with
+  | Exception_exit ->
+     print_machine machine
+;;
+
 let eval_main program args =
   let machine = make_initial_machine () in
 
@@ -322,6 +379,7 @@ let eval_step program closure args =
 
   try
     while true do
+      print_endline (string_of_int machine.c);
       let inst = program.(machine.c) in
       eval_instruction machine inst
     done;

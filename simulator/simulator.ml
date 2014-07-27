@@ -272,9 +272,9 @@ let score_fruit field =
 
 open Lambdaman
 
-let encode_as_tuple list =
-  let zero = value_of_int 0 in
-  List.fold_right (fun x y -> VCons (x, y)) list zero
+let rec encode_as_tuple = function
+  | [] -> value_of_int 0
+  | x :: xs -> VCons (x, encode_as_tuple xs)
 ;;
 
 let encode_as_list list =
@@ -350,6 +350,10 @@ let run t =
   (* checking step func is callable. *)
   let (VCons (state, stepFun)) = v.(0) in
   print_value stepFun;
+  let _ =
+    let VClosure (n, fp) = stepFun in
+    print_endline ("CLOSURE: " ^ (string_of_int (List.length fp)));
+  in
   let v = eval_step t.lambdamans.(0).program stepFun [state; encode_current_world t 1] in
   print_value v;
 
