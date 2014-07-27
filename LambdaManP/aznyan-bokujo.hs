@@ -35,7 +35,7 @@ type World = ((Mat Int), (ManState, ([GhostState], FruitState)))
 type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
 type GhostState = (Int, (Pos , Direction))
 type FruitState = Int
-type AIState = X
+type AIState = ((Mat Int),X)
 type Pos = (Int, Int)
 
 randLIO :: (Double,Double) -> IO Int
@@ -201,7 +201,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
 
 
 (step :: Expr AIState -> Expr World0 -> Expr (AIState,Int), stepDef) =
-  def2 "step" $ \aist world0 -> with (toMat (car world0)) $ \chizu -> 
+  def2 "step" $ \aist world0 -> with (car aist) $ \chizu -> 
     let world = cons chizu (cdr world0)
         
         scoreN, scoreE, scoreS, scoreW :: Expr Int
@@ -231,7 +231,11 @@ progn = do
   
   libDef
 
-  rtn $ cons (0 :: Expr AIState) $ Closure "step"
+  -- emitComp $ debug 
+  
+  let chizu = toMat $ car (Var (-1) 0 :: Expr World0)
+  
+  rtn $ cons (cons chizu  0 :: Expr AIState) $ Closure "step"
 
 data TestConf = TestConf 
   {ghostFiles::[String], 
