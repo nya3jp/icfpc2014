@@ -19,8 +19,9 @@ def compile_assert(cond, node, tmpl='UNDOCUMENTED ERROR', *args):
       column = getattr(node, 'col_offset', None)
     else:
       line, column = None, None
+    loc = ' at line %d, column %d' % (line, column) if line else ''
     msg = tmpl % args
-    raise CompileError('[line %s, column %s] %s' % (line, column, msg), line, column)
+    raise CompileError(msg + loc, line, column)
 
 
 class Context(object):
@@ -368,6 +369,11 @@ class Call(Expr):
 
   def rank(self, ctx):
     compile_assert(
+        self.func in ctx.funcs,
+        None,
+        'Undefined function %s',
+        self.func)
+    compile_assert(
         ctx.funcs[self.func].rank is not None,
         None,
         'Could not determine function rank for %s. '
@@ -376,6 +382,11 @@ class Call(Expr):
     return ctx.funcs[self.func].rank
 
   def compile(self, ctx):
+    compile_assert(
+        self.func in ctx.funcs,
+        None,
+        'Undefined function %s',
+        self.func)
     for arg in self.args:
       arg.compile(ctx)
     ctx.emit('LDF %s', ctx.funcs[self.func].label)
@@ -609,6 +620,8 @@ def unpair(pair):
 
 
 def main():
+  if len(sys.argv) < 2:
+    print >>sys.stderr, 'usage: alice.py input.py'
   with open(sys.argv[1]) as f:
     code = f.read()
   code += PRELUDE
