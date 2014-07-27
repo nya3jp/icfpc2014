@@ -1,5 +1,9 @@
 open Util
 
+exception Game_win
+exception Game_lose
+exception Game_end
+
 let conf_fright_compatible_mode = true
 
 module OrderedEventType = struct
@@ -268,7 +272,7 @@ let encode_ghost_programs t =
 
 (* for debug, which reflect current positions of agents *)
 
-let string_of_cell_debug world tick x y cell = 
+let string_of_cell_debug world tick x y cell =
   let ghost_string = Array.fold_left
     (fun str ghost ->
       if (ghost.Ghost.x = x && ghost.Ghost.y = y) then begin match ghost.Ghost.vitality with
@@ -282,7 +286,7 @@ let string_of_cell_debug world tick x y cell =
     world.ghosts
   in
   let lambdaman_string = Array.fold_left
-    (fun str lambdaman -> 
+    (fun str lambdaman ->
       if (lambdaman.Lambdaman.x = x && lambdaman.Lambdaman.y = y) then
         if Lambdaman.get_vitality lambdaman tick > 0 then
           "\\"
@@ -343,7 +347,7 @@ let next_tick world =
       world.fruit_exists <- false;
       schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x = eEOL ->
-      raise Exit (* FIXME *)
+      raise Game_end
   | x when x = eLambdamanMove ->
       let lambdaman = world.lambdamans.(event_arg) in
       (* FIXME: run program *)
@@ -438,12 +442,10 @@ let next_tick world =
         world.ghosts;
       (* Step 5 *)
       if world.pill_count = 0 then
-        failwith "Win" (* FIXME *)
-      ;
+        raise Game_win;
       (* Step 6 *)
       if lambdaman.Lambdaman.lives <= 0 then
-        failwith "Lose" (* FIXME *)
-      ;
+        raise Game_lose;
       schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | _ -> failwith "invalid event_id"
   end
@@ -459,26 +461,24 @@ let run t =
     man.stepFun <- stepFun
   ) t.lambdamans;
 
-  while true do
-    next_tick t
-  done;
-
-  (* Then, each next tick, call step and state. *)
-  failwith "not implemented yet"
-
-
-(*
-  (* checking step func is callable. *)
-  let (VCons (state, stepFun)) = v.(0) in
-  print_value stepFun;
-  let _ =
-    let VClosure (n, fp) = stepFun in
-    print_endline ("CLOSURE: " ^ (string_of_int (List.length fp)));
-  in
-  let v = eval_step t.lambdamans.(0).program stepFun [state; encode_current_world t 1] in
-  print_value v;
-
-  (* Then, each next tick, call step and state. *)
-  failwith "not implemented yet"
-*)
+  try
+    while true do
+      next_tick t
+    done;
+  with
+  | Game_win ->
+     Printf.printf "Game win\n";
+     Array.iter (fun lambdaman ->
+       Printf.printf "%d\n" (lambdaman.score * (lambdaman.lives + 1))
+     ) t.lambdamans
+  | Game_lose ->
+     Printf.printf "Game lost\n";
+     Array.iter (fun lambdaman ->
+       Printf.printf "%d\n" lambdaman.score
+     ) t.lambdamans
+  | Game_end ->
+     Printf.printf "Game end\n";
+     Array.iter (fun lambdaman ->
+       Printf.printf "%d\n" lambdaman.score
+     ) t.lambdamans
 ;;
