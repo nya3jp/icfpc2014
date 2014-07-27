@@ -6,7 +6,7 @@ let read filename =
   try
     let line_number = ref 0 in
     while true do
-      let line = String.trim (remove_comment (input_line in_chan)) in
+      let line = StringUtil.trim (remove_comment (input_line in_chan)) in
       incr line_number;
       if line <> "" then begin
         try

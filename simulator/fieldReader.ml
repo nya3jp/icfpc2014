@@ -3,7 +3,7 @@ let read filename : Field.t =
   let result = ref [] in
   try
     while true do
-      let line_string = String.trim (input_line in_chan) in
+      let line_string = StringUtil.trim (input_line in_chan) in
       let line = ref [] in
       String.iter (fun c -> line := (Field.cell_of_char c) :: !line) line_string;
       result := (Array.of_list (List.rev !line)) :: !result

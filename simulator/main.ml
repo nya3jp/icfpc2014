@@ -1,6 +1,16 @@
-let parse_ghosts ghosts =
-  let list = [ghosts] in
-  Array.of_list list
+let parse_ghosts str =
+  let rec iter ghosts str =
+    if str = "" then
+      Array.of_list (List.rev ghosts)
+    else
+      try
+        let pos = String.index str ',' in
+        let ghost = String.sub str 0 pos in
+        iter (ghost :: ghosts) (String.sub str (pos + 1) (String.length str - pos - 1))
+      with
+      | Not_found -> Array.of_list (List.rev (str :: ghosts))
+  in
+  iter [] str
 ;;
 
 (* *)
@@ -18,8 +28,6 @@ let main () =
   let ghosts = Array.map (fun ghostFilename ->
     GhostAiReader.read ghostFilename
   ) (parse_ghosts ghostFilenames) in
-
-
 
   (* print_string (Field.string_of_field field); *)
 
