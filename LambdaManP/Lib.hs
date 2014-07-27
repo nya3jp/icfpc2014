@@ -23,12 +23,6 @@ a ||| b = lnot $ lnot a &&& lnot b
 lnot :: Expr Int -> Expr Int
 lnot e = 1 - e
 
-debug = e. dbug
-debugn = e.dbugn
-
-i :: Expr Int -> Expr Int
-i = id
-
 cadr = car . cdr
 caddr = car . cdr . cdr
 cdddr = cdr . cdr . cdr

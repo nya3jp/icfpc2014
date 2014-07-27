@@ -55,8 +55,6 @@ data Expr a where
   Dbug  :: Expr a -> Expr ()
   Nop   :: Expr ()
 
-  Lnull :: Expr [a]
-  Lcons :: Expr a -> Expr [a] -> Expr [a]
 
   Ite :: Expr Int -> Expr a -> Expr a -> Expr a
   With :: Expr a -> (Expr a -> Expr r) -> Expr r
@@ -71,9 +69,6 @@ data Expr a where
 data Any = Any (forall a. Expr a)
 
 type CExpr = Writer [Any]
-
-e :: Expr a -> CExpr ()
-e x = tell [Any $ unsafeCoerce x]
 
 comp :: CExpr a -> Expr b
 comp c =
@@ -156,8 +151,8 @@ tellc :: String -> LMan ()
 tellc s = tell [const s]
 
 compileExpr :: Expr a -> LMan ()
-compileExpr e = case e of
-  Nop -> return ()
+compileExpr ee = case ee of
+  Nop -> ldc 0
 
   Const n -> ldc n
 
@@ -203,10 +198,38 @@ compileExpr e = case e of
   Dbug e -> do
     compileExpr e
     tellc "DBUG"
+    ldc 0
 
   Seq a b -> do
     compileExpr a
+    st 0 0
     compileExpr b
+
+  Ite cond t e -> do
+    tlabel <- newLabel
+    elabel <- newLabel
+    jlabel <- newLabel
+    compileExpr cond
+    tsel tlabel elabel
+    emitLabel tlabel
+    compileExpr t
+    jmp jlabel
+    emitLabel elabel
+    compileExpr e
+    emitLabel jlabel
+
+  Closure name ->
+    ldclo name
+
+  CallG name vs -> do
+    mapM_ (\(Any a) -> compileExpr a) vs
+    ldclo name
+    tellc $ "AP " ++ show (length vs)
+
+  Assign i j e -> do
+    compileExpr e
+    st i j
+    ldc 0
 
   While cond body -> do
     beg <- newLabel
@@ -223,24 +246,6 @@ compileExpr e = case e of
 
     emitLabel end
 
-  Ite cond t e -> do
-    tlabel <- newLabel
-    elabel <- newLabel
-    jlabel <- newLabel
-    compileExpr cond
-    tsel tlabel elabel
-    emitLabel tlabel
-    compileExpr t
-    jmp jlabel
-    emitLabel elabel
-    compileExpr e
-    emitLabel jlabel
-
-  Assign i j e -> do
-    compileExpr e
-    lev <- gets csEnvLevel
-    tellc $ "ST  " ++ show (lev - i) ++ " " ++ show j
-
   With v f -> do
     l <- newLabel
     end <- newLabel
@@ -256,14 +261,6 @@ compileExpr e = case e of
       tellc "RTN"
 
     emitLabel end
-
-  Closure name ->
-    ldclo name
-
-  CallG name vs -> do
-    mapM_ (\(Any a) -> compileExpr a) vs
-    ldclo name
-    tellc $ "AP " ++ show (length vs)
 
 incrLevel :: LMan ()
 incrLevel = do
@@ -293,11 +290,16 @@ ld i j = do
   lev <- gets csEnvLevel
   tellc $ "LD " ++ show (lev - i) ++ " " ++ show j
 
+st :: Int -> Int -> LMan ()
+st i j = do
+  lev <- gets csEnvLevel
+  tellc $ "ST  " ++ show (lev - i) ++ " " ++ show j
+
 ldclo :: String -> LMan ()
 ldclo name = do
   lev <- gets csEnvLevel
   tell [ \tbl ->
-          let ix = fromMaybe (error $ "undefined function: " ++ name) $ lookup name $ zip tbl [0..]
+          let ix = fromMaybe (error $ "undefined function: " ++ name) $ lookup name $ zip tbl [1 ..]
           in "LD " ++ show lev ++  " " ++ show ix
        ]
 
@@ -306,36 +308,6 @@ ldc n = tellc $ "LDC " ++ show n
 
 ldf :: Label -> LMan ()
 ldf (Label l) = tellc $ "LDF " ++ l
-
-dbug :: Expr a -> Expr ()
-dbug e = Dbug e
-
-dbugn :: Expr Int -> Expr ()
-dbugn = dbug
-
-cons :: Expr a -> Expr b -> Expr (a, b)
-cons = Cons
-
-car :: Expr (a, b) -> Expr a
-car = Car
-
-cdr :: Expr (a, b) -> Expr b
-cdr = Cdr
-
-lnull :: Expr [a]
-lnull = unsafeCoerce $ Const 0
-
-lcons :: Expr a -> Expr [a] -> Expr [a]
-lcons = unsafeCoerce $ Cons
-
-list :: [Expr a] -> Expr [a]
-list = foldr lcons lnull
-
-lhead :: Expr [a] -> Expr a
-lhead = unsafeCoerce Car
-
-ltail :: Expr [a] -> Expr [a]
-ltail = unsafeCoerce Cdr
 
 tsel :: Label -> Label -> LMan ()
 tsel (Label t) (Label e) = do
@@ -350,12 +322,7 @@ emitLabel :: Label -> LMan ()
 emitLabel (Label l) = do
   tellc $ l ++ ":"
 
-ite :: Expr Int -> Expr a -> Expr a -> Expr a
-ite = Ite
-
-(~=) :: Expr a -> Expr a -> CExpr () -- Expr ()
-(Var i j) ~= v = e $ Assign i j v
-_ ~= _ = error $ "Left hand side of := must be variable"
+-----
 
 codeGen :: LMan () -> [String]
 codeGen p =
@@ -364,12 +331,13 @@ codeGen p =
       funcs = csFuncs st
 
       hdr = do
-        tellc $ "DUM " ++ show (length funcs)
+        tellc $ "DUM " ++ show (length funcs + 1)
+        ldc 0
         forM_ funcs $ \(_name, Label l) -> do
           tellc $ "LDF " ++ l
 
         tellc "LDF main"
-        tellc $ "TRAP " ++ show (length funcs)
+        tellc $ "TRAP " ++ show (length funcs + 1)
         emitLabel $ Label "main"
 
       (_, header) = execRWS hdr () st
@@ -377,20 +345,8 @@ codeGen p =
 
 -----
 
-with :: Expr a -> (Expr a -> Expr r)  -> Expr r
-with = With
-
-expr :: Expr a -> LMan ()
-expr e = compileExpr e
-
------
-
 footer :: LMan ()
 footer = tellc "RTN"
-
-header :: LMan ()
-header = do
-  undefined
 
 compile :: LMan () -> String
 compile = unlines . desugar . compile'
@@ -432,3 +388,61 @@ def4 fname f = (\v1 v2 v3 v4 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafe
 
 def5 :: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> Expr r, LMan ())
 def5 fname f = (\v1 v2 v3 v4 v5 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafeCoerce v2, Any $ unsafeCoerce v3, Any $ unsafeCoerce v4, Any $ unsafeCoerce v5], def' fname (do a1 <- innerVar 0; a2 <- innerVar 1; a3 <- innerVar 2; a4 <- innerVar 3; a5 <- innerVar 4; compileExpr $ f a1 a2 a3 a4 a5))
+
+
+-----
+
+dbug :: Expr a -> Expr ()
+dbug e = Dbug e
+
+dbugn :: Expr Int -> Expr ()
+dbugn = dbug
+
+debug :: Expr a -> CExpr ()
+debug = e . dbug
+
+debugn :: Expr Int -> CExpr ()
+debugn = e . dbugn
+
+cons :: Expr a -> Expr b -> Expr (a, b)
+cons = Cons
+
+i :: Expr Int -> Expr Int
+i = id
+
+car :: Expr (a, b) -> Expr a
+car = Car
+
+cdr :: Expr (a, b) -> Expr b
+cdr = Cdr
+
+lnull :: Expr [a]
+lnull = unsafeCoerce $ Const 0
+
+lcons :: Expr a -> Expr [a] -> Expr [a]
+lcons = unsafeCoerce $ Cons
+
+list :: [Expr a] -> Expr [a]
+list = foldr lcons lnull
+
+lhead :: Expr [a] -> Expr a
+lhead = unsafeCoerce Car
+
+ltail :: Expr [a] -> Expr [a]
+ltail = unsafeCoerce Cdr
+
+ite :: Expr Int -> Expr a -> Expr a -> Expr a
+ite = Ite
+
+(~=) :: Expr a -> Expr a -> CExpr () -- Expr ()
+(Var i j) ~= v = e $ Assign i j v
+_ ~= _ = error $ "Left hand side of := must be variable"
+
+with :: Expr a -> (Expr a -> Expr r)  -> Expr r
+with = With
+
+expr :: Expr a -> LMan ()
+expr e = compileExpr e
+
+e :: Expr a -> CExpr ()
+e x = tell [Any $ unsafeCoerce x]
