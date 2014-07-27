@@ -240,7 +240,7 @@ let rec eval_instruction machine = function
      machine.c <- if x = Int32.zero then f else t
   | LTap n ->
      let (f, e) = check_closure(Stack.pop machine.s) in
-     let fp = (alloc_frame n) :: machine.e in
+     let fp = (alloc_frame n) :: e in
      let i = ref (n - 1) in
      while !i <> -1 do
        let y = Stack.pop machine.s in
