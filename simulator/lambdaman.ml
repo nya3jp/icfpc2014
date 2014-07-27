@@ -1,5 +1,7 @@
 open Util
 
+exception Exception_exit
+
 type instruction =
   | LLdc of int32
   | LLd  of int * int
@@ -215,7 +217,7 @@ let rec eval_instruction machine = function
   | LRtn ->
      let x = Stack.pop machine.d in
      if is_tag_stop x then
-       raise Exit; (* FIXME *)
+       raise Exception_exit;
      let x = check_tag_ret x in
      let y = Stack.pop machine.d in
      let yy = check_tag_frame y in
@@ -275,6 +277,19 @@ let rec eval_instruction machine = function
   | LBrk ->
      machine.c <- machine.c + 1
 
+let eval machine program =
+  try
+    while true do
+      let inst = program.(machine.c) in
+      eval_instruction machine inst
+    done;
+    failwith "shouldn't come here"
+  with
+  | Exception_exit ->
+     let y = Stack.pop machine.s in
+     let x = Stack.pop machine.s in
+     (x, y)
+;;
 
 (* ---------------------------------------------------------------------- *)
 
