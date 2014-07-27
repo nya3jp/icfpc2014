@@ -19,10 +19,14 @@ import DSL
 import Lib
 import System.Process
 
+sotaMode :: Bool
+sotaMode = True
+
 -----
 type X = Int
 type Direction = Int
-type World = ([[Int]], (ManState, ([GhostState], FruitState)))
+type World0 = ([[Int]], (ManState, ([GhostState], FruitState)))
+type World = ((Mat Int), (ManState, ([GhostState], FruitState)))
 
 --               vit                    lives score
 type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
@@ -47,20 +51,30 @@ pillParam ::  Int -- default: 100
 pillParam = 100 -- this is the unit of value
 {-# NOINLINE powerPillParam #-}
 powerPillParam ::  Int -- 2000
-powerPillParam = pillParam * (unsafePerformIO $ randLIO (1,20) )
+powerPillParam 
+  | sotaMode  = 500
+  | otherwise = pillParam * (unsafePerformIO $ randLIO (1,20) )
 {-# NOINLINE ghostPillParam #-}
 ghostPillParam ::  Int -- 5000
-ghostPillParam = negate $  unsafePerformIO $ randLIO (500,50000) 
+ghostPillParam  
+  | sotaMode  = -925
+  | otherwise = negate $  unsafePerformIO $ randLIO (500,50000) 
 {-# NOINLINE ghostPillParamF #-}
 ghostPillParamF ::  Int --10000
-ghostPillParamF =  unsafePerformIO $ randLIO (1000,50000) 
+ghostPillParamF 
+  | sotaMode  = 8080
+  | otherwise =  unsafePerformIO $ randLIO (1000,50000) 
 
 {-# NOINLINE ghostAuraParamF #-}
 ghostAuraParamF :: Int -- 1600
-ghostAuraParamF = unsafePerformIO $ randLIO (160,60000) 
+ghostAuraParamF 
+  | sotaMode  = -200
+  | otherwise = unsafePerformIO $ randLIO (160,60000) 
 {-# NOINLINE ghostAuraParam #-}
 ghostAuraParam :: Int -- 800
-ghostAuraParam = negate $ unsafePerformIO $ randLIO (80,80000) 
+ghostAuraParam 
+  | sotaMode  = 800
+  | otherwise = negate $ unsafePerformIO $ randLIO (80,80000) 
 
 
 (tileValue :: Expr Int -> Expr Int, tileValueDef) = def1 "tileView" $ \i ->
@@ -73,8 +87,9 @@ ghostAuraParam = negate $ unsafePerformIO $ randLIO (80,80000)
 int_min :: Expr Int
 int_min = Const $ -2^(31)
 
-mapAt :: Expr Pos -> Expr [[Int]] -> Expr Int
-mapAt pos chizu = nth (car pos) $ nth (cdr pos) chizu
+mapAt :: Expr Pos -> Expr (Mat Int) -> Expr Int
+mapAt pos chizu = peekMat (car pos) (cdr pos) chizu
+
 
 veq :: Expr Pos -> Expr Pos -> Expr Int
 veq  pos vect = (car pos .== car vect) * (cdr pos .== cdr vect)
@@ -96,9 +111,9 @@ vrotL :: Expr Pos -> Expr Pos
 vrotL vect = cons (cdr vect) (negate $ car vect)
 
 (dirValuePill:: Expr Int -> Expr Pos -> Expr World -> Expr Pos -> Expr Int, dirValuePillDef) =
-  def4 "dirValuePill" $ \depth vect world manp ->
+  def4 "dirValuePill" $ \juice vect world manp ->
     let info = (mapAt manp chizu) 
-        chizu :: Expr [[Int]]
+        chizu :: Expr (Mat Int)
         chizu = car world
         gss :: Expr [GhostState]
         gss = car $ cdr $ cdr world
@@ -109,15 +124,15 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         powerPillFlag :: Expr Int
         powerPillFlag = car manState
 
-        subScore = (dirValuePill (depth+1) (vrotR vect) world (vsub manp vect)
-                 + dirValuePill (depth+1) (vrotL vect) world (vsub manp vect)) `div` 2
+        subScore = (dirValuePill (div juice 2) (vrotR vect) world (vsub manp vect)
+                 + dirValuePill (div juice 2) (vrotL vect) world (vsub manp vect)) `div` 2
         ghostVal :: Expr Int
         ghostVal = (ite powerPillFlag (Const ghostPillParamF) (Const ghostPillParam))
     in 
-    ite (depth .>= 3) 0 $
+    ite (juice .<= 0) 0 $
     ite (info .== 0) subScore $
     ite (isGhostThere gss manp) ghostVal
-    (tileValue info) + (dirValuePill depth vect world $ vadd manp vect)*9`div`10
+    (tileValue info) + (dirValuePill (div juice 2) vect world $ vadd manp vect)*9`div`10
 
 (dirValueGhost1 :: Expr Pos -> Expr GhostState -> Expr Int -> Expr Pos -> Expr Int, dirValueGhost1Def) = 
   def4 "dirValueGhost1" $ \vect gs1 ppflag manp ->
@@ -161,7 +176,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         powerPillFlag :: Expr Int
         powerPillFlag = car manState
    
-        chizu :: Expr [[Int]]
+        chizu :: Expr (Mat Int)
         chizu = car world
         
         gss :: Expr [GhostState]
@@ -175,9 +190,11 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
           + dirValueGhosts vect gss powerPillFlag manP
 
 
-(step :: Expr AIState -> Expr World -> Expr (AIState,Int), stepDef) =
-  def2 "step" $ \aist world ->
-    let scoreN, scoreE, scoreS, scoreW :: Expr Int
+(step :: Expr AIState -> Expr World0 -> Expr (AIState,Int), stepDef) =
+  def2 "step" $ \aist world0 -> with (toMat (car world0)) $ \chizu -> 
+    let world = cons chizu (cdr world0)
+        
+        scoreN, scoreE, scoreS, scoreW :: Expr Int
         scoreN = dirValueTotal (cons 0 (-1)) world
         scoreE = dirValueTotal (cons 1    0) world
         scoreS = dirValueTotal (cons 0    1) world
@@ -194,7 +211,6 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
 
 progn :: LMan ()
 progn = do
-  nthDef
   tileValueDef
   dirValuePillDef
   dirValueGhost1Def  
@@ -202,8 +218,10 @@ progn = do
   dirValueTotalDef
   isGhostThereDef
   stepDef
+  
+  libDef
 
-  expr $ cons (0 :: Expr AIState) $ Closure "step"
+  rtn $ cons (0 :: Expr AIState) $ Closure "step"
 
 data TestConf = TestConf 
   {ghostFiles::[String], 
@@ -323,10 +341,12 @@ charFraction c s = (fromIntegral $ length $ filter (==c) s) / (fromIntegral $ le
 main :: IO ()
 main = do
   args <- getArgs
-  case args of
-    ["debug"] -> do
-      mapM_ putStrLn $ compile' progn
-    _ -> main2
+  if sotaMode then writeFile "aznyan-sota.gcc" $ compile progn
+    else
+      case args of
+        ["debug"] -> do
+          mapM_ putStrLn $ compile' progn
+        _ -> main2
     
 main2 :: IO ()
 main2 = do
