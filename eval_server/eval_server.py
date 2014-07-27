@@ -25,7 +25,10 @@ def load_entry(name):
     if jsonname.startswith(name + '.response.') and jsonname.endswith('.json'):
       jsonpath = os.path.join(FLAGS.data_dir, jsonname)
       with open(jsonpath) as f:
-        entry['results'].append(json.load(f))
+        try:
+          entry['results'].append(json.load(f))
+        except ValueError:
+          continue
   return entry
 
 
@@ -50,7 +53,10 @@ def index_handler():
     if jsonname.endswith('.request.json'):
       jsonpath = os.path.join(FLAGS.data_dir, jsonname)
       with open(jsonpath) as f:
-        entry = load_entry(json.load(f)['name'])
+        try:
+          entry = load_entry(json.load(f)['name'])
+        except ValueError:
+          continue
       entries.append(entry)
   evalsets = flatten_results(entries)
   return bottle.template('index.html', entries=entries, evalsets=evalsets)
@@ -67,6 +73,7 @@ def submit_handler():
   name = '%s-%s' % (now.strftime('%Y%m%d%H%M%S'), user)
   data = {
       'name': name,
+      'title': now.strftime('%Y-%m-%d %H:%M:%S') + ' by ' + user,
       'user': user,
       'url': url,
       'comment': comment,

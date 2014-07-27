@@ -15,7 +15,7 @@
 
       <div class="row">
         <div class="col-xs-12">
-          <table class="table">
+          <table class="table table-striped">
             <tr>
               <th></th>
               % for evalset in evalsets:
@@ -25,13 +25,15 @@
             % for entry in entries:
             <tr>
               <td>
-                <a href="{{ entry['url'] }}">{{ entry['name'] }}</a><br>
+                {{ entry['title'] }}<br>
                 <span>{{ entry['comment'] }}</span>
               </td>
               % for result in entry['results']:
               <td>
                 % if result:
                 {{ result['score'] }}
+                % else:
+                &#128007;
                 % end
               </td>
               % end
