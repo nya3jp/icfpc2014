@@ -35,7 +35,7 @@ randLIO (lo,hi) = do
 
 {-# NOINLINE pillParam #-}
 pillParam ::  Int -- default: 100
-pillParam = unsafePerformIO $ randLIO (10,1000) 
+pillParam = 100 -- this is the unit of value
 {-# NOINLINE powerPillParam #-}
 powerPillParam ::  Int -- 2000
 powerPillParam = pillParam * (unsafePerformIO $ randLIO (1,20) )
@@ -253,9 +253,9 @@ main2 = do
       indexStr = printf "%010d" indexR
       gccFn :: String
       txtFn :: String
-      gccFn = printf "./LambdaMan/gen/az%s.gcc" indexStr
-      txtFn = printf "./LambdaMan/gen/az%s.txt" indexStr
-      logFn = printf "./LambdaMan/gen/az%s.log" indexStr      
+      gccFn = printf "./LambdaMan/gen/as%s.gcc" indexStr
+      txtFn = printf "./LambdaMan/gen/as%s.txt" indexStr
+      logFn = printf "./LambdaMan/gen/as%s.log" indexStr      
   writeFile gccFn $ compile progn
   let tcs0 = mkTestConfs gccFn
   print $ length tcs0
