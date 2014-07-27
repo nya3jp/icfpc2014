@@ -119,11 +119,11 @@ let alloc_dummy_frame n = {
 let rec string_of_value = function
   | VInt x -> Int32.to_string x
   | VCons(v1,v2) -> "(" ^ (string_of_value v1) ^ ", " ^ (string_of_value v2) ^ ")"
-  | VClosure(n,_) -> "{" ^ (string_of_int n) ^ " }" (* FIXME: should frame list displayed? *)
+  | VClosure(n,_) -> "Closure{" ^ (string_of_int n) ^ "}" (* FIXME: should frame list displayed? *)
 ;;
 
-let print_value v = print_endline (string_of_value v)
-
+let print_value v =
+  print_endline (string_of_value v)
 
 let rec get_nth_env_frame n = function
   | [] -> failwith "no environment ?"
@@ -276,6 +276,7 @@ let rec eval_instruction machine = function
      machine.c <- machine.c + 1
   | LBrk ->
      machine.c <- machine.c + 1
+;;
 
 let eval machine program =
   try
