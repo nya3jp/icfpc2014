@@ -182,6 +182,11 @@ class Return(Stmt):
       # TODO: Maybe missing some edge cases
       if len(self.values) == 2:
         ctx.emit('CONS')
+    else:
+      compile_assert(
+          sum(value.rank(ctx) for value in self.values) == ctx.current_func.rank,
+          None,
+          'Number of function return values does not match with rank')
     ctx.emit('RTN')
 
 
@@ -461,6 +466,10 @@ class Call(Expr):
         None,
         'Undefined function %s',
         self.func)
+    compile_assert(
+        sum(arg.rank(ctx) for arg in self.args) == len(ctx.funcs[self.func].args),
+        None,
+        'Number of arguments does not match on function call of %s', self.func)
     for arg in self.args:
       arg.compile(ctx)
     ctx.emit('LDF %s', ctx.funcs[self.func].label)
