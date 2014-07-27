@@ -93,6 +93,23 @@ progn = do
   libDef
 
   cexpr $ do
+    cwith (mkArray (list $ map fromIntegral [0..9 :: Int] :: Expr [Int])) $ \arr -> do
+      debug arr
+
+      for 0 10 $ \i -> do
+        debug $ cons i $ peek i arr
+
+      for 0 10 $ \i -> do
+        arr ~= poke i (peek i arr * peek i arr) arr
+
+      debug arr
+
+      for 0 10 $ \i -> do
+        debug $ cons i $ peek i arr
+
+{-
+
+  cexpr $ do
     debug $ lreverse $ list [1, 2, 3, 4, 5 :: Expr Int]
     debugn 1234
 
@@ -101,6 +118,11 @@ progn = do
       debugn $ i * 2
       i ~= i * i
       debugn i
+
+    cwith 0 $ \i -> do
+      while (i .< 10) $ comp $ do
+        debugn i
+        i ~= i + 1
 
   expr $ do
     with (enqueue 1 emptyQueue :: Expr (Queue Int)) $ \q1 ->
@@ -114,6 +136,7 @@ progn = do
         debug r4
         debug r5
         debug r6
+-}
 
 main :: IO ()
 main = do
