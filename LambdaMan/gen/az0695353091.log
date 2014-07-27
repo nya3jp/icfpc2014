@@ -1,0 +1,9 @@
+100	./sim.sh --map=map/world-2.txt --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
+1900	./sim.sh --map=map/world-2.txt --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
+70	./sim.sh --map=map/world-2.txt --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
+2300	./sim.sh --map=map/world-8.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
+960	./sim.sh --map=map/world-8.map --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
+80	./sim.sh --map=map/world-8.map --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
+1090	./sim.sh --map=map/train.map --ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
+520	./sim.sh --map=map/train.map --ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
+2680	./sim.sh --map=map/train.map --ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc --lambda=./LambdaMan/gen/az0695353091.gcc
