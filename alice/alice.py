@@ -182,15 +182,11 @@ class Return(Stmt):
       value.compile(ctx)
     if ctx.current_func.rank == 1:
       compile_assert(
-          len(self.values) <= 2,
-          None,
-          'A function returning multiple values must be marked with @rank')
-      compile_assert(
           all(value.rank(ctx) == 1 for value in self.values),
           None,
           'Tried to return multiple values from rank-1 function')
-      # TODO: Maybe missing some edge cases
-      if len(self.values) == 2:
+      # Convert to a tuple
+      for i in xrange(len(self.values) - 1):
         ctx.emit('CONS')
     else:
       compile_assert(
@@ -581,19 +577,19 @@ class Atom(Expr):
     ctx.emit('ATOM')
 
 
-class Pair(Expr):
-  def __init__(self, car, cdr):
-    self.car = car
-    self.cdr = cdr
-    Expr.__init__(self, [car, cdr])
+class Tuple(Expr):
+  def __init__(self, elems):
+    self.elems = elems
+    Expr.__init__(self, elems)
 
   def rank(self, ctx):
     return 1
 
   def compile(self, ctx):
-    self.car.compile(ctx)
-    self.cdr.compile(ctx)
-    ctx.emit('CONS')
+    for el in self.elems:
+      el.compile(ctx)
+    for i in xrange(len(self.elems) - 1):
+      ctx.emit('CONS')
 
 
 class List(Expr):
@@ -770,8 +766,7 @@ def parse_expr(expr):
     return Call('_builtin_index',
                 [parse_expr(expr.value), parse_expr(expr.slice.value)])
   if isinstance(expr, ast.Tuple):
-    compile_assert(len(expr.elts) == 2, expr, 'Only 2-tuples are allowed')
-    return Pair(parse_expr(expr.elts[0]), parse_expr(expr.elts[1]))
+    return Tuple([parse_expr(el) for el in expr.elts])
   if isinstance(expr, ast.List):
     return List([parse_expr(el) for el in expr.elts])
   if isinstance(expr, ast.Name):
