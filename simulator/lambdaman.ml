@@ -382,7 +382,6 @@ let eval_step program closure args =
 
   try
     while true do
-      print_endline (string_of_int machine.c);
       let inst = program.(machine.c) in
       eval_instruction machine inst
     done;
