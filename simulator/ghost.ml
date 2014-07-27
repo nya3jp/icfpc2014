@@ -50,7 +50,7 @@ let eval_gvalue env = function
   | GVReg      r -> env.reg.(r)
   | GVPCReg      -> env.pc
   | GVIndConst x -> env.data.(x)
-  | GVIndReg   r -> env.data.(r)
+  | GVIndReg   r -> env.data.(env.reg.(r))
 
 let rec eval_ginstruction env syscallback = function
   | GMov (x1, x2) ->
