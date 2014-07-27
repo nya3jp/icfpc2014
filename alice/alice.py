@@ -67,35 +67,36 @@ class Context(object):
 
 
 class Syntax(object):
-  def compile(self, ctx):
-    raise NotImplementedError()
-
-
-class Stmt(Syntax):
   def __init__(self, children):
     self.children = children
 
   def gather_func_vars(self):
     vars = []
-    for stmt in self.children:
-      vars.extend(stmt.gather_func_vars())
+    for child in self.children:
+      vars.extend(child.gather_func_vars())
     return vars
 
   def has_return_with_value(self):
     return any(stmt.has_return_with_value() for stmt in self.children)
 
   def compile(self, ctx):
-    for stmt in self.children:
-      stmt.compile(ctx)
+    raise NotImplementedError()
+
+
+class Stmt(Syntax):
+  pass
 
 
 class Block(Stmt):
-  pass
+  def compile(self, ctx):
+    for stmt in self.children:
+      stmt.compile(ctx)
 
 
 class Module(Syntax):
   def __init__(self, funcs):
     self.funcs = funcs
+    Syntax.__init__(self, funcs)
 
   def compile(self, ctx):
     ctx = ctx.copy()
@@ -145,7 +146,7 @@ class Function(Stmt):
 
 class If(Stmt):
   def __init__(self, test, then_block, else_block):
-    Stmt.__init__(self, then_block.children + else_block.children)
+    Stmt.__init__(self, [test] + then_block.children + else_block.children)
     self.test = test
     self.then_block = then_block
     self.else_block = else_block
@@ -165,7 +166,7 @@ class If(Stmt):
 
 class Return(Stmt):
   def __init__(self, values):
-    Stmt.__init__(self, [])
+    Stmt.__init__(self, values)
     self.values = values
 
   def has_return_with_value(self):
@@ -196,12 +197,12 @@ class Return(Stmt):
 
 class Assign(Stmt):
   def __init__(self, targets, value):
-    Stmt.__init__(self, [])
+    Stmt.__init__(self, [value])
     self.targets = targets
     self.value = value
 
   def gather_func_vars(self):
-    return list(self.targets)
+    return self.targets + Stmt.gather_func_vars(self)
 
   def compile(self, ctx):
     self.value.compile(ctx)
@@ -212,11 +213,11 @@ class Assign(Stmt):
 
 class Discard(Stmt):
   def __init__(self, value):
-    Stmt.__init__(self, [])
+    Stmt.__init__(self, [value])
     self.value = value
 
   def gather_func_vars(self):
-    return ['_']
+    return ['_'] + Stmt.gather_func_vars(self)
 
   def compile(self, ctx):
     self.value.compile(ctx)
@@ -227,7 +228,7 @@ class Discard(Stmt):
 
 class While(Stmt):
   def __init__(self, test, block):
-    Stmt.__init__(self, block.children)
+    Stmt.__init__(self, [test] + block.children)
     self.test = test
     self.block = block
 
@@ -253,7 +254,7 @@ class While(Stmt):
 
 class ForN(Stmt):
   def __init__(self, target, begin, end, step, block):
-    Stmt.__init__(self, block.children)
+    Stmt.__init__(self, [begin, end, step] + block.children)
     self.target = target
     self.begin = begin
     self.end = end
@@ -321,7 +322,7 @@ class Break(Stmt):
 
 class Print(Stmt):
   def __init__(self, values):
-    Stmt.__init__(self, [])
+    Stmt.__init__(self, values)
     self.values = values
 
   def compile(self, ctx):
@@ -347,6 +348,7 @@ class Expr(Syntax):
 
 class UnaryOp(Expr):
   def __init__(self, operand):
+    Expr.__init__(self, [operand])
     self.operand = operand
 
   def rank(self, ctx):
@@ -359,6 +361,7 @@ class UnaryOp(Expr):
 
 class BinOp(Expr):
   def __init__(self, left, right):
+    Expr.__init__(self, [left, right])
     self.left = left
     self.right = right
 
@@ -410,6 +413,27 @@ class NumBinOp(BinOp):
     return None
 
 
+class Mod(BinOp):
+  def gather_func_vars(self):
+    return ['_a', '_b'] + BinOp.gather_func_vars(self)
+
+  def compile(self, ctx):
+    ai, aj = ctx.vars['_a']
+    bi, bj = ctx.vars['_b']
+    self.left.compile(ctx)
+    ctx.emit('ST %d %d', ai, aj)
+    self.right.compile(ctx)
+    ctx.emit('ST %d %d', bi, bj)
+
+    ctx.emit('LD %d %d', ai, aj)
+    ctx.emit('LD %d %d', ai, aj)
+    ctx.emit('LD %d %d', bi, bj)
+    ctx.emit('DIV')
+    ctx.emit('LD %d %d', bi, bj)
+    ctx.emit('MUL')
+    ctx.emit('SUB')
+
+
 class And(BinOp):
   def compile(self, ctx):
     ctx.emit('LDC 1')
@@ -449,6 +473,7 @@ class Call(Expr):
   def __init__(self, func, args):
     self.func = func
     self.args = args
+    Expr.__init__(self, args)
 
   def rank(self, ctx):
     compile_assert(
@@ -483,6 +508,7 @@ class Call(Expr):
 class Car(Expr):
   def __init__(self, pair):
     self.pair = pair
+    Expr.__init__(self, [pair])
 
   def rank(self, ctx):
     return 1
@@ -495,6 +521,7 @@ class Car(Expr):
 class Cdr(Expr):
   def __init__(self, pair):
     self.pair = pair
+    Expr.__init__(self, [pair])
 
   def rank(self, ctx):
     return 1
@@ -508,6 +535,7 @@ class Pair(Expr):
   def __init__(self, car, cdr):
     self.car = car
     self.cdr = cdr
+    Expr.__init__(self, [car, cdr])
 
   def rank(self, ctx):
     return 1
@@ -521,6 +549,7 @@ class Pair(Expr):
 class List(Expr):
   def __init__(self, elems):
     self.elems = elems
+    Expr.__init__(self, self.elems)
 
   def rank(self, ctx):
     return 1
@@ -536,6 +565,7 @@ class List(Expr):
 class Name(Expr):
   def __init__(self, name):
     self.name = name
+    Expr.__init__(self, [])
 
   def rank(self, ctx):
     return 1
@@ -552,6 +582,7 @@ class Name(Expr):
 class Num(Expr):
   def __init__(self, n):
     self.n = n
+    Expr.__init__(self, [])
 
   def rank(self, ctx):
     return 1
@@ -645,6 +676,8 @@ def parse_stmt(stmt):
 def parse_expr(expr):
   compile_assert(isinstance(expr, ast.expr), expr)
   if isinstance(expr, ast.BinOp):
+    if isinstance(expr.op, ast.Mod):
+      return Mod(parse_expr(expr.left), parse_expr(expr.right))
     inst = NumBinOp.op_to_inst(expr.op)
     return NumBinOp(inst, parse_expr(expr.left), parse_expr(expr.right))
   if isinstance(expr, ast.BoolOp):
