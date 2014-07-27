@@ -4,6 +4,7 @@ import json
 import os
 import subprocess
 import sys
+import threading
 import time
 
 import gflags
@@ -23,12 +24,17 @@ gflags.MarkFlagAsRequired('remote_host')
 gflags.MarkFlagAsRequired('remote_root')
 
 
+g_lock = threading.Lock()
+
+
 class EvalJob(object):
   def __init__(self, name, evalset):
     self.name = name
     self.evalset = evalset
 
   def run(self):
+    with g_lock:
+      time.sleep(1)
     print 'started', self.name, self.evalset
     script = os.path.join(FLAGS.remote_root, 'eval_server', 'evalsets', '%s.sh' % self.evalset)
     codepath = os.path.join(
