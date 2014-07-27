@@ -143,6 +143,47 @@ and set_gvalue env dst v =
      env.data.(env.reg.(r)) <- v
 ;;
 
+let rec string_of_instruction = function
+  | GMov (x1, x2) ->
+     Printf.sprintf "MOV %s, %s" (string_of_operand x1) (string_of_operand x2)
+  | GInc x ->
+     Printf.sprintf "INC %s" (string_of_operand x)
+  | GDec x ->
+     Printf.sprintf "DEC %s" (string_of_operand x)
+  | GAdd (x, y) ->
+     Printf.sprintf "ADD %s %s" (string_of_operand x) (string_of_operand y)
+  | GSub (x, y) ->
+     Printf.sprintf "SUB %s %s" (string_of_operand x) (string_of_operand y)
+  | GMul (x, y) ->
+     Printf.sprintf "MUL %s %s" (string_of_operand x) (string_of_operand y)
+  | GDiv (x, y) ->
+     Printf.sprintf "DIV %s %s" (string_of_operand x) (string_of_operand y)
+  | GAnd (x, y) ->
+     Printf.sprintf "AND %s %s" (string_of_operand x) (string_of_operand y)
+  | GOr (x, y) ->
+     Printf.sprintf "OR %s %s" (string_of_operand x) (string_of_operand y)
+  | GXor (x, y) ->
+     Printf.sprintf "XOR %s %s" (string_of_operand x) (string_of_operand y)
+  | GJlt (t, x, y) ->
+     Printf.sprintf "JLT %d %s %s" t (string_of_operand x) (string_of_operand y)
+  | GJeq (t, x, y) ->
+     Printf.sprintf "JEQ %d %s %s" t (string_of_operand x) (string_of_operand y)
+  | GJgt (t, x, y) ->
+     Printf.sprintf "JGT %d %s %s" t (string_of_operand x) (string_of_operand y)
+  | GInt n when 0 <= n && n <= 8 ->
+     Printf.sprintf "INT %d" n
+  | GInt _ ->
+     failwith "Unknown syscall"
+  | GHlt ->
+     Printf.sprintf "HLT"
+and string_of_operand = function
+  | GVConst n -> string_of_int n
+  | GVReg r -> [|"A";"B";"C";"D";"E";"F";"G";"H"|].(r)
+  | GVPCReg -> "PC"
+  | GVIndConst x -> Printf.sprintf "[%d]" x
+  | GVIndReg r -> Printf.sprintf "[%s]" ([|"A";"B";"C";"D";"E";"F";"G";"H"|].(r))
+;;
+
 (* ---------------------------------------------------------------------- *)
 
 type vitality =
