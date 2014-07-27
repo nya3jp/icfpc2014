@@ -10,7 +10,6 @@ def fact_iter(n):
   return n
 
 
-@rank(1)
 def fact_rec(n):
   if n <= 0:
     return 1
