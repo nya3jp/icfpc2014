@@ -322,6 +322,9 @@ let rec eval_instruction machine = function
      print_value x;
      machine.c <- machine.c + 1
   | LBrk ->
+     print_endline "DEBUG BREAK";
+     print_machine machine;
+     print_endline "DEBUG BREAK DONE";
      machine.c <- machine.c + 1
 ;;
 

@@ -273,6 +273,12 @@ let score_fruit field =
 open Lambdaman
 
 let rec encode_as_tuple = function
+  | [] -> failwith ""
+  | x :: [] -> x
+  | x :: xs -> VCons (x, encode_as_tuple xs)
+;;
+
+let rec encode_as_list = function
   | [] -> value_of_int 0
   | x :: xs -> VCons (x, encode_as_tuple xs)
 ;;
@@ -301,10 +307,17 @@ let encode_status t tick =
   let lives = value_of_int man.lives in
   let score = value_of_int man.score in
   encode_as_tuple [vitality; position; dirrection; lives; score]
+;;
 
 let encode_ghost t =
-  let vitalities = Array.to_list (Array.map (fun ghost -> value_of_int (Ghost.int_of_vitality ghost.Ghost.vitality)) t.ghosts) in
-  encode_as_list vitalities
+  let m = Array.map (fun ghost ->
+    let vitality = value_of_int (Ghost.int_of_vitality ghost.Ghost.vitality) in
+    let location = VCons (value_of_int ghost.Ghost.x, value_of_int ghost.Ghost.y) in
+    let direction = value_of_int (int_of_direction ghost.Ghost.d) in
+    encode_as_tuple [vitality; location; direction]
+  ) t.ghosts in
+  encode_as_list (Array.to_list m)
+;;
 
 (* fruit might exist in [127 * 200, 127 * 280], [127 * 400, 127 * 480] *)
 let encode_fruit t tick =
