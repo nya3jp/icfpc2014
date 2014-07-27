@@ -28,6 +28,7 @@ sotaMode = unsafePerformIO $ do
 -----
 type X = Int
 type Direction = Int
+type Clock = Int
 type World0 = ([[Int]], (ManState, ([GhostState], FruitState)))
 type World = ((Mat Int), (ManState, ([GhostState], FruitState)))
 
@@ -35,7 +36,7 @@ type World = ((Mat Int), (ManState, ([GhostState], FruitState)))
 type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
 type GhostState = (Int, (Pos , Direction))
 type FruitState = Int
-type AIState = ((Mat Int),X)
+type AIState = ((Mat Int),(Clock,X))
 type Pos = (Int, Int)
 
 randLIO :: (Double,Double) -> IO Int
@@ -100,6 +101,8 @@ int_min = Const $ -2^(31)
 mapAt :: Expr Pos -> Expr (Mat Int) -> Expr Int
 mapAt pos chizu = peekMat (car pos) (cdr pos) chizu
 
+mapPoke :: Expr Pos -> Expr Int -> Expr (Mat Int) -> Expr (Mat Int)
+mapPoke pos val chizu = pokeMat (car pos) (cdr pos) val chizu
 
 veq :: Expr Pos -> Expr Pos -> Expr Int
 veq  pos vect = (car pos .== car vect) * (cdr pos .== cdr vect)
@@ -198,12 +201,14 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         ite (mapAt nextP chizu .== 0) int_min $
         dirValuePill 100 vect world manP 
           + dirValueGhosts vect gss powerPillFlag manP
+          + mapAt nextP chizu
 
 
 (step :: Expr AIState -> Expr World0 -> Expr (AIState,Int), stepDef) =
   def2 "step" $ \aist world0 -> with (car aist) $ \chizu -> 
     let world = cons chizu (cdr world0)
-        
+        clk :: Expr Clock
+        clk = car $ cdr aist
         scoreN, scoreE, scoreS, scoreW :: Expr Int
         scoreN = dirValueTotal (cons 0 (-1)) world
         scoreE = dirValueTotal (cons 1    0) world
@@ -216,8 +221,18 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
              ite (scoreS .>= scoreW) 2 $
              (3 :: Expr Int)
 
-    in dbug (list [scoreN, scoreE, scoreS, scoreW]) 
-        `Seq` cons aist d2
+        manP :: Expr Pos
+        manP = car $ cdr $ manState
+
+        manState :: Expr ManState
+        manState = car $ cdr world
+
+        newAist :: Expr AIState
+        newAist = cons (mapPoke manP (negate clk) chizu) $
+                  cons (clk+1) (cdr $cdr aist)
+    in dbug (list [scoreN, scoreE, scoreS, scoreW]) `Seq`
+--       dbug chizu `Seq`
+       cons newAist d2
 
 progn :: LMan ()
 progn = do
@@ -235,7 +250,7 @@ progn = do
   
   let chizu = toMat $ car (Var (-1) 0 :: Expr World0)
   
-  rtn $ cons (cons chizu  0 :: Expr AIState) $ Closure "step"
+  rtn $ cons (cons chizu (cons 0 0) :: Expr AIState) $ Closure "step"
 
 data TestConf = TestConf 
   {ghostFiles::[String], 
