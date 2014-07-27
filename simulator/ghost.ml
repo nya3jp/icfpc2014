@@ -27,8 +27,8 @@ type ginstruction =
   | GHlt
 
 type genv = {
-  mutable reg : int array;
-  mutable pc  : int;
+  mutable reg: int array;
+  mutable pc: int;
   mutable data: int array;
   mutable newDir: int;
 }
@@ -196,11 +196,13 @@ let eval t syscallback =
   begin
     try
       for i = 0 to 1023 do
-        Printf.printf "pc=%d\n" t.env.pc;
+        if t.env.pc < 0 || (Array.length t.program) <  t.env.pc then
+          failwith ("program count is out of bound: " ^ (string_of_int t.env.pc));
         eval_ginstruction t.env syscallback t.program.(t.env.pc)
       done;
     with
     | Halt_exception -> ()
+    | x -> Printf.printf "Unexpected exception for ghost: %s\n" (Printexc.to_string x)
   end;
   t.env.newDir
 ;;
