@@ -355,7 +355,10 @@ let next_tick world =
       begin
         try
           let v = Lambdaman.eval_step lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
-          let (VCons (state, move)) = v in
+          let (state, move) = match v with
+            | VCons (state, move) -> (state, move)
+            | _ -> failwith "Lambdaman's step function didn't return CONS cell."
+          in
           let move = check_int move in
           lambdaman.Lambdaman.state <- state;
           schedule_tick world (tick, eLambdamanMoveCommit, event_arg, Int32.to_int move);
@@ -463,7 +466,10 @@ let run t =
   and ghost_programs = encode_ghost_programs t in
   Array.iter (fun man ->
     let v = Lambdaman.eval_main man.program [encoded_world; ghost_programs] in
-    let (VCons (state, stepFun)) = v in
+    let (state, stepFun) = match v with
+      | VCons (state, stepFun) -> (state, stepFun)
+      | _ -> failwith "Lambdaman's main function didn't return CONS cell"
+    in
     man.state <- state;
     man.stepFun <- stepFun
   ) t.lambdamans;
