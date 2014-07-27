@@ -7,23 +7,24 @@ let syscallback n env =
 ;;
 
 let evalstep (t : Ghost.t) syscallback =
-  try
-    eval_ginstruction t.env syscallback t.program.(t.env.pc);
-    dump t;
-  with
-  | Halt_exception -> ()
+  eval_ginstruction t.env syscallback t.program.(t.env.pc);
 ;;
 
 let run_program () =
   let name = Sys.argv.(1) in
   let program = GhostAiReader.read name in
   let t = Ghost.make 0 30 30 program in
-  dump t;
-  while true do
-    print_string "Press enter to next step";
-    ignore(read_line ());
-    evalstep t syscallback;
-  done;
+
+  try
+    while true do
+      print_endline (string_of_instruction t.program.(t.env.pc));
+      dump t;
+      print_string "Press enter to next step";
+      ignore(read_line ());
+      evalstep t syscallback;
+    done;
+  with
+  | Halt_exception -> ()
 ;;
 
 let _ =

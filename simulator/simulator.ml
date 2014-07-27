@@ -153,16 +153,22 @@ let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
        env.Ghost.reg.(0) <- ghost.Ghost.index
     | 4 ->
        let idx = env.Ghost.reg.(0) in
-       env.Ghost.reg.(0) <- t.ghosts.(idx).Ghost.initialX;
-       env.Ghost.reg.(1) <- t.ghosts.(idx).Ghost.initialY;
+       if 0 <= idx && idx < Array.length t.ghosts then begin
+         env.Ghost.reg.(0) <- t.ghosts.(idx).Ghost.initialX;
+         env.Ghost.reg.(1) <- t.ghosts.(idx).Ghost.initialY;
+       end
     | 5 ->
        let idx = env.Ghost.reg.(0) in
-       env.Ghost.reg.(0) <- t.ghosts.(idx).Ghost.x;
-       env.Ghost.reg.(1) <- t.ghosts.(idx).Ghost.y;
+       if 0 <= idx && idx < Array.length t.ghosts then begin
+         env.Ghost.reg.(0) <- t.ghosts.(idx).Ghost.x;
+         env.Ghost.reg.(1) <- t.ghosts.(idx).Ghost.y;
+       end
     | 6 ->
        let idx = env.Ghost.reg.(0) in
-       env.Ghost.reg.(0) <- Ghost.int_of_vitality t.ghosts.(idx).Ghost.vitality;
-       env.Ghost.reg.(1) <- int_of_direction (t.ghosts.(idx).Ghost.d);
+       if 0 <= idx && idx < Array.length t.ghosts then begin
+         env.Ghost.reg.(0) <- Ghost.int_of_vitality t.ghosts.(idx).Ghost.vitality;
+         env.Ghost.reg.(1) <- int_of_direction (t.ghosts.(idx).Ghost.d);
+       end
     | 7 ->
        let x = env.Ghost.reg.(0)
        and y = env.Ghost.reg.(1) in
