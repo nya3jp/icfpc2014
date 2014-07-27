@@ -262,8 +262,15 @@ let encode_field field =
   ) field zero
 ;;
 
+(* Consider only single lambdaman? *)
 let encode_status t =
-  failwith "not implemented yet"
+  let man = t.lambdamans.(0) in
+  let vitality = Lambdaman.value_of_int man.Lambdaman.vitality in
+  let position = Lambdaman.VCons (Lambdaman.value_of_int man.Lambdaman.x, Lambdaman.value_of_int man.Lambdaman.y) in
+  let dirrection = Lambdaman.value_of_int (int_of_direction man.Lambdaman.d) in
+  let lives = Lambdaman.value_of_int man.Lambdaman.lives in
+  let score = Lambdaman.value_of_int man.Lambdaman.score in
+  encode_as_tuple [vitality; position; dirrection; lives; score]
 
 let encode_ghost t =
   let vitalities = Array.to_list (Array.map (fun ghost -> Lambdaman.value_of_int (Ghost.int_of_vitality ghost.Ghost.vitality)) t.ghosts) in
