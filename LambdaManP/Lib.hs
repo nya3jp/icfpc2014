@@ -6,6 +6,9 @@ import DSL
 
 libDef :: LMan ()
 libDef = do
+  llengthDef
+  ldropDef
+  ltakeDef
   nthDef
   updDef
   getMatDef
@@ -13,6 +16,13 @@ libDef = do
   lreverseDef
 
   dequeueDef
+
+  mkArrayDef
+  mkArrayGoDef
+  peekDef
+  peekGoDef
+  pokeDef
+  pokeGoDef
 
 (&&&) :: Expr Int -> Expr Int -> Expr Int
 a &&& b = a * b
@@ -27,6 +37,18 @@ cadr = car . cdr
 caddr = car . cdr . cdr
 cdddr = cdr . cdr . cdr
 
+llength :: Expr [a] -> Expr Int
+(llength, llengthDef) = def1 "llength" $ \xs ->
+  ite (atom xs) 0 $ 1 + llength (ltail xs)
+
+ltake :: Expr Int -> Expr [a] -> Expr [a]
+(ltake, ltakeDef) = def2 "ltake" $ \i xs ->
+  ite (i .== 0) lnull $ lcons (lhead xs) $ ldrop (i-1) (ltail xs)
+
+ldrop :: Expr Int -> Expr [a] -> Expr [a]
+(ldrop, ldropDef) = def2 "ldrop" $ \i xs ->
+  ite (i .== 0) xs $ ldrop (i-1) (ltail xs)
+
 (nth, nthDef) = def2 "nth" $ \i xs ->
   ite (i .== 0) (lhead xs) (nth (i-1) (ltail xs))
 
@@ -40,10 +62,10 @@ cdddr = cdr . cdr . cdr
   upd y (upd x v $ nth y m) m
 
 lreverse :: Expr [a] -> Expr [a]
-lreverse = lreverse' lnull
+lreverse = lreverseGo lnull
 
-(lreverse', lreverseDef) = def2 "lreverse'" $ \acc xs -> do
-  ite (isNull xs) acc $ lreverse' (lcons (lhead xs) acc) (ltail xs)
+(lreverseGo, lreverseDef) = def2 "lreverseGo" $ \acc xs -> do
+  ite (isNull xs) acc $ lreverseGo (lcons (lhead xs) acc) (ltail xs)
 
 -- Queue
 
@@ -68,3 +90,42 @@ dequeue :: Expr (Queue a) -> Expr (a, Queue a)
 
 isEmptyQueue :: Expr (Queue a) -> Expr Int
 isEmptyQueue q = (isNull $ car q) &&& (isNull $ cdr q)
+
+-- Array
+
+type Array a = (Int, Node a)
+data Node a = Node
+
+mkArray :: Expr [a] -> Expr (Array a)
+(mkArray, mkArrayDef) = def1 "mkArray" $ \xs ->
+  with (llength xs) $ \len ->
+    cons len $ mkArrayGo 0 len xs
+
+mkArrayGo :: Expr Int -> Expr Int -> Expr [a] -> Expr (Node a)
+(mkArrayGo, mkArrayGoDef) = def3 "mkArrayGo" $ \l r xs ->
+  let m = (l + r) `div` 2
+  in ite (r - l .== 1)
+     (cast $ lhead xs)
+     (gcons (mkArrayGo l m xs) (mkArrayGo m r $ ldrop (m - l) xs))
+
+peek :: Expr Int -> Expr (Array a) -> Expr a
+(peek, peekDef) = def2 "peek" $ \ix arr -> peekGo ix 0 (car arr) (cdr arr)
+
+peekGo :: Expr Int -> Expr Int -> Expr Int -> Expr (Node a) -> Expr a
+(peekGo, peekGoDef) = def4 "peekGo" $ \ix l r node -> comp $ do
+  let m = (l + r) `div` 2
+  e $ite (r - l .== 1) (cast node) $
+       ite (ix .< m)
+         (peekGo ix l m (gcar node))
+         (peekGo ix m r (gcdr node))
+
+poke :: Expr Int -> Expr a -> Expr (Array a) -> Expr (Array a)
+(poke, pokeDef) = def3 "poke" $ \ix v arr -> cons (car arr) (pokeGo ix 0 (car arr) v (cdr arr))
+
+pokeGo :: Expr Int -> Expr Int -> Expr Int -> Expr a -> Expr (Node a) -> Expr (Node a)
+(pokeGo, pokeGoDef) = def5 "pokeGo" $ \ix l r v node -> comp $ do
+  let m = (l + r) `div` 2
+  e $ ite (r - l .== 1) (cast v) $
+      ite (ix .< m)
+      (gcons (pokeGo ix l m v (gcar node)) (gcdr node))
+      (gcons (gcar node) (pokeGo ix m r v (gcdr node)))
