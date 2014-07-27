@@ -50,13 +50,13 @@ class EvalJob(object):
     with open(stdoutpath, 'w') as stdout:
       with open(stderrpath, 'w') as stderr:
         p = subprocess.Popen(
-            'ssh %s "%s 2>&1 | gzip" | gzip -d' % (FLAGS.remote_host, script),
+            'ssh %s "%s 2>&1 | tail -n 10000 | gzip" | gzip -d' % (FLAGS.remote_host, script),
             shell=True,
             stdin=subprocess.PIPE, stdout=stdout, stderr=stderr)
     p.stdin.write(code)
     p.stdin.close()
     p.wait()
-    score = subprocess.check_output('cat "%s" | tail -n 1' % stdoutpath, shell=True).strip()
+    score = subprocess.check_output('tail -n 1 "%s"' % stdoutpath, shell=True).strip()
     try:
       score = int(score)
     except ValueError:
