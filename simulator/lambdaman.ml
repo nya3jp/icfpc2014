@@ -125,7 +125,6 @@ let rec string_of_value = function
 let print_value v =
   print_endline (string_of_value v)
 
-
 let rec get_nth_env_frame n = function
   | [] -> failwith "no environment ?"
   | e :: es ->
@@ -277,6 +276,7 @@ let rec eval_instruction machine = function
      machine.c <- machine.c + 1
   | LBrk ->
      machine.c <- machine.c + 1
+;;
 
 let eval machine program =
   try
