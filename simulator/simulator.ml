@@ -280,7 +280,7 @@ let rec encode_as_tuple = function
 
 let rec encode_as_list = function
   | [] -> value_of_int 0
-  | x :: xs -> VCons (x, encode_as_tuple xs)
+  | x :: xs -> VCons (x, encode_as_list xs)
 ;;
 
 let encode_as_list list =
