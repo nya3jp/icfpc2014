@@ -159,6 +159,23 @@ class Function(Stmt):
     ctx.emit('RTN')
 
 
+class AsmFunction(Stmt):
+  def __init__(self, name, num_args, rank, code):
+    Stmt.__init__(self, [])
+    self.name = name
+    self.args = ['_'] * num_args
+    self.num_args = num_args
+    self.rank = rank
+    self.label = name
+    self.code = code
+
+  def compile(self, ctx):
+    ephemeral_label = ctx.make_label()
+    ctx.emit('%s:', self.label)
+    for line in self.code.splitlines():
+      ctx.emit(line.replace('%', ephemeral_label))
+
+
 class If(Stmt):
   def __init__(self, test, then_block, else_block):
     Stmt.__init__(self, [test] + then_block.children + else_block.children)
@@ -656,6 +673,7 @@ def parse_func(func):
   compile_assert(isinstance(func, ast.FunctionDef), func)
   rank = None
   nolocals = False
+  asm = None
   for deco in func.decorator_list:
     if isinstance(deco, ast.Call) and deco.func.id == 'rank':
       compile_assert(len(deco.args) == 1, deco, 'wrong number of args to @rank')
@@ -663,9 +681,20 @@ def parse_func(func):
       rank = deco.args[0].n
     elif isinstance(deco, ast.Name) and deco.id == 'nolocals':
       nolocals = True
+    elif isinstance(deco, ast.Name) and deco.id == 'asm':
+      asm = True
   compile_assert(not func.args.defaults, func)
   compile_assert(not func.args.kwarg, func)
   compile_assert(not func.args.vararg, func)
+  if asm:
+    compile_assert(
+        len(func.body) == 1 and
+        isinstance(func.body[0], ast.Expr) and
+        isinstance(func.body[0].value, ast.Str),
+        func,
+        'body of @asm function must be a single string')
+    compile_assert(rank is not None, func, '@asm function must be marked with @rank')
+    return AsmFunction(func.name, len(func.args.args), rank, func.body[0].value.s)
   return Function(func.name,
                   [arg.id for arg in func.args.args],
                   parse_block(func.body),
