@@ -128,8 +128,49 @@ let rec string_of_value = function
   | VClosure(n,_) -> "Closure{" ^ (string_of_int n) ^ "}" (* FIXME: should frame list displayed? *)
 ;;
 
+let string_of_address = function
+  | AStop -> "stop"
+  | AJoin x -> ("join:" ^ (string_of_int x))
+  | ARet x -> ("ret:" ^ (string_of_int x))
+  | AFrame fp -> ("frame")
+;;
+
+let string_of_frame frame =
+  let buf = Buffer.create 10 in
+  Buffer.add_string buf "dummy=";
+  Buffer.add_string buf (if frame.dummy then "t" else "f");
+  Buffer.add_string buf " / ";
+  Buffer.add_string buf (String.concat " " (Array.to_list (Array.map (fun v -> string_of_value v) frame.data)));
+  Buffer.contents buf
+;;
+
 let print_value v =
   print_endline (string_of_value v)
+
+let print_machine machine =
+  Printf.printf "c = %d\n" machine.c;
+  Printf.printf "s = %s\n" (
+    let buf = Buffer.create 10 in
+    Stack.iter (fun v ->
+      Buffer.add_string buf (string_of_value v);
+      Buffer.add_string buf " ";
+    ) machine.s;
+    Buffer.contents buf
+  );
+  Printf.printf "d = %s\n" (
+    let buf = Buffer.create 10 in
+    Stack.iter (fun a ->
+      Buffer.add_string buf (string_of_address a);
+      Buffer.add_string buf " ";
+    ) machine.d;
+    Buffer.contents buf
+  );
+  Printf.printf "e = %s\n" (
+    String.concat " / " (List.map (fun frame ->
+      (string_of_frame frame);
+    ) machine.e)
+  )
+;;
 
 let rec get_nth_env_frame n = function
   | [] -> failwith "no environment ?"
