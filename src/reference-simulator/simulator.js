@@ -55,16 +55,15 @@ var printBoard = function(state) {
 };
 
 var printState = function(state) {
-  console.log('====================================== [%s] Lives=%s Score=%s',
-              state.ticks, state.lives, state.score);
-  printBoard(state);
-  console.log();
   if (state.traceval) {
     for (var i = 0; i < state.traceval.length; ++i) {
       console.log('; %s', state.traceval[i]);
     }
-    console.log();
   }
+  console.log('====================================== [%s] Lives=%s Score=%s',
+              state.ticks, state.lives, state.score);
+  printBoard(state);
+  console.log();
 };
 
 var main = function() {
