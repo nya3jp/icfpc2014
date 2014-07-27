@@ -1,6 +1,7 @@
 open Util
 
 exception Exception_exit
+exception Exception_cycleover
 
 type instruction =
   | LLdc of int32
@@ -333,7 +334,7 @@ let eval_program program =
   let machine = make_initial_machine () in
   Stack.push AStop machine.d;
   try
-    while true do
+    for i = 0 to 3072000 - 1 do
       let inst = program.(machine.c) in
       eval_instruction machine inst
     done;
@@ -353,18 +354,22 @@ let eval_main program args =
   Stack.push AStop machine.d;
   machine.e <- frame :: machine.e;
   try
-    while true do
+    let maxSteps = 307200 * 60 in
+    let i = ref 0 in
+    while !i < maxSteps do
       let inst = program.(machine.c) in
-      eval_instruction machine inst
+      eval_instruction machine inst;
+      incr i
     done;
-    failwith "shouldn't come here"
+
+    failwith (Printf.sprintf "Over cycle limit! main function didn't end after %d cycles\n" maxSteps)
   with
   | Exception_exit ->
      (* Returns the top value of stack. *)
      Stack.pop machine.s
 ;;
 
-let eval_step program closure args =
+let eval_step show_useful_info program closure args =
   let (n, fp) = match closure with
     | VClosure (n, fp) -> (n, fp)
     | _ -> failwith "eval_step got non closure."
@@ -381,14 +386,23 @@ let eval_step program closure args =
   machine.e <- frame :: fp;
   Stack.push AStop machine.d;
 
+  let i = ref 0 in
   try
-    while true do
+    let maxSteps = 307200 in
+    while !i < maxSteps do
       let inst = program.(machine.c) in
-      eval_instruction machine inst
+      eval_instruction machine inst;
+      incr i
     done;
-    failwith "shouldn't come here"
+
+    if show_useful_info then begin
+      Printf.printf "Over cycle limit! step function didn't end after %d cycles\n" maxSteps;
+    end;
+    raise Exception_cycleover
   with
   | Exception_exit ->
+     if show_useful_info then
+       Printf.printf "Used %d cycles.\n" !i;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
 ;;
@@ -428,17 +442,32 @@ let make index x y program = {
 }
 
 let eaten lambdaman =
-  lambdaman.x <- lambdaman.initialX;
-  lambdaman.y <- lambdaman.initialY;
-  lambdaman.d <- Down;
-  lambdaman.lives <- lambdaman.lives - 1
+  lambdaman.lives <- lambdaman.lives - 1;
+  if lambdaman.lives > 0 then begin
+    lambdaman.x <- lambdaman.initialX;
+    lambdaman.y <- lambdaman.initialY;
+    lambdaman.d <- Down
+  end
 
 let get_vitality lambdaman tick = max 0 (lambdaman.vitality_absolute - tick)
+let get_vitality_raw lambdaman tick = lambdaman.vitality_absolute - tick
 
 let move lambdaman d =
+  let revert = (lambdaman.d, lambdaman.x, lambdaman.y) in
   lambdaman.d <- d;
-  match d with
+  begin match d with
   | Up -> lambdaman.y <- lambdaman.y - 1
   | Down -> lambdaman.y <- lambdaman.y + 1
   | Left -> lambdaman.x <- lambdaman.x - 1
   | Right -> lambdaman.x <- lambdaman.x + 1
+  end;
+  revert
+
+let revert_move conf_lambdaman_invalid_move_mode lambdaman (d,x,y) =
+  if conf_lambdaman_invalid_move_mode then
+    lambdaman.d <- Up
+  else
+    lambdaman.d <- d
+  ;
+  lambdaman.x <- x;
+  lambdaman.y <- y
