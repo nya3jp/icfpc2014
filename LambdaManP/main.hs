@@ -26,33 +26,34 @@ vadd :: Expr (Int, Int) -> Expr (Int, Int) -> Expr (Int, Int)
 vadd a b = cons (car a + car b) (cdr a + cdr b)
 
 bfs :: Expr (Mat Int) -> Expr (Queue (Int, (Int, Int))) -> Expr Int -> Expr Int
-(bfs, bfsDef) = def3 "bfs" $ \bd q target -> comp $ with 0 $ \out -> do
-  while (lnot $ isEmptyQueue q) $ with (dequeue q) $ \qq -> do
-    let dep = car $ car qq
-        pos = cdr $ car qq
+(bfs, bfsDef) = def3 "bfs" $ \bd q target -> comp $
+  with2 0 undef $ \out qq ->
+  with5 undef (cons 0 1) (cons 0 (-1)) (cons 1 0) (cons (-1) 0) $ \cell v1 v2 v3 v4 -> do
+    while (lnot $ isEmptyQueue q) $ do
+      qq ~= dequeue q
+      q ~= cdr qq
 
-    q ~= cdr qq
+      let dep = car $ car qq
+          pos = cdr $ car qq
 
-    let cell = peekMat (car pos) (cdr pos) bd
+      cell ~= peekMat (car pos) (cdr pos) bd
 
-    trace (c 10002, dep, pos, cell)
+      trace (c 10002, dep, pos, cell)
 
-    e $ ite (cell .== target)
-          ( comp $ do
-              out ~= dep
-              q ~= emptyQueue
-          )
-          ( comp $ do
-              e $ ite ((cell .== 0) ||| (cell .== 6)) (c 0) $ comp $ do
-                bd ~= pokeMat (car pos) (cdr pos) 0 bd
-                -- record path
-                q ~= enqueue (cons (dep + 1) $ vadd pos (cons 0    1   )) q
-                q ~= enqueue (cons (dep + 1) $ vadd pos (cons 0    (-1))) q
-                q ~= enqueue (cons (dep + 1) $ vadd pos (cons 1    0   )) q
-                q ~= enqueue (cons (dep + 1) $ vadd pos (cons (-1) 0   )) q
-          )
+      cond (cell .== target)
+        ( do
+             out ~= dep
+             q ~= emptyQueue
+        )
+        ( cond((cell .== 0) ||| (cell .== 6)) (e $ c 0) $ do
+             bd ~= pokeMat (car pos) (cdr pos) 0 bd
+             q ~= enqueue (cons (dep + 1) $ vadd pos v1) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v2) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v3) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v4) q
+        )
 
-  e out
+    e out
 
 toQueue :: Expr [a] -> Expr (Queue (Int, a))
 (toQueue, toQueueDef) = def1 "toQueue" $ \xs -> comp $
@@ -102,18 +103,16 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
   -- trace ghostPoss
   -- trace $ toQueue ghostPoss
 
-  -- trace (c 10001, nearestGhost bd ghostPoss lmanPos)
+  trace (c 10001, nearestGhost bd ghostPoss lmanPos)
 
   -- for 0 1000 $ \i -> do
   --   e $ peekMat 0 0 bd
 
-  -- cwith (peek 0 bd) $ \row -> do
-  --  for 0 1000 $ \i -> do
-  --    e $ peek 0 row
+  with (peek 0 bd) $ \row -> do
+    for 0 1000 $ \i -> do
+      e $ peek 0 row
 
-  -- e $ cons bd (c 0)
-
-  return ()
+  e $ cons bd (c 0)
 
 arrLength :: Expr (Array a) -> Expr Int
 arrLength = car
@@ -123,9 +122,11 @@ matSize m = cons (arrLength $ peek 0 m) (arrLength m)
 
 initialize :: Expr World -> Expr X -> Expr AIState
 (initialize, initializeDef) = def2 "initialize" $ \w _ -> comp $ do
-  with (toMat (car w)) $ \mat -> do
-    let w = car $ matSize mat
-        h = cdr $ matSize mat
+  with4 (toMat (car w)) undef undef undef $ \mat sz w h -> do
+    sz ~= matSize mat
+    w ~= car sz
+    h ~= cdr sz
+
     for 0 h $ \y ->
       for 0 w $ \x -> e $
         ite (peekMat x y mat .<= c 3) (c 0) $
