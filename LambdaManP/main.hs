@@ -92,11 +92,11 @@ progn :: LMan ()
 progn = do
   libDef
 
-  expr $ comp $ do
+  cexpr $ do
     debug $ lreverse $ list [1, 2, 3, 4, 5 :: Expr Int]
     debugn 1234
 
-    e $ with 123 $ \i -> comp $ do
+    cwith 123 $ \i -> do
       debugn i
       debugn $ i * 2
       i ~= i * i

@@ -441,8 +441,11 @@ _ ~= _ = error $ "Left hand side of := must be variable"
 with :: Expr a -> (Expr a -> Expr r)  -> Expr r
 with = With
 
+cwith :: Expr a -> (Expr a -> CExpr ())  -> CExpr ()
+cwith a b = e $ With a $ comp . b
+
 expr :: Expr a -> LMan ()
-expr e = compileExpr e
+expr e = compileExpr e >> st 0 0
 
 e :: Expr a -> CExpr ()
 e x = tell [Any $ unsafeCoerce x]
