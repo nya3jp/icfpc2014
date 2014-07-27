@@ -92,10 +92,15 @@ progn :: LMan ()
 progn = do
   libDef
 
-  expr $ comp $ do
+  cexpr $ do
     debug $ lreverse $ list [1, 2, 3, 4, 5 :: Expr Int]
     debugn 1234
 
+    cwith 123 $ \i -> do
+      debugn i
+      debugn $ i * 2
+      i ~= i * i
+      debugn i
 
   expr $ do
     with (enqueue 1 emptyQueue :: Expr (Queue Int)) $ \q1 ->
