@@ -3,8 +3,6 @@ open Util
 exception Exception_exit
 exception Exception_cycleover
 
-let show_useful_info = true
-
 type instruction =
   | LLdc of int32
   | LLd  of int * int
@@ -371,7 +369,7 @@ let eval_main program args =
      Stack.pop machine.s
 ;;
 
-let eval_step program closure args =
+let eval_step show_useful_info program closure args =
   let (n, fp) = match closure with
     | VClosure (n, fp) -> (n, fp)
     | _ -> failwith "eval_step got non closure."
@@ -444,12 +442,15 @@ let make index x y program = {
 }
 
 let eaten lambdaman =
-  lambdaman.x <- lambdaman.initialX;
-  lambdaman.y <- lambdaman.initialY;
-  lambdaman.d <- Down;
-  lambdaman.lives <- lambdaman.lives - 1
+  lambdaman.lives <- lambdaman.lives - 1;
+  if lambdaman.lives > 0 then begin
+    lambdaman.x <- lambdaman.initialX;
+    lambdaman.y <- lambdaman.initialY;
+    lambdaman.d <- Down
+  end
 
 let get_vitality lambdaman tick = max 0 (lambdaman.vitality_absolute - tick)
+let get_vitality_raw lambdaman tick = lambdaman.vitality_absolute - tick
 
 let move lambdaman d =
   let revert = (lambdaman.d, lambdaman.x, lambdaman.y) in
@@ -462,7 +463,11 @@ let move lambdaman d =
   end;
   revert
 
-let revert_move lambdaman (d,x,y) =
-  lambdaman.d <- d;
+let revert_move conf_lambdaman_invalid_move_mode lambdaman (d,x,y) =
+  if conf_lambdaman_invalid_move_mode then
+    lambdaman.d <- Up
+  else
+    lambdaman.d <- d
+  ;
   lambdaman.x <- x;
   lambdaman.y <- y
