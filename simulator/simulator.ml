@@ -352,11 +352,21 @@ let next_tick world =
       let lambdaman = world.lambdamans.(event_arg) in
       (* FIXME: run program *)
       (* FIXME: move lambdaman *)
-      let v = Lambdaman.eval_step lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
-      let (VCons (state, move)) = v in
-      let move = check_int move in
-      lambdaman.Lambdaman.state <- state;
-      schedule_tick world (tick, eLambdamanMoveCommit, event_arg, Int32.to_int move);
+      begin
+        try
+          let v = Lambdaman.eval_step lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
+          let (state, move) = match v with
+            | VCons (state, move) -> (state, move)
+            | _ -> failwith "Lambdaman's step function didn't return CONS cell."
+          in
+          let move = check_int move in
+          lambdaman.Lambdaman.state <- state;
+          schedule_tick world (tick, eLambdamanMoveCommit, event_arg, Int32.to_int move);
+        with
+        | Exception_cycleover ->
+           (* When cycle is over, we use the same move as the before *)
+           schedule_tick world (tick, eLambdamanMoveCommit, event_arg, int_of_direction lambdaman.d);
+      end
   | x when x = eLambdamanMoveCommit ->
       let lambdaman = world.lambdamans.(event_arg) in
       let move = event_arg2 in
@@ -456,7 +466,10 @@ let run t =
   and ghost_programs = encode_ghost_programs t in
   Array.iter (fun man ->
     let v = Lambdaman.eval_main man.program [encoded_world; ghost_programs] in
-    let (VCons (state, stepFun)) = v in
+    let (state, stepFun) = match v with
+      | VCons (state, stepFun) -> (state, stepFun)
+      | _ -> failwith "Lambdaman's main function didn't return CONS cell"
+    in
     man.state <- state;
     man.stepFun <- stepFun
   ) t.lambdamans;
@@ -467,12 +480,12 @@ let run t =
     done;
   with
   | Game_win ->
-     Printf.printf "Game win\n";
+     Printf.printf "＿人人人人人＿\n＞ You won ＜\n￣Y^Y^Y^Y￣\n";
      Array.iter (fun lambdaman ->
        Printf.printf "%d\n" (lambdaman.score * (lambdaman.lives + 1))
      ) t.lambdamans
   | Game_lose ->
-     Printf.printf "Game lost\n";
+     Printf.printf "＿人人人人人＿\n＞ You lost ＜\n￣Y^Y^Y^Y￣\n";
      Array.iter (fun lambdaman ->
        Printf.printf "%d\n" lambdaman.score
      ) t.lambdamans
