@@ -205,7 +205,8 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
 
 
 (step :: Expr AIState -> Expr World0 -> Expr (AIState,Int), stepDef) =
-  def2 "step" $ \aist world0 -> with (car aist) $ \chizu -> 
+  def2 "step" $ \aist world0 -> comp $ do 
+   with (car aist) $ \chizu -> do
     let world = cons chizu (cdr world0)
         clk :: Expr Clock
         clk = car $ cdr aist
@@ -230,9 +231,8 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         newAist :: Expr AIState
         newAist = cons (mapPoke manP (negate clk) chizu) $
                   cons (clk+1) (cdr $cdr aist)
-    in dbug (list [scoreN, scoreE, scoreS, scoreW]) `Seq`
---       dbug chizu `Seq`
-       cons newAist d2
+    debug (list [scoreN, scoreE, scoreS, scoreW]) 
+    e $ cons newAist d2
 
 progn :: LMan ()
 progn = do
