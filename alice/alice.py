@@ -1,4 +1,10 @@
 #!/usr/bin/python
+"""
+Alice - Python to GCC compiler
+
+Usage:
+alice.py input.py > output.gcc
+"""
 
 import ast
 import collections
