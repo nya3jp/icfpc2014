@@ -1,9 +1,3 @@
-let run_program () =
-  let name = Sys.argv.(1) in
-  let program = LambdamanReader.read name in
-  Lambdaman.eval_program program
-;;
-
 (* *)
 let main () =
   Printexc.record_backtrace true;
@@ -26,9 +20,3 @@ let main () =
 
 let _ =
   if not !Sys.interactive then main ()
-
-(*
-let _ =
-  run_program ()
-*)
-;;
