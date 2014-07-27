@@ -20,7 +20,6 @@ libDef = do
   mkArrayDef
   mkArrayGoDef
   peekDef
-  peekGoDef
   pokeDef
   pokeGoDef
 
@@ -100,9 +99,9 @@ type Array a = (Int, Node a)
 data Node a = Node
 
 mkArray :: Expr [a] -> Expr (Array a)
-(mkArray, mkArrayDef) = def1 "mkArray" $ \xs ->
+(mkArray, mkArrayDef) = def1 "mkArray" $ \xs -> comp $
   with (llength xs) $ \len ->
-    cons len $ mkArrayGo 0 len xs
+    e $ cons len $ mkArrayGo 0 len xs
 
 mkArrayGo :: Expr Int -> Expr Int -> Expr [a] -> Expr (Node a)
 (mkArrayGo, mkArrayGoDef) = def3 "mkArrayGo" $ \l r xs ->
@@ -111,6 +110,7 @@ mkArrayGo :: Expr Int -> Expr Int -> Expr [a] -> Expr (Node a)
      (cast $ lhead xs)
      (gcons (mkArrayGo l m xs) (mkArrayGo m r $ ldrop (m - l) xs))
 
+{-
 peek :: Expr Int -> Expr (Array a) -> Expr a
 (peek, peekDef) = def2 "peek" $ \ix arr -> peekGo ix 0 (car arr) (cdr arr)
 
@@ -121,6 +121,20 @@ peekGo :: Expr Int -> Expr Int -> Expr Int -> Expr (Node a) -> Expr a
        ite (ix .< m)
          (peekGo ix l m (gcar node))
          (peekGo ix m r (gcdr node))
+-}
+
+undef :: Expr a
+undef = cast (c 0)
+
+peek :: Expr Int -> Expr (Array a) -> Expr a
+(peek, peekDef) = def2 "peek" $ \ix arr -> comp $ do
+  with4 0 (car arr) (cdr arr) undef $ \l r node m -> do
+    while (r - l ./= 1) $ do
+      m ~= (l + r) `div` 2
+      cond (ix .< m)
+        (r ~= m >> node ~= gcar node)
+        (l ~= m >> node ~= gcdr node)
+    e $ node
 
 poke :: Expr Int -> Expr a -> Expr (Array a) -> Expr (Array a)
 (poke, pokeDef) = def3 "poke" $ \ix v arr -> cons (car arr) (pokeGo ix 0 (car arr) v (cdr arr))

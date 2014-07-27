@@ -6,7 +6,7 @@ let read filename : Ghost.ginstruction array =
   try
     let linenumber = ref 0 in
     while true do
-      let line = String.trim (remove_comment (input_line in_chan)) in
+      let line = StringUtil.trim (remove_comment (input_line in_chan)) in
       incr linenumber;
       if line <> "" then begin
         try
@@ -23,16 +23,3 @@ let read filename : Ghost.ginstruction array =
       close_in in_chan;
       Array.of_list (List.rev !result)
 
-(*
-let parse line : Ghost.instruction =
-
-;;
-*)
-
-
-(*
-;;
-
-
-
-*)

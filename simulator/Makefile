@@ -1,8 +1,19 @@
-all:
-	./build.sh
+SOURCES = \
+	stringUtil.ml \
+	util.ml \
+	lambdaman.ml lambdamanParser.mly lambdamanLexer.mll lambdamanReader.ml \
+	ghost.ml ghostAiParser.mly ghostAiLexer.mll ghostAiReader.ml \
+	field.ml fieldReader.ml \
+	simulator.ml \
+	main.ml
+RESULT  = simulator
 
-clean:
-	rm -rf _build
-	rm -f *.cmi *.cmo *.cmx
-	rm -f ghost_run lambdaman_executor lambdaman_run simulator unittest
+OCAMLFLAGS = -g
+LDFLAGS = -g
+OCAMLLDFLAGS = -g
+all: byte-code
 
+# all: native-code
+
+OCAMLMAKEFILE = OCamlMakefile
+include $(OCAMLMAKEFILE)

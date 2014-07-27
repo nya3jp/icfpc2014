@@ -25,56 +25,128 @@ type WorldState = (Map, (Int, (Int, Int)))
 vadd :: Expr (Int, Int) -> Expr (Int, Int) -> Expr (Int, Int)
 vadd a b = cons (car a + car b) (cdr a + cdr b)
 
-bfs :: Expr (Mat Int) -> Expr (Int, Int) -> Expr (Int, Int)
-(bfs, bfsDef) = def2 "paint" $ \bd initPos -> with (enqueue initPos emptyQueue) $ \q -> with (cons 0 0) $ \out -> comp $ do
+bfs :: Expr (Mat Int) -> Expr (Queue (Int, (Int, Int))) -> Expr Int -> Expr Int
+(bfs, bfsDef) = def3 "bfs" $ \bd q target -> comp $
+  with2 0 undef $ \out qq ->
+  with5 undef (cons 0 1) (cons 0 (-1)) (cons 1 0) (cons (-1) 0) $ \cell v1 v2 v3 v4 -> do
+    while (lnot $ isEmptyQueue q) $ do
+      qq ~= dequeue q
+      q ~= cdr qq
 
-  while (lnot $ isEmptyQueue q) $ do
-    let pos = car $ dequeue q
-    let cell = peekMat (car pos) (cdr pos) bd
+      let dep = car $ car qq
+          pos = cdr $ car qq
 
-    trace (c 10002, pos, cell)
+      cell ~= peekMat (car pos) (cdr pos) bd
 
-    e $ ite ((cell .== 2) ||| (cell .== 3))
-          (comp $ do
-              debugn 10005
-              out ~= pos
-              q ~= emptyQueue
-              trace (c 10006, q, out)
-          )
-          $ comp $ do
-              e $ ite ((cell .== 0) ||| (cell .== 6)) (c 0) $ comp $ do
-                bd ~= pokeMat (car pos) (cdr pos) 0 bd
-                -- record path
-                q ~= enqueue (vadd pos (cons 0    1   )) q
-                q ~= enqueue (vadd pos (cons 0    (-1))) q
-                q ~= enqueue (vadd pos (cons 1    0   )) q
-                q ~= enqueue (vadd pos (cons (-1) 0   )) q
+      trace (c 10002, dep, pos, cell)
 
-              q ~= cdr (dequeue q)
+      cond (cell .== target)
+        ( do
+             out ~= dep
+             q ~= emptyQueue
+        )
+        ( cond((cell .== 0) ||| (cell .== 6)) (e $ c 0) $ do
+             bd ~= pokeMat (car pos) (cdr pos) 0 bd
+             q ~= enqueue (cons (dep + 1) $ vadd pos v1) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v2) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v3) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v4) q
+        )
 
-  e out
+    e out
 
-type X = Int
-type World = ([[Int]], (ManState, (X, X)))
-type ManState = (X, (Pos, X))
-type AIState = X
+toQueue :: Expr [a] -> Expr (Queue (Int, a))
+(toQueue, toQueueDef) = def1 "toQueue" $ \xs -> comp $
+  with emptyQueue $ \q -> do
+    while (lnot $ isNull xs) $ do
+      q ~= enqueue (cons (c 0) $ lhead xs) q
+      xs ~= ltail xs
+    e q
+
+nearestGhost :: Expr (Mat Int) -> Expr [Pos] -> Expr Pos -> Expr Int
+(nearestGhost, nearestGhostDef) = def3 "nearestGhost" $ \bd gs lpos -> comp $ do
+  bd ~= pokeMat (car lpos) (cdr lpos) 5 bd
+  e $ bfs bd (toQueue gs) 5
+
+-- [1] if NearestGhost<3 then FromGhost+
+-- [1] if MaxJunctionSafety>3 then FromGhost-
+-- [2] if NearestEdGhost>99 then ToPowerDot+
+-- [2] if NearestEdGhost<99 then ToEdGhost+
+-- [2] if GhostDensity<1.5 and NearestPowerDot<5 then FromPowerDot+
+-- [3] if Constant>0 then ToCenterofDots+
+
+data X = X
 type Pos = (Int, Int)
 
-(step, stepDef) = def2 "step" $ \st world -> comp $ do
-  let bd = toMat $ car world
-      -- pos = cadr $ cadr world
-      pos = cons 11 12
+type World = ([[Int]], (ManState, ([GhostState], FruitState)))
+type ManState = (X, (Pos, X))
+type GhostState = (X, (Pos, X))
+type FruitState = Int
 
-  trace (c 777, bfs bd pos)
+type AIState = Mat Int
+
+mapGhostPos :: Expr [GhostState] -> Expr [Pos]
+(mapGhostPos, mapGhostPosDef) = def1 "mapGhostPos" $ \xs -> do
+  ite (isNull xs) lnull $ lcons (cadr $ lhead xs) (mapGhostPos $ ltail xs)
+
+-- lmap :: (Expr a -> Expr b) -> Expr [a] -> Expr [b]
+-- (lmap, lmapDef) = def2 "lmap" $ \f xs -> do
+--   ite (isNull xs) lnull $ lcons (f $ lhead xs) $ lmap f (ltail xs)
+
+step :: Expr AIState -> Expr World -> Expr (AIState, Int)
+(step, stepDef) = def2 "step" $ \bd world -> comp $ do
+  let lmanPos = cadr $ cadr world
+      ghostPoss = mapGhostPos $ caddr world
+      -- pos = cons 11 12
+
+  -- trace lmanPos
+  -- trace ghostPoss
+  -- trace $ toQueue ghostPoss
+
+  trace (c 10001, nearestGhost bd ghostPoss lmanPos)
+
+  -- for 0 1000 $ \i -> do
+  --   e $ peekMat 0 0 bd
+
+  with (peek 0 bd) $ \row -> do
+    for 0 1000 $ \i -> do
+      e $ peek 0 row
+
+  e $ cons bd (c 0)
+
+arrLength :: Expr (Array a) -> Expr Int
+arrLength = car
+
+matSize :: Expr (Mat a) -> Expr (Int, Int)
+matSize m = cons (arrLength $ peek 0 m) (arrLength m)
+
+initialize :: Expr World -> Expr X -> Expr AIState
+(initialize, initializeDef) = def2 "initialize" $ \w _ -> comp $ do
+  with4 (toMat (car w)) undef undef undef $ \mat sz w h -> do
+    sz ~= matSize mat
+    w ~= car sz
+    h ~= cdr sz
+
+    for 0 h $ \y ->
+      for 0 w $ \x -> e $
+        ite (peekMat x y mat .<= c 3) (c 0) $
+          comp $ mat ~= pokeMat x y 1 mat
+    e $ mat
 
 progn :: LMan ()
 progn = do
   libDef
 
-  bfsDef
   stepDef
+  initializeDef
 
-  rtn $ cons (0 :: Expr Int) (Closure "step")
+  bfsDef
+  mapGhostPosDef
+  nearestGhostDef
+  toQueueDef
+
+  rtn $ cons (initialize (Var (-1) 0) (Var (-1) 1)) (Closure "step")
+  -- emitComp $ trace $ toQueue $ list [c 1, c 2]
 
 {-
 progn :: LMan ()
