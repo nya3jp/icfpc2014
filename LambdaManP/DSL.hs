@@ -28,7 +28,9 @@ initState = CompState 0 0 []
 addFunc :: String -> Label -> LMan ()
 addFunc name l = do
   s <- get
-  put $ s { csFuncs = (name, l) : csFuncs s }
+  if isJust (lookup name $ csFuncs s)
+    then error $ "multiple function definition: " ++ name
+    else put $ s { csFuncs = (name, l) : csFuncs s }
 
 data Label = Label String
 
@@ -63,11 +65,7 @@ data Expr a where
   Seq :: Expr a -> Expr b -> Expr b
   While :: Expr Int -> Expr a -> Expr ()
 
-  Call1 :: String -> Expr a1 -> Expr r
-  Call2 :: String -> Expr a1 -> Expr a2 -> Expr r
-  Call3 :: String -> Expr a1 -> Expr a2 -> Expr a3 -> Expr r
-  Call4 :: String -> Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r
-
+  CallG :: String -> [Any] -> Expr r
   Closure :: String -> Expr a
 
 data Any = Any (forall a. Expr a)
@@ -262,32 +260,10 @@ compileExpr e = case e of
   Closure name ->
     ldclo name
 
-  Call1 name v1 -> do
-    compileExpr v1
+  CallG name vs -> do
+    mapM_ (\(Any a) -> compileExpr a) vs
     ldclo name
-    tellc "AP 1"
-
-  Call2 name v1 v2 -> do
-    compileExpr v1
-    compileExpr v2
-    ldclo name
-    tellc "AP 2"
-
-  Call3 name v1 v2 v3 -> do
-    compileExpr v1
-    compileExpr v2
-    compileExpr v3
-    ldclo name
-    tellc "AP 3"
-
-  Call4 name v1 v2 v3 v4 -> do
-    compileExpr v1
-    compileExpr v2
-    compileExpr v3
-    compileExpr v4
-    ldclo name
-    tellc "AP 4"
-
+    tellc $ "AP " ++ show (length vs)
 
 incrLevel :: LMan ()
 incrLevel = do
@@ -427,81 +403,32 @@ compile' = map f.  codeGen . (>> footer) where
 
 -----
 
+def' fname call = do
+  fun <- newLabel
+  end <- newLabel
+  addFunc fname fun
+
+  jmp end
+
+  emitLabel fun
+  local $ do
+    call
+    tellc "RTN"
+
+  emitLabel end
+  return ()
 
 def1 :: String -> (Expr a1 -> Expr r) -> (Expr a1 -> Expr r, LMan ())
-def1 fname f = (Call1 fname, go) where
-  go = do
-    fun <- newLabel
-    end <- newLabel
-    addFunc fname fun
-
-    jmp end
-
-    emitLabel fun
-    local $ do
-      a1 <- innerVar 0
-      compileExpr $ f a1
-      tellc "RTN"
-
-    emitLabel end
-    return ()
+def1 fname f = (\v1 -> CallG fname [Any $ unsafeCoerce v1], def' fname (do a1 <- innerVar 0;compileExpr $ f a1))
 
 def2 :: String -> (Expr a1 -> Expr a2 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr r, LMan ())
-def2 fname f = (Call2 fname, go) where
-  go = do
-    fun <- newLabel
-    end <- newLabel
-    addFunc fname fun
-
-    jmp end
-
-    emitLabel fun
-    local $ do
-      a1 <- innerVar 0
-      a2 <- innerVar 1
-      compileExpr $ f a1 a2
-      tellc "RTN"
-
-    emitLabel end
-    return ()
+def2 fname f = (\v1 v2 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafeCoerce v2], def' fname (do a1 <- innerVar 0; a2 <- innerVar 1; compileExpr $ f a1 a2))
 
 def3 :: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr r, LMan ())
-def3 fname f = (Call3 fname, go) where
-  go = do
-    fun <- newLabel
-    end <- newLabel
-    addFunc fname fun
+def3 fname f = (\v1 v2 v3 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafeCoerce v2, Any $ unsafeCoerce v3], def' fname (do a1 <- innerVar 0; a2 <- innerVar 1; a3 <- innerVar 2; compileExpr $ f a1 a2 a3))
 
-    jmp end
+def4 :: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r, LMan ())
+def4 fname f = (\v1 v2 v3 v4 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafeCoerce v2, Any $ unsafeCoerce v3, Any $ unsafeCoerce v4], def' fname (do a1 <- innerVar 0; a2 <- innerVar 1; a3 <- innerVar 2; a4 <- innerVar 3; compileExpr $ f a1 a2 a3 a4))
 
-    emitLabel fun
-    local $ do
-      a1 <- innerVar 0
-      a2 <- innerVar 1
-      a3 <- innerVar 2
-      compileExpr $ f a1 a2 a3
-      tellc "RTN"
-
-    emitLabel end
-    return ()
-
-def4:: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr r, LMan ())
-def4 fname f = (Call4 fname, go) where
-  go = do
-    fun <- newLabel
-    end <- newLabel
-    addFunc fname fun
-
-    jmp end
-
-    emitLabel fun
-    local $ do
-      a1 <- innerVar 0
-      a2 <- innerVar 1
-      a3 <- innerVar 2
-      a4 <- innerVar 3
-      compileExpr $ f a1 a2 a3 a4
-      tellc "RTN"
-
-    emitLabel end
-    return ()
+def5 :: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> Expr r, LMan ())
+def5 fname f = (\v1 v2 v3 v4 v5 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafeCoerce v2, Any $ unsafeCoerce v3, Any $ unsafeCoerce v4, Any $ unsafeCoerce v5], def' fname (do a1 <- innerVar 0; a2 <- innerVar 1; a3 <- innerVar 2; a4 <- innerVar 3; a5 <- innerVar 4; compileExpr $ f a1 a2 a3 a4 a5))
