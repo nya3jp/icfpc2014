@@ -3,17 +3,20 @@
 import qualified Data.Map as M
 import Data.Maybe
 import Data.Char
+import Data.List (intercalate)
 import Debug.Trace
 import Safe
 import System.Environment
 import System.IO
 import System.IO.Unsafe
+import System.FilePath
 import System.Random
 import System.Process
 import Unsafe.Coerce
 import Text.Printf
 import Desugar
 import DSL
+import Lib
 import System.Process
 
 -----
@@ -32,6 +35,12 @@ randLIO :: (Double,Double) -> IO Int
 randLIO (lo,hi) = do
   lgr <- randomRIO (log lo, log hi)
   return $ round $ exp lgr
+
+randDIO :: (Double,Double) -> IO Double
+randDIO (lo,hi) = do
+  lgr <- randomRIO (log lo, log hi)
+  return $ exp lgr
+
 
 {-# NOINLINE pillParam #-}
 pillParam ::  Int -- default: 100
@@ -196,23 +205,38 @@ progn = do
 
   expr $ cons (0 :: Expr AIState) $ Closure "step"
 
-data TestConf = TestConf {cmdLineOpts::[String], scoreResult :: Int}
+data TestConf = TestConf 
+  {ghostFiles::[String], 
+   lambdaManFile :: String,
+   mapFile :: String,
+   scoreResult :: Int}
   deriving (Eq, Ord)
 
+
+cmdlineOpts :: TestConf -> [String]
+cmdlineOpts tc = 
+  [ printf "--map=%s" (mapFile tc) 
+  , printf "--ghost=%s" (intercalate "," $ ghostFiles tc) 
+  , printf "--lambda=%s" (lambdaManFile tc)]
+
+toCmdlineString :: TestConf -> String
+toCmdlineString tc = unwords $ "./sim.sh" :  cmdlineOpts tc
+
+
 ppTestConf :: TestConf -> String
-ppTestConf tc = (show $ scoreResult tc) ++"\t./sim.sh " ++ unwords (cmdLineOpts tc)
+ppTestConf tc = (show $ scoreResult tc) ++"\t" ++ toCmdlineString tc
 
 mkTestConfs :: String -> [TestConf]
 mkTestConfs gccfn = do -- List Monad
-  mapOpt <- ["--map=map/world-2.txt" , "--map=map/world-8.map",  "--map=map/train.map"]
---  mapOpt <- ["--map=map/kichiku.map"]
+  mapOpt <- ["map/train-1.map", "map/train-2.map", "map/train-3.map"]
   gOpt <-
-    [  "--ghost=ghost/chase_with_random.ghc,ghost/scatter.ghc,ghost/random_and_chase.ghc",
-       "--ghost=ghost/scatter.ghc,ghost/random_and_chase.ghc,ghost/chase_with_random.ghc",
-       "--ghost=ghost/random_and_chase.ghc,ghost/chase_with_random.ghc,ghost/scatter.ghc"]
-  let lOpt = "--lambda=" ++ gccfn
+    [ ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
+    , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
+    , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]]
 
-  return $ TestConf {cmdLineOpts = [mapOpt,gOpt,lOpt], scoreResult = -1}
+
+  return $ TestConf {ghostFiles = gOpt, lambdaManFile = gccfn,
+                     mapFile = mapOpt, scoreResult = -1}
 
 readLastLine :: Handle -> Int -> IO Int
 readLastLine h cand = do
@@ -226,17 +250,74 @@ readLastLine h cand = do
         Just i -> readLastLine h i
         Nothing -> readLastLine h cand
 
+
+
+modifyMapContent :: String -> IO String
+modifyMapContent con0 = do
+  pf <- randDIO (0.1,1::Double)
+  gf <- randDIO (0.1,1::Double)  
+  ppf <- randDIO (0.1,1::Double)    
+  go pf gf ppf con0
+
+  where 
+    
+    skim :: Char -> Double -> String -> IO String
+    skim tgt f = mapM (skim1 tgt f)
+    skim1 :: Char -> Double -> Char -> IO Char
+    skim1 tgt f c
+      | c/=tgt = return c
+      | c==tgt = do
+        p <- randomRIO (0,1)
+        return $ if f<p then ' ' else c
+    go  pf gf ppf con0 = do
+      con1 <- skim '.' pf =<< 
+          skim '=' gf =<< 
+          skim 'o' ppf con0
+  
+      case '.' `elem` con1 &&  '=' `elem` con1 &&  'o' `elem` con1 of
+        True -> return con1
+        False -> go  pf gf ppf con0
+
 performTest :: TestConf -> IO TestConf
-performTest tc = do
+performTest tc0 = do
+  indexR <- randomRIO (0,2^30::Int)
+  let mapFn0 = mapFile tc0
+      (fnB, _)  = splitExtension mapFn0
+      mapFn1 = printf "%s-%010d.map" fnB indexR
+      (fnLM, _)  = splitExtension (lambdaManFile tc0)
+      statFn1 = printf "%s-%010d.stat" fnLM indexR      
+      tc1 = tc0 {mapFile = mapFn1}
+  mapContent1 <- readFile mapFn0 >>= modifyMapContent
+  
+  writeFile mapFn1 mapContent1
   
   (_, Just hout, _, _) <-
-      createProcess (proc "./sim.sh" (cmdLineOpts tc) )
+      createProcess (proc "./sim.sh" (cmdlineOpts tc1) )
         { std_out = CreatePipe }
   score <- readLastLine hout 0
   let 
-      ret = tc{scoreResult = score} 
+      ret = tc1{scoreResult = score} 
   hPutStrLn stderr $ ppTestConf ret
-  return $ tc{scoreResult = score}
+
+  let msg0 = unwords
+        [(show $ scoreResult ret),
+         "p" ,show pillParam, 
+         "P" ,show powerPillParam,
+         "gp",show ghostPillParam,   
+         "fp",show ghostPillParamF,   
+         "ga",show ghostAuraParam,   
+         "fa",show ghostAuraParamF,
+         "denp", show $ charFraction '.' mapContent1,
+         "denP", show $ charFraction 'o' mapContent1,
+         "denG", show $ charFraction '=' mapContent1 
+          ] 
+      msg1 = toCmdlineString tc1
+      msg = unlines [msg0,msg1]
+  writeFile statFn1 $ msg
+  return $ ret
+
+charFraction :: Char -> String -> Double
+charFraction c s = (fromIntegral $ length $ filter (==c) s) / (fromIntegral $ length s)
 
 main :: IO ()
 main = do
@@ -253,9 +334,10 @@ main2 = do
       indexStr = printf "%010d" indexR
       gccFn :: String
       txtFn :: String
-      gccFn = printf "./LambdaMan/gen/as%s.gcc" indexStr
-      txtFn = printf "./LambdaMan/gen/as%s.txt" indexStr
-      logFn = printf "./LambdaMan/gen/as%s.log" indexStr      
+      gccFn = printf "./LambdaMan/gen/azn-%s.gcc" indexStr
+      txtFn = printf "./LambdaMan/gen/azn-%s.txt" indexStr
+      logFn = printf "./LambdaMan/gen/azn-%s.log" indexStr      
+
   writeFile gccFn $ compile progn
   let tcs0 = mkTestConfs gccFn
   print $ length tcs0
@@ -274,3 +356,4 @@ main2 = do
           ] ++ "\n"
   writeFile txtFn $ msg
   putStr $ msg
+  
