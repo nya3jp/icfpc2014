@@ -1,6 +1,9 @@
 open Util
 
-exception Game_end of string
+exception Game_win
+exception Game_lose
+exception Game_end
+
 let conf_fright_compatible_mode = true
 
 module OrderedEventType = struct
@@ -344,7 +347,7 @@ let next_tick world =
       world.fruit_exists <- false;
       schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x = eEOL ->
-      raise (Game_end "end of game")
+      raise Game_end
   | x when x = eLambdamanMove ->
       let lambdaman = world.lambdamans.(event_arg) in
       (* FIXME: run program *)
@@ -439,12 +442,10 @@ let next_tick world =
         world.ghosts;
       (* Step 5 *)
       if world.pill_count = 0 then
-        raise (Game_end "You win")
-      ;
+        raise Game_win;
       (* Step 6 *)
       if lambdaman.Lambdaman.lives <= 0 then
-        raise (Game_end "You lost")
-      ;
+        raise Game_lose;
       schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | _ -> failwith "invalid event_id"
   end
@@ -465,8 +466,18 @@ let run t =
       next_tick t
     done;
   with
-  | Game_end reason ->
-     Printf.printf "%s\n" reason;
+  | Game_win ->
+     Printf.printf "Game win\n";
+     Array.iter (fun lambdaman ->
+       Printf.printf "%d\n" (lambdaman.score * (lambdaman.lives + 1))
+     ) t.lambdamans
+  | Game_lose ->
+     Printf.printf "Game lost\n";
+     Array.iter (fun lambdaman ->
+       Printf.printf "%d\n" lambdaman.score
+     ) t.lambdamans
+  | Game_end ->
+     Printf.printf "Game end\n";
      Array.iter (fun lambdaman ->
        Printf.printf "%d\n" lambdaman.score
      ) t.lambdamans
