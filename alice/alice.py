@@ -1,4 +1,10 @@
 #!/usr/bin/python
+"""
+Alice - Python to GCC compiler
+
+Usage:
+alice.py input.py > output.gcc
+"""
 
 import ast
 import collections
@@ -29,6 +35,7 @@ def compile_assert(cond, node, tmpl='UNDOCUMENTED ERROR', *args):
 class Context(object):
   def __init__(self):
     self.vars = {}
+    self.current_func = None
     self.funcs = {}
     self.current_loop = None
     self.lines = []
@@ -37,6 +44,7 @@ class Context(object):
   def copy(self):
     ctx = Context()
     ctx.vars = self.vars.copy()
+    ctx.current_func = self.current_func
     ctx.funcs = self.funcs.copy()
     ctx.current_loop = self.current_loop
     ctx.lines = self.lines
@@ -73,11 +81,8 @@ class Stmt(Syntax):
       vars.extend(stmt.gather_func_vars())
     return vars
 
-  def gather_func_ranks(self, ctx):
-    ranks = []
-    for stmt in self.children:
-      ranks.extend(stmt.gather_func_ranks(ctx))
-    return ranks
+  def has_return_with_value(self):
+    return any(stmt.has_return_with_value() for stmt in self.children)
 
   def compile(self, ctx):
     for stmt in self.children:
@@ -101,13 +106,7 @@ class Module(Syntax):
     ctx.funcs = dict((func.name, func) for func in self.funcs)
     for func in self.funcs:
       if func.rank is None:
-        ranks = sorted(set(func.gather_func_ranks(ctx)))
-        compile_assert(
-            len(ranks) <= 1,
-            None,
-            'A function has multiple candidate ranks: %s',
-            ', '.join(str(rank) for rank in ranks))
-        func.rank = ranks[0] if ranks else 0
+        func.rank = 1 if func.has_return_with_value() else 0
     for func in self.funcs:
       func.compile(ctx)
 
@@ -123,6 +122,7 @@ class Function(Stmt):
 
   def compile(self, ctx):
     ctx = ctx.copy()
+    ctx.current_func = self
     locals = set(self.gather_func_vars())
     locals -= set(self.args)
     locals = sorted(locals)
@@ -168,12 +168,29 @@ class Return(Stmt):
     Stmt.__init__(self, [])
     self.values = values
 
-  def gather_func_ranks(self, ctx):
-    return [len(self.values)]
+  def has_return_with_value(self):
+    return bool(self.values)
 
   def compile(self, ctx):
     for value in self.values:
       value.compile(ctx)
+    if ctx.current_func.rank == 1:
+      compile_assert(
+          len(self.values) <= 2,
+          None,
+          'A function returning multiple values must be marked with @rank')
+      compile_assert(
+          all(value.rank(ctx) == 1 for value in self.values),
+          None,
+          'Tried to return multiple values from rank-1 function')
+      # TODO: Maybe missing some edge cases
+      if len(self.values) == 2:
+        ctx.emit('CONS')
+    else:
+      compile_assert(
+          sum(value.rank(ctx) for value in self.values) == ctx.current_func.rank,
+          None,
+          'Number of function return values does not match with rank')
     ctx.emit('RTN')
 
 
@@ -453,6 +470,10 @@ class Call(Expr):
         None,
         'Undefined function %s',
         self.func)
+    compile_assert(
+        sum(arg.rank(ctx) for arg in self.args) == len(ctx.funcs[self.func].args),
+        None,
+        'Number of arguments does not match on function call of %s', self.func)
     for arg in self.args:
       arg.compile(ctx)
     ctx.emit('LDF %s', ctx.funcs[self.func].label)
@@ -523,6 +544,7 @@ class Name(Expr):
     if self.name in ctx.funcs:
       ctx.emit('LDF %s', ctx.funcs[self.name].label)
     else:
+      compile_assert(self.name in ctx.vars, None, 'Undefined variable: %s', self.name)
       a, b = ctx.vars[self.name]
       ctx.emit('LD %d %d  ; %s', a, b, self.name)
 
@@ -536,17 +558,6 @@ class Num(Expr):
 
   def compile(self, ctx):
     ctx.emit('LDC %d', self.n)
-
-
-class Assembly(Expr):
-  def __init__(self, code):
-    self.code = code
-
-  def rank(self, ctx):
-    return 0
-
-  def compile(self, ctx):
-    ctx.emit(code)
 
 
 def parse_module(module):
@@ -680,8 +691,6 @@ def parse_expr(expr):
     return Name(expr.id)
   if isinstance(expr, ast.Num):
     return Num(expr.n)
-  #if isinstance(expr, ast.Str):
-  #  return Assembly(expr.s)
   compile_assert(False, expr, 'Unsupported expression %s', expr.__class__.__name__)
 
 
@@ -740,6 +749,7 @@ def main():
       prefix = '%d:' % e.line
       print >>sys.stderr, prefix + line
       print >>sys.stderr, ' ' * (len(prefix) + e.column) + '^'
+    return
   asm = ctx.output()
   asm = resolve_labels(asm)
   print asm
