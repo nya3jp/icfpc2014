@@ -1,5 +1,3 @@
-# -*- mode: python -*-
-
 def main():
   print fact_iter(10)
   print fact_rec(10)
