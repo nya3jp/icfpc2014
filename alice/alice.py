@@ -52,7 +52,7 @@ class Context(object):
     return ctx
 
   def make_label(self):
-    label = 'ephemeral%d' % self._seq[0]
+    label = 'ephemeral%06d' % self._seq[0]
     self._seq[0] += 1
     return label
 
