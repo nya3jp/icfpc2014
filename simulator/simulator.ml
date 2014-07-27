@@ -232,19 +232,13 @@ let score_fruit field =
     5000
 ;;
 
-(*
-let tick tick_id t =
-  move_lambdamans_if_necessary tick_id t;
-  move_ghosts_if_necessary tick_id t;
-  check_fright_mode_deactivating tick_id t;
-  check_fruit_appearing tick_id t;
-*)
-
 (* ---------------------------------------------------------------------- *)
 
+open Lambdaman
+
 let encode_as_tuple list =
-  let zero = Lambdaman.value_of_int 0 in
-  List.fold_right (fun x y -> Lambdaman.VCons (x, y)) list zero
+  let zero = value_of_int 0 in
+  List.fold_right (fun x y -> VCons (x, y)) list zero
 ;;
 
 let encode_as_list list =
@@ -252,28 +246,28 @@ let encode_as_list list =
 ;;
 
 let encode_field field =
-  let zero = Lambdaman.value_of_int 0 in
+  let zero = value_of_int 0 in
   Array.fold_right (fun x y ->
     let x' = Array.fold_right (fun cell t ->
-      let v = Lambdaman.value_of_int (Field.int_of_cell cell) in
-      Lambdaman.VCons (v, t)
+      let v = value_of_int (Field.int_of_cell cell) in
+      VCons (v, t)
     ) x zero in
-    Lambdaman.VCons (x', y)
+    VCons (x', y)
   ) field zero
 ;;
 
 (* Consider only single lambdaman? *)
 let encode_status t =
   let man = t.lambdamans.(0) in
-  let vitality = Lambdaman.value_of_int man.Lambdaman.vitality in
-  let position = Lambdaman.VCons (Lambdaman.value_of_int man.Lambdaman.x, Lambdaman.value_of_int man.Lambdaman.y) in
-  let dirrection = Lambdaman.value_of_int (int_of_direction man.Lambdaman.d) in
-  let lives = Lambdaman.value_of_int man.Lambdaman.lives in
-  let score = Lambdaman.value_of_int man.Lambdaman.score in
+  let vitality = value_of_int man.vitality in
+  let position = VCons (value_of_int man.x, value_of_int man.y) in
+  let dirrection = value_of_int (int_of_direction man.d) in
+  let lives = value_of_int man.lives in
+  let score = value_of_int man.score in
   encode_as_tuple [vitality; position; dirrection; lives; score]
 
 let encode_ghost t =
-  let vitalities = Array.to_list (Array.map (fun ghost -> Lambdaman.value_of_int (Ghost.int_of_vitality ghost.Ghost.vitality)) t.ghosts) in
+  let vitalities = Array.to_list (Array.map (fun ghost -> value_of_int (Ghost.int_of_vitality ghost.Ghost.vitality)) t.ghosts) in
   encode_as_list vitalities
 
 (* fruit might exist in [127 * 200, 127 * 280], [127 * 400, 127 * 480] *)
@@ -286,7 +280,7 @@ let encode_fruit t tick =
     else
       0
   in
-  Lambdaman.value_of_int v
+  value_of_int v
 ;;
 
 let encode_current_world t tick =
@@ -299,24 +293,24 @@ let encode_current_world t tick =
 
 (* TODO: implement this. Encode HLT now. *)
 let encode_ghost_program program =
-  Lambdaman.VCons (Lambdaman.value_of_int 14, Lambdaman.value_of_int 0)
+  VCons (value_of_int 14, value_of_int 0)
 ;;
 
 let encode_ghost_programs t =
   let encoded = Array.map (fun ghost -> encode_ghost_program ghost.Ghost.program) t.ghosts in
-  Array.fold_right (fun x y -> Lambdaman.VCons (x, y)) encoded (Lambdaman.VInt (Int32.of_int 0))
+  Array.fold_right (fun x y -> VCons (x, y)) encoded (VInt (Int32.of_int 0))
 ;;
 
 let run t =
   (* First, call lambdaman main. *)
   let state = encode_current_world t 0
   and ghosts = encode_ghost_programs t in
-  let stepfunc_and_states = Array.map (fun man ->
-    let machine = Lambdaman.make_initial_machine () in
-    Stack.push state machine.Lambdaman.s;
-    Stack.push ghosts machine.Lambdaman.s;
-    Lambdaman.eval machine
+  let v = Array.map (fun man ->
+    let machine = make_initial_machine () in
+    eval machine man.program [state; ghosts]
   ) t.lambdamans in
+
+  print_value v.(0);
 
   (* Then, each next tick, call step and state. *)
   failwith "not implemented yet"

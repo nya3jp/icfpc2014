@@ -70,10 +70,13 @@ let check_cons = function
   | VCons (x, y) -> (x, y)
   | _ -> failwith "tag mismatch for cons"
 
-let check_closure v =
-  match v with
+let check_closure = function
   | VClosure (x, y) -> (x, y)
   | _ -> failwith "tag mismatch for closure"
+
+let is_closure = function
+  | VClosure _ -> true
+  | _ -> false
 
 let check_tag_join = function
   | AJoin x -> x
@@ -119,11 +122,11 @@ let alloc_dummy_frame n = {
 let rec string_of_value = function
   | VInt x -> Int32.to_string x
   | VCons(v1,v2) -> "(" ^ (string_of_value v1) ^ ", " ^ (string_of_value v2) ^ ")"
-  | VClosure(n,_) -> "{" ^ (string_of_int n) ^ " }" (* FIXME: should frame list displayed? *)
+  | VClosure(n,_) -> "Closure{" ^ (string_of_int n) ^ "}" (* FIXME: should frame list displayed? *)
 ;;
 
-let print_value v = print_endline (string_of_value v)
-
+let print_value v =
+  print_endline (string_of_value v)
 
 let rec get_nth_env_frame n = function
   | [] -> failwith "no environment ?"
@@ -276,8 +279,16 @@ let rec eval_instruction machine = function
      machine.c <- machine.c + 1
   | LBrk ->
      machine.c <- machine.c + 1
+;;
 
-let eval machine program =
+let eval machine program args =
+  (* make a frame to call main function *)
+  let frame = alloc_frame (List.length args) in
+  List.iteri (fun i v ->
+    frame.data.(i) <- v
+  ) args;
+  Stack.push AStop machine.d;
+  machine.e = frame :: machine.e;
   try
     while true do
       let inst = program.(machine.c) in
@@ -286,9 +297,8 @@ let eval machine program =
     failwith "shouldn't come here"
   with
   | Exception_exit ->
-     let y = Stack.pop machine.s in
-     let x = Stack.pop machine.s in
-     (x, y)
+     (* Returns the top value of stack. *)
+     Stack.pop machine.s
 ;;
 
 (* ---------------------------------------------------------------------- *)
