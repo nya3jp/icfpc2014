@@ -61,6 +61,7 @@ data Expr a where
   Assign :: Int -> Int -> Expr a -> Expr ()
 
   Seq :: Expr a -> Expr b -> Expr b
+  While :: Expr Int -> Expr a -> Expr ()
 
   Call1 :: String -> Expr a1 -> Expr r
   Call2 :: String -> Expr a1 -> Expr a2 -> Expr r
@@ -76,10 +77,16 @@ type CExpr = Writer [Any]
 e :: Expr a -> CExpr ()
 e x = tell [Any $ unsafeCoerce x]
 
-comp :: CExpr a -> Expr ()
+comp :: CExpr a -> Expr b
 comp c =
   let es = execWriter c
-  in foldr (\(Any f) e -> Seq f e) Nop es
+  in unsafeCoerce $ foldr (\(Any f) e -> Seq f e) Nop es
+
+cexpr :: CExpr a -> LMan ()
+cexpr = expr . comp
+
+while :: Expr Int -> Expr a -> CExpr ()
+while cond body = e $ While cond body
 
 -- data Any = forall a . Any a
 
@@ -126,6 +133,9 @@ infix 4 .==, .<, .<=, .>, .>=
 (.==) :: Expr Int -> Expr Int -> Expr Int
 (.==) = Ceq
 
+(./=) :: Expr Int -> Expr Int -> Expr Int
+a ./= b = 1 - (a .== b)
+
 (.<) :: Expr Int -> Expr Int -> Expr Int
 (.<) = flip Cgt
 
@@ -140,6 +150,9 @@ infix 4 .==, .<, .<=, .>, .>=
 
 atom :: Expr a -> Expr Int
 atom = Atom
+
+isNull :: Expr a -> Expr Int
+isNull = Atom
 
 tellc :: String -> LMan ()
 tellc s = tell [const s]
@@ -196,6 +209,21 @@ compileExpr e = case e of
   Seq a b -> do
     compileExpr a
     compileExpr b
+
+  While cond body -> do
+    beg <- newLabel
+    bod <- newLabel
+    end <- newLabel
+
+    emitLabel beg
+    compileExpr cond
+    tsel bod end
+
+    emitLabel bod
+    compileExpr body
+    jmp beg
+
+    emitLabel end
 
   Ite cond t e -> do
     tlabel <- newLabel
@@ -349,8 +377,8 @@ emitLabel (Label l) = do
 ite :: Expr Int -> Expr a -> Expr a -> Expr a
 ite = Ite
 
-(~=) :: Expr a -> Expr a -> Expr ()
-(Var i j) ~= v = Assign i j v
+(~=) :: Expr a -> Expr a -> CExpr () -- Expr ()
+(Var i j) ~= v = e $ Assign i j v
 _ ~= _ = error $ "Left hand side of := must be variable"
 
 codeGen :: LMan () -> [String]
@@ -545,7 +573,40 @@ def4 fname f = (Call4 fname, go) where
     emitLabel end
     return ()
 
+(&&&) :: Expr Int -> Expr Int -> Expr Int
+a &&& b = a * b
 
-(nth, nthDef) =
-  def2 "nth" $ \i xs ->
-    ite (i .== 0) (lhead xs) (nth (i-1) (ltail xs))
+(|||) :: Expr Int -> Expr Int -> Expr Int
+a ||| b = lnot $ lnot a &&& lnot b
+
+lnot :: Expr Int -> Expr Int
+lnot e = 1 - e
+
+debug = e. dbug
+debugn = e.dbugn
+
+i :: Expr Int -> Expr Int
+i = id
+
+cadr = car . cdr
+caddr = car . cdr . cdr
+cdddr = cdr . cdr . cdr
+
+(nth, nthDef) = def2 "nth" $ \i xs ->
+  ite (i .== 0) (lhead xs) (nth (i-1) (ltail xs))
+
+(upd, updDef) = def3 "upd" $ \i v xs ->
+  ite (i .== 0) (lcons v $ ltail xs) (lcons (lhead xs) $ upd (i-1) v (ltail xs))
+
+(getMat, getMatDef) = def3 "getMat" $ \x y m ->
+  nth x $ nth y m
+
+(setMat, setMatDef) = def4 "setMat" $ \x y v m ->
+  upd y (upd x v $ nth y m) m
+
+libDef :: LMan ()
+libDef = do
+  nthDef
+  updDef
+  getMatDef
+  setMatDef
