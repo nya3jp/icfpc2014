@@ -14,8 +14,9 @@ typedef complex<int> pt;
 
 int W,H;
 Mat theMat;
-map<double, pt> vacantPts;
+map<double, pair<pt,pt> > vacantPts;
 
+vector<pt> dirVect;
 
 int countVacancy(char c){
   return (c=='#' ? 0 : 1);
@@ -37,13 +38,31 @@ pt vrand() {
   return pt(-1,0);
 }
 
-double probPenetrate = 0.0;//1;
+double probPenetrate =0;
 double probTurn = 0.25;
 double probParity = 0.5;
+double ppDensity = 1;
+int numGhost = 4;
+int numPP = 4;
 void setParam(){
-  //probPenetrate = drand();
-  probTurn = 1/exp(drand()*log(W+H));
+
+  probPenetrate = exp(-12*drand());
+  probTurn = exp(-drand()*2*log(W+H));
   if(rand()< 0.3)probParity = drand();
+  ppDensity = exp(-2*drand());
+  if(rand()<0.1)ppDensity=1;
+  
+  numGhost = min(256,4 + irand(0,W*H/256));
+
+  numPP = min(256,max(4, int( numGhost * exp(2*drand()-4) ) ));
+
+
+
+  dirVect = vector<pt>();
+  dirVect.push_back(pt(0,-1));
+  dirVect.push_back(pt(1, 0));
+  dirVect.push_back(pt(0, 1));
+  dirVect.push_back(pt(-1,0));
 }
 
 void dump() {
@@ -65,11 +84,6 @@ void dump() {
       ++n;
     }
   }
-
-  cout << "den1: " << (nnbd[1]/n) << endl;
-  cout << "den2: " << (nnbd[2]/n) << endl;
-  cout << "den3: " << (nnbd[3]/n) << endl;
-  cout << "den4: " << (nnbd[4]/n) << endl;
 }
 
 bool isVacant(pt o) {
@@ -82,6 +96,17 @@ bool isPassable(pt o) {
   return theMat[o.imag()][o.real()]!='#';
 }
 
+pt vprand() {
+  for(;;){
+    pt ret(irand(1,W-1),irand(1,H-1));
+    if (isAlmostVacant(ret)) return ret;
+  }
+}
+char &matAt(pt o) {
+  return theMat[o.imag()][o.real()];
+}
+
+
 
 bool drillable(pt o) {
   if(o.real()<=0) return false;
@@ -90,9 +115,9 @@ bool drillable(pt o) {
   if(o.imag()>=H-1) return false;
   if(isPassable(o+pt(0,-1)) && isPassable(o+pt(-1,0)) && isPassable(o+pt(-1,-1)))
     return false;
-  if(isPassable(o+pt(0, 1)) && isPassable(o+pt(-1,0)) && isPassable(o+pt( 1,-1)))
-    return false;
   if(isPassable(o+pt(0, 1)) && isPassable(o+pt(-1,0)) && isPassable(o+pt(-1, 1)))
+    return false;
+  if(isPassable(o+pt(1, 0)) && isPassable(o+pt( 0,-1)) && isPassable(o+pt(1,-1)))
     return false;
   if(isPassable(o+pt(0, 1)) && isPassable(o+pt( 1,0)) && isPassable(o+pt( 1, 1)))
     return false;
@@ -109,21 +134,24 @@ bool doesPenetrate(pt o) {
 }
 
 int drillFailCombo = 0;
-void drill(pair<double,pt> po, pt v){
-  pt o = po.second;
+void drill(pair<double,pair<pt,pt> > po){
+  pt o = po.second.first;
+  pt v = po.second.second;
   for(;;){
     o+=v;
     if(!drillable(o)) {
       break;
     }
     if(doesPenetrate(o)){
-      if(!(drand() < probPenetrate))
+      if((drand() > probPenetrate))
 	break;
     }
     if(!  isPassable(o) ) drillFailCombo = 0;
     theMat[o.imag()][o.real()] = ' ';
-    vacantPts.insert(make_pair(1+drand(),o));
-    //vacantPts.push_back(o);
+    
+    for(int d=0;d<4;++d)
+      vacantPts.insert(make_pair(drand(), make_pair(o,dirVect[d])));
+
     if(drand()<probTurn) {
       if(drand()<probParity){
 	v *= pt(0,1);
@@ -135,8 +163,6 @@ void drill(pair<double,pt> po, pt v){
 
   ++drillFailCombo; 
   vacantPts.erase(po.first);
-  po.first*=(2+drand());
-  vacantPts.insert(po);
 
   return;
 }
@@ -146,14 +172,31 @@ void drill(pair<double,pt> po, pt v){
 void genMat() {
   theMat = Mat(H, string(W,'#'));
   int ox=irand(1,W-1), oy=irand(1,H-1);
+  theMat[oy][ox]=' ';
   pt o(ox,oy);
-  vacantPts=map<double,pt>();
-  vacantPts.insert(make_pair(0,o));
-   while(!vacantPts.empty() && drillFailCombo < W*H){
-     pair<double,pt> po=*(vacantPts.begin());
-     drill(po,vrand());    
-  }
+  vacantPts=map<double,pair<pt,pt> >();
+  for(int d=0;d<4;++d)
+    vacantPts.insert(make_pair(drand(), make_pair(o,dirVect[d])));
 
+   while(!vacantPts.empty() && drillFailCombo < W*H){
+     pair<double,pair<pt,pt> > po=*(vacantPts.begin());
+     drill(po);    
+  }
+  for (int y=0;y<H;++y) {
+    for (int x=0;x<W;++x) {
+      if(theMat[y][x]==' ' && drand() < ppDensity) theMat[y][x] = '.';
+    }
+  }
+  for(int i =0;i<numGhost;++i) {
+    matAt(vprand())='=';
+  }
+  for(int i =0;i<numPP;++i) {
+    matAt(vprand())='o';
+  }
+  matAt(vprand())='%';
+  matAt(vprand())='\\';
+
+  matAt(vprand())='.'; // at least one pill
   return;
 }
 
