@@ -216,8 +216,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
              ite (scoreS .>= scoreW) 2 $
              (3 :: Expr Int)
 
-    in dbug (list [scoreN, scoreE, scoreS, scoreW]) `Seq`
-       dbug world
+    in dbug (list [scoreN, scoreE, scoreS, scoreW]) 
         `Seq` cons aist d2
 
 progn :: LMan ()
@@ -355,6 +354,7 @@ performTest tc0 = do
          "fp",show ghostPillParamF,   
          "ga",show ghostAuraParam,   
          "fa",show ghostAuraParamF,
+         "damp" ,show dampingParam, 
          "denp", show $ charFraction '.' mapContent1,
          "denP", show $ charFraction 'o' mapContent1,
          "denG", show $ charFraction '=' mapContent1 
@@ -401,8 +401,9 @@ main2 = do
          "gp",show ghostPillParam,   
          "fp",show ghostPillParamF,   
          "ga",show ghostAuraParam,   
-         "fa",show ghostAuraParamF
-          ] ++ "\n"
+         "fa",show ghostAuraParamF,
+         "damp" ,show dampingParam           
+         ] ++ "\n"
   writeFile txtFn $ msg
   putStr $ msg
   
