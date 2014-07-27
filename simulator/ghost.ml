@@ -56,12 +56,15 @@ let rec eval_ginstruction env syscallback = function
   | GMov (x1, x2) ->
      let v2 = eval_gvalue env x2 in
      set_gvalue env x1 v2
+     env.pc <- env.pc + 1;
   | GInc x ->
      let vx = eval_gvalue env x in
      set_gvalue env x ((vx + 1) land 0xFF)
+     env.pc <- env.pc + 1;
   | GDec x ->
      let vx = eval_gvalue env x in
      set_gvalue env x ((vx - 1) land 0xFF)
+     env.pc <- env.pc + 1;
   | GAdd (x, y) ->
      let vx = eval_gvalue env x
      and vy = eval_gvalue env y in
@@ -192,6 +195,7 @@ let eval t syscallback =
   begin
     try
       for i = 0 to 1023 do
+        Printf.printf "pc=%d\n" t.env.pc;
         eval_ginstruction t.env syscallback t.program.(t.env.pc)
       done;
     with
