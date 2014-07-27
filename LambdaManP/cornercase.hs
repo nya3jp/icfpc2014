@@ -25,12 +25,12 @@ import System.Process
 type X = Int
 type Direction = Int
 type Clock = Int
-type World = ([[Int]], (ManState, ([GhostState], FruitState)))
+type World0 = ([[Int]], (ManState, ([GhostState], FruitState)))
 --               vit                    lives score
 type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
 type GhostState = (Int, (Pos , Direction))
 type FruitState = Int
-type AIState = ((Mat Int),(Clock,X))
+type AIState = Int
 type Pos = (Int, Int)
 
 
@@ -38,19 +38,22 @@ type Pos = (Int, Int)
   def2 "step" $ \aist world0 -> 
     let
         gss :: Expr [GhostState]
-        gss = car $ cdr $ cdr world
+        gss = car $ cdr $ cdr world0
         gs1 :: Expr GhostState
-        gs1 = car $ gs1
+        gs1 = lhead  gss
         gY :: Expr Int
         gY = cdr $ cdr gs1
         
-        manState :: Expr ManState
-        manState = car $ cdr world
-        
         d = ite (gY .== 1) 2 1
     in 
-        rtn (aist, d)
+        cons aist d
       
+progn :: LMan ()
+progn = do
+  libDef  
+  stepDef  
+  
+  rtn $ cons (0 ::  Expr AIState) $ Closure "step"  
   
 main :: IO ()
 main = do
