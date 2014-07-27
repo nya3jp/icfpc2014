@@ -42,7 +42,7 @@ class EvalJob(object):
     jsonpath = os.path.join(
         FLAGS.data_dir, '%s.response.%s.json' % (self.name, self.evalset))
     stdoutpath = os.path.join(
-        FLAGS.data_dir, '%s.response.%s.stdout' % (self.name, self.evalset))
+        FLAGS.data_dir, '%s.response.%s.stdout.gz' % (self.name, self.evalset))
     stderrpath = os.path.join(
         FLAGS.data_dir, '%s.response.%s.stderr' % (self.name, self.evalset))
     with open(codepath) as f:
@@ -50,13 +50,13 @@ class EvalJob(object):
     with open(stdoutpath, 'w') as stdout:
       with open(stderrpath, 'w') as stderr:
         p = subprocess.Popen(
-            'ssh %s "%s 2>&1 | tail -n 10000 | gzip" | gzip -d' % (FLAGS.remote_host, script),
+            'ssh %s "%s 2>&1 | tail -n 10000 | gzip"' % (FLAGS.remote_host, script),
             shell=True,
             stdin=subprocess.PIPE, stdout=stdout, stderr=stderr)
     p.stdin.write(code)
     p.stdin.close()
     p.wait()
-    score = subprocess.check_output('tail -n 1 "%s"' % stdoutpath, shell=True).strip()
+    score = subprocess.check_output('zcat "%s" | tail -n 1' % stdoutpath, shell=True).strip()
     try:
       score = int(score)
     except ValueError:
@@ -86,7 +86,7 @@ class GhostEvalJob(object):
     jsonpath = os.path.join(
         FLAGS.ghost_data_dir, '%s.response.%s.json' % (self.name, self.evalset))
     stdoutpath = os.path.join(
-        FLAGS.ghost_data_dir, '%s.response.%s.stdout' % (self.name, self.evalset))
+        FLAGS.ghost_data_dir, '%s.response.%s.stdout.gz' % (self.name, self.evalset))
     stderrpath = os.path.join(
         FLAGS.ghost_data_dir, '%s.response.%s.stderr' % (self.name, self.evalset))
     with open(codepath) as f:
@@ -94,13 +94,13 @@ class GhostEvalJob(object):
     with open(stdoutpath, 'w') as stdout:
       with open(stderrpath, 'w') as stderr:
         p = subprocess.Popen(
-            'ssh %s "%s 2>&1 | gzip" | gzip -d' % (FLAGS.remote_host, script),
+            'ssh %s "%s 2>&1 | tail -n 10000 | gzip"' % (FLAGS.remote_host, script),
             shell=True,
             stdin=subprocess.PIPE, stdout=stdout, stderr=stderr)
     p.stdin.write(code)
     p.stdin.close()
     p.wait()
-    score = subprocess.check_output('cat "%s" | tail -n 1' % stdoutpath, shell=True).strip()
+    score = subprocess.check_output('zcat "%s" | tail -n 1' % stdoutpath, shell=True).strip()
     try:
       score = int(score)
     except ValueError:
