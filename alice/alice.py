@@ -56,6 +56,11 @@ class Context(object):
     self._seq[0] += 1
     return label
 
+  def make_var(self):
+    label = '__%d' % self._seq[0]
+    self._seq[0] += 1
+    return label
+
   def emit(self, tmpl, *args):
     s = tmpl % args
     if s and s[0].isupper():
@@ -70,10 +75,10 @@ class Syntax(object):
   def __init__(self, children):
     self.children = children
 
-  def gather_func_vars(self):
+  def gather_func_vars(self, ctx):
     vars = []
     for child in self.children:
-      vars.extend(child.gather_func_vars())
+      vars.extend(child.gather_func_vars(ctx))
     return vars
 
   def has_return_with_value(self):
@@ -124,7 +129,7 @@ class Function(Stmt):
   def compile(self, ctx):
     ctx = ctx.copy()
     ctx.current_func = self
-    locals = set(self.gather_func_vars())
+    locals = set(self.gather_func_vars(ctx))
     locals -= set(self.args)
     locals = sorted(locals)
     assert not ctx.vars
@@ -201,8 +206,8 @@ class Assign(Stmt):
     self.targets = targets
     self.value = value
 
-  def gather_func_vars(self):
-    return self.targets + Stmt.gather_func_vars(self)
+  def gather_func_vars(self, ctx):
+    return self.targets + Stmt.gather_func_vars(self, ctx)
 
   def compile(self, ctx):
     self.value.compile(ctx)
@@ -216,8 +221,8 @@ class Discard(Stmt):
     Stmt.__init__(self, [value])
     self.value = value
 
-  def gather_func_vars(self):
-    return ['_'] + Stmt.gather_func_vars(self)
+  def gather_func_vars(self, ctx):
+    return ['_'] + Stmt.gather_func_vars(self, ctx)
 
   def compile(self, ctx):
     self.value.compile(ctx)
@@ -261,8 +266,8 @@ class ForN(Stmt):
     self.step = step
     self.block = block
 
-  def gather_func_vars(self):
-    return [self.target] + Stmt.gather_func_vars(self)
+  def gather_func_vars(self, ctx):
+    return [self.target] + Stmt.gather_func_vars(self, ctx)
 
   def compile(self, ctx):
     last_loop = ctx.current_loop
@@ -294,6 +299,59 @@ class ForN(Stmt):
     ctx.emit('ST %d %d  ; %s', a, b, self.target)
     ctx.emit('LDC 283283283')
     ctx.emit('TSEL %s %s', loop['cond'], loop['cond'])
+
+    ctx.emit('%s:', loop['exit'])
+
+    ctx.current_loop = last_loop
+
+
+class ForList(Stmt):
+  def __init__(self, target, value, block):
+    Stmt.__init__(self, [value] + block.children)
+    self.target = target
+    self.value = value
+    self.block = block
+    self.tmpvar = None
+
+  def gather_func_vars(self, ctx):
+    assert self.tmpvar is None
+    self.tmpvar = ctx.make_var()
+    return [self.target, self.tmpvar] + Stmt.gather_func_vars(self, ctx)
+
+  def compile(self, ctx):
+    assert self.tmpvar
+    last_loop = ctx.current_loop
+    label = ctx.make_label()
+    loop = {'next': '%s_next' % label,
+            'prebody': '%s_prebody' % label,
+            'body': '%s_body' % label,
+            'exit': '%s_exit' % label}
+
+    ctx.current_loop = loop
+    targeta, targetb = ctx.vars[self.target]
+    tmpvara, tmpvarb = ctx.vars[self.tmpvar]
+
+    self.value.compile(ctx)
+    ctx.emit('ST %d %d  ; %s', tmpvara, tmpvarb, self.tmpvar)
+
+    ctx.emit('%s:', loop['next'])
+    ctx.emit('LD %d %d  ; %s', tmpvara, tmpvarb, self.tmpvar)
+    ctx.emit('ATOM')
+    ctx.emit('TSEL %s %s', loop['exit'], loop['prebody'])
+
+    ctx.emit('%s:', loop['prebody'])
+    ctx.emit('LD %d %d  ; %s', tmpvara, tmpvarb, self.tmpvar)
+    ctx.emit('CAR')
+    ctx.emit('ST %d %d  ; %s', targeta, targetb, self.target)
+    ctx.emit('LD %d %d  ; %s', tmpvara, tmpvarb, self.tmpvar)
+    ctx.emit('CDR')
+    ctx.emit('ST %d %d  ; %s', tmpvara, tmpvarb, self.tmpvar)
+
+    ctx.emit('%s:', loop['body'])
+    self.block.compile(ctx)
+
+    ctx.emit('LDC 283283283')
+    ctx.emit('TSEL %s %s', loop['next'], loop['next'])
 
     ctx.emit('%s:', loop['exit'])
 
@@ -413,27 +471,6 @@ class NumBinOp(BinOp):
     return None
 
 
-class Mod(BinOp):
-  def gather_func_vars(self):
-    return ['_a', '_b'] + BinOp.gather_func_vars(self)
-
-  def compile(self, ctx):
-    ai, aj = ctx.vars['_a']
-    bi, bj = ctx.vars['_b']
-    self.left.compile(ctx)
-    ctx.emit('ST %d %d', ai, aj)
-    self.right.compile(ctx)
-    ctx.emit('ST %d %d', bi, bj)
-
-    ctx.emit('LD %d %d', ai, aj)
-    ctx.emit('LD %d %d', ai, aj)
-    ctx.emit('LD %d %d', bi, bj)
-    ctx.emit('DIV')
-    ctx.emit('LD %d %d', bi, bj)
-    ctx.emit('MUL')
-    ctx.emit('SUB')
-
-
 class And(BinOp):
   def compile(self, ctx):
     ctx.emit('LDC 1')
@@ -529,6 +566,19 @@ class Cdr(Expr):
   def compile(self, ctx):
     self.pair.compile(ctx)
     ctx.emit('CDR')
+
+
+class Atom(Expr):
+  def __init__(self, operand):
+    self.operand = operand
+    Expr.__init__(self, [operand])
+
+  def rank(self, ctx):
+    return 1
+
+  def compile(self, ctx):
+    self.operand.compile(ctx)
+    ctx.emit('ATOM')
 
 
 class Pair(Expr):
@@ -664,7 +714,7 @@ def parse_stmt(stmt):
         args = [args[0], args[1], Num(1)]
       return ForN(stmt.target.id, args[0], args[1], args[2],
                   parse_block(stmt.body))
-    compile_assert(False, stmt, 'Unsupported form of for statement')
+    return ForList(stmt.target.id, parse_expr(stmt.iter), parse_block(stmt.body))
   if isinstance(stmt, ast.Print):
     compile_assert(not stmt.dest, stmt, 'print destination not supported')
     return Print([parse_expr(value) for value in stmt.values])
@@ -677,7 +727,8 @@ def parse_expr(expr):
   compile_assert(isinstance(expr, ast.expr), expr)
   if isinstance(expr, ast.BinOp):
     if isinstance(expr.op, ast.Mod):
-      return Mod(parse_expr(expr.left), parse_expr(expr.right))
+      return Call('_builtin_mod',
+                  [parse_expr(expr.left), parse_expr(expr.right)])
     inst = NumBinOp.op_to_inst(expr.op)
     return NumBinOp(inst, parse_expr(expr.left), parse_expr(expr.right))
   if isinstance(expr, ast.BoolOp):
@@ -711,6 +762,9 @@ def parse_expr(expr):
     if expr.func.id == 'cdr':
       compile_assert(len(expr.args) == 1, expr, 'wrong number of args to cdr')
       return Cdr(parse_expr(expr.args[0]))
+    if expr.func.id == 'atom':
+      compile_assert(len(expr.args) == 1, expr, 'wrong number of args to atom')
+      return Atom(parse_expr(expr.args[0]))
     return Call(expr.func.id, [parse_expr(arg) for arg in expr.args])
   if isinstance(expr, ast.Subscript):
     return Call('_builtin_index',
@@ -730,6 +784,10 @@ def parse_expr(expr):
 PRELUDE = """
 
 ### PRELUDE ###
+@rank(1)
+def _builtin_mod(a, b):
+  return a - a / b * b
+
 @rank(1)
 def _builtin_index(array, index):
   while index > 0:

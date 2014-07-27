@@ -3,7 +3,8 @@
 import qualified Data.Map as M
 import Data.Maybe
 import Data.Char
-import Data.List (intercalate)
+import Data.Function (on)
+import Data.List (intercalate, sortBy)
 import Debug.Trace
 import Safe
 import System.Environment
@@ -19,10 +20,16 @@ import DSL
 import Lib
 import System.Process
 
+sotaMode :: Bool
+sotaMode = unsafePerformIO $ do
+  args <- getArgs
+  return $ "sota" `elem` args
+
 -----
 type X = Int
 type Direction = Int
-type World = ([[Int]], (ManState, ([GhostState], FruitState)))
+type World0 = ([[Int]], (ManState, ([GhostState], FruitState)))
+type World = ((Mat Int), (ManState, ([GhostState], FruitState)))
 
 --               vit                    lives score
 type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
@@ -47,25 +54,42 @@ pillParam ::  Int -- default: 100
 pillParam = 100 -- this is the unit of value
 {-# NOINLINE powerPillParam #-}
 powerPillParam ::  Int -- 2000
-powerPillParam = pillParam * (unsafePerformIO $ randLIO (1,20) )
+powerPillParam 
+  | sotaMode  = 500
+  | otherwise = pillParam * (unsafePerformIO $ randLIO (1,20) )
 {-# NOINLINE ghostPillParam #-}
 ghostPillParam ::  Int -- 5000
-ghostPillParam = negate $  unsafePerformIO $ randLIO (500,50000) 
+ghostPillParam  
+  | sotaMode  = -925
+  | otherwise = negate $  unsafePerformIO $ randLIO (500,50000) 
 {-# NOINLINE ghostPillParamF #-}
 ghostPillParamF ::  Int --10000
-ghostPillParamF =  unsafePerformIO $ randLIO (1000,50000) 
+ghostPillParamF 
+  | sotaMode  = 8080
+  | otherwise =  unsafePerformIO $ randLIO (1000,50000) 
 
 {-# NOINLINE ghostAuraParamF #-}
 ghostAuraParamF :: Int -- 1600
-ghostAuraParamF = unsafePerformIO $ randLIO (160,60000) 
+ghostAuraParamF 
+  | sotaMode  = -200
+  | otherwise = unsafePerformIO $ randLIO (160,60000) 
 {-# NOINLINE ghostAuraParam #-}
 ghostAuraParam :: Int -- 800
-ghostAuraParam = negate $ unsafePerformIO $ randLIO (80,80000) 
+ghostAuraParam 
+  | sotaMode  = 800
+  | otherwise = negate $ unsafePerformIO $ randLIO (80,80000) 
+
+{-# NOINLINE dampingParam #-}
+dampingParam :: Int -- 800
+dampingParam 
+  | sotaMode  = 90
+  | otherwise = 100 + (negate $ unsafePerformIO $ randLIO (1,50) )
 
 
-(tileValue :: Expr Int -> Expr Int, tileValueDef) = def1 "tileView" $ \i ->
+
+(tileValue :: Expr Int -> Expr Int -> Expr Int, tileValueDef) = def2 "tileView" $ \i ppFlag ->
   ite (i.==0) 0 $ 
-  ite (i.==2) (Const pillParam) $ 
+  ite (i.==2) (ite ppFlag 0 $ Const pillParam) $ 
   ite (i.==3) (Const powerPillParam) $ 
   1
 
@@ -73,8 +97,9 @@ ghostAuraParam = negate $ unsafePerformIO $ randLIO (80,80000)
 int_min :: Expr Int
 int_min = Const $ -2^(31)
 
-mapAt :: Expr Pos -> Expr [[Int]] -> Expr Int
-mapAt pos chizu = nth (car pos) $ nth (cdr pos) chizu
+mapAt :: Expr Pos -> Expr (Mat Int) -> Expr Int
+mapAt pos chizu = peekMat (car pos) (cdr pos) chizu
+
 
 veq :: Expr Pos -> Expr Pos -> Expr Int
 veq  pos vect = (car pos .== car vect) * (cdr pos .== cdr vect)
@@ -96,9 +121,9 @@ vrotL :: Expr Pos -> Expr Pos
 vrotL vect = cons (cdr vect) (negate $ car vect)
 
 (dirValuePill:: Expr Int -> Expr Pos -> Expr World -> Expr Pos -> Expr Int, dirValuePillDef) =
-  def4 "dirValuePill" $ \depth vect world manp ->
+  def4 "dirValuePill" $ \juice vect world manp ->
     let info = (mapAt manp chizu) 
-        chizu :: Expr [[Int]]
+        chizu :: Expr (Mat Int)
         chizu = car world
         gss :: Expr [GhostState]
         gss = car $ cdr $ cdr world
@@ -109,15 +134,15 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         powerPillFlag :: Expr Int
         powerPillFlag = car manState
 
-        subScore = (dirValuePill (depth+1) (vrotR vect) world (vsub manp vect)
-                 + dirValuePill (depth+1) (vrotL vect) world (vsub manp vect)) `div` 2
+        subScore = (dirValuePill (div juice 2) (vrotR vect) world (vsub manp vect)
+                 + dirValuePill (div juice 2) (vrotL vect) world (vsub manp vect)) `div` 2
         ghostVal :: Expr Int
         ghostVal = (ite powerPillFlag (Const ghostPillParamF) (Const ghostPillParam))
     in 
-    ite (depth .>= 3) 0 $
+    ite (juice .<= 0) 0 $
     ite (info .== 0) subScore $
     ite (isGhostThere gss manp) ghostVal
-    (tileValue info) + (dirValuePill depth vect world $ vadd manp vect)*9`div`10
+    (tileValue powerPillFlag info) + (dirValuePill (div juice 2) vect world $ vadd manp vect)* (Const dampingParam)`div`100
 
 (dirValueGhost1 :: Expr Pos -> Expr GhostState -> Expr Int -> Expr Pos -> Expr Int, dirValueGhost1Def) = 
   def4 "dirValueGhost1" $ \vect gs1 ppflag manp ->
@@ -161,7 +186,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         powerPillFlag :: Expr Int
         powerPillFlag = car manState
    
-        chizu :: Expr [[Int]]
+        chizu :: Expr (Mat Int)
         chizu = car world
         
         gss :: Expr [GhostState]
@@ -171,13 +196,15 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         nextP = vadd manP vect
     in 
         ite (mapAt nextP chizu .== 0) int_min $
-        dirValuePill 0 vect world manP 
+        dirValuePill 100 vect world manP 
           + dirValueGhosts vect gss powerPillFlag manP
 
 
-(step :: Expr AIState -> Expr World -> Expr (AIState,Int), stepDef) =
-  def2 "step" $ \aist world ->
-    let scoreN, scoreE, scoreS, scoreW :: Expr Int
+(step :: Expr AIState -> Expr World0 -> Expr (AIState,Int), stepDef) =
+  def2 "step" $ \aist world0 -> with (toMat (car world0)) $ \chizu -> 
+    let world = cons chizu (cdr world0)
+        
+        scoreN, scoreE, scoreS, scoreW :: Expr Int
         scoreN = dirValueTotal (cons 0 (-1)) world
         scoreE = dirValueTotal (cons 1    0) world
         scoreS = dirValueTotal (cons 0    1) world
@@ -189,12 +216,12 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
              ite (scoreS .>= scoreW) 2 $
              (3 :: Expr Int)
 
-    in dbug (list [scoreN, scoreE, scoreS, scoreW])
+    in dbug (list [scoreN, scoreE, scoreS, scoreW]) `Seq`
+       dbug world
         `Seq` cons aist d2
 
 progn :: LMan ()
 progn = do
-  nthDef
   tileValueDef
   dirValuePillDef
   dirValueGhost1Def  
@@ -202,8 +229,10 @@ progn = do
   dirValueTotalDef
   isGhostThereDef
   stepDef
+  
+  libDef
 
-  expr $ cons (0 :: Expr AIState) $ Closure "step"
+  rtn $ cons (0 :: Expr AIState) $ Closure "step"
 
 data TestConf = TestConf 
   {ghostFiles::[String], 
@@ -226,17 +255,36 @@ toCmdlineString tc = unwords $ "./sim.sh" :  cmdlineOpts tc
 ppTestConf :: TestConf -> String
 ppTestConf tc = (show $ scoreResult tc) ++"\t" ++ toCmdlineString tc
 
-mkTestConfs :: String -> [TestConf]
-mkTestConfs gccfn = do -- List Monad
---  mapOpt <- ["map/train-1.map", "map/train-2.map", "map/train-3.map"]
-  mapOpt <- ["map/kichiku.map"]
-  gOpt <-
-    [ ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
-    , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
-    , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]]
+randChoice1 :: [a] -> IO a
+randChoice1 xs = do
+  idx <- randomRIO (0, length xs)
+  return $ xs!!idx
+
+randChoiceN :: Int -> [a] -> IO [a]
+randChoiceN n xs = do
+  xs2 <- mapM pairWith xs 
+  let xs3 = sortBy (compare `on` fst) xs2
+  return $ map snd $ take n xs3
+
+  where 
+    pairWith :: a -> IO (Double, a)
+    pairWith x = do
+      k <- randomRIO (0,1)
+      return (k,x)
+
+mkTestConfs :: String -> IO [TestConf]
+mkTestConfs gccfn = do 
+  mapOpts <- randChoiceN 3 ["map/train-1.map", "map/train-2.map", "map/train-3.map", "map/train-4.map", "map/train-5.map" ]
+  let gOpts =
+        [ ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
+        , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/chase_fixed.ghc"]
+        , ["ghost/chase_fixed.ghc"]]
 
 
-  return $ TestConf {ghostFiles = gOpt, lambdaManFile = gccfn,
+  return $ do -- listMonad
+    gOpt <- gOpts
+    mapOpt <- mapOpts
+    return $ TestConf {ghostFiles = gOpt, lambdaManFile = gccfn,
                      mapFile = mapOpt, scoreResult = -1}
 
 readLastLine :: Handle -> Int -> IO Int
@@ -283,8 +331,7 @@ performTest :: TestConf -> IO TestConf
 performTest tc0 = do
   indexR <- randomRIO (0,2^30::Int)
   let mapFn0 = mapFile tc0
-      (fnB, _)  = splitExtension mapFn0
-      mapFn1 = printf "%s-%010d.map" fnB indexR
+      mapFn1 = printf "%s-%010d.map" fnLM indexR
       (fnLM, _)  = splitExtension (lambdaManFile tc0)
       statFn1 = printf "%s-%010d.stat" fnLM indexR      
       tc1 = tc0 {mapFile = mapFn1}
@@ -326,7 +373,8 @@ main = do
   case args of
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
-    _ -> main2
+    ["sota"] -> writeFile "aznyan-sota.gcc" $ compile progn
+    _        -> main2
     
 main2 :: IO ()
 main2 = do
@@ -340,7 +388,7 @@ main2 = do
       logFn = printf "./LambdaMan/gen2/az-%s.log" indexStr      
 
   writeFile gccFn $ compile progn
-  let tcs0 = mkTestConfs gccFn
+  tcs0 <- mkTestConfs gccFn
   print $ length tcs0
   
   tcs <- mapM performTest tcs0
