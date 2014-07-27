@@ -3,7 +3,8 @@
 import qualified Data.Map as M
 import Data.Maybe
 import Data.Char
-import Data.List (intercalate)
+import Data.Function (on)
+import Data.List (intercalate, sortBy)
 import Debug.Trace
 import Safe
 import System.Environment
@@ -215,7 +216,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
              ite (scoreS .>= scoreW) 2 $
              (3 :: Expr Int)
 
-    in dbug (list [scoreN, scoreE, scoreS, scoreW])
+    in dbug (list [scoreN, scoreE, scoreS, scoreW]) 
         `Seq` cons aist d2
 
 progn :: LMan ()
@@ -253,17 +254,36 @@ toCmdlineString tc = unwords $ "./sim.sh" :  cmdlineOpts tc
 ppTestConf :: TestConf -> String
 ppTestConf tc = (show $ scoreResult tc) ++"\t" ++ toCmdlineString tc
 
-mkTestConfs :: String -> [TestConf]
-mkTestConfs gccfn = do -- List Monad
-  mapOpt <- ["map/train-1.map", "map/train-2.map", "map/train-3.map"]
---  mapOpt <- ["map/kichiku.map"]
-  gOpt <-
-    [ ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
-    , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
-    , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]]
+randChoice1 :: [a] -> IO a
+randChoice1 xs = do
+  idx <- randomRIO (0, length xs)
+  return $ xs!!idx
+
+randChoiceN :: Int -> [a] -> IO [a]
+randChoiceN n xs = do
+  xs2 <- mapM pairWith xs 
+  let xs3 = sortBy (compare `on` fst) xs2
+  return $ map snd $ take n xs3
+
+  where 
+    pairWith :: a -> IO (Double, a)
+    pairWith x = do
+      k <- randomRIO (0,1)
+      return (k,x)
+
+mkTestConfs :: String -> IO [TestConf]
+mkTestConfs gccfn = do 
+  mapOpts <- randChoiceN 3 ["map/train-1.map", "map/train-2.map", "map/train-3.map", "map/train-4.map", "map/train-5.map" ]
+  let gOpts =
+        [ ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
+        , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/chase_fixed.ghc"]
+        , ["ghost/chase_fixed.ghc"]]
 
 
-  return $ TestConf {ghostFiles = gOpt, lambdaManFile = gccfn,
+  return $ do -- listMonad
+    gOpt <- gOpts
+    mapOpt <- mapOpts
+    return $ TestConf {ghostFiles = gOpt, lambdaManFile = gccfn,
                      mapFile = mapOpt, scoreResult = -1}
 
 readLastLine :: Handle -> Int -> IO Int
@@ -334,6 +354,7 @@ performTest tc0 = do
          "fp",show ghostPillParamF,   
          "ga",show ghostAuraParam,   
          "fa",show ghostAuraParamF,
+         "damp" ,show dampingParam, 
          "denp", show $ charFraction '.' mapContent1,
          "denP", show $ charFraction 'o' mapContent1,
          "denG", show $ charFraction '=' mapContent1 
@@ -367,7 +388,7 @@ main2 = do
       logFn = printf "./LambdaMan/gen2/az-%s.log" indexStr      
 
   writeFile gccFn $ compile progn
-  let tcs0 = mkTestConfs gccFn
+  tcs0 <- mkTestConfs gccFn
   print $ length tcs0
   
   tcs <- mapM performTest tcs0
@@ -380,8 +401,9 @@ main2 = do
          "gp",show ghostPillParam,   
          "fp",show ghostPillParamF,   
          "ga",show ghostAuraParam,   
-         "fa",show ghostAuraParamF
-          ] ++ "\n"
+         "fa",show ghostAuraParamF,
+         "damp" ,show dampingParam           
+         ] ++ "\n"
   writeFile txtFn $ msg
   putStr $ msg
   
