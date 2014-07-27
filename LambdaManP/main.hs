@@ -1,11 +1,7 @@
 {-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables, RecordWildCards, RankNTypes, ImpredicativeTypes, NoMonoLocalBinds #-}
 
-import qualified Data.Map as M
 import Data.Maybe
-import Data.Char
-import Debug.Trace
 import System.Environment
-import Unsafe.Coerce
 import Control.Applicative
 
 import DSL
@@ -32,21 +28,21 @@ vadd a b = cons (car a + car b) (cdr a + cdr b)
 bfs :: Expr (Mat Int) -> Expr (Int, Int) -> Expr (Int, Int)
 (bfs, bfsDef) = def2 "paint" $ \bd initPos -> with (enqueue initPos emptyQueue) $ \q -> with (cons 0 0) $ \out -> comp $ do
 
-  while (lnot $ isEmptyQueue q) $ comp $ do
+  while (lnot $ isEmptyQueue q) $ do
     let pos = car $ dequeue q
     let cell = peekMat (car pos) (cdr pos) bd
 
-    debug $ cons (i 10002) (cons pos cell)
+    trace (c 10002, pos, cell)
 
     e $ ite ((cell .== 2) ||| (cell .== 3))
           (comp $ do
               debugn 10005
               out ~= pos
               q ~= emptyQueue
-              debug $ cons (i 10006) $ cons q out
+              trace (c 10006, q, out)
           )
           $ comp $ do
-              e $ ite ((cell .== 0) ||| (cell .== 6)) (0 :: Expr Int) $ comp $ do
+              e $ ite ((cell .== 0) ||| (cell .== 6)) (c 0) $ comp $ do
                 bd ~= pokeMat (car pos) (cdr pos) 0 bd
                 -- record path
                 q ~= enqueue (vadd pos (cons 0    1   )) q
@@ -56,8 +52,6 @@ bfs :: Expr (Mat Int) -> Expr (Int, Int) -> Expr (Int, Int)
 
               q ~= cdr (dequeue q)
 
-  debugn 10006
-  debug out
   e out
 
 type X = Int
@@ -71,8 +65,7 @@ type Pos = (Int, Int)
       -- pos = cadr $ cadr world
       pos = cons 11 12
 
-  debug bd
-  debug $ cons (i 777) $ bfs bd pos
+  trace (c 777, bfs bd pos)
 
 progn :: LMan ()
 progn = do
