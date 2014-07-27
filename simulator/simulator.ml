@@ -247,10 +247,6 @@ let rec encode_as_list = function
   | x :: xs -> VCons (x, encode_as_list xs)
 ;;
 
-let encode_as_list list =
-  encode_as_tuple list
-;;
-
 let encode_field field =
   let zero = value_of_int 0 in
   Array.fold_right (fun x y ->
