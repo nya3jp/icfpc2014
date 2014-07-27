@@ -273,7 +273,7 @@ randChoiceN n xs = do
 
 mkTestConfs :: String -> IO [TestConf]
 mkTestConfs gccfn = do 
-  mapOpts <- randChoiceN 3 ["map/train-1.map", "map/train-2.map", "map/train-3.map", "map/train-4.map", "map/train-5.map"]
+  mapOpts <- randChoiceN 3 ["map/train-1.map", "map/train-2.map", "map/train-3.map", "map/train-4.map", "map/train-5.map" ]
   let gOpts =
         [ ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
         , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/chase_fixed.ghc"]
