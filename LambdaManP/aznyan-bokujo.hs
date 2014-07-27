@@ -20,7 +20,9 @@ import Lib
 import System.Process
 
 sotaMode :: Bool
-sotaMode = True
+sotaMode = unsafePerformIO $ do
+  args <- getArgs
+  return $ "sota" `elem` args
 
 -----
 type X = Int
@@ -75,6 +77,13 @@ ghostAuraParam :: Int -- 800
 ghostAuraParam 
   | sotaMode  = 800
   | otherwise = negate $ unsafePerformIO $ randLIO (80,80000) 
+
+{-# NOINLINE dampingParam #-}
+dampingParam :: Int -- 800
+dampingParam 
+  | sotaMode  = 90
+  | otherwise = 100 + (negate $ unsafePerformIO $ randLIO (1,50) )
+
 
 
 (tileValue :: Expr Int -> Expr Int -> Expr Int, tileValueDef) = def2 "tileView" $ \i ppFlag ->
@@ -132,7 +141,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
     ite (juice .<= 0) 0 $
     ite (info .== 0) subScore $
     ite (isGhostThere gss manp) ghostVal
-    (tileValue powerPillFlag info) + (dirValuePill (div juice 2) vect world $ vadd manp vect)*9`div`10
+    (tileValue powerPillFlag info) + (dirValuePill (div juice 2) vect world $ vadd manp vect)* (Const dampingParam)`div`100
 
 (dirValueGhost1 :: Expr Pos -> Expr GhostState -> Expr Int -> Expr Pos -> Expr Int, dirValueGhost1Def) = 
   def4 "dirValueGhost1" $ \vect gs1 ppflag manp ->
@@ -341,12 +350,11 @@ charFraction c s = (fromIntegral $ length $ filter (==c) s) / (fromIntegral $ le
 main :: IO ()
 main = do
   args <- getArgs
-  if sotaMode then writeFile "aznyan-sota.gcc" $ compile progn
-    else
-      case args of
-        ["debug"] -> do
-          mapM_ putStrLn $ compile' progn
-        _ -> main2
+  case args of
+    ["debug"] -> do
+      mapM_ putStrLn $ compile' progn
+    _ | sotaMode -> writeFile "aznyan-sota.gcc" $ compile progn
+    _        -> main2
     
 main2 :: IO ()
 main2 = do
