@@ -306,11 +306,16 @@ let run t =
   let state = encode_current_world t 0
   and ghosts = encode_ghost_programs t in
   let v = Array.map (fun man ->
-    let machine = make_initial_machine () in
-    eval machine man.program [state; ghosts]
+    eval_main man.program [state; ghosts]
   ) t.lambdamans in
 
   print_value v.(0);
+
+  (* checking step func is callable. *)
+  let (VCons (state, stepFun)) = v.(0) in
+  print_value stepFun;
+  let v = eval_step t.lambdamans.(0).program stepFun [state; encode_current_world t 1] in
+  print_value v;
 
   (* Then, each next tick, call step and state. *)
   failwith "not implemented yet"

@@ -281,14 +281,45 @@ let rec eval_instruction machine = function
      machine.c <- machine.c + 1
 ;;
 
-let eval machine program args =
+let eval_main program args =
+  let machine = make_initial_machine () in
+
   (* make a frame to call main function *)
   let frame = alloc_frame (List.length args) in
   List.iteri (fun i v ->
     frame.data.(i) <- v
   ) args;
   Stack.push AStop machine.d;
-  machine.e = frame :: machine.e;
+  machine.e <- frame :: machine.e;
+  try
+    while true do
+      let inst = program.(machine.c) in
+      eval_instruction machine inst
+    done;
+    failwith "shouldn't come here"
+  with
+  | Exception_exit ->
+     (* Returns the top value of stack. *)
+     Stack.pop machine.s
+;;
+
+let eval_step program closure args =
+  let (n, fp) = match closure with
+    | VClosure (n, fp) -> (n, fp)
+    | _ -> failwith "eval_step got non closure."
+  in
+
+  let machine = make_initial_machine () in
+
+  let frame = alloc_frame (List.length args) in
+  List.iteri (fun i v ->
+    frame.data.(i) <- v
+  ) args;
+
+  machine.c <- n;
+  machine.e <- frame :: fp;
+  Stack.push AStop machine.d;
+
   try
     while true do
       let inst = program.(machine.c) in
