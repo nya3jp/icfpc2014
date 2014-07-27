@@ -64,15 +64,18 @@ let make_initial_machine () = {
 
 let check_int = function
   | VInt x -> x
-  | _ -> failwith "tag mismatch for int"
+  | VCons _ -> failwith "tag mismatch for int (cons came)"
+  | VClosure _ -> failwith "tag mismatch for int (closure came)"
 
 let check_cons = function
+  | VInt _ -> failwith "tag mismatch for cons (int came)"
   | VCons (x, y) -> (x, y)
-  | _ -> failwith "tag mismatch for cons"
+  | VClosure _ -> failwith "tag mismatch for cons (closure came)"
 
 let check_closure = function
+  | VInt _ -> failwith "tag mismatch for closure (int came)"
+  | VCons _ -> failwith "tag mismatch for closure (cons came)"
   | VClosure (x, y) -> (x, y)
-  | _ -> failwith "tag mismatch for closure"
 
 let is_closure = function
   | VClosure _ -> true
