@@ -156,7 +156,8 @@ let make_syscallback_for_ghost (t : t) (ghost : Ghost.t) =
        and y = env.Ghost.reg.(1) in
        env.Ghost.reg.(0) <- Field.int_of_cell (Field.get t.field ~y ~x)
     | 8 ->
-       Printf.printf "%d %d %d %d %d %d %d %d %d\n"
+       Printf.printf "; trace ghost%d: %d %d %d %d %d %d %d %d %d\n"
+         ghost.Ghost.index
          env.Ghost.pc
          env.Ghost.reg.(0) env.Ghost.reg.(1) env.Ghost.reg.(2) env.Ghost.reg.(3)
          env.Ghost.reg.(4) env.Ghost.reg.(5) env.Ghost.reg.(6) env.Ghost.reg.(7)
@@ -295,6 +296,18 @@ let next_tick world =
         world.lambdamans.(0).score
         (string_of_field_debug world)
       ;
+(*
+      Array.iter
+        (fun ghost ->
+          Printf.printf
+            "Ghost %d: (%d,%d)\n"
+            ghost.Ghost.index
+            ghost.Ghost.x
+            ghost.Ghost.y
+        )
+        world.ghosts
+      ;
+*)
   | x when x == eFruitAppear ->
       world.fruit_exists <- true;
   | x when x == eFruitDisappear ->
@@ -322,6 +335,13 @@ let next_tick world =
       let ghost = world.ghosts.(event_arg) in
       (* FIXME: run program *)
       (* FIXME: move lambdaman *)
+      let v = Ghost.eval ghost (make_syscallback_for_ghost world ghost) in
+      let movable_down  = world.field.(ghost.Ghost.y+1).(ghost.Ghost.x  ) <> Field.CWall in
+      let movable_up    = world.field.(ghost.Ghost.y-1).(ghost.Ghost.x  ) <> Field.CWall in
+      let movable_left  = world.field.(ghost.Ghost.y  ).(ghost.Ghost.x-1) <> Field.CWall in
+      let movable_right = world.field.(ghost.Ghost.y  ).(ghost.Ghost.x+1) <> Field.CWall in
+      (* Printf.printf "DEBUG: ghost %d move: %d\n" ghost.Ghost.index v; *)
+      Ghost.move ghost [|movable_up; movable_right; movable_down; movable_left|] v;
       schedule_tick world (tick, eLambdamanPostprocess, 0); (* FIXME *)
       schedule_tick world ((tick + tick_move_ghost ghost), eGhostMove, event_arg)
   | x when x == eFrightDeactivate ->

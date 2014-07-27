@@ -319,6 +319,7 @@ let rec eval_instruction machine = function
      machine.c <- machine.c + 1
   | LDbug ->
      let x = Stack.pop machine.s in
+     print_string "; trace lambdaman: ";
      print_value x;
      machine.c <- machine.c + 1
   | LBrk ->

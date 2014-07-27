@@ -202,7 +202,28 @@ let eval t syscallback =
       done;
     with
     | Halt_exception -> ()
-    | x -> Printf.printf "Unexpected exception for ghost: %s\n" (Printexc.to_string x)
+(*    | x -> Printf.printf "Unexpected exception for ghost: %s\n" (Printexc.to_string x)*)
   end;
   t.env.newDir
 ;;
+
+let move0 ghost d =
+  ghost.d <- d;
+  match d with
+  | Up    -> ghost.y <- ghost.y - 1
+  | Right -> ghost.x <- ghost.x + 1
+  | Down  -> ghost.y <- ghost.y + 1
+  | Left  -> ghost.x <- ghost.x - 1
+
+let move ghost movable d =
+  let d_reverse = reverse_direction ghost.d in
+  if      d_reverse <> direction_of_int d && movable.(d) then move0 ghost (direction_of_int d)
+  else if movable.(int_of_direction ghost.d) then move0 ghost ghost.d
+  else if d_reverse <> Up                 && movable.(0) then move0 ghost Up
+  else if d_reverse <> Right              && movable.(1) then move0 ghost Right
+  else if d_reverse <> Down               && movable.(2) then move0 ghost Down
+  else if d_reverse <> Left               && movable.(3) then move0 ghost Left
+  else if movable.(int_of_direction d_reverse) then move0 ghost d_reverse
+  else ()
+
+ 
