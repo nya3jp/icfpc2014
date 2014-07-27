@@ -398,20 +398,46 @@ type t = {
   index: int;
   mutable x: int;
   mutable y: int;
+  initialX: int;
+  initialY: int;
   mutable d: direction;
-  mutable vitality: int;
+  mutable vitality_absolute: int;
+  mutable eat_count: int;
   mutable lives: int;
   mutable score: int;
   program: program;
+  mutable state: value;
+  mutable stepFun: value;
 }
 
 let make index x y program = {
   index = index;
   x = x;
   y = y;
+  initialX = x;
+  initialY = y;
   d = Down;
-  vitality = 0;
+  vitality_absolute = -1;
+  eat_count = 0;
   lives = 3;
   score = 0;
   program = program;
+  state = value_of_int 12345; (* dummy *)
+  stepFun = value_of_int 23456; (* dummy *)
 }
+
+let eaten lambdaman =
+  lambdaman.x <- lambdaman.initialX;
+  lambdaman.y <- lambdaman.initialY;
+  lambdaman.d <- Down;
+  lambdaman.lives <- lambdaman.lives - 1
+
+let get_vitality lambdaman tick = max 0 (lambdaman.vitality_absolute - tick)
+
+let move lambdaman d =
+  lambdaman.d <- d;
+  match d with
+  | Up -> lambdaman.y <- lambdaman.y - 1
+  | Down -> lambdaman.y <- lambdaman.y + 1
+  | Left -> lambdaman.x <- lambdaman.x - 1
+  | Right -> lambdaman.x <- lambdaman.x + 1

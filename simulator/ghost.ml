@@ -163,6 +163,15 @@ type t = {
   env: genv;
 }
 
+let reset ghost =
+  ghost.x <- ghost.initialX;
+  ghost.y <- ghost.initialY;
+  ghost.d <- Down
+
+let eaten ghost =
+  reset ghost;
+  ghost.vitality <- Invisible
+
 let make index x y program = {
   index = index;
   x = x;

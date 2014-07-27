@@ -228,7 +228,8 @@ ppTestConf tc = (show $ scoreResult tc) ++"\t" ++ toCmdlineString tc
 
 mkTestConfs :: String -> [TestConf]
 mkTestConfs gccfn = do -- List Monad
-  mapOpt <- ["map/train-1.map", "map/train-2.map", "map/train-3.map"]
+--  mapOpt <- ["map/train-1.map", "map/train-2.map", "map/train-3.map"]
+  mapOpt <- ["map/kichiku.map"]
   gOpt <-
     [ ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
     , ["ghost/chase_with_random.ghc","ghost/scatter.ghc","ghost/random_and_chase.ghc"]
@@ -334,9 +335,9 @@ main2 = do
       indexStr = printf "%010d" indexR
       gccFn :: String
       txtFn :: String
-      gccFn = printf "./LambdaMan/gen/azn-%s.gcc" indexStr
-      txtFn = printf "./LambdaMan/gen/azn-%s.txt" indexStr
-      logFn = printf "./LambdaMan/gen/azn-%s.log" indexStr      
+      gccFn = printf "./LambdaMan/gen2/az-%s.gcc" indexStr
+      txtFn = printf "./LambdaMan/gen2/az-%s.txt" indexStr
+      logFn = printf "./LambdaMan/gen2/az-%s.log" indexStr      
 
   writeFile gccFn $ compile progn
   let tcs0 = mkTestConfs gccFn
