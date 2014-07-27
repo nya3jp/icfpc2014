@@ -71,19 +71,19 @@ data Any = Any (forall a. Expr a)
 unAny :: Any -> a
 unAny (Any v) = unsafeCoerce v
 
-type CExpr = Writer [Any]
+type CExpr a  = Writer [Any]
 
-comp :: CExpr a -> Expr b
+comp :: CExpr a () -> Expr a
 comp c =
   let es = execWriter c
   in if null es
      then unsafeCoerce $ foldr (\(Any f) e -> Seq f e) Nop es
      else unsafeCoerce $ foldr (\(Any f) e -> Seq f e) (unAny $ last es) $ init es
 
-emitComp :: CExpr a -> LMan ()
+emitComp :: CExpr a () -> LMan ()
 emitComp = emitExpr . comp
 
-while :: Expr Int -> CExpr () -> CExpr ()
+while :: Expr Int -> CExpr a () -> CExpr a ()
 while cond body = e $ While cond (comp body)
 
 -- data Any = forall a . Any a
@@ -126,7 +126,7 @@ instance Integral (Expr Int) where
   quotRem = error "quotRem does not supported"
   toInteger = error "toInteger does not supported"
 
-infix 4 .==, .<, .<=, .>, .>=
+infix 4 .==, ./=, .<, .<=, .>, .>=
 
 (.==) :: Expr Int -> Expr Int -> Expr Int
 (.==) = Ceq
@@ -247,9 +247,11 @@ compileExpr ee = case ee of
 
     emitLabel bod
     compileExpr body
+    st 0 0
     jmp beg
 
     emitLabel end
+    ldc 0
 
   With v f -> do
     l <- newLabel
@@ -403,10 +405,10 @@ dbug e = Dbug e
 dbugn :: Expr Int -> Expr ()
 dbugn = dbug
 
-debug :: Expr a -> CExpr ()
+debug :: Expr a -> CExpr () ()
 debug = e . dbug
 
-debugn :: Expr Int -> CExpr ()
+debugn :: Expr Int -> CExpr () ()
 debugn = e . dbugn
 
 cons :: Expr a -> Expr b -> Expr (a, b)
@@ -439,16 +441,16 @@ ltail = unsafeCoerce Cdr
 ite :: Expr Int -> Expr a -> Expr a -> Expr a
 ite = Ite
 
+cond :: Expr Int -> CExpr a () -> CExpr a () -> CExpr a ()
+cond c a b = e $ ite c (comp a) (comp b)
+
 infix 5 ~=
-(~=) :: Expr a -> Expr a -> CExpr () -- Expr ()
+(~=) :: Expr a -> Expr a -> CExpr () ()
 (Var i j) ~= v = e $ Assign i j v
 _ ~= _ = error $ "Left hand side of := must be variable"
 
-with :: Expr a -> (Expr a -> Expr r)  -> Expr r
-with = With
-
-cwith :: Expr a -> (Expr a -> CExpr ())  -> CExpr ()
-cwith a b = e $ With a $ comp . b
+with :: Expr a -> (Expr a -> CExpr a ())  -> CExpr a ()
+with a b = e $ With a $ comp . b
 
 emitExpr :: Expr a -> LMan ()
 emitExpr e = compileExpr e >> st 0 0
@@ -456,11 +458,8 @@ emitExpr e = compileExpr e >> st 0 0
 rtn :: Expr a -> LMan ()
 rtn e = compileExpr e
 
-e :: Expr a -> CExpr ()
+e :: Expr a -> CExpr a ()
 e x = tell [Any $ unsafeCoerce x]
-
--- ret :: Expr a -> CExpr a
--- ret x = tell [Any $ unsafeCoerce x]
 
 gcons :: Expr a -> Expr b -> Expr c
 gcons = unsafeCoerce cons
@@ -474,15 +473,15 @@ gcdr = unsafeCoerce cdr
 cast :: Expr a -> Expr b
 cast = unsafeCoerce
 
-for :: Expr Int -> Expr Int -> (Expr Int -> CExpr ()) -> CExpr ()
+for :: Expr Int -> Expr Int -> (Expr Int -> CExpr a ()) -> CExpr a ()
 for f t body =
-  cwith f $ \i -> do
+  with f $ \i -> do
     while (i .< t) $ do
       body i
       i ~= i + 1
 
 class Debuggable a where
-  trace :: a -> CExpr ()
+  trace :: a -> CExpr () ()
 
 instance Debuggable (Expr a) where
   trace = debug
