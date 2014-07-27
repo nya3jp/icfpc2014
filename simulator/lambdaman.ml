@@ -1,6 +1,9 @@
 open Util
 
 exception Exception_exit
+exception Exception_cycleover
+
+let show_useful_info = true
 
 type instruction =
   | LLdc of int32
@@ -333,7 +336,7 @@ let eval_program program =
   let machine = make_initial_machine () in
   Stack.push AStop machine.d;
   try
-    while true do
+    for i = 0 to 3072000 - 1 do
       let inst = program.(machine.c) in
       eval_instruction machine inst
     done;
@@ -353,11 +356,15 @@ let eval_main program args =
   Stack.push AStop machine.d;
   machine.e <- frame :: machine.e;
   try
-    while true do
+    let maxSteps = 307200 * 60 in
+    let i = ref 0 in
+    while !i < maxSteps do
       let inst = program.(machine.c) in
-      eval_instruction machine inst
+      eval_instruction machine inst;
+      incr i
     done;
-    failwith "shouldn't come here"
+
+    failwith (Printf.sprintf "Over cycle limit! main function didn't end after %d cycles\n" maxSteps)
   with
   | Exception_exit ->
      (* Returns the top value of stack. *)
@@ -381,14 +388,23 @@ let eval_step program closure args =
   machine.e <- frame :: fp;
   Stack.push AStop machine.d;
 
+  let i = ref 0 in
   try
-    while true do
+    let maxSteps = 307200 in
+    while !i < maxSteps do
       let inst = program.(machine.c) in
-      eval_instruction machine inst
+      eval_instruction machine inst;
+      incr i
     done;
-    failwith "shouldn't come here"
+
+    if show_useful_info then begin
+      Printf.printf "Over cycle limit! step function didn't end after %d cycles\n" maxSteps;
+    end;
+    raise Exception_cycleover
   with
   | Exception_exit ->
+     if show_useful_info then
+       Printf.printf "Used %d cycles.\n" !i;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
 ;;

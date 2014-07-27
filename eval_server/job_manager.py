@@ -56,6 +56,7 @@ class EvalJob(object):
       score = -1
     res = {
         'name': self.name,
+        'evalset': self.evalset,
         'score': score,
         }
     with open(jsonpath, 'w') as f:
