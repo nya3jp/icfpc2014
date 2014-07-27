@@ -434,6 +434,7 @@ let eaten lambdaman =
   lambdaman.lives <- lambdaman.lives - 1
 
 let get_vitality lambdaman tick = max 0 (lambdaman.vitality_absolute - tick)
+let get_vitality_raw lambdaman tick = lambdaman.vitality_absolute - tick
 
 let move lambdaman d =
   let revert = (lambdaman.d, lambdaman.x, lambdaman.y) in
@@ -446,7 +447,11 @@ let move lambdaman d =
   end;
   revert
 
-let revert_move lambdaman (d,x,y) =
-  lambdaman.d <- d;
+let revert_move conf_lambdaman_invalid_move_mode lambdaman (d,x,y) =
+  if conf_lambdaman_invalid_move_mode then
+    lambdaman.d <- Up
+  else
+    lambdaman.d <- d
+  ;
   lambdaman.x <- x;
   lambdaman.y <- y
