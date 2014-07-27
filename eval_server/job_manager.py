@@ -125,9 +125,9 @@ def main(argv):
         with open(jsonpath) as f:
           entry = json.load(f)
         name = entry['name']
-        evalsets = [os.path.splitext(name)[0]
-                    for name in os.listdir(os.path.join(os.path.dirname(__file__), 'evalsets'))
-                    if name.endswith('.sh')]
+        evalsets = [os.path.splitext(shname)[0]
+                    for shname in os.listdir(os.path.join(os.path.dirname(__file__), 'evalsets'))
+                    if shname.endswith('.sh')]
         for evalset in evalsets:
           jsonpath = os.path.join(
               FLAGS.data_dir, '%s.response.%s.json' % (name, evalset))
