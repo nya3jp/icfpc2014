@@ -32,6 +32,8 @@ executable aznyan-bokujo
   build-depends:
       base >=4.7 && <4.8
     , containers
+    , directory
+    , filepath
     , mtl
     , process
     , random
