@@ -77,9 +77,9 @@ ghostAuraParam
   | otherwise = negate $ unsafePerformIO $ randLIO (80,80000) 
 
 
-(tileValue :: Expr Int -> Expr Int, tileValueDef) = def1 "tileView" $ \i ->
+(tileValue :: Expr Int -> Expr Int -> Expr Int, tileValueDef) = def2 "tileView" $ \i ppFlag ->
   ite (i.==0) 0 $ 
-  ite (i.==2) (Const pillParam) $ 
+  ite (i.==2) (ite ppFlag 0 $ Const pillParam) $ 
   ite (i.==3) (Const powerPillParam) $ 
   1
 
@@ -132,7 +132,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
     ite (juice .<= 0) 0 $
     ite (info .== 0) subScore $
     ite (isGhostThere gss manp) ghostVal
-    (tileValue info) + (dirValuePill (div juice 2) vect world $ vadd manp vect)*9`div`10
+    (tileValue powerPillFlag info) + (dirValuePill (div juice 2) vect world $ vadd manp vect)*9`div`10
 
 (dirValueGhost1 :: Expr Pos -> Expr GhostState -> Expr Int -> Expr Pos -> Expr Int, dirValueGhost1Def) = 
   def4 "dirValueGhost1" $ \vect gs1 ppflag manp ->
@@ -186,7 +186,7 @@ vrotL vect = cons (cdr vect) (negate $ car vect)
         nextP = vadd manP vect
     in 
         ite (mapAt nextP chizu .== 0) int_min $
-        dirValuePill 0 vect world manP 
+        dirValuePill 100 vect world manP 
           + dirValueGhosts vect gss powerPillFlag manP
 
 
