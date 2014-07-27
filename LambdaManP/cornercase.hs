@@ -41,11 +41,15 @@ type Pos = (Int, Int)
         gss = car $ cdr $ cdr world0
         gs1 :: Expr GhostState
         gs1 = lhead  gss
+        gX :: Expr Int
+        gX = car $car $ cdr gs1
         gY :: Expr Int
-        gY = cdr $ cdr gs1
+        gY = cdr $car $ cdr gs1
         
         d = ite (gY .== 1) 2 1
     in 
+        dbugn gX `Seq`
+        dbugn gY `Seq`
         dbugn d `Seq`
         cons aist d
       
