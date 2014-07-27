@@ -20,6 +20,7 @@ let _ =
   Hashtbl.add table "SEL"  SEL;
   Hashtbl.add table "JOIN" JOIN;
   Hashtbl.add table "LDF"  LDF;
+  Hashtbl.add table "AP"   AP;
   Hashtbl.add table "RTN"  RTN;
   Hashtbl.add table "DUM"  DUM;
   Hashtbl.add table "RAP"  RAP;

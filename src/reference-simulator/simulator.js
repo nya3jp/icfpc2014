@@ -83,6 +83,8 @@ var main = function() {
     }
     game.step(state);
   }
+
+  console.log(state.score);
 };
 
 main();

@@ -1,8 +1,9 @@
 SOURCES = \
 	stringUtil.ml \
+	util.ml \
 	lambdaman.ml lambdamanParser.mly lambdamanLexer.mll lambdamanReader.ml \
 	ghost.ml ghostAiParser.mly ghostAiLexer.mll ghostAiReader.ml \
-	world.ml mapReader.ml \
+	field.ml fieldReader.ml \
 	simulator.ml \
 	main.ml
 RESULT  = simulator

@@ -1,3 +1,7 @@
+open Util
+
+exception Halt_exception
+
 type gvalue =
   | GVConst    of int
   | GVReg      of int
@@ -26,7 +30,7 @@ type genv = {
   mutable reg : int array;
   mutable pc  : int;
   mutable data: int array;
-  mutable dir : int;
+  mutable newDir: int;
 }
 
 type gprogram = ginstruction array
@@ -38,7 +42,7 @@ let make_initial_genv () =
     reg  = Array.make 8 0;
     pc   = 0;
     data = Array.make 256 0;
-    dir  = 0;
+    newDir  = 0;
   }
 
 let eval_gvalue env = function
@@ -48,7 +52,7 @@ let eval_gvalue env = function
   | GVIndConst x -> env.data.(x)
   | GVIndReg   r -> env.data.(r)
 
-let rec geval_instruction env = function
+let rec eval_ginstruction env syscallback = function
   | GMov (x1, x2) ->
      let v2 = eval_gvalue env x2 in
      set_gvalue env x1 v2
@@ -114,28 +118,12 @@ let rec geval_instruction env = function
        env.pc <- t
      else
        env.pc <- env.pc + 1
-  | GInt 0 ->
-     env.dir <- env.reg.(0)
-  | GInt 1 ->
-     failwith "not implemented"
-  | GInt 2 ->
-     failwith "not implemented"
-  | GInt 3 ->
-     failwith "not implemented"
-  | GInt 4 ->
-     failwith "not implemented"
-  | GInt 5 ->
-     failwith "not implemented"
-  | GInt 6 ->
-     failwith "not implemented"
-  | GInt 7 ->
-     failwith "not implemented"
-  | GInt 8 ->
-     failwith "not implemented"
+  | GInt n when 0 <= n && n <= 8 ->
+     syscallback n env;
   | GInt _ ->
      failwith "Unknown syscall"
   | GHlt ->
-     ()
+     raise Halt_exception
 and set_gvalue env dst v =
   match dst with
   | GVConst _ ->
@@ -148,4 +136,56 @@ and set_gvalue env dst v =
      env.data.(x) <- v
   | GVIndReg r ->
      env.data.(env.reg.(r)) <- v
+;;
+
+(* ---------------------------------------------------------------------- *)
+
+type vitality =
+  | Standard
+  | FrightMode (* TODO: should be here? *)
+  | Invisible
+
+let int_of_vitality = function
+  | Standard -> 0
+  | FrightMode -> 1
+  | Invisible -> 2
+;;
+
+type t = {
+  index: int;
+  mutable x: int;
+  mutable y: int;
+  initialX: int;
+  initialY: int;
+  mutable d: direction; (* direction *)
+  mutable vitality: vitality;
+  program: gprogram;
+  env: genv;
+}
+
+let make index x y program = {
+  index = index;
+  x = x;
+  y = y;
+  initialX = x;
+  initialY = y;
+  d = Down;
+  vitality = Standard;
+  program = program;
+  env = make_initial_genv ()
+}
+
+(* eval and return the new direction. *)
+let eval t syscallback =
+  (* ghost only consumes 1024 instructions *)
+  t.env.pc <- 0;
+  begin
+    try
+      for i = 0 to 1023 do
+        eval_ginstruction t.env syscallback t.program.(t.env.pc)
+      done;
+    with
+    | Halt_exception -> ()
+  end;
+  t.env.newDir
 ;;

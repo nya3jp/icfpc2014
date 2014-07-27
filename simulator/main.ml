@@ -4,17 +4,18 @@ let main () =
   if Array.length Sys.argv <> 4 then
     failwith "usage: ./simulator map ai ghost-ai";
 
-  let mapName = Sys.argv.(1) in
+  let fieldName = Sys.argv.(1) in
   let lambdamanFilename = Sys.argv.(2) in
   let ghostFilename = Sys.argv.(3) in
 
-  let map = MapReader.read mapName in
-(*  let ai = LambdamanReader.read lambdamanFilename in *)
+  let field = FieldReader.read fieldName in
+  let ai = LambdamanReader.read lambdamanFilename in
   let ghost = GhostAiReader.read ghostFilename in
 
-  print_string (World.string_of_map map);
+  print_string (Field.string_of_field field);
 
-  failwith "not implemented yet"
+  let simulator = Simulator.make field [|ai|] [|ghost|] in
+  Simulator.run simulator
 ;;
 
 let _ =

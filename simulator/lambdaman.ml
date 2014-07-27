@@ -1,3 +1,7 @@
+open Util
+
+exception Exception_exit
+
 type instruction =
   | LLdc of int32
   | LLd  of int * int
@@ -141,7 +145,7 @@ let eval_primitive machine op =
      machine.c <- machine.c + 1
 ;;
 
-let rec eval machine = function
+let rec eval_instruction machine = function
   | LLdc n ->
      Stack.push (VInt n) machine.s;
      machine.c <- machine.c + 1
@@ -197,7 +201,7 @@ let rec eval machine = function
      machine.c <- machine.c + 1
   | LSel (t, f) ->
      Stack.push (AJoin (machine.c + 1)) machine.d;
-     eval machine (LTsel(t, f))
+     eval_instruction machine (LTsel(t, f))
   | LJoin ->
      let x = Stack.pop machine.d in
      let xv = check_tag_join x in
@@ -209,11 +213,11 @@ let rec eval machine = function
   | LAp n ->
      Stack.push (AFrame machine.e) machine.d;
      Stack.push (ARet (machine.c + 1)) machine.d;
-     eval machine (LTap(n))
+     eval_instruction machine (LTap(n))
   | LRtn ->
      let x = Stack.pop machine.d in
      if is_tag_stop x then
-       raise Exit; (* FIXME *)
+       raise Exception_exit;
      let x = check_tag_ret x in
      let y = Stack.pop machine.d in
      let yy = check_tag_frame y in
@@ -227,10 +231,10 @@ let rec eval machine = function
   | LRap n ->
      Stack.push (AFrame (List.tl machine.e)) machine.d;
      Stack.push (ARet (machine.c + 1)) machine.d;
-     eval machine (LTrap(n))
+     eval_instruction machine (LTrap(n))
   | LTsel (t, f) ->
      let x = check_int (Stack.pop machine.s) in
-     machine.c <- if x == Int32.zero then f else t
+     machine.c <- if x = Int32.zero then f else t
   | LTap n ->
      let (f, e) = check_closure(Stack.pop machine.s) in
      let fp = (alloc_frame n) :: machine.e in
@@ -273,14 +277,40 @@ let rec eval machine = function
   | LBrk ->
      machine.c <- machine.c + 1
 
-(* unittest *)
-let _ =
-  let machine = make_initial_machine () in
-  eval machine (LLdc (Int32.of_int 1));
-  eval machine (LLdc (Int32.of_int 2));
-  eval machine LAdd;
-  eval machine LDbug;
-  eval machine (LLdc (Int32.of_int 3));
-  eval machine LAtom;
-  eval machine LDbug;
+let eval machine program =
+  try
+    while true do
+      let inst = program.(machine.c) in
+      eval_instruction machine inst
+    done;
+    failwith "shouldn't come here"
+  with
+  | Exception_exit ->
+     let y = Stack.pop machine.s in
+     let x = Stack.pop machine.s in
+     (x, y)
 ;;
+
+(* ---------------------------------------------------------------------- *)
+
+type t = {
+  index: int;
+  mutable x: int;
+  mutable y: int;
+  mutable d: direction;
+  mutable vitality: int;
+  mutable lives: int;
+  mutable score: int;
+  program: program;
+}
+
+let make index x y program = {
+  index = index;
+  x = x;
+  y = y;
+  d = Down;
+  vitality = 0;
+  lives = 3;
+  score = 0;
+  program = program;
+}
