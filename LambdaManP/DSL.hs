@@ -404,6 +404,9 @@ codeGen p =
 with :: Expr a -> (Expr a -> Expr r)  -> Expr r
 with = With
 
+expr :: Expr a -> LMan ()
+expr e = compileExpr e
+
 -----
 
 footer :: LMan ()
@@ -424,76 +427,6 @@ compile' = map f.  codeGen . (>> footer) where
 
 -----
 
-expr :: Expr a -> LMan ()
-expr e = compileExpr e
-
-{-
-fun1 :: (Expr a1 -> Expr r) -> LMan (Expr (a1 -> r))
-fun1 f = do
-  fun <- newLabel
-  clo <- newLabel
-  end <- newLabel
-
-  tell ["DUM 1"]
-  incrLevel
-
-  jmp clo
-
-  emitLabel fun
-  local $ do
-    a <- innerVar 0
-    compileExpr $ f a
-    tell ["RTN"]
-
-  emitLabel clo
-  ldf fun
-  ldf end
-  tell ["TRAP 1"]
-
-  emitLabel end
-  lev <- gets csEnvLevel
-  return $ traceShow ("fun", lev) $ Closure lev 0
--}
-
------
-
-tests = do
-  -- dbugn (3 - 2)
-  {-
-  dbug  (cons (cons 1 2) 3 :: Expr ((Int, Int), Int))
-  dbug  (cdr ((cons (cons 1 2) 3 :: Expr ((Int, Int), Int))))
-  dbugn (42 `div` 5)
-  -- dbug (42 `mod` 5 :: Expr Int)
-  expr $ dbugn $ ite (0 .== 1) 123 456
-  -- dbugn $ ite (0 .<  1) 123 456
-  -- dbugn $ ite (0 .>= 1) 123 456
-
-  expr $ with (1+2) $ \i ->
-    dbugn (i*i) `Seq`
-    dbugn (i*i*i)
-
-  rec
-    (fact :: Fun (Int -> Int)) <- fun1 $ \i ->
-      ite (i .== 0) 1 (i * call1 fact (i - 1))
-
-    (mod :: Fun (Int -> Int -> Int)) <- fun2 $ \i j ->
-      i - i `div` j * j
-
-  -- foo <- fun1 $ \i -> i + i * i
-
-  expr $ dbugn $ call1 fact 10
-
-  expr $ dbugn $ call2 mod 42 8
-
-  return ()
-  -}
-
-  -- dbug $ call hoge 1 2 (cons 1 2)
-  undefined
-
------
-
--- Library
 
 def1 :: String -> (Expr a1 -> Expr r) -> (Expr a1 -> Expr r, LMan ())
 def1 fname f = (Call1 fname, go) where
@@ -572,41 +505,3 @@ def4 fname f = (Call4 fname, go) where
 
     emitLabel end
     return ()
-
-(&&&) :: Expr Int -> Expr Int -> Expr Int
-a &&& b = a * b
-
-(|||) :: Expr Int -> Expr Int -> Expr Int
-a ||| b = lnot $ lnot a &&& lnot b
-
-lnot :: Expr Int -> Expr Int
-lnot e = 1 - e
-
-debug = e. dbug
-debugn = e.dbugn
-
-i :: Expr Int -> Expr Int
-i = id
-
-cadr = car . cdr
-caddr = car . cdr . cdr
-cdddr = cdr . cdr . cdr
-
-(nth, nthDef) = def2 "nth" $ \i xs ->
-  ite (i .== 0) (lhead xs) (nth (i-1) (ltail xs))
-
-(upd, updDef) = def3 "upd" $ \i v xs ->
-  ite (i .== 0) (lcons v $ ltail xs) (lcons (lhead xs) $ upd (i-1) v (ltail xs))
-
-(getMat, getMatDef) = def3 "getMat" $ \x y m ->
-  nth x $ nth y m
-
-(setMat, setMatDef) = def4 "setMat" $ \x y v m ->
-  upd y (upd x v $ nth y m) m
-
-libDef :: LMan ()
-libDef = do
-  nthDef
-  updDef
-  getMatDef
-  setMatDef
