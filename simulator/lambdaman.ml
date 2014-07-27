@@ -131,7 +131,7 @@ let print_value v =
 let rec get_nth_env_frame n = function
   | [] -> failwith "no environment ?"
   | e :: es ->
-     if n == 0 then e
+     if n = 0 then e
      else get_nth_env_frame (n - 1) es
 ;;
 
@@ -168,7 +168,7 @@ let rec eval_instruction machine = function
      eval_primitive machine Int32.div
   | LCeq ->
      eval_primitive machine (fun x y ->
-       Int32.of_int (if x == y then 1 else 0)
+       Int32.of_int (if x = y then 1 else 0)
      )
   | LCgt ->
      eval_primitive machine (fun x y ->
