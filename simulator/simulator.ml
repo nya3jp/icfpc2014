@@ -242,6 +242,15 @@ let tick tick_id t =
 
 (* ---------------------------------------------------------------------- *)
 
+let encode_as_tuple list =
+  let zero = Lambdaman.value_of_int 0 in
+  List.fold_right (fun x y -> Lambdaman.VCons (x, y)) list zero
+;;
+
+let encode_as_list list =
+  encode_as_tuple list
+;;
+
 let encode_field field =
   let zero = Lambdaman.value_of_int 0 in
   Array.fold_right (fun x y ->
@@ -257,18 +266,28 @@ let encode_status t =
   failwith "not implemented yet"
 
 let encode_ghost t =
-  failwith "not implemented yet"
+  let vitalities = Array.to_list (Array.map (fun ghost -> Lambdaman.value_of_int (Ghost.int_of_vitality ghost.Ghost.vitality)) t.ghosts) in
+  encode_as_list vitalities
 
-let encode_fruit t =
-  failwith "not implemented yet"
+(* fruit might exist in [127 * 200, 127 * 280], [127 * 400, 127 * 480] *)
+let encode_fruit t tick =
+  let v =
+    if 127 * 200 <= tick && tick <= 127 * 280 && t.fruit_exists then
+      127 * 280 - tick
+    else if 127 * 400 <= tick && tick <= 127 * 480 && t.fruit_exists then
+      127 * 480 - tick
+    else
+      0
+  in
+  Lambdaman.value_of_int v
+;;
 
 let encode_current_world t =
   let field_encoded = encode_field t.field in
   let status_encoded = encode_status t in
   let status_ghost = encode_ghost t in
-  let status_fruit = encode_fruit t in
-  let zero = Lambdaman.value_of_int 0 in
-  List.fold_right (fun x y -> Lambdaman.VCons (x, y)) [field_encoded; status_encoded; status_ghost; status_fruit] zero
+  let status_fruit = encode_fruit t 0 in
+  encode_as_tuple [field_encoded; status_encoded; status_ghost; status_fruit]
 ;;
 
 (* TODO: implement this. Encode HLT now. *)
