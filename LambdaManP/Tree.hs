@@ -13,7 +13,7 @@ import Desugar
 import DSL
 
 defaultTreeSize :: Int
-defaultTreeSize = 16
+defaultTreeSize = 65536
 
 data Tree = Tree 
 
@@ -45,6 +45,9 @@ tleft=  unsafeCoerce $ Car
 
 tright :: Expr Tree ->  Expr Tree
 tright =  unsafeCoerce $ Cdr
+
+(toTree2D :: Expr [[Int]] -> Expr Tree, toTree2DDef) =
+  def1 "toTree2D" $ \xss -> 
 
 
 --          key         value   
