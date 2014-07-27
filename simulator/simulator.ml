@@ -305,16 +305,12 @@ let run t =
   (* First, call lambdaman main. *)
   let state = encode_current_world t 0
   and ghosts = encode_ghost_programs t in
-  let stepfunc_and_states = Array.map (fun man ->
+  let v = Array.map (fun man ->
     let machine = make_initial_machine () in
-    Stack.push state machine.s;
-    Stack.push ghosts machine.s;
-    Stack.push AStop machine.d;
-    eval machine man.program
+    eval machine man.program [state; ghosts]
   ) t.lambdamans in
 
-  print_value (fst stepfunc_and_states.(0));
-  print_value (snd stepfunc_and_states.(0));
+  print_value v.(0);
 
   (* Then, each next tick, call step and state. *)
   failwith "not implemented yet"

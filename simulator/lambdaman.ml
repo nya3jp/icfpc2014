@@ -70,10 +70,13 @@ let check_cons = function
   | VCons (x, y) -> (x, y)
   | _ -> failwith "tag mismatch for cons"
 
-let check_closure v =
-  match v with
+let check_closure = function
   | VClosure (x, y) -> (x, y)
   | _ -> failwith "tag mismatch for closure"
+
+let is_closure = function
+  | VClosure _ -> true
+  | _ -> false
 
 let check_tag_join = function
   | AJoin x -> x
@@ -278,7 +281,14 @@ let rec eval_instruction machine = function
      machine.c <- machine.c + 1
 ;;
 
-let eval machine program =
+let eval machine program args =
+  (* make a frame to call main function *)
+  let frame = alloc_frame (List.length args) in
+  List.iteri (fun i v ->
+    frame.data.(i) <- v
+  ) args;
+  Stack.push AStop machine.d;
+  machine.e = frame :: machine.e;
   try
     while true do
       let inst = program.(machine.c) in
@@ -287,9 +297,8 @@ let eval machine program =
     failwith "shouldn't come here"
   with
   | Exception_exit ->
-     let y = Stack.pop machine.s in
-     let x = Stack.pop machine.s in
-     (x, y)
+     (* Returns the top value of stack. *)
+     Stack.pop machine.s
 ;;
 
 (* ---------------------------------------------------------------------- *)
