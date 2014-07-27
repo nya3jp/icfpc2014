@@ -10,6 +10,7 @@ import Debug.Trace
 import Unsafe.Coerce
 
 import Desugar
+import Optimize
 
 type Env = [String]
 
@@ -57,11 +58,11 @@ data Expr a where
 
 
   Ite :: Expr Int -> Expr a -> Expr a -> Expr a
-  With :: Expr a -> (Expr a -> Expr r) -> Expr r
   Assign :: Int -> Int -> Expr a -> Expr ()
 
   Seq :: Expr a -> Expr b -> Expr b
   While :: Expr Int -> Expr a -> Expr ()
+  With :: [Any] -> ([Any] -> Expr r) -> Expr r
 
   CallG :: String -> [Any] -> Expr r
   Closure :: String -> Expr a
@@ -207,7 +208,7 @@ compileExpr ee = case ee of
 
   Seq a b -> do
     compileExpr a
-    st 0 0
+    pop
     compileExpr b
 
   Ite cond t e -> do
@@ -247,24 +248,24 @@ compileExpr ee = case ee of
 
     emitLabel bod
     compileExpr body
-    st 0 0
+    pop
     jmp beg
 
     emitLabel end
     ldc 0
 
-  With v f -> do
+  With vs f -> do
     l <- newLabel
     end <- newLabel
-    compileExpr v
+    mapM_ (\(Any v) -> compileExpr v) vs
     ldf l
-    tellc "AP 1"
+    tellc $ "AP " ++ show (length vs)
     jmp end
 
     emitLabel l
     local $ do
-      v <- innerVar 0
-      compileExpr $ f v
+      as <- mapM innerVar [0..length vs - 1]
+      compileExpr $ f $ map (Any . unsafeCoerce) as
       tellc "RTN"
 
     emitLabel end
@@ -301,6 +302,11 @@ st :: Int -> Int -> LMan ()
 st i j = do
   lev <- gets csEnvLevel
   tellc $ "ST " ++ show (lev - i) ++ " " ++ show j
+
+pop :: LMan ()
+pop = do
+  lev <- gets csEnvLevel
+  tellc $ "ST " ++ show (lev - 0) ++ " 0 ; POP"
 
 ldclo :: String -> LMan ()
 ldclo name = do
@@ -359,7 +365,7 @@ compile :: LMan () -> String
 compile = unlines . desugar . compile'
 
 compile' :: LMan () -> [String]
-compile' = map f.  codeGen . (>> footer) where
+compile' = optimize . map f.  codeGen . (>> footer) where
   f s
     | last s == ':' = s
     | otherwise = "  " ++ s
@@ -396,6 +402,21 @@ def4 fname f = (\v1 v2 v3 v4 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafe
 
 def5 :: String -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> Expr r) -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> Expr r, LMan ())
 def5 fname f = (\v1 v2 v3 v4 v5 -> CallG fname [Any $ unsafeCoerce v1, Any $ unsafeCoerce v2, Any $ unsafeCoerce v3, Any $ unsafeCoerce v4, Any $ unsafeCoerce v5], def' fname (do a1 <- innerVar 0; a2 <- innerVar 1; a3 <- innerVar 2; a4 <- innerVar 3; a5 <- innerVar 4; compileExpr $ f a1 a2 a3 a4 a5))
+
+with :: Expr a -> (Expr a -> CExpr r ()) -> CExpr r ()
+with a1 f = e $ With [Any $ cast a1] $ comp . (\[a1] -> f (unAny a1))
+
+with2 :: Expr a1 -> Expr a2 -> (Expr a1 -> Expr a2 -> CExpr r ()) -> CExpr r ()
+with2 a1 a2 f = e $ With [Any $ cast a1, Any $ cast a2] $ comp . (\[a1, a2] -> f (unAny a1) (unAny a2))
+
+with3 :: Expr a1 -> Expr a2 -> Expr a3 -> (Expr a1 -> Expr a2 -> Expr a3 -> CExpr r ()) -> CExpr r ()
+with3 a1 a2 a3 f = e $ With [Any $ cast a1, Any $ cast a2, Any $ cast a3] $ comp . (\[a1, a2, a3] -> f (unAny a1) (unAny a2) (unAny a3))
+
+with4 :: Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> CExpr r ()) -> CExpr r ()
+with4 a1 a2 a3 a4 f = e $ With [Any $ cast a1, Any $ cast a2, Any $ cast a3, Any $ cast a4] $ comp . (\[a1, a2, a3, a4] -> f (unAny a1) (unAny a2) (unAny a3) (unAny a4))
+
+with5 :: Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> (Expr a1 -> Expr a2 -> Expr a3 -> Expr a4 -> Expr a5 -> CExpr r ()) -> CExpr r ()
+with5 a1 a2 a3 a4 a5 f = e $ With [Any $ cast a1, Any $ cast a2, Any $ cast a3, Any $ cast a4, Any $ cast a5] $ comp . (\[a1, a2, a3, a4, a5] -> f (unAny a1) (unAny a2) (unAny a3) (unAny a4) (unAny a5))
 
 -----
 
@@ -449,11 +470,8 @@ infix 5 ~=
 (Var i j) ~= v = e $ Assign i j v
 _ ~= _ = error $ "Left hand side of := must be variable"
 
-with :: Expr a -> (Expr a -> CExpr a ())  -> CExpr a ()
-with a b = e $ With a $ comp . b
-
 emitExpr :: Expr a -> LMan ()
-emitExpr e = compileExpr e >> st 0 0
+emitExpr e = compileExpr e >> pop
 
 rtn :: Expr a -> LMan ()
 rtn e = compileExpr e

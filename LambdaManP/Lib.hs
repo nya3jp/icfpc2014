@@ -123,18 +123,18 @@ peekGo :: Expr Int -> Expr Int -> Expr Int -> Expr (Node a) -> Expr a
          (peekGo ix m r (gcdr node))
 -}
 
+undef :: Expr a
+undef = cast (c 0)
+
 peek :: Expr Int -> Expr (Array a) -> Expr a
 (peek, peekDef) = def2 "peek" $ \ix arr -> comp $ do
---  cwith 0 (car arr) (cdr arr) $ \l r node -> do
-  with 0 $ \l ->
-    with (car arr) $ \r ->
-    with (cdr arr) $ \node -> do
-      while (r - l ./= 1) $ do
-        let m = (l + r) `div` 2
-        cond (ix .< m)
-          (r ~= m >> node ~= gcar node)
-          (l ~= m >> node ~= gcdr node)
-      e $ node
+  with4 0 (car arr) (cdr arr) undef $ \l r node m -> do
+    while (r - l ./= 1) $ do
+      m ~= (l + r) `div` 2
+      cond (ix .< m)
+        (r ~= m >> node ~= gcar node)
+        (l ~= m >> node ~= gcdr node)
+    e $ node
 
 poke :: Expr Int -> Expr a -> Expr (Array a) -> Expr (Array a)
 (poke, pokeDef) = def3 "poke" $ \ix v arr -> cons (car arr) (pokeGo ix 0 (car arr) v (cdr arr))
