@@ -25,6 +25,7 @@ import System.Process
 type X = Int
 type Direction = Int
 type Clock = Int
+type World = (Mat Int, (ManState, ([GhostState], FruitState)))
 type World0 = ([[Int]], (ManState, ([GhostState], FruitState)))
 --               vit                    lives score
 type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
