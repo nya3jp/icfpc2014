@@ -70,7 +70,7 @@ def submit_handler():
   code = bottle.request.files['code'].file.read()
   assert re.search(r'^[a-zA-z0-9_-]+$', user)
   now = datetime.datetime.now()
-  name = '%s-%s' % (now.strftime('%Y%m%d%H%M%S'), user)
+  name = '%s-%s' % (now.strftime('%Y%m%d-%H%M%S-%f'), user)
   data = {
       'name': name,
       'title': now.strftime('%Y-%m-%d %H:%M:%S') + ' by ' + user,
