@@ -43,7 +43,7 @@ let int_of_register = function
 %token BRK
 %token COMMA
 
-%token <int>INTEGER
+%token <int32>INTEGER
 
 %token EOF
 
@@ -56,8 +56,8 @@ let int_of_register = function
 %%
 
 instruction :
-    LDC value { LLdc (Int32.of_int $2) }
-  | LD value value { LLd ($2, $3) }
+    LDC value { LLdc $2 }
+  | LD value value { LLd (Int32.to_int $2, Int32.to_int $3) }
   | ADD { LAdd }
   | SUB { LSub }
   | MUL { LMul }
@@ -69,17 +69,17 @@ instruction :
   | CONS { LCons }
   | CAR { LCar }
   | CDR { LCdr }
-  | SEL value value { LSel ($2, $3) }
+  | SEL value value { LSel (Int32.to_int $2, Int32.to_int $3) }
   | JOIN { LJoin }
-  | LDF value { LLdf $2 }
-  | AP value { LAp $2 }
+  | LDF value { LLdf (Int32.to_int $2) }
+  | AP value { LAp (Int32.to_int $2) }
   | RTN { LRtn }
-  | DUM value { LDum $2 }
-  | RAP value { LRap $2 }
-  | TSEL value value { LTsel ($2, $3) }
-  | TAP value { LTap $2 }
-  | TRAP value { LTrap $2 }
-  | ST value value { LSt ($2, $3) }
+  | DUM value { LDum (Int32.to_int $2) }
+  | RAP value { LRap (Int32.to_int $2) }
+  | TSEL value value { LTsel (Int32.to_int $2, Int32.to_int $3) }
+  | TAP value { LTap (Int32.to_int $2) }
+  | TRAP value { LTrap (Int32.to_int $2) }
+  | ST value value { LSt (Int32.to_int $2, Int32.to_int $3) }
   | DBUG { LDbug }
   | BRK { LBrk }
 
