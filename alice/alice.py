@@ -52,7 +52,7 @@ class Context(object):
     return ctx
 
   def make_label(self):
-    label = 'ephemeral%d' % self._seq[0]
+    label = 'ephemeral%06d' % self._seq[0]
     self._seq[0] += 1
     return label
 
@@ -118,12 +118,13 @@ class Module(Syntax):
 
 
 class Function(Stmt):
-  def __init__(self, name, args, block, rank):
+  def __init__(self, name, args, block, rank, nolocals):
     Stmt.__init__(self, block.children)
     self.name = name
     self.args = args
     self.block = block
     self.rank = rank
+    self.nolocals = nolocals
     self.label = name
 
   def compile(self, ctx):
@@ -133,20 +134,46 @@ class Function(Stmt):
     locals -= set(self.args)
     locals = sorted(locals)
     assert not ctx.vars
-    # TODO: handle case where there is no locals
-    for i, local in enumerate(locals):
-      ctx.vars[local] = (0, i)
-    for i, arg in enumerate(self.args):
-      ctx.vars[arg] = (1, i)
+    if self.nolocals:
+      compile_assert(
+          not locals,
+          None,
+          'Function %s is marked @nolocals but has locals', self.name)
+    if locals:
+      for i, local in enumerate(locals):
+        ctx.vars[local] = (0, i)
+      for i, arg in enumerate(self.args):
+        ctx.vars[arg] = (1, i)
+    else:
+      for i, arg in enumerate(self.args):
+        ctx.vars[arg] = (0, i)
     ctx.emit('%s:', ctx.funcs[self.name].label)
-    for local in locals:
-      ctx.emit('LDC 0  ; %s', local)
-    ctx.emit('LDF %s_body', ctx.funcs[self.name].label)
-    ctx.emit('AP %d', len(locals))
-    ctx.emit('RTN')
-    ctx.emit('%s_body:', ctx.funcs[self.name].label)
+    if locals:
+      for local in locals:
+        ctx.emit('LDC 0  ; %s', local)
+      ctx.emit('LDF %s_body', ctx.funcs[self.name].label)
+      ctx.emit('AP %d', len(locals))
+      ctx.emit('RTN')
+      ctx.emit('%s_body:', ctx.funcs[self.name].label)
     self.block.compile(ctx)
     ctx.emit('RTN')
+
+
+class AsmFunction(Stmt):
+  def __init__(self, name, num_args, rank, code):
+    Stmt.__init__(self, [])
+    self.name = name
+    self.args = ['_'] * num_args
+    self.num_args = num_args
+    self.rank = rank
+    self.label = name
+    self.code = code
+
+  def compile(self, ctx):
+    ephemeral_label = ctx.make_label()
+    ctx.emit('%s:', self.label)
+    for line in self.code.splitlines():
+      ctx.emit(line.replace('%', ephemeral_label))
 
 
 class If(Stmt):
@@ -645,18 +672,33 @@ def parse_module(module):
 def parse_func(func):
   compile_assert(isinstance(func, ast.FunctionDef), func)
   rank = None
+  nolocals = False
+  asm = None
   for deco in func.decorator_list:
     if isinstance(deco, ast.Call) and deco.func.id == 'rank':
       compile_assert(len(deco.args) == 1, deco, 'wrong number of args to @rank')
       compile_assert(isinstance(deco.args[0], ast.Num), deco, '@rank arg must be constant')
       rank = deco.args[0].n
+    elif isinstance(deco, ast.Name) and deco.id == 'nolocals':
+      nolocals = True
+    elif isinstance(deco, ast.Name) and deco.id == 'asm':
+      asm = True
   compile_assert(not func.args.defaults, func)
   compile_assert(not func.args.kwarg, func)
   compile_assert(not func.args.vararg, func)
+  if asm:
+    compile_assert(
+        len(func.body) == 1 and
+        isinstance(func.body[0], ast.Expr) and
+        isinstance(func.body[0].value, ast.Str),
+        func,
+        'body of @asm function must be a single string')
+    compile_assert(rank is not None, func, '@asm function must be marked with @rank')
+    return AsmFunction(func.name, len(func.args.args), rank, func.body[0].value.s)
   return Function(func.name,
                   [arg.id for arg in func.args.args],
                   parse_block(func.body),
-                  rank)
+                  rank, nolocals)
 
 
 def parse_block(block):

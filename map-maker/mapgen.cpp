@@ -187,14 +187,28 @@ void genMat() {
       if(theMat[y][x]==' ' && drand() < ppDensity) theMat[y][x] = '.';
     }
   }
+  matAt(vprand())='%';
+  pt lmPos = vprand();
+  matAt(lmPos)='\\';
   for(int i =0;i<numGhost;++i) {
-    matAt(vprand())='=';
+    int thre=100;
+    pt gPos;
+    for(;;){
+      gPos = vprand();
+      if (norm(gPos-lmPos) < thre){
+	--thre;
+	continue;
+      }else{break;}
+    }
+    matAt(gPos)='=';
+
   }
+
+
   for(int i =0;i<numPP;++i) {
     matAt(vprand())='o';
   }
-  matAt(vprand())='%';
-  matAt(vprand())='\\';
+
 
   matAt(vprand())='.'; // at least one pill
   return;

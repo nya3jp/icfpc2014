@@ -11,6 +11,7 @@ process indx (sx,sy) = do
 
 main::IO ()
 main = do
+  print geoms
   zipWithM_ process [1..] geoms
   
   
