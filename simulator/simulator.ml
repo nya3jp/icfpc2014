@@ -7,7 +7,7 @@ exception Game_end of int
 let conf_fright_compatible_mode = true
 let conf_lambdaman_invalid_move_mode = true
 let show_useful_info = true
-let conf_quiet = true
+let conf_quiet = ref true
 
 module OrderedEventType = struct
   type t = int * int * int * int
@@ -361,15 +361,15 @@ let next_tick world =
 (*       "DEBUG (xhl): tick=%d event=%d arg=%d\n%s" tick event_id event_arg ; *)
   begin match event_id with
   | x when x = eDebug ->
-      if not conf_quiet then
+      if not !conf_quiet then
         print_debug world tick
   | x when x = eFruitAppear ->
       world.fruit_exists <- true;
-      if not conf_quiet then
+      if not !conf_quiet then
         schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x = eFruitDisappear ->
       world.fruit_exists <- false;
-      if not conf_quiet then
+      if not !conf_quiet then
         schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x = eEOL ->
       raise (Game_end tick)
@@ -487,7 +487,7 @@ let next_tick world =
       if lambdaman.Lambdaman.lives <= 0 then begin
         raise (Game_lose (tick+1));
       end;
-      if not conf_quiet then
+      if not !conf_quiet then
         schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | _ -> failwith "invalid event_id"
   end

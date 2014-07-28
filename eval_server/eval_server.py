@@ -35,12 +35,15 @@ def load_entry(key, data_dir):
   return entry
 
 
-def process_results(entries):
+def process_results(entries, reverse_ranks):
   evalset_score_max = collections.defaultdict(lambda: 10)
+  evalset_score_min = collections.defaultdict(lambda: 1000000000)
   for entry in entries:
     for result in entry['results']:
       evalset = result['evalset']
-      evalset_score_max[evalset] = max(evalset_score_max[evalset], result['score'])
+      if result['score'] >= 0:
+        evalset_score_max[evalset] = max(evalset_score_max[evalset], result['score'])
+        evalset_score_min[evalset] = min(evalset_score_min[evalset], result['score'])
   evalsets = sorted(evalset_score_max)
   for entry in entries:
     results_map = {}
@@ -49,17 +52,23 @@ def process_results(entries):
     entry['results'] = [results_map.get(evalset) for evalset in evalsets]
     for result in entry['results']:
       if result:
-        result['score_ratio'] = 1.0 * result['score'] / evalset_score_max[result['evalset']]
+        if result['score'] >= 0:
+          result['score_ratio'] = 1.0 * result['score'] / evalset_score_max[result['evalset']]
+        else:
+          result['score_ratio'] = 1.0 if reverse_ranks else 0.0
         result['score_percent'] = int(result['score_ratio'] * 100)
-        result['winner'] = (result['score'] == evalset_score_max[result['evalset']])
+        if reverse_ranks:
+          result['winner'] = False
+        else:
+          result['winner'] = (result['score'] >= evalset_score_max[result['evalset']] * 0.9)
     scores = [result['score_ratio'] for result in entry['results'] if result and result['score'] >= 0]
-    entry['score_ratio'] = sum(scores) / len(scores)
+    entry['score_ratio'] = sum(scores) / len(scores) if scores else (1 if reverse_ranks else 0)
     entry['score_percent'] = int(100 * entry['score_ratio'])
-  entries.sort(key=lambda entry: entry['score_ratio'], reverse=True)
+  entries.sort(key=lambda entry: entry['score_ratio'], reverse=not reverse_ranks)
   return evalsets
 
 
-def handle_index(data_dir, template_name):
+def handle_index(data_dir, template_name, reverse_ranks):
   entries = []
   for jsonpath in glob.glob(os.path.join(data_dir, '*.request.json')):
     with open(jsonpath) as f:
@@ -68,7 +77,7 @@ def handle_index(data_dir, template_name):
       except ValueError:
         continue
       entries.append(entry)
-  evalsets = process_results(entries)
+  evalsets = process_results(entries, reverse_ranks)
   return bottle.template(template_name, entries=entries, evalsets=evalsets)
 
 
@@ -92,7 +101,7 @@ def handle_submit(data_dir):
 
 @bottle.get('/')
 def index_handler():
-  return handle_index(FLAGS.data_dir, 'index.html')
+  return handle_index(FLAGS.data_dir, 'index.html', False)
 
 
 @bottle.post('/submit')
@@ -102,7 +111,7 @@ def submit_handler():
 
 @bottle.get('/ghost/')
 def ghost_index_handler():
-  return handle_index(FLAGS.ghost_data_dir, 'index.html')
+  return handle_index(FLAGS.ghost_data_dir, 'index.html', True)
 
 
 @bottle.post('/ghost/submit')

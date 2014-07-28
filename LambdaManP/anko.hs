@@ -2,7 +2,7 @@
 
 import Data.Maybe
 import System.Environment
-import Control.Applicative
+import Control.Applicative (Const)
 
 import DSL
 import Lib
@@ -17,11 +17,37 @@ type Map = Mat Int
 data X = X
 
 type World = ([[Int]], (ManState, ([GhostState], FruitState)))
-type ManState = (X, (Pos, X))
-type GhostState = (Int, (Pos, Int))
+type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
+type GhostState = (Int, (Pos , Direction))
 type FruitState = Int
 
-type AIState = Mat Int
+type AIState = (Map, ActionFlags)
+type ActionFlags = Array Int
+
+peekFlag :: ActionFlag -> Expr ActionFlags -> Expr Int
+peekFlag f = peek (Const $ fromEnum f)
+pokeFlag :: ActionFlag -> Expr Int -> Expr ActionFlags -> Expr ActionFlags 
+pokeFlag f = poke (Const $ fromEnum f)
+
+-- lowest array is of highest priority
+data ActionFlag 
+  = ToDot 
+  | FromDot
+  | ToPowerDot 
+  | FromPowerDot 
+  | ToEdGhost 
+  | FromGhost
+  deriving (Eq, Ord, Enum,Bounded)
+
+
+actionFlagSize :: Num a => a
+actionFlagSize = fromIntegral $ 1+fromEnum (maxBound :: ActionFlag)
+
+
+mapOfS :: Expr AIState -> Expr Map
+mapOfS = car
+actionFlagsOfS :: Expr AIState -> Expr ActionFlags
+actionFlagsOfS = cdr
 
 getWidth :: Expr Map -> Expr Int
 getWidth e = car $ peek 0 e
@@ -84,7 +110,7 @@ bfs :: Expr Map -> Expr [Pos] -> Expr Int -> Expr Int
     e out
 
 inf :: Expr Int
-inf = 999
+inf = Const 999999
 
 paint :: Expr Map -> Expr [Pos] -> Expr Map
 (paint, paintDef) = def2 "paint" $ \bd starts -> comp $
@@ -164,9 +190,10 @@ selectMax bd pos = comp $
   with (peekMap (vadd pos v2) bd) $ \c2 ->
   with (peekMap (vadd pos v3) bd) $ \c3 ->
     cond (c0 ./= inf &&& c0 .> c1 &&& c0 .> c2 &&& c0 .> c3) (e $ c 0) $
-    cond (c1 ./= inf &&& c1 .> c2 &&& c1 .> c3) (e $ c 1) $
-    cond (c2 ./= inf &&& c2 .> c3) (e $ c 2) $
-    e $ c 3
+    cond (c1 ./= inf &&& c1 .> c2 &&& c1 .> c3 &&& c1 .> c0) (e $ c 1) $
+    cond (c2 ./= inf &&& c2 .> c3 &&& c2 .> c0 &&& c2 .> c1) (e $ c 2) $
+    cond (c3 ./= inf &&& c3 .> c0 &&& c3 .> c1 &&& c3 .> c2) (e $ c 3) $
+    e $ c (-1)
 
 selectMin :: Expr Map -> Expr Pos -> Expr Int
 selectMin bd pos = comp $
@@ -176,9 +203,23 @@ selectMin bd pos = comp $
   with (peekMap (vadd pos v2) bd) $ \c2 ->
   with (peekMap (vadd pos v3) bd) $ \c3 ->
     cond (c0 ./= inf &&& c0 .< c1 &&& c0 .< c2 &&& c0 .< c3) (e $ c 0) $
+    cond (c1 ./= inf &&& c1 .< c2 &&& c1 .< c3 &&& c1 .< c0) (e $ c 1) $
+    cond (c2 ./= inf &&& c2 .< c3 &&& c2 .< c0 &&& c2 .< c1) (e $ c 2) $
+    cond (c3 ./= inf &&& c3 .< c0 &&& c3 .< c1 &&& c3 .< c2) (e $ c 3) $
+    e $ c (-1)
+
+selectSmall :: Expr Map -> Expr Pos -> Expr Int
+selectSmall bd pos = comp $
+  withVects $ \[v0, v1, v2, v3] ->
+  with (peekMap (vadd pos v0) bd) $ \c0 ->
+  with (peekMap (vadd pos v1) bd) $ \c1 ->
+  with (peekMap (vadd pos v2) bd) $ \c2 ->
+  with (peekMap (vadd pos v3) bd) $ \c3 ->
+    cond (c0 ./= inf &&& c0 .< c1 &&& c0 .< c2 &&& c0 .< c3) (e $ c 0) $
     cond (c1 ./= inf &&& c1 .< c2 &&& c1 .< c3) (e $ c 1) $
     cond (c2 ./= inf &&& c2 .< c3) (e $ c 2) $
     e $ c 3
+
 
 push :: Expr [a] -> Expr a -> CExpr () ()
 push ls v = ls ~= lcons v ls
@@ -203,8 +244,9 @@ getDots :: Expr Map -> Expr ([Pos], [Pos])
 -- [3] if Constant>0 then ToCenterofDots+
 
 step :: Expr AIState -> Expr World -> Expr (AIState, Int)
-(step, stepDef) = def2 "step" $ \bd world -> comp $
-  with (cadr $ cadr world) $ \lmanPos -> do
+(step, stepDef) = def2 "step" $ \aist world -> comp $
+  with4 (cadr world) (cadr $ cadr world)  (mapOfS aist) (actionFlagsOfS aist)$ 
+   \lmanState lmanPos bd actionFlags -> do
     bd ~= pokeMap lmanPos 1 bd
     with (mapGhostPos $ caddr world) $ \ghosts ->
       with (mapEdGhostPos $ caddr world) $ \edGhosts ->
@@ -215,25 +257,51 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd dots) $ \dotMap ->
       with (paint bd pows) $ \powMap -> do
         let ghostIsNear = peekMap lmanPos ghostMap   .< 4 
+            ghostIsFar = peekMap lmanPos ghostMap   .> 10
+            ghostIsTooFar = peekMap lmanPos ghostMap   .> 20
+                            &&& (peekMap lmanPos ghostMap .> 40)
             shouldEatPow = 
               (peekMap lmanPos edGhostMap .>= inf) 
-                &&& (peekMap lmanPos powMap .< inf)
+                &&& (peekMap lmanPos powMap .< peekMap lmanPos ghostMap)
                 &&& (peekMap lmanPos ghostMap .< 10)
             shouldEatGhost = (peekMap lmanPos edGhostMap .<  10)
-        let dir = comp $
-              cond ghostIsNear (e $ selectMax ghostMap lmanPos) $
-              cond shouldEatPow (e $ selectMin powMap lmanPos) $
-              cond shouldEatGhost (e $ selectMin edGhostMap lmanPos) $
-                (e $ selectMin dotMap lmanPos)
-
+            
+            lmanVit = car lmanState :: Expr Int
+            lmanDir = caddr lmanState :: Expr Int
+            
+        let chainAction :: ActionFlag -> Expr Int -> Expr Int -> Expr Int
+            chainAction f x1 x2 = 
+              ite (peekFlag f actionFlags &&& x1 .>= 0) x1 x2
+              
+        lwhen ghostIsNear $ 
+          actionFlags ~= pokeFlag FromGhost 1 actionFlags 
+        lwhen ghostIsFar $ 
+          actionFlags ~= pokeFlag FromGhost 0 actionFlags 
+        lwhen shouldEatPow $ 
+          actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
+        lwhen ghostIsTooFar $ 
+          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags         
+        lwhen shouldEatGhost $ 
+          actionFlags ~= pokeFlag ToEdGhost 1 actionFlags 
+        lwhen (lmanVit .==0) $
+          actionFlags ~= pokeFlag ToEdGhost 0 actionFlags 
+        actionFlags ~= pokeFlag ToDot 1 actionFlags 
         trace (c 10005, ghosts)
         trace (c 10006, edGhosts)
         trace (c 10001, peekMap lmanPos ghostMap)
         trace (c 10002, peekMap lmanPos edGhostMap)
         trace (c 10002, peekMap lmanPos edGhostMap)
+        trace (c 65536, actionFlags)
 
+        trace (c 33333,  (selectMin edGhostMap lmanPos) )
+        
+        let dir = 
+              chainAction FromGhost (selectMax ghostMap lmanPos) $
+              chainAction ToPowerDot (selectMin ghostMap lmanPos) $
+              chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 
+              chainAction ToDot (selectSmall dotMap lmanPos) $ lmanDir
 
-        e $ cons bd dir
+        e $ cons (cons bd actionFlags) dir
 
 arrLength :: Expr (Array a) -> Expr Int
 arrLength = car
@@ -252,7 +320,7 @@ initialize :: Expr World -> Expr X -> Expr AIState
       for 0 w $ \x -> e $
         ite (peekMat x y mat .<= c 3) (c 0) $
           comp $ mat ~= pokeMat x y 1 mat
-    e $ mat
+    e $ cons mat (newArray actionFlagSize (Const 0) :: Expr (Array Int))
 
 progn :: LMan ()
 progn = do
@@ -277,5 +345,5 @@ main = do
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
     _ -> do
-      writeFile "../LambdaMan/anko.gcc" $ compile progn
+      writeFile "../LambdaMan/anko-stateful.gcc" $ compile progn
 
