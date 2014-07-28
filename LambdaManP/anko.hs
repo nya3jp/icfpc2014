@@ -17,8 +17,8 @@ type Map = Mat Int
 data X = X
 
 type World = ([[Int]], (ManState, ([GhostState], FruitState)))
-type ManState = (X, (Pos, X))
-type GhostState = (Int, (Pos, Int))
+type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
+type GhostState = (Int, (Pos , Direction))
 type FruitState = Int
 
 type AIState = (Map, ActionFlags)
@@ -37,11 +37,11 @@ data ActionFlag
   | FromPowerDot 
   | ToEdGhost 
   | FromGhost
-  deriving (Eq, Ord, Enum)
+  deriving (Eq, Ord, Enum,Bounded)
 
 
 actionFlagSize :: Num a => a
-actionFlagSize = fromIntegral $ 1+fromEnum ToPowerDot
+actionFlagSize = fromIntegral $ 1+fromEnum (maxBound :: ActionFlag)
 
 
 mapOfS :: Expr AIState -> Expr Map
@@ -232,7 +232,8 @@ getDots :: Expr Map -> Expr ([Pos], [Pos])
 
 step :: Expr AIState -> Expr World -> Expr (AIState, Int)
 (step, stepDef) = def2 "step" $ \aist world -> comp $
-  with3 (cadr $ cadr world) (mapOfS aist) (actionFlagsOfS aist)$ \lmanPos bd actionFlags -> do
+  with4 (cadr world) (cadr $ cadr world)  (mapOfS aist) (actionFlagsOfS aist)$ 
+   \lmanState lmanPos bd actionFlags -> do
     bd ~= pokeMap lmanPos 1 bd
     with (mapGhostPos $ caddr world) $ \ghosts ->
       with (mapEdGhostPos $ caddr world) $ \edGhosts ->
@@ -243,12 +244,17 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd dots) $ \dotMap ->
       with (paint bd pows) $ \powMap -> do
         let ghostIsNear = peekMap lmanPos ghostMap   .< 4 
+            ghostIsFar = peekMap lmanPos ghostMap   .> 10
+            ghostIsTooFar = peekMap lmanPos ghostMap   .> 20
+                            &&& (peekMap lmanPos ghostMap .> 40)
             shouldEatPow = 
               (peekMap lmanPos edGhostMap .>= inf) 
-                &&& (peekMap lmanPos powMap .< inf)
+                &&& (peekMap lmanPos powMap .< peekMap lmanPos ghostMap)
                 &&& (peekMap lmanPos ghostMap .< 10)
             shouldEatGhost = (peekMap lmanPos edGhostMap .<  10)
             
+            lmanVit = car lmanState :: Expr Int
+            lmanDir = caddr lmanState :: Expr Int
             
         let chainAction :: ActionFlag -> Expr Int -> Expr Int -> Expr Int
             chainAction f x1 x2 = 
@@ -256,21 +262,31 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
               
         lwhen ghostIsNear $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
+        lwhen ghostIsFar $ 
+          actionFlags ~= pokeFlag FromGhost 0 actionFlags 
         lwhen shouldEatPow $ 
           actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
+        lwhen ghostIsTooFar $ 
+          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags         
         lwhen shouldEatGhost $ 
           actionFlags ~= pokeFlag ToEdGhost 1 actionFlags 
+        lwhen (lmanVit .==0) $
+          actionFlags ~= pokeFlag ToEdGhost 0 actionFlags 
         actionFlags ~= pokeFlag ToDot 1 actionFlags 
         trace (c 10005, ghosts)
         trace (c 10006, edGhosts)
         trace (c 10001, peekMap lmanPos ghostMap)
         trace (c 10002, peekMap lmanPos edGhostMap)
         trace (c 10002, peekMap lmanPos edGhostMap)
+        trace (c 65536, actionFlags)
 
+        trace (c 33333,  (selectMin edGhostMap lmanPos) )
+        
         let dir = 
               chainAction FromGhost (selectMax ghostMap lmanPos) $
               chainAction ToPowerDot (selectMin ghostMap lmanPos) $
-              chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 0
+              chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 
+              chainAction ToDot (selectMin dotMap lmanPos) $ lmanDir
 
         e $ cons (cons bd actionFlags) dir
 
