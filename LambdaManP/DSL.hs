@@ -26,7 +26,7 @@ data CompState
 initState :: CompState
 initState = CompState 0 0 []
 
-conf_xhl_optimizer = False
+conf_xhl_optimizer = True
 
 addFunc :: String -> Label -> LMan ()
 addFunc name l = do
@@ -166,6 +166,8 @@ optCondExpr0 ee = case (optExpr (optExpr ee)) of
   Const n -> ([Const n], [Const (if n == 0 then 1 else 0)])
   Bin SUB (Const 1) (Ceq a b) -> ([ee], [Ceq a b])
   Bin SUB (Ceq a b) (Const 1) -> ([ee], [Ceq a b])
+  Ceq a (Const 0) -> ([ee], [a])
+  Ceq (Const 0) a -> ([ee], [a])
   Ite c a b -> 
     let (aa,not_aa) = optCondExpr0 a in
     let (bb,not_bb) = optCondExpr0 b in
@@ -177,11 +179,14 @@ optCondExpr0 ee = case (optExpr (optExpr ee)) of
   Seq a b -> let (bb,not_bb) = optCondExpr0 b in ([Seq a bbb | bbb <- bb], [Seq a not_bbb | not_bbb <- not_bb])
   _ -> nooptCondExpr0 ee
 
+minimum_fst :: Ord a => [(a,b)] -> (a,b)
+minimum_fst lst = foldr (\(a,b) (c,d) -> if a < c then (a,b) else (c,d)) (head lst) lst
+
 optCondExpr :: Expr Int -> (Bool, Expr Int)
 optCondExpr cond = if not conf_xhl_optimizer then (False, cond) else
   let (conds,not_conds) = optCondExpr0 cond in
-  let (cond_best_len,    cond_best)     = minimum $ zip (map (length . codeGen . compileExpr) conds) conds in
-  let (not_cond_best_len,not_cond_best) = minimum $ zip (map (length . codeGen . compileExpr) not_conds) not_conds in
+  let (cond_best_len,    cond_best)     = minimum_fst $ zip (map (length . codeGen . compileExpr) conds) conds in
+  let (not_cond_best_len,not_cond_best) = minimum_fst $ zip (map (length . codeGen . compileExpr) not_conds) not_conds in
   if not_cond_best_len < cond_best_len then
     (True, not_cond_best)
   else
