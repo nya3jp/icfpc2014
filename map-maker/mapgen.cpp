@@ -46,7 +46,7 @@ int numGhost = 4;
 int numPP = 4;
 void setParam(){
 
-  probPenetrate = exp(-12*drand());
+  probPenetrate =  exp(-2-2*drand());
   probTurn = exp(-drand()*2*log(W+H));
   if(rand()< 0.3)probParity = drand();
   ppDensity = exp(-2*drand());
