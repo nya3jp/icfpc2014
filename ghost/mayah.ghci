@@ -53,6 +53,11 @@ INITIALIZE:
         MOV [143], A
         MOV [144], B
 
+        MOV [149], HOGE_RANDOM   ; random
+        MOV [150], HOGE_CHASE    ; chase
+        MOV [151], HOGE_JUNCTION   ; junction
+        MOV [152], HOGE_BODDY   ; boddy
+
 MAIN:
         ; If in fright mode, every one escapes.
         JEQ FUNCTION_MAYBE_ESCAPE, [143], 1
@@ -66,22 +71,22 @@ ADD_RANDOM_SCORE:
         MOV G, ADS_L1
         MOV PC, FUNCTION_MAKE_RANDOM
 ADS_L1:
-        DIV A, 32
+        DIV A, [149]
         MOV [145], A
         MOV G, ADS_L2
         MOV PC, FUNCTION_MAKE_RANDOM
 ADS_L2:
-        DIV A, 32
+        DIV A, [149]
         MOV [146], A
         MOV G, ADS_L3
         MOV PC, FUNCTION_MAKE_RANDOM
 ADS_L3:
-        DIV A, 32
+        DIV A, [149]
         MOV [147], A
         MOV G, ADS_L4
         MOV PC, FUNCTION_MAKE_RANDOM
 ADS_L4:
-        DIV A, 32
+        DIV A, [149]
         MOV [148], A
 
         MOV A, [145]
@@ -89,7 +94,7 @@ ADS_L4:
         MOV C, [147]
         MOV D, [148]
         MOV E, 1
-        INT 8
+        ;INT 8
 
 ;----------------------------------------------------------------------
 
@@ -98,25 +103,25 @@ CHECK_UP:
         SUB A, [134]
         JGT CHECK_DOWN, A, 127
         ;JLT CHECK_DOWN, A, 5
-        ADD [145], 8
+        ADD [145], [150]
 CHECK_DOWN:
         MOV A, [134]
         SUB A, [132]
         JGT CHECK_LEFT, A, 127
         ;JLT CHECK_LEFT, A, 5
-        ADD [147], 8
+        ADD [147], [150]
 CHECK_LEFT:
         MOV A, [131]
         SUB A, [133]
         JGT CHECK_RIGHT, A, 127
         ;JLT CHECK_RIGHT, A, 5
-        ADD [148], 8
+        ADD [148], [150]
 CHECK_RIGHT:
         MOV A, [133]
         SUB A, [131]
         JGT CHECK_DONE, A, 127
         ;JLT CHECK_DONE, A, 5
-        ADD [146], 8
+        ADD [146], [150]
 
 CHECK_DONE:
 
@@ -125,7 +130,7 @@ CHECK_DONE:
         MOV C, [147]
         MOV D, [148]
         MOV E, 2
-        INT 8
+        ;INT 8
 
 ;----------------------------------------------------------------------
 
@@ -139,20 +144,67 @@ CHECK_JUNCTION_PROHIBITION:
         SUB B, C
         ADD B, 145
 
-        INT 8
+        ;INT 8
 
-        ADD [145], 32
-        ADD [146], 32
-        ADD [147], 32
-        ADD [148], 32
-        SUB [B], 32
+        ADD [145], [151]
+        ADD [146], [151]
+        ADD [147], [151]
+        ADD [148], [151]
+        SUB [B], [151]
 
 ; ----------------------------------------------------------------------
 
 CHECK_BODDY:
+        MOV E, 0
 
+CHECK_BODY_L0:
+        ADD E, 1
+        JGT CHECK_BODY_DONE, E, 3
+        MOV A, [130]
+        JGT CHECK_BODY_DONE, E, A
+        SUB A, E
+        INT 5
+        MOV C, A
+        MOV D, B
+        INT 8
+CHECK_BODY_UP:
+        MOV A, [132]
+        MOV B, C
+        JGT CHECK_BODY_DOWN, A, B
+        ADD A, 5
+        JLT CHECK_BODY_DOWN, A, B
+        ADD [145], [152]
+CHECK_BODY_DOWN:
+        MOV A, C
+        MOV B, [132]
+        JGT CHECK_BODY_LEFT, A, B
+        ADD A, 5
+        JLT CHECK_BODY_LEFT, A, B
+        ADD [147], [152]
+CHECK_BODY_LEFT:
+        MOV A, [131]
+        MOV B, C
+        JGT CHECK_BODY_RIGHT, A, B
+        ADD A, 5
+        JLT CHECK_BODY_RIGHT, A, B
+        ADD [146], [152]
+CHECK_BODY_RIGHT:
+        MOV A, C
+        MOV B, [131]
+        JGT CHECK_BODY_L0, A, B
+        ADD A, 5
+        JLT CHECK_BODY_L0, A, B
+        ADD [148], [152]
 
+        MOV PC, CHECK_BODY_L0
 
+CHECK_BODY_DONE:
+        MOV A, [145]
+        MOV B, [146]
+        MOV C, [147]
+        MOV D, [148]
+        MOV E, 2
+        ;INT 8
 
         MOV PC, FINALIZE_DIRECTION
 
