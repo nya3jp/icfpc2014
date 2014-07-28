@@ -382,7 +382,8 @@ let next_tick world =
           lambdaman.Lambdaman.state <- state;
           schedule_tick world (tick, eLambdamanMoveCommit, event_arg, Int32.to_int move);
         with
-        | Exception_cycleover ->
+        | Exception_cycleover
+        | Exception_eval_error _ ->
            (* When cycle is over, we use the same move as the before *)
            schedule_tick world (tick, eLambdamanMoveCommit, event_arg, int_of_direction lambdaman.d);
       end
