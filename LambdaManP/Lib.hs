@@ -17,6 +17,8 @@ libDef = do
 
   dequeueDef
 
+  newArrayDef
+  newArrayGoDef
   mkArrayDef
   mkArrayGoDef
   peekDef
@@ -25,12 +27,15 @@ libDef = do
 
   toMatDef
   toMatsDef
+  newMatDef
+
+infixr 3 &&&, |||
 
 (&&&) :: Expr Int -> Expr Int -> Expr Int
-a &&& b = a * b
+a &&& b = ite a b 0
 
 (|||) :: Expr Int -> Expr Int -> Expr Int
-a ||| b = lnot $ lnot a &&& lnot b
+a ||| b = ite a 1 b
 
 lnot :: Expr Int -> Expr Int
 lnot e = 1 - e
@@ -98,6 +103,16 @@ isEmptyQueue q = (isNull $ car q) &&& (isNull $ cdr q)
 type Array a = (Int, Node a)
 data Node a = Node
 
+newArray :: Expr Int -> Expr a -> Expr (Array a)
+(newArray, newArrayDef) = def2 "newArray" $ \n v -> cons n $ newArrayGo 0 n v
+
+newArrayGo :: Expr Int -> Expr Int -> Expr a -> Expr (Node a)
+(newArrayGo, newArrayGoDef) = def3 "newArrayGo" $ \l r v ->
+  let m = (l + r) `div` 2
+  in ite (r - l .== 1)
+     (cast v)
+     (gcons (newArrayGo l m v) (newArrayGo m r v))
+
 mkArray :: Expr [a] -> Expr (Array a)
 (mkArray, mkArrayDef) = def1 "mkArray" $ \xs -> comp $
   with (llength xs) $ \len ->
@@ -154,6 +169,10 @@ peekMat x y m = peek x $ peek y m
 
 pokeMat :: Expr Int -> Expr Int -> Expr a -> Expr (Mat a) -> Expr (Mat a)
 pokeMat x y v m = poke y (poke x v $ peek y m) m
+
+newMat :: Expr Int -> Expr Int -> Expr a -> Expr (Mat a)
+(newMat, newMatDef) = def3 "newMat" $ \x y v -> comp $ do
+  with (newArray x v) $ \row -> e $ newArray y row
 
 toMat :: Expr [[a]] -> Expr (Mat a)
 (toMat, toMatDef) = def1 "toMat" $ \mm -> mkArray $ toMats mm
