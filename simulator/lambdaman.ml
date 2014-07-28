@@ -384,9 +384,9 @@ let show_profile program profile =
   let a2 = (Array.mapi (fun i count -> (-count,i)) profile) in
   Array.sort Pervasives.compare a2;
   ignore (Array.fold_left
-    (fun (nth,cum_count) (count,addr) -> 
+    (fun (nth,cum_count) (count,addr) ->
       let count = - count in
-      if nth < 100 && count > 0 && count > total * 5 / 100 then
+      if nth < 1000 && count > 0 && cum_count < total * 99 / 100 then
         Printf.printf "Addr %8d: count=%8d (%5.1f%% cum=%5.1f%%) %s\n"
           addr
           count
@@ -398,9 +398,28 @@ let show_profile program profile =
     )
     (0,0)
     a2
-  )
+  );
+  Printf.printf "Total: %d inst\n" total
 
-let eval_main show_useful_info program args =
+type t = {
+  index: int;
+  mutable x: int;
+  mutable y: int;
+  initialX: int;
+  initialY: int;
+  mutable d: direction;
+  mutable vitality_absolute: int;
+  mutable eat_count: int;
+  mutable lives: int;
+  mutable score: int;
+  program: program;
+  mutable state: value;
+  mutable stepFun: value;
+  mutable profile_total: int array;
+}
+
+
+let eval_main man show_useful_info use_eternal program args =
   let i = ref 0 in
   let debug_callback =
     let last = ref 0 in
@@ -422,11 +441,14 @@ let eval_main show_useful_info program args =
   ) args;
   Stack.push AStop machine.d;
   machine.e <- frame :: machine.e;
+  let profile_total = Array.make (Array.length program) 0 in
+  man.profile_total <- profile_total;
   let profile = Array.make (Array.length program) 0 in
   try
     let maxSteps = 3072000 * 60 in
-    while !i < maxSteps do
+    while !i < maxSteps || use_eternal do
       profile.(machine.c) <- profile.(machine.c) + 1;
+      profile_total.(machine.c) <- profile_total.(machine.c) + 1;
       let inst = program.(machine.c) in
       eval_instruction machine inst;
       incr i
@@ -437,7 +459,7 @@ let eval_main show_useful_info program args =
   | Exception_exit ->
      if show_useful_info then begin
        Printf.printf "Used %d cycles.\n" !i;
-       show_profile program profile;
+       (* show_profile program profile; *)
      end;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
@@ -447,7 +469,7 @@ let eval_main show_useful_info program args =
      failwith "Eval error in main function"
 ;;
 
-let eval_step show_useful_info program closure args =
+let eval_step man show_useful_info use_eternal program closure args =
   let (n, fp) = match closure with
     | VClosure (n, fp) -> (n, fp)
     | _ -> failwith "eval_step got non closure."
@@ -476,11 +498,12 @@ let eval_step show_useful_info program closure args =
   machine.e <- frame :: fp;
   Stack.push AStop machine.d;
   let profile = Array.make (Array.length program) 0 in
-
+  let profile_total = man.profile_total in
   try
     let maxSteps = 3072000 in
-    while !i < maxSteps do
+    while !i < maxSteps || use_eternal do
       profile.(machine.c) <- profile.(machine.c) + 1;
+      profile_total.(machine.c) <- profile_total.(machine.c) + 1;
       let inst = program.(machine.c) in
       eval_instruction machine inst;
       incr i
@@ -494,7 +517,7 @@ let eval_step show_useful_info program closure args =
   | Exception_exit ->
      if show_useful_info then begin
        Printf.printf "Used %d cycles.\n" !i;
-       show_profile program profile;
+       (* show_profile program profile; *)
      end;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
@@ -505,22 +528,6 @@ let eval_step show_useful_info program closure args =
 ;;
 
 (* ---------------------------------------------------------------------- *)
-
-type t = {
-  index: int;
-  mutable x: int;
-  mutable y: int;
-  initialX: int;
-  initialY: int;
-  mutable d: direction;
-  mutable vitality_absolute: int;
-  mutable eat_count: int;
-  mutable lives: int;
-  mutable score: int;
-  program: program;
-  mutable state: value;
-  mutable stepFun: value;
-}
 
 let make index x y program = {
   index = index;
@@ -536,6 +543,7 @@ let make index x y program = {
   program = program;
   state = value_of_int 12345; (* dummy *)
   stepFun = value_of_int 23456; (* dummy *)
+  profile_total = Array.make 0 0; (* dummy *)
 }
 
 let eaten lambdaman =

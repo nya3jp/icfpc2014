@@ -11,3 +11,9 @@ def main():
     j += 2
   for k in [2, 8, 3]:
     print k
+  else:
+    print 283
+  for k in [2, 8, 3]:
+    break
+  else:
+    print 999

@@ -8,6 +8,7 @@ let conf_fright_compatible_mode = true
 let conf_lambdaman_invalid_move_mode = true
 let show_useful_info = true
 let conf_quiet = ref true
+let conf_eternal = ref false
 
 module OrderedEventType = struct
   type t = int * int * int * int
@@ -378,7 +379,7 @@ let next_tick world =
       (* FIXME: move lambdaman *)
       begin
         try
-          let v = Lambdaman.eval_step show_useful_info lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
+          let v = Lambdaman.eval_step lambdaman show_useful_info !conf_eternal lambdaman.Lambdaman.program lambdaman.Lambdaman.stepFun [lambdaman.Lambdaman.state; encode_current_world world tick] in
           let (state, move) = match v with
             | VCons (state, move) -> (state, move)
             | _ -> failwith "Lambdaman's step function didn't return CONS cell."
@@ -496,7 +497,7 @@ let run t =
   let encoded_world = encode_current_world t 0
   and ghost_programs = encode_ghost_programs t in
   Array.iter (fun man ->
-    let v = Lambdaman.eval_main show_useful_info man.program [encoded_world; ghost_programs] in
+    let v = Lambdaman.eval_main man show_useful_info !conf_eternal man.program [encoded_world; ghost_programs] in
     let (state, stepFun) = match v with
       | VCons (state, stepFun) -> (state, stepFun)
       | _ -> failwith "Lambdaman's main function didn't return CONS cell"
@@ -517,18 +518,21 @@ let run t =
      print_debug t tick;
      Printf.printf "＿人人人人人＿\n＞ You won ＜\n￣Y^Y^Y^Y￣\n";
      Array.iter (fun lambdaman ->
+       Lambdaman.show_profile lambdaman.program lambdaman.profile_total;
        Printf.printf "%d\n" lambdaman.score
      ) t.lambdamans;
   | Game_lose(tick) ->
      print_debug t tick;
      Printf.printf "＿人人人人人＿\n＞ You lost ＜\n￣Y^Y^Y^Y￣\n";
      Array.iter (fun lambdaman ->
+       Lambdaman.show_profile lambdaman.program lambdaman.profile_total;
        Printf.printf "%d\n" lambdaman.score
      ) t.lambdamans
   | Game_end(tick) ->
      print_debug t tick;
      Printf.printf "Game end\n";
      Array.iter (fun lambdaman ->
+       Lambdaman.show_profile lambdaman.program lambdaman.profile_total;
        Printf.printf "%d\n" lambdaman.score
      ) t.lambdamans
 ;;
