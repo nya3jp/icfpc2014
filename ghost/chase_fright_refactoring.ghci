@@ -1,0 +1,243 @@
+    ; Register `H` used as a stack pointer, which grows downward.
+    MOV H,255
+    MOV [128],0
+    INT 3
+    INT 5
+    MOV [134],A
+    MOV [135],B
+    INT 3
+    INT 6
+    MOV [136],B
+    MOV A,B
+    MOV [H],66768BD3
+    DEC H
+    MOV PC,REVERSE_DIRECTION
+66768BD3:
+    MOV [140],A
+    INT 3
+    INT 5
+    MOV [H],5EA47E7E
+    DEC H
+    MOV PC,GET_DIRECTIONS_TO_FIRST_LAMBDAMAN
+5EA47E7E:
+    MOV A,[129]
+    MOV [H],3871AAEF
+    DEC H
+    MOV PC,REVERSE_DIRECTION
+3871AAEF:
+    MOV [132],A
+    MOV A,[130]
+    MOV [H],510A0458
+    DEC H
+    MOV PC,REVERSE_DIRECTION
+510A0458:
+    MOV [131],A
+    INT 3
+    INT 6
+    JEQ FRIGHT,A,1
+    MOV [H],129
+    DEC H
+FOR_5F04A844:
+    MOV A,H
+    ADD A,1
+    JEQ END_FOR_5F04A844,[A],133
+    MOV A,[A]
+    JEQ 23C5EE7A,[A],[140]
+    MOV PC,50B0E0B8
+23C5EE7A:
+    MOV A,H
+    ADD A,1
+    INC [A]
+    MOV PC,FOR_5F04A844
+50B0E0B8:
+    MOV A,[134]
+    MOV B,[135]
+    MOV C,H
+    ADD C,1
+    MOV C,[C]
+    MOV C,[C]
+    MOV [H],8E67A737
+    DEC H
+    MOV PC,IS_ADJACENT_COORDINATE_NON_WALL_SQUARE
+8E67A737:
+    JGT B15084D2,A,0
+    MOV A,H
+    ADD A,1
+    INC [A]
+    MOV PC,FOR_5F04A844
+B15084D2:
+    MOV A,H
+    ADD A,1
+    MOV A,[A]
+    JLT END_FOR_5F04A844,[A],4
+    MOV A,H
+    ADD A,1
+    INC [A]
+    MOV PC,FOR_5F04A844
+END_FOR_5F04A844:
+    INC H
+    MOV A,[A]
+    AND A,3
+    INT 0
+    HLT
+FRIGHT:
+    MOV [H],133
+    DEC H
+WHILE_F55CE8AA:
+    MOV A,H
+    ADD A,1
+    JEQ END_WHILE_F55CE8AA,[A],129
+    DEC [A]
+    MOV A,[A]
+    JEQ F06FE200,[A],[140]
+    MOV PC,B6718BEA
+F06FE200:
+    MOV PC,WHILE_F55CE8AA
+B6718BEA:
+    MOV A,[134]
+    MOV B,[135]
+    MOV C,H
+    ADD C,1
+    MOV C,[C]
+    MOV C,[C]
+    MOV [H],3EFF2E4A
+    DEC H
+    MOV PC,IS_ADJACENT_COORDINATE_NON_WALL_SQUARE
+3EFF2E4A:
+    JGT A027D07C,A,0
+    MOV PC,WHILE_F55CE8AA
+A027D07C:
+    MOV A,H
+    ADD A,1
+    MOV A,[A]
+    JLT END_WHILE_F55CE8AA,[A],4
+    MOV PC,WHILE_F55CE8AA
+END_WHILE_F55CE8AA:
+    INC H
+    MOV A,[A]
+    AND A,3
+    INT 0
+    HLT
+
+RAND:
+    MOV C,A
+    INC C
+    INT 3
+    ADD [133],A
+    MUL [133],37
+    ADD [133],37
+    MOV A,[133]
+    MOV B,A
+    DIV B,C
+    MUL B,C
+    SUB A,B
+    INC H
+    MOV PC,[H]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GET_ADJACENT_COORDINATE: For given coordinate and direction index, returns
+;                          the corresponding coordinate.
+;   - In:
+;     - Register `A`, X-ordinate.
+;     - Register `B`, Y-ordinate.
+;     - Register `C`, direction index (0 = north, 1 = east, 2 = south,
+;       3 = west)
+;   - Out:
+;     - Register `A`, X-ordinate.
+;     - Register `B`, Y-ordinate.
+;   - Side effect: Register `C`, `D`, `E` are destroyed.
+GET_ADJACENT_COORDINATE:
+    MOV D,C
+    MOV E,C
+    AND C,1
+    AND E,2
+    SUB E,1
+    MUL C,E
+    SUB A,C
+    SUB D,1
+    AND D,1
+    MUL D,E
+    ADD B,D
+    INC H
+    MOV PC,[H]
+
+IS_ADJACENT_COORDINATE_NON_WALL_SQUARE:
+    MOV [H],A9F040E2
+    DEC H
+    MOV PC,GET_ADJACENT_COORDINATE
+A9F040E2:
+    INT 7
+    INC H
+    MOV PC,[H]
+
+REVERSE_DIRECTION:
+    ADD A,2
+    AND A,3
+    INC H
+    MOV PC,[H]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GET_DIRECTIONS_TO_FIRST_LAMBDAMAN: returns direction to the 1st lambdaman
+; from a given coordinate.
+;   - In:
+;     - Register `A`, X-ordinate
+;     - Register `B`, Y-ordinate
+;   - Out:
+;     - Register `A`, major direction to the 1st lambdaman (0 = north,
+;       1 = east, 2 = south, 3 = west).
+;     - Register `B`, minor direction to the 1st lambdaman (0 = north,
+;       1 = east, 2 = south, 3 = west).
+;   - Side effect: Register `C` and `D` are destroyed.
+;   - Notes: coordinate difference in the major direction is greater than or
+;            equal to one in minor direction.
+GET_DIRECTIONS_TO_FIRST_LAMBDAMAN:
+    MOV C,A
+    MOV D,B
+    INT 1
+    SUB A,C
+    SUB B,D
+    MOV C,A
+    MOV D,B
+    MOV A,0
+    JLT FC284D19,C,128
+    ; The first lambdaman is left from the ghost.
+    MOV A,2
+FC284D19:
+    ; The first lambdaman is right from the ghost.
+    ADD A,1
+    MOV [129],A
+    MOV B,0
+    JLT 0EF670EF,D,128
+    ; The first lambdaman is up from the ghost.
+    MOV B,254
+0EF670EF:
+    ; The 1st lambdaman is down from the ghost.
+    ADD B,2
+    MOV [130],B
+    ; MOV C,abs(C)
+    JLT 73FF22EB,C,128
+    XOR C,255
+    ADD C,1
+73FF22EB:
+    MOV [128],C
+    MOV [138],C
+    ; MOV C,abc(C)
+    JLT 30604BE8,D,128
+    XOR D,255
+    ADD D,1
+30604BE8:
+    ADD [128],D
+    MOV [139],D
+    JGT D1D395BD,C,D
+    MOV C,A
+    MOV A,B
+    MOV B,C
+    MOV C,[129]
+    MOV [129], [130]
+    MOV [130],C
+    MOV C,[138]
+    MOV [138],[139]
+    MOV [139],C
+D1D395BD:
+    INC H
+    MOV PC,[H]
