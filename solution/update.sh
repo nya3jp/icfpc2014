@@ -6,4 +6,4 @@ set -ex
 
 rm -rf .build
 mkdir -p .build
-cp ./LambdaManP/saikyo.gcc solution/lambdaman.gcc
+cp ./LambdaManP/ataittara-saikyo.gcc solution/lambdaman.gcc
