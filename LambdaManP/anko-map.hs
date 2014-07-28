@@ -365,6 +365,10 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
           actionFlags ~= pokeFlag FromPowerDot 1 actionFlags 
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags           
           actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
+        lwhen (peekMap lmanPos cornerMap .<= 10)  $ do
+          actionFlags ~= pokeFlag ToWidePlaces 1 actionFlags         
+        lwhen (peekMap lmanPos cornerMap .>= 20)  $ do
+          actionFlags ~= pokeFlag ToWidePlaces 0 actionFlags                 
         lwhen (lnot lmanIsPow)  $ do
           actionFlags ~= pokeFlag ToGhost 0 actionFlags         
         lwhen (peekMap lmanPos powMap .> 2)  $ do
@@ -381,7 +385,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         dirVote ~= dirVote `vadd4` chainAction 200 ToGhost      (voteMin  ghostMap lmanPos)  
         dirVote ~= dirVote `vadd4` chainAction 200 FromPowerDot (voteMax  powMap lmanPos)               
         dirVote ~= dirVote `vadd4` chainAction  50 ToDot        (voteMin  dotMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 100 ToDot        (voteMax  cornerMap lmanPos)         
+        dirVote ~= dirVote `vadd4` chainAction 100 ToWidePlaces        (voteMax  cornerMap lmanPos)         
         dirVote ~= dirVote `vadd4` (5  `vscale4` (voteMax  bd lmanPos) )
         dirVote ~= dirVote `vadd4` (10000 `vscale4` (voteAvoidWall  bd lmanPos) )        
 
@@ -452,7 +456,7 @@ main = do
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       
       let 
-          body = printf "archive/Madokaren-%s-%04d" dateStr2 idx
+          body = printf "archive/MadokarenH-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $

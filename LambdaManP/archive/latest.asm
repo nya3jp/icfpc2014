@@ -1,6 +1,5 @@
-  DUM 35
+  DUM 34
   LDC 0
-  LDF updPoss
   LDF lmax
   LDF isJunction
   LDF junctionSafety
@@ -35,10 +34,14 @@
   LDF ldrop
   LDF llength
   LDF main
-  TRAP 35
+  TRAP 34
 main:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 llength:
   LD 0 0
   ATOM
@@ -50,14 +53,18 @@ L3:
   LDC 1
   LD 0 0
   CDR
-  LD 1 34
+  LD 1 33
   AP 1
   ADD
 L4:
   RTN
 L1:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 ldrop:
   LD 0 0
   LDC 0
@@ -72,13 +79,17 @@ L7:
   SUB
   LD 0 1
   CDR
-  LD 1 33
+  LD 1 32
   AP 2
 L8:
   RTN
 L5:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 ltake:
   LD 0 0
   LDC 0
@@ -95,14 +106,18 @@ L11:
   SUB
   LD 0 1
   CDR
-  LD 1 32
+  LD 1 31
   AP 2
   CONS
 L12:
   RTN
 L9:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 nth:
   LD 0 0
   LDC 0
@@ -118,13 +133,17 @@ L15:
   SUB
   LD 0 1
   CDR
-  LD 1 31
+  LD 1 30
   AP 2
 L16:
   RTN
 L13:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 nthOpt:
   LD 0 0
   LDC 0
@@ -235,7 +254,11 @@ L20:
   RTN
 L17:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 upd:
   LD 0 0
   LDC 0
@@ -256,14 +279,18 @@ L41:
   LD 0 1
   LD 0 2
   CDR
-  LD 1 29
+  LD 1 28
   AP 3
   CONS
 L42:
   RTN
 L39:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 updOpt:
   LD 0 2
   CDR
@@ -356,34 +383,46 @@ L45:
   RTN
 L43:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 getMat:
   LD 0 0
   LD 0 1
   LD 0 2
-  LD 1 31
+  LD 1 30
   AP 2
-  LD 1 31
+  LD 1 30
 TAP 2
 L61:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 setMat:
   LD 0 1
   LD 0 0
   LD 0 2
   LD 0 1
   LD 0 3
-  LD 1 31
+  LD 1 30
   AP 2
-  LD 1 29
+  LD 1 28
   AP 3
   LD 0 3
-  LD 1 29
+  LD 1 28
 TAP 3
 L62:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 lreverseGo:
   LD 0 1
   ATOM
@@ -398,13 +437,17 @@ L65:
   CONS
   LD 0 1
   CDR
-  LD 1 25
+  LD 1 24
   AP 2
 L66:
   RTN
 L63:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 dequeue:
   LD 0 0
   CAR
@@ -414,11 +457,11 @@ L68:
   LDC 0
   LD 0 0
   CDR
-  LD 1 25
+  LD 1 24
   AP 2
   LDC 0
   CONS
-  LD 1 24
+  LD 1 23
 TAP 1
 L69:
   LD 0 0
@@ -435,19 +478,27 @@ L70:
   RTN
 L67:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 newArray:
   LD 0 0
   LDC 0
   LD 0 0
   LD 0 1
-  LD 1 22
+  LD 1 21
   AP 3
   CONS
   RTN
 L71:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 newArrayGo:
   LD 0 1
   LD 0 0
@@ -466,7 +517,7 @@ L74:
   LDC 2
   DIV
   LD 0 2
-  LD 1 22
+  LD 1 21
   AP 3
   LD 0 0
   LD 0 1
@@ -475,17 +526,21 @@ L74:
   DIV
   LD 0 1
   LD 0 2
-  LD 1 22
+  LD 1 21
   AP 3
   CONS
 L75:
   RTN
 L72:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 mkArray:
   LD 0 0
-  LD 1 34
+  LD 1 33
   AP 1
   LDF L77
 TAP 1
@@ -494,7 +549,7 @@ L77:
   LDC 0
   LD 0 0
   LD 1 0
-  LD 2 20
+  LD 2 19
   AP 3
   CONS
   RTN
@@ -502,7 +557,11 @@ L78:
   RTN
 L76:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 mkArrayGo:
   LD 0 1
   LD 0 0
@@ -522,7 +581,7 @@ L81:
   LDC 2
   DIV
   LD 0 2
-  LD 1 20
+  LD 1 19
   AP 3
   LD 0 0
   LD 0 1
@@ -538,16 +597,20 @@ L81:
   LD 0 0
   SUB
   LD 0 2
-  LD 1 33
+  LD 1 32
   AP 2
-  LD 1 20
+  LD 1 19
   AP 3
   CONS
 L82:
   RTN
 L79:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 peek:
   LDC 0
   LD 0 1
@@ -603,7 +666,11 @@ L85:
   RTN
 L83:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 poke:
   LD 0 2
   CAR
@@ -614,13 +681,17 @@ poke:
   LD 0 1
   LD 0 2
   CDR
-  LD 1 17
+  LD 1 16
   AP 5
   CONS
   RTN
 L92:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 pokeGo:
   LD 0 2
   LD 0 1
@@ -651,7 +722,7 @@ L97:
   LD 0 3
   LD 0 4
   CAR
-  LD 1 17
+  LD 1 16
   AP 5
   LD 0 4
   CDR
@@ -671,7 +742,7 @@ L98:
   LD 0 3
   LD 0 4
   CDR
-  LD 1 17
+  LD 1 16
   AP 5
   CONS
 L99:
@@ -679,16 +750,24 @@ L96:
   RTN
 L93:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 toMat:
   LD 0 0
-  LD 1 15
+  LD 1 14
   AP 1
-  LD 1 21
+  LD 1 20
 TAP 1
 L100:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 toMats:
   LD 0 0
   ATOM
@@ -699,35 +778,43 @@ RTN
 L103:
   LD 0 0
   CAR
-  LD 1 21
+  LD 1 20
   AP 1
   LD 0 0
   CDR
-  LD 1 15
+  LD 1 14
   AP 1
   CONS
 L104:
   RTN
 L101:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 newMat:
   LD 0 0
   LD 0 2
-  LD 1 23
+  LD 1 22
   AP 2
   LDF L106
 TAP 1
 L106:
   LD 1 1
   LD 0 0
-  LD 2 23
+  LD 2 22
 TAP 2
 L107:
   RTN
 L105:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 step:
   LD 0 1
   CDR
@@ -758,12 +845,12 @@ L109:
   LD 0 1
   CDR
   LD 0 2
-  LD 2 19
-  AP 2
   LD 2 18
+  AP 2
+  LD 2 17
   AP 3
   LD 0 2
-  LD 2 18
+  LD 2 17
   AP 3
   LDF L111
 TAP 1
@@ -772,19 +859,19 @@ L111:
   CDR
   CDR
   CAR
-  LD 3 8
+  LD 3 7
   AP 1
   LDF L113
 TAP 1
 L113:
   LD 1 0
-  LD 4 6
+  LD 4 5
   AP 1
   LDF L115
 TAP 1
 L115:
   LD 2 0
-  LD 5 12
+  LD 5 11
   AP 1
   LDF L117
 TAP 1
@@ -796,7 +883,39 @@ L117:
   LDF L119
 TAP 2
 L119:
+<<<<<<< HEAD
+  LD 4 0
+  LD 3 0
+  LD 7 8
+  AP 2
+  LDF L121
+TAP 1
+L121:
   LD 5 0
+  LD 1 0
+  LD 8 8
+  AP 2
+  LDF L123
+TAP 1
+L123:
+  LD 6 0
+  LD 3 0
+  LD 9 8
+  AP 2
+  LDF L125
+TAP 1
+L125:
+  LD 7 0
+  LD 3 1
+  LD 10 8
+  AP 2
+  LDF L127
+TAP 1
+L127:
+  LD 9 0
+=======
+  LD 5 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LDC 0
   CGT
@@ -806,10 +925,17 @@ L119:
   CAR
   LDF L121
 TAP 2
+<<<<<<< HEAD
+L129:
+  LD 10 1
+  LD 8 0
+  LD 12 4
+=======
 L121:
   LD 6 1
   LD 4 0
   LD 8 5
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L123
 TAP 1
@@ -871,6 +997,257 @@ L135:
 L129:
   LDF L125
 TAP 1
+<<<<<<< HEAD
+L133:
+  LDC 3
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 6 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  CGT
+  TSEL L147 L148
+L147:
+  LDC 1
+  LD 2 0
+  SUB
+LDC 0
+TSEL L149 L149
+L148:
+  LDC 0
+L149:
+  TSEL L144 L145
+L144:
+  LDC 5
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L146 L146
+L145:
+  LDC 0
+L146:
+  ST 14 0 ; POP
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L156
+  AP 4
+LDC 0
+TSEL L157 L157
+L156:
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 0
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 1
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 2
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 3
+  LD 15 3
+  AP 4
+  LD 15 1
+  AP 2
+  LD 15 1
+  AP 2
+  LD 15 1
+TAP 2
+L157:
+  LDC 3
+  CGT
+  TSEL L153 L154
+L153:
+  LDC 1
+LDC 0
+TSEL L155 L155
+L154:
+  LD 2 0
+L155:
+  TSEL L150 L151
+L150:
+  LDC 5
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L152 L152
+L151:
+  LDC 0
+L152:
+  ST 14 0 ; POP
+  LDC 1
+  LD 2 0
+  SUB
+  TSEL L161 L162
+L161:
+  LD 1 0
+  LDC 100
+  CGTE
+LDC 0
+TSEL L163 L163
+L162:
+  LDC 0
+L163:
+  TSEL L158 L159
+L158:
+  LDC 2
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 4
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 3
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L160 L160
+L159:
+  LDC 0
+L160:
+  ST 14 0 ; POP
+  LD 2 0
+  TSEL L164 L165
+L164:
+  LDC 4
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 2
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 3
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L166 L166
+L165:
+  LDC 0
+L166:
+  ST 14 0 ; POP
+  LDC 150
+  LD 1 0
+  CGTE
+  TSEL L170 L171
+L170:
+  LDC 2
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 3 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  CGT
+LDC 0
+TSEL L172 L172
+L171:
+  LDC 0
+L172:
+  TSEL L167 L168
+L167:
+  LDC 3
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 2
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 4
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L169 L169
+L168:
+  LDC 0
+L169:
+  ST 14 0 ; POP
+  LDC 10
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 4 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  CGTE
+  TSEL L173 L174
+L173:
+  LDC 6
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+=======
 L125:
   LD 6 0
   LDC 7
@@ -1058,29 +1435,83 @@ L161:
   LD 12 18
   AP 3
   ST 10 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 0
 LDC 0
 TSEL L163 L163
 L162:
   LDC 0
+<<<<<<< HEAD
+L175:
+  ST 14 0 ; POP
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 4 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  LDC 20
+  CGTE
+  TSEL L176 L177
+L176:
+  LDC 6
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L178 L178
+L177:
+  LDC 0
+L178:
+  ST 14 0 ; POP
+  LDC 1
+  LD 2 0
+=======
 L163:
   ST 12 0 ; POP
   LDC 1
   LD 4 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   TSEL L167 L168
 L167:
   LDC 4
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+=======
   LD 10 4
   LD 12 18
   AP 3
   ST 10 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 0
 LDC 0
 TSEL L169 L169
 L168:
   LDC 0
+<<<<<<< HEAD
+L181:
+  ST 14 0 ; POP
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 3 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+=======
 L169:
   ST 12 0 ; POP
   LD 9 0
@@ -1089,21 +1520,45 @@ L169:
   LDC 2
   LD 12 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 2
   CGT
   TSEL L170 L171
 L170:
   LDC 3
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+=======
   LD 10 4
   LD 12 18
   AP 3
   ST 10 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 0
 LDC 0
 TSEL L172 L172
 L171:
   LDC 0
+<<<<<<< HEAD
+L184:
+  ST 14 0 ; POP
+  LDC 0
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LD 0 0
+  CAR
+  CAR
+  LDC 5
+  LD 12 4
+  LD 14 18
+=======
 L172:
   ST 12 0 ; POP
   LDC 0
@@ -1118,6 +1573,7 @@ L172:
   LDC 5
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -1143,45 +1599,173 @@ LDC 0
 TSEL L174 L174
 L173:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L175
 TAP 1
 L175:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L177
 TAP 1
 L177:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L179
 TAP 1
 L179:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L181
 TAP 1
@@ -1343,8 +1927,13 @@ L174:
   CAR
   MUL
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -1370,45 +1959,173 @@ LDC 0
 TSEL L220 L220
 L219:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L221
 TAP 1
 L221:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L223
 TAP 1
 L223:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L225
 TAP 1
 L225:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L227
 TAP 1
@@ -1571,8 +2288,13 @@ L220:
   MUL
   CONS
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -1598,45 +2320,173 @@ LDC 0
 TSEL L266 L266
 L265:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L267
 TAP 1
 L267:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L269
 TAP 1
 L269:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L271
 TAP 1
 L271:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L273
 TAP 1
@@ -1798,8 +2648,13 @@ L266:
   CAR
   MUL
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -1825,45 +2680,173 @@ LDC 0
 TSEL L312 L312
 L311:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L313
 TAP 1
 L313:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L315
 TAP 1
 L315:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L317
 TAP 1
 L317:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L319
 TAP 1
@@ -2029,12 +3012,21 @@ L312:
   CAR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CAR
+  CDR
+  LDC 5
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CAR
   CDR
   LDC 5
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -2060,45 +3052,173 @@ LDC 0
 TSEL L358 L358
 L357:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L359
 TAP 1
 L359:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L361
 TAP 1
 L361:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L363
 TAP 1
 L363:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L365
 TAP 1
@@ -2260,8 +3380,13 @@ L358:
   CAR
   MUL
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -2287,6 +3412,105 @@ LDC 0
 TSEL L404 L404
 L403:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L417
+TAP 1
+L417:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L419
+TAP 1
+L419:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
@@ -2315,17 +3539,50 @@ L407:
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L409
 TAP 1
 L409:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L411
 TAP 1
@@ -2488,8 +3745,13 @@ L404:
   MUL
   CONS
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -2515,45 +3777,173 @@ LDC 0
 TSEL L450 L450
 L449:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L451
 TAP 1
 L451:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L453
 TAP 1
 L453:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L455
 TAP 1
 L455:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L457
 TAP 1
@@ -2715,8 +4105,13 @@ L450:
   CAR
   MUL
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -2742,45 +4137,173 @@ LDC 0
 TSEL L496 L496
 L495:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L497
 TAP 1
 L497:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L499
 TAP 1
 L499:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L501
 TAP 1
 L501:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L503
 TAP 1
@@ -2947,12 +4470,21 @@ L496:
   CDR
   ADD
   CONS
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CAR
+  LDC 5
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CAR
   LDC 5
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -2978,45 +4510,173 @@ LDC 0
 TSEL L542 L542
 L541:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L543
 TAP 1
 L543:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L545
 TAP 1
 L545:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L547
 TAP 1
 L547:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L549
 TAP 1
@@ -3178,8 +4838,13 @@ L542:
   CAR
   MUL
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -3205,6 +4870,105 @@ LDC 0
 TSEL L588 L588
 L587:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L601
+TAP 1
+L601:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L603
+TAP 1
+L603:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
@@ -3233,17 +4997,50 @@ L591:
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L593
 TAP 1
 L593:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L595
 TAP 1
@@ -3406,8 +5203,13 @@ L588:
   MUL
   CONS
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -3433,45 +5235,173 @@ LDC 0
 TSEL L634 L634
 L633:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L635
 TAP 1
 L635:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L637
 TAP 1
 L637:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L639
 TAP 1
 L639:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L641
 TAP 1
@@ -3633,8 +5563,13 @@ L634:
   CAR
   MUL
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -3660,45 +5595,173 @@ LDC 0
 TSEL L680 L680
 L679:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L681
 TAP 1
 L681:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L683
 TAP 1
 L683:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L685
 TAP 1
 L685:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L687
 TAP 1
@@ -3864,12 +5927,21 @@ L680:
   CDR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CDR
+  LDC 5
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CDR
   LDC 5
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -3895,45 +5967,173 @@ LDC 0
 TSEL L726 L726
 L725:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L727
 TAP 1
 L727:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L729
 TAP 1
 L729:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L731
 TAP 1
 L731:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L733
 TAP 1
@@ -4095,8 +6295,13 @@ L726:
   CAR
   MUL
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -4122,6 +6327,105 @@ LDC 0
 TSEL L772 L772
 L771:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L785
+TAP 1
+L785:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L787
+TAP 1
+L787:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
@@ -4150,17 +6454,50 @@ L775:
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L777
 TAP 1
 L777:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L779
 TAP 1
@@ -4323,8 +6660,13 @@ L772:
   MUL
   CONS
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -4350,45 +6692,173 @@ LDC 0
 TSEL L818 L818
 L817:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L819
 TAP 1
 L819:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L821
 TAP 1
 L821:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L823
 TAP 1
 L823:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L825
 TAP 1
@@ -4550,8 +7020,13 @@ L818:
   CAR
   MUL
   LDC 5
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 400
   MUL
@@ -4577,45 +7052,173 @@ LDC 0
 TSEL L864 L864
 L863:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 2 0
   LD 11 1
   LDC 7
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L865
 TAP 1
 L865:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 3 0
   LD 12 1
   LDC 7
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L867
 TAP 1
 L867:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 4 0
   LD 13 1
   LDC 7
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L869
 TAP 1
 L869:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 5 0
   LD 14 1
   LDC 7
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L871
 TAP 1
@@ -4783,6 +7386,15 @@ L864:
   ADD
   CONS
   CONS
+<<<<<<< HEAD
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 2
+  LD 12 4
+  LD 14 18
+=======
   ST 2 0
   LD 2 0
   CAR
@@ -4790,6 +7402,7 @@ L864:
   LDC 2
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -4812,6 +7425,136 @@ L864:
   LDF L909
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L922 L922
+L921:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L923
+TAP 1
+L923:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L925
+TAP 1
+L925:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L927
+TAP 1
+L927:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L929
+=======
 TSEL L910 L910
 L909:
   LD 10 0
@@ -4848,6 +7591,7 @@ L915:
   LD 16 10
   AP 4
   LDF L917
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L917:
   LDC 1
@@ -5007,8 +7751,13 @@ L910:
   CAR
   MUL
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -5031,6 +7780,136 @@ L910:
   LDF L955
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L968 L968
+L967:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L969
+TAP 1
+L969:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L971
+TAP 1
+L971:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L973
+TAP 1
+L973:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L975
+=======
 TSEL L956 L956
 L955:
   LD 10 0
@@ -5067,6 +7946,7 @@ L961:
   LD 16 10
   AP 4
   LDF L963
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L963:
   LDC 1
@@ -5227,8 +8107,13 @@ L956:
   MUL
   CONS
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -5251,6 +8136,136 @@ L956:
   LDF L1001
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1014 L1014
+L1013:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1015
+TAP 1
+L1015:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1017
+TAP 1
+L1017:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1019
+TAP 1
+L1019:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1021
+=======
 TSEL L1002 L1002
 L1001:
   LD 10 0
@@ -5287,6 +8302,7 @@ L1007:
   LD 16 10
   AP 4
   LDF L1009
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1009:
   LDC 1
@@ -5446,8 +8462,13 @@ L1002:
   CAR
   MUL
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -5470,6 +8491,136 @@ L1002:
   LDF L1047
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1060 L1060
+L1059:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1061
+TAP 1
+L1061:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1063
+TAP 1
+L1063:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1065
+TAP 1
+L1065:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1067
+=======
 TSEL L1048 L1048
 L1047:
   LD 10 0
@@ -5506,6 +8657,7 @@ L1053:
   LD 16 10
   AP 4
   LDF L1055
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1055:
   LDC 1
@@ -5669,12 +8821,21 @@ L1048:
   CAR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CAR
+  CDR
+  LDC 2
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CAR
   CDR
   LDC 2
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -5697,6 +8858,136 @@ L1048:
   LDF L1093
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1106 L1106
+L1105:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1107
+TAP 1
+L1107:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1109
+TAP 1
+L1109:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1111
+TAP 1
+L1111:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1113
+=======
 TSEL L1094 L1094
 L1093:
   LD 10 0
@@ -5733,6 +9024,7 @@ L1099:
   LD 16 10
   AP 4
   LDF L1101
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1101:
   LDC 1
@@ -5892,8 +9184,13 @@ L1094:
   CAR
   MUL
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -5916,6 +9213,136 @@ L1094:
   LDF L1139
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1152 L1152
+L1151:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1153
+TAP 1
+L1153:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1155
+TAP 1
+L1155:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1157
+TAP 1
+L1157:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1159
+=======
 TSEL L1140 L1140
 L1139:
   LD 10 0
@@ -5952,6 +9379,7 @@ L1145:
   LD 16 10
   AP 4
   LDF L1147
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1147:
   LDC 1
@@ -6112,8 +9540,13 @@ L1140:
   MUL
   CONS
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -6136,6 +9569,136 @@ L1140:
   LDF L1185
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1198 L1198
+L1197:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1199
+TAP 1
+L1199:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1201
+TAP 1
+L1201:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1203
+TAP 1
+L1203:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1205
+=======
 TSEL L1186 L1186
 L1185:
   LD 10 0
@@ -6172,6 +9735,7 @@ L1191:
   LD 16 10
   AP 4
   LDF L1193
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1193:
   LDC 1
@@ -6331,8 +9895,13 @@ L1186:
   CAR
   MUL
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -6355,6 +9924,136 @@ L1186:
   LDF L1231
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1244 L1244
+L1243:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1245
+TAP 1
+L1245:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1247
+TAP 1
+L1247:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1249
+TAP 1
+L1249:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1251
+=======
 TSEL L1232 L1232
 L1231:
   LD 10 0
@@ -6391,6 +10090,7 @@ L1237:
   LD 16 10
   AP 4
   LDF L1239
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1239:
   LDC 1
@@ -6555,12 +10255,21 @@ L1232:
   CDR
   ADD
   CONS
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CAR
+  LDC 2
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CAR
   LDC 2
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -6583,6 +10292,136 @@ L1232:
   LDF L1277
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1290 L1290
+L1289:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1291
+TAP 1
+L1291:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1293
+TAP 1
+L1293:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1295
+TAP 1
+L1295:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1297
+=======
 TSEL L1278 L1278
 L1277:
   LD 10 0
@@ -6619,6 +10458,7 @@ L1283:
   LD 16 10
   AP 4
   LDF L1285
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1285:
   LDC 1
@@ -6778,8 +10618,13 @@ L1278:
   CAR
   MUL
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -6802,6 +10647,136 @@ L1278:
   LDF L1323
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1336 L1336
+L1335:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1337
+TAP 1
+L1337:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1339
+TAP 1
+L1339:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1341
+TAP 1
+L1341:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1343
+=======
 TSEL L1324 L1324
 L1323:
   LD 10 0
@@ -6838,6 +10813,7 @@ L1329:
   LD 16 10
   AP 4
   LDF L1331
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1331:
   LDC 1
@@ -6998,8 +10974,13 @@ L1324:
   MUL
   CONS
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -7022,6 +11003,136 @@ L1324:
   LDF L1369
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1382 L1382
+L1381:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1383
+TAP 1
+L1383:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1385
+TAP 1
+L1385:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1387
+TAP 1
+L1387:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1389
+=======
 TSEL L1370 L1370
 L1369:
   LD 10 0
@@ -7058,6 +11169,7 @@ L1375:
   LD 16 10
   AP 4
   LDF L1377
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1377:
   LDC 1
@@ -7217,8 +11329,13 @@ L1370:
   CAR
   MUL
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -7241,6 +11358,136 @@ L1370:
   LDF L1415
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1428 L1428
+L1427:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1429
+TAP 1
+L1429:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1431
+TAP 1
+L1431:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1433
+TAP 1
+L1433:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1435
+=======
 TSEL L1416 L1416
 L1415:
   LD 10 0
@@ -7277,6 +11524,7 @@ L1421:
   LD 16 10
   AP 4
   LDF L1423
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1423:
   LDC 1
@@ -7440,12 +11688,21 @@ L1416:
   CDR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CDR
+  LDC 2
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CDR
   LDC 2
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -7468,6 +11725,136 @@ L1416:
   LDF L1461
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1474 L1474
+L1473:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1475
+TAP 1
+L1475:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1477
+TAP 1
+L1477:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1479
+TAP 1
+L1479:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1481
+=======
 TSEL L1462 L1462
 L1461:
   LD 10 0
@@ -7504,6 +11891,7 @@ L1467:
   LD 16 10
   AP 4
   LDF L1469
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1469:
   LDC 1
@@ -7663,8 +12051,13 @@ L1462:
   CAR
   MUL
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -7687,6 +12080,136 @@ L1462:
   LDF L1507
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1520 L1520
+L1519:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1521
+TAP 1
+L1521:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1523
+TAP 1
+L1523:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1525
+TAP 1
+L1525:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1527
+=======
 TSEL L1508 L1508
 L1507:
   LD 10 0
@@ -7723,6 +12246,7 @@ L1513:
   LD 16 10
   AP 4
   LDF L1515
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1515:
   LDC 1
@@ -7883,8 +12407,13 @@ L1508:
   MUL
   CONS
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -7907,6 +12436,136 @@ L1508:
   LDF L1553
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1566 L1566
+L1565:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1567
+TAP 1
+L1567:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1569
+TAP 1
+L1569:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1571
+TAP 1
+L1571:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1573
+=======
 TSEL L1554 L1554
 L1553:
   LD 10 0
@@ -7943,6 +12602,7 @@ L1559:
   LD 16 10
   AP 4
   LDF L1561
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1561:
   LDC 1
@@ -8102,8 +12762,13 @@ L1554:
   CAR
   MUL
   LDC 2
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -8126,6 +12791,136 @@ L1554:
   LDF L1599
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1612 L1612
+L1611:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1613
+TAP 1
+L1613:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1615
+TAP 1
+L1615:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1617
+TAP 1
+L1617:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1619
+=======
 TSEL L1600 L1600
 L1599:
   LD 10 0
@@ -8162,6 +12957,7 @@ L1605:
   LD 16 10
   AP 4
   LDF L1607
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1607:
   LDC 1
@@ -8327,6 +13123,166 @@ L1600:
   ADD
   CONS
   CONS
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1657
+  AP 4
+LDC 0
+TSEL L1658 L1658
+L1657:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1659
+TAP 1
+L1659:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1661
+TAP 1
+L1661:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1663
+TAP 1
+L1663:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+<<<<<<< HEAD
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1665
+=======
+  CONS
   ST 2 0
   LD 2 0
   CAR
@@ -8392,6 +13348,7 @@ L1651:
   LD 16 10
   AP 4
   LDF L1653
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1653:
   LDC 1
@@ -8551,8 +13508,13 @@ L1646:
   CAR
   MUL
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -8575,6 +13537,136 @@ L1646:
   LDF L1691
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1704 L1704
+L1703:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1705
+TAP 1
+L1705:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1707
+TAP 1
+L1707:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1709
+TAP 1
+L1709:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1711
+=======
 TSEL L1692 L1692
 L1691:
   LD 2 0
@@ -8611,6 +13703,7 @@ L1697:
   LD 16 10
   AP 4
   LDF L1699
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1699:
   LDC 1
@@ -8771,8 +13864,13 @@ L1692:
   MUL
   CONS
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -8795,6 +13893,136 @@ L1692:
   LDF L1737
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1750 L1750
+L1749:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1751
+TAP 1
+L1751:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1753
+TAP 1
+L1753:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1755
+TAP 1
+L1755:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1757
+=======
 TSEL L1738 L1738
 L1737:
   LD 2 0
@@ -8831,6 +14059,7 @@ L1743:
   LD 16 10
   AP 4
   LDF L1745
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1745:
   LDC 1
@@ -8990,8 +14219,13 @@ L1738:
   CAR
   MUL
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -9014,6 +14248,136 @@ L1738:
   LDF L1783
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1796 L1796
+L1795:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1797
+TAP 1
+L1797:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1799
+TAP 1
+L1799:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1801
+TAP 1
+L1801:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1803
+=======
 TSEL L1784 L1784
 L1783:
   LD 2 0
@@ -9050,6 +14414,7 @@ L1789:
   LD 16 10
   AP 4
   LDF L1791
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1791:
   LDC 1
@@ -9213,12 +14578,21 @@ L1784:
   CAR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CAR
+  CDR
+  LDC 4
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CAR
   CDR
   LDC 4
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -9241,6 +14615,136 @@ L1784:
   LDF L1829
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1842 L1842
+L1841:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1843
+TAP 1
+L1843:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1845
+TAP 1
+L1845:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1847
+TAP 1
+L1847:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1849
+=======
 TSEL L1830 L1830
 L1829:
   LD 2 0
@@ -9277,6 +14781,7 @@ L1835:
   LD 16 10
   AP 4
   LDF L1837
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1837:
   LDC 1
@@ -9436,8 +14941,13 @@ L1830:
   CAR
   MUL
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -9460,6 +14970,136 @@ L1830:
   LDF L1875
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1888 L1888
+L1887:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1889
+TAP 1
+L1889:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1891
+TAP 1
+L1891:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1893
+TAP 1
+L1893:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1895
+=======
 TSEL L1876 L1876
 L1875:
   LD 2 0
@@ -9496,6 +15136,7 @@ L1881:
   LD 16 10
   AP 4
   LDF L1883
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1883:
   LDC 1
@@ -9656,8 +15297,13 @@ L1876:
   MUL
   CONS
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -9680,6 +15326,136 @@ L1876:
   LDF L1921
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1934 L1934
+L1933:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1935
+TAP 1
+L1935:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1937
+TAP 1
+L1937:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1939
+TAP 1
+L1939:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1941
+=======
 TSEL L1922 L1922
 L1921:
   LD 2 0
@@ -9716,6 +15492,7 @@ L1927:
   LD 16 10
   AP 4
   LDF L1929
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1929:
   LDC 1
@@ -9875,8 +15652,13 @@ L1922:
   CAR
   MUL
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -9899,6 +15681,136 @@ L1922:
   LDF L1967
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L1980 L1980
+L1979:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1981
+TAP 1
+L1981:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1983
+TAP 1
+L1983:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1985
+TAP 1
+L1985:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1987
+=======
 TSEL L1968 L1968
 L1967:
   LD 2 0
@@ -9935,6 +15847,7 @@ L1973:
   LD 16 10
   AP 4
   LDF L1975
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L1975:
   LDC 1
@@ -10099,12 +16012,21 @@ L1968:
   CDR
   ADD
   CONS
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CAR
+  LDC 4
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CAR
   LDC 4
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -10127,6 +16049,136 @@ L1968:
   LDF L2013
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L2026 L2026
+L2025:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2027
+TAP 1
+L2027:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2029
+TAP 1
+L2029:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2031
+TAP 1
+L2031:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2033
+=======
 TSEL L2014 L2014
 L2013:
   LD 2 0
@@ -10163,6 +16215,7 @@ L2019:
   LD 16 10
   AP 4
   LDF L2021
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L2021:
   LDC 1
@@ -10322,8 +16375,13 @@ L2014:
   CAR
   MUL
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -10346,6 +16404,136 @@ L2014:
   LDF L2059
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L2072 L2072
+L2071:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2073
+TAP 1
+L2073:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2075
+TAP 1
+L2075:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2077
+TAP 1
+L2077:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2079
+=======
 TSEL L2060 L2060
 L2059:
   LD 2 0
@@ -10382,6 +16570,7 @@ L2065:
   LD 16 10
   AP 4
   LDF L2067
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L2067:
   LDC 1
@@ -10542,8 +16731,13 @@ L2060:
   MUL
   CONS
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -10566,6 +16760,136 @@ L2060:
   LDF L2105
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L2118 L2118
+L2117:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2119
+TAP 1
+L2119:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2121
+TAP 1
+L2121:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2123
+TAP 1
+L2123:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2125
+=======
 TSEL L2106 L2106
 L2105:
   LD 2 0
@@ -10602,6 +16926,7 @@ L2111:
   LD 16 10
   AP 4
   LDF L2113
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L2113:
   LDC 1
@@ -10761,8 +17086,13 @@ L2106:
   CAR
   MUL
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -10785,6 +17115,136 @@ L2106:
   LDF L2151
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L2164 L2164
+L2163:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2165
+TAP 1
+L2165:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2167
+TAP 1
+L2167:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2169
+TAP 1
+L2169:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2171
+=======
 TSEL L2152 L2152
 L2151:
   LD 2 0
@@ -10821,6 +17281,7 @@ L2157:
   LD 16 10
   AP 4
   LDF L2159
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L2159:
   LDC 1
@@ -10984,12 +17445,21 @@ L2152:
   CDR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CDR
+  LDC 4
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CDR
   LDC 4
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -11012,6 +17482,136 @@ L2152:
   LDF L2197
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L2210 L2210
+L2209:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2211
+TAP 1
+L2211:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2213
+TAP 1
+L2213:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2215
+TAP 1
+L2215:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2217
+=======
 TSEL L2198 L2198
 L2197:
   LD 2 0
@@ -11048,6 +17648,7 @@ L2203:
   LD 16 10
   AP 4
   LDF L2205
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L2205:
   LDC 1
@@ -11207,8 +17808,13 @@ L2198:
   CAR
   MUL
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -11231,6 +17837,136 @@ L2198:
   LDF L2243
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L2256 L2256
+L2255:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2257
+TAP 1
+L2257:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2259
+TAP 1
+L2259:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2261
+TAP 1
+L2261:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2263
+=======
 TSEL L2244 L2244
 L2243:
   LD 2 0
@@ -11267,6 +18003,7 @@ L2249:
   LD 16 10
   AP 4
   LDF L2251
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L2251:
   LDC 1
@@ -11427,8 +18164,13 @@ L2244:
   MUL
   CONS
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -11451,6 +18193,136 @@ L2244:
   LDF L2289
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L2302 L2302
+L2301:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2303
+TAP 1
+L2303:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2305
+TAP 1
+L2305:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2307
+TAP 1
+L2307:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2309
+=======
 TSEL L2290 L2290
 L2289:
   LD 2 0
@@ -11487,6 +18359,7 @@ L2295:
   LD 16 10
   AP 4
   LDF L2297
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L2297:
   LDC 1
@@ -11646,8 +18519,13 @@ L2290:
   CAR
   MUL
   LDC 4
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -11670,6 +18548,136 @@ L2290:
   LDF L2335
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L2348 L2348
+L2347:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2349
+TAP 1
+L2349:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2351
+TAP 1
+L2351:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2353
+TAP 1
+L2353:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2355
+=======
 TSEL L2336 L2336
 L2335:
   LD 2 0
@@ -11706,6 +18714,7 @@ L2341:
   LD 16 10
   AP 4
   LDF L2343
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L2343:
   LDC 1
@@ -11871,6 +18880,15 @@ L2336:
   ADD
   CONS
   CONS
+<<<<<<< HEAD
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 3
+  LD 12 4
+  LD 14 18
+=======
   ST 2 0
   LD 2 0
   CAR
@@ -11878,6 +18896,7 @@ L2336:
   LDC 3
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -11903,45 +18922,173 @@ LDC 0
 TSEL L2382 L2382
 L2381:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2383
 TAP 1
 L2383:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2385
 TAP 1
 L2385:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2387
 TAP 1
 L2387:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2389
 TAP 1
@@ -12103,8 +19250,13 @@ L2382:
   CAR
   MUL
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -12130,45 +19282,173 @@ LDC 0
 TSEL L2428 L2428
 L2427:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2429
 TAP 1
 L2429:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2431
 TAP 1
 L2431:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2433
 TAP 1
 L2433:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2435
 TAP 1
@@ -12331,8 +19611,13 @@ L2428:
   MUL
   CONS
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -12358,45 +19643,173 @@ LDC 0
 TSEL L2474 L2474
 L2473:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2475
 TAP 1
 L2475:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2477
 TAP 1
 L2477:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2479
 TAP 1
 L2479:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2481
 TAP 1
@@ -12558,8 +19971,13 @@ L2474:
   CAR
   MUL
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -12585,26 +20003,123 @@ LDC 0
 TSEL L2520 L2520
 L2519:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2521
 TAP 1
 L2521:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2523
 TAP 1
+<<<<<<< HEAD
+L2535:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
 L2523:
   LDC 0
   LD 12 0
@@ -12613,17 +20128,50 @@ L2523:
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2525
 TAP 1
 L2525:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2527
 TAP 1
@@ -12789,12 +20337,21 @@ L2520:
   CAR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CAR
+  CDR
+  LDC 3
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CAR
   CDR
   LDC 3
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -12820,45 +20377,173 @@ LDC 0
 TSEL L2566 L2566
 L2565:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2567
 TAP 1
 L2567:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2569
 TAP 1
 L2569:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2571
 TAP 1
 L2571:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2573
 TAP 1
@@ -13020,8 +20705,13 @@ L2566:
   CAR
   MUL
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -13047,45 +20737,173 @@ LDC 0
 TSEL L2612 L2612
 L2611:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2613
 TAP 1
 L2613:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2615
 TAP 1
 L2615:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2617
 TAP 1
 L2617:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2619
 TAP 1
@@ -13248,8 +21066,13 @@ L2612:
   MUL
   CONS
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -13275,45 +21098,173 @@ LDC 0
 TSEL L2658 L2658
 L2657:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2659
 TAP 1
 L2659:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2661
 TAP 1
 L2661:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2663
 TAP 1
 L2663:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2665
 TAP 1
@@ -13475,8 +21426,13 @@ L2658:
   CAR
   MUL
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -13502,45 +21458,173 @@ LDC 0
 TSEL L2704 L2704
 L2703:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2705
 TAP 1
 L2705:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2707
 TAP 1
 L2707:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2709
 TAP 1
 L2709:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2711
 TAP 1
@@ -13707,12 +21791,21 @@ L2704:
   CDR
   ADD
   CONS
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CAR
+  LDC 3
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CAR
   LDC 3
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -13738,45 +21831,173 @@ LDC 0
 TSEL L2750 L2750
 L2749:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2751
 TAP 1
 L2751:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2753
 TAP 1
 L2753:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2755
 TAP 1
 L2755:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2757
 TAP 1
@@ -13938,8 +22159,13 @@ L2750:
   CAR
   MUL
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -13965,45 +22191,173 @@ LDC 0
 TSEL L2796 L2796
 L2795:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2797
 TAP 1
 L2797:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2799
 TAP 1
 L2799:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2801
 TAP 1
 L2801:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2803
 TAP 1
@@ -14166,8 +22520,13 @@ L2796:
   MUL
   CONS
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -14193,45 +22552,173 @@ LDC 0
 TSEL L2842 L2842
 L2841:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2843
 TAP 1
 L2843:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2845
 TAP 1
 L2845:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2847
 TAP 1
 L2847:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2849
 TAP 1
@@ -14393,8 +22880,13 @@ L2842:
   CAR
   MUL
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -14420,45 +22912,173 @@ LDC 0
 TSEL L2888 L2888
 L2887:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2889
 TAP 1
 L2889:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2891
 TAP 1
 L2891:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2893
 TAP 1
 L2893:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2895
 TAP 1
@@ -14624,12 +23244,21 @@ L2888:
   CDR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CDR
+  LDC 3
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CDR
   LDC 3
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -14655,45 +23284,173 @@ LDC 0
 TSEL L2934 L2934
 L2933:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2935
 TAP 1
 L2935:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2937
 TAP 1
 L2937:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2939
 TAP 1
 L2939:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2941
 TAP 1
@@ -14855,8 +23612,13 @@ L2934:
   CAR
   MUL
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -14882,45 +23644,173 @@ LDC 0
 TSEL L2980 L2980
 L2979:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2981
 TAP 1
 L2981:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2983
 TAP 1
 L2983:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2985
 TAP 1
 L2985:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L2987
 TAP 1
@@ -15083,8 +23973,13 @@ L2980:
   MUL
   CONS
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -15110,45 +24005,173 @@ LDC 0
 TSEL L3026 L3026
 L3025:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3027
 TAP 1
 L3027:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3029
 TAP 1
 L3029:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3031
 TAP 1
 L3031:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3033
 TAP 1
@@ -15310,8 +24333,13 @@ L3026:
   CAR
   MUL
   LDC 3
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 200
   MUL
@@ -15337,45 +24365,173 @@ LDC 0
 TSEL L3072 L3072
 L3071:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 10 0
   LD 11 1
   LDC 3
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3073
 TAP 1
 L3073:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 11 0
   LD 12 1
   LDC 3
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3075
 TAP 1
 L3075:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 12 0
   LD 13 1
   LDC 3
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3077
 TAP 1
 L3077:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 13 0
   LD 14 1
   LDC 3
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3079
 TAP 1
@@ -15543,6 +24699,15 @@ L3072:
   ADD
   CONS
   CONS
+<<<<<<< HEAD
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 0
+  LD 12 4
+  LD 14 18
+=======
   ST 2 0
   LD 2 0
   CAR
@@ -15550,6 +24715,7 @@ L3072:
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -15572,6 +24738,136 @@ L3072:
   LDF L3117
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3130 L3130
+L3129:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3131
+TAP 1
+L3131:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3133
+TAP 1
+L3133:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3135
+TAP 1
+L3135:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3137
+=======
 TSEL L3118 L3118
 L3117:
   LD 10 0
@@ -15608,6 +24904,7 @@ L3123:
   LD 16 10
   AP 4
   LDF L3125
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3125:
   LDC 1
@@ -15767,8 +25064,13 @@ L3118:
   CAR
   MUL
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -15791,6 +25093,136 @@ L3118:
   LDF L3163
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3176 L3176
+L3175:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3177
+TAP 1
+L3177:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3179
+TAP 1
+L3179:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3181
+TAP 1
+L3181:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3183
+=======
 TSEL L3164 L3164
 L3163:
   LD 10 0
@@ -15827,6 +25259,7 @@ L3169:
   LD 16 10
   AP 4
   LDF L3171
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3171:
   LDC 1
@@ -15987,8 +25420,13 @@ L3164:
   MUL
   CONS
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -16011,6 +25449,136 @@ L3164:
   LDF L3209
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3222 L3222
+L3221:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3223
+TAP 1
+L3223:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3225
+TAP 1
+L3225:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3227
+TAP 1
+L3227:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3229
+=======
 TSEL L3210 L3210
 L3209:
   LD 10 0
@@ -16047,6 +25615,7 @@ L3215:
   LD 16 10
   AP 4
   LDF L3217
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3217:
   LDC 1
@@ -16206,8 +25775,13 @@ L3210:
   CAR
   MUL
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -16230,6 +25804,136 @@ L3210:
   LDF L3255
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3268 L3268
+L3267:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3269
+TAP 1
+L3269:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3271
+TAP 1
+L3271:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3273
+TAP 1
+L3273:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3275
+=======
 TSEL L3256 L3256
 L3255:
   LD 10 0
@@ -16266,6 +25970,7 @@ L3261:
   LD 16 10
   AP 4
   LDF L3263
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3263:
   LDC 1
@@ -16429,12 +26134,21 @@ L3256:
   CAR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CAR
+  CDR
+  LDC 0
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CAR
   CDR
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -16457,6 +26171,136 @@ L3256:
   LDF L3301
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3314 L3314
+L3313:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3315
+TAP 1
+L3315:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3317
+TAP 1
+L3317:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3319
+TAP 1
+L3319:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3321
+=======
 TSEL L3302 L3302
 L3301:
   LD 10 0
@@ -16493,6 +26337,7 @@ L3307:
   LD 16 10
   AP 4
   LDF L3309
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3309:
   LDC 1
@@ -16652,8 +26497,13 @@ L3302:
   CAR
   MUL
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -16676,6 +26526,136 @@ L3302:
   LDF L3347
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3360 L3360
+L3359:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3361
+TAP 1
+L3361:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3363
+TAP 1
+L3363:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3365
+TAP 1
+L3365:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3367
+=======
 TSEL L3348 L3348
 L3347:
   LD 10 0
@@ -16712,6 +26692,7 @@ L3353:
   LD 16 10
   AP 4
   LDF L3355
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3355:
   LDC 1
@@ -16872,8 +26853,13 @@ L3348:
   MUL
   CONS
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -16896,6 +26882,136 @@ L3348:
   LDF L3393
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3406 L3406
+L3405:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3407
+TAP 1
+L3407:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3409
+TAP 1
+L3409:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3411
+TAP 1
+L3411:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3413
+=======
 TSEL L3394 L3394
 L3393:
   LD 10 0
@@ -16932,6 +27048,7 @@ L3399:
   LD 16 10
   AP 4
   LDF L3401
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3401:
   LDC 1
@@ -17091,8 +27208,13 @@ L3394:
   CAR
   MUL
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -17115,6 +27237,136 @@ L3394:
   LDF L3439
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3452 L3452
+L3451:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3453
+TAP 1
+L3453:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3455
+TAP 1
+L3455:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3457
+TAP 1
+L3457:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3459
+=======
 TSEL L3440 L3440
 L3439:
   LD 10 0
@@ -17151,6 +27403,7 @@ L3445:
   LD 16 10
   AP 4
   LDF L3447
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3447:
   LDC 1
@@ -17315,12 +27568,21 @@ L3440:
   CDR
   ADD
   CONS
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CAR
+  LDC 0
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CAR
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -17343,6 +27605,136 @@ L3440:
   LDF L3485
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3498 L3498
+L3497:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3499
+TAP 1
+L3499:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3501
+TAP 1
+L3501:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3503
+TAP 1
+L3503:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3505
+=======
 TSEL L3486 L3486
 L3485:
   LD 10 0
@@ -17379,6 +27771,7 @@ L3491:
   LD 16 10
   AP 4
   LDF L3493
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3493:
   LDC 1
@@ -17538,8 +27931,13 @@ L3486:
   CAR
   MUL
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -17562,6 +27960,136 @@ L3486:
   LDF L3531
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3544 L3544
+L3543:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3545
+TAP 1
+L3545:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3547
+TAP 1
+L3547:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3549
+TAP 1
+L3549:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3551
+=======
 TSEL L3532 L3532
 L3531:
   LD 10 0
@@ -17598,6 +28126,7 @@ L3537:
   LD 16 10
   AP 4
   LDF L3539
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3539:
   LDC 1
@@ -17758,8 +28287,13 @@ L3532:
   MUL
   CONS
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -17782,6 +28316,136 @@ L3532:
   LDF L3577
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3590 L3590
+L3589:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3591
+TAP 1
+L3591:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3593
+TAP 1
+L3593:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3595
+TAP 1
+L3595:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3597
+=======
 TSEL L3578 L3578
 L3577:
   LD 10 0
@@ -17818,6 +28482,7 @@ L3583:
   LD 16 10
   AP 4
   LDF L3585
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3585:
   LDC 1
@@ -17977,8 +28642,13 @@ L3578:
   CAR
   MUL
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -18001,6 +28671,136 @@ L3578:
   LDF L3623
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3636 L3636
+L3635:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3637
+TAP 1
+L3637:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3639
+TAP 1
+L3639:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3641
+TAP 1
+L3641:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3643
+=======
 TSEL L3624 L3624
 L3623:
   LD 10 0
@@ -18037,6 +28837,7 @@ L3629:
   LD 16 10
   AP 4
   LDF L3631
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3631:
   LDC 1
@@ -18200,12 +29001,21 @@ L3624:
   CDR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CDR
+  LDC 0
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CDR
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -18228,6 +29038,136 @@ L3624:
   LDF L3669
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3682 L3682
+L3681:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3683
+TAP 1
+L3683:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3685
+TAP 1
+L3685:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3687
+TAP 1
+L3687:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3689
+=======
 TSEL L3670 L3670
 L3669:
   LD 10 0
@@ -18264,6 +29204,7 @@ L3675:
   LD 16 10
   AP 4
   LDF L3677
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3677:
   LDC 1
@@ -18423,8 +29364,13 @@ L3670:
   CAR
   MUL
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -18447,6 +29393,136 @@ L3670:
   LDF L3715
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3728 L3728
+L3727:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3729
+TAP 1
+L3729:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3731
+TAP 1
+L3731:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3733
+TAP 1
+L3733:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3735
+=======
 TSEL L3716 L3716
 L3715:
   LD 10 0
@@ -18483,6 +29559,7 @@ L3721:
   LD 16 10
   AP 4
   LDF L3723
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3723:
   LDC 1
@@ -18643,8 +29720,13 @@ L3716:
   MUL
   CONS
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -18667,6 +29749,136 @@ L3716:
   LDF L3761
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3774 L3774
+L3773:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3775
+TAP 1
+L3775:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3777
+TAP 1
+L3777:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3779
+TAP 1
+L3779:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3781
+=======
 TSEL L3762 L3762
 L3761:
   LD 10 0
@@ -18703,6 +29915,7 @@ L3767:
   LD 16 10
   AP 4
   LDF L3769
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3769:
   LDC 1
@@ -18862,8 +30075,13 @@ L3762:
   CAR
   MUL
   LDC 0
+<<<<<<< HEAD
+  LD 12 4
+  LD 14 18
+=======
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 50
   MUL
@@ -18886,6 +30104,136 @@ L3762:
   LDF L3807
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L3820 L3820
+L3819:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3821
+TAP 1
+L3821:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3823
+TAP 1
+L3823:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3825
+TAP 1
+L3825:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3827
+=======
 TSEL L3808 L3808
 L3807:
   LD 10 0
@@ -18922,6 +30270,7 @@ L3813:
   LD 16 10
   AP 4
   LDF L3815
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 TAP 1
 L3815:
   LDC 1
@@ -19087,6 +30436,15 @@ L3808:
   ADD
   CONS
   CONS
+<<<<<<< HEAD
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   ST 2 0
   LD 2 0
   CAR
@@ -19094,6 +30452,7 @@ L3808:
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -19119,45 +30478,173 @@ LDC 0
 TSEL L3854 L3854
 L3853:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3855
 TAP 1
 L3855:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3857
 TAP 1
 L3857:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3859
 TAP 1
 L3859:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3861
 TAP 1
@@ -19318,9 +30805,15 @@ L3854:
   CAR
   CAR
   MUL
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -19346,45 +30839,173 @@ LDC 0
 TSEL L3900 L3900
 L3899:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3901
 TAP 1
 L3901:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3903
 TAP 1
 L3903:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3905
 TAP 1
 L3905:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3907
 TAP 1
@@ -19546,9 +31167,15 @@ L3900:
   CDR
   MUL
   CONS
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -19574,45 +31201,173 @@ LDC 0
 TSEL L3946 L3946
 L3945:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3947
 TAP 1
 L3947:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3949
 TAP 1
 L3949:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3951
 TAP 1
 L3951:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3953
 TAP 1
@@ -19773,9 +31528,15 @@ L3946:
   CDR
   CAR
   MUL
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -19801,45 +31562,173 @@ LDC 0
 TSEL L3992 L3992
 L3991:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3993
 TAP 1
 L3993:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3995
 TAP 1
 L3995:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3997
 TAP 1
 L3997:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L3999
 TAP 1
@@ -20005,12 +31894,21 @@ L3992:
   CAR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CAR
+  CDR
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CAR
   CDR
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -20036,45 +31934,173 @@ LDC 0
 TSEL L4038 L4038
 L4037:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4039
 TAP 1
 L4039:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4041
 TAP 1
 L4041:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4043
 TAP 1
 L4043:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4045
 TAP 1
@@ -20235,9 +32261,15 @@ L4038:
   CAR
   CAR
   MUL
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -20263,45 +32295,173 @@ LDC 0
 TSEL L4084 L4084
 L4083:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4085
 TAP 1
 L4085:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4087
 TAP 1
 L4087:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4089
 TAP 1
 L4089:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4091
 TAP 1
@@ -20463,9 +32623,15 @@ L4084:
   CDR
   MUL
   CONS
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -20491,45 +32657,173 @@ LDC 0
 TSEL L4130 L4130
 L4129:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4131
 TAP 1
 L4131:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4133
 TAP 1
 L4133:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4135
 TAP 1
 L4135:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4137
 TAP 1
@@ -20690,9 +32984,15 @@ L4130:
   CDR
   CAR
   MUL
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -20718,45 +33018,173 @@ LDC 0
 TSEL L4176 L4176
 L4175:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4177
 TAP 1
 L4177:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4179
 TAP 1
 L4179:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4181
 TAP 1
 L4181:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4183
 TAP 1
@@ -20923,12 +33351,21 @@ L4176:
   CDR
   ADD
   CONS
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CAR
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CAR
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -20954,45 +33391,173 @@ LDC 0
 TSEL L4222 L4222
 L4221:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4223
 TAP 1
 L4223:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4225
 TAP 1
 L4225:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4227
 TAP 1
 L4227:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4229
 TAP 1
@@ -21153,9 +33718,15 @@ L4222:
   CAR
   CAR
   MUL
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -21181,45 +33752,173 @@ LDC 0
 TSEL L4268 L4268
 L4267:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4269
 TAP 1
 L4269:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4271
 TAP 1
 L4271:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4273
 TAP 1
 L4273:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4275
 TAP 1
@@ -21381,9 +34080,15 @@ L4268:
   CDR
   MUL
   CONS
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -21409,45 +34114,173 @@ LDC 0
 TSEL L4314 L4314
 L4313:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4315
 TAP 1
 L4315:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4317
 TAP 1
 L4317:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4319
 TAP 1
 L4319:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4321
 TAP 1
@@ -21608,9 +34441,15 @@ L4314:
   CDR
   CAR
   MUL
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -21636,45 +34475,173 @@ LDC 0
 TSEL L4360 L4360
 L4359:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4361
 TAP 1
 L4361:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4363
 TAP 1
 L4363:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4365
 TAP 1
 L4365:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4367
 TAP 1
@@ -21840,12 +34807,21 @@ L4360:
   CDR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+  CDR
+  CDR
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LD 2 0
   CDR
   CDR
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -21871,45 +34847,173 @@ LDC 0
 TSEL L4406 L4406
 L4405:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4407
 TAP 1
 L4407:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4409
 TAP 1
 L4409:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4411
 TAP 1
 L4411:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4413
 TAP 1
@@ -22070,9 +35174,15 @@ L4406:
   CAR
   CAR
   MUL
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -22098,45 +35208,173 @@ LDC 0
 TSEL L4452 L4452
 L4451:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4453
 TAP 1
 L4453:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4455
 TAP 1
 L4455:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4457
 TAP 1
 L4457:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4459
 TAP 1
@@ -22298,9 +35536,15 @@ L4452:
   CDR
   MUL
   CONS
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -22326,45 +35570,173 @@ LDC 0
 TSEL L4498 L4498
 L4497:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4499
 TAP 1
 L4499:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4501
 TAP 1
 L4501:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4503
 TAP 1
 L4503:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4505
 TAP 1
@@ -22525,9 +35897,15 @@ L4498:
   CDR
   CAR
   MUL
+<<<<<<< HEAD
+  LDC 6
+  LD 12 4
+  LD 14 18
+=======
   LDC 0
   LD 10 4
   LD 12 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDC 100
   MUL
@@ -22553,45 +35931,173 @@ LDC 0
 TSEL L4544 L4544
 L4543:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+=======
   LD 1 0
   LD 11 1
   LDC 8
   LDC 20
   LD 13 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4545
 TAP 1
 L4545:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+=======
   LD 2 0
   LD 12 1
   LDC 8
   LDC 20
   LD 14 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4547
 TAP 1
 L4547:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+=======
   LD 3 0
   LD 13 1
   LDC 8
   LDC 20
   LD 15 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4549
 TAP 1
 L4549:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+=======
   LD 4 0
   LD 14 1
   LDC 8
   LDC 20
   LD 16 10
   AP 4
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   SUB
   LDF L4551
 TAP 1
@@ -22759,8 +36265,13 @@ L4544:
   ADD
   CONS
   CONS
+<<<<<<< HEAD
+  ST 0 0
+  LD 0 0
+=======
   ST 2 0
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   CAR
   LDC 5
@@ -22786,136 +36297,228 @@ LDC 0
 TSEL L4590 L4590
 L4589:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4591
 TAP 1
 L4591:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4593
 TAP 1
 L4593:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4595
 TAP 1
 L4595:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4597
@@ -23100,136 +36703,228 @@ LDC 0
 TSEL L4636 L4636
 L4635:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4637
 TAP 1
 L4637:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4639
 TAP 1
 L4639:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4641
 TAP 1
 L4641:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4643
@@ -23415,136 +37110,228 @@ LDC 0
 TSEL L4682 L4682
 L4681:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4683
 TAP 1
 L4683:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4685
 TAP 1
 L4685:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4687
 TAP 1
 L4687:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4689
@@ -23729,136 +37516,228 @@ LDC 0
 TSEL L4728 L4728
 L4727:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4729
 TAP 1
 L4729:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4731
 TAP 1
 L4731:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4733
 TAP 1
 L4733:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4735
@@ -24025,7 +37904,11 @@ L4728:
   CAR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+=======
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   CDR
   LDC 5
@@ -24051,136 +37934,228 @@ LDC 0
 TSEL L4774 L4774
 L4773:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4775
 TAP 1
 L4775:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4777
 TAP 1
 L4777:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4779
 TAP 1
 L4779:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4781
@@ -24365,136 +38340,228 @@ LDC 0
 TSEL L4820 L4820
 L4819:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4821
 TAP 1
 L4821:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4823
 TAP 1
 L4823:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4825
 TAP 1
 L4825:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4827
@@ -24680,136 +38747,228 @@ LDC 0
 TSEL L4866 L4866
 L4865:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4867
 TAP 1
 L4867:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4869
 TAP 1
 L4869:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4871
 TAP 1
 L4871:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4873
@@ -24994,136 +39153,228 @@ LDC 0
 TSEL L4912 L4912
 L4911:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4913
 TAP 1
 L4913:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4915
 TAP 1
 L4915:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4917
 TAP 1
 L4917:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4919
@@ -25291,7 +39542,11 @@ L4912:
   CDR
   ADD
   CONS
+<<<<<<< HEAD
+  LD 0 0
+=======
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   CAR
   LDC 5
@@ -25317,136 +39572,228 @@ LDC 0
 TSEL L4958 L4958
 L4957:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4959
 TAP 1
 L4959:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4961
 TAP 1
 L4961:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4963
 TAP 1
 L4963:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L4965
@@ -25631,136 +39978,228 @@ LDC 0
 TSEL L5004 L5004
 L5003:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5005
 TAP 1
 L5005:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5007
 TAP 1
 L5007:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5009
 TAP 1
 L5009:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5011
@@ -25946,136 +40385,228 @@ LDC 0
 TSEL L5050 L5050
 L5049:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5051
 TAP 1
 L5051:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5053
 TAP 1
 L5053:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5055
 TAP 1
 L5055:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5057
@@ -26260,136 +40791,228 @@ LDC 0
 TSEL L5096 L5096
 L5095:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5097
 TAP 1
 L5097:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5099
 TAP 1
 L5099:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5101
 TAP 1
 L5101:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5103
@@ -26556,7 +41179,11 @@ L5096:
   CDR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+=======
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   CDR
   LDC 5
@@ -26582,136 +41209,228 @@ LDC 0
 TSEL L5142 L5142
 L5141:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5143
 TAP 1
 L5143:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5145
 TAP 1
 L5145:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5147
 TAP 1
 L5147:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5149
@@ -26896,136 +41615,228 @@ LDC 0
 TSEL L5188 L5188
 L5187:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5189
 TAP 1
 L5189:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5191
 TAP 1
 L5191:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5193
 TAP 1
 L5193:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5195
@@ -27211,136 +42022,228 @@ LDC 0
 TSEL L5234 L5234
 L5233:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5235
 TAP 1
 L5235:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5237
 TAP 1
 L5237:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5239
 TAP 1
 L5239:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5241
@@ -27525,136 +42428,228 @@ LDC 0
 TSEL L5280 L5280
 L5279:
   LDC 0
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 11 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 0 0
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
+  LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5281
 TAP 1
 L5281:
   LDC 0
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 12 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 1 1
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
+  LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5283
 TAP 1
 L5283:
   LDC 0
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 13 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 2 2
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
+  LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5285
 TAP 1
 L5285:
   LDC 0
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 14 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
+  CAR
+  LD 3 3
+  CAR
+  ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
+  LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   SUB
   LDF L5287
@@ -27823,8 +42818,13 @@ L5280:
   ADD
   CONS
   CONS
+<<<<<<< HEAD
+  ST 0 0
+  LD 0 0
+=======
   ST 2 0
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   CAR
   LDC 10000
@@ -27847,132 +42847,229 @@ L5280:
   LDF L5325
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5338 L5338
+L5337:
+  LD 13 1
+=======
 TSEL L5326 L5326
 L5325:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5327
 TAP 1
+<<<<<<< HEAD
+L5339:
+  LD 14 1
+=======
 L5327:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5329
 TAP 1
+<<<<<<< HEAD
+L5341:
+  LD 15 1
+=======
 L5329:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5331
 TAP 1
+<<<<<<< HEAD
+L5343:
+  LD 16 1
+=======
 L5331:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5333
 TAP 1
@@ -28033,132 +43130,229 @@ L5326:
   LDF L5335
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5348 L5348
+L5347:
+  LD 13 1
+=======
 TSEL L5336 L5336
 L5335:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5337
 TAP 1
+<<<<<<< HEAD
+L5349:
+  LD 14 1
+=======
 L5337:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5339
 TAP 1
+<<<<<<< HEAD
+L5351:
+  LD 15 1
+=======
 L5339:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5341
 TAP 1
+<<<<<<< HEAD
+L5353:
+  LD 16 1
+=======
 L5341:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5343
 TAP 1
@@ -28220,132 +43414,229 @@ L5336:
   LDF L5345
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5358 L5358
+L5357:
+  LD 13 1
+=======
 TSEL L5346 L5346
 L5345:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5347
 TAP 1
+<<<<<<< HEAD
+L5359:
+  LD 14 1
+=======
 L5347:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5349
 TAP 1
+<<<<<<< HEAD
+L5361:
+  LD 15 1
+=======
 L5349:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5351
 TAP 1
+<<<<<<< HEAD
+L5363:
+  LD 16 1
+=======
 L5351:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5353
 TAP 1
@@ -28406,132 +43697,229 @@ L5346:
   LDF L5355
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5368 L5368
+L5367:
+  LD 13 1
+=======
 TSEL L5356 L5356
 L5355:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5357
 TAP 1
+<<<<<<< HEAD
+L5369:
+  LD 14 1
+=======
 L5357:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5359
 TAP 1
+<<<<<<< HEAD
+L5371:
+  LD 15 1
+=======
 L5359:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5361
 TAP 1
+<<<<<<< HEAD
+L5373:
+  LD 16 1
+=======
 L5361:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5363
 TAP 1
@@ -28577,7 +43965,11 @@ L5356:
   CAR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+=======
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   CDR
   LDC 10000
@@ -28600,132 +43992,229 @@ L5356:
   LDF L5365
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5378 L5378
+L5377:
+  LD 13 1
+=======
 TSEL L5366 L5366
 L5365:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5367
 TAP 1
+<<<<<<< HEAD
+L5379:
+  LD 14 1
+=======
 L5367:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5369
 TAP 1
+<<<<<<< HEAD
+L5381:
+  LD 15 1
+=======
 L5369:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5371
 TAP 1
+<<<<<<< HEAD
+L5383:
+  LD 16 1
+=======
 L5371:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5373
 TAP 1
@@ -28786,132 +44275,229 @@ L5366:
   LDF L5375
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5388 L5388
+L5387:
+  LD 13 1
+=======
 TSEL L5376 L5376
 L5375:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5377
 TAP 1
+<<<<<<< HEAD
+L5389:
+  LD 14 1
+=======
 L5377:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5379
 TAP 1
+<<<<<<< HEAD
+L5391:
+  LD 15 1
+=======
 L5379:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5381
 TAP 1
+<<<<<<< HEAD
+L5393:
+  LD 16 1
+=======
 L5381:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5383
 TAP 1
@@ -28973,132 +44559,229 @@ L5376:
   LDF L5385
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5398 L5398
+L5397:
+  LD 13 1
+=======
 TSEL L5386 L5386
 L5385:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5387
 TAP 1
+<<<<<<< HEAD
+L5399:
+  LD 14 1
+=======
 L5387:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5389
 TAP 1
+<<<<<<< HEAD
+L5401:
+  LD 15 1
+=======
 L5389:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5391
 TAP 1
+<<<<<<< HEAD
+L5403:
+  LD 16 1
+=======
 L5391:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5393
 TAP 1
@@ -29159,132 +44842,229 @@ L5386:
   LDF L5395
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5408 L5408
+L5407:
+  LD 13 1
+=======
 TSEL L5396 L5396
 L5395:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5397
 TAP 1
+<<<<<<< HEAD
+L5409:
+  LD 14 1
+=======
 L5397:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5399
 TAP 1
+<<<<<<< HEAD
+L5411:
+  LD 15 1
+=======
 L5399:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5401
 TAP 1
+<<<<<<< HEAD
+L5413:
+  LD 16 1
+=======
 L5401:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5403
 TAP 1
@@ -29331,7 +45111,11 @@ L5396:
   CDR
   ADD
   CONS
+<<<<<<< HEAD
+  LD 0 0
+=======
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   CAR
   LDC 10000
@@ -29354,132 +45138,229 @@ L5396:
   LDF L5405
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5418 L5418
+L5417:
+  LD 13 1
+=======
 TSEL L5406 L5406
 L5405:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5407
 TAP 1
+<<<<<<< HEAD
+L5419:
+  LD 14 1
+=======
 L5407:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5409
 TAP 1
+<<<<<<< HEAD
+L5421:
+  LD 15 1
+=======
 L5409:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5411
 TAP 1
+<<<<<<< HEAD
+L5423:
+  LD 16 1
+=======
 L5411:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5413
 TAP 1
@@ -29540,132 +45421,229 @@ L5406:
   LDF L5415
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5428 L5428
+L5427:
+  LD 13 1
+=======
 TSEL L5416 L5416
 L5415:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5417
 TAP 1
+<<<<<<< HEAD
+L5429:
+  LD 14 1
+=======
 L5417:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5419
 TAP 1
+<<<<<<< HEAD
+L5431:
+  LD 15 1
+=======
 L5419:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5421
 TAP 1
+<<<<<<< HEAD
+L5433:
+  LD 16 1
+=======
 L5421:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5423
 TAP 1
@@ -29727,132 +45705,229 @@ L5416:
   LDF L5425
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5438 L5438
+L5437:
+  LD 13 1
+=======
 TSEL L5426 L5426
 L5425:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5427
 TAP 1
+<<<<<<< HEAD
+L5439:
+  LD 14 1
+=======
 L5427:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5429
 TAP 1
+<<<<<<< HEAD
+L5441:
+  LD 15 1
+=======
 L5429:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5431
 TAP 1
+<<<<<<< HEAD
+L5443:
+  LD 16 1
+=======
 L5431:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5433
 TAP 1
@@ -29913,132 +45988,229 @@ L5426:
   LDF L5435
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5448 L5448
+L5447:
+  LD 13 1
+=======
 TSEL L5436 L5436
 L5435:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5437
 TAP 1
+<<<<<<< HEAD
+L5449:
+  LD 14 1
+=======
 L5437:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5439
 TAP 1
+<<<<<<< HEAD
+L5451:
+  LD 15 1
+=======
 L5439:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5441
 TAP 1
+<<<<<<< HEAD
+L5453:
+  LD 16 1
+=======
 L5441:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5443
 TAP 1
@@ -30084,7 +46256,11 @@ L5436:
   CDR
   CAR
   ADD
+<<<<<<< HEAD
+  LD 0 0
+=======
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   CDR
   LDC 10000
@@ -30107,132 +46283,229 @@ L5436:
   LDF L5445
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5458 L5458
+L5457:
+  LD 13 1
+=======
 TSEL L5446 L5446
 L5445:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5447
 TAP 1
+<<<<<<< HEAD
+L5459:
+  LD 14 1
+=======
 L5447:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5449
 TAP 1
+<<<<<<< HEAD
+L5461:
+  LD 15 1
+=======
 L5449:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5451
 TAP 1
+<<<<<<< HEAD
+L5463:
+  LD 16 1
+=======
 L5451:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5453
 TAP 1
@@ -30293,132 +46566,229 @@ L5446:
   LDF L5455
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5468 L5468
+L5467:
+  LD 13 1
+=======
 TSEL L5456 L5456
 L5455:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5457
 TAP 1
+<<<<<<< HEAD
+L5469:
+  LD 14 1
+=======
 L5457:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5459
 TAP 1
+<<<<<<< HEAD
+L5471:
+  LD 15 1
+=======
 L5459:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5461
 TAP 1
+<<<<<<< HEAD
+L5473:
+  LD 16 1
+=======
 L5461:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5463
 TAP 1
@@ -30480,132 +46850,229 @@ L5456:
   LDF L5465
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5478 L5478
+L5477:
+  LD 13 1
+=======
 TSEL L5466 L5466
 L5465:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5467
 TAP 1
+<<<<<<< HEAD
+L5479:
+  LD 14 1
+=======
 L5467:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5469
 TAP 1
+<<<<<<< HEAD
+L5481:
+  LD 15 1
+=======
 L5469:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5471
 TAP 1
+<<<<<<< HEAD
+L5483:
+  LD 16 1
+=======
 L5471:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5473
 TAP 1
@@ -30666,132 +47133,229 @@ L5466:
   LDF L5475
   AP 4
 LDC 0
+<<<<<<< HEAD
+TSEL L5488 L5488
+L5487:
+  LD 13 1
+=======
 TSEL L5476 L5476
 L5475:
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 0 0
   CAR
   ADD
+<<<<<<< HEAD
+  LD 13 1
+=======
   LD 11 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+=======
   LD 10 0
   LD 13 19
   AP 2
   LD 13 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5477
 TAP 1
+<<<<<<< HEAD
+L5489:
+  LD 14 1
+=======
 L5477:
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 1 1
   CAR
   ADD
+<<<<<<< HEAD
+  LD 14 1
+=======
   LD 12 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 1 1
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+=======
   LD 11 0
   LD 14 19
   AP 2
   LD 14 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5479
 TAP 1
+<<<<<<< HEAD
+L5491:
+  LD 15 1
+=======
 L5479:
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 2 2
   CAR
   ADD
+<<<<<<< HEAD
+  LD 15 1
+=======
   LD 13 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 2 2
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+=======
   LD 12 0
   LD 15 19
   AP 2
   LD 15 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5481
 TAP 1
+<<<<<<< HEAD
+L5493:
+  LD 16 1
+=======
 L5481:
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CAR
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CAR
   LD 3 3
   CAR
   ADD
+<<<<<<< HEAD
+  LD 16 1
+=======
   LD 14 1
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   LD 3 3
   CDR
   ADD
   CONS
   CDR
+<<<<<<< HEAD
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+=======
   LD 13 0
   LD 16 19
   AP 2
   LD 16 19
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   AP 2
   LDF L5483
 TAP 1
@@ -30839,6 +47403,34 @@ L5476:
   ADD
   CONS
   CONS
+<<<<<<< HEAD
+  ST 0 0
+  LDC 0
+  LDC 9988
+  SUB
+  LD 12 4
+  CONS
+  DBUG
+  LD 0 0
+  DBUG
+  LD 11 0
+  LDC 1
+  LD 12 3
+  ADD
+  LD 12 4
+  CONS
+  CONS
+  LD 0 0
+  CAR
+  CAR
+  LD 0 0
+  CAR
+  CDR
+  LD 0 0
+  CDR
+  CAR
+  LD 0 0
+=======
   ST 2 0
   LDC 0
   LDC 9988
@@ -30865,6 +47457,7 @@ L5476:
   CDR
   CAR
   LD 2 0
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   CDR
   CDR
   LDF L5485
@@ -30993,7 +47586,13 @@ L5515:
 L5516:
 L5507:
 L5498:
+<<<<<<< HEAD
+  CONS
+  RTN
+L134:
+=======
 L5489:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   RTN
 L5486:
   CONS
@@ -31022,12 +47621,16 @@ L110:
   RTN
 L108:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 getCorners:
   LDC 0
   LDC 0
   LD 0 0
-  LD 1 19
+  LD 1 18
   AP 2
   CAR
   LD 0 0
@@ -31062,9 +47665,9 @@ L5534:
   LD 0 0
   LD 1 0
   LD 3 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
   LDF L5536
   AP 1
@@ -31082,9 +47685,9 @@ L5541:
   ADD
   LD 2 0
   LD 4 0
-  LD 5 19
+  LD 5 18
   AP 2
-  LD 5 19
+  LD 5 18
   AP 2
   LDC 0
   CEQ
@@ -31095,9 +47698,9 @@ L5541:
   SUB
   LD 2 0
   LD 4 0
-  LD 5 19
+  LD 5 18
   AP 2
-  LD 5 19
+  LD 5 18
   AP 2
   LDC 0
   CEQ
@@ -31109,9 +47712,9 @@ L5541:
   LDC 1
   SUB
   LD 4 0
-  LD 5 19
+  LD 5 18
   AP 2
-  LD 5 19
+  LD 5 18
   AP 2
   LDC 0
   CEQ
@@ -31123,9 +47726,9 @@ L5541:
   LDC 1
   ADD
   LD 4 0
-  LD 5 19
+  LD 5 18
   AP 2
-  LD 5 19
+  LD 5 18
   AP 2
   LDC 0
   CEQ
@@ -31182,11 +47785,15 @@ L5525:
   RTN
 L5523:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 initialize:
   LD 0 0
   CAR
-  LD 1 16
+  LD 1 15
   AP 1
   LDC 0
   LDC 0
@@ -31196,7 +47803,7 @@ TAP 4
 L5545:
   LDC 0
   LD 0 0
-  LD 2 19
+  LD 2 18
   AP 2
   CAR
   LD 0 0
@@ -31237,9 +47844,9 @@ L5555:
   LD 0 0
   LD 1 0
   LD 2 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
   CGTE
   TSEL L5557 L5558
@@ -31253,12 +47860,12 @@ L5558:
   LDC 1
   LD 1 0
   LD 2 0
-  LD 4 19
-  AP 2
   LD 4 18
+  AP 2
+  LD 4 17
   AP 3
   LD 2 0
-  LD 4 18
+  LD 4 17
   AP 3
   ST 2 0
   LDC 0
@@ -31302,7 +47909,7 @@ L5561:
 L5562:
   LDC 7
   LDC 0
-  LD 2 23
+  LD 2 22
   AP 2
   CONS
   CONS
@@ -31311,18 +47918,15 @@ L5546:
   RTN
 L5544:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 bfs:
-  LD 0 1
-  CAR
-  LD 0 1
-  CDR
-  LD 0 0
-  LD 1 19
-  AP 2
-  LD 1 19
-  AP 2
   LDC 0
+<<<<<<< HEAD
+=======
   CEQ
   TSEL L5564 L5565
 L5564:
@@ -31330,12 +47934,20 @@ L5564:
 RTN
 L5565:
   LDC 999999
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 1
-  LDC 0
-  CONS
-  LD 1 7
+  LD 1 6
   AP 1
   LDC 0
+<<<<<<< HEAD
+  LDF L5576
+TAP 3
+L5576:
+  LDC 0
+  LDF L5578
+TAP 1
+L5578:
+=======
   LDF L5567
   AP 3
 LDC 0
@@ -31345,6 +47957,7 @@ L5567:
   LDF L5569
 TAP 1
 L5569:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 0
   LDC 0
   LDC 1
@@ -31361,20 +47974,41 @@ L5569:
   SUB
   LDC 0
   CONS
+<<<<<<< HEAD
+  LDF L5580
+TAP 4
+L5580:
+L5582:
+=======
   LDF L5571
 TAP 4
 L5571:
 L5573:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 1
   LD 2 1
   CAR
   ATOM
+<<<<<<< HEAD
+  TSEL L5585 L5586
+L5585:
+=======
   TSEL L5576 L5577
 L5576:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 2 1
   CDR
   ATOM
 LDC 0
+<<<<<<< HEAD
+TSEL L5587 L5587
+L5586:
+  LDC 0
+L5587:
+  SUB
+  TSEL L5583 L5584
+L5583:
+=======
 TSEL L5578 L5578
 L5577:
   LDC 0
@@ -31382,8 +48016,9 @@ L5578:
   SUB
   TSEL L5574 L5575
 L5574:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 2 1
-  LD 4 24
+  LD 4 23
   AP 1
   ST 2 2
   LD 2 2
@@ -31398,16 +48033,21 @@ L5574:
   CDR
   CDR
   LD 3 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
   ST 1 0
   LD 1 0
   LD 3 2
   CEQ
+<<<<<<< HEAD
+  TSEL L5588 L5589
+L5588:
+=======
   TSEL L5579 L5580
 L5579:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 2 2
   CAR
   CAR
@@ -31418,6 +48058,29 @@ L5579:
   ST 2 1
   LDC 0
 LDC 0
+<<<<<<< HEAD
+TSEL L5590 L5590
+L5589:
+  LD 1 0
+  LDC 0
+  CEQ
+  TSEL L5594 L5595
+L5594:
+  LDC 1
+LDC 0
+TSEL L5596 L5596
+L5595:
+  LD 1 0
+  LDC 6
+  CEQ
+L5596:
+  TSEL L5591 L5592
+L5591:
+  LDC 0
+LDC 0
+TSEL L5593 L5593
+L5592:
+=======
 TSEL L5581 L5581
 L5580:
   LD 3 3
@@ -31441,6 +48104,7 @@ L5586:
 L5587:
   TSEL L5582 L5583
 L5582:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 2 2
   CAR
   CDR
@@ -31455,12 +48119,12 @@ L5582:
   CDR
   CDR
   LD 3 0
-  LD 4 19
-  AP 2
   LD 4 18
+  AP 2
+  LD 4 17
   AP 3
   LD 3 0
-  LD 4 18
+  LD 4 17
   AP 3
   ST 3 0
   LD 2 1
@@ -31576,6 +48240,19 @@ L5582:
   CONS
   ST 2 1
   LDC 0
+<<<<<<< HEAD
+L5593:
+L5590:
+  TSEL L5582 L5582
+L5584:
+  LD 2 0
+  RTN
+L5581:
+  RTN
+L5579:
+  RTN
+L5577:
+=======
 LDC 0
 TSEL L5584 L5584
 L5583:
@@ -31592,25 +48269,39 @@ L5570:
   RTN
 L5568:
 L5566:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   RTN
 L5563:
 LDC 0
+<<<<<<< HEAD
+TSEL L5668 L5668
+=======
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 paint:
   LDC 0
   LD 0 0
-  LD 1 19
+  LD 1 18
   AP 2
   CAR
   LD 0 0
   CAR
   LDC 999999
-  LD 1 14
+  LD 1 13
   AP 3
   LD 0 1
-  LD 1 7
+  LD 1 6
   AP 1
   LDC 0
+<<<<<<< HEAD
+  LDF L5598
+TAP 3
+L5598:
+  LDC 0
+  LDF L5600
+TAP 1
+L5600:
+=======
   LDF L5589
 TAP 3
 L5589:
@@ -31618,6 +48309,7 @@ L5589:
   LDF L5591
 TAP 1
 L5591:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 0
   LDC 0
   LDC 1
@@ -31634,20 +48326,41 @@ L5591:
   SUB
   LDC 0
   CONS
+<<<<<<< HEAD
+  LDF L5602
+TAP 4
+L5602:
+L5604:
+=======
   LDF L5593
 TAP 4
 L5593:
 L5595:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 1
   LD 2 1
   CAR
   ATOM
+<<<<<<< HEAD
+  TSEL L5607 L5608
+L5607:
+=======
   TSEL L5598 L5599
 L5598:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 2 1
   CDR
   ATOM
 LDC 0
+<<<<<<< HEAD
+TSEL L5609 L5609
+L5608:
+  LDC 0
+L5609:
+  SUB
+  TSEL L5605 L5606
+L5605:
+=======
 TSEL L5600 L5600
 L5599:
   LDC 0
@@ -31655,8 +48368,9 @@ L5600:
   SUB
   TSEL L5596 L5597
 L5596:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 2 1
-  LD 4 24
+  LD 4 23
   AP 1
   ST 2 2
   LD 2 2
@@ -31671,20 +48385,29 @@ L5596:
   CDR
   CDR
   LD 3 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
   ST 1 0
   LD 1 0
   LDC 0
   CEQ
+<<<<<<< HEAD
+  TSEL L5610 L5611
+L5610:
+  LDC 0
+LDC 0
+TSEL L5612 L5612
+L5611:
+=======
   TSEL L5601 L5602
 L5601:
   LDC 0
 LDC 0
 TSEL L5603 L5603
 L5602:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 2 2
   CAR
   CDR
@@ -31701,12 +48424,12 @@ L5602:
   CDR
   CDR
   LD 2 0
-  LD 4 19
-  AP 2
   LD 4 18
+  AP 2
+  LD 4 17
   AP 3
   LD 2 0
-  LD 4 18
+  LD 4 17
   AP 3
   ST 2 0
   LD 2 2
@@ -31723,12 +48446,12 @@ L5602:
   CDR
   CDR
   LD 3 0
-  LD 4 19
-  AP 2
   LD 4 18
+  AP 2
+  LD 4 17
   AP 3
   LD 3 0
-  LD 4 18
+  LD 4 17
   AP 3
   ST 3 0
   LD 2 1
@@ -31844,6 +48567,30 @@ L5602:
   CONS
   ST 2 1
   LDC 0
+<<<<<<< HEAD
+L5612:
+  TSEL L5604 L5604
+L5606:
+  LD 2 0
+  RTN
+L5603:
+  RTN
+L5601:
+  RTN
+L5599:
+  RTN
+L5597:
+LDC 0
+TSEL L5668 L5668
+mapGhostPos:
+  LD 0 0
+  ATOM
+  TSEL L5614 L5615
+L5614:
+  LDC 0
+RTN
+L5615:
+=======
 L5603:
   TSEL L5595 L5595
 L5597:
@@ -31866,6 +48613,7 @@ L5605:
   LDC 0
 RTN
 L5606:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 1
   LD 0 0
   CAR
@@ -31873,44 +48621,75 @@ L5606:
   LDC 2
   CEQ
   SUB
+<<<<<<< HEAD
+  TSEL L5617 L5618
+L5617:
+=======
   TSEL L5608 L5609
 L5608:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 0
   CAR
   CDR
   CAR
   LD 0 0
   CDR
-  LD 1 8
+  LD 1 7
   AP 1
   CONS
 LDC 0
+<<<<<<< HEAD
+TSEL L5619 L5619
+L5618:
+=======
 TSEL L5610 L5610
 L5609:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 0
   CDR
-  LD 1 8
+  LD 1 7
   AP 1
+<<<<<<< HEAD
+L5619:
+L5616:
+  RTN
+L5613:
+LDC 0
+TSEL L5668 L5668
+=======
 L5610:
 L5607:
   RTN
 L5604:
 LDC 0
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 toQueue:
   LDC 0
   LDC 0
   CONS
+<<<<<<< HEAD
+  LDF L5621
+TAP 1
+L5621:
+L5623:
+=======
   LDF L5612
 TAP 1
 L5612:
 L5614:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 1
   LD 1 0
   ATOM
   SUB
+<<<<<<< HEAD
+  TSEL L5624 L5625
+L5624:
+=======
   TSEL L5615 L5616
 L5615:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 0
   CAR
   LDC 0
@@ -31926,6 +48705,17 @@ L5615:
   CDR
   ST 1 0
 LDC 0
+<<<<<<< HEAD
+TSEL L5623 L5623
+L5625:
+  LD 0 0
+  RTN
+L5622:
+  RTN
+L5620:
+LDC 0
+TSEL L5668 L5668
+=======
 TSEL L5614 L5614
 L5616:
   LD 0 0
@@ -31935,16 +48725,46 @@ L5613:
 L5611:
 LDC 0
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 getDots:
   LDC 0
   LDC 0
   LDC 0
   LD 0 0
-  LD 1 19
+  LD 1 18
   AP 2
   CAR
   LD 0 0
   CAR
+<<<<<<< HEAD
+  LDF L5627
+TAP 4
+L5627:
+  LDC 0
+  LDF L5629
+  AP 1
+LDC 0
+TSEL L5630 L5630
+L5629:
+L5631:
+  LD 1 3
+  LD 0 0
+  CGT
+  TSEL L5632 L5633
+L5632:
+  LDC 0
+  LDF L5634
+  AP 1
+LDC 0
+TSEL L5635 L5635
+L5634:
+L5636:
+  LD 2 2
+  LD 0 0
+  CGT
+  TSEL L5637 L5638
+L5637:
+=======
   LDF L5618
 TAP 4
 L5618:
@@ -31972,13 +48792,26 @@ L5627:
   CGT
   TSEL L5628 L5629
 L5628:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 0
   LD 1 0
   LD 3 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
+<<<<<<< HEAD
+  LDF L5639
+  AP 1
+LDC 0
+TSEL L5640 L5640
+L5639:
+  LD 0 0
+  LDC 2
+  CEQ
+  TSEL L5641 L5642
+L5641:
+=======
   LDF L5630
   AP 1
 LDC 0
@@ -31989,6 +48822,7 @@ L5630:
   CEQ
   TSEL L5632 L5633
 L5632:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 1 0
   LD 2 0
   CONS
@@ -31997,12 +48831,21 @@ L5632:
   ST 3 0
   LDC 0
 RTN
+<<<<<<< HEAD
+L5642:
+  LD 0 0
+  LDC 3
+  CEQ
+  TSEL L5644 L5645
+L5644:
+=======
 L5633:
   LD 0 0
   LDC 3
   CEQ
   TSEL L5635 L5636
 L5635:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 1 0
   LD 2 0
   CONS
@@ -32011,6 +48854,15 @@ L5635:
   ST 3 1
   LDC 0
 LDC 0
+<<<<<<< HEAD
+TSEL L5646 L5646
+L5645:
+  LDC 0
+L5646:
+L5643:
+  RTN
+L5640:
+=======
 TSEL L5637 L5637
 L5636:
   LDC 0
@@ -32018,33 +48870,65 @@ L5637:
 L5634:
   RTN
 L5631:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   ST 4 0 ; POP
   LD 0 0
   LDC 1
   ADD
   ST 0 0
 LDC 0
+<<<<<<< HEAD
+TSEL L5636 L5636
+L5638:
+  LDC 0
+  RTN
+L5635:
+=======
 TSEL L5627 L5627
 L5629:
   LDC 0
   RTN
 L5626:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   ST 3 0 ; POP
   LD 0 0
   LDC 1
   ADD
   ST 0 0
 LDC 0
+<<<<<<< HEAD
+TSEL L5631 L5631
+L5633:
+  LDC 0
+  RTN
+L5630:
+=======
 TSEL L5622 L5622
 L5624:
   LDC 0
   RTN
 L5621:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   ST 2 0 ; POP
   LD 0 0
   LD 0 1
   CONS
   RTN
+<<<<<<< HEAD
+L5628:
+  RTN
+L5626:
+LDC 0
+TSEL L5668 L5668
+calcDensFrom:
+  LD 0 1
+  ATOM
+  TSEL L5648 L5649
+L5648:
+  LDC 0
+RTN
+L5649:
+=======
 L5619:
   RTN
 L5617:
@@ -32058,6 +48942,7 @@ L5639:
   LDC 0
 RTN
 L5640:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 100
   LD 0 1
   CAR
@@ -32119,6 +49004,24 @@ L5640:
   MUL
   ADD
   SUB
+<<<<<<< HEAD
+  LDF L5651
+  AP 1
+LDC 0
+TSEL L5652 L5652
+L5651:
+  LDC 0
+  LD 0 0
+  CGT
+  TSEL L5653 L5654
+L5653:
+  LDC 0
+LDC 0
+TSEL L5655 L5655
+L5654:
+  LD 0 0
+L5655:
+=======
   LDF L5642
   AP 1
 LDC 0
@@ -32135,19 +49038,29 @@ TSEL L5646 L5646
 L5645:
   LD 0 0
 L5646:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 1 0
   LD 1 1
   CDR
-  LD 2 5
+  LD 2 4
   AP 2
   ADD
   RTN
+<<<<<<< HEAD
+L5652:
+L5650:
+  RTN
+L5647:
+LDC 0
+TSEL L5668 L5668
+=======
 L5643:
 L5641:
   RTN
 L5638:
 LDC 0
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 junctionSafety:
   LDC 0
   LD 0 2
@@ -32162,39 +49075,56 @@ junctionSafety:
   ADD
   CONS
   LDC 1
+<<<<<<< HEAD
+  LDF L5657
+TAP 3
+L5657:
+L5659:
+=======
   LDF L5648
 TAP 3
 L5648:
 L5650:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 1
   LD 0 1
   CAR
   LD 0 1
   CDR
   LD 1 0
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
   SUB
+<<<<<<< HEAD
+  TSEL L5660 L5661
+L5660:
+=======
   TSEL L5651 L5652
 L5651:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 1
   LD 1 0
-  LD 2 3
+  LD 2 2
   AP 2
+<<<<<<< HEAD
+  TSEL L5662 L5663
+L5662:
+=======
   TSEL L5653 L5654
 L5653:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 1
   CAR
   LD 0 1
   CDR
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LD 0 2
   SUB
@@ -32205,8 +49135,13 @@ L5653:
   ST 0 1
   LDC 0
 LDC 0
+<<<<<<< HEAD
+TSEL L5664 L5664
+L5663:
+=======
 TSEL L5655 L5655
 L5654:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 1
   CAR
   LD 1 3
@@ -32224,6 +49159,18 @@ L5654:
   ADD
   ST 0 2
   LDC 0
+<<<<<<< HEAD
+L5664:
+  TSEL L5659 L5659
+L5661:
+  LD 0 0
+  RTN
+L5658:
+  RTN
+L5656:
+LDC 0
+TSEL L5668 L5668
+=======
 L5655:
   TSEL L5650 L5650
 L5652:
@@ -32234,23 +49181,30 @@ L5649:
 L5647:
 LDC 0
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 isJunction:
   LD 0 0
   CAR
   LD 0 0
   CDR
+<<<<<<< HEAD
+  LDF L5666
+TAP 2
+L5666:
+=======
   LDF L5657
 TAP 2
 L5657:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 1
   LD 0 0
   LDC 1
   ADD
   LD 0 1
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
@@ -32261,9 +49215,9 @@ L5657:
   SUB
   LD 0 1
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
@@ -32275,9 +49229,9 @@ L5657:
   LDC 1
   ADD
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
@@ -32289,9 +49243,9 @@ L5657:
   LDC 1
   SUB
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
@@ -32300,15 +49254,34 @@ L5657:
   LDC 3
   CGTE
   RTN
+<<<<<<< HEAD
+L5667:
+  RTN
+L5665:
+LDC 0
+TSEL L5668 L5668
+=======
 L5658:
   RTN
 L5656:
 LDC 0
 TSEL L5663 L5663
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
 lmax:
   LD 0 1
   LD 0 0
   CGT
+<<<<<<< HEAD
+  TSEL L5669 L5670
+L5669:
+  LD 0 0
+RTN
+L5670:
+  LD 0 1
+L5671:
+  RTN
+L5668:
+=======
   TSEL L5660 L5661
 L5660:
   LD 0 0
@@ -32354,13 +49327,20 @@ L5665:
 L5666:
   RTN
 L5663:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 1 0
   LD 1 1
-  LD 0 11
+  LD 0 10
   AP 2
+<<<<<<< HEAD
+  LDF L5672
+TAP 1
+L5672:
+=======
   LDF L5667
 TAP 1
 L5667:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LDC 1
   LD 0 0
   CDR
@@ -32368,15 +49348,28 @@ L5667:
   LDC -999999
   CEQ
   SUB
+<<<<<<< HEAD
+  TSEL L5674 L5675
+L5674:
+=======
   TSEL L5669 L5670
 L5669:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   LD 0 0
-  LD 1 13
+  LD 1 12
   CONS
 RTN
+<<<<<<< HEAD
+L5675:
+  LDC 0
+L5676:
+  RTN
+L5673:
+=======
 L5670:
   LDC 0
 L5671:
   RTN
 L5668:
+>>>>>>> 908fa0343957bd992bc919ff9eaa0ef9078e95fb
   RTN
