@@ -260,6 +260,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
               peekMap lmanPos ghostMap   .< 4 
               &&& (peekMap lmanPos powMap .> peekMap lmanPos ghostMap)
             ghostIsFar = peekMap lmanPos ghostMap   .> 10
+              ||| (peekMap lmanPos powMap .< peekMap lmanPos ghostMap-1)
             ghostIsTooFar = peekMap lmanPos ghostMap   .> 20
                             &&& (peekMap lmanPos ghostMap .> 40)
             shouldEatPow = 
