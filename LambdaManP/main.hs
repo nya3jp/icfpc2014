@@ -17,11 +17,11 @@ data X = X
 type Pos = (Int, Int)
 
 type World = ([[Int]], (ManState, ([GhostState], FruitState)))
-type ManState = (X, (Pos, X))
+type ManState = (Int, (Pos, X))
 type GhostState = (Int, (Pos, Int))
 type FruitState = Int
 
-type AIState = Mat Int
+type AIState = (Map, Int)
 
 getWidth :: Expr Map -> Expr Int
 getWidth e = car $ peek 0 e
@@ -91,7 +91,7 @@ inf :: Expr Int
 inf = 99999
 
 quota :: Expr Int
-quota = 30
+quota = 20
 
 tickLimit = 999999
 
@@ -140,37 +140,6 @@ paint :: Expr Map -> Expr [Pos] -> Expr Map
 
     trace (c 77777, tick)
     e ret
-
-{-
-paint :: Expr Map -> Expr [Pos] -> Expr Map
-(paint, paintDef) = def2 "paint" $ \bd starts -> comp $ do
-  bd ~= updPoss starts 1 bd
-  with3 (newMat (getWidth bd) (getHeight bd) inf) (toQueue starts) undef $ \ret q qq ->
-    with4 0 undef undef undef $ \tick cell dep pos ->
-    withVects $ \[v1, v2, v3, v4] -> do
-    while (tick .< tickLimit &&& lnot (isEmptyQueue q)) $ do
-      tick ~= tick + 1
-
-      qq ~= dequeue q
-      q ~= cdr qq
-
-      dep ~= car (car qq)
-      pos ~= cdr (car qq)
-
-      cell ~= peekMat (car pos) (cdr pos) bd
-
-      lwhen (cell ./= 0) $ do
-        ret ~= pokeMap pos dep ret
-        bd  ~= pokeMap pos 0 bd
-
-        q ~= enqueue (cons (dep + 1) $ vadd pos v1) q
-        q ~= enqueue (cons (dep + 1) $ vadd pos v2) q
-        q ~= enqueue (cons (dep + 1) $ vadd pos v3) q
-        q ~= enqueue (cons (dep + 1) $ vadd pos v4) q
-
-    trace (c 77777, tick)
-    e ret
--}
 
 isJunction :: Expr Pos -> Expr Map -> Expr Int
 (isJunction, isJunctionDef) = def2 "isJunction" $ \pos bd -> comp $ do
@@ -272,13 +241,17 @@ selectMin' pos def score = comp $
       cond (c2 ./= inf &&& c2 .<= c3) (e $ c 2) $
       cond (c3 ./= inf) (e $ c 3) (e def)
 
-anyValid :: Expr Map -> Expr Pos -> Expr Int
-anyValid bd pos = comp $
+anyValid :: Expr Map -> Expr Pos -> Expr Int -> Expr Int
+anyValid bd pos prev = comp $
   withVects $ \[v0, v1, v2, v3] ->
   with (peekMap (vadd pos v0) bd) $ \c0 ->
   with (peekMap (vadd pos v1) bd) $ \c1 ->
   with (peekMap (vadd pos v2) bd) $ \c2 ->
   with (peekMap (vadd pos v3) bd) $ \c3 -> e $
+    ite (prev .== 0 &&& c0 ./= 0) (c 0) $
+    ite (prev .== 1 &&& c1 ./= 0) (c 1) $
+    ite (prev .== 2 &&& c2 ./= 0) (c 2) $
+    ite (prev .== 3 &&& c3 ./= 0) (c 3) $
     ite (c0 ./= 0) (c 0) $
     ite (c1 ./= 0) (c 1) $
     ite (c2 ./= 0) (c 2) (c 3)
@@ -305,8 +278,8 @@ getDots :: Expr Map -> Expr ([Pos], [Pos])
 -- [3] if Constant>0 then ToCenterofDots+
 
 step :: Expr AIState -> Expr World -> Expr (AIState, Int)
-(step, stepDef) = def2 "step" $ \bd world -> comp $
-  with (cadr $ cadr world) $ \lmanPos -> do
+(step, stepDef) = def2 "step" $ \stat world -> comp $
+  with4 (car stat) (cdr stat) (car $ cadr world) (cadr $ cadr world) $ \bd prev lmanVital lmanPos -> do
     bd ~= pokeMap lmanPos 1 bd
     with (mapGhostPos $ caddr world) $ \ghosts ->
       with (mapEdGhostPos $ caddr world) $ \edGhosts ->
@@ -318,20 +291,26 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       -- with (paint bd pows) $ \powMap ->
       with (-1) $ \dir ->
       with undef $ \distToPill ->
+      with undef $ \distToPowPill ->
       with undef $ \distToGhost ->
       with undef $ \distToEdGhost ->
       with (updPoss edGhosts 7 bd) $ \bdWithEdGhost ->
-      with (updPoss ghosts 7 bd) $ \bdWithGhost -> do
+      with (updPoss ghosts 0 bd) $ \bdWithGhost -> do
+      with (updPoss ghosts 7 bd) $ \bdWithGhostWall -> do
         -- traceMap 678 bd
         -- traceMat 5675 dotMap
 
-        distToGhost ~= bfs bdWithGhost lmanPos 7 4
+        distToGhost   ~= bfs bdWithGhost     lmanPos 7 4
+        distToPowPill ~= bfs bdWithGhostWall lmanPos 3 4
 
-        lwhen (distToGhost .< 4) $ do
+        lwhen (distToGhost .< 4 &&& distToPowPill .< distToGhost - 1) $ do
+          dir ~= selectMin' lmanPos dir (\p -> bfs bdWithGhostWall p 3 quota)
+
+        lwhen (distToGhost .< 3) $ do
           trace (c 30001)
           dir ~= selectMax' lmanPos dir (\p -> bfs bdWithGhost p 7 quota)
 
-        lwhen (dir .== -1) $ do
+        lwhen (dir .== -1 &&& lmanVital .> (127*4)) $ do
           distToEdGhost ~= bfs bdWithEdGhost lmanPos 7 3
           lwhen (distToEdGhost .< 10) $ do
             trace (c 30002)
@@ -360,7 +339,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
 
         lwhen (dir .== -1) $ do
           trace (c 30005)
-          dir ~= anyValid bd lmanPos
+          dir ~= anyValid bd lmanPos prev
 
 {-
         trace (c 99998, dots)
@@ -378,7 +357,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         traceMat 1  $ newMat 10 10 9
 -}
 
-        e $ cons bd dir
+        e $ cons (cons bd dir) dir
 
 traceMap :: Int -> Expr Map -> CExpr () ()
 traceMap tag m = trace (c 100000, Const tag, m)
@@ -404,7 +383,7 @@ initialize :: Expr World -> Expr X -> Expr AIState
         ite (peekMat x y mat .<= c 3) (c 0) $
           comp $ mat ~= pokeMat x y 1 mat
 
-    e $ mat
+    e $ (cons mat $ c 0)
 
 progn :: LMan ()
 progn = do
