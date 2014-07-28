@@ -179,8 +179,12 @@ int main(void)
             }
 
             string labelName = snd.substr(0, pos);
-            cout << replaceString(line, labelName, to_string(pcMap[labelName]))
-                 << "\t\t;" << trim(line) << endl;
+            if (pcMap.count(labelName) > 0) {
+                cout << replaceString(line, labelName, to_string(pcMap[labelName]))
+                     << "\t\t;" << trim(line) << endl;
+            } else {
+                cout << line << endl;
+            }
         }
     }
 

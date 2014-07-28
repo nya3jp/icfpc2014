@@ -25,6 +25,10 @@ let main () =
           Simulator.conf_quiet := false;
           print_endline "verbose mode";
           incr pos
+        end else if Sys.argv.(!pos) = "-e" then begin
+          Simulator.conf_eternal := true;
+          print_endline "eternal mode";
+          incr pos
         end else
           raise Exit
       done;
