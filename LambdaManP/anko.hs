@@ -50,7 +50,7 @@ data ActionFlag
   | FromPowerDot 
   | ToGhost
   | FromGhost
-  | ToCenterOfDots
+  | ToWidePlaces
   deriving (Eq, Ord, Enum,Bounded)
 
 
@@ -380,8 +380,8 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         dirVote ~= dirVote `vadd4` chainAction 200 ToPowerDot   (voteMin  powMap lmanPos) 
         dirVote ~= dirVote `vadd4` chainAction 200 ToGhost      (voteMin  ghostMap lmanPos)  
         dirVote ~= dirVote `vadd4` chainAction 200 FromPowerDot (voteMax  powMap lmanPos)               
-        dirVote ~= dirVote `vadd4` chainAction 100 ToDot        (voteMin  dotMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 50 ToDot        (voteMax  cornerMap lmanPos)         
+        dirVote ~= dirVote `vadd4` chainAction  50 ToDot        (voteMin  dotMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 100 ToDot        (voteMax  cornerMap lmanPos)         
         dirVote ~= dirVote `vadd4` (5  `vscale4` (voteMax  bd lmanPos) )
         dirVote ~= dirVote `vadd4` (10000 `vscale4` (voteAvoidWall  bd lmanPos) )        
 
@@ -452,7 +452,7 @@ main = do
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       
       let 
-          body = printf "archive/Madoka-%s-%04d" dateStr2 idx
+          body = printf "archive/Madokaren-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
@@ -467,8 +467,9 @@ main = do
 
  
         writeFile "/dev/null" progStr
-        writeFile fnGcc $ progStr
         writeFile fnAsm $ unlines $ compile' progn
+        system $ printf "../alice/shino.py %s ../alice/karen.asm > %s" fnAsm fnGcc       
+
         system $ "mkdir -p " ++ fnDir
         system $ printf "cp *.hs %s/" fnDir
 
