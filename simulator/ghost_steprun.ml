@@ -15,16 +15,20 @@ let run_program () =
   let program = GhostAiReader.read name in
   let t = Ghost.make 0 30 30 program in
 
-  try
-    while true do
-      print_endline (string_of_instruction t.program.(t.env.pc));
-      dump t;
-      print_string "Press enter to next step";
-      ignore(read_line ());
-      evalstep t syscallback;
-    done;
-  with
-  | Halt_exception -> ()
+  while true do
+    try
+      while true do
+        print_endline (string_of_instruction t.program.(t.env.pc));
+        dump t;
+        print_string "Press enter to next step";
+        ignore(read_line ());
+        evalstep t syscallback;
+      done;
+    with
+    | Halt_exception ->
+       print_endline "HALTed. Rerun with the current state.";
+       t.env.pc <- 0
+  done
 ;;
 
 let _ =
