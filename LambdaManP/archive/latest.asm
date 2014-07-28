@@ -1,6 +1,5 @@
-  DUM 35
+  DUM 34
   LDC 0
-  LDF updPoss
   LDF lmax
   LDF isJunction
   LDF junctionSafety
@@ -35,10 +34,10 @@
   LDF ldrop
   LDF llength
   LDF main
-  TRAP 35
+  TRAP 34
 main:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 llength:
   LD 0 0
   ATOM
@@ -50,14 +49,14 @@ L3:
   LDC 1
   LD 0 0
   CDR
-  LD 1 34
+  LD 1 33
   AP 1
   ADD
 L4:
   RTN
 L1:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 ldrop:
   LD 0 0
   LDC 0
@@ -72,13 +71,13 @@ L7:
   SUB
   LD 0 1
   CDR
-  LD 1 33
+  LD 1 32
   AP 2
 L8:
   RTN
 L5:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 ltake:
   LD 0 0
   LDC 0
@@ -95,14 +94,14 @@ L11:
   SUB
   LD 0 1
   CDR
-  LD 1 32
+  LD 1 31
   AP 2
   CONS
 L12:
   RTN
 L9:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 nth:
   LD 0 0
   LDC 0
@@ -118,13 +117,13 @@ L15:
   SUB
   LD 0 1
   CDR
-  LD 1 31
+  LD 1 30
   AP 2
 L16:
   RTN
 L13:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 nthOpt:
   LD 0 0
   LDC 0
@@ -235,7 +234,7 @@ L20:
   RTN
 L17:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 upd:
   LD 0 0
   LDC 0
@@ -256,14 +255,14 @@ L41:
   LD 0 1
   LD 0 2
   CDR
-  LD 1 29
+  LD 1 28
   AP 3
   CONS
 L42:
   RTN
 L39:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 updOpt:
   LD 0 2
   CDR
@@ -356,34 +355,34 @@ L45:
   RTN
 L43:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 getMat:
   LD 0 0
   LD 0 1
   LD 0 2
-  LD 1 31
+  LD 1 30
   AP 2
-  LD 1 31
+  LD 1 30
 TAP 2
 L61:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 setMat:
   LD 0 1
   LD 0 0
   LD 0 2
   LD 0 1
   LD 0 3
-  LD 1 31
+  LD 1 30
   AP 2
-  LD 1 29
+  LD 1 28
   AP 3
   LD 0 3
-  LD 1 29
+  LD 1 28
 TAP 3
 L62:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 lreverseGo:
   LD 0 1
   ATOM
@@ -398,13 +397,13 @@ L65:
   CONS
   LD 0 1
   CDR
-  LD 1 25
+  LD 1 24
   AP 2
 L66:
   RTN
 L63:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 dequeue:
   LD 0 0
   CAR
@@ -414,11 +413,11 @@ L68:
   LDC 0
   LD 0 0
   CDR
-  LD 1 25
+  LD 1 24
   AP 2
   LDC 0
   CONS
-  LD 1 24
+  LD 1 23
 TAP 1
 L69:
   LD 0 0
@@ -435,19 +434,19 @@ L70:
   RTN
 L67:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 newArray:
   LD 0 0
   LDC 0
   LD 0 0
   LD 0 1
-  LD 1 22
+  LD 1 21
   AP 3
   CONS
   RTN
 L71:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 newArrayGo:
   LD 0 1
   LD 0 0
@@ -466,7 +465,7 @@ L74:
   LDC 2
   DIV
   LD 0 2
-  LD 1 22
+  LD 1 21
   AP 3
   LD 0 0
   LD 0 1
@@ -475,17 +474,17 @@ L74:
   DIV
   LD 0 1
   LD 0 2
-  LD 1 22
+  LD 1 21
   AP 3
   CONS
 L75:
   RTN
 L72:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 mkArray:
   LD 0 0
-  LD 1 34
+  LD 1 33
   AP 1
   LDF L77
 TAP 1
@@ -494,7 +493,7 @@ L77:
   LDC 0
   LD 0 0
   LD 1 0
-  LD 2 20
+  LD 2 19
   AP 3
   CONS
   RTN
@@ -502,7 +501,7 @@ L78:
   RTN
 L76:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 mkArrayGo:
   LD 0 1
   LD 0 0
@@ -522,7 +521,7 @@ L81:
   LDC 2
   DIV
   LD 0 2
-  LD 1 20
+  LD 1 19
   AP 3
   LD 0 0
   LD 0 1
@@ -538,16 +537,16 @@ L81:
   LD 0 0
   SUB
   LD 0 2
-  LD 1 33
+  LD 1 32
   AP 2
-  LD 1 20
+  LD 1 19
   AP 3
   CONS
 L82:
   RTN
 L79:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 peek:
   LDC 0
   LD 0 1
@@ -603,7 +602,7 @@ L85:
   RTN
 L83:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 poke:
   LD 0 2
   CAR
@@ -614,13 +613,13 @@ poke:
   LD 0 1
   LD 0 2
   CDR
-  LD 1 17
+  LD 1 16
   AP 5
   CONS
   RTN
 L92:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 pokeGo:
   LD 0 2
   LD 0 1
@@ -651,7 +650,7 @@ L97:
   LD 0 3
   LD 0 4
   CAR
-  LD 1 17
+  LD 1 16
   AP 5
   LD 0 4
   CDR
@@ -671,7 +670,7 @@ L98:
   LD 0 3
   LD 0 4
   CDR
-  LD 1 17
+  LD 1 16
   AP 5
   CONS
 L99:
@@ -679,16 +678,16 @@ L96:
   RTN
 L93:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 toMat:
   LD 0 0
-  LD 1 15
+  LD 1 14
   AP 1
-  LD 1 21
+  LD 1 20
 TAP 1
 L100:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 toMats:
   LD 0 0
   ATOM
@@ -699,35 +698,35 @@ RTN
 L103:
   LD 0 0
   CAR
-  LD 1 21
+  LD 1 20
   AP 1
   LD 0 0
   CDR
-  LD 1 15
+  LD 1 14
   AP 1
   CONS
 L104:
   RTN
 L101:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 newMat:
   LD 0 0
   LD 0 2
-  LD 1 23
+  LD 1 22
   AP 2
   LDF L106
 TAP 1
 L106:
   LD 1 1
   LD 0 0
-  LD 2 23
+  LD 2 22
 TAP 2
 L107:
   RTN
 L105:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 step:
   LD 0 1
   CDR
@@ -758,12 +757,12 @@ L109:
   LD 0 1
   CDR
   LD 0 2
-  LD 2 19
-  AP 2
   LD 2 18
+  AP 2
+  LD 2 17
   AP 3
   LD 0 2
-  LD 2 18
+  LD 2 17
   AP 3
   LDF L111
 TAP 1
@@ -772,19 +771,19 @@ L111:
   CDR
   CDR
   CAR
-  LD 3 8
+  LD 3 7
   AP 1
   LDF L113
 TAP 1
 L113:
   LD 1 0
-  LD 4 6
+  LD 4 5
   AP 1
   LDF L115
 TAP 1
 L115:
   LD 2 0
-  LD 5 12
+  LD 5 11
   AP 1
   LDF L117
 TAP 1
@@ -798,28 +797,28 @@ TAP 2
 L119:
   LD 4 0
   LD 3 0
-  LD 7 9
+  LD 7 8
   AP 2
   LDF L121
 TAP 1
 L121:
   LD 5 0
   LD 1 0
-  LD 8 9
+  LD 8 8
   AP 2
   LDF L123
 TAP 1
 L123:
   LD 6 0
   LD 3 0
-  LD 9 9
+  LD 9 8
   AP 2
   LDF L125
 TAP 1
 L125:
   LD 7 0
   LD 3 1
-  LD 10 9
+  LD 10 8
   AP 2
   LDF L127
 TAP 1
@@ -837,7 +836,7 @@ TAP 2
 L129:
   LD 10 1
   LD 8 0
-  LD 12 5
+  LD 12 4
   AP 2
   LDF L131
 TAP 1
@@ -900,282 +899,313 @@ L137:
   LDF L133
 TAP 1
 L133:
-  LD 10 0
-  LDC 7
-  LD 11 0
-  LD 14 1
-  AP 3
-  LDF L144
-TAP 1
-L144:
-  LD 11 0
-  LDC 0
-  LD 12 0
-  LD 15 1
-  AP 3
-  LDF L146
-TAP 1
-L146:
-  LD 10 0
-  LDC 8
-  LD 13 0
-  LD 16 1
-  AP 3
-  LDF L148
-TAP 1
-L148:
   LDC 3
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 6 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  CGT
+  TSEL L147 L148
+L147:
+  LDC 1
   LD 2 0
-  LD 15 1
-  LDC 7
-  LDC 3
-  LD 17 10
+  SUB
+LDC 0
+TSEL L149 L149
+L148:
+  LDC 0
+L149:
+  TSEL L144 L145
+L144:
+  LDC 5
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L146 L146
+L145:
+  LDC 0
+L146:
+  ST 14 0 ; POP
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L156
   AP 4
+LDC 0
+TSEL L157 L157
+L156:
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 0
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 1
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 2
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 3
+  LD 15 3
+  AP 4
+  LD 15 1
+  AP 2
+  LD 15 1
+  AP 2
+  LD 15 1
+TAP 2
+L157:
+  LDC 3
   CGT
   TSEL L153 L154
 L153:
   LDC 1
-  LD 5 0
-  SUB
 LDC 0
 TSEL L155 L155
 L154:
-  LDC 0
+  LD 2 0
 L155:
   TSEL L150 L151
 L150:
   LDC 5
-  LDC 1
-  LD 15 4
-  LD 17 18
+  LDC 0
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
   LDC 0
 LDC 0
 TSEL L152 L152
 L151:
   LDC 0
 L152:
-  ST 17 0 ; POP
-  LDC 0
-  LDC 0
+  ST 14 0 ; POP
   LDC 1
+  LD 2 0
   SUB
-  CONS
-  LDC 1
-  LDC 0
-  CONS
-  LDC 0
-  LDC 1
-  CONS
-  LDC 0
-  LDC 1
-  SUB
-  LDC 0
-  CONS
-  LDF L162
-  AP 4
-LDC 0
-TSEL L163 L163
-L162:
-  LD 15 0
-  LD 10 0
-  LD 16 1
-  LD 0 0
-  LD 18 4
-  AP 4
-  LD 15 0
-  LD 10 0
-  LD 16 1
-  LD 0 1
-  LD 18 4
-  AP 4
-  LD 15 0
-  LD 10 0
-  LD 16 1
-  LD 0 2
-  LD 18 4
-  AP 4
-  LD 15 0
-  LD 10 0
-  LD 16 1
-  LD 0 3
-  LD 18 4
-  AP 4
-  LD 18 2
-  AP 2
-  LD 18 2
-  AP 2
-  LD 18 2
-TAP 2
-L163:
-  LDC 3
-  CGT
-  TSEL L159 L160
-L159:
-  LDC 1
-LDC 0
-TSEL L161 L161
-L160:
-  LD 5 0
+  TSEL L161 L162
 L161:
-  TSEL L156 L157
-L156:
-  LDC 5
-  LDC 0
-  LD 15 4
-  LD 17 18
-  AP 3
-  ST 15 4
-  LDC 0
-LDC 0
-TSEL L158 L158
-L157:
-  LDC 0
-L158:
-  ST 17 0 ; POP
-  LDC 1
-  LD 5 0
-  SUB
-  TSEL L167 L168
-L167:
-  LD 4 0
+  LD 1 0
   LDC 100
   CGTE
 LDC 0
-TSEL L169 L169
-L168:
+TSEL L163 L163
+L162:
   LDC 0
-L169:
-  TSEL L164 L165
-L164:
+L163:
+  TSEL L158 L159
+L158:
   LDC 2
   LDC 1
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
   LDC 4
   LDC 0
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
   LDC 3
   LDC 0
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L160 L160
+L159:
+  LDC 0
+L160:
+  ST 14 0 ; POP
+  LD 2 0
+  TSEL L164 L165
+L164:
+  LDC 4
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 2
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 3
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
   LDC 0
 LDC 0
 TSEL L166 L166
 L165:
   LDC 0
 L166:
-  ST 17 0 ; POP
-  LD 5 0
+  ST 14 0 ; POP
+  LDC 150
+  LD 1 0
+  CGTE
   TSEL L170 L171
 L170:
-  LDC 4
-  LDC 1
-  LD 15 4
-  LD 17 18
-  AP 3
-  ST 15 4
   LDC 2
-  LDC 0
-  LD 15 4
-  LD 17 18
-  AP 3
-  ST 15 4
-  LDC 3
-  LDC 0
-  LD 15 4
-  LD 17 18
-  AP 3
-  ST 15 4
-  LDC 0
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 3 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  CGT
 LDC 0
 TSEL L172 L172
 L171:
   LDC 0
 L172:
-  ST 17 0 ; POP
-  LDC 150
-  LD 4 0
-  CGTE
-  TSEL L176 L177
-L176:
-  LDC 2
-  LD 15 1
-  CAR
-  LD 15 1
-  CDR
-  LD 6 0
-  LD 17 19
-  AP 2
-  LD 17 19
-  AP 2
-  CGT
-LDC 0
-TSEL L178 L178
-L177:
-  LDC 0
-L178:
-  TSEL L173 L174
-L173:
+  TSEL L167 L168
+L167:
   LDC 3
   LDC 1
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
   LDC 2
   LDC 0
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
   LDC 4
   LDC 0
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L169 L169
+L168:
+  LDC 0
+L169:
+  ST 14 0 ; POP
+  LDC 10
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 4 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  CGTE
+  TSEL L173 L174
+L173:
+  LDC 6
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
   LDC 0
 LDC 0
 TSEL L175 L175
 L174:
   LDC 0
 L175:
-  ST 17 0 ; POP
+  ST 14 0 ; POP
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 4 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  LDC 20
+  CGTE
+  TSEL L176 L177
+L176:
+  LDC 6
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L178 L178
+L177:
+  LDC 0
+L178:
+  ST 14 0 ; POP
   LDC 1
-  LD 5 0
+  LD 2 0
   SUB
   TSEL L179 L180
 L179:
   LDC 4
   LDC 0
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
   LDC 0
 LDC 0
 TSEL L181 L181
 L180:
   LDC 0
 L181:
-  ST 17 0 ; POP
-  LD 15 1
+  ST 14 0 ; POP
+  LD 12 1
   CAR
-  LD 15 1
+  LD 12 1
   CDR
-  LD 6 0
-  LD 17 19
+  LD 3 0
+  LD 14 18
   AP 2
-  LD 17 19
+  LD 14 18
   AP 2
   LDC 2
   CGT
@@ -1183,29 +1213,29 @@ L181:
 L182:
   LDC 3
   LDC 0
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
+  ST 12 4
   LDC 0
 LDC 0
 TSEL L184 L184
 L183:
   LDC 0
 L184:
-  ST 17 0 ; POP
+  ST 14 0 ; POP
   LDC 0
   LDC 1
-  LD 15 4
-  LD 17 18
+  LD 12 4
+  LD 14 17
   AP 3
-  ST 15 4
-  LD 3 0
+  ST 12 4
+  LD 0 0
   CAR
   CAR
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -1231,45 +1261,137 @@ LDC 0
 TSEL L186 L186
 L185:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L187
 TAP 1
 L187:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L189
 TAP 1
 L189:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L191
 TAP 1
 L191:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L193
 TAP 1
@@ -1431,8 +1553,8 @@ L186:
   CAR
   MUL
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -1458,45 +1580,137 @@ LDC 0
 TSEL L232 L232
 L231:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L233
 TAP 1
 L233:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L235
 TAP 1
 L235:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L237
 TAP 1
 L237:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L239
 TAP 1
@@ -1659,8 +1873,8 @@ L232:
   MUL
   CONS
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -1686,45 +1900,137 @@ LDC 0
 TSEL L278 L278
 L277:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L279
 TAP 1
 L279:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L281
 TAP 1
 L281:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L283
 TAP 1
 L283:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L285
 TAP 1
@@ -1886,8 +2192,8 @@ L278:
   CAR
   MUL
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -1913,45 +2219,137 @@ LDC 0
 TSEL L324 L324
 L323:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L325
 TAP 1
 L325:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L327
 TAP 1
 L327:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L329
 TAP 1
 L329:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L331
 TAP 1
@@ -2117,12 +2515,12 @@ L324:
   CAR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CAR
   CDR
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -2148,45 +2546,137 @@ LDC 0
 TSEL L370 L370
 L369:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L371
 TAP 1
 L371:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L373
 TAP 1
 L373:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L375
 TAP 1
 L375:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L377
 TAP 1
@@ -2348,8 +2838,8 @@ L370:
   CAR
   MUL
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -2375,45 +2865,137 @@ LDC 0
 TSEL L416 L416
 L415:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L417
 TAP 1
 L417:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L419
 TAP 1
 L419:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L421
 TAP 1
 L421:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L423
 TAP 1
@@ -2576,8 +3158,8 @@ L416:
   MUL
   CONS
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -2603,45 +3185,137 @@ LDC 0
 TSEL L462 L462
 L461:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L463
 TAP 1
 L463:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L465
 TAP 1
 L465:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L467
 TAP 1
 L467:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L469
 TAP 1
@@ -2803,8 +3477,8 @@ L462:
   CAR
   MUL
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -2830,45 +3504,137 @@ LDC 0
 TSEL L508 L508
 L507:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L509
 TAP 1
 L509:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L511
 TAP 1
 L511:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L513
 TAP 1
 L513:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L515
 TAP 1
@@ -3035,12 +3801,12 @@ L508:
   CDR
   ADD
   CONS
-  LD 3 0
+  LD 0 0
   CDR
   CAR
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -3066,45 +3832,137 @@ LDC 0
 TSEL L554 L554
 L553:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L555
 TAP 1
 L555:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L557
 TAP 1
 L557:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L559
 TAP 1
 L559:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L561
 TAP 1
@@ -3266,8 +4124,8 @@ L554:
   CAR
   MUL
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -3293,45 +4151,137 @@ LDC 0
 TSEL L600 L600
 L599:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L601
 TAP 1
 L601:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L603
 TAP 1
 L603:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L605
 TAP 1
 L605:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L607
 TAP 1
@@ -3494,8 +4444,8 @@ L600:
   MUL
   CONS
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -3521,45 +4471,137 @@ LDC 0
 TSEL L646 L646
 L645:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L647
 TAP 1
 L647:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L649
 TAP 1
 L649:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L651
 TAP 1
 L651:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L653
 TAP 1
@@ -3721,8 +4763,8 @@ L646:
   CAR
   MUL
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -3748,45 +4790,137 @@ LDC 0
 TSEL L692 L692
 L691:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L693
 TAP 1
 L693:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L695
 TAP 1
 L695:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L697
 TAP 1
 L697:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L699
 TAP 1
@@ -3952,12 +5086,12 @@ L692:
   CDR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CDR
   CDR
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -3983,45 +5117,137 @@ LDC 0
 TSEL L738 L738
 L737:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L739
 TAP 1
 L739:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L741
 TAP 1
 L741:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L743
 TAP 1
 L743:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L745
 TAP 1
@@ -4183,8 +5409,8 @@ L738:
   CAR
   MUL
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -4210,45 +5436,137 @@ LDC 0
 TSEL L784 L784
 L783:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L785
 TAP 1
 L785:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L787
 TAP 1
 L787:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L789
 TAP 1
 L789:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L791
 TAP 1
@@ -4411,8 +5729,8 @@ L784:
   MUL
   CONS
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -4438,45 +5756,137 @@ LDC 0
 TSEL L830 L830
 L829:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L831
 TAP 1
 L831:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L833
 TAP 1
 L833:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L835
 TAP 1
 L835:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L837
 TAP 1
@@ -4638,8 +6048,8 @@ L830:
   CAR
   MUL
   LDC 5
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 400
   MUL
@@ -4665,45 +6075,137 @@ LDC 0
 TSEL L876 L876
 L875:
   LDC 0
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L877
 TAP 1
 L877:
   LDC 0
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L879
 TAP 1
 L879:
   LDC 0
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L881
 TAP 1
 L881:
   LDC 0
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L883
 TAP 1
@@ -4871,13 +6373,13 @@ L876:
   ADD
   CONS
   CONS
-  ST 3 0
-  LD 3 0
+  ST 0 0
+  LD 0 0
   CAR
   CAR
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -4902,39 +6404,131 @@ L876:
 LDC 0
 TSEL L922 L922
 L921:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L923
 TAP 1
 L923:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L925
 TAP 1
 L925:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L927
 TAP 1
 L927:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L929
 TAP 1
 L929:
@@ -5095,8 +6689,8 @@ L922:
   CAR
   MUL
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -5121,39 +6715,131 @@ L922:
 LDC 0
 TSEL L968 L968
 L967:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L969
 TAP 1
 L969:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L971
 TAP 1
 L971:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L973
 TAP 1
 L973:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L975
 TAP 1
 L975:
@@ -5315,8 +7001,8 @@ L968:
   MUL
   CONS
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -5341,39 +7027,131 @@ L968:
 LDC 0
 TSEL L1014 L1014
 L1013:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1015
 TAP 1
 L1015:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1017
 TAP 1
 L1017:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1019
 TAP 1
 L1019:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1021
 TAP 1
 L1021:
@@ -5534,8 +7312,8 @@ L1014:
   CAR
   MUL
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -5560,39 +7338,131 @@ L1014:
 LDC 0
 TSEL L1060 L1060
 L1059:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1061
 TAP 1
 L1061:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1063
 TAP 1
 L1063:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1065
 TAP 1
 L1065:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1067
 TAP 1
 L1067:
@@ -5757,12 +7627,12 @@ L1060:
   CAR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CAR
   CDR
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -5787,39 +7657,131 @@ L1060:
 LDC 0
 TSEL L1106 L1106
 L1105:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1107
 TAP 1
 L1107:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1109
 TAP 1
 L1109:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1111
 TAP 1
 L1111:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1113
 TAP 1
 L1113:
@@ -5980,8 +7942,8 @@ L1106:
   CAR
   MUL
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -6006,39 +7968,131 @@ L1106:
 LDC 0
 TSEL L1152 L1152
 L1151:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1153
 TAP 1
 L1153:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1155
 TAP 1
 L1155:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1157
 TAP 1
 L1157:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1159
 TAP 1
 L1159:
@@ -6200,8 +8254,8 @@ L1152:
   MUL
   CONS
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -6226,39 +8280,131 @@ L1152:
 LDC 0
 TSEL L1198 L1198
 L1197:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1199
 TAP 1
 L1199:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1201
 TAP 1
 L1201:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1203
 TAP 1
 L1203:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1205
 TAP 1
 L1205:
@@ -6419,8 +8565,8 @@ L1198:
   CAR
   MUL
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -6445,39 +8591,131 @@ L1198:
 LDC 0
 TSEL L1244 L1244
 L1243:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1245
 TAP 1
 L1245:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1247
 TAP 1
 L1247:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1249
 TAP 1
 L1249:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1251
 TAP 1
 L1251:
@@ -6643,12 +8881,12 @@ L1244:
   CDR
   ADD
   CONS
-  LD 3 0
+  LD 0 0
   CDR
   CAR
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -6673,39 +8911,131 @@ L1244:
 LDC 0
 TSEL L1290 L1290
 L1289:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1291
 TAP 1
 L1291:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1293
 TAP 1
 L1293:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1295
 TAP 1
 L1295:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1297
 TAP 1
 L1297:
@@ -6866,8 +9196,8 @@ L1290:
   CAR
   MUL
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -6892,39 +9222,131 @@ L1290:
 LDC 0
 TSEL L1336 L1336
 L1335:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1337
 TAP 1
 L1337:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1339
 TAP 1
 L1339:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1341
 TAP 1
 L1341:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1343
 TAP 1
 L1343:
@@ -7086,8 +9508,8 @@ L1336:
   MUL
   CONS
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -7112,39 +9534,131 @@ L1336:
 LDC 0
 TSEL L1382 L1382
 L1381:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1383
 TAP 1
 L1383:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1385
 TAP 1
 L1385:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1387
 TAP 1
 L1387:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1389
 TAP 1
 L1389:
@@ -7305,8 +9819,8 @@ L1382:
   CAR
   MUL
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -7331,39 +9845,131 @@ L1382:
 LDC 0
 TSEL L1428 L1428
 L1427:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1429
 TAP 1
 L1429:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1431
 TAP 1
 L1431:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1433
 TAP 1
 L1433:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1435
 TAP 1
 L1435:
@@ -7528,12 +10134,12 @@ L1428:
   CDR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CDR
   CDR
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -7558,39 +10164,131 @@ L1428:
 LDC 0
 TSEL L1474 L1474
 L1473:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1475
 TAP 1
 L1475:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1477
 TAP 1
 L1477:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1479
 TAP 1
 L1479:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1481
 TAP 1
 L1481:
@@ -7751,8 +10449,8 @@ L1474:
   CAR
   MUL
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -7777,39 +10475,131 @@ L1474:
 LDC 0
 TSEL L1520 L1520
 L1519:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1521
 TAP 1
 L1521:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1523
 TAP 1
 L1523:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1525
 TAP 1
 L1525:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1527
 TAP 1
 L1527:
@@ -7971,8 +10761,8 @@ L1520:
   MUL
   CONS
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -7997,39 +10787,131 @@ L1520:
 LDC 0
 TSEL L1566 L1566
 L1565:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1567
 TAP 1
 L1567:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1569
 TAP 1
 L1569:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1571
 TAP 1
 L1571:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1573
 TAP 1
 L1573:
@@ -8190,8 +11072,8 @@ L1566:
   CAR
   MUL
   LDC 2
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -8216,39 +11098,131 @@ L1566:
 LDC 0
 TSEL L1612 L1612
 L1611:
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1613
 TAP 1
 L1613:
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1615
 TAP 1
 L1615:
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1617
 TAP 1
 L1617:
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1619
 TAP 1
 L1619:
@@ -8415,13 +11389,13 @@ L1612:
   ADD
   CONS
   CONS
-  ST 3 0
-  LD 3 0
+  ST 0 0
+  LD 0 0
   CAR
   CAR
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -8446,39 +11420,131 @@ L1612:
 LDC 0
 TSEL L1658 L1658
 L1657:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1659
 TAP 1
 L1659:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1661
 TAP 1
 L1661:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1663
 TAP 1
 L1663:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1665
 TAP 1
 L1665:
@@ -8639,8 +11705,8 @@ L1658:
   CAR
   MUL
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -8665,39 +11731,131 @@ L1658:
 LDC 0
 TSEL L1704 L1704
 L1703:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1705
 TAP 1
 L1705:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1707
 TAP 1
 L1707:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1709
 TAP 1
 L1709:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1711
 TAP 1
 L1711:
@@ -8859,8 +12017,8 @@ L1704:
   MUL
   CONS
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -8885,39 +12043,131 @@ L1704:
 LDC 0
 TSEL L1750 L1750
 L1749:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1751
 TAP 1
 L1751:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1753
 TAP 1
 L1753:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1755
 TAP 1
 L1755:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1757
 TAP 1
 L1757:
@@ -9078,8 +12328,8 @@ L1750:
   CAR
   MUL
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -9104,39 +12354,131 @@ L1750:
 LDC 0
 TSEL L1796 L1796
 L1795:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1797
 TAP 1
 L1797:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1799
 TAP 1
 L1799:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1801
 TAP 1
 L1801:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1803
 TAP 1
 L1803:
@@ -9301,12 +12643,12 @@ L1796:
   CAR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CAR
   CDR
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -9331,39 +12673,131 @@ L1796:
 LDC 0
 TSEL L1842 L1842
 L1841:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1843
 TAP 1
 L1843:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1845
 TAP 1
 L1845:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1847
 TAP 1
 L1847:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1849
 TAP 1
 L1849:
@@ -9524,8 +12958,8 @@ L1842:
   CAR
   MUL
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -9550,39 +12984,131 @@ L1842:
 LDC 0
 TSEL L1888 L1888
 L1887:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1889
 TAP 1
 L1889:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1891
 TAP 1
 L1891:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1893
 TAP 1
 L1893:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1895
 TAP 1
 L1895:
@@ -9744,8 +13270,8 @@ L1888:
   MUL
   CONS
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -9770,39 +13296,131 @@ L1888:
 LDC 0
 TSEL L1934 L1934
 L1933:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1935
 TAP 1
 L1935:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1937
 TAP 1
 L1937:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1939
 TAP 1
 L1939:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1941
 TAP 1
 L1941:
@@ -9963,8 +13581,8 @@ L1934:
   CAR
   MUL
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -9989,39 +13607,131 @@ L1934:
 LDC 0
 TSEL L1980 L1980
 L1979:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L1981
 TAP 1
 L1981:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L1983
 TAP 1
 L1983:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L1985
 TAP 1
 L1985:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L1987
 TAP 1
 L1987:
@@ -10187,12 +13897,12 @@ L1980:
   CDR
   ADD
   CONS
-  LD 3 0
+  LD 0 0
   CDR
   CAR
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -10217,39 +13927,131 @@ L1980:
 LDC 0
 TSEL L2026 L2026
 L2025:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L2027
 TAP 1
 L2027:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L2029
 TAP 1
 L2029:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L2031
 TAP 1
 L2031:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L2033
 TAP 1
 L2033:
@@ -10410,8 +14212,8 @@ L2026:
   CAR
   MUL
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -10436,39 +14238,131 @@ L2026:
 LDC 0
 TSEL L2072 L2072
 L2071:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L2073
 TAP 1
 L2073:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L2075
 TAP 1
 L2075:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L2077
 TAP 1
 L2077:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L2079
 TAP 1
 L2079:
@@ -10630,8 +14524,8 @@ L2072:
   MUL
   CONS
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -10656,39 +14550,131 @@ L2072:
 LDC 0
 TSEL L2118 L2118
 L2117:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L2119
 TAP 1
 L2119:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L2121
 TAP 1
 L2121:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L2123
 TAP 1
 L2123:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L2125
 TAP 1
 L2125:
@@ -10849,8 +14835,8 @@ L2118:
   CAR
   MUL
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -10875,39 +14861,131 @@ L2118:
 LDC 0
 TSEL L2164 L2164
 L2163:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L2165
 TAP 1
 L2165:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L2167
 TAP 1
 L2167:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L2169
 TAP 1
 L2169:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L2171
 TAP 1
 L2171:
@@ -11072,12 +15150,12 @@ L2164:
   CDR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CDR
   CDR
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -11102,39 +15180,131 @@ L2164:
 LDC 0
 TSEL L2210 L2210
 L2209:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L2211
 TAP 1
 L2211:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L2213
 TAP 1
 L2213:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L2215
 TAP 1
 L2215:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L2217
 TAP 1
 L2217:
@@ -11295,8 +15465,8 @@ L2210:
   CAR
   MUL
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -11321,39 +15491,131 @@ L2210:
 LDC 0
 TSEL L2256 L2256
 L2255:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L2257
 TAP 1
 L2257:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L2259
 TAP 1
 L2259:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L2261
 TAP 1
 L2261:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L2263
 TAP 1
 L2263:
@@ -11515,8 +15777,8 @@ L2256:
   MUL
   CONS
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -11541,39 +15803,131 @@ L2256:
 LDC 0
 TSEL L2302 L2302
 L2301:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L2303
 TAP 1
 L2303:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L2305
 TAP 1
 L2305:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L2307
 TAP 1
 L2307:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L2309
 TAP 1
 L2309:
@@ -11734,8 +16088,8 @@ L2302:
   CAR
   MUL
   LDC 4
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -11760,39 +16114,131 @@ L2302:
 LDC 0
 TSEL L2348 L2348
 L2347:
-  LD 3 0
-  LD 16 1
-  LDC 7
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L2349
 TAP 1
 L2349:
-  LD 4 0
-  LD 17 1
-  LDC 7
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L2351
 TAP 1
 L2351:
-  LD 5 0
-  LD 18 1
-  LDC 7
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L2353
 TAP 1
 L2353:
-  LD 6 0
-  LD 19 1
-  LDC 7
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L2355
 TAP 1
 L2355:
@@ -11959,13 +16405,13 @@ L2348:
   ADD
   CONS
   CONS
-  ST 3 0
-  LD 3 0
+  ST 0 0
+  LD 0 0
   CAR
   CAR
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -11991,45 +16437,137 @@ LDC 0
 TSEL L2394 L2394
 L2393:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2395
 TAP 1
 L2395:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2397
 TAP 1
 L2397:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2399
 TAP 1
 L2399:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2401
 TAP 1
@@ -12191,8 +16729,8 @@ L2394:
   CAR
   MUL
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -12218,45 +16756,137 @@ LDC 0
 TSEL L2440 L2440
 L2439:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2441
 TAP 1
 L2441:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2443
 TAP 1
 L2443:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2445
 TAP 1
 L2445:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2447
 TAP 1
@@ -12419,8 +17049,8 @@ L2440:
   MUL
   CONS
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -12446,45 +17076,137 @@ LDC 0
 TSEL L2486 L2486
 L2485:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2487
 TAP 1
 L2487:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2489
 TAP 1
 L2489:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2491
 TAP 1
 L2491:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2493
 TAP 1
@@ -12646,8 +17368,8 @@ L2486:
   CAR
   MUL
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -12673,45 +17395,137 @@ LDC 0
 TSEL L2532 L2532
 L2531:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2533
 TAP 1
 L2533:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2535
 TAP 1
 L2535:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2537
 TAP 1
 L2537:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2539
 TAP 1
@@ -12877,12 +17691,12 @@ L2532:
   CAR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CAR
   CDR
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -12908,45 +17722,137 @@ LDC 0
 TSEL L2578 L2578
 L2577:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2579
 TAP 1
 L2579:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2581
 TAP 1
 L2581:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2583
 TAP 1
 L2583:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2585
 TAP 1
@@ -13108,8 +18014,8 @@ L2578:
   CAR
   MUL
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -13135,45 +18041,137 @@ LDC 0
 TSEL L2624 L2624
 L2623:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2625
 TAP 1
 L2625:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2627
 TAP 1
 L2627:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2629
 TAP 1
 L2629:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2631
 TAP 1
@@ -13336,8 +18334,8 @@ L2624:
   MUL
   CONS
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -13363,45 +18361,137 @@ LDC 0
 TSEL L2670 L2670
 L2669:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2671
 TAP 1
 L2671:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2673
 TAP 1
 L2673:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2675
 TAP 1
 L2675:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2677
 TAP 1
@@ -13563,8 +18653,8 @@ L2670:
   CAR
   MUL
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -13590,45 +18680,137 @@ LDC 0
 TSEL L2716 L2716
 L2715:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2717
 TAP 1
 L2717:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2719
 TAP 1
 L2719:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2721
 TAP 1
 L2721:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2723
 TAP 1
@@ -13795,12 +18977,12 @@ L2716:
   CDR
   ADD
   CONS
-  LD 3 0
+  LD 0 0
   CDR
   CAR
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -13826,45 +19008,137 @@ LDC 0
 TSEL L2762 L2762
 L2761:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2763
 TAP 1
 L2763:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2765
 TAP 1
 L2765:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2767
 TAP 1
 L2767:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2769
 TAP 1
@@ -14026,8 +19300,8 @@ L2762:
   CAR
   MUL
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -14053,45 +19327,137 @@ LDC 0
 TSEL L2808 L2808
 L2807:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2809
 TAP 1
 L2809:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2811
 TAP 1
 L2811:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2813
 TAP 1
 L2813:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2815
 TAP 1
@@ -14254,8 +19620,8 @@ L2808:
   MUL
   CONS
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -14281,45 +19647,137 @@ LDC 0
 TSEL L2854 L2854
 L2853:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2855
 TAP 1
 L2855:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2857
 TAP 1
 L2857:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2859
 TAP 1
 L2859:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2861
 TAP 1
@@ -14481,8 +19939,8 @@ L2854:
   CAR
   MUL
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -14508,45 +19966,137 @@ LDC 0
 TSEL L2900 L2900
 L2899:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2901
 TAP 1
 L2901:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2903
 TAP 1
 L2903:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2905
 TAP 1
 L2905:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2907
 TAP 1
@@ -14712,12 +20262,12 @@ L2900:
   CDR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CDR
   CDR
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -14743,45 +20293,137 @@ LDC 0
 TSEL L2946 L2946
 L2945:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2947
 TAP 1
 L2947:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2949
 TAP 1
 L2949:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2951
 TAP 1
 L2951:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2953
 TAP 1
@@ -14943,8 +20585,8 @@ L2946:
   CAR
   MUL
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -14970,45 +20612,137 @@ LDC 0
 TSEL L2992 L2992
 L2991:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L2993
 TAP 1
 L2993:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L2995
 TAP 1
 L2995:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L2997
 TAP 1
 L2997:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L2999
 TAP 1
@@ -15171,8 +20905,8 @@ L2992:
   MUL
   CONS
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -15198,45 +20932,137 @@ LDC 0
 TSEL L3038 L3038
 L3037:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L3039
 TAP 1
 L3039:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L3041
 TAP 1
 L3041:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L3043
 TAP 1
 L3043:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L3045
 TAP 1
@@ -15398,8 +21224,8 @@ L3038:
   CAR
   MUL
   LDC 3
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 200
   MUL
@@ -15425,45 +21251,137 @@ LDC 0
 TSEL L3084 L3084
 L3083:
   LDC 0
-  LD 15 0
-  LD 16 1
-  LDC 3
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L3085
 TAP 1
 L3085:
   LDC 0
-  LD 16 0
-  LD 17 1
-  LDC 3
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L3087
 TAP 1
 L3087:
   LDC 0
-  LD 17 0
-  LD 18 1
-  LDC 3
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L3089
 TAP 1
 L3089:
   LDC 0
-  LD 18 0
-  LD 19 1
-  LDC 3
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L3091
 TAP 1
@@ -15631,13 +21549,13 @@ L3084:
   ADD
   CONS
   CONS
-  ST 3 0
-  LD 3 0
+  ST 0 0
+  LD 0 0
   CAR
   CAR
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -15662,39 +21580,131 @@ L3084:
 LDC 0
 TSEL L3130 L3130
 L3129:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3131
 TAP 1
 L3131:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3133
 TAP 1
 L3133:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3135
 TAP 1
 L3135:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3137
 TAP 1
 L3137:
@@ -15855,8 +21865,8 @@ L3130:
   CAR
   MUL
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -15881,39 +21891,131 @@ L3130:
 LDC 0
 TSEL L3176 L3176
 L3175:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3177
 TAP 1
 L3177:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3179
 TAP 1
 L3179:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3181
 TAP 1
 L3181:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3183
 TAP 1
 L3183:
@@ -16075,8 +22177,8 @@ L3176:
   MUL
   CONS
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -16101,39 +22203,131 @@ L3176:
 LDC 0
 TSEL L3222 L3222
 L3221:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3223
 TAP 1
 L3223:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3225
 TAP 1
 L3225:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3227
 TAP 1
 L3227:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3229
 TAP 1
 L3229:
@@ -16294,8 +22488,8 @@ L3222:
   CAR
   MUL
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -16320,39 +22514,131 @@ L3222:
 LDC 0
 TSEL L3268 L3268
 L3267:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3269
 TAP 1
 L3269:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3271
 TAP 1
 L3271:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3273
 TAP 1
 L3273:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3275
 TAP 1
 L3275:
@@ -16517,12 +22803,12 @@ L3268:
   CAR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CAR
   CDR
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -16547,39 +22833,131 @@ L3268:
 LDC 0
 TSEL L3314 L3314
 L3313:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3315
 TAP 1
 L3315:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3317
 TAP 1
 L3317:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3319
 TAP 1
 L3319:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3321
 TAP 1
 L3321:
@@ -16740,8 +23118,8 @@ L3314:
   CAR
   MUL
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -16766,39 +23144,131 @@ L3314:
 LDC 0
 TSEL L3360 L3360
 L3359:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3361
 TAP 1
 L3361:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3363
 TAP 1
 L3363:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3365
 TAP 1
 L3365:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3367
 TAP 1
 L3367:
@@ -16960,8 +23430,8 @@ L3360:
   MUL
   CONS
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -16986,39 +23456,131 @@ L3360:
 LDC 0
 TSEL L3406 L3406
 L3405:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3407
 TAP 1
 L3407:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3409
 TAP 1
 L3409:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3411
 TAP 1
 L3411:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3413
 TAP 1
 L3413:
@@ -17179,8 +23741,8 @@ L3406:
   CAR
   MUL
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -17205,39 +23767,131 @@ L3406:
 LDC 0
 TSEL L3452 L3452
 L3451:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3453
 TAP 1
 L3453:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3455
 TAP 1
 L3455:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3457
 TAP 1
 L3457:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3459
 TAP 1
 L3459:
@@ -17403,12 +24057,12 @@ L3452:
   CDR
   ADD
   CONS
-  LD 3 0
+  LD 0 0
   CDR
   CAR
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -17433,39 +24087,131 @@ L3452:
 LDC 0
 TSEL L3498 L3498
 L3497:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3499
 TAP 1
 L3499:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3501
 TAP 1
 L3501:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3503
 TAP 1
 L3503:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3505
 TAP 1
 L3505:
@@ -17626,8 +24372,8 @@ L3498:
   CAR
   MUL
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -17652,39 +24398,131 @@ L3498:
 LDC 0
 TSEL L3544 L3544
 L3543:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3545
 TAP 1
 L3545:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3547
 TAP 1
 L3547:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3549
 TAP 1
 L3549:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3551
 TAP 1
 L3551:
@@ -17846,8 +24684,8 @@ L3544:
   MUL
   CONS
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -17872,39 +24710,131 @@ L3544:
 LDC 0
 TSEL L3590 L3590
 L3589:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3591
 TAP 1
 L3591:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3593
 TAP 1
 L3593:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3595
 TAP 1
 L3595:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3597
 TAP 1
 L3597:
@@ -18065,8 +24995,8 @@ L3590:
   CAR
   MUL
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -18091,39 +25021,131 @@ L3590:
 LDC 0
 TSEL L3636 L3636
 L3635:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3637
 TAP 1
 L3637:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3639
 TAP 1
 L3639:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3641
 TAP 1
 L3641:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3643
 TAP 1
 L3643:
@@ -18288,12 +25310,12 @@ L3636:
   CDR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CDR
   CDR
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -18318,39 +25340,131 @@ L3636:
 LDC 0
 TSEL L3682 L3682
 L3681:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3683
 TAP 1
 L3683:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3685
 TAP 1
 L3685:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3687
 TAP 1
 L3687:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3689
 TAP 1
 L3689:
@@ -18511,8 +25625,8 @@ L3682:
   CAR
   MUL
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -18537,39 +25651,131 @@ L3682:
 LDC 0
 TSEL L3728 L3728
 L3727:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3729
 TAP 1
 L3729:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3731
 TAP 1
 L3731:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3733
 TAP 1
 L3733:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3735
 TAP 1
 L3735:
@@ -18731,8 +25937,8 @@ L3728:
   MUL
   CONS
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -18757,39 +25963,131 @@ L3728:
 LDC 0
 TSEL L3774 L3774
 L3773:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3775
 TAP 1
 L3775:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3777
 TAP 1
 L3777:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3779
 TAP 1
 L3779:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3781
 TAP 1
 L3781:
@@ -18950,8 +26248,8 @@ L3774:
   CAR
   MUL
   LDC 0
-  LD 15 4
-  LD 17 19
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 50
   MUL
@@ -18976,39 +26274,131 @@ L3774:
 LDC 0
 TSEL L3820 L3820
 L3819:
-  LD 15 0
-  LD 16 1
-  LDC 2
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   LDF L3821
 TAP 1
 L3821:
-  LD 16 0
-  LD 17 1
-  LDC 2
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   LDF L3823
 TAP 1
 L3823:
-  LD 17 0
-  LD 18 1
-  LDC 2
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   LDF L3825
 TAP 1
 L3825:
-  LD 18 0
-  LD 19 1
-  LDC 2
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   LDF L3827
 TAP 1
 L3827:
@@ -19175,13 +26565,13 @@ L3820:
   ADD
   CONS
   CONS
-  ST 3 0
-  LD 3 0
+  ST 0 0
+  LD 0 0
   CAR
   CAR
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -19207,45 +26597,137 @@ LDC 0
 TSEL L3866 L3866
 L3865:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L3867
 TAP 1
 L3867:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L3869
 TAP 1
 L3869:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L3871
 TAP 1
 L3871:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L3873
 TAP 1
@@ -19406,9 +26888,9 @@ L3866:
   CAR
   CAR
   MUL
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -19434,45 +26916,137 @@ LDC 0
 TSEL L3912 L3912
 L3911:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L3913
 TAP 1
 L3913:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L3915
 TAP 1
 L3915:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L3917
 TAP 1
 L3917:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L3919
 TAP 1
@@ -19634,9 +27208,9 @@ L3912:
   CDR
   MUL
   CONS
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -19662,45 +27236,137 @@ LDC 0
 TSEL L3958 L3958
 L3957:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L3959
 TAP 1
 L3959:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L3961
 TAP 1
 L3961:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L3963
 TAP 1
 L3963:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L3965
 TAP 1
@@ -19861,9 +27527,9 @@ L3958:
   CDR
   CAR
   MUL
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -19889,45 +27555,137 @@ LDC 0
 TSEL L4004 L4004
 L4003:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4005
 TAP 1
 L4005:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4007
 TAP 1
 L4007:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4009
 TAP 1
 L4009:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4011
 TAP 1
@@ -20093,12 +27851,12 @@ L4004:
   CAR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CAR
   CDR
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -20124,45 +27882,137 @@ LDC 0
 TSEL L4050 L4050
 L4049:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4051
 TAP 1
 L4051:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4053
 TAP 1
 L4053:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4055
 TAP 1
 L4055:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4057
 TAP 1
@@ -20323,9 +28173,9 @@ L4050:
   CAR
   CAR
   MUL
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -20351,45 +28201,137 @@ LDC 0
 TSEL L4096 L4096
 L4095:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4097
 TAP 1
 L4097:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4099
 TAP 1
 L4099:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4101
 TAP 1
 L4101:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4103
 TAP 1
@@ -20551,9 +28493,9 @@ L4096:
   CDR
   MUL
   CONS
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -20579,45 +28521,137 @@ LDC 0
 TSEL L4142 L4142
 L4141:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4143
 TAP 1
 L4143:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4145
 TAP 1
 L4145:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4147
 TAP 1
 L4147:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4149
 TAP 1
@@ -20778,9 +28812,9 @@ L4142:
   CDR
   CAR
   MUL
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -20806,45 +28840,137 @@ LDC 0
 TSEL L4188 L4188
 L4187:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4189
 TAP 1
 L4189:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4191
 TAP 1
 L4191:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4193
 TAP 1
 L4193:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4195
 TAP 1
@@ -21011,12 +29137,12 @@ L4188:
   CDR
   ADD
   CONS
-  LD 3 0
+  LD 0 0
   CDR
   CAR
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -21042,45 +29168,137 @@ LDC 0
 TSEL L4234 L4234
 L4233:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4235
 TAP 1
 L4235:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4237
 TAP 1
 L4237:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4239
 TAP 1
 L4239:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4241
 TAP 1
@@ -21241,9 +29459,9 @@ L4234:
   CAR
   CAR
   MUL
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -21269,45 +29487,137 @@ LDC 0
 TSEL L4280 L4280
 L4279:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4281
 TAP 1
 L4281:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4283
 TAP 1
 L4283:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4285
 TAP 1
 L4285:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4287
 TAP 1
@@ -21469,9 +29779,9 @@ L4280:
   CDR
   MUL
   CONS
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -21497,45 +29807,137 @@ LDC 0
 TSEL L4326 L4326
 L4325:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4327
 TAP 1
 L4327:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4329
 TAP 1
 L4329:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4331
 TAP 1
 L4331:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4333
 TAP 1
@@ -21696,9 +30098,9 @@ L4326:
   CDR
   CAR
   MUL
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -21724,45 +30126,137 @@ LDC 0
 TSEL L4372 L4372
 L4371:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4373
 TAP 1
 L4373:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4375
 TAP 1
 L4375:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4377
 TAP 1
 L4377:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4379
 TAP 1
@@ -21928,12 +30422,12 @@ L4372:
   CDR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CDR
   CDR
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -21959,45 +30453,137 @@ LDC 0
 TSEL L4418 L4418
 L4417:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4419
 TAP 1
 L4419:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4421
 TAP 1
 L4421:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4423
 TAP 1
 L4423:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4425
 TAP 1
@@ -22158,9 +30744,9 @@ L4418:
   CAR
   CAR
   MUL
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -22186,45 +30772,137 @@ LDC 0
 TSEL L4464 L4464
 L4463:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4465
 TAP 1
 L4465:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4467
 TAP 1
 L4467:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4469
 TAP 1
 L4469:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4471
 TAP 1
@@ -22386,9 +31064,9 @@ L4464:
   CDR
   MUL
   CONS
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -22414,45 +31092,137 @@ LDC 0
 TSEL L4510 L4510
 L4509:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4511
 TAP 1
 L4511:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4513
 TAP 1
 L4513:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4515
 TAP 1
 L4515:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4517
 TAP 1
@@ -22613,9 +31383,9 @@ L4510:
   CDR
   CAR
   MUL
-  LDC 0
-  LD 15 4
-  LD 17 19
+  LDC 6
+  LD 12 4
+  LD 14 18
   AP 2
   LDC 100
   MUL
@@ -22641,45 +31411,137 @@ LDC 0
 TSEL L4556 L4556
 L4555:
   LDC 0
-  LD 1 0
-  LD 16 1
-  LDC 8
-  LDC 20
-  LD 18 10
-  AP 4
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
   SUB
   LDF L4557
 TAP 1
 L4557:
   LDC 0
-  LD 2 0
-  LD 17 1
-  LDC 8
-  LDC 20
-  LD 19 10
-  AP 4
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
   SUB
   LDF L4559
 TAP 1
 L4559:
   LDC 0
-  LD 3 0
-  LD 18 1
-  LDC 8
-  LDC 20
-  LD 20 10
-  AP 4
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
   SUB
   LDF L4561
 TAP 1
 L4561:
   LDC 0
-  LD 4 0
-  LD 19 1
-  LDC 8
-  LDC 20
-  LD 21 10
-  AP 4
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
   SUB
   LDF L4563
 TAP 1
@@ -22847,8 +31709,8 @@ L4556:
   ADD
   CONS
   CONS
-  ST 3 0
-  LD 3 0
+  ST 0 0
+  LD 0 0
   CAR
   CAR
   LDC 5
@@ -22874,136 +31736,136 @@ LDC 0
 TSEL L4602 L4602
 L4601:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4603
 TAP 1
 L4603:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4605
 TAP 1
 L4605:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4607
 TAP 1
 L4607:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4609
@@ -23188,136 +32050,136 @@ LDC 0
 TSEL L4648 L4648
 L4647:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4649
 TAP 1
 L4649:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4651
 TAP 1
 L4651:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4653
 TAP 1
 L4653:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4655
@@ -23503,136 +32365,136 @@ LDC 0
 TSEL L4694 L4694
 L4693:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4695
 TAP 1
 L4695:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4697
 TAP 1
 L4697:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4699
 TAP 1
 L4699:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4701
@@ -23817,136 +32679,136 @@ LDC 0
 TSEL L4740 L4740
 L4739:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4741
 TAP 1
 L4741:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4743
 TAP 1
 L4743:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4745
 TAP 1
 L4745:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4747
@@ -24113,7 +32975,7 @@ L4740:
   CAR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CAR
   CDR
   LDC 5
@@ -24139,136 +33001,136 @@ LDC 0
 TSEL L4786 L4786
 L4785:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4787
 TAP 1
 L4787:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4789
 TAP 1
 L4789:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4791
 TAP 1
 L4791:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4793
@@ -24453,136 +33315,136 @@ LDC 0
 TSEL L4832 L4832
 L4831:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4833
 TAP 1
 L4833:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4835
 TAP 1
 L4835:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4837
 TAP 1
 L4837:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4839
@@ -24768,136 +33630,136 @@ LDC 0
 TSEL L4878 L4878
 L4877:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4879
 TAP 1
 L4879:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4881
 TAP 1
 L4881:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4883
 TAP 1
 L4883:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4885
@@ -25082,136 +33944,136 @@ LDC 0
 TSEL L4924 L4924
 L4923:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4925
 TAP 1
 L4925:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4927
 TAP 1
 L4927:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4929
 TAP 1
 L4929:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4931
@@ -25379,7 +34241,7 @@ L4924:
   CDR
   ADD
   CONS
-  LD 3 0
+  LD 0 0
   CDR
   CAR
   LDC 5
@@ -25405,136 +34267,136 @@ LDC 0
 TSEL L4970 L4970
 L4969:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L4971
 TAP 1
 L4971:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L4973
 TAP 1
 L4973:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L4975
 TAP 1
 L4975:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L4977
@@ -25719,136 +34581,136 @@ LDC 0
 TSEL L5016 L5016
 L5015:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L5017
 TAP 1
 L5017:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L5019
 TAP 1
 L5019:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L5021
 TAP 1
 L5021:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L5023
@@ -26034,136 +34896,136 @@ LDC 0
 TSEL L5062 L5062
 L5061:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L5063
 TAP 1
 L5063:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L5065
 TAP 1
 L5065:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L5067
 TAP 1
 L5067:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L5069
@@ -26348,136 +35210,136 @@ LDC 0
 TSEL L5108 L5108
 L5107:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L5109
 TAP 1
 L5109:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L5111
 TAP 1
 L5111:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L5113
 TAP 1
 L5113:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L5115
@@ -26644,7 +35506,7 @@ L5108:
   CDR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CDR
   CDR
   LDC 5
@@ -26670,136 +35532,136 @@ LDC 0
 TSEL L5154 L5154
 L5153:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L5155
 TAP 1
 L5155:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L5157
 TAP 1
 L5157:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L5159
 TAP 1
 L5159:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L5161
@@ -26984,136 +35846,136 @@ LDC 0
 TSEL L5200 L5200
 L5199:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L5201
 TAP 1
 L5201:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L5203
 TAP 1
 L5203:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L5205
 TAP 1
 L5205:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L5207
@@ -27299,136 +36161,136 @@ LDC 0
 TSEL L5246 L5246
 L5245:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L5247
 TAP 1
 L5247:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L5249
 TAP 1
 L5249:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L5251
 TAP 1
 L5251:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L5253
@@ -27613,136 +36475,136 @@ LDC 0
 TSEL L5292 L5292
 L5291:
   LDC 0
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
-  CDR
-  LD 0 0
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 16 1
-  CAR
-  LD 0 0
-  CAR
-  ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
   CDR
-  LD 15 0
-  LD 18 19
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
   AP 2
-  LD 18 19
+  LD 15 18
   AP 2
   SUB
   LDF L5293
 TAP 1
 L5293:
   LDC 0
-  LD 17 1
+  LD 14 1
   CAR
   LD 1 1
   CAR
   ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
+  LD 14 1
   CDR
   LD 1 1
   CDR
   ADD
   CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
   CDR
-  LD 16 0
-  LD 19 19
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
   AP 2
-  LD 19 19
+  LD 16 18
   AP 2
   SUB
   LDF L5295
 TAP 1
 L5295:
   LDC 0
-  LD 18 1
+  LD 15 1
   CAR
   LD 2 2
   CAR
   ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
+  LD 15 1
   CDR
   LD 2 2
   CDR
   ADD
   CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
   CDR
-  LD 17 0
-  LD 20 19
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
   AP 2
-  LD 20 19
+  LD 17 18
   AP 2
   SUB
   LDF L5297
 TAP 1
 L5297:
   LDC 0
-  LD 19 1
+  LD 16 1
   CAR
   LD 3 3
   CAR
   ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
+  LD 16 1
   CDR
   LD 3 3
   CDR
   ADD
   CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
   CDR
-  LD 18 0
-  LD 21 19
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
   AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   SUB
   LDF L5299
@@ -27911,8 +36773,8 @@ L5292:
   ADD
   CONS
   CONS
-  ST 3 0
-  LD 3 0
+  ST 0 0
+  LD 0 0
   CAR
   CAR
   LDC 10000
@@ -27937,130 +36799,130 @@ L5292:
 LDC 0
 TSEL L5338 L5338
 L5337:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5339
+TAP 1
+L5339:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5341
+TAP 1
+L5341:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5343
+TAP 1
+L5343:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5339
-TAP 1
-L5339:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5341
-TAP 1
-L5341:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5343
-TAP 1
-L5343:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5345
 TAP 1
@@ -28123,130 +36985,130 @@ L5338:
 LDC 0
 TSEL L5348 L5348
 L5347:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5349
+TAP 1
+L5349:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5351
+TAP 1
+L5351:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5353
+TAP 1
+L5353:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5349
-TAP 1
-L5349:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5351
-TAP 1
-L5351:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5353
-TAP 1
-L5353:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5355
 TAP 1
@@ -28310,130 +37172,130 @@ L5348:
 LDC 0
 TSEL L5358 L5358
 L5357:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5359
+TAP 1
+L5359:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5361
+TAP 1
+L5361:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5363
+TAP 1
+L5363:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5359
-TAP 1
-L5359:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5361
-TAP 1
-L5361:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5363
-TAP 1
-L5363:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5365
 TAP 1
@@ -28496,130 +37358,130 @@ L5358:
 LDC 0
 TSEL L5368 L5368
 L5367:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5369
+TAP 1
+L5369:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5371
+TAP 1
+L5371:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5373
+TAP 1
+L5373:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5369
-TAP 1
-L5369:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5371
-TAP 1
-L5371:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5373
-TAP 1
-L5373:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5375
 TAP 1
@@ -28665,7 +37527,7 @@ L5368:
   CAR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CAR
   CDR
   LDC 10000
@@ -28690,130 +37552,130 @@ L5368:
 LDC 0
 TSEL L5378 L5378
 L5377:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5379
+TAP 1
+L5379:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5381
+TAP 1
+L5381:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5383
+TAP 1
+L5383:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5379
-TAP 1
-L5379:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5381
-TAP 1
-L5381:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5383
-TAP 1
-L5383:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5385
 TAP 1
@@ -28876,130 +37738,130 @@ L5378:
 LDC 0
 TSEL L5388 L5388
 L5387:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5389
+TAP 1
+L5389:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5391
+TAP 1
+L5391:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5393
+TAP 1
+L5393:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5389
-TAP 1
-L5389:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5391
-TAP 1
-L5391:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5393
-TAP 1
-L5393:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5395
 TAP 1
@@ -29063,130 +37925,130 @@ L5388:
 LDC 0
 TSEL L5398 L5398
 L5397:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5399
+TAP 1
+L5399:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5401
+TAP 1
+L5401:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5403
+TAP 1
+L5403:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5399
-TAP 1
-L5399:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5401
-TAP 1
-L5401:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5403
-TAP 1
-L5403:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5405
 TAP 1
@@ -29249,130 +38111,130 @@ L5398:
 LDC 0
 TSEL L5408 L5408
 L5407:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5409
+TAP 1
+L5409:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5411
+TAP 1
+L5411:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5413
+TAP 1
+L5413:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5409
-TAP 1
-L5409:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5411
-TAP 1
-L5411:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5413
-TAP 1
-L5413:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5415
 TAP 1
@@ -29419,7 +38281,7 @@ L5408:
   CDR
   ADD
   CONS
-  LD 3 0
+  LD 0 0
   CDR
   CAR
   LDC 10000
@@ -29444,130 +38306,130 @@ L5408:
 LDC 0
 TSEL L5418 L5418
 L5417:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5419
+TAP 1
+L5419:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5421
+TAP 1
+L5421:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5423
+TAP 1
+L5423:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5419
-TAP 1
-L5419:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5421
-TAP 1
-L5421:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5423
-TAP 1
-L5423:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5425
 TAP 1
@@ -29630,130 +38492,130 @@ L5418:
 LDC 0
 TSEL L5428 L5428
 L5427:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5429
+TAP 1
+L5429:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5431
+TAP 1
+L5431:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5433
+TAP 1
+L5433:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5429
-TAP 1
-L5429:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5431
-TAP 1
-L5431:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5433
-TAP 1
-L5433:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5435
 TAP 1
@@ -29817,130 +38679,130 @@ L5428:
 LDC 0
 TSEL L5438 L5438
 L5437:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5439
+TAP 1
+L5439:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5441
+TAP 1
+L5441:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5443
+TAP 1
+L5443:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5439
-TAP 1
-L5439:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5441
-TAP 1
-L5441:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5443
-TAP 1
-L5443:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5445
 TAP 1
@@ -30003,130 +38865,130 @@ L5438:
 LDC 0
 TSEL L5448 L5448
 L5447:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5449
+TAP 1
+L5449:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5451
+TAP 1
+L5451:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5453
+TAP 1
+L5453:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5449
-TAP 1
-L5449:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5451
-TAP 1
-L5451:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5453
-TAP 1
-L5453:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5455
 TAP 1
@@ -30172,7 +39034,7 @@ L5448:
   CDR
   CAR
   ADD
-  LD 3 0
+  LD 0 0
   CDR
   CDR
   LDC 10000
@@ -30197,130 +39059,130 @@ L5448:
 LDC 0
 TSEL L5458 L5458
 L5457:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5459
+TAP 1
+L5459:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5461
+TAP 1
+L5461:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5463
+TAP 1
+L5463:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5459
-TAP 1
-L5459:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5461
-TAP 1
-L5461:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5463
-TAP 1
-L5463:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5465
 TAP 1
@@ -30383,130 +39245,130 @@ L5458:
 LDC 0
 TSEL L5468 L5468
 L5467:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5469
+TAP 1
+L5469:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5471
+TAP 1
+L5471:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5473
+TAP 1
+L5473:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5469
-TAP 1
-L5469:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5471
-TAP 1
-L5471:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5473
-TAP 1
-L5473:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5475
 TAP 1
@@ -30570,130 +39432,130 @@ L5468:
 LDC 0
 TSEL L5478 L5478
 L5477:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5479
+TAP 1
+L5479:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5481
+TAP 1
+L5481:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5483
+TAP 1
+L5483:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5479
-TAP 1
-L5479:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5481
-TAP 1
-L5481:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5483
-TAP 1
-L5483:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5485
 TAP 1
@@ -30756,130 +39618,130 @@ L5478:
 LDC 0
 TSEL L5488 L5488
 L5487:
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
   CDR
   ADD
   CONS
   CAR
-  LD 16 1
+  LD 13 1
   CAR
   LD 0 0
   CAR
   ADD
-  LD 16 1
+  LD 13 1
   CDR
   LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5489
+TAP 1
+L5489:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5491
+TAP 1
+L5491:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5493
+TAP 1
+L5493:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
   CDR
   ADD
   CONS
   CDR
   LD 15 0
-  LD 18 19
+  LD 18 18
   AP 2
-  LD 18 19
-  AP 2
-  LDF L5489
-TAP 1
-L5489:
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 17 1
-  CAR
-  LD 1 1
-  CAR
-  ADD
-  LD 17 1
-  CDR
-  LD 1 1
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 16 0
-  LD 19 19
-  AP 2
-  LD 19 19
-  AP 2
-  LDF L5491
-TAP 1
-L5491:
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 18 1
-  CAR
-  LD 2 2
-  CAR
-  ADD
-  LD 18 1
-  CDR
-  LD 2 2
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 17 0
-  LD 20 19
-  AP 2
-  LD 20 19
-  AP 2
-  LDF L5493
-TAP 1
-L5493:
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CAR
-  LD 19 1
-  CAR
-  LD 3 3
-  CAR
-  ADD
-  LD 19 1
-  CDR
-  LD 3 3
-  CDR
-  ADD
-  CONS
-  CDR
-  LD 18 0
-  LD 21 19
-  AP 2
-  LD 21 19
+  LD 18 18
   AP 2
   LDF L5495
 TAP 1
@@ -30927,32 +39789,32 @@ L5488:
   ADD
   CONS
   CONS
-  ST 3 0
+  ST 0 0
   LDC 0
   LDC 9988
   SUB
-  LD 15 4
+  LD 12 4
   CONS
   DBUG
-  LD 3 0
+  LD 0 0
   DBUG
-  LD 14 0
+  LD 11 0
   LDC 1
-  LD 15 3
+  LD 12 3
   ADD
-  LD 15 4
+  LD 12 4
   CONS
   CONS
-  LD 3 0
+  LD 0 0
   CAR
   CAR
-  LD 3 0
+  LD 0 0
   CAR
   CDR
-  LD 3 0
+  LD 0 0
   CDR
   CAR
-  LD 3 0
+  LD 0 0
   CDR
   CDR
   LDF L5497
@@ -31086,12 +39948,6 @@ L5501:
 L5498:
   CONS
   RTN
-L149:
-  RTN
-L147:
-  RTN
-L145:
-  RTN
 L134:
   RTN
 L132:
@@ -31120,12 +39976,12 @@ L110:
   RTN
 L108:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 getCorners:
   LDC 0
   LDC 0
   LD 0 0
-  LD 1 19
+  LD 1 18
   AP 2
   CAR
   LD 0 0
@@ -31160,9 +40016,9 @@ L5546:
   LD 0 0
   LD 1 0
   LD 3 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
   LDF L5548
   AP 1
@@ -31180,9 +40036,9 @@ L5553:
   ADD
   LD 2 0
   LD 4 0
-  LD 5 19
+  LD 5 18
   AP 2
-  LD 5 19
+  LD 5 18
   AP 2
   LDC 0
   CEQ
@@ -31193,9 +40049,9 @@ L5553:
   SUB
   LD 2 0
   LD 4 0
-  LD 5 19
+  LD 5 18
   AP 2
-  LD 5 19
+  LD 5 18
   AP 2
   LDC 0
   CEQ
@@ -31207,9 +40063,9 @@ L5553:
   LDC 1
   SUB
   LD 4 0
-  LD 5 19
+  LD 5 18
   AP 2
-  LD 5 19
+  LD 5 18
   AP 2
   LDC 0
   CEQ
@@ -31221,9 +40077,9 @@ L5553:
   LDC 1
   ADD
   LD 4 0
-  LD 5 19
+  LD 5 18
   AP 2
-  LD 5 19
+  LD 5 18
   AP 2
   LDC 0
   CEQ
@@ -31280,11 +40136,11 @@ L5537:
   RTN
 L5535:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 initialize:
   LD 0 0
   CAR
-  LD 1 16
+  LD 1 15
   AP 1
   LDC 0
   LDC 0
@@ -31294,7 +40150,7 @@ TAP 4
 L5557:
   LDC 0
   LD 0 0
-  LD 2 19
+  LD 2 18
   AP 2
   CAR
   LD 0 0
@@ -31335,9 +40191,9 @@ L5567:
   LD 0 0
   LD 1 0
   LD 2 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
   CGTE
   TSEL L5569 L5570
@@ -31351,12 +40207,12 @@ L5570:
   LDC 1
   LD 1 0
   LD 2 0
-  LD 4 19
-  AP 2
   LD 4 18
+  AP 2
+  LD 4 17
   AP 3
   LD 2 0
-  LD 4 18
+  LD 4 17
   AP 3
   ST 2 0
   LDC 0
@@ -31400,7 +40256,7 @@ L5573:
 L5574:
   LDC 7
   LDC 0
-  LD 2 23
+  LD 2 22
   AP 2
   CONS
   CONS
@@ -31409,40 +40265,20 @@ L5558:
   RTN
 L5556:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 bfs:
-  LD 0 1
-  CAR
-  LD 0 1
-  CDR
-  LD 0 0
-  LD 1 19
-  AP 2
-  LD 1 19
-  AP 2
   LDC 0
-  CEQ
-  TSEL L5576 L5577
-L5576:
-  LDC 999999
-RTN
-L5577:
-  LDC 999999
   LD 0 1
-  LDC 0
-  CONS
-  LD 1 7
+  LD 1 6
   AP 1
   LDC 0
-  LDF L5579
-  AP 3
-LDC 0
-TSEL L5580 L5580
-L5579:
+  LDF L5576
+TAP 3
+L5576:
   LDC 0
-  LDF L5581
+  LDF L5578
 TAP 1
-L5581:
+L5578:
   LDC 0
   LDC 0
   LDC 1
@@ -31459,29 +40295,29 @@ L5581:
   SUB
   LDC 0
   CONS
-  LDF L5583
+  LDF L5580
 TAP 4
-L5583:
-L5585:
+L5580:
+L5582:
   LDC 1
   LD 2 1
   CAR
   ATOM
-  TSEL L5588 L5589
-L5588:
+  TSEL L5585 L5586
+L5585:
   LD 2 1
   CDR
   ATOM
 LDC 0
-TSEL L5590 L5590
-L5589:
-  LDC 0
-L5590:
-  SUB
-  TSEL L5586 L5587
+TSEL L5587 L5587
 L5586:
+  LDC 0
+L5587:
+  SUB
+  TSEL L5583 L5584
+L5583:
   LD 2 1
-  LD 4 24
+  LD 4 23
   AP 1
   ST 2 2
   LD 2 2
@@ -31496,16 +40332,16 @@ L5586:
   CDR
   CDR
   LD 3 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
   ST 1 0
   LD 1 0
   LD 3 2
   CEQ
-  TSEL L5591 L5592
-L5591:
+  TSEL L5588 L5589
+L5588:
   LD 2 2
   CAR
   CAR
@@ -31516,29 +40352,27 @@ L5591:
   ST 2 1
   LDC 0
 LDC 0
-TSEL L5593 L5593
-L5592:
-  LD 3 3
-  LD 2 2
-  CAR
-  CAR
-  LDC 1
-  ADD
-  CGTE
-  TSEL L5597 L5598
-L5597:
-  LDC 1
+TSEL L5590 L5590
+L5589:
   LD 1 0
   LDC 0
   CEQ
-  SUB
-LDC 0
-TSEL L5599 L5599
-L5598:
-  LDC 0
-L5599:
   TSEL L5594 L5595
 L5594:
+  LDC 1
+LDC 0
+TSEL L5596 L5596
+L5595:
+  LD 1 0
+  LDC 6
+  CEQ
+L5596:
+  TSEL L5591 L5592
+L5591:
+  LDC 0
+LDC 0
+TSEL L5593 L5593
+L5592:
   LD 2 2
   CAR
   CDR
@@ -31553,12 +40387,12 @@ L5594:
   CDR
   CDR
   LD 3 0
-  LD 4 19
-  AP 2
   LD 4 18
+  AP 2
+  LD 4 17
   AP 3
   LD 3 0
-  LD 4 18
+  LD 4 17
   AP 3
   ST 3 0
   LD 2 1
@@ -31674,48 +40508,43 @@ L5594:
   CONS
   ST 2 1
   LDC 0
-LDC 0
-TSEL L5596 L5596
-L5595:
-  LDC 0
-L5596:
 L5593:
-  TSEL L5585 L5585
-L5587:
+L5590:
+  TSEL L5582 L5582
+L5584:
   LD 2 0
   RTN
-L5584:
+L5581:
   RTN
-L5582:
+L5579:
   RTN
-L5580:
-L5578:
+L5577:
   RTN
 L5575:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 paint:
   LDC 0
   LD 0 0
-  LD 1 19
+  LD 1 18
   AP 2
   CAR
   LD 0 0
   CAR
   LDC 999999
-  LD 1 14
+  LD 1 13
   AP 3
   LD 0 1
-  LD 1 7
+  LD 1 6
   AP 1
   LDC 0
-  LDF L5601
+  LDF L5598
 TAP 3
-L5601:
+L5598:
   LDC 0
-  LDF L5603
+  LDF L5600
 TAP 1
-L5603:
+L5600:
   LDC 0
   LDC 0
   LDC 1
@@ -31732,29 +40561,29 @@ L5603:
   SUB
   LDC 0
   CONS
-  LDF L5605
+  LDF L5602
 TAP 4
-L5605:
-L5607:
+L5602:
+L5604:
   LDC 1
   LD 2 1
   CAR
   ATOM
-  TSEL L5610 L5611
-L5610:
+  TSEL L5607 L5608
+L5607:
   LD 2 1
   CDR
   ATOM
 LDC 0
-TSEL L5612 L5612
-L5611:
-  LDC 0
-L5612:
-  SUB
-  TSEL L5608 L5609
+TSEL L5609 L5609
 L5608:
+  LDC 0
+L5609:
+  SUB
+  TSEL L5605 L5606
+L5605:
   LD 2 1
-  LD 4 24
+  LD 4 23
   AP 1
   ST 2 2
   LD 2 2
@@ -31769,20 +40598,20 @@ L5608:
   CDR
   CDR
   LD 3 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
   ST 1 0
   LD 1 0
   LDC 0
   CEQ
-  TSEL L5613 L5614
-L5613:
+  TSEL L5610 L5611
+L5610:
   LDC 0
 LDC 0
-TSEL L5615 L5615
-L5614:
+TSEL L5612 L5612
+L5611:
   LD 2 2
   CAR
   CDR
@@ -31799,12 +40628,12 @@ L5614:
   CDR
   CDR
   LD 2 0
-  LD 4 19
-  AP 2
   LD 4 18
+  AP 2
+  LD 4 17
   AP 3
   LD 2 0
-  LD 4 18
+  LD 4 17
   AP 3
   ST 2 0
   LD 2 2
@@ -31821,12 +40650,12 @@ L5614:
   CDR
   CDR
   LD 3 0
-  LD 4 19
-  AP 2
   LD 4 18
+  AP 2
+  LD 4 17
   AP 3
   LD 3 0
-  LD 4 18
+  LD 4 17
   AP 3
   ST 3 0
   LD 2 1
@@ -31942,28 +40771,28 @@ L5614:
   CONS
   ST 2 1
   LDC 0
-L5615:
-  TSEL L5607 L5607
-L5609:
+L5612:
+  TSEL L5604 L5604
+L5606:
   LD 2 0
   RTN
-L5606:
+L5603:
   RTN
-L5604:
+L5601:
   RTN
-L5602:
+L5599:
   RTN
-L5600:
+L5597:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 mapGhostPos:
   LD 0 0
   ATOM
-  TSEL L5617 L5618
-L5617:
+  TSEL L5614 L5615
+L5614:
   LDC 0
 RTN
-L5618:
+L5615:
   LDC 1
   LD 0 0
   CAR
@@ -31971,44 +40800,44 @@ L5618:
   LDC 2
   CEQ
   SUB
-  TSEL L5620 L5621
-L5620:
+  TSEL L5617 L5618
+L5617:
   LD 0 0
   CAR
   CDR
   CAR
   LD 0 0
   CDR
-  LD 1 8
+  LD 1 7
   AP 1
   CONS
 LDC 0
-TSEL L5622 L5622
-L5621:
+TSEL L5619 L5619
+L5618:
   LD 0 0
   CDR
-  LD 1 8
+  LD 1 7
   AP 1
-L5622:
 L5619:
-  RTN
 L5616:
+  RTN
+L5613:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 toQueue:
   LDC 0
   LDC 0
   CONS
-  LDF L5624
+  LDF L5621
 TAP 1
-L5624:
-L5626:
+L5621:
+L5623:
   LDC 1
   LD 1 0
   ATOM
   SUB
-  TSEL L5627 L5628
-L5627:
+  TSEL L5624 L5625
+L5624:
   LD 0 0
   CAR
   LDC 0
@@ -32024,69 +40853,69 @@ L5627:
   CDR
   ST 1 0
 LDC 0
-TSEL L5626 L5626
-L5628:
+TSEL L5623 L5623
+L5625:
   LD 0 0
   RTN
-L5625:
+L5622:
   RTN
-L5623:
+L5620:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 getDots:
   LDC 0
   LDC 0
   LDC 0
   LD 0 0
-  LD 1 19
+  LD 1 18
   AP 2
   CAR
   LD 0 0
   CAR
-  LDF L5630
+  LDF L5627
 TAP 4
-L5630:
+L5627:
   LDC 0
-  LDF L5632
+  LDF L5629
   AP 1
 LDC 0
-TSEL L5633 L5633
-L5632:
-L5634:
+TSEL L5630 L5630
+L5629:
+L5631:
   LD 1 3
   LD 0 0
   CGT
-  TSEL L5635 L5636
-L5635:
+  TSEL L5632 L5633
+L5632:
   LDC 0
-  LDF L5637
+  LDF L5634
   AP 1
 LDC 0
-TSEL L5638 L5638
-L5637:
-L5639:
+TSEL L5635 L5635
+L5634:
+L5636:
   LD 2 2
   LD 0 0
   CGT
-  TSEL L5640 L5641
-L5640:
+  TSEL L5637 L5638
+L5637:
   LD 0 0
   LD 1 0
   LD 3 0
-  LD 4 19
+  LD 4 18
   AP 2
-  LD 4 19
+  LD 4 18
   AP 2
-  LDF L5642
+  LDF L5639
   AP 1
 LDC 0
-TSEL L5643 L5643
-L5642:
+TSEL L5640 L5640
+L5639:
   LD 0 0
   LDC 2
   CEQ
-  TSEL L5644 L5645
-L5644:
+  TSEL L5641 L5642
+L5641:
   LD 1 0
   LD 2 0
   CONS
@@ -32095,12 +40924,12 @@ L5644:
   ST 3 0
   LDC 0
 RTN
-L5645:
+L5642:
   LD 0 0
   LDC 3
   CEQ
-  TSEL L5647 L5648
-L5647:
+  TSEL L5644 L5645
+L5644:
   LD 1 0
   LD 2 0
   CONS
@@ -32109,53 +40938,53 @@ L5647:
   ST 3 1
   LDC 0
 LDC 0
-TSEL L5649 L5649
-L5648:
+TSEL L5646 L5646
+L5645:
   LDC 0
-L5649:
 L5646:
-  RTN
 L5643:
+  RTN
+L5640:
   ST 4 0 ; POP
   LD 0 0
   LDC 1
   ADD
   ST 0 0
 LDC 0
-TSEL L5639 L5639
-L5641:
+TSEL L5636 L5636
+L5638:
   LDC 0
   RTN
-L5638:
+L5635:
   ST 3 0 ; POP
   LD 0 0
   LDC 1
   ADD
   ST 0 0
 LDC 0
-TSEL L5634 L5634
-L5636:
+TSEL L5631 L5631
+L5633:
   LDC 0
   RTN
-L5633:
+L5630:
   ST 2 0 ; POP
   LD 0 0
   LD 0 1
   CONS
   RTN
-L5631:
+L5628:
   RTN
-L5629:
+L5626:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 calcDensFrom:
   LD 0 1
   ATOM
-  TSEL L5651 L5652
-L5651:
+  TSEL L5648 L5649
+L5648:
   LDC 0
 RTN
-L5652:
+L5649:
   LDC 100
   LD 0 1
   CAR
@@ -32217,35 +41046,35 @@ L5652:
   MUL
   ADD
   SUB
-  LDF L5654
+  LDF L5651
   AP 1
 LDC 0
-TSEL L5655 L5655
-L5654:
+TSEL L5652 L5652
+L5651:
   LDC 0
   LD 0 0
   CGT
-  TSEL L5656 L5657
-L5656:
+  TSEL L5653 L5654
+L5653:
   LDC 0
 LDC 0
-TSEL L5658 L5658
-L5657:
+TSEL L5655 L5655
+L5654:
   LD 0 0
-L5658:
+L5655:
   LD 1 0
   LD 1 1
   CDR
-  LD 2 5
+  LD 2 4
   AP 2
   ADD
   RTN
-L5655:
-L5653:
-  RTN
+L5652:
 L5650:
+  RTN
+L5647:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 junctionSafety:
   LDC 0
   LD 0 2
@@ -32260,39 +41089,39 @@ junctionSafety:
   ADD
   CONS
   LDC 1
-  LDF L5660
+  LDF L5657
 TAP 3
-L5660:
-L5662:
+L5657:
+L5659:
   LDC 1
   LD 0 1
   CAR
   LD 0 1
   CDR
   LD 1 0
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
   SUB
-  TSEL L5663 L5664
-L5663:
+  TSEL L5660 L5661
+L5660:
   LD 0 1
   LD 1 0
-  LD 2 3
+  LD 2 2
   AP 2
-  TSEL L5665 L5666
-L5665:
+  TSEL L5662 L5663
+L5662:
   LD 0 1
   CAR
   LD 0 1
   CDR
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LD 0 2
   SUB
@@ -32303,8 +41132,8 @@ L5665:
   ST 0 1
   LDC 0
 LDC 0
-TSEL L5667 L5667
-L5666:
+TSEL L5664 L5664
+L5663:
   LD 0 1
   CAR
   LD 1 3
@@ -32322,33 +41151,33 @@ L5666:
   ADD
   ST 0 2
   LDC 0
-L5667:
-  TSEL L5662 L5662
 L5664:
+  TSEL L5659 L5659
+L5661:
   LD 0 0
   RTN
-L5661:
+L5658:
   RTN
-L5659:
+L5656:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 isJunction:
   LD 0 0
   CAR
   LD 0 0
   CDR
-  LDF L5669
+  LDF L5666
 TAP 2
-L5669:
+L5666:
   LDC 1
   LD 0 0
   LDC 1
   ADD
   LD 0 1
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
@@ -32359,9 +41188,9 @@ L5669:
   SUB
   LD 0 1
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
@@ -32373,9 +41202,9 @@ L5669:
   LDC 1
   ADD
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
@@ -32387,9 +41216,9 @@ L5669:
   LDC 1
   SUB
   LD 1 1
-  LD 2 19
+  LD 2 18
   AP 2
-  LD 2 19
+  LD 2 18
   AP 2
   LDC 0
   CEQ
@@ -32398,67 +41227,31 @@ L5669:
   LDC 3
   CGTE
   RTN
-L5670:
+L5667:
   RTN
-L5668:
+L5665:
 LDC 0
-TSEL L5675 L5675
+TSEL L5668 L5668
 lmax:
   LD 0 1
   LD 0 0
   CGT
-  TSEL L5672 L5673
-L5672:
+  TSEL L5669 L5670
+L5669:
   LD 0 0
 RTN
-L5673:
+L5670:
   LD 0 1
-L5674:
-  RTN
 L5671:
-LDC 0
-TSEL L5675 L5675
-updPoss:
-  LD 0 0
-  ATOM
-  TSEL L5676 L5677
-L5676:
-  LD 0 2
-RTN
-L5677:
-  LD 0 0
-  CDR
-  LD 0 1
-  LD 0 0
-  CAR
-  CDR
-  LD 0 0
-  CAR
-  CAR
-  LD 0 1
-  LD 0 0
-  CAR
-  CDR
-  LD 0 2
-  LD 1 19
-  AP 2
-  LD 1 18
-  AP 3
-  LD 0 2
-  LD 1 18
-  AP 3
-  LD 1 1
-  AP 3
-L5678:
   RTN
-L5675:
+L5668:
   LD 1 0
   LD 1 1
-  LD 0 11
+  LD 0 10
   AP 2
-  LDF L5679
+  LDF L5672
 TAP 1
-L5679:
+L5672:
   LDC 1
   LD 0 0
   CDR
@@ -32466,15 +41259,15 @@ L5679:
   LDC -999999
   CEQ
   SUB
-  TSEL L5681 L5682
-L5681:
+  TSEL L5674 L5675
+L5674:
   LD 0 0
-  LD 1 13
+  LD 1 12
   CONS
 RTN
-L5682:
+L5675:
   LDC 0
-L5683:
+L5676:
   RTN
-L5680:
+L5673:
   RTN
