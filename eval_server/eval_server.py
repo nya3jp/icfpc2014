@@ -2,8 +2,10 @@
 
 import datetime
 import json
+import glob
 import os
 import re
+import subprocess
 import sys
 
 import bottle
@@ -13,22 +15,22 @@ FLAGS = gflags.FLAGS
 
 gflags.DEFINE_integer('port', None, '')
 gflags.DEFINE_string('data_dir', None, '')
+gflags.DEFINE_string('ghost_data_dir', None, '')
 gflags.MarkFlagAsRequired('port')
 gflags.MarkFlagAsRequired('data_dir')
+gflags.MarkFlagAsRequired('ghost_data_dir')
 
 
-def load_entry(name):
-  with open(os.path.join(FLAGS.data_dir, '%s.request.json' % name)) as f:
+def load_entry(key, data_dir):
+  with open(os.path.join(data_dir, '%s.request.json' % key)) as f:
     entry = json.load(f)
   entry['results'] = []
-  for jsonname in os.listdir(FLAGS.data_dir):
-    if jsonname.startswith(name + '.response.') and jsonname.endswith('.json'):
-      jsonpath = os.path.join(FLAGS.data_dir, jsonname)
-      with open(jsonpath) as f:
-        try:
-          entry['results'].append(json.load(f))
-        except ValueError:
-          continue
+  for jsonpath in glob.glob(os.path.join(data_dir, '%s.response.*.json' % key)):
+    with open(jsonpath) as f:
+      try:
+        entry['results'].append(json.load(f))
+      except ValueError:
+        continue
   return entry
 
 
@@ -46,43 +48,55 @@ def flatten_results(entries):
   return evalsets
 
 
-@bottle.get('/')
-def index_handler():
+def handle_index(data_dir, template_name):
   entries = []
-  for jsonname in sorted(os.listdir(FLAGS.data_dir), reverse=True):
-    if jsonname.endswith('.request.json'):
-      jsonpath = os.path.join(FLAGS.data_dir, jsonname)
-      with open(jsonpath) as f:
-        try:
-          entry = load_entry(json.load(f)['name'])
-        except ValueError:
-          continue
+  for jsonpath in glob.glob(os.path.join(data_dir, '*.request.json')):
+    with open(jsonpath) as f:
+      try:
+        entry = load_entry(json.load(f)['key'], data_dir)
+      except ValueError:
+        continue
       entries.append(entry)
   evalsets = flatten_results(entries)
-  return bottle.template('index.html', entries=entries, evalsets=evalsets)
+  return bottle.template(template_name, entries=entries, evalsets=evalsets)
+
+
+def handle_submit(data_dir):
+  key = bottle.request.forms['key']
+  code = bottle.request.files['code'].file.read()
+  assert re.search(r'^[a-zA-z0-9_-]+$', key)
+  now = datetime.datetime.now()
+  data = {
+      'key': key,
+      'date': now.strftime('%Y-%m-%d %H:%M:%S'),
+      }
+  prefix = os.path.join(data_dir, key)
+  subprocess.check_call('rm -f "%s.*"' % prefix, shell=True)
+  with open(prefix + '.request.code', 'w') as f:
+    f.write(code)
+  with open(prefix + '.request.json', 'w') as f:
+    json.dump(data, f, indent=2, sort_keys=True)
+  return bottle.redirect('./')
+
+
+@bottle.get('/')
+def index_handler():
+  return handle_index(FLAGS.data_dir, 'index.html')
 
 
 @bottle.post('/submit')
 def submit_handler():
-  user = bottle.request.forms['user']
-  url = bottle.request.forms['url']
-  comment = bottle.request.forms['comment']
-  code = bottle.request.files['code'].file.read()
-  assert re.search(r'^[a-zA-z0-9_-]+$', user)
-  now = datetime.datetime.now()
-  name = '%s-%s' % (now.strftime('%Y%m%d-%H%M%S-%f'), user)
-  data = {
-      'name': name,
-      'title': now.strftime('%Y-%m-%d %H:%M:%S') + ' by ' + user,
-      'user': user,
-      'url': url,
-      'comment': comment,
-      }
-  with open(os.path.join(FLAGS.data_dir, '%s.request.json' % name), 'w') as f:
-    json.dump(data, f, indent=2, sort_keys=True)
-  with open(os.path.join(FLAGS.data_dir, '%s.request.code' % name), 'w') as f:
-    f.write(code)
-  return bottle.redirect('./')
+  handle_submit(FLAGS.data_dir)
+
+
+@bottle.get('/ghost/')
+def ghost_index_handler():
+  return handle_index(FLAGS.ghost_data_dir, 'index.html')
+
+
+@bottle.post('/ghost/submit')
+def submit_handler():
+  return handle_submit(FLAGS.ghost_data_dir)
 
 
 if __name__ == '__main__':

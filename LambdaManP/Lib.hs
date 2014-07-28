@@ -17,21 +17,25 @@ libDef = do
 
   dequeueDef
 
+  newArrayDef
+  newArrayGoDef
   mkArrayDef
   mkArrayGoDef
   peekDef
-  peekGoDef
   pokeDef
   pokeGoDef
 
   toMatDef
   toMatsDef
+  newMatDef
+
+infixr 3 &&&, |||
 
 (&&&) :: Expr Int -> Expr Int -> Expr Int
-a &&& b = a * b
+a &&& b = ite a b 0
 
 (|||) :: Expr Int -> Expr Int -> Expr Int
-a ||| b = lnot $ lnot a &&& lnot b
+a ||| b = ite a 1 b
 
 lnot :: Expr Int -> Expr Int
 lnot e = 1 - e
@@ -99,10 +103,20 @@ isEmptyQueue q = (isNull $ car q) &&& (isNull $ cdr q)
 type Array a = (Int, Node a)
 data Node a = Node
 
+newArray :: Expr Int -> Expr a -> Expr (Array a)
+(newArray, newArrayDef) = def2 "newArray" $ \n v -> cons n $ newArrayGo 0 n v
+
+newArrayGo :: Expr Int -> Expr Int -> Expr a -> Expr (Node a)
+(newArrayGo, newArrayGoDef) = def3 "newArrayGo" $ \l r v ->
+  let m = (l + r) `div` 2
+  in ite (r - l .== 1)
+     (cast v)
+     (gcons (newArrayGo l m v) (newArrayGo m r v))
+
 mkArray :: Expr [a] -> Expr (Array a)
-(mkArray, mkArrayDef) = def1 "mkArray" $ \xs ->
+(mkArray, mkArrayDef) = def1 "mkArray" $ \xs -> comp $
   with (llength xs) $ \len ->
-    cons len $ mkArrayGo 0 len xs
+    e $ cons len $ mkArrayGo 0 len xs
 
 mkArrayGo :: Expr Int -> Expr Int -> Expr [a] -> Expr (Node a)
 (mkArrayGo, mkArrayGoDef) = def3 "mkArrayGo" $ \l r xs ->
@@ -111,6 +125,7 @@ mkArrayGo :: Expr Int -> Expr Int -> Expr [a] -> Expr (Node a)
      (cast $ lhead xs)
      (gcons (mkArrayGo l m xs) (mkArrayGo m r $ ldrop (m - l) xs))
 
+{-
 peek :: Expr Int -> Expr (Array a) -> Expr a
 (peek, peekDef) = def2 "peek" $ \ix arr -> peekGo ix 0 (car arr) (cdr arr)
 
@@ -121,6 +136,20 @@ peekGo :: Expr Int -> Expr Int -> Expr Int -> Expr (Node a) -> Expr a
        ite (ix .< m)
          (peekGo ix l m (gcar node))
          (peekGo ix m r (gcdr node))
+-}
+
+undef :: Expr a
+undef = cast (c 0)
+
+peek :: Expr Int -> Expr (Array a) -> Expr a
+(peek, peekDef) = def2 "peek" $ \ix arr -> comp $ do
+  with4 0 (car arr) (cdr arr) undef $ \l r node m -> do
+    while (r - l ./= 1) $ do
+      m ~= (l + r) `div` 2
+      cond (ix .< m)
+        (r ~= m >> node ~= gcar node)
+        (l ~= m >> node ~= gcdr node)
+    e $ node
 
 poke :: Expr Int -> Expr a -> Expr (Array a) -> Expr (Array a)
 (poke, pokeDef) = def3 "poke" $ \ix v arr -> cons (car arr) (pokeGo ix 0 (car arr) v (cdr arr))
@@ -140,6 +169,10 @@ peekMat x y m = peek x $ peek y m
 
 pokeMat :: Expr Int -> Expr Int -> Expr a -> Expr (Mat a) -> Expr (Mat a)
 pokeMat x y v m = poke y (poke x v $ peek y m) m
+
+newMat :: Expr Int -> Expr Int -> Expr a -> Expr (Mat a)
+(newMat, newMatDef) = def3 "newMat" $ \x y v -> comp $ do
+  with (newArray x v) $ \row -> e $ newArray y row
 
 toMat :: Expr [[a]] -> Expr (Mat a)
 (toMat, toMatDef) = def1 "toMat" $ \mm -> mkArray $ toMats mm
