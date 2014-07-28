@@ -353,12 +353,13 @@ main = do
       mapM_ putStrLn $ compile' progn
     _ -> do
       idx <- randomRIO (0,10000:: Integer)
-      dateStr <- readProcess "date" [] ""
+      dateStr <- readProcess "date" ["+%H%M%S"] ""
       let 
+          body = printf "archive/anko-%s-%04d" dateStr2 idx
           fnGcc :: String
-          fnGcc = printf "archive/anko-%s-%04d.gcc" dateStr2 idx
+          fnGcc = body ++ ".gcc"
           fnDir :: String
-          fnDir = printf "archive/anko-%s-%04d-src" dateStr2 idx
+          fnDir = body ++ "-src"
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
