@@ -208,6 +208,19 @@ selectMin bd pos = comp $
     cond (c3 ./= inf &&& c3 .< c0 &&& c3 .< c1 &&& c3 .< c2) (e $ c 3) $
     e $ c (-1)
 
+selectSmall :: Expr Map -> Expr Pos -> Expr Int
+selectSmall bd pos = comp $
+  withVects $ \[v0, v1, v2, v3] ->
+  with (peekMap (vadd pos v0) bd) $ \c0 ->
+  with (peekMap (vadd pos v1) bd) $ \c1 ->
+  with (peekMap (vadd pos v2) bd) $ \c2 ->
+  with (peekMap (vadd pos v3) bd) $ \c3 ->
+    cond (c0 ./= inf &&& c0 .< c1 &&& c0 .< c2 &&& c0 .< c3) (e $ c 0) $
+    cond (c1 ./= inf &&& c1 .< c2 &&& c1 .< c3) (e $ c 1) $
+    cond (c2 ./= inf &&& c2 .< c3) (e $ c 2) $
+    e $ c 3
+
+
 push :: Expr [a] -> Expr a -> CExpr () ()
 push ls v = ls ~= lcons v ls
 
@@ -286,7 +299,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
               chainAction FromGhost (selectMax ghostMap lmanPos) $
               chainAction ToPowerDot (selectMin ghostMap lmanPos) $
               chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 
-              chainAction ToDot (selectMin dotMap lmanPos) $ lmanDir
+              chainAction ToDot (selectSmall dotMap lmanPos) $ lmanDir
 
         e $ cons (cons bd actionFlags) dir
 
