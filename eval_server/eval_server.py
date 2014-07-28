@@ -71,7 +71,7 @@ def handle_submit(data_dir):
       'date': now.strftime('%Y-%m-%d %H:%M:%S'),
       }
   prefix = os.path.join(data_dir, key)
-  subprocess.check_call('rm -f "%s.*"' % prefix, shell=True)
+  subprocess.check_call('rm -f "%s".*' % prefix, shell=True)
   with open(prefix + '.request.code', 'w') as f:
     f.write(code)
   with open(prefix + '.request.json', 'w') as f:
