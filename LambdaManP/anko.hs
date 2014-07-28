@@ -260,7 +260,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd ghosts)   $ \ghostMap ->
       with (paint bd dots) $ \dotMap ->
       with (paint bd pows) $ \powMap -> 
-      with2 (car lmanState .>=0) (caddr lmanState) $ \lmanIsPow lmanDir ->
+      with2 (car lmanState .>0) (caddr lmanState) $ \lmanIsPow lmanDir ->
       with (calcDensFrom lmanPos ghosts) $ \ghostDens -> do
             
         let chainAction :: ActionFlag -> Expr Int -> Expr Int -> Expr Int
