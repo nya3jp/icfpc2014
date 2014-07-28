@@ -16,12 +16,28 @@ let parse_ghosts str =
 (* *)
 let main () =
   Printexc.record_backtrace true;
-  if Array.length Sys.argv <> 4 then
-    failwith "usage: ./simulator map ai ghost-ai";
 
-  let fieldName = Sys.argv.(1) in
-  let lambdamanFilename = Sys.argv.(2) in
-  let ghostFilenames = Sys.argv.(3) in
+  let pos = ref 1 in
+  begin
+    try
+      while !pos < Array.length Sys.argv do
+        if Sys.argv.(!pos) = "-v" then begin
+          Simulator.conf_quiet := false;
+          print_endline "verbose mode";
+          incr pos
+        end else
+          raise Exit
+      done;
+    with
+    | Exit -> ()
+  end;
+
+  if Array.length Sys.argv <> !pos + 3 then
+    failwith "usage: ./simulator [options] map ai ghost-ai";
+
+  let fieldName = Sys.argv.(!pos) in
+  let lambdamanFilename = Sys.argv.(!pos + 1) in
+  let ghostFilenames = Sys.argv.(!pos + 2) in
 
   let field = FieldReader.read fieldName in
   let ai = LambdamanReader.read lambdamanFilename in
