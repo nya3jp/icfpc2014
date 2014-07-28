@@ -8,6 +8,7 @@ import Control.Applicative (Const)
 import DSL
 import Lib
 import Vect
+import Tree
 import System.Random
 import System.Process
 import Text.Printf
@@ -28,11 +29,18 @@ type FruitState = Int
 
 type AIState = (Map, (Int, ActionFlags))
 type ActionFlags = Array Int
+-- type ActionFlags = Tree
+
+-- peekFlag :: ActionFlag -> Expr ActionFlags -> Expr Int
+-- peekFlag f = tlookup (Const $ fromEnum f)
+-- pokeFlag :: ActionFlag -> Expr Int -> Expr ActionFlags -> Expr ActionFlags 
+-- pokeFlag f = poke (Const $ fromEnum f)
 
 peekFlag :: ActionFlag -> Expr ActionFlags -> Expr Int
 peekFlag f = peek (Const $ fromEnum f)
 pokeFlag :: ActionFlag -> Expr Int -> Expr ActionFlags -> Expr ActionFlags 
 pokeFlag f = poke (Const $ fromEnum f)
+
 
 -- lowest array is of highest priority
 data ActionFlag 
@@ -263,6 +271,22 @@ voteMin bd pos = comp $
     in cons (cons elem0 elem1) (cons elem2 elem3)
 
 
+voteAvoidWall :: Expr Map -> Expr Pos -> Expr V4
+voteAvoidWall bd pos = comp $
+  withVects $ \[v0, v1, v2, v3] ->
+  with (peekMap (vadd pos v0) bd) $ \c0 ->
+  with (peekMap (vadd pos v1) bd) $ \c1 ->
+  with (peekMap (vadd pos v2) bd) $ \c2 ->
+  with (peekMap (vadd pos v3) bd) $ \c3 -> e $
+    let 
+        elem0 = c0 ./= 0
+        elem1 = c1 ./= 0
+        elem2 = c2 ./= 0
+        elem3 = c3 ./= 0
+    in cons (cons elem0 elem1) (cons elem2 elem3)
+
+
+
 
 push :: Expr [a] -> Expr a -> CExpr () ()
 push ls v = ls ~= lcons v ls
@@ -308,7 +332,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
         -- [2]
-        lwhen (lnot lmanIsPow)  $ do
+        lwhen (lnot lmanIsPow &&& ghostDens .>= 100)  $ do
           actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
           actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
@@ -316,11 +340,16 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
           actionFlags ~= pokeFlag ToGhost 1 actionFlags         
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags 
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
-        lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 5)$ do
+        lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 2)$ do
           actionFlags ~= pokeFlag FromPowerDot 1 actionFlags 
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags           
           actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
-        -- [3]
+        lwhen (lnot lmanIsPow)  $ do
+          actionFlags ~= pokeFlag ToGhost 0 actionFlags         
+        lwhen (peekMap lmanPos powMap .> 2)  $ do
+          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags         
+        
+-- [3]
         actionFlags ~= pokeFlag ToDot 1 actionFlags 
         
         let chainAction :: Expr Int -> ActionFlag -> Expr V4 -> Expr V4
@@ -331,17 +360,13 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         dirVote ~= dirVote `vadd4` chainAction 20 ToGhost      (voteMin  ghostMap lmanPos)  
         dirVote ~= dirVote `vadd4` chainAction 20 FromPowerDot (voteMax  powMap lmanPos)               
         dirVote ~= dirVote `vadd4` chainAction 10 ToDot        (voteMin  dotMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 5 ToDot         (voteMax  bd lmanPos) 
+        dirVote ~= dirVote `vadd4` (5  `vscale4` (voteMax  bd lmanPos) )
+        dirVote ~= dirVote `vadd4` (10000 `vscale4` (voteAvoidWall  bd lmanPos) )        
 
         let dir = maxIndex4 dirVote
 
         trace (c 6677, actionFlags)
-        trace bd
-        trace dotMap        
         trace dirVote   
-        trace dir        
-        trace actionFlags       
-
         
         e $ cons (cons bd (cons (1+clk) actionFlags)) dir
 
@@ -366,7 +391,7 @@ initialize :: Expr World -> Expr X -> Expr AIState
         aist0 = cons mat $
                 cons (Const 0) $ 
                 arr0
-        arr0 = newArray actionFlagSize (Const 1) :: Expr (Array Int)
+        arr0 = newArray actionFlagSize (Const 0) :: Expr (Array Int)
     e $ aist0
 
 progn :: LMan ()
@@ -393,13 +418,13 @@ main = do
   args <- getArgs
   case args of
     ["debug"] -> do
-      mapM_ putStrLn $ compile' progn
+      mapM_ (writeFile "debug.gcc") $ compile' prognDebug
     _ -> do
       idx <- randomRIO (0,10000:: Integer)
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       
       let 
-          body = printf "archive/TB-%s-%04d" dateStr2 idx
+          body = printf "archive/goodflag-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
@@ -416,3 +441,12 @@ main = do
         writeFile fnGcc $ progStr
         system $ "mkdir -p " ++ fnDir
         system $ printf "cp *.hs %s/" fnDir
+
+
+prognDebug :: LMan ()
+prognDebug = do
+  libDef
+  
+  let xs = newArray 7 (Const 0)
+  
+  rtn $ dbugn 10
