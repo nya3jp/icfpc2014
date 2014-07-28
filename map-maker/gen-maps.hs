@@ -5,7 +5,7 @@ import Text.Printf
 process :: Int -> (Int,Int) -> IO ()
 process indx (sx,sy) = do
   let fn::String
-      fn = printf "eval%04d.map" indx
+      fn = printf "eval-b-%04d.map" indx
   system $ printf "./mapgen.out %d %d > %s" sx sy fn
   return ()
 
