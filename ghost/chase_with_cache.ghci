@@ -1,0 +1,316 @@
+    ; Register `H` used as a stack pointer, which grows downward.
+    MOV H,255
+    MOV A,1
+    MOV B,10
+    MOV C,3
+    MOV [H],5EA47E7E
+    DEC H
+    MOV PC,GET_DIRS
+5EA47E7E:
+    HLT
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GET_ADJACENT_COORDINATE: For given coordinate and direction index, returns
+;                          the corresponding coordinate.
+;   - In:
+;     - Register `A`, X-ordinate.
+;     - Register `B`, Y-ordinate.
+;     - Register `C`, direction index (0 = north, 1 = east, 2 = south,
+;       3 = west)
+;   - Out:
+;     - Register `A`, X-ordinate.
+;     - Register `B`, Y-ordinate.
+;   - Side effect: Register `C`, `D`, `E` are destroyed.
+GET_ADJACENT_COORDINATE:
+    MOV D,C
+    MOV E,C
+    AND C,1
+    AND E,2
+    SUB E,1
+    MUL C,E
+    SUB A,C
+    SUB D,1
+    AND D,1
+    MUL D,E
+    ADD B,D
+    INC H
+    MOV PC,[H]
+
+IS_ADJACENT_COORDINATE_NON_WALL_SQUARE:
+    MOV [H],A9F040E2
+    DEC H
+    MOV PC,GET_ADJACENT_COORDINATE
+A9F040E2:
+    INT 7
+    INC H
+    MOV PC,[H]
+
+REVERSE_DIRECTION:
+    ADD A,2
+    AND A,3
+    INC H
+    MOV PC,[H]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+GET_POSSIBLE_DIRECTIONS:
+    MOV [H],A   ; X-ordinate parameter.
+    DEC H
+    MOV [H],B   ; Y-ordinate parameter.
+    DEC H
+    MOV [H],C   ; Direction index parameter.
+    DEC H
+    MOV [H],4   ; 1st possible direction
+    DEC H
+    MOV [H],4   ; 2nd possible direction (if any)
+    DEC H
+    MOV [H],4   ; 3rd possible direction (if any)
+    DEC H
+    MOV [H],H   ; Pointer to possible directions variables.
+    ADD [H],3
+    DEC H
+    MOV [H],0   ; Direction counter.
+    DEC H
+    ; Reverse the direction index parameter.
+    MOV A,H
+    ADD A,6
+    MOV A,[A]
+    MOV [H],598A9E9C
+    DEC H
+    MOV PC,REVERSE_DIRECTION
+598A9E9C:
+    MOV B,H
+    ADD B,6
+    MOV [B],A
+FOR_18D410EB:
+    MOV C,H
+    ADD C,1
+    MOV C,[C]
+    JGT END_FOR_18D410EB,C,3
+    MOV A,H
+    ADD A,8
+    MOV A,[A]
+    MOV B,H
+    ADD B,7
+    MOV B,[B]
+    MOV D,H
+    ADD D,6
+    JEQ A5F46366,C,[D]
+    MOV [H],CC4869E5
+    DEC H
+    MOV PC,IS_ADJACENT_COORDINATE_NON_WALL_SQUARE
+CC4869E5:
+    JEQ A5F46366,A,0
+    MOV C,H
+    ADD C,1
+    MOV C,[C]
+    MOV A,H
+    ADD A,2
+    MOV A,[A]
+    MOV [A],C
+    MOV A,H
+    ADD A,2
+    DEC [A]
+A5F46366:
+    MOV C,H
+    ADD C,1
+    INC [C]
+    MOV PC,FOR_18D410EB
+END_FOR_18D410EB:
+    MOV A,H
+    ADD A,5
+    MOV A,[A]
+    MOV B,H
+    ADD B,4
+    MOV B,[B]
+    MOV C,H
+    ADD C,3
+    MOV C,[C]
+    ADD H,8
+    INC H
+    MOV PC,[H]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GET_DIRECTIONS_TO_FIRST_LAMBDAMAN: returns direction to the 1st lambdaman
+; from a given coordinate.
+;   - In:
+;     - Register `A`, X-ordinate
+;     - Register `B`, Y-ordinate
+;   - Out:
+;     - Register `A`, major direction to the 1st lambdaman (0 = north,
+;       1 = east, 2 = south, 3 = west).
+;     - Register `B`, minor direction to the 1st lambdaman (0 = north,
+;       1 = east, 2 = south, 3 = west).
+;   - Side effect: Register `C` and `D` are destroyed.
+;   - Notes: coordinate difference in the major direction is greater than or
+;            equal to one in minor direction.
+GET_DIRECTIONS_TO_FIRST_LAMBDAMAN:
+    MOV C,A
+    MOV D,B
+    INT 1
+    SUB A,C
+    SUB B,D
+    MOV C,A
+    MOV D,B
+    MOV A,0
+    JLT FC284D19,C,128
+    ; The first lambdaman is left from the ghost.
+    MOV A,2
+FC284D19:
+    ; The first lambdaman is right from the ghost.
+    ADD A,1
+    MOV B,0
+    JLT 0EF670EF,D,128
+    ; The first lambdaman is up from the ghost.
+    MOV B,254
+0EF670EF:
+    ; The 1st lambdaman is down from the ghost.
+    ADD B,2
+    ; MOV C,abs(C)
+    JLT 73FF22EB,C,128
+    XOR C,255
+    ADD C,1
+73FF22EB:
+    ; MOV C,abc(C)
+    JLT 30604BE8,D,128
+    XOR D,255
+    ADD D,1
+30604BE8:
+    JGT D1D395BD,C,D
+    MOV C,A
+    MOV A,B
+    MOV B,C
+D1D395BD:
+    INC H
+    MOV PC,[H]
+
+GET_DIRS:
+    MOV [H],A   ; X-ordinate parameter
+    DEC H
+    MOV [H],B   ; Y-ordinate parameter
+    DEC H
+    MOV [H],C   ; Direction index parameter
+    DEC H
+    MOV [H],080CC5E6
+    DEC H
+    MOV PC,GET_DIRECTIONS_TO_FIRST_LAMBDAMAN
+080CC5E6:
+    MOV [H],A   ; Major positive direction
+    DEC H
+    MOV [H],B   ; Minor positive direction
+    DEC H
+    MOV [H],B   ; Minor negative direction
+    DEC H
+    MOV [H],A   ; Major negative direction
+    DEC H
+    MOV [H],H
+    ADD [H],4   ;
+    DEC H
+    MOV [H],H
+    ADD [H],5   ;
+    DEC H
+    MOV A,H
+    ADD A,7
+    MOV A,[A]
+    MOV [H],FD2D2D5E
+    DEC H
+    MOV PC,REVERSE_DIRECTION
+FD2D2D5E:
+    MOV B,H
+    ADD B,7
+    MOV [B],A
+    MOV A,H
+    ADD A,6
+    MOV A,[A]
+    MOV [H],D5FDE5F1
+    DEC H
+    MOV PC,REVERSE_DIRECTION
+D5FDE5F1:
+    MOV B,H
+    ADD B,3
+    MOV [B],A
+    MOV A,H
+    ADD A,5
+    MOV A,[A]
+    MOV [H],B1FBFA4D
+    DEC H
+    MOV PC,REVERSE_DIRECTION
+B1FBFA4D:
+    MOV B,H
+    ADD B,4
+    MOV [B],A
+FOR_2D5E6622:
+    MOV A,H
+    ADD A,2
+    MOV A,[A]
+    MOV C,H
+    ADD C,2
+    JEQ END_FOR_2D5E6622,A,C
+    MOV C,H
+    ADD C,7
+    JEQ 2D13E947,[A],[C]
+    MOV PC,EA2346B4
+2D13E947:
+    MOV A,H
+    ADD A,2
+    DEC [A]
+    MOV PC,FOR_2D5E6622
+EA2346B4:
+    MOV A,H
+    ADD A,9
+    MOV A,[A]
+    MOV B,H
+    ADD B,8
+    MOV B,[B]
+    MOV C,H
+    ADD C,2
+    MOV C,[C]
+    MOV C,[C]
+    MOV [H],8E91A626
+    DEC H
+    MOV PC,IS_ADJACENT_COORDINATE_NON_WALL_SQUARE
+8E91A626:
+    JGT AFB7584A,A,0
+    MOV A,H
+    ADD A,2
+    DEC [A]
+    MOV PC,FOR_2D5E6622
+AFB7584A:
+    MOV A,H
+    ADD A,2
+    MOV A,[A]
+    MOV B,H
+    ADD B,1
+    MOV B,[B]
+    MOV [B],[A]
+    MOV A,H
+    ADD A,2
+    DEC [A]
+    MOV B,H
+    ADD B,1
+    DEC [B]
+    MOV PC,FOR_2D5E6622
+END_FOR_2D5E6622:
+    MOV A,H
+    ADD A,2
+    MOV A,[A]
+    MOV B,H
+    ADD B,1
+    MOV B,[B]
+FOR_7AC9C06B:
+    JEQ END_FOR_7AC9C06B,B,A
+    MOV [B],4
+    DEC B
+    MOV PC,FOR_7AC9C06B
+END_FOR_7AC9C06B:
+    MOV A,H
+    ADD A,6
+    MOV A,[A]
+    MOV B,H
+    ADD B,5
+    MOV B,[B]
+    MOV C,H
+    ADD C,4
+    MOV C,[C]
+    ADD H,9
+    INC H
+    MOV PC,[H]
