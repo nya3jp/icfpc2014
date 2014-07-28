@@ -33,21 +33,21 @@ type ActionFlags = Array Int
 
 -- peekFlag :: ActionFlag -> Expr ActionFlags -> Expr Int
 -- peekFlag f = tlookup (Const $ fromEnum f)
--- pokeFlag :: ActionFlag -> Expr Int -> Expr ActionFlags -> Expr ActionFlags 
+-- pokeFlag :: ActionFlag -> Expr Int -> Expr ActionFlags -> Expr ActionFlags
 -- pokeFlag f = poke (Const $ fromEnum f)
 
 peekFlag :: ActionFlag -> Expr ActionFlags -> Expr Int
 peekFlag f = peek (Const $ fromEnum f)
-pokeFlag :: ActionFlag -> Expr Int -> Expr ActionFlags -> Expr ActionFlags 
+pokeFlag :: ActionFlag -> Expr Int -> Expr ActionFlags -> Expr ActionFlags
 pokeFlag f = poke (Const $ fromEnum f)
 
 
 -- lowest array is of highest priority
-data ActionFlag 
-  = ToDot 
+data ActionFlag
+  = ToDot
   | FromDot
-  | ToPowerDot 
-  | FromPowerDot 
+  | ToPowerDot
+  | FromPowerDot
   | ToGhost
   | FromGhost
   | ToWidePlaces
@@ -94,38 +94,13 @@ withVects f =
   with4 (cons 0 (-1)) (cons 1 0) (cons 0 1) (cons (-1) 0) $
     \v1 v2 v3 v4 -> f [v1, v2, v3, v4]
 
-bfs :: Expr Map -> Expr [Pos] -> Expr Int -> Expr Int
-(bfs, bfsDef) = def3 "bfs" $ \bd gs target -> comp $
-  with3 0 (toQueue gs) undef $ \out q qq ->
-  with undef $ \cell ->
-  withVects $ \[v1, v2, v3, v4] -> do
-    while (lnot $ isEmptyQueue q) $ do
-      qq ~= dequeue q
-      q ~= cdr qq
-
-      let dep = car $ car qq
-          pos = cdr $ car qq
-
-      cell ~= peekMat (car pos) (cdr pos) bd
-
-
-      cond (cell .== target)
-        ( do
-             out ~= dep
-             q ~= emptyQueue
-        )
-        ( cond((cell .== 0) ||| (cell .== 6)) (e $ c 0) $ do
-             bd ~= pokeMat (car pos) (cdr pos) 0 bd
-             q ~= enqueue (cons (dep + 1) $ vadd pos v1) q
-             q ~= enqueue (cons (dep + 1) $ vadd pos v2) q
-             q ~= enqueue (cons (dep + 1) $ vadd pos v3) q
-             q ~= enqueue (cons (dep + 1) $ vadd pos v4) q
-        )
-
-    e out
+updPoss :: Expr [Pos] -> Expr Int -> Expr Map -> Expr Map
+(updPoss, updPossDef) = def3 "updPoss" $ \ps v bd ->
+  ite (isNull ps) bd $ updPoss (ltail ps) v $ pokeMap (lhead ps) v bd
 
 inf :: Expr Int
 inf = Const 999999
+
 ninf :: Expr Int
 ninf =Const $ negate 999999
 
@@ -137,7 +112,40 @@ calcDensFrom :: Expr Pos -> Expr [Pos] -> Expr Int
       \ r -> e $ (ite (r .< 0) 0 r) + calcDensFrom origin (ltail poss)
 
 
+bfs :: Expr Map -> Expr Pos -> Expr Int -> Expr Int -> Expr Int
+(bfs, bfsDef) = def4 "bfs" $ \bd start target depLimit -> ite (peekMap start bd .== 0) inf $ comp $
+  with3 inf (toQueue $ list [start]) undef $ \out q qq ->
+  with undef $ \cell ->
+  withVects $ \[v1, v2, v3, v4] -> do
+    while (lnot $ isEmptyQueue q) $ do
+      qq ~= dequeue q
+      q ~= cdr qq
 
+      let dep = car $ car qq
+          pos = cdr $ car qq
+
+      cell ~= peekMap pos bd
+
+      -- trace (c 10002, dep, depLimit, pos, cell)
+      -- traceMap 123 bd
+
+      cond (cell .== target)
+        ( do
+             out ~= dep
+             q ~= emptyQueue
+        )
+        ( lwhen (dep + 1 .<= depLimit &&& cell ./= 0) $ do
+             bd ~= pokeMat (car pos) (cdr pos) 0 bd
+             q ~= enqueue (cons (dep + 1) $ vadd pos v1) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v2) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v3) q
+             q ~= enqueue (cons (dep + 1) $ vadd pos v4) q
+        )
+
+    e out
+
+quota :: Expr Int
+quota = 20
 
 paint :: Expr Map -> Expr [Pos] -> Expr Map
 (paint, paintDef) = def2 "paint" $ \bd starts -> comp $
@@ -243,32 +251,32 @@ selectSmall bd pos = comp $
     e $ c 3
 
 
-voteMax :: Expr Map -> Expr Pos -> Expr V4
-voteMax bd pos = comp $
+voteMax :: (Expr Pos -> Expr Int) -> Expr Pos -> Expr V4
+voteMax score pos = comp $
   withVects $ \[v0, v1, v2, v3] ->
-  with (negate $peekMap (vadd pos v0) bd) $ \c0 ->
-  with (negate $peekMap (vadd pos v1) bd) $ \c1 ->
-  with (negate $peekMap (vadd pos v2) bd) $ \c2 ->
-  with (negate $peekMap (vadd pos v3) bd) $ \c3 -> e $
+  with (negate $score (vadd pos v0)) $ \c0 ->
+  with (negate $score (vadd pos v1)) $ \c1 ->
+  with (negate $score (vadd pos v2)) $ \c2 ->
+  with (negate $score (vadd pos v3)) $ \c3 -> e $
     let -- NEGATED!!
-        elem0 = c0 ./= ninf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3 
+        elem0 = c0 ./= ninf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3
         elem1 = c1 ./= ninf &&& c1 .<= c0 &&& c1 .<= c2 &&& c1 .<= c3
-        elem2 = c2 ./= ninf &&& c2 .<= c0 &&& c2 .<= c1 &&& c2 .<= c3 
+        elem2 = c2 ./= ninf &&& c2 .<= c0 &&& c2 .<= c1 &&& c2 .<= c3
         elem3 = c3 ./= ninf &&& c3 .<= c0 &&& c3 .<= c1 &&& c3 .<= c2
     in cons (cons elem0 elem1) (cons elem2 elem3)
 
 
-voteMin :: Expr Map -> Expr Pos -> Expr V4
-voteMin bd pos = comp $
+voteMin :: (Expr Pos -> Expr Int) -> Expr Pos -> Expr V4
+voteMin score pos = comp $
   withVects $ \[v0, v1, v2, v3] ->
-  with (peekMap (vadd pos v0) bd) $ \c0 ->
-  with (peekMap (vadd pos v1) bd) $ \c1 ->
-  with (peekMap (vadd pos v2) bd) $ \c2 ->
-  with (peekMap (vadd pos v3) bd) $ \c3 -> e $
-    let 
-        elem0 = c0 ./= inf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3 
+  with (score (vadd pos v0)) $ \c0 ->
+  with (score (vadd pos v1)) $ \c1 ->
+  with (score (vadd pos v2)) $ \c2 ->
+  with (score (vadd pos v3)) $ \c3 -> e $
+    let
+        elem0 = c0 ./= inf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3
         elem1 = c1 ./= inf &&& c1 .<= c0 &&& c1 .<= c2 &&& c1 .<= c3
-        elem2 = c2 ./= inf &&& c2 .<= c0 &&& c2 .<= c1 &&& c2 .<= c3 
+        elem2 = c2 ./= inf &&& c2 .<= c0 &&& c2 .<= c1 &&& c2 .<= c3
         elem3 = c3 ./= inf &&& c3 .<= c0 &&& c3 .<= c1 &&& c3 .<= c2
     in cons (cons elem0 elem1) (cons elem2 elem3)
 
@@ -280,7 +288,7 @@ voteAvoidWall bd pos = comp $
   with (peekMap (vadd pos v1) bd) $ \c1 ->
   with (peekMap (vadd pos v2) bd) $ \c2 ->
   with (peekMap (vadd pos v3) bd) $ \c3 -> e $
-    let 
+    let
         elem0 = c0 ./= 0
         elem1 = c1 ./= 0
         elem2 = c2 ./= 0
@@ -313,7 +321,7 @@ getCorners :: Expr Map -> Expr [Pos]
         let nbd = (peekMat (x+1) y bd ./=0) +
                   (peekMat (x-1) y bd ./=0) +
                   (peekMat x (y-1) bd ./=0) +
-                  (peekMat x (y+1) bd ./=0) 
+                  (peekMat x (y+1) bd ./=0)
         in
         cond (cell .== 1 &&& nbd .== 1) (push dot $ cons x y) $
         (e $ c 0)
@@ -331,67 +339,76 @@ getCorners :: Expr Map -> Expr [Pos]
 
 step :: Expr AIState -> Expr World -> Expr (AIState, Int)
 (step, stepDef) = def2 "step" $ \aist world -> comp $
-  with5 (cadr world) (cadr $ cadr world)  (mapOfS aist) (clockOfS aist) (actionFlagsOfS aist)$ 
+  with5 (cadr world) (cadr $ cadr world)  (mapOfS aist) (clockOfS aist) (actionFlagsOfS aist)$
    \lmanState lmanPos bd0 clk actionFlags -> do
-    with (pokeMap lmanPos (negate clk) bd0) $ \bd -> 
+    with (pokeMap lmanPos (negate clk) bd0) $ \bd ->
       with (mapGhostPos $ caddr world) $ \ghosts ->
       with (getDots bd) $ \bothDots ->
       with (getCorners bd) $ \cornerDots ->
       with2 (car bothDots) (cdr bothDots) $ \dots pows ->
       with (paint bd ghosts)   $ \ghostMap ->
       with (paint bd dots) $ \dotMap ->
-      with (paint bd cornerDots) $ \cornerMap ->      
-      with (paint bd pows) $ \powMap -> 
+      with (paint bd cornerDots) $ \cornerMap ->
+      with (paint bd pows) $ \powMap ->
       with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
-      with (calcDensFrom lmanPos ghosts) $ \ghostDens -> 
-      with (vTieBreaker lmanDir) $ \dirVote -> do
-        
+      with (calcDensFrom lmanPos ghosts) $ \ghostDens ->
+      with (vTieBreaker lmanDir) $ \dirVote ->
+
+      with (updPoss ghosts 7 bd) $ \bdWithGhost ->
+      with (updPoss ghosts 0 bd) $ \bdWithGhostWall ->
+      with (updPoss cornerDots 8 bd) $ \bdWithCorners -> do
+
+        let ghostScore q p = bfs bdWithGhost lmanPos 7 q
+            powScore q p = bfs bd lmanPos 3 q
+            dotScore q p = bfs bd lmanPos 2 q
+            cornerScore q p = bfs bdWithCorners lmanPos 8 q
+
         -- [1]
-        lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
-          actionFlags ~= pokeFlag FromGhost 1 actionFlags 
-        --lwhen (peekMap lmanPos ghostMap .> 6 ||| lmanIsPow) $ 
-        lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
-          actionFlags ~= pokeFlag FromGhost 0 actionFlags 
+        lwhen (ghostScore 3 lmanPos .< 3 &&& lnot lmanIsPow) $
+          actionFlags ~= pokeFlag FromGhost 1 actionFlags
+        --lwhen (peekMap lmanPos ghostMap .> 6 ||| lmanIsPow) $
+        lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $
+          actionFlags ~= pokeFlag FromGhost 0 actionFlags
         -- [2]
         lwhen (lnot lmanIsPow &&& ghostDens .>= 100)  $ do
-          actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
-          actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
-          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
+          actionFlags ~= pokeFlag ToPowerDot 1 actionFlags
+          actionFlags ~= pokeFlag ToGhost 0 actionFlags
+          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags
         lwhen (lmanIsPow)  $ do
-          actionFlags ~= pokeFlag ToGhost 1 actionFlags         
-          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags 
-          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
+          actionFlags ~= pokeFlag ToGhost 1 actionFlags
+          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags
+          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags
         lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 2)$ do
-          actionFlags ~= pokeFlag FromPowerDot 1 actionFlags 
-          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags           
-          actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
+          actionFlags ~= pokeFlag FromPowerDot 1 actionFlags
+          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags
+          actionFlags ~= pokeFlag ToGhost 0 actionFlags
         lwhen (lnot lmanIsPow)  $ do
-          actionFlags ~= pokeFlag ToGhost 0 actionFlags         
+          actionFlags ~= pokeFlag ToGhost 0 actionFlags
         lwhen (peekMap lmanPos powMap .> 2)  $ do
-          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags         
-        
+          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags
+
 -- [3]
-        actionFlags ~= pokeFlag ToDot 1 actionFlags 
-        
+        actionFlags ~= pokeFlag ToDot 1 actionFlags
+
         let chainAction :: Expr Int -> ActionFlag -> Expr V4 -> Expr V4
             chainAction w f v = (peekFlag f actionFlags * w) `vscale4` v
-        
-        dirVote ~= dirVote `vadd4` chainAction 400 FromGhost    (voteMax  ghostMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 200 ToPowerDot   (voteMin  powMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 200 ToGhost      (voteMin  ghostMap lmanPos)  
-        dirVote ~= dirVote `vadd4` chainAction 200 FromPowerDot (voteMax  powMap lmanPos)               
-        dirVote ~= dirVote `vadd4` chainAction  50 ToDot        (voteMin  dotMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 100 ToDot        (voteMax  cornerMap lmanPos)         
-        dirVote ~= dirVote `vadd4` (5  `vscale4` (voteMax  bd lmanPos) )
-        dirVote ~= dirVote `vadd4` (10000 `vscale4` (voteAvoidWall  bd lmanPos) )        
+
+        dirVote ~= dirVote `vadd4` chainAction 400 FromGhost    (voteMax  (ghostScore quota) lmanPos)
+        dirVote ~= dirVote `vadd4` chainAction 200 ToPowerDot   (voteMin  (powScore quota) lmanPos)
+        dirVote ~= dirVote `vadd4` chainAction 200 ToGhost      (voteMin  (ghostScore quota) lmanPos)
+        dirVote ~= dirVote `vadd4` chainAction 200 FromPowerDot (voteMax  (powScore quota) lmanPos)
+        dirVote ~= dirVote `vadd4` chainAction  50 ToDot        (voteMin  (dotScore quota) lmanPos)
+        dirVote ~= dirVote `vadd4` chainAction 100 ToDot        (voteMax  (cornerScore quota) lmanPos)
+        dirVote ~= dirVote `vadd4` (5  `vscale4` (voteMax  (\p -> peekMap p bd) lmanPos) )
+        dirVote ~= dirVote `vadd4` (10000 `vscale4` (voteAvoidWall  bd lmanPos) )
 
         let dir = maxIndex4 dirVote
 
         --trace (c $ 100001, c 0, ghostMap)
-        
-        
+
+
         trace (c $ negate 9988, actionFlags)
-        trace dirVote   
+        trace dirVote
 
         e $ cons (cons bd (cons (1+clk) actionFlags)) dir
 
@@ -414,7 +431,7 @@ initialize :: Expr World -> Expr X -> Expr AIState
           comp $ mat ~= pokeMat x y 1 mat
     let aist0 :: Expr AIState
         aist0 = cons mat $
-                cons (ite (w*h .<=400) (Const 1) ninf) $ 
+                cons (ite (w*h .<=400) (Const 1) ninf) $
                 arr0
         arr0 = newArray actionFlagSize (Const 0) :: Expr (Array Int)
     e $ aist0
@@ -424,7 +441,7 @@ progn = do
   libDef
 
   stepDef
-  getCornersDef  
+  getCornersDef
   initializeDef
 
   bfsDef
@@ -437,9 +454,12 @@ progn = do
   isJunctionDef
   lmaxDef
 
-  rtn $ comp $ with (initialize (Var (-1) 0) (Var (-1) 1)) $ \aist0 -> 
+  updPossDef
+
+
+  rtn $ comp $ with (initialize (Var (-1) 0) (Var (-1) 1)) $ \aist0 ->
     e $ ite (clockOfS aist0 ./=ninf) (cons aist0 (Closure "step")) undef
-    
+
 
 main :: IO ()
 main = do
@@ -450,25 +470,25 @@ main = do
     _ -> do
       idx <- randomRIO (0,10000:: Integer)
       dateStr <- readProcess "date" ["+%H%M%S"] ""
-      
-      let 
+
+      let
           body = printf "archive/Madokaren-%s-%04d" dateStr2 idx
-          dateStr2 = 
+          dateStr2 =
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
             map (\c -> if c `elem` "0123456789" then c else ' ') dateStr
 
           progStr = compile progn
       forM_ [body, "archive/latest"] $ \body -> do
-        let 
+        let
           fnGcc = body ++ ".gcc"
           fnAsm = body ++ ".asm"
           fnDir = body ++ "-src"
 
- 
+
         writeFile "/dev/null" progStr
         writeFile fnAsm $ unlines $ compile' progn
-        system $ printf "../alice/shino.py %s ../alice/karen.asm > %s" fnAsm fnGcc       
+        system $ printf "../alice/shino.py %s ../alice/karen.asm > %s" fnAsm fnGcc
 
         system $ "mkdir -p " ++ fnDir
         system $ printf "cp *.hs %s/" fnDir
@@ -478,7 +498,7 @@ main = do
 prognDebug :: LMan ()
 prognDebug = do
   libDef
-  
+
   let xs = newArray 7 (Const 0)
-  
+
   rtn $ dbugn 10

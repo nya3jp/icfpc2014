@@ -141,37 +141,6 @@ paint :: Expr Map -> Expr [Pos] -> Expr Map
     trace (c 77777, tick)
     e ret
 
-{-
-paint :: Expr Map -> Expr [Pos] -> Expr Map
-(paint, paintDef) = def2 "paint" $ \bd starts -> comp $ do
-  bd ~= updPoss starts 1 bd
-  with3 (newMat (getWidth bd) (getHeight bd) inf) (toQueue starts) undef $ \ret q qq ->
-    with4 0 undef undef undef $ \tick cell dep pos ->
-    withVects $ \[v1, v2, v3, v4] -> do
-    while (tick .< tickLimit &&& lnot (isEmptyQueue q)) $ do
-      tick ~= tick + 1
-
-      qq ~= dequeue q
-      q ~= cdr qq
-
-      dep ~= car (car qq)
-      pos ~= cdr (car qq)
-
-      cell ~= peekMat (car pos) (cdr pos) bd
-
-      lwhen (cell ./= 0) $ do
-        ret ~= pokeMap pos dep ret
-        bd  ~= pokeMap pos 0 bd
-
-        q ~= enqueue (cons (dep + 1) $ vadd pos v1) q
-        q ~= enqueue (cons (dep + 1) $ vadd pos v2) q
-        q ~= enqueue (cons (dep + 1) $ vadd pos v3) q
-        q ~= enqueue (cons (dep + 1) $ vadd pos v4) q
-
-    trace (c 77777, tick)
-    e ret
--}
-
 isJunction :: Expr Pos -> Expr Map -> Expr Int
 (isJunction, isJunctionDef) = def2 "isJunction" $ \pos bd -> comp $ do
   with2 (car pos) (cdr pos) $ \x y -> e $
