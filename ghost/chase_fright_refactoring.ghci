@@ -45,6 +45,7 @@ FOR_5F04A844:
     JEQ 23C5EE7A,[A],[140]
     MOV PC,50B0E0B8
 23C5EE7A:
+    MOV [A],4
     MOV A,H
     ADD A,1
     INC [A]
@@ -63,6 +64,10 @@ FOR_5F04A844:
     JGT B15084D2,A,0
     MOV A,H
     ADD A,1
+    MOV A,[A]
+    MOV [A],4
+    MOV A,H
+    ADD A,1
     INC [A]
     MOV PC,FOR_5F04A844
 B15084D2:
@@ -77,9 +82,46 @@ B15084D2:
 END_FOR_5F04A844:
     INC H
     MOV A,[A]
+    MOV B,[129]
+    MOV C,[130]
+    MOV D,[131]
+    MOV E,[132]
+    JEQ SPLIT,A,[129]
     AND A,3
     INT 0
     HLT
+SPLIT:
+    JLT YYYYYYYY,[130],4
+    AND A,3
+    INT 0
+    HLT
+YYYYYYYY:
+    JEQ ZZZZZZZZ,[130],[140]
+    MOV PC,WWWWWWWW
+ZZZZZZZZ:
+    MOV A,[129]
+    AND A,3
+    INT 0
+    HLT
+WWWWWWWW:
+    MOV A,[128]
+    DEC A
+    MOV [H],60136783
+    DEC H
+    MOV PC,RAND
+60136783:
+    MOV B,[138]
+    JLT CRNUOAEE,A,[138]
+    MOV A,[130]
+    AND A,3
+    INT 0
+    HLT
+CRNUOAEE:
+    MOV A,[129]
+    AND A,3
+    INT 0
+    HLT
+
 FRIGHT:
     MOV [H],133
     DEC H

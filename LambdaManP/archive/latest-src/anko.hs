@@ -346,16 +346,15 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (getDots bd) $ \bothDots ->
       with (getCorners bd) $ \cornerDots ->
       with2 (car bothDots) (cdr bothDots) $ \dots pows ->
-      with (paint bd ghosts)   $ \ghostMap ->
-      with (paint bd dots) $ \dotMap ->
-      with (paint bd cornerDots) $ \cornerMap ->
-      with (paint bd pows) $ \powMap ->
+      -- with (paint bd ghosts)   $ \ghostMap ->
+      -- with (paint bd dots) $ \dotMap ->
+      -- with (paint bd cornerDots) $ \cornerMap ->
+      -- with (paint bd pows) $ \powMap ->
       with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
       with (calcDensFrom lmanPos ghosts) $ \ghostDens ->
       with (vTieBreaker lmanDir) $ \dirVote ->
 
       with (updPoss ghosts 7 bd) $ \bdWithGhost ->
-      with (updPoss ghosts 0 bd) $ \bdWithGhostWall ->
       with (updPoss cornerDots 8 bd) $ \bdWithCorners -> do
 
         let ghostScore q p = bfs bdWithGhost lmanPos 7 q
@@ -366,8 +365,8 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         -- [1]
         lwhen (ghostScore 3 lmanPos .< 3 &&& lnot lmanIsPow) $
           actionFlags ~= pokeFlag FromGhost 1 actionFlags
-        --lwhen (peekMap lmanPos ghostMap .> 6 ||| lmanIsPow) $
-        lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $
+        lwhen (ghostScore 6 lmanPos .> 6 ||| lmanIsPow) $
+        -- lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $
           actionFlags ~= pokeFlag FromGhost 0 actionFlags
         -- [2]
         lwhen (lnot lmanIsPow &&& ghostDens .>= 100)  $ do
@@ -378,13 +377,13 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
           actionFlags ~= pokeFlag ToGhost 1 actionFlags
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags
-        lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 2)$ do
+        lwhen (ghostDens .<= 150 &&& powScore 2 lmanPos .< 2)$ do
           actionFlags ~= pokeFlag FromPowerDot 1 actionFlags
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags
           actionFlags ~= pokeFlag ToGhost 0 actionFlags
         lwhen (lnot lmanIsPow)  $ do
           actionFlags ~= pokeFlag ToGhost 0 actionFlags
-        lwhen (peekMap lmanPos powMap .> 2)  $ do
+        lwhen (powScore 2 lmanPos .> 2)  $ do
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags
 
 -- [3]
