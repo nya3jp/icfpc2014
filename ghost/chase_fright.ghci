@@ -16,34 +16,6 @@
     INT 3
     INT 6
     JEQ FRIGHT,A,1
-    JGT CHASE,[128],8
-    MOV A,6
-    MOV [H],EA320E0A
-    DEC H
-    MOV PC,RAND
-EA320E0A:
-    JGT XXXXXXXX,A,0
-    JEQ XXXXXXXX,[131],4
-    MOV A,[131]
-    INT 0
-    HLT
-XXXXXXXX:
-    MOV A,2
-    MOV [H],BF03A571
-    DEC H
-    MOV PC,RAND
-BF03A571:
-    JGT YYYYYYYY,A,0
-    JEQ YYYYYYYY,[130],4
-    MOV A,[130]
-    INT 0
-    HLT
-YYYYYYYY:
-    MOV A,[129]
-    AND A,3
-    INT 0
-    HLT
-CHASE:
     MOV A,[129]
     AND A,3
     INT 0
