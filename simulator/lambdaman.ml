@@ -352,9 +352,15 @@ let eval_program program =
 
 let eval_main show_useful_info program args =
   let i = ref 0 in
-  let debug_callback () =
-    if show_useful_info then
-      print_endline ("Current Cycle: " ^ (string_of_int !i))
+  let debug_callback =
+    let last = ref 0 in
+    function () ->
+      if show_useful_info then begin
+        print_endline ("Current  Cycle: " ^ (string_of_int !i));
+        print_endline ("Previous Cycle: " ^ (string_of_int !last));
+        print_endline ("Diff          ; " ^ (string_of_int (!last - !i)));
+      end;
+      last := !i
   in
 
   let machine = make_initial_machine debug_callback in
@@ -394,9 +400,15 @@ let eval_step show_useful_info program closure args =
   in
 
   let i = ref 0 in
-  let debug_callback () =
-    if show_useful_info then
-      print_endline ("Current Cycle: " ^ (string_of_int !i))
+  let debug_callback =
+    let last = ref 0 in
+    function () ->
+      if show_useful_info then begin
+        print_endline ("Current  Cycle: " ^ (string_of_int !i));
+        print_endline ("Previous Cycle: " ^ (string_of_int !last));
+        print_endline ("Diff          ; " ^ (string_of_int (!last - !i)));
+      end;
+      last := !i
   in
 
   let machine = make_initial_machine debug_callback in
