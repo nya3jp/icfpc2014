@@ -39,8 +39,6 @@ data ActionFlag
   | FromDot
   | ToPowerDot 
   | FromPowerDot 
-  | ToEdGhost 
-  | FromEdGhost 
   | ToGhost
   | FromGhost
   deriving (Eq, Ord, Enum,Bounded)
@@ -183,17 +181,12 @@ maxJunctionSafety bd ghostMap pos = comp $ withVects $ \[v1, v2, v3, v4] -> e $
   lmax (junctionSafety bd ghostMap pos v3)
        (junctionSafety bd ghostMap pos v4)
 
+
 mapGhostPos :: Expr [GhostState] -> Expr [Pos]
 (mapGhostPos, mapGhostPosDef) = def1 "mapGhostPos" $ \xs ->
   ite (isNull xs) lnull $
-  ite (car (lhead xs) .== 0) (lcons (cadr $ lhead xs) $ mapGhostPos $ ltail xs) $
+  ite (car (lhead xs) ./= 2) (lcons (cadr $ lhead xs) $ mapGhostPos $ ltail xs) $
   (mapGhostPos $ ltail xs)
-
-mapEdGhostPos :: Expr [GhostState] -> Expr [Pos]
-(mapEdGhostPos, mapEdGhostPosDef) = def1 "mapEdGhostPos" $ \xs ->
-  ite (isNull xs) lnull $
-  ite (car (lhead xs) .== 1) (lcons (cadr $ lhead xs) $ mapEdGhostPos $ ltail xs) $
-  (mapEdGhostPos $ ltail xs)
 
 selectMax :: Expr Map -> Expr Pos -> Expr Int
 selectMax bd pos = comp $
@@ -251,8 +244,8 @@ getDots :: Expr Map -> Expr ([Pos], [Pos])
 -- Strategy:
 -- [1] if NearestGhost<3 then FromGhost+
 -- X [1] if MaxJunctionSafety>3 then FromGhost-
--- [2] if NearestEdGhost>99 then ToPowerDot+
--- [2] if NearestEdGhost<99 then ToEdGhost+
+-- [2] if NearestGhost>99 then ToPowerDot+
+-- [2] if NearestGhost<99 then ToGhost+
 -- [2] if GhostDensity<1.5 and NearestPowerDot<5 then FromPowerDot+
 -- [3] if Constant>0 then ToCenterofDots+
 
@@ -262,68 +255,51 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
    \lmanState lmanPos bd actionFlags -> do
     bd ~= pokeMap lmanPos 1 bd
     with (mapGhostPos $ caddr world) $ \ghosts ->
-      with (mapEdGhostPos $ caddr world) $ \edGhosts ->
       with (getDots bd) $ \bothDots ->
       with2 (car bothDots) (cdr bothDots) $ \dots pows ->
       with (paint bd ghosts)   $ \ghostMap ->
-      with (paint bd edGhosts) $ \edGhostMap ->
       with (paint bd dots) $ \dotMap ->
-      with (calcDensFrom lmanPos ghosts) $ \ghostDens ->
-      with (paint bd pows) $ \powMap -> do
-        let shouldRunFromGhost = 
-              peekMap lmanPos ghostMap   .< 4 
-              &&& (peekMap lmanPos powMap .> peekMap lmanPos ghostMap)
-            ghostIsFar = peekMap lmanPos ghostMap   .> 8
-              ||| (peekMap lmanPos powMap .< peekMap lmanPos ghostMap-1)
-            ghostIsTooFar = peekMap lmanPos ghostMap   .> 16
-                            &&& (peekMap lmanPos ghostMap .> 32)
-            shouldEatPow = 
-              (peekMap lmanPos edGhostMap .>= inf) 
-                &&& (peekMap lmanPos powMap .< peekMap lmanPos ghostMap)
-                &&& (peekMap lmanPos ghostMap .< 10)
-            shouldEatGhost = (peekMap lmanPos edGhostMap .<  8)
-            
-            lmanVit = car lmanState :: Expr Int
-            lmanDir = caddr lmanState :: Expr Int
+      with (paint bd pows) $ \powMap -> 
+      with2 (car lmanState .>=0) (caddr lmanState) $ \lmanIsPow lmanDir ->
+      with (calcDensFrom lmanPos ghosts) $ \ghostDens -> do
             
         let chainAction :: ActionFlag -> Expr Int -> Expr Int -> Expr Int
             chainAction f x1 x2 = 
               ite (peekFlag f actionFlags &&& x1 .>= 0) x1 x2
         -- [1]
-        lwhen (peekMap lmanPos ghostMap .< 3) $ 
+        lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
-        lwhen (peekMap lmanPos ghostMap .> 5) $ 
+        lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
         -- [2]
-        lwhen (lmanVit .== 0)  $ do
+        lwhen (lnot lmanIsPow)  $ do
           actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
-          actionFlags ~= pokeFlag ToEdGhost 0 actionFlags                   
+          actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
-        lwhen (lmanVit ./= 0)  $ do
-          actionFlags ~= pokeFlag ToEdGhost 1 actionFlags         
+        lwhen (lmanIsPow)  $ do
+          actionFlags ~= pokeFlag ToGhost 1 actionFlags         
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags 
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
         lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 5)$ do
           actionFlags ~= pokeFlag FromPowerDot 1 actionFlags 
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags           
-          actionFlags ~= pokeFlag ToEdGhost 0 actionFlags                   
+          actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
         -- [3]
         actionFlags ~= pokeFlag ToDot 1 actionFlags 
         
         let dir = 
               chainAction FromGhost (selectMax ghostMap lmanPos) $
               chainAction ToPowerDot (selectMin powMap lmanPos) $
-              chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 
+              chainAction ToGhost (selectMin ghostMap lmanPos) $ 
               chainAction FromPowerDot (selectMax powMap lmanPos) $              
               chainAction ToDot (selectSmall dotMap lmanPos) $ lmanDir
 
         trace (c 10005, ghosts)
-        trace (c 10006, edGhosts)
         trace (c 10001, peekMap lmanPos ghostMap)
-        trace (c 10002, peekMap lmanPos edGhostMap)
-        trace (c 10002, peekMap lmanPos edGhostMap)
+        trace (c 10002, peekMap lmanPos ghostMap)
+        trace (c 10002, peekMap lmanPos ghostMap)
         trace (c 65536, actionFlags)
-        trace (c 33333,  (selectMin edGhostMap lmanPos) )
+        trace (c 33333,  (selectMin ghostMap lmanPos) )
         
         e $ cons (cons bd actionFlags) dir
 
@@ -356,7 +332,6 @@ progn = do
   bfsDef
   paintDef
   mapGhostPosDef
-  mapEdGhostPosDef
   toQueueDef
   getDotsDef
   calcDensFromDef
@@ -373,7 +348,7 @@ main = do
       idx <- randomRIO (0,10000:: Integer)
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       let 
-          body = printf "archive/fixedRB-%s-%04d" dateStr2 idx
+          body = printf "archive/noed-fRB-%s-%04d" dateStr2 idx
           fnGcc :: String
           fnGcc = body ++ ".gcc"
           fnDir :: String
