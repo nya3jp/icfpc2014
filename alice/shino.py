@@ -16,7 +16,6 @@ main:
 """
 
 STUB_ENTRY = """
-try_%:
 LD 1 0
 LD 1 1
 LDF %
@@ -24,12 +23,13 @@ AP 2
 ST 0 0
 LD 0 0
 ATOM
-TSEL try_% go_%
+TSEL exit_% go_%
 go_%:
 LDC #
 DBUG
 LDC 283
 TSEL start start
+exit_%:
 """
 
 STUB_FOOTER = """
