@@ -2,6 +2,7 @@ open Util
 
 exception Exception_exit
 exception Exception_cycleover
+exception Exception_eval_error of string
 
 type instruction =
   | LLdc of int32
@@ -65,19 +66,22 @@ let make_initial_machine debug_callback = {
   debug_callback = debug_callback;
 }
 
+let eval_error string =
+  raise (Exception_eval_error string)
+
 let check_int = function
   | VInt x -> x
-  | VCons _ -> failwith "tag mismatch for int (cons came)"
-  | VClosure _ -> failwith "tag mismatch for int (closure came)"
+  | VCons _ -> eval_error "tag mismatch for int (cons came)"
+  | VClosure _ -> eval_error "tag mismatch for int (closure came)"
 
 let check_cons = function
-  | VInt _ -> failwith "tag mismatch for cons (int came)"
+  | VInt _ -> eval_error "tag mismatch for cons (int came)"
   | VCons (x, y) -> (x, y)
-  | VClosure _ -> failwith "tag mismatch for cons (closure came)"
+  | VClosure _ -> eval_error "tag mismatch for cons (closure came)"
 
 let check_closure = function
-  | VInt _ -> failwith "tag mismatch for closure (int came)"
-  | VCons _ -> failwith "tag mismatch for closure (cons came)"
+  | VInt _ -> eval_error "tag mismatch for closure (int came)"
+  | VCons _ -> eval_error "tag mismatch for closure (cons came)"
   | VClosure (x, y) -> (x, y)
 
 let is_closure = function
@@ -86,15 +90,15 @@ let is_closure = function
 
 let check_tag_join = function
   | AJoin x -> x
-  | _ -> failwith "tag mismatch for join"
+  | _ -> eval_error "tag mismatch for join"
 
 let check_tag_ret = function
   | ARet x -> x
-  | _ -> failwith "tag mismatch for ret"
+  | _ -> eval_error "tag mismatch for ret"
 
 let check_tag_frame = function
   | AFrame x -> x
-  | _ -> failwith "tag mismatch for frame"
+  | _ -> eval_error "tag mismatch for frame"
 
 let is_tag_stop = function
   | AStop -> true
@@ -106,11 +110,11 @@ let is_tag_ret = function
 
 let check_not_dum e =
   if e.dummy then
-    failwith "dummy"
+    eval_error "dummy"
 
 let check_dum e =
   if not e.dummy then
-    failwith "dummy"
+    eval_error "dummy"
 ;;
 
 let value_of_int x = VInt (Int32.of_int x)
@@ -176,7 +180,7 @@ let print_machine machine =
 ;;
 
 let rec get_nth_env_frame n = function
-  | [] -> failwith "no environment ?"
+  | [] -> eval_error "no environment ?"
   | e :: es ->
      if n = 0 then e
      else get_nth_env_frame (n - 1) es
@@ -301,9 +305,9 @@ let rec eval_instruction machine = function
      let frame = List.hd machine.e in
      ignore (check_dum frame);
      if Array.length frame.data <> n then
-       failwith "frame mismatch";
+       eval_error "frame mismatch";
      if machine.e != fp then (* physical equal *)
-       failwith "frame mismatch";
+       eval_error "frame mismatch";
      let i = ref (n - 1) in
      while !i <> -1 do
        let y = Stack.pop machine.s in
@@ -377,6 +381,10 @@ let eval_main show_useful_info program args =
        Printf.printf "Used %d cycles.\n" !i;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
+  | Exception_eval_error reason ->
+     Printf.printf "Evaluation Error: %s\n" reason;
+     Printf.printf "Current pc = %d" machine.c;
+     failwith "Eval error in main function"
 ;;
 
 let eval_step show_useful_info program closure args =
@@ -420,6 +428,10 @@ let eval_step show_useful_info program closure args =
        Printf.printf "Used %d cycles.\n" !i;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
+  | Exception_eval_error reason ->
+     Printf.printf "Evaluation Error: %s\n" reason;
+     Printf.printf "Current pc = %d" machine.c;
+     raise (Exception_eval_error reason)
 ;;
 
 (* ---------------------------------------------------------------------- *)
