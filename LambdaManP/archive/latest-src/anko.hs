@@ -250,11 +250,11 @@ voteMax bd pos = comp $
   with (negate $peekMap (vadd pos v1) bd) $ \c1 ->
   with (negate $peekMap (vadd pos v2) bd) $ \c2 ->
   with (negate $peekMap (vadd pos v3) bd) $ \c3 -> e $
-    let 
-        elem0 = c0 ./= ninf &&& c0 .>= c1 &&& c0 .>= c2 &&& c0 .>= c3 
-        elem1 = c1 ./= ninf &&& c1 .>= c0 &&& c1 .>= c2 &&& c1 .>= c3
-        elem2 = c2 ./= ninf &&& c2 .>= c0 &&& c2 .>= c1 &&& c2 .>= c3 
-        elem3 = c3 ./= ninf &&& c3 .>= c0 &&& c3 .>= c1 &&& c3 .>= c2
+    let -- NEGATED!!
+        elem0 = c0 ./= ninf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3 
+        elem1 = c1 ./= ninf &&& c1 .<= c0 &&& c1 .<= c2 &&& c1 .<= c3
+        elem2 = c2 ./= ninf &&& c2 .<= c0 &&& c2 .<= c1 &&& c2 .<= c3 
+        elem3 = c3 ./= ninf &&& c3 .<= c0 &&& c3 .<= c1 &&& c3 .<= c2
     in cons (cons elem0 elem1) (cons elem2 elem3)
 
 
@@ -345,15 +345,15 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
       with (calcDensFrom lmanPos ghosts) $ \ghostDens -> 
       with (vTieBreaker lmanDir) $ \dirVote -> do
-            
+        
         -- [1]
-        lwhen (peekMap lmanPos ghostMap .< 4 &&& lnot lmanIsPow) $ 
+        lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
-        -- lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
+        --lwhen (peekMap lmanPos ghostMap .> 6 ||| lmanIsPow) $ 
         lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
         -- [2]
-        lwhen (lnot lmanIsPow &&& ghostDens .>= 100)  $ do
+        lwhen (lnot lmanIsPow &&& ghostDens .>= 200)  $ do
           actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
           actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
@@ -361,7 +361,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
           actionFlags ~= pokeFlag ToGhost 1 actionFlags         
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags 
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
-        lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 2)$ do
+        lwhen (ghostDens .<= 300 &&& peekMap lmanPos powMap .< 2)$ do
           actionFlags ~= pokeFlag FromPowerDot 1 actionFlags 
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags           
           actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
@@ -387,6 +387,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
 
         let dir = maxIndex4 dirVote
 
+        --trace (c $ 100001, c 0, ghostMap)
         
         
         trace (c $ negate 9988, actionFlags)
@@ -466,6 +467,7 @@ main = do
         writeFile fnGcc $ progStr
         system $ "mkdir -p " ++ fnDir
         system $ printf "cp *.hs %s/" fnDir
+
 
 
 prognDebug :: LMan ()
