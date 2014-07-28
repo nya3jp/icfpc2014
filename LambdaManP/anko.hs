@@ -256,7 +256,9 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd edGhosts) $ \edGhostMap ->
       with (paint bd dots) $ \dotMap ->
       with (paint bd pows) $ \powMap -> do
-        let ghostIsNear = peekMap lmanPos ghostMap   .< 4 
+        let shouldRunFromGhost = 
+              peekMap lmanPos ghostMap   .< 4 
+              &&& (peekMap lmanPos powMap .> peekMap lmanPos ghostMap)
             ghostIsFar = peekMap lmanPos ghostMap   .> 10
             ghostIsTooFar = peekMap lmanPos ghostMap   .> 20
                             &&& (peekMap lmanPos ghostMap .> 40)
@@ -273,7 +275,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
             chainAction f x1 x2 = 
               ite (peekFlag f actionFlags &&& x1 .>= 0) x1 x2
               
-        lwhen ghostIsNear $ 
+        lwhen shouldRunFromGhost $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
         lwhen ghostIsFar $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
