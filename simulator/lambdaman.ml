@@ -384,7 +384,7 @@ let show_profile program profile =
   let a2 = (Array.mapi (fun i count -> (-count,i)) profile) in
   Array.sort Pervasives.compare a2;
   ignore (Array.fold_left
-    (fun (nth,cum_count) (count,addr) -> 
+    (fun (nth,cum_count) (count,addr) ->
       let count = - count in
       if nth < 1000 && count > 0 && cum_count < total * 99 / 100 then
         Printf.printf "Addr %8d: count=%8d (%5.1f%% cum=%5.1f%%) %s\n"
@@ -419,7 +419,7 @@ type t = {
 }
 
 
-let eval_main man show_useful_info program args =
+let eval_main man show_useful_info use_eternal program args =
   let i = ref 0 in
   let debug_callback =
     let last = ref 0 in
@@ -446,7 +446,7 @@ let eval_main man show_useful_info program args =
   let profile = Array.make (Array.length program) 0 in
   try
     let maxSteps = 3072000 * 60 in
-    while !i < maxSteps do
+    while !i < maxSteps || use_eternal do
       profile.(machine.c) <- profile.(machine.c) + 1;
       profile_total.(machine.c) <- profile_total.(machine.c) + 1;
       let inst = program.(machine.c) in
@@ -469,7 +469,7 @@ let eval_main man show_useful_info program args =
      failwith "Eval error in main function"
 ;;
 
-let eval_step man show_useful_info program closure args =
+let eval_step man show_useful_info use_eternal program closure args =
   let (n, fp) = match closure with
     | VClosure (n, fp) -> (n, fp)
     | _ -> failwith "eval_step got non closure."
@@ -501,7 +501,7 @@ let eval_step man show_useful_info program closure args =
   let profile_total = man.profile_total in
   try
     let maxSteps = 3072000 in
-    while !i < maxSteps do
+    while !i < maxSteps || use_eternal do
       profile.(machine.c) <- profile.(machine.c) + 1;
       profile_total.(machine.c) <- profile_total.(machine.c) + 1;
       let inst = program.(machine.c) in

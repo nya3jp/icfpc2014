@@ -13,7 +13,7 @@ import Desugar
 import DSL
 
 defaultTreeSize :: Int
-defaultTreeSize = 65536
+defaultTreeSize = 16
 
 data Tree = Tree 
 

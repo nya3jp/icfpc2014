@@ -281,13 +281,14 @@ class While(Stmt):
 
 
 class ForN(Stmt):
-  def __init__(self, target, begin, end, step, block):
-    Stmt.__init__(self, [begin, end, step] + block.children)
+  def __init__(self, target, begin, end, step, block, elseblock):
+    Stmt.__init__(self, [begin, end, step] + block.children + elseblock.children)
     self.target = target
     self.begin = begin
     self.end = end
     self.step = step
     self.block = block
+    self.elseblock = elseblock
 
   def gather_func_vars(self, ctx):
     return [self.target] + Stmt.gather_func_vars(self, ctx)
@@ -298,6 +299,7 @@ class ForN(Stmt):
     loop = {'cond': '%s_cond' % label,
             'next': '%s_next' % label,
             'body': '%s_body' % label,
+            'else': '%s_else' % label,
             'exit': '%s_exit' % label}
 
     ctx.current_loop = loop
@@ -310,7 +312,7 @@ class ForN(Stmt):
     self.end.compile(ctx)
     ctx.emit('LD %d %d  ; %s', a, b, self.target)
     ctx.emit('CGT')
-    ctx.emit('TSEL %s %s', loop['body'], loop['exit'])
+    ctx.emit('TSEL %s %s', loop['body'], loop['else'])
 
     ctx.emit('%s:', loop['body'])
     self.block.compile(ctx)
@@ -323,17 +325,21 @@ class ForN(Stmt):
     ctx.emit('LDC 283283283')
     ctx.emit('TSEL %s %s', loop['cond'], loop['cond'])
 
+    ctx.emit('%s:', loop['else'])
+    self.elseblock.compile(ctx)
+
     ctx.emit('%s:', loop['exit'])
 
     ctx.current_loop = last_loop
 
 
 class ForList(Stmt):
-  def __init__(self, target, value, block):
-    Stmt.__init__(self, [value] + block.children)
+  def __init__(self, target, value, block, elseblock):
+    Stmt.__init__(self, [value] + block.children + elseblock.children)
     self.target = target
     self.value = value
     self.block = block
+    self.elseblock = elseblock
     self.tmpvar = None
 
   def gather_func_vars(self, ctx):
@@ -348,6 +354,7 @@ class ForList(Stmt):
     loop = {'next': '%s_next' % label,
             'prebody': '%s_prebody' % label,
             'body': '%s_body' % label,
+            'else': '%s_else' % label,
             'exit': '%s_exit' % label}
 
     ctx.current_loop = loop
@@ -360,7 +367,7 @@ class ForList(Stmt):
     ctx.emit('%s:', loop['next'])
     ctx.emit('LD %d %d  ; %s', tmpvara, tmpvarb, self.tmpvar)
     ctx.emit('ATOM')
-    ctx.emit('TSEL %s %s', loop['exit'], loop['prebody'])
+    ctx.emit('TSEL %s %s', loop['else'], loop['prebody'])
 
     ctx.emit('%s:', loop['prebody'])
     ctx.emit('LD %d %d  ; %s', tmpvara, tmpvarb, self.tmpvar)
@@ -375,6 +382,9 @@ class ForList(Stmt):
 
     ctx.emit('LDC 283283283')
     ctx.emit('TSEL %s %s', loop['next'], loop['next'])
+
+    ctx.emit('%s:', loop['else'])
+    self.elseblock.compile(ctx)
 
     ctx.emit('%s:', loop['exit'])
 
@@ -741,7 +751,6 @@ def parse_stmt(stmt):
   if isinstance(stmt, ast.Break):
     return Break()
   if isinstance(stmt, ast.For):
-    compile_assert(not stmt.orelse, stmt, 'for-else clause not supported')
     # for i in xrange(...):
     if isinstance(stmt.iter, ast.Call) and stmt.iter.func.id in ('range', 'xrange'):
       args = [parse_expr(arg) for arg in stmt.iter.args]
@@ -751,8 +760,9 @@ def parse_stmt(stmt):
       if len(args) == 2:
         args = [args[0], args[1], Num(1)]
       return ForN(stmt.target.id, args[0], args[1], args[2],
-                  parse_block(stmt.body))
-    return ForList(stmt.target.id, parse_expr(stmt.iter), parse_block(stmt.body))
+                  parse_block(stmt.body), parse_block(stmt.orelse))
+    return ForList(stmt.target.id, parse_expr(stmt.iter),
+                   parse_block(stmt.body), parse_block(stmt.orelse))
   if isinstance(stmt, ast.Print):
     compile_assert(not stmt.dest, stmt, 'print destination not supported')
     return Print([parse_expr(value) for value in stmt.values])
@@ -854,18 +864,20 @@ def resolve_labels(asm):
     s = re.sub(r';.*', '', line).strip()
     if s.endswith(':'):
       label = s.strip(':')
-      label_map[label] = pc
+      label_map[label] = str(pc)
     elif s:
       ops.append(s)
       pc += 1
   for i, op in enumerate(ops):
-    for label, pc in label_map.iteritems():
-      op = re.sub(r'\b%s\b' % label, str(pc), op)
-    ops[i] = op
+    ops[i] = ' '.join(label_map.get(s, s) for s in op.split())
   return '\n'.join(ops)
 
 
 def main():
+  raw = False
+  if len(sys.argv) >= 2 and sys.argv[1] == '-r':
+    del sys.argv[1:2]
+    raw = True
   if len(sys.argv) < 2:
     print >>sys.stderr, 'usage: alice.py input.py'
     return
@@ -875,7 +887,9 @@ def main():
   root = ast.parse(code)
   ctx = Context()
   try:
+    print >>sys.stderr, 'parsing...'
     module = parse_module(root)
+    print >>sys.stderr, 'compiling...'
     module.compile(ctx)
   except CompileError as e:
     traceback.print_exc()
@@ -886,7 +900,9 @@ def main():
       print >>sys.stderr, ' ' * (len(prefix) + e.column) + '^'
     return
   asm = ctx.output()
-  asm = resolve_labels(asm)
+  if not raw:
+    print >>sys.stderr, 'linking...'
+    asm = resolve_labels(asm)
   print asm
 
 
