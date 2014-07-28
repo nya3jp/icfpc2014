@@ -263,15 +263,15 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         let shouldRunFromGhost = 
               peekMap lmanPos ghostMap   .< 4 
               &&& (peekMap lmanPos powMap .> peekMap lmanPos ghostMap)
-            ghostIsFar = peekMap lmanPos ghostMap   .> 10
+            ghostIsFar = peekMap lmanPos ghostMap   .> 8
               ||| (peekMap lmanPos powMap .< peekMap lmanPos ghostMap-1)
-            ghostIsTooFar = peekMap lmanPos ghostMap   .> 20
-                            &&& (peekMap lmanPos ghostMap .> 40)
+            ghostIsTooFar = peekMap lmanPos ghostMap   .> 16
+                            &&& (peekMap lmanPos ghostMap .> 32)
             shouldEatPow = 
               (peekMap lmanPos edGhostMap .>= inf) 
                 &&& (peekMap lmanPos powMap .< peekMap lmanPos ghostMap)
                 &&& (peekMap lmanPos ghostMap .< 10)
-            shouldEatGhost = (peekMap lmanPos edGhostMap .<  10)
+            shouldEatGhost = (peekMap lmanPos edGhostMap .<  8)
             
             lmanVit = car lmanState :: Expr Int
             lmanDir = caddr lmanState :: Expr Int
@@ -365,7 +365,10 @@ main = do
             unwords $ words $
             map (\c -> if c `elem` "0123456789" then c else ' ') dateStr
 
-      writeFile fnGcc $ compile progn
+          progStr = compile progn
+
+      writeFile "/dev/null" progStr
+      writeFile fnGcc $ progStr
       system $ "mkdir -p " ++ fnDir
       system $ printf "cp *.hs %s/" fnDir
       return ()
