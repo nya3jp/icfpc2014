@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <title>あたまぴょんぴょん評価サーバ(Lambda)</title>
+    <style>
+      .winner_True {
+        background-color: #ffec00 !important;
+      }
+    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -15,7 +20,8 @@
 
       <table class="table table-striped">
         <tr>
-          <th></th>
+          <th>Name</th>
+          <th>Score</th>
           % for evalset in evalsets:
           <th>{{ evalset }}</th>
           % end
@@ -25,10 +31,14 @@
           <th>
             {{ entry['key'] }}
           </th>
-          % for result in entry['results']:
           <td>
+            {{ entry['score_percent'] }}%
+          </td>
+          % for result in entry['results']:
+          <td class="winner_{{ result and result['winner'] }}">
             % if result:
-            {{ result['score'] }}
+            {{ result['score'] }}<br>
+            ({{ result['score_percent'] }}%)
             % else:
             ...
             % end
