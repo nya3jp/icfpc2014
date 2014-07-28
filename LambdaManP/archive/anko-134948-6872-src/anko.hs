@@ -40,8 +40,6 @@ data ActionFlag
   | ToPowerDot 
   | FromPowerDot 
   | ToEdGhost 
-  | FromEdGhost 
-  | ToGhost
   | FromGhost
   deriving (Eq, Ord, Enum,Bounded)
 
@@ -117,13 +115,6 @@ bfs :: Expr Map -> Expr [Pos] -> Expr Int -> Expr Int
 
 inf :: Expr Int
 inf = Const 999999
-
-calcDensFrom :: Expr Pos -> Expr [Pos] -> Expr Int
-(calcDensFrom , calcDensFromDef) = def2 "calcDensFrom" $ \origin poss -> comp $ do
-  e $ ite (atom poss) (Const 0) $ comp $
-      with (100 - (vnorm $ lhead poss `vsub` origin)) $
-      \ r -> e $ (ite (r .< 0) 0 r) + calcDensFrom origin (ltail poss)
-
 
 paint :: Expr Map -> Expr [Pos] -> Expr Map
 (paint, paintDef) = def2 "paint" $ \bd starts -> comp $
@@ -268,7 +259,6 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd ghosts)   $ \ghostMap ->
       with (paint bd edGhosts) $ \edGhostMap ->
       with (paint bd dots) $ \dotMap ->
-      with (calcDensFrom lmanPos ghosts) $ \ghostDens ->
       with (paint bd pows) $ \powMap -> do
         let shouldRunFromGhost = 
               peekMap lmanPos ghostMap   .< 4 
@@ -289,42 +279,35 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         let chainAction :: ActionFlag -> Expr Int -> Expr Int -> Expr Int
             chainAction f x1 x2 = 
               ite (peekFlag f actionFlags &&& x1 .>= 0) x1 x2
-        -- [1]
-        lwhen (peekMap lmanPos ghostMap .< 3) $ 
+              
+        lwhen shouldRunFromGhost $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
-        lwhen (peekMap lmanPos ghostMap .> 5) $ 
+        lwhen ghostIsFar $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
-        -- [2]
-        lwhen (lmanVit .== 0)  $ do
+        lwhen shouldEatPow $ 
           actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
-          actionFlags ~= pokeFlag ToEdGhost 0 actionFlags                   
-          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
-        lwhen (lmanVit ./= 0)  $ do
-          actionFlags ~= pokeFlag ToEdGhost 1 actionFlags         
-          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags 
-          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
-        lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 5)$ do
-          actionFlags ~= pokeFlag FromPowerDot 1 actionFlags 
-          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags           
-          actionFlags ~= pokeFlag ToEdGhost 0 actionFlags                   
-        -- [3]
+        lwhen ghostIsTooFar $ 
+          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags         
+        lwhen shouldEatGhost $ 
+          actionFlags ~= pokeFlag ToEdGhost 1 actionFlags 
+        lwhen (lmanVit .==0) $
+          actionFlags ~= pokeFlag ToEdGhost 0 actionFlags 
         actionFlags ~= pokeFlag ToDot 1 actionFlags 
-        
-        let dir = 
-              chainAction FromGhost (selectMax ghostMap lmanPos) $
-              chainAction ToPowerDot (selectMin powMap lmanPos) $
-              chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 
-              chainAction FromPowerDot (selectMax powMap lmanPos) $              
-              chainAction ToDot (selectSmall dotMap lmanPos) $ lmanDir
-
         trace (c 10005, ghosts)
         trace (c 10006, edGhosts)
         trace (c 10001, peekMap lmanPos ghostMap)
         trace (c 10002, peekMap lmanPos edGhostMap)
         trace (c 10002, peekMap lmanPos edGhostMap)
         trace (c 65536, actionFlags)
+
         trace (c 33333,  (selectMin edGhostMap lmanPos) )
         
+        let dir = 
+              chainAction FromGhost (selectMax ghostMap lmanPos) $
+              chainAction ToPowerDot (selectMin powMap lmanPos) $
+              chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 
+              chainAction ToDot (selectSmall dotMap lmanPos) $ lmanDir
+
         e $ cons (cons bd actionFlags) dir
 
 arrLength :: Expr (Array a) -> Expr Int
@@ -359,7 +342,6 @@ progn = do
   mapEdGhostPosDef
   toQueueDef
   getDotsDef
-  calcDensFromDef
 
   rtn $ cons (initialize (Var (-1) 0) (Var (-1) 1)) (Closure "step")
 
@@ -373,7 +355,7 @@ main = do
       idx <- randomRIO (0,10000:: Integer)
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       let 
-          body = printf "archive/fixedRB-%s-%04d" dateStr2 idx
+          body = printf "archive/anko-%s-%04d" dateStr2 idx
           fnGcc :: String
           fnGcc = body ++ ".gcc"
           fnDir :: String
