@@ -345,5 +345,5 @@ main = do
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
     _ -> do
-      writeFile "../LambdaMan/anko-stateful.gcc" $ compile progn
+      writeFile "../LambdaMan/anko-tiebreak.gcc" $ compile progn
 
