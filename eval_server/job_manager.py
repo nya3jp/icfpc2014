@@ -3,6 +3,7 @@
 import json
 import glob
 import os
+import random
 import re
 import subprocess
 import sys
@@ -15,14 +16,16 @@ FLAGS = gflags.FLAGS
 
 gflags.DEFINE_string('data_dir', None, '')
 gflags.DEFINE_string('ghost_data_dir', None, '')
-gflags.DEFINE_string('remote_host', None, '')
+gflags.DEFINE_string('remote_hosts', None, '')
 gflags.DEFINE_string('remote_root', None, '')
-gflags.DEFINE_integer('time_limit', 900, '')
+gflags.DEFINE_integer('time_limit', None, '')
+gflags.DEFINE_integer('max_jobs', None, '')
 gflags.MarkFlagAsRequired('data_dir')
 gflags.MarkFlagAsRequired('ghost_data_dir')
-gflags.MarkFlagAsRequired('remote_host')
+gflags.MarkFlagAsRequired('remote_hosts')
 gflags.MarkFlagAsRequired('remote_root')
 gflags.MarkFlagAsRequired('time_limit')
+gflags.MarkFlagAsRequired('max_jobs')
 
 
 g_lock = threading.Lock()
@@ -31,6 +34,10 @@ g_lock = threading.Lock()
 def rate_limit():
   with g_lock:
     time.sleep(0.25)
+
+
+def pick_remote_host():
+  return random.choice(FLAGS.remote_hosts.split(','))
 
 
 def list_evalsets(evalset_kind):
@@ -71,11 +78,13 @@ class Job(object):
     with open(stdoutpath, 'w') as stdout:
       with open(stderrpath, 'w') as stderr:
         self.proc = subprocess.Popen(
-            'ssh %s "(ulimit -t %d; time %s) | tail -n 100000 | gzip"' % (FLAGS.remote_host, FLAGS.time_limit, script),
+            'ssh %s "(ulimit -t %d; time %s) | tail -n 100000 | gzip"' % (pick_remote_host(), FLAGS.time_limit, script),
             shell=True,
             stdin=subprocess.PIPE, stdout=stdout, stderr=stderr)
-    self.proc.stdin.write(code)
-    self.proc.stdin.close()
+    def writer():
+      self.proc.stdin.write(code)
+      self.proc.stdin.close()
+    self.thread = threading.Thread(target=writer).start()
 
   def poll(self):
     assert self.proc
@@ -109,7 +118,7 @@ class State(object):
     self.key = key
     self.date = 'N/A'
     self.queue = []
-    self.current_job = None
+    self.current_jobs = []
 
 
 def scan_requests(data_dir, evalset_kind, pool):
@@ -134,12 +143,11 @@ def scan_requests(data_dir, evalset_kind, pool):
 
 def poll_jobs(pool):
   for state in pool.itervalues():
-    if state.current_job:
-      if state.current_job.poll():
-        state.current_job = None
-    if not state.current_job and state.queue:
-      state.current_job = state.queue.pop(0)
-      state.current_job.start()
+    state.current_jobs = [job for job in state.current_jobs if not job.poll()]
+    while state.queue and len(state.current_jobs) < FLAGS.max_jobs:
+      job = state.queue.pop(0)
+      job.start()
+      state.current_jobs.append(job)
 
 
 def main(argv):
