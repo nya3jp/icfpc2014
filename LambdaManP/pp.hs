@@ -44,7 +44,7 @@ ppBd (tag, bd) = do
   g 4 = ' '
   g 5 = ' '
   g 6 = ' '
-
+  g _ = '?'
 ppMat :: (Int, [[Int]]) -> IO ()
 ppMat (tag, bd) = do
   putStrLn $ "; trace Matrix " ++ show tag
