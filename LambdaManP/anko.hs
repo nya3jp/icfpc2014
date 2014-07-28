@@ -243,13 +243,13 @@ selectSmall bd pos = comp $
     e $ c 3
 
 
-voteMax :: Expr Map -> Expr Pos -> Expr V4
-voteMax bd pos = comp $
+voteMax :: (Expr Pos -> Expr Int) -> Expr Pos -> Expr V4
+voteMax score pos = comp $
   withVects $ \[v0, v1, v2, v3] ->
-  with (negate $peekMap (vadd pos v0) bd) $ \c0 ->
-  with (negate $peekMap (vadd pos v1) bd) $ \c1 ->
-  with (negate $peekMap (vadd pos v2) bd) $ \c2 ->
-  with (negate $peekMap (vadd pos v3) bd) $ \c3 -> e $
+  with (negate $score (vadd pos v0)) $ \c0 ->
+  with (negate $score (vadd pos v1)) $ \c1 ->
+  with (negate $score (vadd pos v2)) $ \c2 ->
+  with (negate $score (vadd pos v3)) $ \c3 -> e $
     let -- NEGATED!!
         elem0 = c0 ./= ninf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3 
         elem1 = c1 ./= ninf &&& c1 .<= c0 &&& c1 .<= c2 &&& c1 .<= c3
@@ -258,13 +258,13 @@ voteMax bd pos = comp $
     in cons (cons elem0 elem1) (cons elem2 elem3)
 
 
-voteMin :: Expr Map -> Expr Pos -> Expr V4
-voteMin bd pos = comp $
+voteMin :: (Expr Pos -> Expr Int) -> Expr Pos -> Expr V4
+voteMin score pos = comp $
   withVects $ \[v0, v1, v2, v3] ->
-  with (peekMap (vadd pos v0) bd) $ \c0 ->
-  with (peekMap (vadd pos v1) bd) $ \c1 ->
-  with (peekMap (vadd pos v2) bd) $ \c2 ->
-  with (peekMap (vadd pos v3) bd) $ \c3 -> e $
+  with (score (vadd pos v0)) $ \c0 ->
+  with (score (vadd pos v1)) $ \c1 ->
+  with (score (vadd pos v2)) $ \c2 ->
+  with (score (vadd pos v3)) $ \c3 -> e $
     let 
         elem0 = c0 ./= inf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3 
         elem1 = c1 ./= inf &&& c1 .<= c0 &&& c1 .<= c2 &&& c1 .<= c3
