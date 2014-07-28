@@ -6,7 +6,7 @@ exception Game_end of int
 
 let conf_fright_compatible_mode = true
 let conf_lambdaman_invalid_move_mode = true
-let show_useful_info = true
+let show_useful_info = false
 let conf_quiet = ref true
 let conf_eternal = ref false
 

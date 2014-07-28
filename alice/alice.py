@@ -874,6 +874,10 @@ def resolve_labels(asm):
 
 
 def main():
+  raw = False
+  if len(sys.argv) >= 2 and sys.argv[1] == '-r':
+    del sys.argv[1:2]
+    raw = True
   if len(sys.argv) < 2:
     print >>sys.stderr, 'usage: alice.py input.py'
     return
@@ -895,9 +899,10 @@ def main():
       print >>sys.stderr, prefix + line
       print >>sys.stderr, ' ' * (len(prefix) + e.column) + '^'
     return
-  print >>sys.stderr, 'linking...'
   asm = ctx.output()
-  asm = resolve_labels(asm)
+  if not raw:
+    print >>sys.stderr, 'linking...'
+    asm = resolve_labels(asm)
   print asm
 
 

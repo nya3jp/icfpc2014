@@ -2,4 +2,4 @@
 
 root="$(dirname "$0")/../.."
 
-exec "$root/simulator/simulator" "$root/map/eval-2.map" /dev/stdin "$root/ghost/chase_with_random.ghc,$root/ghost/scatter.ghc,$root/ghost/random_and_chase.ghc,$root/ghost/chase_fixed.ghc"
+exec "$root/simulator/simulator" "$@" "$root/map/eval-2.map" /dev/stdin "$root/ghost/chase_with_random.ghc,$root/ghost/scatter.ghc,$root/ghost/random_and_chase.ghc,$root/ghost/chase_fixed.ghc"

@@ -1,0 +1,41190 @@
+  DUM 34
+  LDC 0
+  LDF lmax
+  LDF isJunction
+  LDF junctionSafety
+  LDF calcDensFrom
+  LDF getDots
+  LDF toQueue
+  LDF mapGhostPos
+  LDF paint
+  LDF bfs
+  LDF initialize
+  LDF getCorners
+  LDF step
+  LDF newMat
+  LDF toMats
+  LDF toMat
+  LDF pokeGo
+  LDF poke
+  LDF peek
+  LDF mkArrayGo
+  LDF mkArray
+  LDF newArrayGo
+  LDF newArray
+  LDF dequeue
+  LDF lreverseGo
+  LDF setMat
+  LDF getMat
+  LDF updOpt
+  LDF upd
+  LDF nthOpt
+  LDF nth
+  LDF ltake
+  LDF ldrop
+  LDF llength
+  LDF main
+  TRAP 34
+main:
+LDC 0
+TSEL L5659 L5659
+llength:
+  LD 0 0
+  ATOM
+  TSEL L2 L3
+L2:
+  LDC 0
+RTN
+L3:
+  LDC 1
+  LD 0 0
+  CDR
+  LD 1 33
+  AP 1
+  ADD
+L4:
+  RTN
+L1:
+LDC 0
+TSEL L5659 L5659
+ldrop:
+  LD 0 0
+  LDC 0
+  CEQ
+  TSEL L6 L7
+L6:
+  LD 0 1
+RTN
+L7:
+  LD 0 0
+  LDC 1
+  SUB
+  LD 0 1
+  CDR
+  LD 1 32
+  AP 2
+L8:
+  RTN
+L5:
+LDC 0
+TSEL L5659 L5659
+ltake:
+  LD 0 0
+  LDC 0
+  CEQ
+  TSEL L10 L11
+L10:
+  LDC 0
+RTN
+L11:
+  LD 0 1
+  CAR
+  LD 0 0
+  LDC 1
+  SUB
+  LD 0 1
+  CDR
+  LD 1 31
+  AP 2
+  CONS
+L12:
+  RTN
+L9:
+LDC 0
+TSEL L5659 L5659
+nth:
+  LD 0 0
+  LDC 0
+  CEQ
+  TSEL L14 L15
+L14:
+  LD 0 1
+  CAR
+RTN
+L15:
+  LD 0 0
+  LDC 1
+  SUB
+  LD 0 1
+  CDR
+  LD 1 30
+  AP 2
+L16:
+  RTN
+L13:
+LDC 0
+TSEL L5659 L5659
+nthOpt:
+  LD 0 0
+  LDC 0
+  CEQ
+  TSEL L18 L19
+L18:
+  LD 0 1
+  CAR
+RTN
+L19:
+  LD 0 0
+  LDC 1
+  CEQ
+  TSEL L21 L22
+L21:
+  LD 0 1
+  CDR
+  CAR
+LDC 0
+TSEL L23 L23
+L22:
+  LD 0 0
+  LDC 2
+  CEQ
+  TSEL L24 L25
+L24:
+  LD 0 1
+  CDR
+  CDR
+  CAR
+LDC 0
+TSEL L26 L26
+L25:
+  LD 0 0
+  LDC 3
+  CEQ
+  TSEL L27 L28
+L27:
+  LD 0 1
+  CDR
+  CDR
+  CDR
+  CAR
+LDC 0
+TSEL L29 L29
+L28:
+  LD 0 0
+  LDC 4
+  CEQ
+  TSEL L30 L31
+L30:
+  LD 0 1
+  CDR
+  CDR
+  CDR
+  CDR
+  CAR
+LDC 0
+TSEL L32 L32
+L31:
+  LD 0 0
+  LDC 5
+  CEQ
+  TSEL L33 L34
+L33:
+  LD 0 1
+  CDR
+  CDR
+  CDR
+  CDR
+  CDR
+  CAR
+LDC 0
+TSEL L35 L35
+L34:
+  LD 0 0
+  LDC 6
+  CEQ
+  TSEL L36 L37
+L36:
+  LD 0 1
+  CDR
+  CDR
+  CDR
+  CDR
+  CDR
+  CDR
+  CAR
+LDC 0
+TSEL L38 L38
+L37:
+  LD 0 1
+  CDR
+  CDR
+  CDR
+  CDR
+  CDR
+  CDR
+  CDR
+  CAR
+L38:
+L35:
+L32:
+L29:
+L26:
+L23:
+L20:
+  RTN
+L17:
+LDC 0
+TSEL L5659 L5659
+upd:
+  LD 0 0
+  LDC 0
+  CEQ
+  TSEL L40 L41
+L40:
+  LD 0 1
+  LD 0 2
+  CDR
+  CONS
+RTN
+L41:
+  LD 0 2
+  CAR
+  LD 0 0
+  LDC 1
+  SUB
+  LD 0 1
+  LD 0 2
+  CDR
+  LD 1 28
+  AP 3
+  CONS
+L42:
+  RTN
+L39:
+LDC 0
+TSEL L5659 L5659
+updOpt:
+  LD 0 2
+  CDR
+  LDF L44
+TAP 1
+L44:
+  LD 1 0
+  LDC 0
+  CEQ
+  TSEL L46 L47
+L46:
+  LD 1 1
+  LD 0 0
+  CONS
+RTN
+L47:
+  LD 0 0
+  CDR
+  LDF L49
+  AP 1
+LDC 0
+TSEL L50 L50
+L49:
+  LD 2 0
+  LDC 1
+  CEQ
+  TSEL L51 L52
+L51:
+  LD 2 2
+  CAR
+  LD 2 1
+  LD 0 0
+  CONS
+  CONS
+RTN
+L52:
+  LD 0 0
+  CDR
+  LDF L54
+  AP 1
+LDC 0
+TSEL L55 L55
+L54:
+  LD 3 0
+  LDC 2
+  CEQ
+  TSEL L56 L57
+L56:
+  LD 3 2
+  CAR
+  LD 2 0
+  CAR
+  LD 3 1
+  LD 0 0
+  CONS
+  CONS
+  CONS
+RTN
+L57:
+  LD 0 0
+  CDR
+  LDF L59
+  AP 1
+LDC 0
+TSEL L60 L60
+L59:
+  LD 4 2
+  CAR
+  LD 3 0
+  CAR
+  LD 2 0
+  CAR
+  LD 4 1
+  LD 0 0
+  CONS
+  CONS
+  CONS
+  CONS
+  RTN
+L60:
+L58:
+  RTN
+L55:
+L53:
+  RTN
+L50:
+L48:
+  RTN
+L45:
+  RTN
+L43:
+LDC 0
+TSEL L5659 L5659
+getMat:
+  LD 0 0
+  LD 0 1
+  LD 0 2
+  LD 1 30
+  AP 2
+  LD 1 30
+TAP 2
+L61:
+LDC 0
+TSEL L5659 L5659
+setMat:
+  LD 0 1
+  LD 0 0
+  LD 0 2
+  LD 0 1
+  LD 0 3
+  LD 1 30
+  AP 2
+  LD 1 28
+  AP 3
+  LD 0 3
+  LD 1 28
+TAP 3
+L62:
+LDC 0
+TSEL L5659 L5659
+lreverseGo:
+  LD 0 1
+  ATOM
+  TSEL L64 L65
+L64:
+  LD 0 0
+RTN
+L65:
+  LD 0 1
+  CAR
+  LD 0 0
+  CONS
+  LD 0 1
+  CDR
+  LD 1 24
+  AP 2
+L66:
+  RTN
+L63:
+LDC 0
+TSEL L5659 L5659
+dequeue:
+  LD 0 0
+  CAR
+  ATOM
+  TSEL L68 L69
+L68:
+  LDC 0
+  LD 0 0
+  CDR
+  LD 1 24
+  AP 2
+  LDC 0
+  CONS
+  LD 1 23
+TAP 1
+L69:
+  LD 0 0
+  CAR
+  CAR
+  LD 0 0
+  CAR
+  CDR
+  LD 0 0
+  CDR
+  CONS
+  CONS
+L70:
+  RTN
+L67:
+LDC 0
+TSEL L5659 L5659
+newArray:
+  LD 0 0
+  LDC 0
+  LD 0 0
+  LD 0 1
+  LD 1 21
+  AP 3
+  CONS
+  RTN
+L71:
+LDC 0
+TSEL L5659 L5659
+newArrayGo:
+  LD 0 1
+  LD 0 0
+  SUB
+  LDC 1
+  CEQ
+  TSEL L73 L74
+L73:
+  LD 0 2
+RTN
+L74:
+  LD 0 0
+  LD 0 0
+  LD 0 1
+  ADD
+  LDC 2
+  DIV
+  LD 0 2
+  LD 1 21
+  AP 3
+  LD 0 0
+  LD 0 1
+  ADD
+  LDC 2
+  DIV
+  LD 0 1
+  LD 0 2
+  LD 1 21
+  AP 3
+  CONS
+L75:
+  RTN
+L72:
+LDC 0
+TSEL L5659 L5659
+mkArray:
+  LD 0 0
+  LD 1 33
+  AP 1
+  LDF L77
+TAP 1
+L77:
+  LD 0 0
+  LDC 0
+  LD 0 0
+  LD 1 0
+  LD 2 19
+  AP 3
+  CONS
+  RTN
+L78:
+  RTN
+L76:
+LDC 0
+TSEL L5659 L5659
+mkArrayGo:
+  LD 0 1
+  LD 0 0
+  SUB
+  LDC 1
+  CEQ
+  TSEL L80 L81
+L80:
+  LD 0 2
+  CAR
+RTN
+L81:
+  LD 0 0
+  LD 0 0
+  LD 0 1
+  ADD
+  LDC 2
+  DIV
+  LD 0 2
+  LD 1 19
+  AP 3
+  LD 0 0
+  LD 0 1
+  ADD
+  LDC 2
+  DIV
+  LD 0 1
+  LD 0 0
+  LD 0 1
+  ADD
+  LDC 2
+  DIV
+  LD 0 0
+  SUB
+  LD 0 2
+  LD 1 32
+  AP 2
+  LD 1 19
+  AP 3
+  CONS
+L82:
+  RTN
+L79:
+LDC 0
+TSEL L5659 L5659
+peek:
+  LDC 0
+  LD 0 1
+  CAR
+  LD 0 1
+  CDR
+  LDC 0
+  LDF L84
+TAP 4
+L84:
+L86:
+  LDC 1
+  LD 0 1
+  LD 0 0
+  SUB
+  LDC 1
+  CEQ
+  SUB
+  TSEL L87 L88
+L87:
+  LD 0 0
+  LD 0 1
+  ADD
+  LDC 2
+  DIV
+  ST 0 3
+  LD 0 3
+  LD 1 0
+  CGT
+  TSEL L89 L90
+L89:
+  LD 0 3
+  ST 0 1
+  LD 0 2
+  CAR
+  ST 0 2
+  LDC 0
+LDC 0
+TSEL L91 L91
+L90:
+  LD 0 3
+  ST 0 0
+  LD 0 2
+  CDR
+  ST 0 2
+  LDC 0
+L91:
+  TSEL L86 L86
+L88:
+  LD 0 2
+  RTN
+L85:
+  RTN
+L83:
+LDC 0
+TSEL L5659 L5659
+poke:
+  LD 0 2
+  CAR
+  LD 0 0
+  LDC 0
+  LD 0 2
+  CAR
+  LD 0 1
+  LD 0 2
+  CDR
+  LD 1 16
+  AP 5
+  CONS
+  RTN
+L92:
+LDC 0
+TSEL L5659 L5659
+pokeGo:
+  LD 0 2
+  LD 0 1
+  SUB
+  LDC 1
+  CEQ
+  TSEL L94 L95
+L94:
+  LD 0 3
+RTN
+L95:
+  LD 0 1
+  LD 0 2
+  ADD
+  LDC 2
+  DIV
+  LD 0 0
+  CGT
+  TSEL L97 L98
+L97:
+  LD 0 0
+  LD 0 1
+  LD 0 1
+  LD 0 2
+  ADD
+  LDC 2
+  DIV
+  LD 0 3
+  LD 0 4
+  CAR
+  LD 1 16
+  AP 5
+  LD 0 4
+  CDR
+  CONS
+LDC 0
+TSEL L99 L99
+L98:
+  LD 0 4
+  CAR
+  LD 0 0
+  LD 0 1
+  LD 0 2
+  ADD
+  LDC 2
+  DIV
+  LD 0 2
+  LD 0 3
+  LD 0 4
+  CDR
+  LD 1 16
+  AP 5
+  CONS
+L99:
+L96:
+  RTN
+L93:
+LDC 0
+TSEL L5659 L5659
+toMat:
+  LD 0 0
+  LD 1 14
+  AP 1
+  LD 1 20
+TAP 1
+L100:
+LDC 0
+TSEL L5659 L5659
+toMats:
+  LD 0 0
+  ATOM
+  TSEL L102 L103
+L102:
+  LDC 0
+RTN
+L103:
+  LD 0 0
+  CAR
+  LD 1 20
+  AP 1
+  LD 0 0
+  CDR
+  LD 1 14
+  AP 1
+  CONS
+L104:
+  RTN
+L101:
+LDC 0
+TSEL L5659 L5659
+newMat:
+  LD 0 0
+  LD 0 2
+  LD 1 22
+  AP 2
+  LDF L106
+TAP 1
+L106:
+  LD 1 1
+  LD 0 0
+  LD 2 22
+TAP 2
+L107:
+  RTN
+L105:
+LDC 0
+TSEL L5659 L5659
+step:
+  LD 0 1
+  CDR
+  CAR
+  LD 0 1
+  CDR
+  CAR
+  CDR
+  CAR
+  LD 0 0
+  CAR
+  LD 0 0
+  CDR
+  CAR
+  LD 0 0
+  CDR
+  CDR
+  LDF L109
+TAP 5
+L109:
+  LD 0 1
+  CDR
+  LD 0 1
+  CAR
+  LDC 0
+  LD 0 3
+  SUB
+  LD 0 1
+  CDR
+  LD 0 2
+  LD 2 18
+  AP 2
+  LD 2 17
+  AP 3
+  LD 0 2
+  LD 2 17
+  AP 3
+  LDF L111
+TAP 1
+L111:
+  LD 2 1
+  CDR
+  CDR
+  CAR
+  LD 3 7
+  AP 1
+  LDF L113
+TAP 1
+L113:
+  LD 1 0
+  LD 4 5
+  AP 1
+  LDF L115
+TAP 1
+L115:
+  LD 2 0
+  LD 5 11
+  AP 1
+  LDF L117
+TAP 1
+L117:
+  LD 1 0
+  CAR
+  LD 1 0
+  CDR
+  LDF L119
+TAP 2
+L119:
+  LD 4 0
+  LD 3 0
+  LD 7 8
+  AP 2
+  LDF L121
+TAP 1
+L121:
+  LD 5 0
+  LD 1 0
+  LD 8 8
+  AP 2
+  LDF L123
+TAP 1
+L123:
+  LD 6 0
+  LD 3 0
+  LD 9 8
+  AP 2
+  LDF L125
+TAP 1
+L125:
+  LD 7 0
+  LD 3 1
+  LD 10 8
+  AP 2
+  LDF L127
+TAP 1
+L127:
+  LD 9 0
+  CAR
+  LDC 0
+  CGT
+  LD 9 0
+  CDR
+  CDR
+  CAR
+  LDF L129
+TAP 2
+L129:
+  LD 10 1
+  LD 8 0
+  LD 12 4
+  AP 2
+  LDF L131
+TAP 1
+L131:
+  LDC 1
+  LD 1 1
+  CGTE
+  TSEL L135 L136
+L135:
+  LD 1 1
+  LDC 0
+  CEQ
+  TSEL L138 L139
+L138:
+  LDC 3
+  LDC 2
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  CONS
+LDC 0
+TSEL L137 L137
+L139:
+  LDC 0
+  LDC 3
+  CONS
+  LDC 2
+  LDC 1
+  CONS
+  CONS
+L140:
+LDC 0
+TSEL L137 L137
+L136:
+  LD 1 1
+  LDC 2
+  CEQ
+  TSEL L141 L142
+L141:
+  LDC 1
+  LDC 0
+  CONS
+  LDC 3
+  LDC 2
+  CONS
+  CONS
+LDC 0
+TSEL L143 L143
+L142:
+  LDC 2
+  LDC 1
+  CONS
+  LDC 0
+  LDC 3
+  CONS
+  CONS
+L143:
+L137:
+  LDF L133
+TAP 1
+L133:
+  LDC 3
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 6 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  CGT
+  TSEL L147 L148
+L147:
+  LDC 1
+  LD 2 0
+  SUB
+LDC 0
+TSEL L149 L149
+L148:
+  LDC 0
+L149:
+  TSEL L144 L145
+L144:
+  LDC 5
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L146 L146
+L145:
+  LDC 0
+L146:
+  ST 14 0 ; POP
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L156
+  AP 4
+LDC 0
+TSEL L157 L157
+L156:
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 0
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 1
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 2
+  LD 15 3
+  AP 4
+  LD 12 0
+  LD 7 0
+  LD 13 1
+  LD 0 3
+  LD 15 3
+  AP 4
+  LD 15 1
+  AP 2
+  LD 15 1
+  AP 2
+  LD 15 1
+TAP 2
+L157:
+  LDC 3
+  CGT
+  TSEL L153 L154
+L153:
+  LDC 1
+LDC 0
+TSEL L155 L155
+L154:
+  LD 2 0
+L155:
+  TSEL L150 L151
+L150:
+  LDC 5
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L152 L152
+L151:
+  LDC 0
+L152:
+  ST 14 0 ; POP
+  LDC 1
+  LD 2 0
+  SUB
+  TSEL L161 L162
+L161:
+  LD 1 0
+  LDC 100
+  CGTE
+LDC 0
+TSEL L163 L163
+L162:
+  LDC 0
+L163:
+  TSEL L158 L159
+L158:
+  LDC 2
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 4
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 3
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L160 L160
+L159:
+  LDC 0
+L160:
+  ST 14 0 ; POP
+  LD 2 0
+  TSEL L164 L165
+L164:
+  LDC 4
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 2
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 3
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L166 L166
+L165:
+  LDC 0
+L166:
+  ST 14 0 ; POP
+  LDC 150
+  LD 1 0
+  CGTE
+  TSEL L170 L171
+L170:
+  LDC 2
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 3 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  CGT
+LDC 0
+TSEL L172 L172
+L171:
+  LDC 0
+L172:
+  TSEL L167 L168
+L167:
+  LDC 3
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 2
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 4
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L169 L169
+L168:
+  LDC 0
+L169:
+  ST 14 0 ; POP
+  LDC 1
+  LD 2 0
+  SUB
+  TSEL L173 L174
+L173:
+  LDC 4
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L175 L175
+L174:
+  LDC 0
+L175:
+  ST 14 0 ; POP
+  LD 12 1
+  CAR
+  LD 12 1
+  CDR
+  LD 3 0
+  LD 14 18
+  AP 2
+  LD 14 18
+  AP 2
+  LDC 2
+  CGT
+  TSEL L176 L177
+L176:
+  LDC 3
+  LDC 0
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LDC 0
+LDC 0
+TSEL L178 L178
+L177:
+  LDC 0
+L178:
+  ST 14 0 ; POP
+  LDC 0
+  LDC 1
+  LD 12 4
+  LD 14 17
+  AP 3
+  ST 12 4
+  LD 0 0
+  CAR
+  CAR
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L179
+  AP 4
+LDC 0
+TSEL L180 L180
+L179:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L181
+TAP 1
+L181:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L183
+TAP 1
+L183:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L185
+TAP 1
+L185:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L187
+TAP 1
+L187:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L189 L190
+L189:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L192 L193
+L192:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L195 L196
+L195:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L191 L191
+L196:
+  LDC 0
+L197:
+LDC 0
+TSEL L191 L191
+L193:
+  LDC 0
+L194:
+LDC 0
+TSEL L191 L191
+L190:
+  LDC 0
+L191:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L198 L199
+L198:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L201 L202
+L201:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L204 L205
+L204:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L200 L200
+L205:
+  LDC 0
+L206:
+LDC 0
+TSEL L200 L200
+L202:
+  LDC 0
+L203:
+LDC 0
+TSEL L200 L200
+L199:
+  LDC 0
+L200:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L207 L208
+L207:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L210 L211
+L210:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L213 L214
+L213:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L209 L209
+L214:
+  LDC 0
+L215:
+LDC 0
+TSEL L209 L209
+L211:
+  LDC 0
+L212:
+LDC 0
+TSEL L209 L209
+L208:
+  LDC 0
+L209:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L216 L217
+L216:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L219 L220
+L219:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L222 L223
+L222:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L218 L218
+L223:
+  LDC 0
+L224:
+LDC 0
+TSEL L218 L218
+L220:
+  LDC 0
+L221:
+LDC 0
+TSEL L218 L218
+L217:
+  LDC 0
+L218:
+  CONS
+  CONS
+  RTN
+L188:
+  RTN
+L186:
+  RTN
+L184:
+  RTN
+L182:
+  RTN
+L180:
+  CAR
+  CAR
+  MUL
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L225
+  AP 4
+LDC 0
+TSEL L226 L226
+L225:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L227
+TAP 1
+L227:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L229
+TAP 1
+L229:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L231
+TAP 1
+L231:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L233
+TAP 1
+L233:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L235 L236
+L235:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L238 L239
+L238:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L241 L242
+L241:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L237 L237
+L242:
+  LDC 0
+L243:
+LDC 0
+TSEL L237 L237
+L239:
+  LDC 0
+L240:
+LDC 0
+TSEL L237 L237
+L236:
+  LDC 0
+L237:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L244 L245
+L244:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L247 L248
+L247:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L250 L251
+L250:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L246 L246
+L251:
+  LDC 0
+L252:
+LDC 0
+TSEL L246 L246
+L248:
+  LDC 0
+L249:
+LDC 0
+TSEL L246 L246
+L245:
+  LDC 0
+L246:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L253 L254
+L253:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L256 L257
+L256:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L259 L260
+L259:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L255 L255
+L260:
+  LDC 0
+L261:
+LDC 0
+TSEL L255 L255
+L257:
+  LDC 0
+L258:
+LDC 0
+TSEL L255 L255
+L254:
+  LDC 0
+L255:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L262 L263
+L262:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L265 L266
+L265:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L268 L269
+L268:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L264 L264
+L269:
+  LDC 0
+L270:
+LDC 0
+TSEL L264 L264
+L266:
+  LDC 0
+L267:
+LDC 0
+TSEL L264 L264
+L263:
+  LDC 0
+L264:
+  CONS
+  CONS
+  RTN
+L234:
+  RTN
+L232:
+  RTN
+L230:
+  RTN
+L228:
+  RTN
+L226:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L271
+  AP 4
+LDC 0
+TSEL L272 L272
+L271:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L273
+TAP 1
+L273:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L275
+TAP 1
+L275:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L277
+TAP 1
+L277:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L279
+TAP 1
+L279:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L281 L282
+L281:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L284 L285
+L284:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L287 L288
+L287:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L283 L283
+L288:
+  LDC 0
+L289:
+LDC 0
+TSEL L283 L283
+L285:
+  LDC 0
+L286:
+LDC 0
+TSEL L283 L283
+L282:
+  LDC 0
+L283:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L290 L291
+L290:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L293 L294
+L293:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L296 L297
+L296:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L292 L292
+L297:
+  LDC 0
+L298:
+LDC 0
+TSEL L292 L292
+L294:
+  LDC 0
+L295:
+LDC 0
+TSEL L292 L292
+L291:
+  LDC 0
+L292:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L299 L300
+L299:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L302 L303
+L302:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L305 L306
+L305:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L301 L301
+L306:
+  LDC 0
+L307:
+LDC 0
+TSEL L301 L301
+L303:
+  LDC 0
+L304:
+LDC 0
+TSEL L301 L301
+L300:
+  LDC 0
+L301:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L308 L309
+L308:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L311 L312
+L311:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L314 L315
+L314:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L310 L310
+L315:
+  LDC 0
+L316:
+LDC 0
+TSEL L310 L310
+L312:
+  LDC 0
+L313:
+LDC 0
+TSEL L310 L310
+L309:
+  LDC 0
+L310:
+  CONS
+  CONS
+  RTN
+L280:
+  RTN
+L278:
+  RTN
+L276:
+  RTN
+L274:
+  RTN
+L272:
+  CDR
+  CAR
+  MUL
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L317
+  AP 4
+LDC 0
+TSEL L318 L318
+L317:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L319
+TAP 1
+L319:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L321
+TAP 1
+L321:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L323
+TAP 1
+L323:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L325
+TAP 1
+L325:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L327 L328
+L327:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L330 L331
+L330:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L333 L334
+L333:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L329 L329
+L334:
+  LDC 0
+L335:
+LDC 0
+TSEL L329 L329
+L331:
+  LDC 0
+L332:
+LDC 0
+TSEL L329 L329
+L328:
+  LDC 0
+L329:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L336 L337
+L336:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L339 L340
+L339:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L342 L343
+L342:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L338 L338
+L343:
+  LDC 0
+L344:
+LDC 0
+TSEL L338 L338
+L340:
+  LDC 0
+L341:
+LDC 0
+TSEL L338 L338
+L337:
+  LDC 0
+L338:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L345 L346
+L345:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L348 L349
+L348:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L351 L352
+L351:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L347 L347
+L352:
+  LDC 0
+L353:
+LDC 0
+TSEL L347 L347
+L349:
+  LDC 0
+L350:
+LDC 0
+TSEL L347 L347
+L346:
+  LDC 0
+L347:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L354 L355
+L354:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L357 L358
+L357:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L360 L361
+L360:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L356 L356
+L361:
+  LDC 0
+L362:
+LDC 0
+TSEL L356 L356
+L358:
+  LDC 0
+L359:
+LDC 0
+TSEL L356 L356
+L355:
+  LDC 0
+L356:
+  CONS
+  CONS
+  RTN
+L326:
+  RTN
+L324:
+  RTN
+L322:
+  RTN
+L320:
+  RTN
+L318:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CAR
+  ADD
+  LD 0 0
+  CAR
+  CDR
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L363
+  AP 4
+LDC 0
+TSEL L364 L364
+L363:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L365
+TAP 1
+L365:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L367
+TAP 1
+L367:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L369
+TAP 1
+L369:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L371
+TAP 1
+L371:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L373 L374
+L373:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L376 L377
+L376:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L379 L380
+L379:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L375 L375
+L380:
+  LDC 0
+L381:
+LDC 0
+TSEL L375 L375
+L377:
+  LDC 0
+L378:
+LDC 0
+TSEL L375 L375
+L374:
+  LDC 0
+L375:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L382 L383
+L382:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L385 L386
+L385:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L388 L389
+L388:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L384 L384
+L389:
+  LDC 0
+L390:
+LDC 0
+TSEL L384 L384
+L386:
+  LDC 0
+L387:
+LDC 0
+TSEL L384 L384
+L383:
+  LDC 0
+L384:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L391 L392
+L391:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L394 L395
+L394:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L397 L398
+L397:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L393 L393
+L398:
+  LDC 0
+L399:
+LDC 0
+TSEL L393 L393
+L395:
+  LDC 0
+L396:
+LDC 0
+TSEL L393 L393
+L392:
+  LDC 0
+L393:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L400 L401
+L400:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L403 L404
+L403:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L406 L407
+L406:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L402 L402
+L407:
+  LDC 0
+L408:
+LDC 0
+TSEL L402 L402
+L404:
+  LDC 0
+L405:
+LDC 0
+TSEL L402 L402
+L401:
+  LDC 0
+L402:
+  CONS
+  CONS
+  RTN
+L372:
+  RTN
+L370:
+  RTN
+L368:
+  RTN
+L366:
+  RTN
+L364:
+  CAR
+  CAR
+  MUL
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L409
+  AP 4
+LDC 0
+TSEL L410 L410
+L409:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L411
+TAP 1
+L411:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L413
+TAP 1
+L413:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L415
+TAP 1
+L415:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L417
+TAP 1
+L417:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L419 L420
+L419:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L422 L423
+L422:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L425 L426
+L425:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L421 L421
+L426:
+  LDC 0
+L427:
+LDC 0
+TSEL L421 L421
+L423:
+  LDC 0
+L424:
+LDC 0
+TSEL L421 L421
+L420:
+  LDC 0
+L421:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L428 L429
+L428:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L431 L432
+L431:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L434 L435
+L434:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L430 L430
+L435:
+  LDC 0
+L436:
+LDC 0
+TSEL L430 L430
+L432:
+  LDC 0
+L433:
+LDC 0
+TSEL L430 L430
+L429:
+  LDC 0
+L430:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L437 L438
+L437:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L440 L441
+L440:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L443 L444
+L443:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L439 L439
+L444:
+  LDC 0
+L445:
+LDC 0
+TSEL L439 L439
+L441:
+  LDC 0
+L442:
+LDC 0
+TSEL L439 L439
+L438:
+  LDC 0
+L439:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L446 L447
+L446:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L449 L450
+L449:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L452 L453
+L452:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L448 L448
+L453:
+  LDC 0
+L454:
+LDC 0
+TSEL L448 L448
+L450:
+  LDC 0
+L451:
+LDC 0
+TSEL L448 L448
+L447:
+  LDC 0
+L448:
+  CONS
+  CONS
+  RTN
+L418:
+  RTN
+L416:
+  RTN
+L414:
+  RTN
+L412:
+  RTN
+L410:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L455
+  AP 4
+LDC 0
+TSEL L456 L456
+L455:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L457
+TAP 1
+L457:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L459
+TAP 1
+L459:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L461
+TAP 1
+L461:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L463
+TAP 1
+L463:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L465 L466
+L465:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L468 L469
+L468:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L471 L472
+L471:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L467 L467
+L472:
+  LDC 0
+L473:
+LDC 0
+TSEL L467 L467
+L469:
+  LDC 0
+L470:
+LDC 0
+TSEL L467 L467
+L466:
+  LDC 0
+L467:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L474 L475
+L474:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L477 L478
+L477:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L480 L481
+L480:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L476 L476
+L481:
+  LDC 0
+L482:
+LDC 0
+TSEL L476 L476
+L478:
+  LDC 0
+L479:
+LDC 0
+TSEL L476 L476
+L475:
+  LDC 0
+L476:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L483 L484
+L483:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L486 L487
+L486:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L489 L490
+L489:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L485 L485
+L490:
+  LDC 0
+L491:
+LDC 0
+TSEL L485 L485
+L487:
+  LDC 0
+L488:
+LDC 0
+TSEL L485 L485
+L484:
+  LDC 0
+L485:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L492 L493
+L492:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L495 L496
+L495:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L498 L499
+L498:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L494 L494
+L499:
+  LDC 0
+L500:
+LDC 0
+TSEL L494 L494
+L496:
+  LDC 0
+L497:
+LDC 0
+TSEL L494 L494
+L493:
+  LDC 0
+L494:
+  CONS
+  CONS
+  RTN
+L464:
+  RTN
+L462:
+  RTN
+L460:
+  RTN
+L458:
+  RTN
+L456:
+  CDR
+  CAR
+  MUL
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L501
+  AP 4
+LDC 0
+TSEL L502 L502
+L501:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L503
+TAP 1
+L503:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L505
+TAP 1
+L505:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L507
+TAP 1
+L507:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L509
+TAP 1
+L509:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L511 L512
+L511:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L514 L515
+L514:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L517 L518
+L517:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L513 L513
+L518:
+  LDC 0
+L519:
+LDC 0
+TSEL L513 L513
+L515:
+  LDC 0
+L516:
+LDC 0
+TSEL L513 L513
+L512:
+  LDC 0
+L513:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L520 L521
+L520:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L523 L524
+L523:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L526 L527
+L526:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L522 L522
+L527:
+  LDC 0
+L528:
+LDC 0
+TSEL L522 L522
+L524:
+  LDC 0
+L525:
+LDC 0
+TSEL L522 L522
+L521:
+  LDC 0
+L522:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L529 L530
+L529:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L532 L533
+L532:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L535 L536
+L535:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L531 L531
+L536:
+  LDC 0
+L537:
+LDC 0
+TSEL L531 L531
+L533:
+  LDC 0
+L534:
+LDC 0
+TSEL L531 L531
+L530:
+  LDC 0
+L531:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L538 L539
+L538:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L541 L542
+L541:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L544 L545
+L544:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L540 L540
+L545:
+  LDC 0
+L546:
+LDC 0
+TSEL L540 L540
+L542:
+  LDC 0
+L543:
+LDC 0
+TSEL L540 L540
+L539:
+  LDC 0
+L540:
+  CONS
+  CONS
+  RTN
+L510:
+  RTN
+L508:
+  RTN
+L506:
+  RTN
+L504:
+  RTN
+L502:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CDR
+  ADD
+  CONS
+  LD 0 0
+  CDR
+  CAR
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L547
+  AP 4
+LDC 0
+TSEL L548 L548
+L547:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L549
+TAP 1
+L549:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L551
+TAP 1
+L551:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L553
+TAP 1
+L553:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L555
+TAP 1
+L555:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L557 L558
+L557:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L560 L561
+L560:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L563 L564
+L563:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L559 L559
+L564:
+  LDC 0
+L565:
+LDC 0
+TSEL L559 L559
+L561:
+  LDC 0
+L562:
+LDC 0
+TSEL L559 L559
+L558:
+  LDC 0
+L559:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L566 L567
+L566:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L569 L570
+L569:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L572 L573
+L572:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L568 L568
+L573:
+  LDC 0
+L574:
+LDC 0
+TSEL L568 L568
+L570:
+  LDC 0
+L571:
+LDC 0
+TSEL L568 L568
+L567:
+  LDC 0
+L568:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L575 L576
+L575:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L578 L579
+L578:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L581 L582
+L581:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L577 L577
+L582:
+  LDC 0
+L583:
+LDC 0
+TSEL L577 L577
+L579:
+  LDC 0
+L580:
+LDC 0
+TSEL L577 L577
+L576:
+  LDC 0
+L577:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L584 L585
+L584:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L587 L588
+L587:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L590 L591
+L590:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L586 L586
+L591:
+  LDC 0
+L592:
+LDC 0
+TSEL L586 L586
+L588:
+  LDC 0
+L589:
+LDC 0
+TSEL L586 L586
+L585:
+  LDC 0
+L586:
+  CONS
+  CONS
+  RTN
+L556:
+  RTN
+L554:
+  RTN
+L552:
+  RTN
+L550:
+  RTN
+L548:
+  CAR
+  CAR
+  MUL
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L593
+  AP 4
+LDC 0
+TSEL L594 L594
+L593:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L595
+TAP 1
+L595:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L597
+TAP 1
+L597:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L599
+TAP 1
+L599:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L601
+TAP 1
+L601:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L603 L604
+L603:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L606 L607
+L606:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L609 L610
+L609:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L605 L605
+L610:
+  LDC 0
+L611:
+LDC 0
+TSEL L605 L605
+L607:
+  LDC 0
+L608:
+LDC 0
+TSEL L605 L605
+L604:
+  LDC 0
+L605:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L612 L613
+L612:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L615 L616
+L615:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L618 L619
+L618:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L614 L614
+L619:
+  LDC 0
+L620:
+LDC 0
+TSEL L614 L614
+L616:
+  LDC 0
+L617:
+LDC 0
+TSEL L614 L614
+L613:
+  LDC 0
+L614:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L621 L622
+L621:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L624 L625
+L624:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L627 L628
+L627:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L623 L623
+L628:
+  LDC 0
+L629:
+LDC 0
+TSEL L623 L623
+L625:
+  LDC 0
+L626:
+LDC 0
+TSEL L623 L623
+L622:
+  LDC 0
+L623:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L630 L631
+L630:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L633 L634
+L633:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L636 L637
+L636:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L632 L632
+L637:
+  LDC 0
+L638:
+LDC 0
+TSEL L632 L632
+L634:
+  LDC 0
+L635:
+LDC 0
+TSEL L632 L632
+L631:
+  LDC 0
+L632:
+  CONS
+  CONS
+  RTN
+L602:
+  RTN
+L600:
+  RTN
+L598:
+  RTN
+L596:
+  RTN
+L594:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L639
+  AP 4
+LDC 0
+TSEL L640 L640
+L639:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L641
+TAP 1
+L641:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L643
+TAP 1
+L643:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L645
+TAP 1
+L645:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L647
+TAP 1
+L647:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L649 L650
+L649:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L652 L653
+L652:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L655 L656
+L655:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L651 L651
+L656:
+  LDC 0
+L657:
+LDC 0
+TSEL L651 L651
+L653:
+  LDC 0
+L654:
+LDC 0
+TSEL L651 L651
+L650:
+  LDC 0
+L651:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L658 L659
+L658:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L661 L662
+L661:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L664 L665
+L664:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L660 L660
+L665:
+  LDC 0
+L666:
+LDC 0
+TSEL L660 L660
+L662:
+  LDC 0
+L663:
+LDC 0
+TSEL L660 L660
+L659:
+  LDC 0
+L660:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L667 L668
+L667:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L670 L671
+L670:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L673 L674
+L673:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L669 L669
+L674:
+  LDC 0
+L675:
+LDC 0
+TSEL L669 L669
+L671:
+  LDC 0
+L672:
+LDC 0
+TSEL L669 L669
+L668:
+  LDC 0
+L669:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L676 L677
+L676:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L679 L680
+L679:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L682 L683
+L682:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L678 L678
+L683:
+  LDC 0
+L684:
+LDC 0
+TSEL L678 L678
+L680:
+  LDC 0
+L681:
+LDC 0
+TSEL L678 L678
+L677:
+  LDC 0
+L678:
+  CONS
+  CONS
+  RTN
+L648:
+  RTN
+L646:
+  RTN
+L644:
+  RTN
+L642:
+  RTN
+L640:
+  CDR
+  CAR
+  MUL
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L685
+  AP 4
+LDC 0
+TSEL L686 L686
+L685:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L687
+TAP 1
+L687:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L689
+TAP 1
+L689:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L691
+TAP 1
+L691:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L693
+TAP 1
+L693:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L695 L696
+L695:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L698 L699
+L698:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L701 L702
+L701:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L697 L697
+L702:
+  LDC 0
+L703:
+LDC 0
+TSEL L697 L697
+L699:
+  LDC 0
+L700:
+LDC 0
+TSEL L697 L697
+L696:
+  LDC 0
+L697:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L704 L705
+L704:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L707 L708
+L707:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L710 L711
+L710:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L706 L706
+L711:
+  LDC 0
+L712:
+LDC 0
+TSEL L706 L706
+L708:
+  LDC 0
+L709:
+LDC 0
+TSEL L706 L706
+L705:
+  LDC 0
+L706:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L713 L714
+L713:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L716 L717
+L716:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L719 L720
+L719:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L715 L715
+L720:
+  LDC 0
+L721:
+LDC 0
+TSEL L715 L715
+L717:
+  LDC 0
+L718:
+LDC 0
+TSEL L715 L715
+L714:
+  LDC 0
+L715:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L722 L723
+L722:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L725 L726
+L725:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L728 L729
+L728:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L724 L724
+L729:
+  LDC 0
+L730:
+LDC 0
+TSEL L724 L724
+L726:
+  LDC 0
+L727:
+LDC 0
+TSEL L724 L724
+L723:
+  LDC 0
+L724:
+  CONS
+  CONS
+  RTN
+L694:
+  RTN
+L692:
+  RTN
+L690:
+  RTN
+L688:
+  RTN
+L686:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CAR
+  ADD
+  LD 0 0
+  CDR
+  CDR
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L731
+  AP 4
+LDC 0
+TSEL L732 L732
+L731:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L733
+TAP 1
+L733:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L735
+TAP 1
+L735:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L737
+TAP 1
+L737:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L739
+TAP 1
+L739:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L741 L742
+L741:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L744 L745
+L744:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L747 L748
+L747:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L743 L743
+L748:
+  LDC 0
+L749:
+LDC 0
+TSEL L743 L743
+L745:
+  LDC 0
+L746:
+LDC 0
+TSEL L743 L743
+L742:
+  LDC 0
+L743:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L750 L751
+L750:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L753 L754
+L753:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L756 L757
+L756:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L752 L752
+L757:
+  LDC 0
+L758:
+LDC 0
+TSEL L752 L752
+L754:
+  LDC 0
+L755:
+LDC 0
+TSEL L752 L752
+L751:
+  LDC 0
+L752:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L759 L760
+L759:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L762 L763
+L762:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L765 L766
+L765:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L761 L761
+L766:
+  LDC 0
+L767:
+LDC 0
+TSEL L761 L761
+L763:
+  LDC 0
+L764:
+LDC 0
+TSEL L761 L761
+L760:
+  LDC 0
+L761:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L768 L769
+L768:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L771 L772
+L771:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L774 L775
+L774:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L770 L770
+L775:
+  LDC 0
+L776:
+LDC 0
+TSEL L770 L770
+L772:
+  LDC 0
+L773:
+LDC 0
+TSEL L770 L770
+L769:
+  LDC 0
+L770:
+  CONS
+  CONS
+  RTN
+L740:
+  RTN
+L738:
+  RTN
+L736:
+  RTN
+L734:
+  RTN
+L732:
+  CAR
+  CAR
+  MUL
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L777
+  AP 4
+LDC 0
+TSEL L778 L778
+L777:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L779
+TAP 1
+L779:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L781
+TAP 1
+L781:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L783
+TAP 1
+L783:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L785
+TAP 1
+L785:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L787 L788
+L787:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L790 L791
+L790:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L793 L794
+L793:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L789 L789
+L794:
+  LDC 0
+L795:
+LDC 0
+TSEL L789 L789
+L791:
+  LDC 0
+L792:
+LDC 0
+TSEL L789 L789
+L788:
+  LDC 0
+L789:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L796 L797
+L796:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L799 L800
+L799:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L802 L803
+L802:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L798 L798
+L803:
+  LDC 0
+L804:
+LDC 0
+TSEL L798 L798
+L800:
+  LDC 0
+L801:
+LDC 0
+TSEL L798 L798
+L797:
+  LDC 0
+L798:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L805 L806
+L805:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L808 L809
+L808:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L811 L812
+L811:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L807 L807
+L812:
+  LDC 0
+L813:
+LDC 0
+TSEL L807 L807
+L809:
+  LDC 0
+L810:
+LDC 0
+TSEL L807 L807
+L806:
+  LDC 0
+L807:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L814 L815
+L814:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L817 L818
+L817:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L820 L821
+L820:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L816 L816
+L821:
+  LDC 0
+L822:
+LDC 0
+TSEL L816 L816
+L818:
+  LDC 0
+L819:
+LDC 0
+TSEL L816 L816
+L815:
+  LDC 0
+L816:
+  CONS
+  CONS
+  RTN
+L786:
+  RTN
+L784:
+  RTN
+L782:
+  RTN
+L780:
+  RTN
+L778:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L823
+  AP 4
+LDC 0
+TSEL L824 L824
+L823:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L825
+TAP 1
+L825:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L827
+TAP 1
+L827:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L829
+TAP 1
+L829:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L831
+TAP 1
+L831:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L833 L834
+L833:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L836 L837
+L836:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L839 L840
+L839:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L835 L835
+L840:
+  LDC 0
+L841:
+LDC 0
+TSEL L835 L835
+L837:
+  LDC 0
+L838:
+LDC 0
+TSEL L835 L835
+L834:
+  LDC 0
+L835:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L842 L843
+L842:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L845 L846
+L845:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L848 L849
+L848:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L844 L844
+L849:
+  LDC 0
+L850:
+LDC 0
+TSEL L844 L844
+L846:
+  LDC 0
+L847:
+LDC 0
+TSEL L844 L844
+L843:
+  LDC 0
+L844:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L851 L852
+L851:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L854 L855
+L854:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L857 L858
+L857:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L853 L853
+L858:
+  LDC 0
+L859:
+LDC 0
+TSEL L853 L853
+L855:
+  LDC 0
+L856:
+LDC 0
+TSEL L853 L853
+L852:
+  LDC 0
+L853:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L860 L861
+L860:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L863 L864
+L863:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L866 L867
+L866:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L862 L862
+L867:
+  LDC 0
+L868:
+LDC 0
+TSEL L862 L862
+L864:
+  LDC 0
+L865:
+LDC 0
+TSEL L862 L862
+L861:
+  LDC 0
+L862:
+  CONS
+  CONS
+  RTN
+L832:
+  RTN
+L830:
+  RTN
+L828:
+  RTN
+L826:
+  RTN
+L824:
+  CDR
+  CAR
+  MUL
+  LDC 5
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 400
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L869
+  AP 4
+LDC 0
+TSEL L870 L870
+L869:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L871
+TAP 1
+L871:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L873
+TAP 1
+L873:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L875
+TAP 1
+L875:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L877
+TAP 1
+L877:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L879 L880
+L879:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L882 L883
+L882:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L885 L886
+L885:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L881 L881
+L886:
+  LDC 0
+L887:
+LDC 0
+TSEL L881 L881
+L883:
+  LDC 0
+L884:
+LDC 0
+TSEL L881 L881
+L880:
+  LDC 0
+L881:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L888 L889
+L888:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L891 L892
+L891:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L894 L895
+L894:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L890 L890
+L895:
+  LDC 0
+L896:
+LDC 0
+TSEL L890 L890
+L892:
+  LDC 0
+L893:
+LDC 0
+TSEL L890 L890
+L889:
+  LDC 0
+L890:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L897 L898
+L897:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L900 L901
+L900:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L903 L904
+L903:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L899 L899
+L904:
+  LDC 0
+L905:
+LDC 0
+TSEL L899 L899
+L901:
+  LDC 0
+L902:
+LDC 0
+TSEL L899 L899
+L898:
+  LDC 0
+L899:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L906 L907
+L906:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L909 L910
+L909:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L912 L913
+L912:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L908 L908
+L913:
+  LDC 0
+L914:
+LDC 0
+TSEL L908 L908
+L910:
+  LDC 0
+L911:
+LDC 0
+TSEL L908 L908
+L907:
+  LDC 0
+L908:
+  CONS
+  CONS
+  RTN
+L878:
+  RTN
+L876:
+  RTN
+L874:
+  RTN
+L872:
+  RTN
+L870:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CDR
+  ADD
+  CONS
+  CONS
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L915
+  AP 4
+LDC 0
+TSEL L916 L916
+L915:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L917
+TAP 1
+L917:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L919
+TAP 1
+L919:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L921
+TAP 1
+L921:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L923
+TAP 1
+L923:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L925 L926
+L925:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L928 L929
+L928:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L931 L932
+L931:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L927 L927
+L932:
+  LDC 0
+L933:
+LDC 0
+TSEL L927 L927
+L929:
+  LDC 0
+L930:
+LDC 0
+TSEL L927 L927
+L926:
+  LDC 0
+L927:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L934 L935
+L934:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L937 L938
+L937:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L940 L941
+L940:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L936 L936
+L941:
+  LDC 0
+L942:
+LDC 0
+TSEL L936 L936
+L938:
+  LDC 0
+L939:
+LDC 0
+TSEL L936 L936
+L935:
+  LDC 0
+L936:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L943 L944
+L943:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L946 L947
+L946:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L949 L950
+L949:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L945 L945
+L950:
+  LDC 0
+L951:
+LDC 0
+TSEL L945 L945
+L947:
+  LDC 0
+L948:
+LDC 0
+TSEL L945 L945
+L944:
+  LDC 0
+L945:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L952 L953
+L952:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L955 L956
+L955:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L958 L959
+L958:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L954 L954
+L959:
+  LDC 0
+L960:
+LDC 0
+TSEL L954 L954
+L956:
+  LDC 0
+L957:
+LDC 0
+TSEL L954 L954
+L953:
+  LDC 0
+L954:
+  CONS
+  CONS
+  RTN
+L924:
+  RTN
+L922:
+  RTN
+L920:
+  RTN
+L918:
+  RTN
+L916:
+  CAR
+  CAR
+  MUL
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L961
+  AP 4
+LDC 0
+TSEL L962 L962
+L961:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L963
+TAP 1
+L963:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L965
+TAP 1
+L965:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L967
+TAP 1
+L967:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L969
+TAP 1
+L969:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L971 L972
+L971:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L974 L975
+L974:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L977 L978
+L977:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L973 L973
+L978:
+  LDC 0
+L979:
+LDC 0
+TSEL L973 L973
+L975:
+  LDC 0
+L976:
+LDC 0
+TSEL L973 L973
+L972:
+  LDC 0
+L973:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L980 L981
+L980:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L983 L984
+L983:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L986 L987
+L986:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L982 L982
+L987:
+  LDC 0
+L988:
+LDC 0
+TSEL L982 L982
+L984:
+  LDC 0
+L985:
+LDC 0
+TSEL L982 L982
+L981:
+  LDC 0
+L982:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L989 L990
+L989:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L992 L993
+L992:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L995 L996
+L995:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L991 L991
+L996:
+  LDC 0
+L997:
+LDC 0
+TSEL L991 L991
+L993:
+  LDC 0
+L994:
+LDC 0
+TSEL L991 L991
+L990:
+  LDC 0
+L991:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L998 L999
+L998:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1001 L1002
+L1001:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1004 L1005
+L1004:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1000 L1000
+L1005:
+  LDC 0
+L1006:
+LDC 0
+TSEL L1000 L1000
+L1002:
+  LDC 0
+L1003:
+LDC 0
+TSEL L1000 L1000
+L999:
+  LDC 0
+L1000:
+  CONS
+  CONS
+  RTN
+L970:
+  RTN
+L968:
+  RTN
+L966:
+  RTN
+L964:
+  RTN
+L962:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1007
+  AP 4
+LDC 0
+TSEL L1008 L1008
+L1007:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1009
+TAP 1
+L1009:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1011
+TAP 1
+L1011:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1013
+TAP 1
+L1013:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1015
+TAP 1
+L1015:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1017 L1018
+L1017:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1020 L1021
+L1020:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1023 L1024
+L1023:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1019 L1019
+L1024:
+  LDC 0
+L1025:
+LDC 0
+TSEL L1019 L1019
+L1021:
+  LDC 0
+L1022:
+LDC 0
+TSEL L1019 L1019
+L1018:
+  LDC 0
+L1019:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1026 L1027
+L1026:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1029 L1030
+L1029:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1032 L1033
+L1032:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1028 L1028
+L1033:
+  LDC 0
+L1034:
+LDC 0
+TSEL L1028 L1028
+L1030:
+  LDC 0
+L1031:
+LDC 0
+TSEL L1028 L1028
+L1027:
+  LDC 0
+L1028:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1035 L1036
+L1035:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1038 L1039
+L1038:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1041 L1042
+L1041:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1037 L1037
+L1042:
+  LDC 0
+L1043:
+LDC 0
+TSEL L1037 L1037
+L1039:
+  LDC 0
+L1040:
+LDC 0
+TSEL L1037 L1037
+L1036:
+  LDC 0
+L1037:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1044 L1045
+L1044:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1047 L1048
+L1047:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1050 L1051
+L1050:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1046 L1046
+L1051:
+  LDC 0
+L1052:
+LDC 0
+TSEL L1046 L1046
+L1048:
+  LDC 0
+L1049:
+LDC 0
+TSEL L1046 L1046
+L1045:
+  LDC 0
+L1046:
+  CONS
+  CONS
+  RTN
+L1016:
+  RTN
+L1014:
+  RTN
+L1012:
+  RTN
+L1010:
+  RTN
+L1008:
+  CDR
+  CAR
+  MUL
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1053
+  AP 4
+LDC 0
+TSEL L1054 L1054
+L1053:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1055
+TAP 1
+L1055:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1057
+TAP 1
+L1057:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1059
+TAP 1
+L1059:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1061
+TAP 1
+L1061:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1063 L1064
+L1063:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1066 L1067
+L1066:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1069 L1070
+L1069:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1065 L1065
+L1070:
+  LDC 0
+L1071:
+LDC 0
+TSEL L1065 L1065
+L1067:
+  LDC 0
+L1068:
+LDC 0
+TSEL L1065 L1065
+L1064:
+  LDC 0
+L1065:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1072 L1073
+L1072:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1075 L1076
+L1075:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1078 L1079
+L1078:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1074 L1074
+L1079:
+  LDC 0
+L1080:
+LDC 0
+TSEL L1074 L1074
+L1076:
+  LDC 0
+L1077:
+LDC 0
+TSEL L1074 L1074
+L1073:
+  LDC 0
+L1074:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1081 L1082
+L1081:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1084 L1085
+L1084:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1087 L1088
+L1087:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1083 L1083
+L1088:
+  LDC 0
+L1089:
+LDC 0
+TSEL L1083 L1083
+L1085:
+  LDC 0
+L1086:
+LDC 0
+TSEL L1083 L1083
+L1082:
+  LDC 0
+L1083:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1090 L1091
+L1090:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1093 L1094
+L1093:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1096 L1097
+L1096:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1092 L1092
+L1097:
+  LDC 0
+L1098:
+LDC 0
+TSEL L1092 L1092
+L1094:
+  LDC 0
+L1095:
+LDC 0
+TSEL L1092 L1092
+L1091:
+  LDC 0
+L1092:
+  CONS
+  CONS
+  RTN
+L1062:
+  RTN
+L1060:
+  RTN
+L1058:
+  RTN
+L1056:
+  RTN
+L1054:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CAR
+  ADD
+  LD 0 0
+  CAR
+  CDR
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1099
+  AP 4
+LDC 0
+TSEL L1100 L1100
+L1099:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1101
+TAP 1
+L1101:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1103
+TAP 1
+L1103:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1105
+TAP 1
+L1105:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1107
+TAP 1
+L1107:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1109 L1110
+L1109:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1112 L1113
+L1112:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1115 L1116
+L1115:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1111 L1111
+L1116:
+  LDC 0
+L1117:
+LDC 0
+TSEL L1111 L1111
+L1113:
+  LDC 0
+L1114:
+LDC 0
+TSEL L1111 L1111
+L1110:
+  LDC 0
+L1111:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1118 L1119
+L1118:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1121 L1122
+L1121:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1124 L1125
+L1124:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1120 L1120
+L1125:
+  LDC 0
+L1126:
+LDC 0
+TSEL L1120 L1120
+L1122:
+  LDC 0
+L1123:
+LDC 0
+TSEL L1120 L1120
+L1119:
+  LDC 0
+L1120:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1127 L1128
+L1127:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1130 L1131
+L1130:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1133 L1134
+L1133:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1129 L1129
+L1134:
+  LDC 0
+L1135:
+LDC 0
+TSEL L1129 L1129
+L1131:
+  LDC 0
+L1132:
+LDC 0
+TSEL L1129 L1129
+L1128:
+  LDC 0
+L1129:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1136 L1137
+L1136:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1139 L1140
+L1139:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1142 L1143
+L1142:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1138 L1138
+L1143:
+  LDC 0
+L1144:
+LDC 0
+TSEL L1138 L1138
+L1140:
+  LDC 0
+L1141:
+LDC 0
+TSEL L1138 L1138
+L1137:
+  LDC 0
+L1138:
+  CONS
+  CONS
+  RTN
+L1108:
+  RTN
+L1106:
+  RTN
+L1104:
+  RTN
+L1102:
+  RTN
+L1100:
+  CAR
+  CAR
+  MUL
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1145
+  AP 4
+LDC 0
+TSEL L1146 L1146
+L1145:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1147
+TAP 1
+L1147:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1149
+TAP 1
+L1149:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1151
+TAP 1
+L1151:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1153
+TAP 1
+L1153:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1155 L1156
+L1155:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1158 L1159
+L1158:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1161 L1162
+L1161:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1157 L1157
+L1162:
+  LDC 0
+L1163:
+LDC 0
+TSEL L1157 L1157
+L1159:
+  LDC 0
+L1160:
+LDC 0
+TSEL L1157 L1157
+L1156:
+  LDC 0
+L1157:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1164 L1165
+L1164:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1167 L1168
+L1167:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1170 L1171
+L1170:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1166 L1166
+L1171:
+  LDC 0
+L1172:
+LDC 0
+TSEL L1166 L1166
+L1168:
+  LDC 0
+L1169:
+LDC 0
+TSEL L1166 L1166
+L1165:
+  LDC 0
+L1166:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1173 L1174
+L1173:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1176 L1177
+L1176:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1179 L1180
+L1179:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1175 L1175
+L1180:
+  LDC 0
+L1181:
+LDC 0
+TSEL L1175 L1175
+L1177:
+  LDC 0
+L1178:
+LDC 0
+TSEL L1175 L1175
+L1174:
+  LDC 0
+L1175:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1182 L1183
+L1182:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1185 L1186
+L1185:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1188 L1189
+L1188:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1184 L1184
+L1189:
+  LDC 0
+L1190:
+LDC 0
+TSEL L1184 L1184
+L1186:
+  LDC 0
+L1187:
+LDC 0
+TSEL L1184 L1184
+L1183:
+  LDC 0
+L1184:
+  CONS
+  CONS
+  RTN
+L1154:
+  RTN
+L1152:
+  RTN
+L1150:
+  RTN
+L1148:
+  RTN
+L1146:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1191
+  AP 4
+LDC 0
+TSEL L1192 L1192
+L1191:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1193
+TAP 1
+L1193:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1195
+TAP 1
+L1195:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1197
+TAP 1
+L1197:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1199
+TAP 1
+L1199:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1201 L1202
+L1201:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1204 L1205
+L1204:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1207 L1208
+L1207:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1203 L1203
+L1208:
+  LDC 0
+L1209:
+LDC 0
+TSEL L1203 L1203
+L1205:
+  LDC 0
+L1206:
+LDC 0
+TSEL L1203 L1203
+L1202:
+  LDC 0
+L1203:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1210 L1211
+L1210:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1213 L1214
+L1213:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1216 L1217
+L1216:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1212 L1212
+L1217:
+  LDC 0
+L1218:
+LDC 0
+TSEL L1212 L1212
+L1214:
+  LDC 0
+L1215:
+LDC 0
+TSEL L1212 L1212
+L1211:
+  LDC 0
+L1212:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1219 L1220
+L1219:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1222 L1223
+L1222:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1225 L1226
+L1225:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1221 L1221
+L1226:
+  LDC 0
+L1227:
+LDC 0
+TSEL L1221 L1221
+L1223:
+  LDC 0
+L1224:
+LDC 0
+TSEL L1221 L1221
+L1220:
+  LDC 0
+L1221:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1228 L1229
+L1228:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1231 L1232
+L1231:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1234 L1235
+L1234:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1230 L1230
+L1235:
+  LDC 0
+L1236:
+LDC 0
+TSEL L1230 L1230
+L1232:
+  LDC 0
+L1233:
+LDC 0
+TSEL L1230 L1230
+L1229:
+  LDC 0
+L1230:
+  CONS
+  CONS
+  RTN
+L1200:
+  RTN
+L1198:
+  RTN
+L1196:
+  RTN
+L1194:
+  RTN
+L1192:
+  CDR
+  CAR
+  MUL
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1237
+  AP 4
+LDC 0
+TSEL L1238 L1238
+L1237:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1239
+TAP 1
+L1239:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1241
+TAP 1
+L1241:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1243
+TAP 1
+L1243:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1245
+TAP 1
+L1245:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1247 L1248
+L1247:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1250 L1251
+L1250:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1253 L1254
+L1253:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1249 L1249
+L1254:
+  LDC 0
+L1255:
+LDC 0
+TSEL L1249 L1249
+L1251:
+  LDC 0
+L1252:
+LDC 0
+TSEL L1249 L1249
+L1248:
+  LDC 0
+L1249:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1256 L1257
+L1256:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1259 L1260
+L1259:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1262 L1263
+L1262:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1258 L1258
+L1263:
+  LDC 0
+L1264:
+LDC 0
+TSEL L1258 L1258
+L1260:
+  LDC 0
+L1261:
+LDC 0
+TSEL L1258 L1258
+L1257:
+  LDC 0
+L1258:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1265 L1266
+L1265:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1268 L1269
+L1268:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1271 L1272
+L1271:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1267 L1267
+L1272:
+  LDC 0
+L1273:
+LDC 0
+TSEL L1267 L1267
+L1269:
+  LDC 0
+L1270:
+LDC 0
+TSEL L1267 L1267
+L1266:
+  LDC 0
+L1267:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1274 L1275
+L1274:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1277 L1278
+L1277:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1280 L1281
+L1280:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1276 L1276
+L1281:
+  LDC 0
+L1282:
+LDC 0
+TSEL L1276 L1276
+L1278:
+  LDC 0
+L1279:
+LDC 0
+TSEL L1276 L1276
+L1275:
+  LDC 0
+L1276:
+  CONS
+  CONS
+  RTN
+L1246:
+  RTN
+L1244:
+  RTN
+L1242:
+  RTN
+L1240:
+  RTN
+L1238:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CDR
+  ADD
+  CONS
+  LD 0 0
+  CDR
+  CAR
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1283
+  AP 4
+LDC 0
+TSEL L1284 L1284
+L1283:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1285
+TAP 1
+L1285:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1287
+TAP 1
+L1287:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1289
+TAP 1
+L1289:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1291
+TAP 1
+L1291:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1293 L1294
+L1293:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1296 L1297
+L1296:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1299 L1300
+L1299:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1295 L1295
+L1300:
+  LDC 0
+L1301:
+LDC 0
+TSEL L1295 L1295
+L1297:
+  LDC 0
+L1298:
+LDC 0
+TSEL L1295 L1295
+L1294:
+  LDC 0
+L1295:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1302 L1303
+L1302:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1305 L1306
+L1305:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1308 L1309
+L1308:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1304 L1304
+L1309:
+  LDC 0
+L1310:
+LDC 0
+TSEL L1304 L1304
+L1306:
+  LDC 0
+L1307:
+LDC 0
+TSEL L1304 L1304
+L1303:
+  LDC 0
+L1304:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1311 L1312
+L1311:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1314 L1315
+L1314:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1317 L1318
+L1317:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1313 L1313
+L1318:
+  LDC 0
+L1319:
+LDC 0
+TSEL L1313 L1313
+L1315:
+  LDC 0
+L1316:
+LDC 0
+TSEL L1313 L1313
+L1312:
+  LDC 0
+L1313:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1320 L1321
+L1320:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1323 L1324
+L1323:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1326 L1327
+L1326:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1322 L1322
+L1327:
+  LDC 0
+L1328:
+LDC 0
+TSEL L1322 L1322
+L1324:
+  LDC 0
+L1325:
+LDC 0
+TSEL L1322 L1322
+L1321:
+  LDC 0
+L1322:
+  CONS
+  CONS
+  RTN
+L1292:
+  RTN
+L1290:
+  RTN
+L1288:
+  RTN
+L1286:
+  RTN
+L1284:
+  CAR
+  CAR
+  MUL
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1329
+  AP 4
+LDC 0
+TSEL L1330 L1330
+L1329:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1331
+TAP 1
+L1331:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1333
+TAP 1
+L1333:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1335
+TAP 1
+L1335:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1337
+TAP 1
+L1337:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1339 L1340
+L1339:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1342 L1343
+L1342:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1345 L1346
+L1345:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1341 L1341
+L1346:
+  LDC 0
+L1347:
+LDC 0
+TSEL L1341 L1341
+L1343:
+  LDC 0
+L1344:
+LDC 0
+TSEL L1341 L1341
+L1340:
+  LDC 0
+L1341:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1348 L1349
+L1348:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1351 L1352
+L1351:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1354 L1355
+L1354:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1350 L1350
+L1355:
+  LDC 0
+L1356:
+LDC 0
+TSEL L1350 L1350
+L1352:
+  LDC 0
+L1353:
+LDC 0
+TSEL L1350 L1350
+L1349:
+  LDC 0
+L1350:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1357 L1358
+L1357:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1360 L1361
+L1360:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1363 L1364
+L1363:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1359 L1359
+L1364:
+  LDC 0
+L1365:
+LDC 0
+TSEL L1359 L1359
+L1361:
+  LDC 0
+L1362:
+LDC 0
+TSEL L1359 L1359
+L1358:
+  LDC 0
+L1359:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1366 L1367
+L1366:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1369 L1370
+L1369:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1372 L1373
+L1372:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1368 L1368
+L1373:
+  LDC 0
+L1374:
+LDC 0
+TSEL L1368 L1368
+L1370:
+  LDC 0
+L1371:
+LDC 0
+TSEL L1368 L1368
+L1367:
+  LDC 0
+L1368:
+  CONS
+  CONS
+  RTN
+L1338:
+  RTN
+L1336:
+  RTN
+L1334:
+  RTN
+L1332:
+  RTN
+L1330:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1375
+  AP 4
+LDC 0
+TSEL L1376 L1376
+L1375:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1377
+TAP 1
+L1377:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1379
+TAP 1
+L1379:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1381
+TAP 1
+L1381:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1383
+TAP 1
+L1383:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1385 L1386
+L1385:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1388 L1389
+L1388:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1391 L1392
+L1391:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1387 L1387
+L1392:
+  LDC 0
+L1393:
+LDC 0
+TSEL L1387 L1387
+L1389:
+  LDC 0
+L1390:
+LDC 0
+TSEL L1387 L1387
+L1386:
+  LDC 0
+L1387:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1394 L1395
+L1394:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1397 L1398
+L1397:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1400 L1401
+L1400:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1396 L1396
+L1401:
+  LDC 0
+L1402:
+LDC 0
+TSEL L1396 L1396
+L1398:
+  LDC 0
+L1399:
+LDC 0
+TSEL L1396 L1396
+L1395:
+  LDC 0
+L1396:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1403 L1404
+L1403:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1406 L1407
+L1406:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1409 L1410
+L1409:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1405 L1405
+L1410:
+  LDC 0
+L1411:
+LDC 0
+TSEL L1405 L1405
+L1407:
+  LDC 0
+L1408:
+LDC 0
+TSEL L1405 L1405
+L1404:
+  LDC 0
+L1405:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1412 L1413
+L1412:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1415 L1416
+L1415:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1418 L1419
+L1418:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1414 L1414
+L1419:
+  LDC 0
+L1420:
+LDC 0
+TSEL L1414 L1414
+L1416:
+  LDC 0
+L1417:
+LDC 0
+TSEL L1414 L1414
+L1413:
+  LDC 0
+L1414:
+  CONS
+  CONS
+  RTN
+L1384:
+  RTN
+L1382:
+  RTN
+L1380:
+  RTN
+L1378:
+  RTN
+L1376:
+  CDR
+  CAR
+  MUL
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1421
+  AP 4
+LDC 0
+TSEL L1422 L1422
+L1421:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1423
+TAP 1
+L1423:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1425
+TAP 1
+L1425:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1427
+TAP 1
+L1427:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1429
+TAP 1
+L1429:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1431 L1432
+L1431:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1434 L1435
+L1434:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1437 L1438
+L1437:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1433 L1433
+L1438:
+  LDC 0
+L1439:
+LDC 0
+TSEL L1433 L1433
+L1435:
+  LDC 0
+L1436:
+LDC 0
+TSEL L1433 L1433
+L1432:
+  LDC 0
+L1433:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1440 L1441
+L1440:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1443 L1444
+L1443:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1446 L1447
+L1446:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1442 L1442
+L1447:
+  LDC 0
+L1448:
+LDC 0
+TSEL L1442 L1442
+L1444:
+  LDC 0
+L1445:
+LDC 0
+TSEL L1442 L1442
+L1441:
+  LDC 0
+L1442:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1449 L1450
+L1449:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1452 L1453
+L1452:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1455 L1456
+L1455:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1451 L1451
+L1456:
+  LDC 0
+L1457:
+LDC 0
+TSEL L1451 L1451
+L1453:
+  LDC 0
+L1454:
+LDC 0
+TSEL L1451 L1451
+L1450:
+  LDC 0
+L1451:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1458 L1459
+L1458:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1461 L1462
+L1461:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1464 L1465
+L1464:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1460 L1460
+L1465:
+  LDC 0
+L1466:
+LDC 0
+TSEL L1460 L1460
+L1462:
+  LDC 0
+L1463:
+LDC 0
+TSEL L1460 L1460
+L1459:
+  LDC 0
+L1460:
+  CONS
+  CONS
+  RTN
+L1430:
+  RTN
+L1428:
+  RTN
+L1426:
+  RTN
+L1424:
+  RTN
+L1422:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CAR
+  ADD
+  LD 0 0
+  CDR
+  CDR
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1467
+  AP 4
+LDC 0
+TSEL L1468 L1468
+L1467:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1469
+TAP 1
+L1469:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1471
+TAP 1
+L1471:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1473
+TAP 1
+L1473:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1475
+TAP 1
+L1475:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1477 L1478
+L1477:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1480 L1481
+L1480:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1483 L1484
+L1483:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1479 L1479
+L1484:
+  LDC 0
+L1485:
+LDC 0
+TSEL L1479 L1479
+L1481:
+  LDC 0
+L1482:
+LDC 0
+TSEL L1479 L1479
+L1478:
+  LDC 0
+L1479:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1486 L1487
+L1486:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1489 L1490
+L1489:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1492 L1493
+L1492:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1488 L1488
+L1493:
+  LDC 0
+L1494:
+LDC 0
+TSEL L1488 L1488
+L1490:
+  LDC 0
+L1491:
+LDC 0
+TSEL L1488 L1488
+L1487:
+  LDC 0
+L1488:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1495 L1496
+L1495:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1498 L1499
+L1498:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1501 L1502
+L1501:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1497 L1497
+L1502:
+  LDC 0
+L1503:
+LDC 0
+TSEL L1497 L1497
+L1499:
+  LDC 0
+L1500:
+LDC 0
+TSEL L1497 L1497
+L1496:
+  LDC 0
+L1497:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1504 L1505
+L1504:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1507 L1508
+L1507:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1510 L1511
+L1510:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1506 L1506
+L1511:
+  LDC 0
+L1512:
+LDC 0
+TSEL L1506 L1506
+L1508:
+  LDC 0
+L1509:
+LDC 0
+TSEL L1506 L1506
+L1505:
+  LDC 0
+L1506:
+  CONS
+  CONS
+  RTN
+L1476:
+  RTN
+L1474:
+  RTN
+L1472:
+  RTN
+L1470:
+  RTN
+L1468:
+  CAR
+  CAR
+  MUL
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1513
+  AP 4
+LDC 0
+TSEL L1514 L1514
+L1513:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1515
+TAP 1
+L1515:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1517
+TAP 1
+L1517:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1519
+TAP 1
+L1519:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1521
+TAP 1
+L1521:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1523 L1524
+L1523:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1526 L1527
+L1526:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1529 L1530
+L1529:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1525 L1525
+L1530:
+  LDC 0
+L1531:
+LDC 0
+TSEL L1525 L1525
+L1527:
+  LDC 0
+L1528:
+LDC 0
+TSEL L1525 L1525
+L1524:
+  LDC 0
+L1525:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1532 L1533
+L1532:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1535 L1536
+L1535:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1538 L1539
+L1538:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1534 L1534
+L1539:
+  LDC 0
+L1540:
+LDC 0
+TSEL L1534 L1534
+L1536:
+  LDC 0
+L1537:
+LDC 0
+TSEL L1534 L1534
+L1533:
+  LDC 0
+L1534:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1541 L1542
+L1541:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1544 L1545
+L1544:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1547 L1548
+L1547:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1543 L1543
+L1548:
+  LDC 0
+L1549:
+LDC 0
+TSEL L1543 L1543
+L1545:
+  LDC 0
+L1546:
+LDC 0
+TSEL L1543 L1543
+L1542:
+  LDC 0
+L1543:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1550 L1551
+L1550:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1553 L1554
+L1553:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1556 L1557
+L1556:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1552 L1552
+L1557:
+  LDC 0
+L1558:
+LDC 0
+TSEL L1552 L1552
+L1554:
+  LDC 0
+L1555:
+LDC 0
+TSEL L1552 L1552
+L1551:
+  LDC 0
+L1552:
+  CONS
+  CONS
+  RTN
+L1522:
+  RTN
+L1520:
+  RTN
+L1518:
+  RTN
+L1516:
+  RTN
+L1514:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1559
+  AP 4
+LDC 0
+TSEL L1560 L1560
+L1559:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1561
+TAP 1
+L1561:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1563
+TAP 1
+L1563:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1565
+TAP 1
+L1565:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1567
+TAP 1
+L1567:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1569 L1570
+L1569:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1572 L1573
+L1572:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1575 L1576
+L1575:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1571 L1571
+L1576:
+  LDC 0
+L1577:
+LDC 0
+TSEL L1571 L1571
+L1573:
+  LDC 0
+L1574:
+LDC 0
+TSEL L1571 L1571
+L1570:
+  LDC 0
+L1571:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1578 L1579
+L1578:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1581 L1582
+L1581:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1584 L1585
+L1584:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1580 L1580
+L1585:
+  LDC 0
+L1586:
+LDC 0
+TSEL L1580 L1580
+L1582:
+  LDC 0
+L1583:
+LDC 0
+TSEL L1580 L1580
+L1579:
+  LDC 0
+L1580:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1587 L1588
+L1587:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1590 L1591
+L1590:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1593 L1594
+L1593:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1589 L1589
+L1594:
+  LDC 0
+L1595:
+LDC 0
+TSEL L1589 L1589
+L1591:
+  LDC 0
+L1592:
+LDC 0
+TSEL L1589 L1589
+L1588:
+  LDC 0
+L1589:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1596 L1597
+L1596:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1599 L1600
+L1599:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1602 L1603
+L1602:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1598 L1598
+L1603:
+  LDC 0
+L1604:
+LDC 0
+TSEL L1598 L1598
+L1600:
+  LDC 0
+L1601:
+LDC 0
+TSEL L1598 L1598
+L1597:
+  LDC 0
+L1598:
+  CONS
+  CONS
+  RTN
+L1568:
+  RTN
+L1566:
+  RTN
+L1564:
+  RTN
+L1562:
+  RTN
+L1560:
+  CDR
+  CAR
+  MUL
+  LDC 2
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1605
+  AP 4
+LDC 0
+TSEL L1606 L1606
+L1605:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1607
+TAP 1
+L1607:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1609
+TAP 1
+L1609:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1611
+TAP 1
+L1611:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1613
+TAP 1
+L1613:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1615 L1616
+L1615:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1618 L1619
+L1618:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1621 L1622
+L1621:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1617 L1617
+L1622:
+  LDC 0
+L1623:
+LDC 0
+TSEL L1617 L1617
+L1619:
+  LDC 0
+L1620:
+LDC 0
+TSEL L1617 L1617
+L1616:
+  LDC 0
+L1617:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1624 L1625
+L1624:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1627 L1628
+L1627:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1630 L1631
+L1630:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1626 L1626
+L1631:
+  LDC 0
+L1632:
+LDC 0
+TSEL L1626 L1626
+L1628:
+  LDC 0
+L1629:
+LDC 0
+TSEL L1626 L1626
+L1625:
+  LDC 0
+L1626:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1633 L1634
+L1633:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1636 L1637
+L1636:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1639 L1640
+L1639:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1635 L1635
+L1640:
+  LDC 0
+L1641:
+LDC 0
+TSEL L1635 L1635
+L1637:
+  LDC 0
+L1638:
+LDC 0
+TSEL L1635 L1635
+L1634:
+  LDC 0
+L1635:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1642 L1643
+L1642:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1645 L1646
+L1645:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1648 L1649
+L1648:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1644 L1644
+L1649:
+  LDC 0
+L1650:
+LDC 0
+TSEL L1644 L1644
+L1646:
+  LDC 0
+L1647:
+LDC 0
+TSEL L1644 L1644
+L1643:
+  LDC 0
+L1644:
+  CONS
+  CONS
+  RTN
+L1614:
+  RTN
+L1612:
+  RTN
+L1610:
+  RTN
+L1608:
+  RTN
+L1606:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CDR
+  ADD
+  CONS
+  CONS
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1651
+  AP 4
+LDC 0
+TSEL L1652 L1652
+L1651:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1653
+TAP 1
+L1653:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1655
+TAP 1
+L1655:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1657
+TAP 1
+L1657:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1659
+TAP 1
+L1659:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1661 L1662
+L1661:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1664 L1665
+L1664:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1667 L1668
+L1667:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1663 L1663
+L1668:
+  LDC 0
+L1669:
+LDC 0
+TSEL L1663 L1663
+L1665:
+  LDC 0
+L1666:
+LDC 0
+TSEL L1663 L1663
+L1662:
+  LDC 0
+L1663:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1670 L1671
+L1670:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1673 L1674
+L1673:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1676 L1677
+L1676:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1672 L1672
+L1677:
+  LDC 0
+L1678:
+LDC 0
+TSEL L1672 L1672
+L1674:
+  LDC 0
+L1675:
+LDC 0
+TSEL L1672 L1672
+L1671:
+  LDC 0
+L1672:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1679 L1680
+L1679:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1682 L1683
+L1682:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1685 L1686
+L1685:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1681 L1681
+L1686:
+  LDC 0
+L1687:
+LDC 0
+TSEL L1681 L1681
+L1683:
+  LDC 0
+L1684:
+LDC 0
+TSEL L1681 L1681
+L1680:
+  LDC 0
+L1681:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1688 L1689
+L1688:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1691 L1692
+L1691:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1694 L1695
+L1694:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1690 L1690
+L1695:
+  LDC 0
+L1696:
+LDC 0
+TSEL L1690 L1690
+L1692:
+  LDC 0
+L1693:
+LDC 0
+TSEL L1690 L1690
+L1689:
+  LDC 0
+L1690:
+  CONS
+  CONS
+  RTN
+L1660:
+  RTN
+L1658:
+  RTN
+L1656:
+  RTN
+L1654:
+  RTN
+L1652:
+  CAR
+  CAR
+  MUL
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1697
+  AP 4
+LDC 0
+TSEL L1698 L1698
+L1697:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1699
+TAP 1
+L1699:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1701
+TAP 1
+L1701:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1703
+TAP 1
+L1703:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1705
+TAP 1
+L1705:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1707 L1708
+L1707:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1710 L1711
+L1710:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1713 L1714
+L1713:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1709 L1709
+L1714:
+  LDC 0
+L1715:
+LDC 0
+TSEL L1709 L1709
+L1711:
+  LDC 0
+L1712:
+LDC 0
+TSEL L1709 L1709
+L1708:
+  LDC 0
+L1709:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1716 L1717
+L1716:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1719 L1720
+L1719:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1722 L1723
+L1722:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1718 L1718
+L1723:
+  LDC 0
+L1724:
+LDC 0
+TSEL L1718 L1718
+L1720:
+  LDC 0
+L1721:
+LDC 0
+TSEL L1718 L1718
+L1717:
+  LDC 0
+L1718:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1725 L1726
+L1725:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1728 L1729
+L1728:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1731 L1732
+L1731:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1727 L1727
+L1732:
+  LDC 0
+L1733:
+LDC 0
+TSEL L1727 L1727
+L1729:
+  LDC 0
+L1730:
+LDC 0
+TSEL L1727 L1727
+L1726:
+  LDC 0
+L1727:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1734 L1735
+L1734:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1737 L1738
+L1737:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1740 L1741
+L1740:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1736 L1736
+L1741:
+  LDC 0
+L1742:
+LDC 0
+TSEL L1736 L1736
+L1738:
+  LDC 0
+L1739:
+LDC 0
+TSEL L1736 L1736
+L1735:
+  LDC 0
+L1736:
+  CONS
+  CONS
+  RTN
+L1706:
+  RTN
+L1704:
+  RTN
+L1702:
+  RTN
+L1700:
+  RTN
+L1698:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1743
+  AP 4
+LDC 0
+TSEL L1744 L1744
+L1743:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1745
+TAP 1
+L1745:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1747
+TAP 1
+L1747:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1749
+TAP 1
+L1749:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1751
+TAP 1
+L1751:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1753 L1754
+L1753:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1756 L1757
+L1756:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1759 L1760
+L1759:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1755 L1755
+L1760:
+  LDC 0
+L1761:
+LDC 0
+TSEL L1755 L1755
+L1757:
+  LDC 0
+L1758:
+LDC 0
+TSEL L1755 L1755
+L1754:
+  LDC 0
+L1755:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1762 L1763
+L1762:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1765 L1766
+L1765:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1768 L1769
+L1768:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1764 L1764
+L1769:
+  LDC 0
+L1770:
+LDC 0
+TSEL L1764 L1764
+L1766:
+  LDC 0
+L1767:
+LDC 0
+TSEL L1764 L1764
+L1763:
+  LDC 0
+L1764:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1771 L1772
+L1771:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1774 L1775
+L1774:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1777 L1778
+L1777:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1773 L1773
+L1778:
+  LDC 0
+L1779:
+LDC 0
+TSEL L1773 L1773
+L1775:
+  LDC 0
+L1776:
+LDC 0
+TSEL L1773 L1773
+L1772:
+  LDC 0
+L1773:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1780 L1781
+L1780:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1783 L1784
+L1783:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1786 L1787
+L1786:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1782 L1782
+L1787:
+  LDC 0
+L1788:
+LDC 0
+TSEL L1782 L1782
+L1784:
+  LDC 0
+L1785:
+LDC 0
+TSEL L1782 L1782
+L1781:
+  LDC 0
+L1782:
+  CONS
+  CONS
+  RTN
+L1752:
+  RTN
+L1750:
+  RTN
+L1748:
+  RTN
+L1746:
+  RTN
+L1744:
+  CDR
+  CAR
+  MUL
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1789
+  AP 4
+LDC 0
+TSEL L1790 L1790
+L1789:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1791
+TAP 1
+L1791:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1793
+TAP 1
+L1793:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1795
+TAP 1
+L1795:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1797
+TAP 1
+L1797:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1799 L1800
+L1799:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1802 L1803
+L1802:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1805 L1806
+L1805:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1801 L1801
+L1806:
+  LDC 0
+L1807:
+LDC 0
+TSEL L1801 L1801
+L1803:
+  LDC 0
+L1804:
+LDC 0
+TSEL L1801 L1801
+L1800:
+  LDC 0
+L1801:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1808 L1809
+L1808:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1811 L1812
+L1811:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1814 L1815
+L1814:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1810 L1810
+L1815:
+  LDC 0
+L1816:
+LDC 0
+TSEL L1810 L1810
+L1812:
+  LDC 0
+L1813:
+LDC 0
+TSEL L1810 L1810
+L1809:
+  LDC 0
+L1810:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1817 L1818
+L1817:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1820 L1821
+L1820:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1823 L1824
+L1823:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1819 L1819
+L1824:
+  LDC 0
+L1825:
+LDC 0
+TSEL L1819 L1819
+L1821:
+  LDC 0
+L1822:
+LDC 0
+TSEL L1819 L1819
+L1818:
+  LDC 0
+L1819:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1826 L1827
+L1826:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1829 L1830
+L1829:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1832 L1833
+L1832:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1828 L1828
+L1833:
+  LDC 0
+L1834:
+LDC 0
+TSEL L1828 L1828
+L1830:
+  LDC 0
+L1831:
+LDC 0
+TSEL L1828 L1828
+L1827:
+  LDC 0
+L1828:
+  CONS
+  CONS
+  RTN
+L1798:
+  RTN
+L1796:
+  RTN
+L1794:
+  RTN
+L1792:
+  RTN
+L1790:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CAR
+  ADD
+  LD 0 0
+  CAR
+  CDR
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1835
+  AP 4
+LDC 0
+TSEL L1836 L1836
+L1835:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1837
+TAP 1
+L1837:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1839
+TAP 1
+L1839:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1841
+TAP 1
+L1841:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1843
+TAP 1
+L1843:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1845 L1846
+L1845:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1848 L1849
+L1848:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1851 L1852
+L1851:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1847 L1847
+L1852:
+  LDC 0
+L1853:
+LDC 0
+TSEL L1847 L1847
+L1849:
+  LDC 0
+L1850:
+LDC 0
+TSEL L1847 L1847
+L1846:
+  LDC 0
+L1847:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1854 L1855
+L1854:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1857 L1858
+L1857:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1860 L1861
+L1860:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1856 L1856
+L1861:
+  LDC 0
+L1862:
+LDC 0
+TSEL L1856 L1856
+L1858:
+  LDC 0
+L1859:
+LDC 0
+TSEL L1856 L1856
+L1855:
+  LDC 0
+L1856:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1863 L1864
+L1863:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1866 L1867
+L1866:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1869 L1870
+L1869:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1865 L1865
+L1870:
+  LDC 0
+L1871:
+LDC 0
+TSEL L1865 L1865
+L1867:
+  LDC 0
+L1868:
+LDC 0
+TSEL L1865 L1865
+L1864:
+  LDC 0
+L1865:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1872 L1873
+L1872:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1875 L1876
+L1875:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1878 L1879
+L1878:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1874 L1874
+L1879:
+  LDC 0
+L1880:
+LDC 0
+TSEL L1874 L1874
+L1876:
+  LDC 0
+L1877:
+LDC 0
+TSEL L1874 L1874
+L1873:
+  LDC 0
+L1874:
+  CONS
+  CONS
+  RTN
+L1844:
+  RTN
+L1842:
+  RTN
+L1840:
+  RTN
+L1838:
+  RTN
+L1836:
+  CAR
+  CAR
+  MUL
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1881
+  AP 4
+LDC 0
+TSEL L1882 L1882
+L1881:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1883
+TAP 1
+L1883:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1885
+TAP 1
+L1885:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1887
+TAP 1
+L1887:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1889
+TAP 1
+L1889:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1891 L1892
+L1891:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1894 L1895
+L1894:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1897 L1898
+L1897:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1893 L1893
+L1898:
+  LDC 0
+L1899:
+LDC 0
+TSEL L1893 L1893
+L1895:
+  LDC 0
+L1896:
+LDC 0
+TSEL L1893 L1893
+L1892:
+  LDC 0
+L1893:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1900 L1901
+L1900:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1903 L1904
+L1903:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1906 L1907
+L1906:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1902 L1902
+L1907:
+  LDC 0
+L1908:
+LDC 0
+TSEL L1902 L1902
+L1904:
+  LDC 0
+L1905:
+LDC 0
+TSEL L1902 L1902
+L1901:
+  LDC 0
+L1902:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1909 L1910
+L1909:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1912 L1913
+L1912:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1915 L1916
+L1915:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1911 L1911
+L1916:
+  LDC 0
+L1917:
+LDC 0
+TSEL L1911 L1911
+L1913:
+  LDC 0
+L1914:
+LDC 0
+TSEL L1911 L1911
+L1910:
+  LDC 0
+L1911:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1918 L1919
+L1918:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1921 L1922
+L1921:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1924 L1925
+L1924:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1920 L1920
+L1925:
+  LDC 0
+L1926:
+LDC 0
+TSEL L1920 L1920
+L1922:
+  LDC 0
+L1923:
+LDC 0
+TSEL L1920 L1920
+L1919:
+  LDC 0
+L1920:
+  CONS
+  CONS
+  RTN
+L1890:
+  RTN
+L1888:
+  RTN
+L1886:
+  RTN
+L1884:
+  RTN
+L1882:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1927
+  AP 4
+LDC 0
+TSEL L1928 L1928
+L1927:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1929
+TAP 1
+L1929:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1931
+TAP 1
+L1931:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1933
+TAP 1
+L1933:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1935
+TAP 1
+L1935:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1937 L1938
+L1937:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1940 L1941
+L1940:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1943 L1944
+L1943:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1939 L1939
+L1944:
+  LDC 0
+L1945:
+LDC 0
+TSEL L1939 L1939
+L1941:
+  LDC 0
+L1942:
+LDC 0
+TSEL L1939 L1939
+L1938:
+  LDC 0
+L1939:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1946 L1947
+L1946:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1949 L1950
+L1949:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1952 L1953
+L1952:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1948 L1948
+L1953:
+  LDC 0
+L1954:
+LDC 0
+TSEL L1948 L1948
+L1950:
+  LDC 0
+L1951:
+LDC 0
+TSEL L1948 L1948
+L1947:
+  LDC 0
+L1948:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1955 L1956
+L1955:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L1958 L1959
+L1958:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L1961 L1962
+L1961:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L1957 L1957
+L1962:
+  LDC 0
+L1963:
+LDC 0
+TSEL L1957 L1957
+L1959:
+  LDC 0
+L1960:
+LDC 0
+TSEL L1957 L1957
+L1956:
+  LDC 0
+L1957:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1964 L1965
+L1964:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L1967 L1968
+L1967:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L1970 L1971
+L1970:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L1966 L1966
+L1971:
+  LDC 0
+L1972:
+LDC 0
+TSEL L1966 L1966
+L1968:
+  LDC 0
+L1969:
+LDC 0
+TSEL L1966 L1966
+L1965:
+  LDC 0
+L1966:
+  CONS
+  CONS
+  RTN
+L1936:
+  RTN
+L1934:
+  RTN
+L1932:
+  RTN
+L1930:
+  RTN
+L1928:
+  CDR
+  CAR
+  MUL
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L1973
+  AP 4
+LDC 0
+TSEL L1974 L1974
+L1973:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L1975
+TAP 1
+L1975:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L1977
+TAP 1
+L1977:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L1979
+TAP 1
+L1979:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L1981
+TAP 1
+L1981:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1983 L1984
+L1983:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L1986 L1987
+L1986:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L1989 L1990
+L1989:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L1985 L1985
+L1990:
+  LDC 0
+L1991:
+LDC 0
+TSEL L1985 L1985
+L1987:
+  LDC 0
+L1988:
+LDC 0
+TSEL L1985 L1985
+L1984:
+  LDC 0
+L1985:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L1992 L1993
+L1992:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L1995 L1996
+L1995:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L1998 L1999
+L1998:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L1994 L1994
+L1999:
+  LDC 0
+L2000:
+LDC 0
+TSEL L1994 L1994
+L1996:
+  LDC 0
+L1997:
+LDC 0
+TSEL L1994 L1994
+L1993:
+  LDC 0
+L1994:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2001 L2002
+L2001:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2004 L2005
+L2004:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2007 L2008
+L2007:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2003 L2003
+L2008:
+  LDC 0
+L2009:
+LDC 0
+TSEL L2003 L2003
+L2005:
+  LDC 0
+L2006:
+LDC 0
+TSEL L2003 L2003
+L2002:
+  LDC 0
+L2003:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2010 L2011
+L2010:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2013 L2014
+L2013:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2016 L2017
+L2016:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2012 L2012
+L2017:
+  LDC 0
+L2018:
+LDC 0
+TSEL L2012 L2012
+L2014:
+  LDC 0
+L2015:
+LDC 0
+TSEL L2012 L2012
+L2011:
+  LDC 0
+L2012:
+  CONS
+  CONS
+  RTN
+L1982:
+  RTN
+L1980:
+  RTN
+L1978:
+  RTN
+L1976:
+  RTN
+L1974:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CDR
+  ADD
+  CONS
+  LD 0 0
+  CDR
+  CAR
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2019
+  AP 4
+LDC 0
+TSEL L2020 L2020
+L2019:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2021
+TAP 1
+L2021:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2023
+TAP 1
+L2023:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2025
+TAP 1
+L2025:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2027
+TAP 1
+L2027:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2029 L2030
+L2029:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2032 L2033
+L2032:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2035 L2036
+L2035:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2031 L2031
+L2036:
+  LDC 0
+L2037:
+LDC 0
+TSEL L2031 L2031
+L2033:
+  LDC 0
+L2034:
+LDC 0
+TSEL L2031 L2031
+L2030:
+  LDC 0
+L2031:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2038 L2039
+L2038:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2041 L2042
+L2041:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2044 L2045
+L2044:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2040 L2040
+L2045:
+  LDC 0
+L2046:
+LDC 0
+TSEL L2040 L2040
+L2042:
+  LDC 0
+L2043:
+LDC 0
+TSEL L2040 L2040
+L2039:
+  LDC 0
+L2040:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2047 L2048
+L2047:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2050 L2051
+L2050:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2053 L2054
+L2053:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2049 L2049
+L2054:
+  LDC 0
+L2055:
+LDC 0
+TSEL L2049 L2049
+L2051:
+  LDC 0
+L2052:
+LDC 0
+TSEL L2049 L2049
+L2048:
+  LDC 0
+L2049:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2056 L2057
+L2056:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2059 L2060
+L2059:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2062 L2063
+L2062:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2058 L2058
+L2063:
+  LDC 0
+L2064:
+LDC 0
+TSEL L2058 L2058
+L2060:
+  LDC 0
+L2061:
+LDC 0
+TSEL L2058 L2058
+L2057:
+  LDC 0
+L2058:
+  CONS
+  CONS
+  RTN
+L2028:
+  RTN
+L2026:
+  RTN
+L2024:
+  RTN
+L2022:
+  RTN
+L2020:
+  CAR
+  CAR
+  MUL
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2065
+  AP 4
+LDC 0
+TSEL L2066 L2066
+L2065:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2067
+TAP 1
+L2067:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2069
+TAP 1
+L2069:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2071
+TAP 1
+L2071:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2073
+TAP 1
+L2073:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2075 L2076
+L2075:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2078 L2079
+L2078:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2081 L2082
+L2081:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2077 L2077
+L2082:
+  LDC 0
+L2083:
+LDC 0
+TSEL L2077 L2077
+L2079:
+  LDC 0
+L2080:
+LDC 0
+TSEL L2077 L2077
+L2076:
+  LDC 0
+L2077:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2084 L2085
+L2084:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2087 L2088
+L2087:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2090 L2091
+L2090:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2086 L2086
+L2091:
+  LDC 0
+L2092:
+LDC 0
+TSEL L2086 L2086
+L2088:
+  LDC 0
+L2089:
+LDC 0
+TSEL L2086 L2086
+L2085:
+  LDC 0
+L2086:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2093 L2094
+L2093:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2096 L2097
+L2096:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2099 L2100
+L2099:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2095 L2095
+L2100:
+  LDC 0
+L2101:
+LDC 0
+TSEL L2095 L2095
+L2097:
+  LDC 0
+L2098:
+LDC 0
+TSEL L2095 L2095
+L2094:
+  LDC 0
+L2095:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2102 L2103
+L2102:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2105 L2106
+L2105:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2108 L2109
+L2108:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2104 L2104
+L2109:
+  LDC 0
+L2110:
+LDC 0
+TSEL L2104 L2104
+L2106:
+  LDC 0
+L2107:
+LDC 0
+TSEL L2104 L2104
+L2103:
+  LDC 0
+L2104:
+  CONS
+  CONS
+  RTN
+L2074:
+  RTN
+L2072:
+  RTN
+L2070:
+  RTN
+L2068:
+  RTN
+L2066:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2111
+  AP 4
+LDC 0
+TSEL L2112 L2112
+L2111:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2113
+TAP 1
+L2113:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2115
+TAP 1
+L2115:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2117
+TAP 1
+L2117:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2119
+TAP 1
+L2119:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2121 L2122
+L2121:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2124 L2125
+L2124:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2127 L2128
+L2127:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2123 L2123
+L2128:
+  LDC 0
+L2129:
+LDC 0
+TSEL L2123 L2123
+L2125:
+  LDC 0
+L2126:
+LDC 0
+TSEL L2123 L2123
+L2122:
+  LDC 0
+L2123:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2130 L2131
+L2130:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2133 L2134
+L2133:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2136 L2137
+L2136:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2132 L2132
+L2137:
+  LDC 0
+L2138:
+LDC 0
+TSEL L2132 L2132
+L2134:
+  LDC 0
+L2135:
+LDC 0
+TSEL L2132 L2132
+L2131:
+  LDC 0
+L2132:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2139 L2140
+L2139:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2142 L2143
+L2142:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2145 L2146
+L2145:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2141 L2141
+L2146:
+  LDC 0
+L2147:
+LDC 0
+TSEL L2141 L2141
+L2143:
+  LDC 0
+L2144:
+LDC 0
+TSEL L2141 L2141
+L2140:
+  LDC 0
+L2141:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2148 L2149
+L2148:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2151 L2152
+L2151:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2154 L2155
+L2154:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2150 L2150
+L2155:
+  LDC 0
+L2156:
+LDC 0
+TSEL L2150 L2150
+L2152:
+  LDC 0
+L2153:
+LDC 0
+TSEL L2150 L2150
+L2149:
+  LDC 0
+L2150:
+  CONS
+  CONS
+  RTN
+L2120:
+  RTN
+L2118:
+  RTN
+L2116:
+  RTN
+L2114:
+  RTN
+L2112:
+  CDR
+  CAR
+  MUL
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2157
+  AP 4
+LDC 0
+TSEL L2158 L2158
+L2157:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2159
+TAP 1
+L2159:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2161
+TAP 1
+L2161:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2163
+TAP 1
+L2163:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2165
+TAP 1
+L2165:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2167 L2168
+L2167:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2170 L2171
+L2170:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2173 L2174
+L2173:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2169 L2169
+L2174:
+  LDC 0
+L2175:
+LDC 0
+TSEL L2169 L2169
+L2171:
+  LDC 0
+L2172:
+LDC 0
+TSEL L2169 L2169
+L2168:
+  LDC 0
+L2169:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2176 L2177
+L2176:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2179 L2180
+L2179:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2182 L2183
+L2182:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2178 L2178
+L2183:
+  LDC 0
+L2184:
+LDC 0
+TSEL L2178 L2178
+L2180:
+  LDC 0
+L2181:
+LDC 0
+TSEL L2178 L2178
+L2177:
+  LDC 0
+L2178:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2185 L2186
+L2185:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2188 L2189
+L2188:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2191 L2192
+L2191:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2187 L2187
+L2192:
+  LDC 0
+L2193:
+LDC 0
+TSEL L2187 L2187
+L2189:
+  LDC 0
+L2190:
+LDC 0
+TSEL L2187 L2187
+L2186:
+  LDC 0
+L2187:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2194 L2195
+L2194:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2197 L2198
+L2197:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2200 L2201
+L2200:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2196 L2196
+L2201:
+  LDC 0
+L2202:
+LDC 0
+TSEL L2196 L2196
+L2198:
+  LDC 0
+L2199:
+LDC 0
+TSEL L2196 L2196
+L2195:
+  LDC 0
+L2196:
+  CONS
+  CONS
+  RTN
+L2166:
+  RTN
+L2164:
+  RTN
+L2162:
+  RTN
+L2160:
+  RTN
+L2158:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CAR
+  ADD
+  LD 0 0
+  CDR
+  CDR
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2203
+  AP 4
+LDC 0
+TSEL L2204 L2204
+L2203:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2205
+TAP 1
+L2205:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2207
+TAP 1
+L2207:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2209
+TAP 1
+L2209:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2211
+TAP 1
+L2211:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2213 L2214
+L2213:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2216 L2217
+L2216:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2219 L2220
+L2219:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2215 L2215
+L2220:
+  LDC 0
+L2221:
+LDC 0
+TSEL L2215 L2215
+L2217:
+  LDC 0
+L2218:
+LDC 0
+TSEL L2215 L2215
+L2214:
+  LDC 0
+L2215:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2222 L2223
+L2222:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2225 L2226
+L2225:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2228 L2229
+L2228:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2224 L2224
+L2229:
+  LDC 0
+L2230:
+LDC 0
+TSEL L2224 L2224
+L2226:
+  LDC 0
+L2227:
+LDC 0
+TSEL L2224 L2224
+L2223:
+  LDC 0
+L2224:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2231 L2232
+L2231:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2234 L2235
+L2234:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2237 L2238
+L2237:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2233 L2233
+L2238:
+  LDC 0
+L2239:
+LDC 0
+TSEL L2233 L2233
+L2235:
+  LDC 0
+L2236:
+LDC 0
+TSEL L2233 L2233
+L2232:
+  LDC 0
+L2233:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2240 L2241
+L2240:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2243 L2244
+L2243:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2246 L2247
+L2246:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2242 L2242
+L2247:
+  LDC 0
+L2248:
+LDC 0
+TSEL L2242 L2242
+L2244:
+  LDC 0
+L2245:
+LDC 0
+TSEL L2242 L2242
+L2241:
+  LDC 0
+L2242:
+  CONS
+  CONS
+  RTN
+L2212:
+  RTN
+L2210:
+  RTN
+L2208:
+  RTN
+L2206:
+  RTN
+L2204:
+  CAR
+  CAR
+  MUL
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2249
+  AP 4
+LDC 0
+TSEL L2250 L2250
+L2249:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2251
+TAP 1
+L2251:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2253
+TAP 1
+L2253:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2255
+TAP 1
+L2255:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2257
+TAP 1
+L2257:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2259 L2260
+L2259:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2262 L2263
+L2262:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2265 L2266
+L2265:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2261 L2261
+L2266:
+  LDC 0
+L2267:
+LDC 0
+TSEL L2261 L2261
+L2263:
+  LDC 0
+L2264:
+LDC 0
+TSEL L2261 L2261
+L2260:
+  LDC 0
+L2261:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2268 L2269
+L2268:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2271 L2272
+L2271:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2274 L2275
+L2274:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2270 L2270
+L2275:
+  LDC 0
+L2276:
+LDC 0
+TSEL L2270 L2270
+L2272:
+  LDC 0
+L2273:
+LDC 0
+TSEL L2270 L2270
+L2269:
+  LDC 0
+L2270:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2277 L2278
+L2277:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2280 L2281
+L2280:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2283 L2284
+L2283:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2279 L2279
+L2284:
+  LDC 0
+L2285:
+LDC 0
+TSEL L2279 L2279
+L2281:
+  LDC 0
+L2282:
+LDC 0
+TSEL L2279 L2279
+L2278:
+  LDC 0
+L2279:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2286 L2287
+L2286:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2289 L2290
+L2289:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2292 L2293
+L2292:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2288 L2288
+L2293:
+  LDC 0
+L2294:
+LDC 0
+TSEL L2288 L2288
+L2290:
+  LDC 0
+L2291:
+LDC 0
+TSEL L2288 L2288
+L2287:
+  LDC 0
+L2288:
+  CONS
+  CONS
+  RTN
+L2258:
+  RTN
+L2256:
+  RTN
+L2254:
+  RTN
+L2252:
+  RTN
+L2250:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2295
+  AP 4
+LDC 0
+TSEL L2296 L2296
+L2295:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2297
+TAP 1
+L2297:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2299
+TAP 1
+L2299:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2301
+TAP 1
+L2301:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2303
+TAP 1
+L2303:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2305 L2306
+L2305:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2308 L2309
+L2308:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2311 L2312
+L2311:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2307 L2307
+L2312:
+  LDC 0
+L2313:
+LDC 0
+TSEL L2307 L2307
+L2309:
+  LDC 0
+L2310:
+LDC 0
+TSEL L2307 L2307
+L2306:
+  LDC 0
+L2307:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2314 L2315
+L2314:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2317 L2318
+L2317:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2320 L2321
+L2320:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2316 L2316
+L2321:
+  LDC 0
+L2322:
+LDC 0
+TSEL L2316 L2316
+L2318:
+  LDC 0
+L2319:
+LDC 0
+TSEL L2316 L2316
+L2315:
+  LDC 0
+L2316:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2323 L2324
+L2323:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2326 L2327
+L2326:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2329 L2330
+L2329:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2325 L2325
+L2330:
+  LDC 0
+L2331:
+LDC 0
+TSEL L2325 L2325
+L2327:
+  LDC 0
+L2328:
+LDC 0
+TSEL L2325 L2325
+L2324:
+  LDC 0
+L2325:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2332 L2333
+L2332:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2335 L2336
+L2335:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2338 L2339
+L2338:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2334 L2334
+L2339:
+  LDC 0
+L2340:
+LDC 0
+TSEL L2334 L2334
+L2336:
+  LDC 0
+L2337:
+LDC 0
+TSEL L2334 L2334
+L2333:
+  LDC 0
+L2334:
+  CONS
+  CONS
+  RTN
+L2304:
+  RTN
+L2302:
+  RTN
+L2300:
+  RTN
+L2298:
+  RTN
+L2296:
+  CDR
+  CAR
+  MUL
+  LDC 4
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2341
+  AP 4
+LDC 0
+TSEL L2342 L2342
+L2341:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L2343
+TAP 1
+L2343:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L2345
+TAP 1
+L2345:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L2347
+TAP 1
+L2347:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 10 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L2349
+TAP 1
+L2349:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2351 L2352
+L2351:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2354 L2355
+L2354:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2357 L2358
+L2357:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2353 L2353
+L2358:
+  LDC 0
+L2359:
+LDC 0
+TSEL L2353 L2353
+L2355:
+  LDC 0
+L2356:
+LDC 0
+TSEL L2353 L2353
+L2352:
+  LDC 0
+L2353:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2360 L2361
+L2360:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2363 L2364
+L2363:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2366 L2367
+L2366:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2362 L2362
+L2367:
+  LDC 0
+L2368:
+LDC 0
+TSEL L2362 L2362
+L2364:
+  LDC 0
+L2365:
+LDC 0
+TSEL L2362 L2362
+L2361:
+  LDC 0
+L2362:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2369 L2370
+L2369:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2372 L2373
+L2372:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2375 L2376
+L2375:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2371 L2371
+L2376:
+  LDC 0
+L2377:
+LDC 0
+TSEL L2371 L2371
+L2373:
+  LDC 0
+L2374:
+LDC 0
+TSEL L2371 L2371
+L2370:
+  LDC 0
+L2371:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L2378 L2379
+L2378:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2381 L2382
+L2381:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2384 L2385
+L2384:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2380 L2380
+L2385:
+  LDC 0
+L2386:
+LDC 0
+TSEL L2380 L2380
+L2382:
+  LDC 0
+L2383:
+LDC 0
+TSEL L2380 L2380
+L2379:
+  LDC 0
+L2380:
+  CONS
+  CONS
+  RTN
+L2350:
+  RTN
+L2348:
+  RTN
+L2346:
+  RTN
+L2344:
+  RTN
+L2342:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CDR
+  ADD
+  CONS
+  CONS
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2387
+  AP 4
+LDC 0
+TSEL L2388 L2388
+L2387:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2389
+TAP 1
+L2389:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2391
+TAP 1
+L2391:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2393
+TAP 1
+L2393:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2395
+TAP 1
+L2395:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2397 L2398
+L2397:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2400 L2401
+L2400:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2403 L2404
+L2403:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2399 L2399
+L2404:
+  LDC 0
+L2405:
+LDC 0
+TSEL L2399 L2399
+L2401:
+  LDC 0
+L2402:
+LDC 0
+TSEL L2399 L2399
+L2398:
+  LDC 0
+L2399:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2406 L2407
+L2406:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2409 L2410
+L2409:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2412 L2413
+L2412:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2408 L2408
+L2413:
+  LDC 0
+L2414:
+LDC 0
+TSEL L2408 L2408
+L2410:
+  LDC 0
+L2411:
+LDC 0
+TSEL L2408 L2408
+L2407:
+  LDC 0
+L2408:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2415 L2416
+L2415:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2418 L2419
+L2418:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2421 L2422
+L2421:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2417 L2417
+L2422:
+  LDC 0
+L2423:
+LDC 0
+TSEL L2417 L2417
+L2419:
+  LDC 0
+L2420:
+LDC 0
+TSEL L2417 L2417
+L2416:
+  LDC 0
+L2417:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2424 L2425
+L2424:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2427 L2428
+L2427:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2430 L2431
+L2430:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2426 L2426
+L2431:
+  LDC 0
+L2432:
+LDC 0
+TSEL L2426 L2426
+L2428:
+  LDC 0
+L2429:
+LDC 0
+TSEL L2426 L2426
+L2425:
+  LDC 0
+L2426:
+  CONS
+  CONS
+  RTN
+L2396:
+  RTN
+L2394:
+  RTN
+L2392:
+  RTN
+L2390:
+  RTN
+L2388:
+  CAR
+  CAR
+  MUL
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2433
+  AP 4
+LDC 0
+TSEL L2434 L2434
+L2433:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2435
+TAP 1
+L2435:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2437
+TAP 1
+L2437:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2439
+TAP 1
+L2439:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2441
+TAP 1
+L2441:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2443 L2444
+L2443:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2446 L2447
+L2446:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2449 L2450
+L2449:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2445 L2445
+L2450:
+  LDC 0
+L2451:
+LDC 0
+TSEL L2445 L2445
+L2447:
+  LDC 0
+L2448:
+LDC 0
+TSEL L2445 L2445
+L2444:
+  LDC 0
+L2445:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2452 L2453
+L2452:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2455 L2456
+L2455:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2458 L2459
+L2458:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2454 L2454
+L2459:
+  LDC 0
+L2460:
+LDC 0
+TSEL L2454 L2454
+L2456:
+  LDC 0
+L2457:
+LDC 0
+TSEL L2454 L2454
+L2453:
+  LDC 0
+L2454:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2461 L2462
+L2461:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2464 L2465
+L2464:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2467 L2468
+L2467:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2463 L2463
+L2468:
+  LDC 0
+L2469:
+LDC 0
+TSEL L2463 L2463
+L2465:
+  LDC 0
+L2466:
+LDC 0
+TSEL L2463 L2463
+L2462:
+  LDC 0
+L2463:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2470 L2471
+L2470:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2473 L2474
+L2473:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2476 L2477
+L2476:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2472 L2472
+L2477:
+  LDC 0
+L2478:
+LDC 0
+TSEL L2472 L2472
+L2474:
+  LDC 0
+L2475:
+LDC 0
+TSEL L2472 L2472
+L2471:
+  LDC 0
+L2472:
+  CONS
+  CONS
+  RTN
+L2442:
+  RTN
+L2440:
+  RTN
+L2438:
+  RTN
+L2436:
+  RTN
+L2434:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2479
+  AP 4
+LDC 0
+TSEL L2480 L2480
+L2479:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2481
+TAP 1
+L2481:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2483
+TAP 1
+L2483:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2485
+TAP 1
+L2485:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2487
+TAP 1
+L2487:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2489 L2490
+L2489:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2492 L2493
+L2492:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2495 L2496
+L2495:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2491 L2491
+L2496:
+  LDC 0
+L2497:
+LDC 0
+TSEL L2491 L2491
+L2493:
+  LDC 0
+L2494:
+LDC 0
+TSEL L2491 L2491
+L2490:
+  LDC 0
+L2491:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2498 L2499
+L2498:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2501 L2502
+L2501:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2504 L2505
+L2504:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2500 L2500
+L2505:
+  LDC 0
+L2506:
+LDC 0
+TSEL L2500 L2500
+L2502:
+  LDC 0
+L2503:
+LDC 0
+TSEL L2500 L2500
+L2499:
+  LDC 0
+L2500:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2507 L2508
+L2507:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2510 L2511
+L2510:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2513 L2514
+L2513:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2509 L2509
+L2514:
+  LDC 0
+L2515:
+LDC 0
+TSEL L2509 L2509
+L2511:
+  LDC 0
+L2512:
+LDC 0
+TSEL L2509 L2509
+L2508:
+  LDC 0
+L2509:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2516 L2517
+L2516:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2519 L2520
+L2519:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2522 L2523
+L2522:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2518 L2518
+L2523:
+  LDC 0
+L2524:
+LDC 0
+TSEL L2518 L2518
+L2520:
+  LDC 0
+L2521:
+LDC 0
+TSEL L2518 L2518
+L2517:
+  LDC 0
+L2518:
+  CONS
+  CONS
+  RTN
+L2488:
+  RTN
+L2486:
+  RTN
+L2484:
+  RTN
+L2482:
+  RTN
+L2480:
+  CDR
+  CAR
+  MUL
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2525
+  AP 4
+LDC 0
+TSEL L2526 L2526
+L2525:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2527
+TAP 1
+L2527:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2529
+TAP 1
+L2529:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2531
+TAP 1
+L2531:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2533
+TAP 1
+L2533:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2535 L2536
+L2535:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2538 L2539
+L2538:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2541 L2542
+L2541:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2537 L2537
+L2542:
+  LDC 0
+L2543:
+LDC 0
+TSEL L2537 L2537
+L2539:
+  LDC 0
+L2540:
+LDC 0
+TSEL L2537 L2537
+L2536:
+  LDC 0
+L2537:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2544 L2545
+L2544:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2547 L2548
+L2547:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2550 L2551
+L2550:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2546 L2546
+L2551:
+  LDC 0
+L2552:
+LDC 0
+TSEL L2546 L2546
+L2548:
+  LDC 0
+L2549:
+LDC 0
+TSEL L2546 L2546
+L2545:
+  LDC 0
+L2546:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2553 L2554
+L2553:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2556 L2557
+L2556:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2559 L2560
+L2559:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2555 L2555
+L2560:
+  LDC 0
+L2561:
+LDC 0
+TSEL L2555 L2555
+L2557:
+  LDC 0
+L2558:
+LDC 0
+TSEL L2555 L2555
+L2554:
+  LDC 0
+L2555:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2562 L2563
+L2562:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2565 L2566
+L2565:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2568 L2569
+L2568:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2564 L2564
+L2569:
+  LDC 0
+L2570:
+LDC 0
+TSEL L2564 L2564
+L2566:
+  LDC 0
+L2567:
+LDC 0
+TSEL L2564 L2564
+L2563:
+  LDC 0
+L2564:
+  CONS
+  CONS
+  RTN
+L2534:
+  RTN
+L2532:
+  RTN
+L2530:
+  RTN
+L2528:
+  RTN
+L2526:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CAR
+  ADD
+  LD 0 0
+  CAR
+  CDR
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2571
+  AP 4
+LDC 0
+TSEL L2572 L2572
+L2571:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2573
+TAP 1
+L2573:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2575
+TAP 1
+L2575:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2577
+TAP 1
+L2577:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2579
+TAP 1
+L2579:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2581 L2582
+L2581:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2584 L2585
+L2584:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2587 L2588
+L2587:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2583 L2583
+L2588:
+  LDC 0
+L2589:
+LDC 0
+TSEL L2583 L2583
+L2585:
+  LDC 0
+L2586:
+LDC 0
+TSEL L2583 L2583
+L2582:
+  LDC 0
+L2583:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2590 L2591
+L2590:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2593 L2594
+L2593:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2596 L2597
+L2596:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2592 L2592
+L2597:
+  LDC 0
+L2598:
+LDC 0
+TSEL L2592 L2592
+L2594:
+  LDC 0
+L2595:
+LDC 0
+TSEL L2592 L2592
+L2591:
+  LDC 0
+L2592:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2599 L2600
+L2599:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2602 L2603
+L2602:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2605 L2606
+L2605:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2601 L2601
+L2606:
+  LDC 0
+L2607:
+LDC 0
+TSEL L2601 L2601
+L2603:
+  LDC 0
+L2604:
+LDC 0
+TSEL L2601 L2601
+L2600:
+  LDC 0
+L2601:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2608 L2609
+L2608:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2611 L2612
+L2611:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2614 L2615
+L2614:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2610 L2610
+L2615:
+  LDC 0
+L2616:
+LDC 0
+TSEL L2610 L2610
+L2612:
+  LDC 0
+L2613:
+LDC 0
+TSEL L2610 L2610
+L2609:
+  LDC 0
+L2610:
+  CONS
+  CONS
+  RTN
+L2580:
+  RTN
+L2578:
+  RTN
+L2576:
+  RTN
+L2574:
+  RTN
+L2572:
+  CAR
+  CAR
+  MUL
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2617
+  AP 4
+LDC 0
+TSEL L2618 L2618
+L2617:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2619
+TAP 1
+L2619:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2621
+TAP 1
+L2621:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2623
+TAP 1
+L2623:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2625
+TAP 1
+L2625:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2627 L2628
+L2627:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2630 L2631
+L2630:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2633 L2634
+L2633:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2629 L2629
+L2634:
+  LDC 0
+L2635:
+LDC 0
+TSEL L2629 L2629
+L2631:
+  LDC 0
+L2632:
+LDC 0
+TSEL L2629 L2629
+L2628:
+  LDC 0
+L2629:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2636 L2637
+L2636:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2639 L2640
+L2639:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2642 L2643
+L2642:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2638 L2638
+L2643:
+  LDC 0
+L2644:
+LDC 0
+TSEL L2638 L2638
+L2640:
+  LDC 0
+L2641:
+LDC 0
+TSEL L2638 L2638
+L2637:
+  LDC 0
+L2638:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2645 L2646
+L2645:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2648 L2649
+L2648:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2651 L2652
+L2651:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2647 L2647
+L2652:
+  LDC 0
+L2653:
+LDC 0
+TSEL L2647 L2647
+L2649:
+  LDC 0
+L2650:
+LDC 0
+TSEL L2647 L2647
+L2646:
+  LDC 0
+L2647:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2654 L2655
+L2654:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2657 L2658
+L2657:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2660 L2661
+L2660:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2656 L2656
+L2661:
+  LDC 0
+L2662:
+LDC 0
+TSEL L2656 L2656
+L2658:
+  LDC 0
+L2659:
+LDC 0
+TSEL L2656 L2656
+L2655:
+  LDC 0
+L2656:
+  CONS
+  CONS
+  RTN
+L2626:
+  RTN
+L2624:
+  RTN
+L2622:
+  RTN
+L2620:
+  RTN
+L2618:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2663
+  AP 4
+LDC 0
+TSEL L2664 L2664
+L2663:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2665
+TAP 1
+L2665:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2667
+TAP 1
+L2667:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2669
+TAP 1
+L2669:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2671
+TAP 1
+L2671:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2673 L2674
+L2673:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2676 L2677
+L2676:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2679 L2680
+L2679:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2675 L2675
+L2680:
+  LDC 0
+L2681:
+LDC 0
+TSEL L2675 L2675
+L2677:
+  LDC 0
+L2678:
+LDC 0
+TSEL L2675 L2675
+L2674:
+  LDC 0
+L2675:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2682 L2683
+L2682:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2685 L2686
+L2685:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2688 L2689
+L2688:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2684 L2684
+L2689:
+  LDC 0
+L2690:
+LDC 0
+TSEL L2684 L2684
+L2686:
+  LDC 0
+L2687:
+LDC 0
+TSEL L2684 L2684
+L2683:
+  LDC 0
+L2684:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2691 L2692
+L2691:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2694 L2695
+L2694:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2697 L2698
+L2697:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2693 L2693
+L2698:
+  LDC 0
+L2699:
+LDC 0
+TSEL L2693 L2693
+L2695:
+  LDC 0
+L2696:
+LDC 0
+TSEL L2693 L2693
+L2692:
+  LDC 0
+L2693:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2700 L2701
+L2700:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2703 L2704
+L2703:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2706 L2707
+L2706:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2702 L2702
+L2707:
+  LDC 0
+L2708:
+LDC 0
+TSEL L2702 L2702
+L2704:
+  LDC 0
+L2705:
+LDC 0
+TSEL L2702 L2702
+L2701:
+  LDC 0
+L2702:
+  CONS
+  CONS
+  RTN
+L2672:
+  RTN
+L2670:
+  RTN
+L2668:
+  RTN
+L2666:
+  RTN
+L2664:
+  CDR
+  CAR
+  MUL
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2709
+  AP 4
+LDC 0
+TSEL L2710 L2710
+L2709:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2711
+TAP 1
+L2711:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2713
+TAP 1
+L2713:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2715
+TAP 1
+L2715:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2717
+TAP 1
+L2717:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2719 L2720
+L2719:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2722 L2723
+L2722:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2725 L2726
+L2725:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2721 L2721
+L2726:
+  LDC 0
+L2727:
+LDC 0
+TSEL L2721 L2721
+L2723:
+  LDC 0
+L2724:
+LDC 0
+TSEL L2721 L2721
+L2720:
+  LDC 0
+L2721:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2728 L2729
+L2728:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2731 L2732
+L2731:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2734 L2735
+L2734:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2730 L2730
+L2735:
+  LDC 0
+L2736:
+LDC 0
+TSEL L2730 L2730
+L2732:
+  LDC 0
+L2733:
+LDC 0
+TSEL L2730 L2730
+L2729:
+  LDC 0
+L2730:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2737 L2738
+L2737:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2740 L2741
+L2740:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2743 L2744
+L2743:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2739 L2739
+L2744:
+  LDC 0
+L2745:
+LDC 0
+TSEL L2739 L2739
+L2741:
+  LDC 0
+L2742:
+LDC 0
+TSEL L2739 L2739
+L2738:
+  LDC 0
+L2739:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2746 L2747
+L2746:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2749 L2750
+L2749:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2752 L2753
+L2752:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2748 L2748
+L2753:
+  LDC 0
+L2754:
+LDC 0
+TSEL L2748 L2748
+L2750:
+  LDC 0
+L2751:
+LDC 0
+TSEL L2748 L2748
+L2747:
+  LDC 0
+L2748:
+  CONS
+  CONS
+  RTN
+L2718:
+  RTN
+L2716:
+  RTN
+L2714:
+  RTN
+L2712:
+  RTN
+L2710:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CDR
+  ADD
+  CONS
+  LD 0 0
+  CDR
+  CAR
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2755
+  AP 4
+LDC 0
+TSEL L2756 L2756
+L2755:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2757
+TAP 1
+L2757:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2759
+TAP 1
+L2759:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2761
+TAP 1
+L2761:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2763
+TAP 1
+L2763:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2765 L2766
+L2765:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2768 L2769
+L2768:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2771 L2772
+L2771:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2767 L2767
+L2772:
+  LDC 0
+L2773:
+LDC 0
+TSEL L2767 L2767
+L2769:
+  LDC 0
+L2770:
+LDC 0
+TSEL L2767 L2767
+L2766:
+  LDC 0
+L2767:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2774 L2775
+L2774:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2777 L2778
+L2777:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2780 L2781
+L2780:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2776 L2776
+L2781:
+  LDC 0
+L2782:
+LDC 0
+TSEL L2776 L2776
+L2778:
+  LDC 0
+L2779:
+LDC 0
+TSEL L2776 L2776
+L2775:
+  LDC 0
+L2776:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2783 L2784
+L2783:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2786 L2787
+L2786:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2789 L2790
+L2789:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2785 L2785
+L2790:
+  LDC 0
+L2791:
+LDC 0
+TSEL L2785 L2785
+L2787:
+  LDC 0
+L2788:
+LDC 0
+TSEL L2785 L2785
+L2784:
+  LDC 0
+L2785:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2792 L2793
+L2792:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2795 L2796
+L2795:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2798 L2799
+L2798:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2794 L2794
+L2799:
+  LDC 0
+L2800:
+LDC 0
+TSEL L2794 L2794
+L2796:
+  LDC 0
+L2797:
+LDC 0
+TSEL L2794 L2794
+L2793:
+  LDC 0
+L2794:
+  CONS
+  CONS
+  RTN
+L2764:
+  RTN
+L2762:
+  RTN
+L2760:
+  RTN
+L2758:
+  RTN
+L2756:
+  CAR
+  CAR
+  MUL
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2801
+  AP 4
+LDC 0
+TSEL L2802 L2802
+L2801:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2803
+TAP 1
+L2803:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2805
+TAP 1
+L2805:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2807
+TAP 1
+L2807:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2809
+TAP 1
+L2809:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2811 L2812
+L2811:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2814 L2815
+L2814:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2817 L2818
+L2817:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2813 L2813
+L2818:
+  LDC 0
+L2819:
+LDC 0
+TSEL L2813 L2813
+L2815:
+  LDC 0
+L2816:
+LDC 0
+TSEL L2813 L2813
+L2812:
+  LDC 0
+L2813:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2820 L2821
+L2820:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2823 L2824
+L2823:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2826 L2827
+L2826:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2822 L2822
+L2827:
+  LDC 0
+L2828:
+LDC 0
+TSEL L2822 L2822
+L2824:
+  LDC 0
+L2825:
+LDC 0
+TSEL L2822 L2822
+L2821:
+  LDC 0
+L2822:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2829 L2830
+L2829:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2832 L2833
+L2832:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2835 L2836
+L2835:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2831 L2831
+L2836:
+  LDC 0
+L2837:
+LDC 0
+TSEL L2831 L2831
+L2833:
+  LDC 0
+L2834:
+LDC 0
+TSEL L2831 L2831
+L2830:
+  LDC 0
+L2831:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2838 L2839
+L2838:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2841 L2842
+L2841:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2844 L2845
+L2844:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2840 L2840
+L2845:
+  LDC 0
+L2846:
+LDC 0
+TSEL L2840 L2840
+L2842:
+  LDC 0
+L2843:
+LDC 0
+TSEL L2840 L2840
+L2839:
+  LDC 0
+L2840:
+  CONS
+  CONS
+  RTN
+L2810:
+  RTN
+L2808:
+  RTN
+L2806:
+  RTN
+L2804:
+  RTN
+L2802:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2847
+  AP 4
+LDC 0
+TSEL L2848 L2848
+L2847:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2849
+TAP 1
+L2849:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2851
+TAP 1
+L2851:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2853
+TAP 1
+L2853:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2855
+TAP 1
+L2855:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2857 L2858
+L2857:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2860 L2861
+L2860:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2863 L2864
+L2863:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2859 L2859
+L2864:
+  LDC 0
+L2865:
+LDC 0
+TSEL L2859 L2859
+L2861:
+  LDC 0
+L2862:
+LDC 0
+TSEL L2859 L2859
+L2858:
+  LDC 0
+L2859:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2866 L2867
+L2866:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2869 L2870
+L2869:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2872 L2873
+L2872:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2868 L2868
+L2873:
+  LDC 0
+L2874:
+LDC 0
+TSEL L2868 L2868
+L2870:
+  LDC 0
+L2871:
+LDC 0
+TSEL L2868 L2868
+L2867:
+  LDC 0
+L2868:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2875 L2876
+L2875:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2878 L2879
+L2878:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2881 L2882
+L2881:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2877 L2877
+L2882:
+  LDC 0
+L2883:
+LDC 0
+TSEL L2877 L2877
+L2879:
+  LDC 0
+L2880:
+LDC 0
+TSEL L2877 L2877
+L2876:
+  LDC 0
+L2877:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2884 L2885
+L2884:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2887 L2888
+L2887:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2890 L2891
+L2890:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2886 L2886
+L2891:
+  LDC 0
+L2892:
+LDC 0
+TSEL L2886 L2886
+L2888:
+  LDC 0
+L2889:
+LDC 0
+TSEL L2886 L2886
+L2885:
+  LDC 0
+L2886:
+  CONS
+  CONS
+  RTN
+L2856:
+  RTN
+L2854:
+  RTN
+L2852:
+  RTN
+L2850:
+  RTN
+L2848:
+  CDR
+  CAR
+  MUL
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2893
+  AP 4
+LDC 0
+TSEL L2894 L2894
+L2893:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2895
+TAP 1
+L2895:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2897
+TAP 1
+L2897:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2899
+TAP 1
+L2899:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2901
+TAP 1
+L2901:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2903 L2904
+L2903:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2906 L2907
+L2906:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2909 L2910
+L2909:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2905 L2905
+L2910:
+  LDC 0
+L2911:
+LDC 0
+TSEL L2905 L2905
+L2907:
+  LDC 0
+L2908:
+LDC 0
+TSEL L2905 L2905
+L2904:
+  LDC 0
+L2905:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2912 L2913
+L2912:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2915 L2916
+L2915:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2918 L2919
+L2918:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2914 L2914
+L2919:
+  LDC 0
+L2920:
+LDC 0
+TSEL L2914 L2914
+L2916:
+  LDC 0
+L2917:
+LDC 0
+TSEL L2914 L2914
+L2913:
+  LDC 0
+L2914:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2921 L2922
+L2921:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2924 L2925
+L2924:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2927 L2928
+L2927:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2923 L2923
+L2928:
+  LDC 0
+L2929:
+LDC 0
+TSEL L2923 L2923
+L2925:
+  LDC 0
+L2926:
+LDC 0
+TSEL L2923 L2923
+L2922:
+  LDC 0
+L2923:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2930 L2931
+L2930:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2933 L2934
+L2933:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2936 L2937
+L2936:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2932 L2932
+L2937:
+  LDC 0
+L2938:
+LDC 0
+TSEL L2932 L2932
+L2934:
+  LDC 0
+L2935:
+LDC 0
+TSEL L2932 L2932
+L2931:
+  LDC 0
+L2932:
+  CONS
+  CONS
+  RTN
+L2902:
+  RTN
+L2900:
+  RTN
+L2898:
+  RTN
+L2896:
+  RTN
+L2894:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CAR
+  ADD
+  LD 0 0
+  CDR
+  CDR
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2939
+  AP 4
+LDC 0
+TSEL L2940 L2940
+L2939:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2941
+TAP 1
+L2941:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2943
+TAP 1
+L2943:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2945
+TAP 1
+L2945:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2947
+TAP 1
+L2947:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2949 L2950
+L2949:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2952 L2953
+L2952:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L2955 L2956
+L2955:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2951 L2951
+L2956:
+  LDC 0
+L2957:
+LDC 0
+TSEL L2951 L2951
+L2953:
+  LDC 0
+L2954:
+LDC 0
+TSEL L2951 L2951
+L2950:
+  LDC 0
+L2951:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2958 L2959
+L2958:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L2961 L2962
+L2961:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L2964 L2965
+L2964:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L2960 L2960
+L2965:
+  LDC 0
+L2966:
+LDC 0
+TSEL L2960 L2960
+L2962:
+  LDC 0
+L2963:
+LDC 0
+TSEL L2960 L2960
+L2959:
+  LDC 0
+L2960:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2967 L2968
+L2967:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L2970 L2971
+L2970:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L2973 L2974
+L2973:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L2969 L2969
+L2974:
+  LDC 0
+L2975:
+LDC 0
+TSEL L2969 L2969
+L2971:
+  LDC 0
+L2972:
+LDC 0
+TSEL L2969 L2969
+L2968:
+  LDC 0
+L2969:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2976 L2977
+L2976:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L2979 L2980
+L2979:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L2982 L2983
+L2982:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L2978 L2978
+L2983:
+  LDC 0
+L2984:
+LDC 0
+TSEL L2978 L2978
+L2980:
+  LDC 0
+L2981:
+LDC 0
+TSEL L2978 L2978
+L2977:
+  LDC 0
+L2978:
+  CONS
+  CONS
+  RTN
+L2948:
+  RTN
+L2946:
+  RTN
+L2944:
+  RTN
+L2942:
+  RTN
+L2940:
+  CAR
+  CAR
+  MUL
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L2985
+  AP 4
+LDC 0
+TSEL L2986 L2986
+L2985:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L2987
+TAP 1
+L2987:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L2989
+TAP 1
+L2989:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L2991
+TAP 1
+L2991:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L2993
+TAP 1
+L2993:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L2995 L2996
+L2995:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L2998 L2999
+L2998:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3001 L3002
+L3001:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L2997 L2997
+L3002:
+  LDC 0
+L3003:
+LDC 0
+TSEL L2997 L2997
+L2999:
+  LDC 0
+L3000:
+LDC 0
+TSEL L2997 L2997
+L2996:
+  LDC 0
+L2997:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3004 L3005
+L3004:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3007 L3008
+L3007:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3010 L3011
+L3010:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3006 L3006
+L3011:
+  LDC 0
+L3012:
+LDC 0
+TSEL L3006 L3006
+L3008:
+  LDC 0
+L3009:
+LDC 0
+TSEL L3006 L3006
+L3005:
+  LDC 0
+L3006:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3013 L3014
+L3013:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3016 L3017
+L3016:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3019 L3020
+L3019:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3015 L3015
+L3020:
+  LDC 0
+L3021:
+LDC 0
+TSEL L3015 L3015
+L3017:
+  LDC 0
+L3018:
+LDC 0
+TSEL L3015 L3015
+L3014:
+  LDC 0
+L3015:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3022 L3023
+L3022:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3025 L3026
+L3025:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3028 L3029
+L3028:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3024 L3024
+L3029:
+  LDC 0
+L3030:
+LDC 0
+TSEL L3024 L3024
+L3026:
+  LDC 0
+L3027:
+LDC 0
+TSEL L3024 L3024
+L3023:
+  LDC 0
+L3024:
+  CONS
+  CONS
+  RTN
+L2994:
+  RTN
+L2992:
+  RTN
+L2990:
+  RTN
+L2988:
+  RTN
+L2986:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3031
+  AP 4
+LDC 0
+TSEL L3032 L3032
+L3031:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L3033
+TAP 1
+L3033:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L3035
+TAP 1
+L3035:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L3037
+TAP 1
+L3037:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L3039
+TAP 1
+L3039:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3041 L3042
+L3041:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3044 L3045
+L3044:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3047 L3048
+L3047:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3043 L3043
+L3048:
+  LDC 0
+L3049:
+LDC 0
+TSEL L3043 L3043
+L3045:
+  LDC 0
+L3046:
+LDC 0
+TSEL L3043 L3043
+L3042:
+  LDC 0
+L3043:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3050 L3051
+L3050:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3053 L3054
+L3053:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3056 L3057
+L3056:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3052 L3052
+L3057:
+  LDC 0
+L3058:
+LDC 0
+TSEL L3052 L3052
+L3054:
+  LDC 0
+L3055:
+LDC 0
+TSEL L3052 L3052
+L3051:
+  LDC 0
+L3052:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3059 L3060
+L3059:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3062 L3063
+L3062:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3065 L3066
+L3065:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3061 L3061
+L3066:
+  LDC 0
+L3067:
+LDC 0
+TSEL L3061 L3061
+L3063:
+  LDC 0
+L3064:
+LDC 0
+TSEL L3061 L3061
+L3060:
+  LDC 0
+L3061:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3068 L3069
+L3068:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3071 L3072
+L3071:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3074 L3075
+L3074:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3070 L3070
+L3075:
+  LDC 0
+L3076:
+LDC 0
+TSEL L3070 L3070
+L3072:
+  LDC 0
+L3073:
+LDC 0
+TSEL L3070 L3070
+L3069:
+  LDC 0
+L3070:
+  CONS
+  CONS
+  RTN
+L3040:
+  RTN
+L3038:
+  RTN
+L3036:
+  RTN
+L3034:
+  RTN
+L3032:
+  CDR
+  CAR
+  MUL
+  LDC 3
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 200
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3077
+  AP 4
+LDC 0
+TSEL L3078 L3078
+L3077:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 4 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L3079
+TAP 1
+L3079:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L3081
+TAP 1
+L3081:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L3083
+TAP 1
+L3083:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L3085
+TAP 1
+L3085:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3087 L3088
+L3087:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3090 L3091
+L3090:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3093 L3094
+L3093:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3089 L3089
+L3094:
+  LDC 0
+L3095:
+LDC 0
+TSEL L3089 L3089
+L3091:
+  LDC 0
+L3092:
+LDC 0
+TSEL L3089 L3089
+L3088:
+  LDC 0
+L3089:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3096 L3097
+L3096:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3099 L3100
+L3099:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3102 L3103
+L3102:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3098 L3098
+L3103:
+  LDC 0
+L3104:
+LDC 0
+TSEL L3098 L3098
+L3100:
+  LDC 0
+L3101:
+LDC 0
+TSEL L3098 L3098
+L3097:
+  LDC 0
+L3098:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3105 L3106
+L3105:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3108 L3109
+L3108:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3111 L3112
+L3111:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3107 L3107
+L3112:
+  LDC 0
+L3113:
+LDC 0
+TSEL L3107 L3107
+L3109:
+  LDC 0
+L3110:
+LDC 0
+TSEL L3107 L3107
+L3106:
+  LDC 0
+L3107:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3114 L3115
+L3114:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3117 L3118
+L3117:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3120 L3121
+L3120:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3116 L3116
+L3121:
+  LDC 0
+L3122:
+LDC 0
+TSEL L3116 L3116
+L3118:
+  LDC 0
+L3119:
+LDC 0
+TSEL L3116 L3116
+L3115:
+  LDC 0
+L3116:
+  CONS
+  CONS
+  RTN
+L3086:
+  RTN
+L3084:
+  RTN
+L3082:
+  RTN
+L3080:
+  RTN
+L3078:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CDR
+  ADD
+  CONS
+  CONS
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3123
+  AP 4
+LDC 0
+TSEL L3124 L3124
+L3123:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3125
+TAP 1
+L3125:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3127
+TAP 1
+L3127:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3129
+TAP 1
+L3129:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3131
+TAP 1
+L3131:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3133 L3134
+L3133:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3136 L3137
+L3136:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3139 L3140
+L3139:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3135 L3135
+L3140:
+  LDC 0
+L3141:
+LDC 0
+TSEL L3135 L3135
+L3137:
+  LDC 0
+L3138:
+LDC 0
+TSEL L3135 L3135
+L3134:
+  LDC 0
+L3135:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3142 L3143
+L3142:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3145 L3146
+L3145:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3148 L3149
+L3148:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3144 L3144
+L3149:
+  LDC 0
+L3150:
+LDC 0
+TSEL L3144 L3144
+L3146:
+  LDC 0
+L3147:
+LDC 0
+TSEL L3144 L3144
+L3143:
+  LDC 0
+L3144:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3151 L3152
+L3151:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3154 L3155
+L3154:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3157 L3158
+L3157:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3153 L3153
+L3158:
+  LDC 0
+L3159:
+LDC 0
+TSEL L3153 L3153
+L3155:
+  LDC 0
+L3156:
+LDC 0
+TSEL L3153 L3153
+L3152:
+  LDC 0
+L3153:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3160 L3161
+L3160:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3163 L3164
+L3163:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3166 L3167
+L3166:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3162 L3162
+L3167:
+  LDC 0
+L3168:
+LDC 0
+TSEL L3162 L3162
+L3164:
+  LDC 0
+L3165:
+LDC 0
+TSEL L3162 L3162
+L3161:
+  LDC 0
+L3162:
+  CONS
+  CONS
+  RTN
+L3132:
+  RTN
+L3130:
+  RTN
+L3128:
+  RTN
+L3126:
+  RTN
+L3124:
+  CAR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3169
+  AP 4
+LDC 0
+TSEL L3170 L3170
+L3169:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3171
+TAP 1
+L3171:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3173
+TAP 1
+L3173:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3175
+TAP 1
+L3175:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3177
+TAP 1
+L3177:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3179 L3180
+L3179:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3182 L3183
+L3182:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3185 L3186
+L3185:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3181 L3181
+L3186:
+  LDC 0
+L3187:
+LDC 0
+TSEL L3181 L3181
+L3183:
+  LDC 0
+L3184:
+LDC 0
+TSEL L3181 L3181
+L3180:
+  LDC 0
+L3181:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3188 L3189
+L3188:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3191 L3192
+L3191:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3194 L3195
+L3194:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3190 L3190
+L3195:
+  LDC 0
+L3196:
+LDC 0
+TSEL L3190 L3190
+L3192:
+  LDC 0
+L3193:
+LDC 0
+TSEL L3190 L3190
+L3189:
+  LDC 0
+L3190:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3197 L3198
+L3197:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3200 L3201
+L3200:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3203 L3204
+L3203:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3199 L3199
+L3204:
+  LDC 0
+L3205:
+LDC 0
+TSEL L3199 L3199
+L3201:
+  LDC 0
+L3202:
+LDC 0
+TSEL L3199 L3199
+L3198:
+  LDC 0
+L3199:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3206 L3207
+L3206:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3209 L3210
+L3209:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3212 L3213
+L3212:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3208 L3208
+L3213:
+  LDC 0
+L3214:
+LDC 0
+TSEL L3208 L3208
+L3210:
+  LDC 0
+L3211:
+LDC 0
+TSEL L3208 L3208
+L3207:
+  LDC 0
+L3208:
+  CONS
+  CONS
+  RTN
+L3178:
+  RTN
+L3176:
+  RTN
+L3174:
+  RTN
+L3172:
+  RTN
+L3170:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3215
+  AP 4
+LDC 0
+TSEL L3216 L3216
+L3215:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3217
+TAP 1
+L3217:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3219
+TAP 1
+L3219:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3221
+TAP 1
+L3221:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3223
+TAP 1
+L3223:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3225 L3226
+L3225:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3228 L3229
+L3228:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3231 L3232
+L3231:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3227 L3227
+L3232:
+  LDC 0
+L3233:
+LDC 0
+TSEL L3227 L3227
+L3229:
+  LDC 0
+L3230:
+LDC 0
+TSEL L3227 L3227
+L3226:
+  LDC 0
+L3227:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3234 L3235
+L3234:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3237 L3238
+L3237:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3240 L3241
+L3240:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3236 L3236
+L3241:
+  LDC 0
+L3242:
+LDC 0
+TSEL L3236 L3236
+L3238:
+  LDC 0
+L3239:
+LDC 0
+TSEL L3236 L3236
+L3235:
+  LDC 0
+L3236:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3243 L3244
+L3243:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3246 L3247
+L3246:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3249 L3250
+L3249:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3245 L3245
+L3250:
+  LDC 0
+L3251:
+LDC 0
+TSEL L3245 L3245
+L3247:
+  LDC 0
+L3248:
+LDC 0
+TSEL L3245 L3245
+L3244:
+  LDC 0
+L3245:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3252 L3253
+L3252:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3255 L3256
+L3255:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3258 L3259
+L3258:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3254 L3254
+L3259:
+  LDC 0
+L3260:
+LDC 0
+TSEL L3254 L3254
+L3256:
+  LDC 0
+L3257:
+LDC 0
+TSEL L3254 L3254
+L3253:
+  LDC 0
+L3254:
+  CONS
+  CONS
+  RTN
+L3224:
+  RTN
+L3222:
+  RTN
+L3220:
+  RTN
+L3218:
+  RTN
+L3216:
+  CDR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3261
+  AP 4
+LDC 0
+TSEL L3262 L3262
+L3261:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3263
+TAP 1
+L3263:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3265
+TAP 1
+L3265:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3267
+TAP 1
+L3267:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3269
+TAP 1
+L3269:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3271 L3272
+L3271:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3274 L3275
+L3274:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3277 L3278
+L3277:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3273 L3273
+L3278:
+  LDC 0
+L3279:
+LDC 0
+TSEL L3273 L3273
+L3275:
+  LDC 0
+L3276:
+LDC 0
+TSEL L3273 L3273
+L3272:
+  LDC 0
+L3273:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3280 L3281
+L3280:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3283 L3284
+L3283:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3286 L3287
+L3286:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3282 L3282
+L3287:
+  LDC 0
+L3288:
+LDC 0
+TSEL L3282 L3282
+L3284:
+  LDC 0
+L3285:
+LDC 0
+TSEL L3282 L3282
+L3281:
+  LDC 0
+L3282:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3289 L3290
+L3289:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3292 L3293
+L3292:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3295 L3296
+L3295:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3291 L3291
+L3296:
+  LDC 0
+L3297:
+LDC 0
+TSEL L3291 L3291
+L3293:
+  LDC 0
+L3294:
+LDC 0
+TSEL L3291 L3291
+L3290:
+  LDC 0
+L3291:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3298 L3299
+L3298:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3301 L3302
+L3301:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3304 L3305
+L3304:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3300 L3300
+L3305:
+  LDC 0
+L3306:
+LDC 0
+TSEL L3300 L3300
+L3302:
+  LDC 0
+L3303:
+LDC 0
+TSEL L3300 L3300
+L3299:
+  LDC 0
+L3300:
+  CONS
+  CONS
+  RTN
+L3270:
+  RTN
+L3268:
+  RTN
+L3266:
+  RTN
+L3264:
+  RTN
+L3262:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CAR
+  ADD
+  LD 0 0
+  CAR
+  CDR
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3307
+  AP 4
+LDC 0
+TSEL L3308 L3308
+L3307:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3309
+TAP 1
+L3309:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3311
+TAP 1
+L3311:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3313
+TAP 1
+L3313:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3315
+TAP 1
+L3315:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3317 L3318
+L3317:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3320 L3321
+L3320:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3323 L3324
+L3323:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3319 L3319
+L3324:
+  LDC 0
+L3325:
+LDC 0
+TSEL L3319 L3319
+L3321:
+  LDC 0
+L3322:
+LDC 0
+TSEL L3319 L3319
+L3318:
+  LDC 0
+L3319:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3326 L3327
+L3326:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3329 L3330
+L3329:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3332 L3333
+L3332:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3328 L3328
+L3333:
+  LDC 0
+L3334:
+LDC 0
+TSEL L3328 L3328
+L3330:
+  LDC 0
+L3331:
+LDC 0
+TSEL L3328 L3328
+L3327:
+  LDC 0
+L3328:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3335 L3336
+L3335:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3338 L3339
+L3338:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3341 L3342
+L3341:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3337 L3337
+L3342:
+  LDC 0
+L3343:
+LDC 0
+TSEL L3337 L3337
+L3339:
+  LDC 0
+L3340:
+LDC 0
+TSEL L3337 L3337
+L3336:
+  LDC 0
+L3337:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3344 L3345
+L3344:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3347 L3348
+L3347:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3350 L3351
+L3350:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3346 L3346
+L3351:
+  LDC 0
+L3352:
+LDC 0
+TSEL L3346 L3346
+L3348:
+  LDC 0
+L3349:
+LDC 0
+TSEL L3346 L3346
+L3345:
+  LDC 0
+L3346:
+  CONS
+  CONS
+  RTN
+L3316:
+  RTN
+L3314:
+  RTN
+L3312:
+  RTN
+L3310:
+  RTN
+L3308:
+  CAR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3353
+  AP 4
+LDC 0
+TSEL L3354 L3354
+L3353:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3355
+TAP 1
+L3355:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3357
+TAP 1
+L3357:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3359
+TAP 1
+L3359:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3361
+TAP 1
+L3361:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3363 L3364
+L3363:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3366 L3367
+L3366:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3369 L3370
+L3369:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3365 L3365
+L3370:
+  LDC 0
+L3371:
+LDC 0
+TSEL L3365 L3365
+L3367:
+  LDC 0
+L3368:
+LDC 0
+TSEL L3365 L3365
+L3364:
+  LDC 0
+L3365:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3372 L3373
+L3372:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3375 L3376
+L3375:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3378 L3379
+L3378:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3374 L3374
+L3379:
+  LDC 0
+L3380:
+LDC 0
+TSEL L3374 L3374
+L3376:
+  LDC 0
+L3377:
+LDC 0
+TSEL L3374 L3374
+L3373:
+  LDC 0
+L3374:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3381 L3382
+L3381:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3384 L3385
+L3384:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3387 L3388
+L3387:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3383 L3383
+L3388:
+  LDC 0
+L3389:
+LDC 0
+TSEL L3383 L3383
+L3385:
+  LDC 0
+L3386:
+LDC 0
+TSEL L3383 L3383
+L3382:
+  LDC 0
+L3383:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3390 L3391
+L3390:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3393 L3394
+L3393:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3396 L3397
+L3396:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3392 L3392
+L3397:
+  LDC 0
+L3398:
+LDC 0
+TSEL L3392 L3392
+L3394:
+  LDC 0
+L3395:
+LDC 0
+TSEL L3392 L3392
+L3391:
+  LDC 0
+L3392:
+  CONS
+  CONS
+  RTN
+L3362:
+  RTN
+L3360:
+  RTN
+L3358:
+  RTN
+L3356:
+  RTN
+L3354:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3399
+  AP 4
+LDC 0
+TSEL L3400 L3400
+L3399:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3401
+TAP 1
+L3401:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3403
+TAP 1
+L3403:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3405
+TAP 1
+L3405:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3407
+TAP 1
+L3407:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3409 L3410
+L3409:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3412 L3413
+L3412:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3415 L3416
+L3415:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3411 L3411
+L3416:
+  LDC 0
+L3417:
+LDC 0
+TSEL L3411 L3411
+L3413:
+  LDC 0
+L3414:
+LDC 0
+TSEL L3411 L3411
+L3410:
+  LDC 0
+L3411:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3418 L3419
+L3418:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3421 L3422
+L3421:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3424 L3425
+L3424:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3420 L3420
+L3425:
+  LDC 0
+L3426:
+LDC 0
+TSEL L3420 L3420
+L3422:
+  LDC 0
+L3423:
+LDC 0
+TSEL L3420 L3420
+L3419:
+  LDC 0
+L3420:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3427 L3428
+L3427:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3430 L3431
+L3430:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3433 L3434
+L3433:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3429 L3429
+L3434:
+  LDC 0
+L3435:
+LDC 0
+TSEL L3429 L3429
+L3431:
+  LDC 0
+L3432:
+LDC 0
+TSEL L3429 L3429
+L3428:
+  LDC 0
+L3429:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3436 L3437
+L3436:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3439 L3440
+L3439:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3442 L3443
+L3442:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3438 L3438
+L3443:
+  LDC 0
+L3444:
+LDC 0
+TSEL L3438 L3438
+L3440:
+  LDC 0
+L3441:
+LDC 0
+TSEL L3438 L3438
+L3437:
+  LDC 0
+L3438:
+  CONS
+  CONS
+  RTN
+L3408:
+  RTN
+L3406:
+  RTN
+L3404:
+  RTN
+L3402:
+  RTN
+L3400:
+  CDR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3445
+  AP 4
+LDC 0
+TSEL L3446 L3446
+L3445:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3447
+TAP 1
+L3447:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3449
+TAP 1
+L3449:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3451
+TAP 1
+L3451:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3453
+TAP 1
+L3453:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3455 L3456
+L3455:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3458 L3459
+L3458:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3461 L3462
+L3461:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3457 L3457
+L3462:
+  LDC 0
+L3463:
+LDC 0
+TSEL L3457 L3457
+L3459:
+  LDC 0
+L3460:
+LDC 0
+TSEL L3457 L3457
+L3456:
+  LDC 0
+L3457:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3464 L3465
+L3464:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3467 L3468
+L3467:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3470 L3471
+L3470:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3466 L3466
+L3471:
+  LDC 0
+L3472:
+LDC 0
+TSEL L3466 L3466
+L3468:
+  LDC 0
+L3469:
+LDC 0
+TSEL L3466 L3466
+L3465:
+  LDC 0
+L3466:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3473 L3474
+L3473:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3476 L3477
+L3476:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3479 L3480
+L3479:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3475 L3475
+L3480:
+  LDC 0
+L3481:
+LDC 0
+TSEL L3475 L3475
+L3477:
+  LDC 0
+L3478:
+LDC 0
+TSEL L3475 L3475
+L3474:
+  LDC 0
+L3475:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3482 L3483
+L3482:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3485 L3486
+L3485:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3488 L3489
+L3488:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3484 L3484
+L3489:
+  LDC 0
+L3490:
+LDC 0
+TSEL L3484 L3484
+L3486:
+  LDC 0
+L3487:
+LDC 0
+TSEL L3484 L3484
+L3483:
+  LDC 0
+L3484:
+  CONS
+  CONS
+  RTN
+L3454:
+  RTN
+L3452:
+  RTN
+L3450:
+  RTN
+L3448:
+  RTN
+L3446:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CDR
+  ADD
+  CONS
+  LD 0 0
+  CDR
+  CAR
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3491
+  AP 4
+LDC 0
+TSEL L3492 L3492
+L3491:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3493
+TAP 1
+L3493:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3495
+TAP 1
+L3495:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3497
+TAP 1
+L3497:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3499
+TAP 1
+L3499:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3501 L3502
+L3501:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3504 L3505
+L3504:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3507 L3508
+L3507:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3503 L3503
+L3508:
+  LDC 0
+L3509:
+LDC 0
+TSEL L3503 L3503
+L3505:
+  LDC 0
+L3506:
+LDC 0
+TSEL L3503 L3503
+L3502:
+  LDC 0
+L3503:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3510 L3511
+L3510:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3513 L3514
+L3513:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3516 L3517
+L3516:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3512 L3512
+L3517:
+  LDC 0
+L3518:
+LDC 0
+TSEL L3512 L3512
+L3514:
+  LDC 0
+L3515:
+LDC 0
+TSEL L3512 L3512
+L3511:
+  LDC 0
+L3512:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3519 L3520
+L3519:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3522 L3523
+L3522:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3525 L3526
+L3525:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3521 L3521
+L3526:
+  LDC 0
+L3527:
+LDC 0
+TSEL L3521 L3521
+L3523:
+  LDC 0
+L3524:
+LDC 0
+TSEL L3521 L3521
+L3520:
+  LDC 0
+L3521:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3528 L3529
+L3528:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3531 L3532
+L3531:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3534 L3535
+L3534:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3530 L3530
+L3535:
+  LDC 0
+L3536:
+LDC 0
+TSEL L3530 L3530
+L3532:
+  LDC 0
+L3533:
+LDC 0
+TSEL L3530 L3530
+L3529:
+  LDC 0
+L3530:
+  CONS
+  CONS
+  RTN
+L3500:
+  RTN
+L3498:
+  RTN
+L3496:
+  RTN
+L3494:
+  RTN
+L3492:
+  CAR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3537
+  AP 4
+LDC 0
+TSEL L3538 L3538
+L3537:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3539
+TAP 1
+L3539:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3541
+TAP 1
+L3541:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3543
+TAP 1
+L3543:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3545
+TAP 1
+L3545:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3547 L3548
+L3547:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3550 L3551
+L3550:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3553 L3554
+L3553:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3549 L3549
+L3554:
+  LDC 0
+L3555:
+LDC 0
+TSEL L3549 L3549
+L3551:
+  LDC 0
+L3552:
+LDC 0
+TSEL L3549 L3549
+L3548:
+  LDC 0
+L3549:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3556 L3557
+L3556:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3559 L3560
+L3559:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3562 L3563
+L3562:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3558 L3558
+L3563:
+  LDC 0
+L3564:
+LDC 0
+TSEL L3558 L3558
+L3560:
+  LDC 0
+L3561:
+LDC 0
+TSEL L3558 L3558
+L3557:
+  LDC 0
+L3558:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3565 L3566
+L3565:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3568 L3569
+L3568:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3571 L3572
+L3571:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3567 L3567
+L3572:
+  LDC 0
+L3573:
+LDC 0
+TSEL L3567 L3567
+L3569:
+  LDC 0
+L3570:
+LDC 0
+TSEL L3567 L3567
+L3566:
+  LDC 0
+L3567:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3574 L3575
+L3574:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3577 L3578
+L3577:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3580 L3581
+L3580:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3576 L3576
+L3581:
+  LDC 0
+L3582:
+LDC 0
+TSEL L3576 L3576
+L3578:
+  LDC 0
+L3579:
+LDC 0
+TSEL L3576 L3576
+L3575:
+  LDC 0
+L3576:
+  CONS
+  CONS
+  RTN
+L3546:
+  RTN
+L3544:
+  RTN
+L3542:
+  RTN
+L3540:
+  RTN
+L3538:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3583
+  AP 4
+LDC 0
+TSEL L3584 L3584
+L3583:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3585
+TAP 1
+L3585:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3587
+TAP 1
+L3587:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3589
+TAP 1
+L3589:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3591
+TAP 1
+L3591:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3593 L3594
+L3593:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3596 L3597
+L3596:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3599 L3600
+L3599:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3595 L3595
+L3600:
+  LDC 0
+L3601:
+LDC 0
+TSEL L3595 L3595
+L3597:
+  LDC 0
+L3598:
+LDC 0
+TSEL L3595 L3595
+L3594:
+  LDC 0
+L3595:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3602 L3603
+L3602:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3605 L3606
+L3605:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3608 L3609
+L3608:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3604 L3604
+L3609:
+  LDC 0
+L3610:
+LDC 0
+TSEL L3604 L3604
+L3606:
+  LDC 0
+L3607:
+LDC 0
+TSEL L3604 L3604
+L3603:
+  LDC 0
+L3604:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3611 L3612
+L3611:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3614 L3615
+L3614:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3617 L3618
+L3617:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3613 L3613
+L3618:
+  LDC 0
+L3619:
+LDC 0
+TSEL L3613 L3613
+L3615:
+  LDC 0
+L3616:
+LDC 0
+TSEL L3613 L3613
+L3612:
+  LDC 0
+L3613:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3620 L3621
+L3620:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3623 L3624
+L3623:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3626 L3627
+L3626:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3622 L3622
+L3627:
+  LDC 0
+L3628:
+LDC 0
+TSEL L3622 L3622
+L3624:
+  LDC 0
+L3625:
+LDC 0
+TSEL L3622 L3622
+L3621:
+  LDC 0
+L3622:
+  CONS
+  CONS
+  RTN
+L3592:
+  RTN
+L3590:
+  RTN
+L3588:
+  RTN
+L3586:
+  RTN
+L3584:
+  CDR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3629
+  AP 4
+LDC 0
+TSEL L3630 L3630
+L3629:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3631
+TAP 1
+L3631:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3633
+TAP 1
+L3633:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3635
+TAP 1
+L3635:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3637
+TAP 1
+L3637:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3639 L3640
+L3639:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3642 L3643
+L3642:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3645 L3646
+L3645:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3641 L3641
+L3646:
+  LDC 0
+L3647:
+LDC 0
+TSEL L3641 L3641
+L3643:
+  LDC 0
+L3644:
+LDC 0
+TSEL L3641 L3641
+L3640:
+  LDC 0
+L3641:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3648 L3649
+L3648:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3651 L3652
+L3651:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3654 L3655
+L3654:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3650 L3650
+L3655:
+  LDC 0
+L3656:
+LDC 0
+TSEL L3650 L3650
+L3652:
+  LDC 0
+L3653:
+LDC 0
+TSEL L3650 L3650
+L3649:
+  LDC 0
+L3650:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3657 L3658
+L3657:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3660 L3661
+L3660:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3663 L3664
+L3663:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3659 L3659
+L3664:
+  LDC 0
+L3665:
+LDC 0
+TSEL L3659 L3659
+L3661:
+  LDC 0
+L3662:
+LDC 0
+TSEL L3659 L3659
+L3658:
+  LDC 0
+L3659:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3666 L3667
+L3666:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3669 L3670
+L3669:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3672 L3673
+L3672:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3668 L3668
+L3673:
+  LDC 0
+L3674:
+LDC 0
+TSEL L3668 L3668
+L3670:
+  LDC 0
+L3671:
+LDC 0
+TSEL L3668 L3668
+L3667:
+  LDC 0
+L3668:
+  CONS
+  CONS
+  RTN
+L3638:
+  RTN
+L3636:
+  RTN
+L3634:
+  RTN
+L3632:
+  RTN
+L3630:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CAR
+  ADD
+  LD 0 0
+  CDR
+  CDR
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3675
+  AP 4
+LDC 0
+TSEL L3676 L3676
+L3675:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3677
+TAP 1
+L3677:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3679
+TAP 1
+L3679:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3681
+TAP 1
+L3681:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3683
+TAP 1
+L3683:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3685 L3686
+L3685:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3688 L3689
+L3688:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3691 L3692
+L3691:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3687 L3687
+L3692:
+  LDC 0
+L3693:
+LDC 0
+TSEL L3687 L3687
+L3689:
+  LDC 0
+L3690:
+LDC 0
+TSEL L3687 L3687
+L3686:
+  LDC 0
+L3687:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3694 L3695
+L3694:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3697 L3698
+L3697:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3700 L3701
+L3700:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3696 L3696
+L3701:
+  LDC 0
+L3702:
+LDC 0
+TSEL L3696 L3696
+L3698:
+  LDC 0
+L3699:
+LDC 0
+TSEL L3696 L3696
+L3695:
+  LDC 0
+L3696:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3703 L3704
+L3703:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3706 L3707
+L3706:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3709 L3710
+L3709:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3705 L3705
+L3710:
+  LDC 0
+L3711:
+LDC 0
+TSEL L3705 L3705
+L3707:
+  LDC 0
+L3708:
+LDC 0
+TSEL L3705 L3705
+L3704:
+  LDC 0
+L3705:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3712 L3713
+L3712:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3715 L3716
+L3715:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3718 L3719
+L3718:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3714 L3714
+L3719:
+  LDC 0
+L3720:
+LDC 0
+TSEL L3714 L3714
+L3716:
+  LDC 0
+L3717:
+LDC 0
+TSEL L3714 L3714
+L3713:
+  LDC 0
+L3714:
+  CONS
+  CONS
+  RTN
+L3684:
+  RTN
+L3682:
+  RTN
+L3680:
+  RTN
+L3678:
+  RTN
+L3676:
+  CAR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3721
+  AP 4
+LDC 0
+TSEL L3722 L3722
+L3721:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3723
+TAP 1
+L3723:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3725
+TAP 1
+L3725:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3727
+TAP 1
+L3727:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3729
+TAP 1
+L3729:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3731 L3732
+L3731:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3734 L3735
+L3734:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3737 L3738
+L3737:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3733 L3733
+L3738:
+  LDC 0
+L3739:
+LDC 0
+TSEL L3733 L3733
+L3735:
+  LDC 0
+L3736:
+LDC 0
+TSEL L3733 L3733
+L3732:
+  LDC 0
+L3733:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3740 L3741
+L3740:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3743 L3744
+L3743:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3746 L3747
+L3746:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3742 L3742
+L3747:
+  LDC 0
+L3748:
+LDC 0
+TSEL L3742 L3742
+L3744:
+  LDC 0
+L3745:
+LDC 0
+TSEL L3742 L3742
+L3741:
+  LDC 0
+L3742:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3749 L3750
+L3749:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3752 L3753
+L3752:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3755 L3756
+L3755:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3751 L3751
+L3756:
+  LDC 0
+L3757:
+LDC 0
+TSEL L3751 L3751
+L3753:
+  LDC 0
+L3754:
+LDC 0
+TSEL L3751 L3751
+L3750:
+  LDC 0
+L3751:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3758 L3759
+L3758:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3761 L3762
+L3761:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3764 L3765
+L3764:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3760 L3760
+L3765:
+  LDC 0
+L3766:
+LDC 0
+TSEL L3760 L3760
+L3762:
+  LDC 0
+L3763:
+LDC 0
+TSEL L3760 L3760
+L3759:
+  LDC 0
+L3760:
+  CONS
+  CONS
+  RTN
+L3730:
+  RTN
+L3728:
+  RTN
+L3726:
+  RTN
+L3724:
+  RTN
+L3722:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3767
+  AP 4
+LDC 0
+TSEL L3768 L3768
+L3767:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3769
+TAP 1
+L3769:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3771
+TAP 1
+L3771:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3773
+TAP 1
+L3773:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3775
+TAP 1
+L3775:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3777 L3778
+L3777:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3780 L3781
+L3780:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3783 L3784
+L3783:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3779 L3779
+L3784:
+  LDC 0
+L3785:
+LDC 0
+TSEL L3779 L3779
+L3781:
+  LDC 0
+L3782:
+LDC 0
+TSEL L3779 L3779
+L3778:
+  LDC 0
+L3779:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3786 L3787
+L3786:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3789 L3790
+L3789:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3792 L3793
+L3792:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3788 L3788
+L3793:
+  LDC 0
+L3794:
+LDC 0
+TSEL L3788 L3788
+L3790:
+  LDC 0
+L3791:
+LDC 0
+TSEL L3788 L3788
+L3787:
+  LDC 0
+L3788:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3795 L3796
+L3795:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3798 L3799
+L3798:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3801 L3802
+L3801:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3797 L3797
+L3802:
+  LDC 0
+L3803:
+LDC 0
+TSEL L3797 L3797
+L3799:
+  LDC 0
+L3800:
+LDC 0
+TSEL L3797 L3797
+L3796:
+  LDC 0
+L3797:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3804 L3805
+L3804:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3807 L3808
+L3807:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3810 L3811
+L3810:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3806 L3806
+L3811:
+  LDC 0
+L3812:
+LDC 0
+TSEL L3806 L3806
+L3808:
+  LDC 0
+L3809:
+LDC 0
+TSEL L3806 L3806
+L3805:
+  LDC 0
+L3806:
+  CONS
+  CONS
+  RTN
+L3776:
+  RTN
+L3774:
+  RTN
+L3772:
+  RTN
+L3770:
+  RTN
+L3768:
+  CDR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 100
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3813
+  AP 4
+LDC 0
+TSEL L3814 L3814
+L3813:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L3815
+TAP 1
+L3815:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L3817
+TAP 1
+L3817:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L3819
+TAP 1
+L3819:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 9 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L3821
+TAP 1
+L3821:
+  LDC 1
+  LD 3 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3823 L3824
+L3823:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3826 L3827
+L3826:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3829 L3830
+L3829:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3825 L3825
+L3830:
+  LDC 0
+L3831:
+LDC 0
+TSEL L3825 L3825
+L3827:
+  LDC 0
+L3828:
+LDC 0
+TSEL L3825 L3825
+L3824:
+  LDC 0
+L3825:
+  LDC 1
+  LD 2 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3832 L3833
+L3832:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3835 L3836
+L3835:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3838 L3839
+L3838:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3834 L3834
+L3839:
+  LDC 0
+L3840:
+LDC 0
+TSEL L3834 L3834
+L3836:
+  LDC 0
+L3837:
+LDC 0
+TSEL L3834 L3834
+L3833:
+  LDC 0
+L3834:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3841 L3842
+L3841:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3844 L3845
+L3844:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3847 L3848
+L3847:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3843 L3843
+L3848:
+  LDC 0
+L3849:
+LDC 0
+TSEL L3843 L3843
+L3845:
+  LDC 0
+L3846:
+LDC 0
+TSEL L3843 L3843
+L3842:
+  LDC 0
+L3843:
+  LDC 1
+  LD 0 0
+  LDC 999999
+  CEQ
+  SUB
+  TSEL L3850 L3851
+L3850:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3853 L3854
+L3853:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3856 L3857
+L3856:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3852 L3852
+L3857:
+  LDC 0
+L3858:
+LDC 0
+TSEL L3852 L3852
+L3854:
+  LDC 0
+L3855:
+LDC 0
+TSEL L3852 L3852
+L3851:
+  LDC 0
+L3852:
+  CONS
+  CONS
+  RTN
+L3822:
+  RTN
+L3820:
+  RTN
+L3818:
+  RTN
+L3816:
+  RTN
+L3814:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CDR
+  ADD
+  CONS
+  CONS
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3859
+  AP 4
+LDC 0
+TSEL L3860 L3860
+L3859:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L3861
+TAP 1
+L3861:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L3863
+TAP 1
+L3863:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L3865
+TAP 1
+L3865:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L3867
+TAP 1
+L3867:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3869 L3870
+L3869:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3872 L3873
+L3872:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3875 L3876
+L3875:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3871 L3871
+L3876:
+  LDC 0
+L3877:
+LDC 0
+TSEL L3871 L3871
+L3873:
+  LDC 0
+L3874:
+LDC 0
+TSEL L3871 L3871
+L3870:
+  LDC 0
+L3871:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3878 L3879
+L3878:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3881 L3882
+L3881:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3884 L3885
+L3884:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3880 L3880
+L3885:
+  LDC 0
+L3886:
+LDC 0
+TSEL L3880 L3880
+L3882:
+  LDC 0
+L3883:
+LDC 0
+TSEL L3880 L3880
+L3879:
+  LDC 0
+L3880:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3887 L3888
+L3887:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3890 L3891
+L3890:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3893 L3894
+L3893:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3889 L3889
+L3894:
+  LDC 0
+L3895:
+LDC 0
+TSEL L3889 L3889
+L3891:
+  LDC 0
+L3892:
+LDC 0
+TSEL L3889 L3889
+L3888:
+  LDC 0
+L3889:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3896 L3897
+L3896:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3899 L3900
+L3899:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3902 L3903
+L3902:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3898 L3898
+L3903:
+  LDC 0
+L3904:
+LDC 0
+TSEL L3898 L3898
+L3900:
+  LDC 0
+L3901:
+LDC 0
+TSEL L3898 L3898
+L3897:
+  LDC 0
+L3898:
+  CONS
+  CONS
+  RTN
+L3868:
+  RTN
+L3866:
+  RTN
+L3864:
+  RTN
+L3862:
+  RTN
+L3860:
+  CAR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3905
+  AP 4
+LDC 0
+TSEL L3906 L3906
+L3905:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L3907
+TAP 1
+L3907:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L3909
+TAP 1
+L3909:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L3911
+TAP 1
+L3911:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L3913
+TAP 1
+L3913:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3915 L3916
+L3915:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3918 L3919
+L3918:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3921 L3922
+L3921:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3917 L3917
+L3922:
+  LDC 0
+L3923:
+LDC 0
+TSEL L3917 L3917
+L3919:
+  LDC 0
+L3920:
+LDC 0
+TSEL L3917 L3917
+L3916:
+  LDC 0
+L3917:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3924 L3925
+L3924:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3927 L3928
+L3927:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3930 L3931
+L3930:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3926 L3926
+L3931:
+  LDC 0
+L3932:
+LDC 0
+TSEL L3926 L3926
+L3928:
+  LDC 0
+L3929:
+LDC 0
+TSEL L3926 L3926
+L3925:
+  LDC 0
+L3926:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3933 L3934
+L3933:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3936 L3937
+L3936:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3939 L3940
+L3939:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3935 L3935
+L3940:
+  LDC 0
+L3941:
+LDC 0
+TSEL L3935 L3935
+L3937:
+  LDC 0
+L3938:
+LDC 0
+TSEL L3935 L3935
+L3934:
+  LDC 0
+L3935:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3942 L3943
+L3942:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3945 L3946
+L3945:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3948 L3949
+L3948:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3944 L3944
+L3949:
+  LDC 0
+L3950:
+LDC 0
+TSEL L3944 L3944
+L3946:
+  LDC 0
+L3947:
+LDC 0
+TSEL L3944 L3944
+L3943:
+  LDC 0
+L3944:
+  CONS
+  CONS
+  RTN
+L3914:
+  RTN
+L3912:
+  RTN
+L3910:
+  RTN
+L3908:
+  RTN
+L3906:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3951
+  AP 4
+LDC 0
+TSEL L3952 L3952
+L3951:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L3953
+TAP 1
+L3953:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L3955
+TAP 1
+L3955:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L3957
+TAP 1
+L3957:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L3959
+TAP 1
+L3959:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3961 L3962
+L3961:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L3964 L3965
+L3964:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L3967 L3968
+L3967:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L3963 L3963
+L3968:
+  LDC 0
+L3969:
+LDC 0
+TSEL L3963 L3963
+L3965:
+  LDC 0
+L3966:
+LDC 0
+TSEL L3963 L3963
+L3962:
+  LDC 0
+L3963:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3970 L3971
+L3970:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L3973 L3974
+L3973:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L3976 L3977
+L3976:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L3972 L3972
+L3977:
+  LDC 0
+L3978:
+LDC 0
+TSEL L3972 L3972
+L3974:
+  LDC 0
+L3975:
+LDC 0
+TSEL L3972 L3972
+L3971:
+  LDC 0
+L3972:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3979 L3980
+L3979:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L3982 L3983
+L3982:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L3985 L3986
+L3985:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L3981 L3981
+L3986:
+  LDC 0
+L3987:
+LDC 0
+TSEL L3981 L3981
+L3983:
+  LDC 0
+L3984:
+LDC 0
+TSEL L3981 L3981
+L3980:
+  LDC 0
+L3981:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L3988 L3989
+L3988:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L3991 L3992
+L3991:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L3994 L3995
+L3994:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L3990 L3990
+L3995:
+  LDC 0
+L3996:
+LDC 0
+TSEL L3990 L3990
+L3992:
+  LDC 0
+L3993:
+LDC 0
+TSEL L3990 L3990
+L3989:
+  LDC 0
+L3990:
+  CONS
+  CONS
+  RTN
+L3960:
+  RTN
+L3958:
+  RTN
+L3956:
+  RTN
+L3954:
+  RTN
+L3952:
+  CDR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L3997
+  AP 4
+LDC 0
+TSEL L3998 L3998
+L3997:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L3999
+TAP 1
+L3999:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4001
+TAP 1
+L4001:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4003
+TAP 1
+L4003:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4005
+TAP 1
+L4005:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4007 L4008
+L4007:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4010 L4011
+L4010:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4013 L4014
+L4013:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4009 L4009
+L4014:
+  LDC 0
+L4015:
+LDC 0
+TSEL L4009 L4009
+L4011:
+  LDC 0
+L4012:
+LDC 0
+TSEL L4009 L4009
+L4008:
+  LDC 0
+L4009:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4016 L4017
+L4016:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4019 L4020
+L4019:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4022 L4023
+L4022:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4018 L4018
+L4023:
+  LDC 0
+L4024:
+LDC 0
+TSEL L4018 L4018
+L4020:
+  LDC 0
+L4021:
+LDC 0
+TSEL L4018 L4018
+L4017:
+  LDC 0
+L4018:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4025 L4026
+L4025:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4028 L4029
+L4028:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4031 L4032
+L4031:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4027 L4027
+L4032:
+  LDC 0
+L4033:
+LDC 0
+TSEL L4027 L4027
+L4029:
+  LDC 0
+L4030:
+LDC 0
+TSEL L4027 L4027
+L4026:
+  LDC 0
+L4027:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4034 L4035
+L4034:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4037 L4038
+L4037:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4040 L4041
+L4040:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4036 L4036
+L4041:
+  LDC 0
+L4042:
+LDC 0
+TSEL L4036 L4036
+L4038:
+  LDC 0
+L4039:
+LDC 0
+TSEL L4036 L4036
+L4035:
+  LDC 0
+L4036:
+  CONS
+  CONS
+  RTN
+L4006:
+  RTN
+L4004:
+  RTN
+L4002:
+  RTN
+L4000:
+  RTN
+L3998:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CAR
+  ADD
+  LD 0 0
+  CAR
+  CDR
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4043
+  AP 4
+LDC 0
+TSEL L4044 L4044
+L4043:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4045
+TAP 1
+L4045:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4047
+TAP 1
+L4047:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4049
+TAP 1
+L4049:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4051
+TAP 1
+L4051:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4053 L4054
+L4053:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4056 L4057
+L4056:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4059 L4060
+L4059:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4055 L4055
+L4060:
+  LDC 0
+L4061:
+LDC 0
+TSEL L4055 L4055
+L4057:
+  LDC 0
+L4058:
+LDC 0
+TSEL L4055 L4055
+L4054:
+  LDC 0
+L4055:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4062 L4063
+L4062:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4065 L4066
+L4065:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4068 L4069
+L4068:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4064 L4064
+L4069:
+  LDC 0
+L4070:
+LDC 0
+TSEL L4064 L4064
+L4066:
+  LDC 0
+L4067:
+LDC 0
+TSEL L4064 L4064
+L4063:
+  LDC 0
+L4064:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4071 L4072
+L4071:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4074 L4075
+L4074:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4077 L4078
+L4077:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4073 L4073
+L4078:
+  LDC 0
+L4079:
+LDC 0
+TSEL L4073 L4073
+L4075:
+  LDC 0
+L4076:
+LDC 0
+TSEL L4073 L4073
+L4072:
+  LDC 0
+L4073:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4080 L4081
+L4080:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4083 L4084
+L4083:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4086 L4087
+L4086:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4082 L4082
+L4087:
+  LDC 0
+L4088:
+LDC 0
+TSEL L4082 L4082
+L4084:
+  LDC 0
+L4085:
+LDC 0
+TSEL L4082 L4082
+L4081:
+  LDC 0
+L4082:
+  CONS
+  CONS
+  RTN
+L4052:
+  RTN
+L4050:
+  RTN
+L4048:
+  RTN
+L4046:
+  RTN
+L4044:
+  CAR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4089
+  AP 4
+LDC 0
+TSEL L4090 L4090
+L4089:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4091
+TAP 1
+L4091:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4093
+TAP 1
+L4093:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4095
+TAP 1
+L4095:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4097
+TAP 1
+L4097:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4099 L4100
+L4099:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4102 L4103
+L4102:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4105 L4106
+L4105:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4101 L4101
+L4106:
+  LDC 0
+L4107:
+LDC 0
+TSEL L4101 L4101
+L4103:
+  LDC 0
+L4104:
+LDC 0
+TSEL L4101 L4101
+L4100:
+  LDC 0
+L4101:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4108 L4109
+L4108:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4111 L4112
+L4111:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4114 L4115
+L4114:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4110 L4110
+L4115:
+  LDC 0
+L4116:
+LDC 0
+TSEL L4110 L4110
+L4112:
+  LDC 0
+L4113:
+LDC 0
+TSEL L4110 L4110
+L4109:
+  LDC 0
+L4110:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4117 L4118
+L4117:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4120 L4121
+L4120:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4123 L4124
+L4123:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4119 L4119
+L4124:
+  LDC 0
+L4125:
+LDC 0
+TSEL L4119 L4119
+L4121:
+  LDC 0
+L4122:
+LDC 0
+TSEL L4119 L4119
+L4118:
+  LDC 0
+L4119:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4126 L4127
+L4126:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4129 L4130
+L4129:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4132 L4133
+L4132:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4128 L4128
+L4133:
+  LDC 0
+L4134:
+LDC 0
+TSEL L4128 L4128
+L4130:
+  LDC 0
+L4131:
+LDC 0
+TSEL L4128 L4128
+L4127:
+  LDC 0
+L4128:
+  CONS
+  CONS
+  RTN
+L4098:
+  RTN
+L4096:
+  RTN
+L4094:
+  RTN
+L4092:
+  RTN
+L4090:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4135
+  AP 4
+LDC 0
+TSEL L4136 L4136
+L4135:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4137
+TAP 1
+L4137:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4139
+TAP 1
+L4139:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4141
+TAP 1
+L4141:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4143
+TAP 1
+L4143:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4145 L4146
+L4145:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4148 L4149
+L4148:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4151 L4152
+L4151:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4147 L4147
+L4152:
+  LDC 0
+L4153:
+LDC 0
+TSEL L4147 L4147
+L4149:
+  LDC 0
+L4150:
+LDC 0
+TSEL L4147 L4147
+L4146:
+  LDC 0
+L4147:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4154 L4155
+L4154:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4157 L4158
+L4157:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4160 L4161
+L4160:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4156 L4156
+L4161:
+  LDC 0
+L4162:
+LDC 0
+TSEL L4156 L4156
+L4158:
+  LDC 0
+L4159:
+LDC 0
+TSEL L4156 L4156
+L4155:
+  LDC 0
+L4156:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4163 L4164
+L4163:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4166 L4167
+L4166:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4169 L4170
+L4169:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4165 L4165
+L4170:
+  LDC 0
+L4171:
+LDC 0
+TSEL L4165 L4165
+L4167:
+  LDC 0
+L4168:
+LDC 0
+TSEL L4165 L4165
+L4164:
+  LDC 0
+L4165:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4172 L4173
+L4172:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4175 L4176
+L4175:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4178 L4179
+L4178:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4174 L4174
+L4179:
+  LDC 0
+L4180:
+LDC 0
+TSEL L4174 L4174
+L4176:
+  LDC 0
+L4177:
+LDC 0
+TSEL L4174 L4174
+L4173:
+  LDC 0
+L4174:
+  CONS
+  CONS
+  RTN
+L4144:
+  RTN
+L4142:
+  RTN
+L4140:
+  RTN
+L4138:
+  RTN
+L4136:
+  CDR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4181
+  AP 4
+LDC 0
+TSEL L4182 L4182
+L4181:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4183
+TAP 1
+L4183:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4185
+TAP 1
+L4185:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4187
+TAP 1
+L4187:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4189
+TAP 1
+L4189:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4191 L4192
+L4191:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4194 L4195
+L4194:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4197 L4198
+L4197:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4193 L4193
+L4198:
+  LDC 0
+L4199:
+LDC 0
+TSEL L4193 L4193
+L4195:
+  LDC 0
+L4196:
+LDC 0
+TSEL L4193 L4193
+L4192:
+  LDC 0
+L4193:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4200 L4201
+L4200:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4203 L4204
+L4203:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4206 L4207
+L4206:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4202 L4202
+L4207:
+  LDC 0
+L4208:
+LDC 0
+TSEL L4202 L4202
+L4204:
+  LDC 0
+L4205:
+LDC 0
+TSEL L4202 L4202
+L4201:
+  LDC 0
+L4202:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4209 L4210
+L4209:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4212 L4213
+L4212:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4215 L4216
+L4215:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4211 L4211
+L4216:
+  LDC 0
+L4217:
+LDC 0
+TSEL L4211 L4211
+L4213:
+  LDC 0
+L4214:
+LDC 0
+TSEL L4211 L4211
+L4210:
+  LDC 0
+L4211:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4218 L4219
+L4218:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4221 L4222
+L4221:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4224 L4225
+L4224:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4220 L4220
+L4225:
+  LDC 0
+L4226:
+LDC 0
+TSEL L4220 L4220
+L4222:
+  LDC 0
+L4223:
+LDC 0
+TSEL L4220 L4220
+L4219:
+  LDC 0
+L4220:
+  CONS
+  CONS
+  RTN
+L4190:
+  RTN
+L4188:
+  RTN
+L4186:
+  RTN
+L4184:
+  RTN
+L4182:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CDR
+  ADD
+  CONS
+  LD 0 0
+  CDR
+  CAR
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4227
+  AP 4
+LDC 0
+TSEL L4228 L4228
+L4227:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4229
+TAP 1
+L4229:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4231
+TAP 1
+L4231:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4233
+TAP 1
+L4233:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4235
+TAP 1
+L4235:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4237 L4238
+L4237:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4240 L4241
+L4240:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4243 L4244
+L4243:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4239 L4239
+L4244:
+  LDC 0
+L4245:
+LDC 0
+TSEL L4239 L4239
+L4241:
+  LDC 0
+L4242:
+LDC 0
+TSEL L4239 L4239
+L4238:
+  LDC 0
+L4239:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4246 L4247
+L4246:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4249 L4250
+L4249:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4252 L4253
+L4252:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4248 L4248
+L4253:
+  LDC 0
+L4254:
+LDC 0
+TSEL L4248 L4248
+L4250:
+  LDC 0
+L4251:
+LDC 0
+TSEL L4248 L4248
+L4247:
+  LDC 0
+L4248:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4255 L4256
+L4255:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4258 L4259
+L4258:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4261 L4262
+L4261:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4257 L4257
+L4262:
+  LDC 0
+L4263:
+LDC 0
+TSEL L4257 L4257
+L4259:
+  LDC 0
+L4260:
+LDC 0
+TSEL L4257 L4257
+L4256:
+  LDC 0
+L4257:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4264 L4265
+L4264:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4267 L4268
+L4267:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4270 L4271
+L4270:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4266 L4266
+L4271:
+  LDC 0
+L4272:
+LDC 0
+TSEL L4266 L4266
+L4268:
+  LDC 0
+L4269:
+LDC 0
+TSEL L4266 L4266
+L4265:
+  LDC 0
+L4266:
+  CONS
+  CONS
+  RTN
+L4236:
+  RTN
+L4234:
+  RTN
+L4232:
+  RTN
+L4230:
+  RTN
+L4228:
+  CAR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4273
+  AP 4
+LDC 0
+TSEL L4274 L4274
+L4273:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4275
+TAP 1
+L4275:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4277
+TAP 1
+L4277:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4279
+TAP 1
+L4279:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4281
+TAP 1
+L4281:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4283 L4284
+L4283:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4286 L4287
+L4286:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4289 L4290
+L4289:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4285 L4285
+L4290:
+  LDC 0
+L4291:
+LDC 0
+TSEL L4285 L4285
+L4287:
+  LDC 0
+L4288:
+LDC 0
+TSEL L4285 L4285
+L4284:
+  LDC 0
+L4285:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4292 L4293
+L4292:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4295 L4296
+L4295:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4298 L4299
+L4298:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4294 L4294
+L4299:
+  LDC 0
+L4300:
+LDC 0
+TSEL L4294 L4294
+L4296:
+  LDC 0
+L4297:
+LDC 0
+TSEL L4294 L4294
+L4293:
+  LDC 0
+L4294:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4301 L4302
+L4301:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4304 L4305
+L4304:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4307 L4308
+L4307:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4303 L4303
+L4308:
+  LDC 0
+L4309:
+LDC 0
+TSEL L4303 L4303
+L4305:
+  LDC 0
+L4306:
+LDC 0
+TSEL L4303 L4303
+L4302:
+  LDC 0
+L4303:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4310 L4311
+L4310:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4313 L4314
+L4313:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4316 L4317
+L4316:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4312 L4312
+L4317:
+  LDC 0
+L4318:
+LDC 0
+TSEL L4312 L4312
+L4314:
+  LDC 0
+L4315:
+LDC 0
+TSEL L4312 L4312
+L4311:
+  LDC 0
+L4312:
+  CONS
+  CONS
+  RTN
+L4282:
+  RTN
+L4280:
+  RTN
+L4278:
+  RTN
+L4276:
+  RTN
+L4274:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4319
+  AP 4
+LDC 0
+TSEL L4320 L4320
+L4319:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4321
+TAP 1
+L4321:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4323
+TAP 1
+L4323:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4325
+TAP 1
+L4325:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4327
+TAP 1
+L4327:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4329 L4330
+L4329:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4332 L4333
+L4332:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4335 L4336
+L4335:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4331 L4331
+L4336:
+  LDC 0
+L4337:
+LDC 0
+TSEL L4331 L4331
+L4333:
+  LDC 0
+L4334:
+LDC 0
+TSEL L4331 L4331
+L4330:
+  LDC 0
+L4331:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4338 L4339
+L4338:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4341 L4342
+L4341:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4344 L4345
+L4344:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4340 L4340
+L4345:
+  LDC 0
+L4346:
+LDC 0
+TSEL L4340 L4340
+L4342:
+  LDC 0
+L4343:
+LDC 0
+TSEL L4340 L4340
+L4339:
+  LDC 0
+L4340:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4347 L4348
+L4347:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4350 L4351
+L4350:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4353 L4354
+L4353:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4349 L4349
+L4354:
+  LDC 0
+L4355:
+LDC 0
+TSEL L4349 L4349
+L4351:
+  LDC 0
+L4352:
+LDC 0
+TSEL L4349 L4349
+L4348:
+  LDC 0
+L4349:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4356 L4357
+L4356:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4359 L4360
+L4359:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4362 L4363
+L4362:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4358 L4358
+L4363:
+  LDC 0
+L4364:
+LDC 0
+TSEL L4358 L4358
+L4360:
+  LDC 0
+L4361:
+LDC 0
+TSEL L4358 L4358
+L4357:
+  LDC 0
+L4358:
+  CONS
+  CONS
+  RTN
+L4328:
+  RTN
+L4326:
+  RTN
+L4324:
+  RTN
+L4322:
+  RTN
+L4320:
+  CDR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4365
+  AP 4
+LDC 0
+TSEL L4366 L4366
+L4365:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4367
+TAP 1
+L4367:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4369
+TAP 1
+L4369:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4371
+TAP 1
+L4371:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4373
+TAP 1
+L4373:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4375 L4376
+L4375:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4378 L4379
+L4378:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4381 L4382
+L4381:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4377 L4377
+L4382:
+  LDC 0
+L4383:
+LDC 0
+TSEL L4377 L4377
+L4379:
+  LDC 0
+L4380:
+LDC 0
+TSEL L4377 L4377
+L4376:
+  LDC 0
+L4377:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4384 L4385
+L4384:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4387 L4388
+L4387:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4390 L4391
+L4390:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4386 L4386
+L4391:
+  LDC 0
+L4392:
+LDC 0
+TSEL L4386 L4386
+L4388:
+  LDC 0
+L4389:
+LDC 0
+TSEL L4386 L4386
+L4385:
+  LDC 0
+L4386:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4393 L4394
+L4393:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4396 L4397
+L4396:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4399 L4400
+L4399:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4395 L4395
+L4400:
+  LDC 0
+L4401:
+LDC 0
+TSEL L4395 L4395
+L4397:
+  LDC 0
+L4398:
+LDC 0
+TSEL L4395 L4395
+L4394:
+  LDC 0
+L4395:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4402 L4403
+L4402:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4405 L4406
+L4405:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4408 L4409
+L4408:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4404 L4404
+L4409:
+  LDC 0
+L4410:
+LDC 0
+TSEL L4404 L4404
+L4406:
+  LDC 0
+L4407:
+LDC 0
+TSEL L4404 L4404
+L4403:
+  LDC 0
+L4404:
+  CONS
+  CONS
+  RTN
+L4374:
+  RTN
+L4372:
+  RTN
+L4370:
+  RTN
+L4368:
+  RTN
+L4366:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CAR
+  ADD
+  LD 0 0
+  CDR
+  CDR
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4411
+  AP 4
+LDC 0
+TSEL L4412 L4412
+L4411:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4413
+TAP 1
+L4413:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4415
+TAP 1
+L4415:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4417
+TAP 1
+L4417:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4419
+TAP 1
+L4419:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4421 L4422
+L4421:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4424 L4425
+L4424:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4427 L4428
+L4427:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4423 L4423
+L4428:
+  LDC 0
+L4429:
+LDC 0
+TSEL L4423 L4423
+L4425:
+  LDC 0
+L4426:
+LDC 0
+TSEL L4423 L4423
+L4422:
+  LDC 0
+L4423:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4430 L4431
+L4430:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4433 L4434
+L4433:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4436 L4437
+L4436:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4432 L4432
+L4437:
+  LDC 0
+L4438:
+LDC 0
+TSEL L4432 L4432
+L4434:
+  LDC 0
+L4435:
+LDC 0
+TSEL L4432 L4432
+L4431:
+  LDC 0
+L4432:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4439 L4440
+L4439:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4442 L4443
+L4442:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4445 L4446
+L4445:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4441 L4441
+L4446:
+  LDC 0
+L4447:
+LDC 0
+TSEL L4441 L4441
+L4443:
+  LDC 0
+L4444:
+LDC 0
+TSEL L4441 L4441
+L4440:
+  LDC 0
+L4441:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4448 L4449
+L4448:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4451 L4452
+L4451:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4454 L4455
+L4454:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4450 L4450
+L4455:
+  LDC 0
+L4456:
+LDC 0
+TSEL L4450 L4450
+L4452:
+  LDC 0
+L4453:
+LDC 0
+TSEL L4450 L4450
+L4449:
+  LDC 0
+L4450:
+  CONS
+  CONS
+  RTN
+L4420:
+  RTN
+L4418:
+  RTN
+L4416:
+  RTN
+L4414:
+  RTN
+L4412:
+  CAR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4457
+  AP 4
+LDC 0
+TSEL L4458 L4458
+L4457:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4459
+TAP 1
+L4459:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4461
+TAP 1
+L4461:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4463
+TAP 1
+L4463:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4465
+TAP 1
+L4465:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4467 L4468
+L4467:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4470 L4471
+L4470:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4473 L4474
+L4473:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4469 L4469
+L4474:
+  LDC 0
+L4475:
+LDC 0
+TSEL L4469 L4469
+L4471:
+  LDC 0
+L4472:
+LDC 0
+TSEL L4469 L4469
+L4468:
+  LDC 0
+L4469:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4476 L4477
+L4476:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4479 L4480
+L4479:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4482 L4483
+L4482:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4478 L4478
+L4483:
+  LDC 0
+L4484:
+LDC 0
+TSEL L4478 L4478
+L4480:
+  LDC 0
+L4481:
+LDC 0
+TSEL L4478 L4478
+L4477:
+  LDC 0
+L4478:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4485 L4486
+L4485:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4488 L4489
+L4488:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4491 L4492
+L4491:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4487 L4487
+L4492:
+  LDC 0
+L4493:
+LDC 0
+TSEL L4487 L4487
+L4489:
+  LDC 0
+L4490:
+LDC 0
+TSEL L4487 L4487
+L4486:
+  LDC 0
+L4487:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4494 L4495
+L4494:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4497 L4498
+L4497:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4500 L4501
+L4500:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4496 L4496
+L4501:
+  LDC 0
+L4502:
+LDC 0
+TSEL L4496 L4496
+L4498:
+  LDC 0
+L4499:
+LDC 0
+TSEL L4496 L4496
+L4495:
+  LDC 0
+L4496:
+  CONS
+  CONS
+  RTN
+L4466:
+  RTN
+L4464:
+  RTN
+L4462:
+  RTN
+L4460:
+  RTN
+L4458:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4503
+  AP 4
+LDC 0
+TSEL L4504 L4504
+L4503:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4505
+TAP 1
+L4505:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4507
+TAP 1
+L4507:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4509
+TAP 1
+L4509:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4511
+TAP 1
+L4511:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4513 L4514
+L4513:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4516 L4517
+L4516:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4519 L4520
+L4519:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4515 L4515
+L4520:
+  LDC 0
+L4521:
+LDC 0
+TSEL L4515 L4515
+L4517:
+  LDC 0
+L4518:
+LDC 0
+TSEL L4515 L4515
+L4514:
+  LDC 0
+L4515:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4522 L4523
+L4522:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4525 L4526
+L4525:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4528 L4529
+L4528:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4524 L4524
+L4529:
+  LDC 0
+L4530:
+LDC 0
+TSEL L4524 L4524
+L4526:
+  LDC 0
+L4527:
+LDC 0
+TSEL L4524 L4524
+L4523:
+  LDC 0
+L4524:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4531 L4532
+L4531:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4534 L4535
+L4534:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4537 L4538
+L4537:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4533 L4533
+L4538:
+  LDC 0
+L4539:
+LDC 0
+TSEL L4533 L4533
+L4535:
+  LDC 0
+L4536:
+LDC 0
+TSEL L4533 L4533
+L4532:
+  LDC 0
+L4533:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4540 L4541
+L4540:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4543 L4544
+L4543:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4546 L4547
+L4546:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4542 L4542
+L4547:
+  LDC 0
+L4548:
+LDC 0
+TSEL L4542 L4542
+L4544:
+  LDC 0
+L4545:
+LDC 0
+TSEL L4542 L4542
+L4541:
+  LDC 0
+L4542:
+  CONS
+  CONS
+  RTN
+L4512:
+  RTN
+L4510:
+  RTN
+L4508:
+  RTN
+L4506:
+  RTN
+L4504:
+  CDR
+  CAR
+  MUL
+  LDC 0
+  LD 12 4
+  LD 14 18
+  AP 2
+  LDC 50
+  MUL
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4549
+  AP 4
+LDC 0
+TSEL L4550 L4550
+L4549:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 5 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4551
+TAP 1
+L4551:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 6 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4553
+TAP 1
+L4553:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 7 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4555
+TAP 1
+L4555:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 8 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4557
+TAP 1
+L4557:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4559 L4560
+L4559:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4562 L4563
+L4562:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4565 L4566
+L4565:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4561 L4561
+L4566:
+  LDC 0
+L4567:
+LDC 0
+TSEL L4561 L4561
+L4563:
+  LDC 0
+L4564:
+LDC 0
+TSEL L4561 L4561
+L4560:
+  LDC 0
+L4561:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4568 L4569
+L4568:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4571 L4572
+L4571:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4574 L4575
+L4574:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4570 L4570
+L4575:
+  LDC 0
+L4576:
+LDC 0
+TSEL L4570 L4570
+L4572:
+  LDC 0
+L4573:
+LDC 0
+TSEL L4570 L4570
+L4569:
+  LDC 0
+L4570:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4577 L4578
+L4577:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4580 L4581
+L4580:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4583 L4584
+L4583:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4579 L4579
+L4584:
+  LDC 0
+L4585:
+LDC 0
+TSEL L4579 L4579
+L4581:
+  LDC 0
+L4582:
+LDC 0
+TSEL L4579 L4579
+L4578:
+  LDC 0
+L4579:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4586 L4587
+L4586:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4589 L4590
+L4589:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4592 L4593
+L4592:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4588 L4588
+L4593:
+  LDC 0
+L4594:
+LDC 0
+TSEL L4588 L4588
+L4590:
+  LDC 0
+L4591:
+LDC 0
+TSEL L4588 L4588
+L4587:
+  LDC 0
+L4588:
+  CONS
+  CONS
+  RTN
+L4558:
+  RTN
+L4556:
+  RTN
+L4554:
+  RTN
+L4552:
+  RTN
+L4550:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CDR
+  ADD
+  CONS
+  CONS
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4595
+  AP 4
+LDC 0
+TSEL L4596 L4596
+L4595:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4597
+TAP 1
+L4597:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4599
+TAP 1
+L4599:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4601
+TAP 1
+L4601:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4603
+TAP 1
+L4603:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4605 L4606
+L4605:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4608 L4609
+L4608:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4611 L4612
+L4611:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4607 L4607
+L4612:
+  LDC 0
+L4613:
+LDC 0
+TSEL L4607 L4607
+L4609:
+  LDC 0
+L4610:
+LDC 0
+TSEL L4607 L4607
+L4606:
+  LDC 0
+L4607:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4614 L4615
+L4614:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4617 L4618
+L4617:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4620 L4621
+L4620:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4616 L4616
+L4621:
+  LDC 0
+L4622:
+LDC 0
+TSEL L4616 L4616
+L4618:
+  LDC 0
+L4619:
+LDC 0
+TSEL L4616 L4616
+L4615:
+  LDC 0
+L4616:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4623 L4624
+L4623:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4626 L4627
+L4626:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4629 L4630
+L4629:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4625 L4625
+L4630:
+  LDC 0
+L4631:
+LDC 0
+TSEL L4625 L4625
+L4627:
+  LDC 0
+L4628:
+LDC 0
+TSEL L4625 L4625
+L4624:
+  LDC 0
+L4625:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4632 L4633
+L4632:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4635 L4636
+L4635:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4638 L4639
+L4638:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4634 L4634
+L4639:
+  LDC 0
+L4640:
+LDC 0
+TSEL L4634 L4634
+L4636:
+  LDC 0
+L4637:
+LDC 0
+TSEL L4634 L4634
+L4633:
+  LDC 0
+L4634:
+  CONS
+  CONS
+  RTN
+L4604:
+  RTN
+L4602:
+  RTN
+L4600:
+  RTN
+L4598:
+  RTN
+L4596:
+  CAR
+  CAR
+  MUL
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4641
+  AP 4
+LDC 0
+TSEL L4642 L4642
+L4641:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4643
+TAP 1
+L4643:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4645
+TAP 1
+L4645:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4647
+TAP 1
+L4647:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4649
+TAP 1
+L4649:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4651 L4652
+L4651:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4654 L4655
+L4654:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4657 L4658
+L4657:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4653 L4653
+L4658:
+  LDC 0
+L4659:
+LDC 0
+TSEL L4653 L4653
+L4655:
+  LDC 0
+L4656:
+LDC 0
+TSEL L4653 L4653
+L4652:
+  LDC 0
+L4653:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4660 L4661
+L4660:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4663 L4664
+L4663:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4666 L4667
+L4666:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4662 L4662
+L4667:
+  LDC 0
+L4668:
+LDC 0
+TSEL L4662 L4662
+L4664:
+  LDC 0
+L4665:
+LDC 0
+TSEL L4662 L4662
+L4661:
+  LDC 0
+L4662:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4669 L4670
+L4669:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4672 L4673
+L4672:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4675 L4676
+L4675:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4671 L4671
+L4676:
+  LDC 0
+L4677:
+LDC 0
+TSEL L4671 L4671
+L4673:
+  LDC 0
+L4674:
+LDC 0
+TSEL L4671 L4671
+L4670:
+  LDC 0
+L4671:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4678 L4679
+L4678:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4681 L4682
+L4681:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4684 L4685
+L4684:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4680 L4680
+L4685:
+  LDC 0
+L4686:
+LDC 0
+TSEL L4680 L4680
+L4682:
+  LDC 0
+L4683:
+LDC 0
+TSEL L4680 L4680
+L4679:
+  LDC 0
+L4680:
+  CONS
+  CONS
+  RTN
+L4650:
+  RTN
+L4648:
+  RTN
+L4646:
+  RTN
+L4644:
+  RTN
+L4642:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4687
+  AP 4
+LDC 0
+TSEL L4688 L4688
+L4687:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4689
+TAP 1
+L4689:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4691
+TAP 1
+L4691:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4693
+TAP 1
+L4693:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4695
+TAP 1
+L4695:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4697 L4698
+L4697:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4700 L4701
+L4700:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4703 L4704
+L4703:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4699 L4699
+L4704:
+  LDC 0
+L4705:
+LDC 0
+TSEL L4699 L4699
+L4701:
+  LDC 0
+L4702:
+LDC 0
+TSEL L4699 L4699
+L4698:
+  LDC 0
+L4699:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4706 L4707
+L4706:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4709 L4710
+L4709:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4712 L4713
+L4712:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4708 L4708
+L4713:
+  LDC 0
+L4714:
+LDC 0
+TSEL L4708 L4708
+L4710:
+  LDC 0
+L4711:
+LDC 0
+TSEL L4708 L4708
+L4707:
+  LDC 0
+L4708:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4715 L4716
+L4715:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4718 L4719
+L4718:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4721 L4722
+L4721:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4717 L4717
+L4722:
+  LDC 0
+L4723:
+LDC 0
+TSEL L4717 L4717
+L4719:
+  LDC 0
+L4720:
+LDC 0
+TSEL L4717 L4717
+L4716:
+  LDC 0
+L4717:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4724 L4725
+L4724:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4727 L4728
+L4727:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4730 L4731
+L4730:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4726 L4726
+L4731:
+  LDC 0
+L4732:
+LDC 0
+TSEL L4726 L4726
+L4728:
+  LDC 0
+L4729:
+LDC 0
+TSEL L4726 L4726
+L4725:
+  LDC 0
+L4726:
+  CONS
+  CONS
+  RTN
+L4696:
+  RTN
+L4694:
+  RTN
+L4692:
+  RTN
+L4690:
+  RTN
+L4688:
+  CDR
+  CAR
+  MUL
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4733
+  AP 4
+LDC 0
+TSEL L4734 L4734
+L4733:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4735
+TAP 1
+L4735:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4737
+TAP 1
+L4737:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4739
+TAP 1
+L4739:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4741
+TAP 1
+L4741:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4743 L4744
+L4743:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4746 L4747
+L4746:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4749 L4750
+L4749:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4745 L4745
+L4750:
+  LDC 0
+L4751:
+LDC 0
+TSEL L4745 L4745
+L4747:
+  LDC 0
+L4748:
+LDC 0
+TSEL L4745 L4745
+L4744:
+  LDC 0
+L4745:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4752 L4753
+L4752:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4755 L4756
+L4755:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4758 L4759
+L4758:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4754 L4754
+L4759:
+  LDC 0
+L4760:
+LDC 0
+TSEL L4754 L4754
+L4756:
+  LDC 0
+L4757:
+LDC 0
+TSEL L4754 L4754
+L4753:
+  LDC 0
+L4754:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4761 L4762
+L4761:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4764 L4765
+L4764:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4767 L4768
+L4767:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4763 L4763
+L4768:
+  LDC 0
+L4769:
+LDC 0
+TSEL L4763 L4763
+L4765:
+  LDC 0
+L4766:
+LDC 0
+TSEL L4763 L4763
+L4762:
+  LDC 0
+L4763:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4770 L4771
+L4770:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4773 L4774
+L4773:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4776 L4777
+L4776:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4772 L4772
+L4777:
+  LDC 0
+L4778:
+LDC 0
+TSEL L4772 L4772
+L4774:
+  LDC 0
+L4775:
+LDC 0
+TSEL L4772 L4772
+L4771:
+  LDC 0
+L4772:
+  CONS
+  CONS
+  RTN
+L4742:
+  RTN
+L4740:
+  RTN
+L4738:
+  RTN
+L4736:
+  RTN
+L4734:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CAR
+  ADD
+  LD 0 0
+  CAR
+  CDR
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4779
+  AP 4
+LDC 0
+TSEL L4780 L4780
+L4779:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4781
+TAP 1
+L4781:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4783
+TAP 1
+L4783:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4785
+TAP 1
+L4785:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4787
+TAP 1
+L4787:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4789 L4790
+L4789:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4792 L4793
+L4792:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4795 L4796
+L4795:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4791 L4791
+L4796:
+  LDC 0
+L4797:
+LDC 0
+TSEL L4791 L4791
+L4793:
+  LDC 0
+L4794:
+LDC 0
+TSEL L4791 L4791
+L4790:
+  LDC 0
+L4791:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4798 L4799
+L4798:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4801 L4802
+L4801:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4804 L4805
+L4804:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4800 L4800
+L4805:
+  LDC 0
+L4806:
+LDC 0
+TSEL L4800 L4800
+L4802:
+  LDC 0
+L4803:
+LDC 0
+TSEL L4800 L4800
+L4799:
+  LDC 0
+L4800:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4807 L4808
+L4807:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4810 L4811
+L4810:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4813 L4814
+L4813:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4809 L4809
+L4814:
+  LDC 0
+L4815:
+LDC 0
+TSEL L4809 L4809
+L4811:
+  LDC 0
+L4812:
+LDC 0
+TSEL L4809 L4809
+L4808:
+  LDC 0
+L4809:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4816 L4817
+L4816:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4819 L4820
+L4819:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4822 L4823
+L4822:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4818 L4818
+L4823:
+  LDC 0
+L4824:
+LDC 0
+TSEL L4818 L4818
+L4820:
+  LDC 0
+L4821:
+LDC 0
+TSEL L4818 L4818
+L4817:
+  LDC 0
+L4818:
+  CONS
+  CONS
+  RTN
+L4788:
+  RTN
+L4786:
+  RTN
+L4784:
+  RTN
+L4782:
+  RTN
+L4780:
+  CAR
+  CAR
+  MUL
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4825
+  AP 4
+LDC 0
+TSEL L4826 L4826
+L4825:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4827
+TAP 1
+L4827:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4829
+TAP 1
+L4829:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4831
+TAP 1
+L4831:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4833
+TAP 1
+L4833:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4835 L4836
+L4835:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4838 L4839
+L4838:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4841 L4842
+L4841:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4837 L4837
+L4842:
+  LDC 0
+L4843:
+LDC 0
+TSEL L4837 L4837
+L4839:
+  LDC 0
+L4840:
+LDC 0
+TSEL L4837 L4837
+L4836:
+  LDC 0
+L4837:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4844 L4845
+L4844:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4847 L4848
+L4847:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4850 L4851
+L4850:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4846 L4846
+L4851:
+  LDC 0
+L4852:
+LDC 0
+TSEL L4846 L4846
+L4848:
+  LDC 0
+L4849:
+LDC 0
+TSEL L4846 L4846
+L4845:
+  LDC 0
+L4846:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4853 L4854
+L4853:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4856 L4857
+L4856:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4859 L4860
+L4859:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4855 L4855
+L4860:
+  LDC 0
+L4861:
+LDC 0
+TSEL L4855 L4855
+L4857:
+  LDC 0
+L4858:
+LDC 0
+TSEL L4855 L4855
+L4854:
+  LDC 0
+L4855:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4862 L4863
+L4862:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4865 L4866
+L4865:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4868 L4869
+L4868:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4864 L4864
+L4869:
+  LDC 0
+L4870:
+LDC 0
+TSEL L4864 L4864
+L4866:
+  LDC 0
+L4867:
+LDC 0
+TSEL L4864 L4864
+L4863:
+  LDC 0
+L4864:
+  CONS
+  CONS
+  RTN
+L4834:
+  RTN
+L4832:
+  RTN
+L4830:
+  RTN
+L4828:
+  RTN
+L4826:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4871
+  AP 4
+LDC 0
+TSEL L4872 L4872
+L4871:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4873
+TAP 1
+L4873:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4875
+TAP 1
+L4875:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4877
+TAP 1
+L4877:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4879
+TAP 1
+L4879:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4881 L4882
+L4881:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4884 L4885
+L4884:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4887 L4888
+L4887:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4883 L4883
+L4888:
+  LDC 0
+L4889:
+LDC 0
+TSEL L4883 L4883
+L4885:
+  LDC 0
+L4886:
+LDC 0
+TSEL L4883 L4883
+L4882:
+  LDC 0
+L4883:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4890 L4891
+L4890:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4893 L4894
+L4893:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4896 L4897
+L4896:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4892 L4892
+L4897:
+  LDC 0
+L4898:
+LDC 0
+TSEL L4892 L4892
+L4894:
+  LDC 0
+L4895:
+LDC 0
+TSEL L4892 L4892
+L4891:
+  LDC 0
+L4892:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4899 L4900
+L4899:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4902 L4903
+L4902:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4905 L4906
+L4905:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4901 L4901
+L4906:
+  LDC 0
+L4907:
+LDC 0
+TSEL L4901 L4901
+L4903:
+  LDC 0
+L4904:
+LDC 0
+TSEL L4901 L4901
+L4900:
+  LDC 0
+L4901:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4908 L4909
+L4908:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4911 L4912
+L4911:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4914 L4915
+L4914:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4910 L4910
+L4915:
+  LDC 0
+L4916:
+LDC 0
+TSEL L4910 L4910
+L4912:
+  LDC 0
+L4913:
+LDC 0
+TSEL L4910 L4910
+L4909:
+  LDC 0
+L4910:
+  CONS
+  CONS
+  RTN
+L4880:
+  RTN
+L4878:
+  RTN
+L4876:
+  RTN
+L4874:
+  RTN
+L4872:
+  CDR
+  CAR
+  MUL
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4917
+  AP 4
+LDC 0
+TSEL L4918 L4918
+L4917:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4919
+TAP 1
+L4919:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4921
+TAP 1
+L4921:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4923
+TAP 1
+L4923:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4925
+TAP 1
+L4925:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4927 L4928
+L4927:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4930 L4931
+L4930:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4933 L4934
+L4933:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4929 L4929
+L4934:
+  LDC 0
+L4935:
+LDC 0
+TSEL L4929 L4929
+L4931:
+  LDC 0
+L4932:
+LDC 0
+TSEL L4929 L4929
+L4928:
+  LDC 0
+L4929:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4936 L4937
+L4936:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4939 L4940
+L4939:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4942 L4943
+L4942:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4938 L4938
+L4943:
+  LDC 0
+L4944:
+LDC 0
+TSEL L4938 L4938
+L4940:
+  LDC 0
+L4941:
+LDC 0
+TSEL L4938 L4938
+L4937:
+  LDC 0
+L4938:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4945 L4946
+L4945:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4948 L4949
+L4948:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4951 L4952
+L4951:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4947 L4947
+L4952:
+  LDC 0
+L4953:
+LDC 0
+TSEL L4947 L4947
+L4949:
+  LDC 0
+L4950:
+LDC 0
+TSEL L4947 L4947
+L4946:
+  LDC 0
+L4947:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4954 L4955
+L4954:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L4957 L4958
+L4957:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L4960 L4961
+L4960:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L4956 L4956
+L4961:
+  LDC 0
+L4962:
+LDC 0
+TSEL L4956 L4956
+L4958:
+  LDC 0
+L4959:
+LDC 0
+TSEL L4956 L4956
+L4955:
+  LDC 0
+L4956:
+  CONS
+  CONS
+  RTN
+L4926:
+  RTN
+L4924:
+  RTN
+L4922:
+  RTN
+L4920:
+  RTN
+L4918:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CDR
+  ADD
+  CONS
+  LD 0 0
+  CDR
+  CAR
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L4963
+  AP 4
+LDC 0
+TSEL L4964 L4964
+L4963:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L4965
+TAP 1
+L4965:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L4967
+TAP 1
+L4967:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L4969
+TAP 1
+L4969:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L4971
+TAP 1
+L4971:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4973 L4974
+L4973:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L4976 L4977
+L4976:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L4979 L4980
+L4979:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L4975 L4975
+L4980:
+  LDC 0
+L4981:
+LDC 0
+TSEL L4975 L4975
+L4977:
+  LDC 0
+L4978:
+LDC 0
+TSEL L4975 L4975
+L4974:
+  LDC 0
+L4975:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4982 L4983
+L4982:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L4985 L4986
+L4985:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L4988 L4989
+L4988:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L4984 L4984
+L4989:
+  LDC 0
+L4990:
+LDC 0
+TSEL L4984 L4984
+L4986:
+  LDC 0
+L4987:
+LDC 0
+TSEL L4984 L4984
+L4983:
+  LDC 0
+L4984:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L4991 L4992
+L4991:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L4994 L4995
+L4994:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L4997 L4998
+L4997:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L4993 L4993
+L4998:
+  LDC 0
+L4999:
+LDC 0
+TSEL L4993 L4993
+L4995:
+  LDC 0
+L4996:
+LDC 0
+TSEL L4993 L4993
+L4992:
+  LDC 0
+L4993:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5000 L5001
+L5000:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L5003 L5004
+L5003:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L5006 L5007
+L5006:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L5002 L5002
+L5007:
+  LDC 0
+L5008:
+LDC 0
+TSEL L5002 L5002
+L5004:
+  LDC 0
+L5005:
+LDC 0
+TSEL L5002 L5002
+L5001:
+  LDC 0
+L5002:
+  CONS
+  CONS
+  RTN
+L4972:
+  RTN
+L4970:
+  RTN
+L4968:
+  RTN
+L4966:
+  RTN
+L4964:
+  CAR
+  CAR
+  MUL
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5009
+  AP 4
+LDC 0
+TSEL L5010 L5010
+L5009:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L5011
+TAP 1
+L5011:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L5013
+TAP 1
+L5013:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L5015
+TAP 1
+L5015:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L5017
+TAP 1
+L5017:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5019 L5020
+L5019:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L5022 L5023
+L5022:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L5025 L5026
+L5025:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L5021 L5021
+L5026:
+  LDC 0
+L5027:
+LDC 0
+TSEL L5021 L5021
+L5023:
+  LDC 0
+L5024:
+LDC 0
+TSEL L5021 L5021
+L5020:
+  LDC 0
+L5021:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5028 L5029
+L5028:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L5031 L5032
+L5031:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L5034 L5035
+L5034:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L5030 L5030
+L5035:
+  LDC 0
+L5036:
+LDC 0
+TSEL L5030 L5030
+L5032:
+  LDC 0
+L5033:
+LDC 0
+TSEL L5030 L5030
+L5029:
+  LDC 0
+L5030:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5037 L5038
+L5037:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L5040 L5041
+L5040:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L5043 L5044
+L5043:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L5039 L5039
+L5044:
+  LDC 0
+L5045:
+LDC 0
+TSEL L5039 L5039
+L5041:
+  LDC 0
+L5042:
+LDC 0
+TSEL L5039 L5039
+L5038:
+  LDC 0
+L5039:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5046 L5047
+L5046:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L5049 L5050
+L5049:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L5052 L5053
+L5052:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L5048 L5048
+L5053:
+  LDC 0
+L5054:
+LDC 0
+TSEL L5048 L5048
+L5050:
+  LDC 0
+L5051:
+LDC 0
+TSEL L5048 L5048
+L5047:
+  LDC 0
+L5048:
+  CONS
+  CONS
+  RTN
+L5018:
+  RTN
+L5016:
+  RTN
+L5014:
+  RTN
+L5012:
+  RTN
+L5010:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5055
+  AP 4
+LDC 0
+TSEL L5056 L5056
+L5055:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L5057
+TAP 1
+L5057:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L5059
+TAP 1
+L5059:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L5061
+TAP 1
+L5061:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L5063
+TAP 1
+L5063:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5065 L5066
+L5065:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L5068 L5069
+L5068:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L5071 L5072
+L5071:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L5067 L5067
+L5072:
+  LDC 0
+L5073:
+LDC 0
+TSEL L5067 L5067
+L5069:
+  LDC 0
+L5070:
+LDC 0
+TSEL L5067 L5067
+L5066:
+  LDC 0
+L5067:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5074 L5075
+L5074:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L5077 L5078
+L5077:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L5080 L5081
+L5080:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L5076 L5076
+L5081:
+  LDC 0
+L5082:
+LDC 0
+TSEL L5076 L5076
+L5078:
+  LDC 0
+L5079:
+LDC 0
+TSEL L5076 L5076
+L5075:
+  LDC 0
+L5076:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5083 L5084
+L5083:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L5086 L5087
+L5086:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L5089 L5090
+L5089:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L5085 L5085
+L5090:
+  LDC 0
+L5091:
+LDC 0
+TSEL L5085 L5085
+L5087:
+  LDC 0
+L5088:
+LDC 0
+TSEL L5085 L5085
+L5084:
+  LDC 0
+L5085:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5092 L5093
+L5092:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L5095 L5096
+L5095:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L5098 L5099
+L5098:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L5094 L5094
+L5099:
+  LDC 0
+L5100:
+LDC 0
+TSEL L5094 L5094
+L5096:
+  LDC 0
+L5097:
+LDC 0
+TSEL L5094 L5094
+L5093:
+  LDC 0
+L5094:
+  CONS
+  CONS
+  RTN
+L5064:
+  RTN
+L5062:
+  RTN
+L5060:
+  RTN
+L5058:
+  RTN
+L5056:
+  CDR
+  CAR
+  MUL
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5101
+  AP 4
+LDC 0
+TSEL L5102 L5102
+L5101:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L5103
+TAP 1
+L5103:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L5105
+TAP 1
+L5105:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L5107
+TAP 1
+L5107:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L5109
+TAP 1
+L5109:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5111 L5112
+L5111:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L5114 L5115
+L5114:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L5117 L5118
+L5117:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L5113 L5113
+L5118:
+  LDC 0
+L5119:
+LDC 0
+TSEL L5113 L5113
+L5115:
+  LDC 0
+L5116:
+LDC 0
+TSEL L5113 L5113
+L5112:
+  LDC 0
+L5113:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5120 L5121
+L5120:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L5123 L5124
+L5123:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L5126 L5127
+L5126:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L5122 L5122
+L5127:
+  LDC 0
+L5128:
+LDC 0
+TSEL L5122 L5122
+L5124:
+  LDC 0
+L5125:
+LDC 0
+TSEL L5122 L5122
+L5121:
+  LDC 0
+L5122:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5129 L5130
+L5129:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L5132 L5133
+L5132:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L5135 L5136
+L5135:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L5131 L5131
+L5136:
+  LDC 0
+L5137:
+LDC 0
+TSEL L5131 L5131
+L5133:
+  LDC 0
+L5134:
+LDC 0
+TSEL L5131 L5131
+L5130:
+  LDC 0
+L5131:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5138 L5139
+L5138:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L5141 L5142
+L5141:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L5144 L5145
+L5144:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L5140 L5140
+L5145:
+  LDC 0
+L5146:
+LDC 0
+TSEL L5140 L5140
+L5142:
+  LDC 0
+L5143:
+LDC 0
+TSEL L5140 L5140
+L5139:
+  LDC 0
+L5140:
+  CONS
+  CONS
+  RTN
+L5110:
+  RTN
+L5108:
+  RTN
+L5106:
+  RTN
+L5104:
+  RTN
+L5102:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CAR
+  ADD
+  LD 0 0
+  CDR
+  CDR
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5147
+  AP 4
+LDC 0
+TSEL L5148 L5148
+L5147:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L5149
+TAP 1
+L5149:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L5151
+TAP 1
+L5151:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L5153
+TAP 1
+L5153:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L5155
+TAP 1
+L5155:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5157 L5158
+L5157:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L5160 L5161
+L5160:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L5163 L5164
+L5163:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L5159 L5159
+L5164:
+  LDC 0
+L5165:
+LDC 0
+TSEL L5159 L5159
+L5161:
+  LDC 0
+L5162:
+LDC 0
+TSEL L5159 L5159
+L5158:
+  LDC 0
+L5159:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5166 L5167
+L5166:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L5169 L5170
+L5169:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L5172 L5173
+L5172:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L5168 L5168
+L5173:
+  LDC 0
+L5174:
+LDC 0
+TSEL L5168 L5168
+L5170:
+  LDC 0
+L5171:
+LDC 0
+TSEL L5168 L5168
+L5167:
+  LDC 0
+L5168:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5175 L5176
+L5175:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L5178 L5179
+L5178:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L5181 L5182
+L5181:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L5177 L5177
+L5182:
+  LDC 0
+L5183:
+LDC 0
+TSEL L5177 L5177
+L5179:
+  LDC 0
+L5180:
+LDC 0
+TSEL L5177 L5177
+L5176:
+  LDC 0
+L5177:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5184 L5185
+L5184:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L5187 L5188
+L5187:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L5190 L5191
+L5190:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L5186 L5186
+L5191:
+  LDC 0
+L5192:
+LDC 0
+TSEL L5186 L5186
+L5188:
+  LDC 0
+L5189:
+LDC 0
+TSEL L5186 L5186
+L5185:
+  LDC 0
+L5186:
+  CONS
+  CONS
+  RTN
+L5156:
+  RTN
+L5154:
+  RTN
+L5152:
+  RTN
+L5150:
+  RTN
+L5148:
+  CAR
+  CAR
+  MUL
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5193
+  AP 4
+LDC 0
+TSEL L5194 L5194
+L5193:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L5195
+TAP 1
+L5195:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L5197
+TAP 1
+L5197:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L5199
+TAP 1
+L5199:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L5201
+TAP 1
+L5201:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5203 L5204
+L5203:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L5206 L5207
+L5206:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L5209 L5210
+L5209:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L5205 L5205
+L5210:
+  LDC 0
+L5211:
+LDC 0
+TSEL L5205 L5205
+L5207:
+  LDC 0
+L5208:
+LDC 0
+TSEL L5205 L5205
+L5204:
+  LDC 0
+L5205:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5212 L5213
+L5212:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L5215 L5216
+L5215:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L5218 L5219
+L5218:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L5214 L5214
+L5219:
+  LDC 0
+L5220:
+LDC 0
+TSEL L5214 L5214
+L5216:
+  LDC 0
+L5217:
+LDC 0
+TSEL L5214 L5214
+L5213:
+  LDC 0
+L5214:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5221 L5222
+L5221:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L5224 L5225
+L5224:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L5227 L5228
+L5227:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L5223 L5223
+L5228:
+  LDC 0
+L5229:
+LDC 0
+TSEL L5223 L5223
+L5225:
+  LDC 0
+L5226:
+LDC 0
+TSEL L5223 L5223
+L5222:
+  LDC 0
+L5223:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5230 L5231
+L5230:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L5233 L5234
+L5233:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L5236 L5237
+L5236:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L5232 L5232
+L5237:
+  LDC 0
+L5238:
+LDC 0
+TSEL L5232 L5232
+L5234:
+  LDC 0
+L5235:
+LDC 0
+TSEL L5232 L5232
+L5231:
+  LDC 0
+L5232:
+  CONS
+  CONS
+  RTN
+L5202:
+  RTN
+L5200:
+  RTN
+L5198:
+  RTN
+L5196:
+  RTN
+L5194:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5239
+  AP 4
+LDC 0
+TSEL L5240 L5240
+L5239:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L5241
+TAP 1
+L5241:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L5243
+TAP 1
+L5243:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L5245
+TAP 1
+L5245:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L5247
+TAP 1
+L5247:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5249 L5250
+L5249:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L5252 L5253
+L5252:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L5255 L5256
+L5255:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L5251 L5251
+L5256:
+  LDC 0
+L5257:
+LDC 0
+TSEL L5251 L5251
+L5253:
+  LDC 0
+L5254:
+LDC 0
+TSEL L5251 L5251
+L5250:
+  LDC 0
+L5251:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5258 L5259
+L5258:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L5261 L5262
+L5261:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L5264 L5265
+L5264:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L5260 L5260
+L5265:
+  LDC 0
+L5266:
+LDC 0
+TSEL L5260 L5260
+L5262:
+  LDC 0
+L5263:
+LDC 0
+TSEL L5260 L5260
+L5259:
+  LDC 0
+L5260:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5267 L5268
+L5267:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L5270 L5271
+L5270:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L5273 L5274
+L5273:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L5269 L5269
+L5274:
+  LDC 0
+L5275:
+LDC 0
+TSEL L5269 L5269
+L5271:
+  LDC 0
+L5272:
+LDC 0
+TSEL L5269 L5269
+L5268:
+  LDC 0
+L5269:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5276 L5277
+L5276:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L5279 L5280
+L5279:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L5282 L5283
+L5282:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L5278 L5278
+L5283:
+  LDC 0
+L5284:
+LDC 0
+TSEL L5278 L5278
+L5280:
+  LDC 0
+L5281:
+LDC 0
+TSEL L5278 L5278
+L5277:
+  LDC 0
+L5278:
+  CONS
+  CONS
+  RTN
+L5248:
+  RTN
+L5246:
+  RTN
+L5244:
+  RTN
+L5242:
+  RTN
+L5240:
+  CDR
+  CAR
+  MUL
+  LDC 5
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5285
+  AP 4
+LDC 0
+TSEL L5286 L5286
+L5285:
+  LDC 0
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  SUB
+  LDF L5287
+TAP 1
+L5287:
+  LDC 0
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  SUB
+  LDF L5289
+TAP 1
+L5289:
+  LDC 0
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  SUB
+  LDF L5291
+TAP 1
+L5291:
+  LDC 0
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  SUB
+  LDF L5293
+TAP 1
+L5293:
+  LDC 1
+  LD 3 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5295 L5296
+L5295:
+  LD 2 0
+  LD 3 0
+  CGTE
+  TSEL L5298 L5299
+L5298:
+  LD 1 0
+  LD 3 0
+  CGTE
+  TSEL L5301 L5302
+L5301:
+  LD 0 0
+  LD 3 0
+  CGTE
+LDC 0
+TSEL L5297 L5297
+L5302:
+  LDC 0
+L5303:
+LDC 0
+TSEL L5297 L5297
+L5299:
+  LDC 0
+L5300:
+LDC 0
+TSEL L5297 L5297
+L5296:
+  LDC 0
+L5297:
+  LDC 1
+  LD 2 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5304 L5305
+L5304:
+  LD 3 0
+  LD 2 0
+  CGTE
+  TSEL L5307 L5308
+L5307:
+  LD 1 0
+  LD 2 0
+  CGTE
+  TSEL L5310 L5311
+L5310:
+  LD 0 0
+  LD 2 0
+  CGTE
+LDC 0
+TSEL L5306 L5306
+L5311:
+  LDC 0
+L5312:
+LDC 0
+TSEL L5306 L5306
+L5308:
+  LDC 0
+L5309:
+LDC 0
+TSEL L5306 L5306
+L5305:
+  LDC 0
+L5306:
+  CONS
+  LDC 1
+  LD 1 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5313 L5314
+L5313:
+  LD 3 0
+  LD 1 0
+  CGTE
+  TSEL L5316 L5317
+L5316:
+  LD 2 0
+  LD 1 0
+  CGTE
+  TSEL L5319 L5320
+L5319:
+  LD 0 0
+  LD 1 0
+  CGTE
+LDC 0
+TSEL L5315 L5315
+L5320:
+  LDC 0
+L5321:
+LDC 0
+TSEL L5315 L5315
+L5317:
+  LDC 0
+L5318:
+LDC 0
+TSEL L5315 L5315
+L5314:
+  LDC 0
+L5315:
+  LDC 1
+  LD 0 0
+  LDC -999999
+  CEQ
+  SUB
+  TSEL L5322 L5323
+L5322:
+  LD 3 0
+  LD 0 0
+  CGTE
+  TSEL L5325 L5326
+L5325:
+  LD 2 0
+  LD 0 0
+  CGTE
+  TSEL L5328 L5329
+L5328:
+  LD 1 0
+  LD 0 0
+  CGTE
+LDC 0
+TSEL L5324 L5324
+L5329:
+  LDC 0
+L5330:
+LDC 0
+TSEL L5324 L5324
+L5326:
+  LDC 0
+L5327:
+LDC 0
+TSEL L5324 L5324
+L5323:
+  LDC 0
+L5324:
+  CONS
+  CONS
+  RTN
+L5294:
+  RTN
+L5292:
+  RTN
+L5290:
+  RTN
+L5288:
+  RTN
+L5286:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CDR
+  ADD
+  CONS
+  CONS
+  ST 0 0
+  LD 0 0
+  CAR
+  CAR
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5331
+  AP 4
+LDC 0
+TSEL L5332 L5332
+L5331:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5333
+TAP 1
+L5333:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5335
+TAP 1
+L5335:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5337
+TAP 1
+L5337:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5339
+TAP 1
+L5339:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5340:
+  RTN
+L5338:
+  RTN
+L5336:
+  RTN
+L5334:
+  RTN
+L5332:
+  CAR
+  CAR
+  MUL
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5341
+  AP 4
+LDC 0
+TSEL L5342 L5342
+L5341:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5343
+TAP 1
+L5343:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5345
+TAP 1
+L5345:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5347
+TAP 1
+L5347:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5349
+TAP 1
+L5349:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5350:
+  RTN
+L5348:
+  RTN
+L5346:
+  RTN
+L5344:
+  RTN
+L5342:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5351
+  AP 4
+LDC 0
+TSEL L5352 L5352
+L5351:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5353
+TAP 1
+L5353:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5355
+TAP 1
+L5355:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5357
+TAP 1
+L5357:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5359
+TAP 1
+L5359:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5360:
+  RTN
+L5358:
+  RTN
+L5356:
+  RTN
+L5354:
+  RTN
+L5352:
+  CDR
+  CAR
+  MUL
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5361
+  AP 4
+LDC 0
+TSEL L5362 L5362
+L5361:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5363
+TAP 1
+L5363:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5365
+TAP 1
+L5365:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5367
+TAP 1
+L5367:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5369
+TAP 1
+L5369:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5370:
+  RTN
+L5368:
+  RTN
+L5366:
+  RTN
+L5364:
+  RTN
+L5362:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CAR
+  ADD
+  LD 0 0
+  CAR
+  CDR
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5371
+  AP 4
+LDC 0
+TSEL L5372 L5372
+L5371:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5373
+TAP 1
+L5373:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5375
+TAP 1
+L5375:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5377
+TAP 1
+L5377:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5379
+TAP 1
+L5379:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5380:
+  RTN
+L5378:
+  RTN
+L5376:
+  RTN
+L5374:
+  RTN
+L5372:
+  CAR
+  CAR
+  MUL
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5381
+  AP 4
+LDC 0
+TSEL L5382 L5382
+L5381:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5383
+TAP 1
+L5383:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5385
+TAP 1
+L5385:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5387
+TAP 1
+L5387:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5389
+TAP 1
+L5389:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5390:
+  RTN
+L5388:
+  RTN
+L5386:
+  RTN
+L5384:
+  RTN
+L5382:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5391
+  AP 4
+LDC 0
+TSEL L5392 L5392
+L5391:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5393
+TAP 1
+L5393:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5395
+TAP 1
+L5395:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5397
+TAP 1
+L5397:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5399
+TAP 1
+L5399:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5400:
+  RTN
+L5398:
+  RTN
+L5396:
+  RTN
+L5394:
+  RTN
+L5392:
+  CDR
+  CAR
+  MUL
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5401
+  AP 4
+LDC 0
+TSEL L5402 L5402
+L5401:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5403
+TAP 1
+L5403:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5405
+TAP 1
+L5405:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5407
+TAP 1
+L5407:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5409
+TAP 1
+L5409:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5410:
+  RTN
+L5408:
+  RTN
+L5406:
+  RTN
+L5404:
+  RTN
+L5402:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CAR
+  CDR
+  ADD
+  CONS
+  LD 0 0
+  CDR
+  CAR
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5411
+  AP 4
+LDC 0
+TSEL L5412 L5412
+L5411:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5413
+TAP 1
+L5413:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5415
+TAP 1
+L5415:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5417
+TAP 1
+L5417:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5419
+TAP 1
+L5419:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5420:
+  RTN
+L5418:
+  RTN
+L5416:
+  RTN
+L5414:
+  RTN
+L5412:
+  CAR
+  CAR
+  MUL
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5421
+  AP 4
+LDC 0
+TSEL L5422 L5422
+L5421:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5423
+TAP 1
+L5423:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5425
+TAP 1
+L5425:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5427
+TAP 1
+L5427:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5429
+TAP 1
+L5429:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5430:
+  RTN
+L5428:
+  RTN
+L5426:
+  RTN
+L5424:
+  RTN
+L5422:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5431
+  AP 4
+LDC 0
+TSEL L5432 L5432
+L5431:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5433
+TAP 1
+L5433:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5435
+TAP 1
+L5435:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5437
+TAP 1
+L5437:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5439
+TAP 1
+L5439:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5440:
+  RTN
+L5438:
+  RTN
+L5436:
+  RTN
+L5434:
+  RTN
+L5432:
+  CDR
+  CAR
+  MUL
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5441
+  AP 4
+LDC 0
+TSEL L5442 L5442
+L5441:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5443
+TAP 1
+L5443:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5445
+TAP 1
+L5445:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5447
+TAP 1
+L5447:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5449
+TAP 1
+L5449:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5450:
+  RTN
+L5448:
+  RTN
+L5446:
+  RTN
+L5444:
+  RTN
+L5442:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CAR
+  ADD
+  LD 0 0
+  CDR
+  CDR
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5451
+  AP 4
+LDC 0
+TSEL L5452 L5452
+L5451:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5453
+TAP 1
+L5453:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5455
+TAP 1
+L5455:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5457
+TAP 1
+L5457:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5459
+TAP 1
+L5459:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5460:
+  RTN
+L5458:
+  RTN
+L5456:
+  RTN
+L5454:
+  RTN
+L5452:
+  CAR
+  CAR
+  MUL
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5461
+  AP 4
+LDC 0
+TSEL L5462 L5462
+L5461:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5463
+TAP 1
+L5463:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5465
+TAP 1
+L5465:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5467
+TAP 1
+L5467:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5469
+TAP 1
+L5469:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5470:
+  RTN
+L5468:
+  RTN
+L5466:
+  RTN
+L5464:
+  RTN
+L5462:
+  CAR
+  CDR
+  MUL
+  CONS
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5471
+  AP 4
+LDC 0
+TSEL L5472 L5472
+L5471:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5473
+TAP 1
+L5473:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5475
+TAP 1
+L5475:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5477
+TAP 1
+L5477:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5479
+TAP 1
+L5479:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5480:
+  RTN
+L5478:
+  RTN
+L5476:
+  RTN
+L5474:
+  RTN
+L5472:
+  CDR
+  CAR
+  MUL
+  LDC 10000
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5481
+  AP 4
+LDC 0
+TSEL L5482 L5482
+L5481:
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 13 1
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 13 1
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 12 0
+  LD 15 18
+  AP 2
+  LD 15 18
+  AP 2
+  LDF L5483
+TAP 1
+L5483:
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 14 1
+  CAR
+  LD 1 1
+  CAR
+  ADD
+  LD 14 1
+  CDR
+  LD 1 1
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 13 0
+  LD 16 18
+  AP 2
+  LD 16 18
+  AP 2
+  LDF L5485
+TAP 1
+L5485:
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 15 1
+  CAR
+  LD 2 2
+  CAR
+  ADD
+  LD 15 1
+  CDR
+  LD 2 2
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 14 0
+  LD 17 18
+  AP 2
+  LD 17 18
+  AP 2
+  LDF L5487
+TAP 1
+L5487:
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CAR
+  LD 16 1
+  CAR
+  LD 3 3
+  CAR
+  ADD
+  LD 16 1
+  CDR
+  LD 3 3
+  CDR
+  ADD
+  CONS
+  CDR
+  LD 15 0
+  LD 18 18
+  AP 2
+  LD 18 18
+  AP 2
+  LDF L5489
+TAP 1
+L5489:
+  LDC 1
+  LD 3 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 2 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  LDC 1
+  LD 1 0
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 0
+  CEQ
+  SUB
+  CONS
+  CONS
+  RTN
+L5490:
+  RTN
+L5488:
+  RTN
+L5486:
+  RTN
+L5484:
+  RTN
+L5482:
+  CDR
+  CDR
+  MUL
+  CONS
+  CONS
+  CDR
+  CDR
+  ADD
+  CONS
+  CONS
+  ST 0 0
+  LDC 0
+  LDC 9988
+  SUB
+  LD 12 4
+  CONS
+  DBUG
+  LD 0 0
+  DBUG
+  LD 11 0
+  LDC 1
+  LD 12 3
+  ADD
+  LD 12 4
+  CONS
+  CONS
+  LD 0 0
+  CAR
+  CAR
+  LD 0 0
+  CAR
+  CDR
+  LD 0 0
+  CDR
+  CAR
+  LD 0 0
+  CDR
+  CDR
+  LDF L5491
+  AP 4
+LDC 0
+TSEL L5492 L5492
+L5491:
+  LD 0 0
+  LD 0 1
+  CGT
+  TSEL L5496 L5497
+L5496:
+  LD 0 0
+  LD 0 2
+  CGT
+  TSEL L5499 L5500
+L5499:
+  LD 0 0
+  LD 0 3
+  CGT
+LDC 0
+TSEL L5498 L5498
+L5500:
+  LDC 0
+L5501:
+LDC 0
+TSEL L5498 L5498
+L5497:
+  LDC 0
+L5498:
+  TSEL L5493 L5494
+L5493:
+  LDC 0
+RTN
+L5494:
+  LD 0 1
+  LD 0 2
+  CGT
+  TSEL L5505 L5506
+L5505:
+  LD 0 1
+  LD 0 3
+  CGT
+  TSEL L5508 L5509
+L5508:
+  LD 0 1
+  LD 0 0
+  CGT
+LDC 0
+TSEL L5507 L5507
+L5509:
+  LDC 0
+L5510:
+LDC 0
+TSEL L5507 L5507
+L5506:
+  LDC 0
+L5507:
+  TSEL L5502 L5503
+L5502:
+  LDC 1
+LDC 0
+TSEL L5504 L5504
+L5503:
+  LD 0 2
+  LD 0 3
+  CGT
+  TSEL L5514 L5515
+L5514:
+  LD 0 2
+  LD 0 0
+  CGT
+  TSEL L5517 L5518
+L5517:
+  LD 0 2
+  LD 0 1
+  CGT
+LDC 0
+TSEL L5516 L5516
+L5518:
+  LDC 0
+L5519:
+LDC 0
+TSEL L5516 L5516
+L5515:
+  LDC 0
+L5516:
+  TSEL L5511 L5512
+L5511:
+  LDC 2
+LDC 0
+TSEL L5513 L5513
+L5512:
+  LD 0 3
+  LD 0 0
+  CGT
+  TSEL L5523 L5524
+L5523:
+  LD 0 3
+  LD 0 1
+  CGT
+  TSEL L5526 L5527
+L5526:
+  LD 0 3
+  LD 0 2
+  CGT
+LDC 0
+TSEL L5525 L5525
+L5527:
+  LDC 0
+L5528:
+LDC 0
+TSEL L5525 L5525
+L5524:
+  LDC 0
+L5525:
+  TSEL L5520 L5521
+L5520:
+  LDC 3
+LDC 0
+TSEL L5522 L5522
+L5521:
+  LDC 0
+  LDC 1
+  SUB
+L5522:
+L5513:
+L5504:
+L5495:
+  RTN
+L5492:
+  CONS
+  RTN
+L134:
+  RTN
+L132:
+  RTN
+L130:
+  RTN
+L128:
+  RTN
+L126:
+  RTN
+L124:
+  RTN
+L122:
+  RTN
+L120:
+  RTN
+L118:
+  RTN
+L116:
+  RTN
+L114:
+  RTN
+L112:
+  RTN
+L110:
+  RTN
+L108:
+LDC 0
+TSEL L5659 L5659
+getCorners:
+  LDC 0
+  LDC 0
+  LD 0 0
+  LD 1 18
+  AP 2
+  CAR
+  LD 0 0
+  CAR
+  LDF L5530
+TAP 3
+L5530:
+  LDC 0
+  LDF L5532
+  AP 1
+LDC 0
+TSEL L5533 L5533
+L5532:
+L5534:
+  LD 1 2
+  LD 0 0
+  CGT
+  TSEL L5535 L5536
+L5535:
+  LDC 0
+  LDF L5537
+  AP 1
+LDC 0
+TSEL L5538 L5538
+L5537:
+L5539:
+  LD 2 1
+  LD 0 0
+  CGT
+  TSEL L5540 L5541
+L5540:
+  LD 0 0
+  LD 1 0
+  LD 3 0
+  LD 4 18
+  AP 2
+  LD 4 18
+  AP 2
+  LDF L5542
+  AP 1
+LDC 0
+TSEL L5543 L5543
+L5542:
+  LD 0 0
+  LDC 1
+  CEQ
+  TSEL L5547 L5548
+L5547:
+  LDC 1
+  LD 1 0
+  LDC 1
+  ADD
+  LD 2 0
+  LD 4 0
+  LD 5 18
+  AP 2
+  LD 5 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 1 0
+  LDC 1
+  SUB
+  LD 2 0
+  LD 4 0
+  LD 5 18
+  AP 2
+  LD 5 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  ADD
+  LDC 1
+  LD 1 0
+  LD 2 0
+  LDC 1
+  SUB
+  LD 4 0
+  LD 5 18
+  AP 2
+  LD 5 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  ADD
+  LDC 1
+  LD 1 0
+  LD 2 0
+  LDC 1
+  ADD
+  LD 4 0
+  LD 5 18
+  AP 2
+  LD 5 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  ADD
+  LDC 1
+  CEQ
+LDC 0
+TSEL L5549 L5549
+L5548:
+  LDC 0
+L5549:
+  TSEL L5544 L5545
+L5544:
+  LD 1 0
+  LD 2 0
+  CONS
+  LD 3 0
+  CONS
+  ST 3 0
+  LDC 0
+RTN
+L5545:
+  LDC 0
+L5546:
+  RTN
+L5543:
+  ST 4 0 ; POP
+  LD 0 0
+  LDC 1
+  ADD
+  ST 0 0
+LDC 0
+TSEL L5539 L5539
+L5541:
+  LDC 0
+  RTN
+L5538:
+  ST 3 0 ; POP
+  LD 0 0
+  LDC 1
+  ADD
+  ST 0 0
+LDC 0
+TSEL L5534 L5534
+L5536:
+  LDC 0
+  RTN
+L5533:
+  ST 2 0 ; POP
+  LD 0 0
+  RTN
+L5531:
+  RTN
+L5529:
+LDC 0
+TSEL L5659 L5659
+initialize:
+  LD 0 0
+  CAR
+  LD 1 15
+  AP 1
+  LDC 0
+  LDC 0
+  LDC 0
+  LDF L5551
+TAP 4
+L5551:
+  LDC 0
+  LD 0 0
+  LD 2 18
+  AP 2
+  CAR
+  LD 0 0
+  CAR
+  CONS
+  ST 0 1
+  LD 0 1
+  CAR
+  ST 0 2
+  LD 0 1
+  CDR
+  ST 0 3
+  LDC 0
+  LDF L5553
+  AP 1
+LDC 0
+TSEL L5554 L5554
+L5553:
+L5555:
+  LD 1 3
+  LD 0 0
+  CGT
+  TSEL L5556 L5557
+L5556:
+  LDC 0
+  LDF L5558
+  AP 1
+LDC 0
+TSEL L5559 L5559
+L5558:
+L5560:
+  LD 2 2
+  LD 0 0
+  CGT
+  TSEL L5561 L5562
+L5561:
+  LDC 3
+  LD 0 0
+  LD 1 0
+  LD 2 0
+  LD 4 18
+  AP 2
+  LD 4 18
+  AP 2
+  CGTE
+  TSEL L5563 L5564
+L5563:
+  LDC 0
+LDC 0
+TSEL L5565 L5565
+L5564:
+  LD 1 0
+  LD 0 0
+  LDC 1
+  LD 1 0
+  LD 2 0
+  LD 4 18
+  AP 2
+  LD 4 17
+  AP 3
+  LD 2 0
+  LD 4 17
+  AP 3
+  ST 2 0
+  LDC 0
+L5565:
+  ST 4 0 ; POP
+  LD 0 0
+  LDC 1
+  ADD
+  ST 0 0
+LDC 0
+TSEL L5560 L5560
+L5562:
+  LDC 0
+  RTN
+L5559:
+  ST 3 0 ; POP
+  LD 0 0
+  LDC 1
+  ADD
+  ST 0 0
+LDC 0
+TSEL L5555 L5555
+L5557:
+  LDC 0
+  RTN
+L5554:
+  ST 2 0 ; POP
+  LD 0 0
+  LDC 0
+  LDC 7
+  LDC 0
+  LD 2 22
+  AP 2
+  CONS
+  CONS
+  RTN
+L5552:
+  RTN
+L5550:
+LDC 0
+TSEL L5659 L5659
+bfs:
+  LDC 0
+  LD 0 1
+  LD 1 6
+  AP 1
+  LDC 0
+  LDF L5567
+TAP 3
+L5567:
+  LDC 0
+  LDF L5569
+TAP 1
+L5569:
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5571
+TAP 4
+L5571:
+L5573:
+  LDC 1
+  LD 2 1
+  CAR
+  ATOM
+  TSEL L5576 L5577
+L5576:
+  LD 2 1
+  CDR
+  ATOM
+LDC 0
+TSEL L5578 L5578
+L5577:
+  LDC 0
+L5578:
+  SUB
+  TSEL L5574 L5575
+L5574:
+  LD 2 1
+  LD 4 23
+  AP 1
+  ST 2 2
+  LD 2 2
+  CDR
+  ST 2 1
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 3 0
+  LD 4 18
+  AP 2
+  LD 4 18
+  AP 2
+  ST 1 0
+  LD 1 0
+  LD 3 2
+  CEQ
+  TSEL L5579 L5580
+L5579:
+  LD 2 2
+  CAR
+  CAR
+  ST 2 0
+  LDC 0
+  LDC 0
+  CONS
+  ST 2 1
+  LDC 0
+LDC 0
+TSEL L5581 L5581
+L5580:
+  LD 1 0
+  LDC 0
+  CEQ
+  TSEL L5585 L5586
+L5585:
+  LDC 1
+LDC 0
+TSEL L5587 L5587
+L5586:
+  LD 1 0
+  LDC 6
+  CEQ
+L5587:
+  TSEL L5582 L5583
+L5582:
+  LDC 0
+LDC 0
+TSEL L5584 L5584
+L5583:
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LDC 0
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 3 0
+  LD 4 18
+  AP 2
+  LD 4 17
+  AP 3
+  LD 3 0
+  LD 4 17
+  AP 3
+  ST 3 0
+  LD 2 1
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LDC 1
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CONS
+  LD 2 1
+  CDR
+  CONS
+  CONS
+  ST 2 1
+  LD 2 1
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LDC 1
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 0 1
+  CAR
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 0 1
+  CDR
+  ADD
+  CONS
+  CONS
+  LD 2 1
+  CDR
+  CONS
+  CONS
+  ST 2 1
+  LD 2 1
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LDC 1
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 0 2
+  CAR
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 0 2
+  CDR
+  ADD
+  CONS
+  CONS
+  LD 2 1
+  CDR
+  CONS
+  CONS
+  ST 2 1
+  LD 2 1
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LDC 1
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 0 3
+  CAR
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 0 3
+  CDR
+  ADD
+  CONS
+  CONS
+  LD 2 1
+  CDR
+  CONS
+  CONS
+  ST 2 1
+  LDC 0
+L5584:
+L5581:
+  TSEL L5573 L5573
+L5575:
+  LD 2 0
+  RTN
+L5572:
+  RTN
+L5570:
+  RTN
+L5568:
+  RTN
+L5566:
+LDC 0
+TSEL L5659 L5659
+paint:
+  LDC 0
+  LD 0 0
+  LD 1 18
+  AP 2
+  CAR
+  LD 0 0
+  CAR
+  LDC 999999
+  LD 1 13
+  AP 3
+  LD 0 1
+  LD 1 6
+  AP 1
+  LDC 0
+  LDF L5589
+TAP 3
+L5589:
+  LDC 0
+  LDF L5591
+TAP 1
+L5591:
+  LDC 0
+  LDC 0
+  LDC 1
+  SUB
+  CONS
+  LDC 1
+  LDC 0
+  CONS
+  LDC 0
+  LDC 1
+  CONS
+  LDC 0
+  LDC 1
+  SUB
+  LDC 0
+  CONS
+  LDF L5593
+TAP 4
+L5593:
+L5595:
+  LDC 1
+  LD 2 1
+  CAR
+  ATOM
+  TSEL L5598 L5599
+L5598:
+  LD 2 1
+  CDR
+  ATOM
+LDC 0
+TSEL L5600 L5600
+L5599:
+  LDC 0
+L5600:
+  SUB
+  TSEL L5596 L5597
+L5596:
+  LD 2 1
+  LD 4 23
+  AP 1
+  ST 2 2
+  LD 2 2
+  CDR
+  ST 2 1
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 3 0
+  LD 4 18
+  AP 2
+  LD 4 18
+  AP 2
+  ST 1 0
+  LD 1 0
+  LDC 0
+  CEQ
+  TSEL L5601 L5602
+L5601:
+  LDC 0
+LDC 0
+TSEL L5603 L5603
+L5602:
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 2 0
+  LD 4 18
+  AP 2
+  LD 4 17
+  AP 3
+  LD 2 0
+  LD 4 17
+  AP 3
+  ST 2 0
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LDC 0
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 3 0
+  LD 4 18
+  AP 2
+  LD 4 17
+  AP 3
+  LD 3 0
+  LD 4 17
+  AP 3
+  ST 3 0
+  LD 2 1
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LDC 1
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 0 0
+  CAR
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 0 0
+  CDR
+  ADD
+  CONS
+  CONS
+  LD 2 1
+  CDR
+  CONS
+  CONS
+  ST 2 1
+  LD 2 1
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LDC 1
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 0 1
+  CAR
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 0 1
+  CDR
+  ADD
+  CONS
+  CONS
+  LD 2 1
+  CDR
+  CONS
+  CONS
+  ST 2 1
+  LD 2 1
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LDC 1
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 0 2
+  CAR
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 0 2
+  CDR
+  ADD
+  CONS
+  CONS
+  LD 2 1
+  CDR
+  CONS
+  CONS
+  ST 2 1
+  LD 2 1
+  CAR
+  LD 2 2
+  CAR
+  CAR
+  LDC 1
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CAR
+  LD 0 3
+  CAR
+  ADD
+  LD 2 2
+  CAR
+  CDR
+  CDR
+  LD 0 3
+  CDR
+  ADD
+  CONS
+  CONS
+  LD 2 1
+  CDR
+  CONS
+  CONS
+  ST 2 1
+  LDC 0
+L5603:
+  TSEL L5595 L5595
+L5597:
+  LD 2 0
+  RTN
+L5594:
+  RTN
+L5592:
+  RTN
+L5590:
+  RTN
+L5588:
+LDC 0
+TSEL L5659 L5659
+mapGhostPos:
+  LD 0 0
+  ATOM
+  TSEL L5605 L5606
+L5605:
+  LDC 0
+RTN
+L5606:
+  LDC 1
+  LD 0 0
+  CAR
+  CAR
+  LDC 2
+  CEQ
+  SUB
+  TSEL L5608 L5609
+L5608:
+  LD 0 0
+  CAR
+  CDR
+  CAR
+  LD 0 0
+  CDR
+  LD 1 7
+  AP 1
+  CONS
+LDC 0
+TSEL L5610 L5610
+L5609:
+  LD 0 0
+  CDR
+  LD 1 7
+  AP 1
+L5610:
+L5607:
+  RTN
+L5604:
+LDC 0
+TSEL L5659 L5659
+toQueue:
+  LDC 0
+  LDC 0
+  CONS
+  LDF L5612
+TAP 1
+L5612:
+L5614:
+  LDC 1
+  LD 1 0
+  ATOM
+  SUB
+  TSEL L5615 L5616
+L5615:
+  LD 0 0
+  CAR
+  LDC 0
+  LD 1 0
+  CAR
+  CONS
+  LD 0 0
+  CDR
+  CONS
+  CONS
+  ST 0 0
+  LD 1 0
+  CDR
+  ST 1 0
+LDC 0
+TSEL L5614 L5614
+L5616:
+  LD 0 0
+  RTN
+L5613:
+  RTN
+L5611:
+LDC 0
+TSEL L5659 L5659
+getDots:
+  LDC 0
+  LDC 0
+  LDC 0
+  LD 0 0
+  LD 1 18
+  AP 2
+  CAR
+  LD 0 0
+  CAR
+  LDF L5618
+TAP 4
+L5618:
+  LDC 0
+  LDF L5620
+  AP 1
+LDC 0
+TSEL L5621 L5621
+L5620:
+L5622:
+  LD 1 3
+  LD 0 0
+  CGT
+  TSEL L5623 L5624
+L5623:
+  LDC 0
+  LDF L5625
+  AP 1
+LDC 0
+TSEL L5626 L5626
+L5625:
+L5627:
+  LD 2 2
+  LD 0 0
+  CGT
+  TSEL L5628 L5629
+L5628:
+  LD 0 0
+  LD 1 0
+  LD 3 0
+  LD 4 18
+  AP 2
+  LD 4 18
+  AP 2
+  LDF L5630
+  AP 1
+LDC 0
+TSEL L5631 L5631
+L5630:
+  LD 0 0
+  LDC 2
+  CEQ
+  TSEL L5632 L5633
+L5632:
+  LD 1 0
+  LD 2 0
+  CONS
+  LD 3 0
+  CONS
+  ST 3 0
+  LDC 0
+RTN
+L5633:
+  LD 0 0
+  LDC 3
+  CEQ
+  TSEL L5635 L5636
+L5635:
+  LD 1 0
+  LD 2 0
+  CONS
+  LD 3 1
+  CONS
+  ST 3 1
+  LDC 0
+LDC 0
+TSEL L5637 L5637
+L5636:
+  LDC 0
+L5637:
+L5634:
+  RTN
+L5631:
+  ST 4 0 ; POP
+  LD 0 0
+  LDC 1
+  ADD
+  ST 0 0
+LDC 0
+TSEL L5627 L5627
+L5629:
+  LDC 0
+  RTN
+L5626:
+  ST 3 0 ; POP
+  LD 0 0
+  LDC 1
+  ADD
+  ST 0 0
+LDC 0
+TSEL L5622 L5622
+L5624:
+  LDC 0
+  RTN
+L5621:
+  ST 2 0 ; POP
+  LD 0 0
+  LD 0 1
+  CONS
+  RTN
+L5619:
+  RTN
+L5617:
+LDC 0
+TSEL L5659 L5659
+calcDensFrom:
+  LD 0 1
+  ATOM
+  TSEL L5639 L5640
+L5639:
+  LDC 0
+RTN
+L5640:
+  LDC 100
+  LD 0 1
+  CAR
+  CAR
+  LD 0 0
+  CAR
+  SUB
+  LD 0 1
+  CAR
+  CDR
+  LD 0 0
+  CDR
+  SUB
+  CONS
+  CAR
+  LD 0 1
+  CAR
+  CAR
+  LD 0 0
+  CAR
+  SUB
+  LD 0 1
+  CAR
+  CDR
+  LD 0 0
+  CDR
+  SUB
+  CONS
+  CAR
+  MUL
+  LD 0 1
+  CAR
+  CAR
+  LD 0 0
+  CAR
+  SUB
+  LD 0 1
+  CAR
+  CDR
+  LD 0 0
+  CDR
+  SUB
+  CONS
+  CDR
+  LD 0 1
+  CAR
+  CAR
+  LD 0 0
+  CAR
+  SUB
+  LD 0 1
+  CAR
+  CDR
+  LD 0 0
+  CDR
+  SUB
+  CONS
+  CDR
+  MUL
+  ADD
+  SUB
+  LDF L5642
+  AP 1
+LDC 0
+TSEL L5643 L5643
+L5642:
+  LDC 0
+  LD 0 0
+  CGT
+  TSEL L5644 L5645
+L5644:
+  LDC 0
+LDC 0
+TSEL L5646 L5646
+L5645:
+  LD 0 0
+L5646:
+  LD 1 0
+  LD 1 1
+  CDR
+  LD 2 4
+  AP 2
+  ADD
+  RTN
+L5643:
+L5641:
+  RTN
+L5638:
+LDC 0
+TSEL L5659 L5659
+junctionSafety:
+  LDC 0
+  LD 0 2
+  CAR
+  LD 0 3
+  CAR
+  ADD
+  LD 0 2
+  CDR
+  LD 0 3
+  CDR
+  ADD
+  CONS
+  LDC 1
+  LDF L5648
+TAP 3
+L5648:
+L5650:
+  LDC 1
+  LD 0 1
+  CAR
+  LD 0 1
+  CDR
+  LD 1 0
+  LD 2 18
+  AP 2
+  LD 2 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  TSEL L5651 L5652
+L5651:
+  LD 0 1
+  LD 1 0
+  LD 2 2
+  AP 2
+  TSEL L5653 L5654
+L5653:
+  LD 0 1
+  CAR
+  LD 0 1
+  CDR
+  LD 1 1
+  LD 2 18
+  AP 2
+  LD 2 18
+  AP 2
+  LD 0 2
+  SUB
+  ST 0 0
+  LDC 0
+  LDC 0
+  CONS
+  ST 0 1
+  LDC 0
+LDC 0
+TSEL L5655 L5655
+L5654:
+  LD 0 1
+  CAR
+  LD 1 3
+  CAR
+  ADD
+  LD 0 1
+  CDR
+  LD 1 3
+  CDR
+  ADD
+  CONS
+  ST 0 1
+  LD 0 2
+  LDC 1
+  ADD
+  ST 0 2
+  LDC 0
+L5655:
+  TSEL L5650 L5650
+L5652:
+  LD 0 0
+  RTN
+L5649:
+  RTN
+L5647:
+LDC 0
+TSEL L5659 L5659
+isJunction:
+  LD 0 0
+  CAR
+  LD 0 0
+  CDR
+  LDF L5657
+TAP 2
+L5657:
+  LDC 1
+  LD 0 0
+  LDC 1
+  ADD
+  LD 0 1
+  LD 1 1
+  LD 2 18
+  AP 2
+  LD 2 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  LDC 1
+  LD 0 0
+  LDC 1
+  SUB
+  LD 0 1
+  LD 1 1
+  LD 2 18
+  AP 2
+  LD 2 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  ADD
+  LDC 1
+  LD 0 0
+  LD 0 1
+  LDC 1
+  ADD
+  LD 1 1
+  LD 2 18
+  AP 2
+  LD 2 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  ADD
+  LDC 1
+  LD 0 0
+  LD 0 1
+  LDC 1
+  SUB
+  LD 1 1
+  LD 2 18
+  AP 2
+  LD 2 18
+  AP 2
+  LDC 0
+  CEQ
+  SUB
+  ADD
+  LDC 3
+  CGTE
+  RTN
+L5658:
+  RTN
+L5656:
+LDC 0
+TSEL L5659 L5659
+lmax:
+  LD 0 1
+  LD 0 0
+  CGT
+  TSEL L5660 L5661
+L5660:
+  LD 0 0
+RTN
+L5661:
+  LD 0 1
+L5662:
+  RTN
+L5659:
+  LD 1 0
+  LD 1 1
+  LD 0 10
+  AP 2
+  LD 0 12
+  CONS
+  RTN

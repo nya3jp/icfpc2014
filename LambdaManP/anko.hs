@@ -50,7 +50,7 @@ data ActionFlag
   | FromPowerDot 
   | ToGhost
   | FromGhost
-  | ToCenterOfDots
+  | ToWidePlaces
   deriving (Eq, Ord, Enum,Bounded)
 
 
@@ -250,11 +250,11 @@ voteMax bd pos = comp $
   with (negate $peekMap (vadd pos v1) bd) $ \c1 ->
   with (negate $peekMap (vadd pos v2) bd) $ \c2 ->
   with (negate $peekMap (vadd pos v3) bd) $ \c3 -> e $
-    let 
-        elem0 = c0 ./= ninf &&& c0 .>= c1 &&& c0 .>= c2 &&& c0 .>= c3 
-        elem1 = c1 ./= ninf &&& c1 .>= c0 &&& c1 .>= c2 &&& c1 .>= c3
-        elem2 = c2 ./= ninf &&& c2 .>= c0 &&& c2 .>= c1 &&& c2 .>= c3 
-        elem3 = c3 ./= ninf &&& c3 .>= c0 &&& c3 .>= c1 &&& c3 .>= c2
+    let -- NEGATED!!
+        elem0 = c0 ./= ninf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3 
+        elem1 = c1 ./= ninf &&& c1 .<= c0 &&& c1 .<= c2 &&& c1 .<= c3
+        elem2 = c2 ./= ninf &&& c2 .<= c0 &&& c2 .<= c1 &&& c2 .<= c3 
+        elem3 = c3 ./= ninf &&& c3 .<= c0 &&& c3 .<= c1 &&& c3 .<= c2
     in cons (cons elem0 elem1) (cons elem2 elem3)
 
 
@@ -345,11 +345,11 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
       with (calcDensFrom lmanPos ghosts) $ \ghostDens -> 
       with (vTieBreaker lmanDir) $ \dirVote -> do
-            
+        
         -- [1]
-        lwhen (peekMap lmanPos ghostMap .< 4 &&& lnot lmanIsPow) $ 
+        lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
-        -- lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
+        --lwhen (peekMap lmanPos ghostMap .> 6 ||| lmanIsPow) $ 
         lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
         -- [2]
@@ -380,13 +380,14 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         dirVote ~= dirVote `vadd4` chainAction 200 ToPowerDot   (voteMin  powMap lmanPos) 
         dirVote ~= dirVote `vadd4` chainAction 200 ToGhost      (voteMin  ghostMap lmanPos)  
         dirVote ~= dirVote `vadd4` chainAction 200 FromPowerDot (voteMax  powMap lmanPos)               
-        dirVote ~= dirVote `vadd4` chainAction 100 ToDot        (voteMin  dotMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 50 ToDot        (voteMax  cornerMap lmanPos)         
+        dirVote ~= dirVote `vadd4` chainAction  50 ToDot        (voteMin  dotMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 100 ToDot        (voteMax  cornerMap lmanPos)         
         dirVote ~= dirVote `vadd4` (5  `vscale4` (voteMax  bd lmanPos) )
         dirVote ~= dirVote `vadd4` (10000 `vscale4` (voteAvoidWall  bd lmanPos) )        
 
         let dir = maxIndex4 dirVote
 
+        --trace (c $ 100001, c 0, ghostMap)
         
         
         trace (c $ negate 9988, actionFlags)
@@ -413,7 +414,7 @@ initialize :: Expr World -> Expr X -> Expr AIState
           comp $ mat ~= pokeMat x y 1 mat
     let aist0 :: Expr AIState
         aist0 = cons mat $
-                cons (Const 0) $ 
+                cons (ite (w*h .<=400) (Const 1) ninf) $ 
                 arr0
         arr0 = newArray actionFlagSize (Const 0) :: Expr (Array Int)
     e $ aist0
@@ -436,7 +437,9 @@ progn = do
   isJunctionDef
   lmaxDef
 
-  rtn $ cons (initialize (Var (-1) 0) (Var (-1) 1)) (Closure "step")
+  rtn $ comp $ with (initialize (Var (-1) 0) (Var (-1) 1)) $ \aist0 -> 
+    e $ ite (clockOfS aist0 ./=ninf) (cons aist0 (Closure "step")) undef
+    
 
 main :: IO ()
 main = do
@@ -449,7 +452,7 @@ main = do
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       
       let 
-          body = printf "archive/madoka-%s-%04d" dateStr2 idx
+          body = printf "archive/Madokaren-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
@@ -459,13 +462,17 @@ main = do
       forM_ [body, "archive/latest"] $ \body -> do
         let 
           fnGcc = body ++ ".gcc"
+          fnAsm = body ++ ".asm"
           fnDir = body ++ "-src"
 
  
         writeFile "/dev/null" progStr
-        writeFile fnGcc $ progStr
+        writeFile fnAsm $ unlines $ compile' progn
+        system $ printf "../alice/shino.py %s ../alice/karen.asm > %s" fnAsm fnGcc       
+
         system $ "mkdir -p " ++ fnDir
         system $ printf "cp *.hs %s/" fnDir
+
 
 
 prognDebug :: LMan ()
