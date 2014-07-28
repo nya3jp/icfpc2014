@@ -459,7 +459,7 @@ let eval_main man show_useful_info program args =
   | Exception_exit ->
      if show_useful_info then begin
        Printf.printf "Used %d cycles.\n" !i;
-       show_profile program profile;
+       (* show_profile program profile; *)
      end;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
@@ -517,7 +517,7 @@ let eval_step man show_useful_info program closure args =
   | Exception_exit ->
      if show_useful_info then begin
        Printf.printf "Used %d cycles.\n" !i;
-       show_profile program profile;
+       (* show_profile program profile; *)
      end;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
