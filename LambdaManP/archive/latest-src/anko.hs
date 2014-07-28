@@ -108,7 +108,6 @@ bfs :: Expr Map -> Expr [Pos] -> Expr Int -> Expr Int
 
       cell ~= peekMat (car pos) (cdr pos) bd
 
-      -- trace (c 10002, dep, pos, cell)
 
       cond (cell .== target)
         ( do
@@ -127,6 +126,9 @@ bfs :: Expr Map -> Expr [Pos] -> Expr Int -> Expr Int
 
 inf :: Expr Int
 inf = Const 999999
+ninf :: Expr Int
+ninf =Const $ negate 999999
+
 
 calcDensFrom :: Expr Pos -> Expr [Pos] -> Expr Int
 (calcDensFrom , calcDensFromDef) = def2 "calcDensFrom" $ \origin poss -> comp $ do
@@ -205,14 +207,14 @@ mapGhostPos :: Expr [GhostState] -> Expr [Pos]
 selectMax :: Expr Map -> Expr Pos -> Expr Int
 selectMax bd pos = comp $
   withVects $ \[v0, v1, v2, v3] ->
-  with (peekMap (vadd pos v0) bd) $ \c0 ->
-  with (peekMap (vadd pos v1) bd) $ \c1 ->
-  with (peekMap (vadd pos v2) bd) $ \c2 ->
-  with (peekMap (vadd pos v3) bd) $ \c3 ->
-    cond (c0 ./= inf &&& c0 .> c1 &&& c0 .> c2 &&& c0 .> c3) (e $ c 0) $
-    cond (c1 ./= inf &&& c1 .> c2 &&& c1 .> c3 &&& c1 .> c0) (e $ c 1) $
-    cond (c2 ./= inf &&& c2 .> c3 &&& c2 .> c0 &&& c2 .> c1) (e $ c 2) $
-    cond (c3 ./= inf &&& c3 .> c0 &&& c3 .> c1 &&& c3 .> c2) (e $ c 3) $
+  with (negate $ peekMap (vadd pos v0) bd) $ \c0 ->
+  with (negate $ peekMap (vadd pos v1) bd) $ \c1 ->
+  with (negate $ peekMap (vadd pos v2) bd) $ \c2 ->
+  with (negate $ peekMap (vadd pos v3) bd) $ \c3 ->
+    cond (c0 ./= ninf &&& c0 .> c1 &&& c0 .> c2 &&& c0 .> c3) (e $ c 0) $
+    cond (c1 ./= ninf &&& c1 .> c2 &&& c1 .> c3 &&& c1 .> c0) (e $ c 1) $
+    cond (c2 ./= ninf &&& c2 .> c3 &&& c2 .> c0 &&& c2 .> c1) (e $ c 2) $
+    cond (c3 ./= ninf &&& c3 .> c0 &&& c3 .> c1 &&& c3 .> c2) (e $ c 3) $
     e $ c (-1)
 
 selectMin :: Expr Map -> Expr Pos -> Expr Int
@@ -244,15 +246,15 @@ selectSmall bd pos = comp $
 voteMax :: Expr Map -> Expr Pos -> Expr V4
 voteMax bd pos = comp $
   withVects $ \[v0, v1, v2, v3] ->
-  with (peekMap (vadd pos v0) bd) $ \c0 ->
-  with (peekMap (vadd pos v1) bd) $ \c1 ->
-  with (peekMap (vadd pos v2) bd) $ \c2 ->
-  with (peekMap (vadd pos v3) bd) $ \c3 -> e $
+  with (negate $peekMap (vadd pos v0) bd) $ \c0 ->
+  with (negate $peekMap (vadd pos v1) bd) $ \c1 ->
+  with (negate $peekMap (vadd pos v2) bd) $ \c2 ->
+  with (negate $peekMap (vadd pos v3) bd) $ \c3 -> e $
     let 
-        elem0 = c0 ./= inf &&& c0 .>= c1 &&& c0 .>= c2 &&& c0 .>= c3 
-        elem1 = c1 ./= inf &&& c1 .>= c0 &&& c1 .>= c2 &&& c1 .>= c3
-        elem2 = c2 ./= inf &&& c2 .>= c1 &&& c2 .>= c2 &&& c2 .>= c3 
-        elem3 = c3 ./= inf &&& c3 .>= c0 &&& c3 .>= c1 &&& c3 .>= c2
+        elem0 = c0 ./= ninf &&& c0 .>= c1 &&& c0 .>= c2 &&& c0 .>= c3 
+        elem1 = c1 ./= ninf &&& c1 .>= c0 &&& c1 .>= c2 &&& c1 .>= c3
+        elem2 = c2 ./= ninf &&& c2 .>= c0 &&& c2 .>= c1 &&& c2 .>= c3 
+        elem3 = c3 ./= ninf &&& c3 .>= c0 &&& c3 .>= c1 &&& c3 .>= c2
     in cons (cons elem0 elem1) (cons elem2 elem3)
 
 
@@ -266,7 +268,7 @@ voteMin bd pos = comp $
     let 
         elem0 = c0 ./= inf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3 
         elem1 = c1 ./= inf &&& c1 .<= c0 &&& c1 .<= c2 &&& c1 .<= c3
-        elem2 = c2 ./= inf &&& c2 .<= c1 &&& c2 .<= c2 &&& c2 .<= c3 
+        elem2 = c2 ./= inf &&& c2 .<= c0 &&& c2 .<= c1 &&& c2 .<= c3 
         elem3 = c3 ./= inf &&& c3 .<= c0 &&& c3 .<= c1 &&& c3 .<= c2
     in cons (cons elem0 elem1) (cons elem2 elem3)
 
@@ -302,6 +304,23 @@ getDots :: Expr Map -> Expr ([Pos], [Pos])
       (e $ c 0)
     e $ cons dot pow
 
+getCorners :: Expr Map -> Expr [Pos]
+(getCorners, getCornersDef) = def1 "getCorners" $ \bd -> comp $
+  with3 lnull (getWidth bd) (getHeight bd) $ \dot w h -> do
+    for 0 h $ \y ->
+      for 0 w $ \x ->
+        with (peekMat x y bd) $ \cell ->
+        let nbd = (peekMat (x+1) y bd ./=0) +
+                  (peekMat (x-1) y bd ./=0) +
+                  (peekMat x (y-1) bd ./=0) +
+                  (peekMat x (y+1) bd ./=0) 
+        in
+        cond (cell .== 1 &&& nbd .== 1) (push dot $ cons x y) $
+        (e $ c 0)
+
+    e  dot
+
+
 -- Strategy:
 -- [1] if NearestGhost<3 then FromGhost+
 -- X [1] if MaxJunctionSafety>3 then FromGhost-
@@ -317,16 +336,18 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
     with (pokeMap lmanPos (negate clk) bd0) $ \bd -> 
       with (mapGhostPos $ caddr world) $ \ghosts ->
       with (getDots bd) $ \bothDots ->
+      with (getCorners bd) $ \cornerDots ->
       with2 (car bothDots) (cdr bothDots) $ \dots pows ->
       with (paint bd ghosts)   $ \ghostMap ->
       with (paint bd dots) $ \dotMap ->
+      with (paint bd cornerDots) $ \cornerMap ->      
       with (paint bd pows) $ \powMap -> 
       with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
       with (calcDensFrom lmanPos ghosts) $ \ghostDens -> 
       with (vTieBreaker lmanDir) $ \dirVote -> do
             
         -- [1]
-        lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
+        lwhen (peekMap lmanPos ghostMap .< 4 &&& lnot lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
         -- lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
         lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
@@ -355,19 +376,22 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         let chainAction :: Expr Int -> ActionFlag -> Expr V4 -> Expr V4
             chainAction w f v = (peekFlag f actionFlags * w) `vscale4` v
         
-        dirVote ~= dirVote `vadd4` chainAction 40 FromGhost    (voteMax  ghostMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 20 ToPowerDot   (voteMin  powMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 20 ToGhost      (voteMin  ghostMap lmanPos)  
-        dirVote ~= dirVote `vadd4` chainAction 20 FromPowerDot (voteMax  powMap lmanPos)               
-        dirVote ~= dirVote `vadd4` chainAction 10 ToDot        (voteMin  dotMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 400 FromGhost    (voteMax  ghostMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 200 ToPowerDot   (voteMin  powMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 200 ToGhost      (voteMin  ghostMap lmanPos)  
+        dirVote ~= dirVote `vadd4` chainAction 200 FromPowerDot (voteMax  powMap lmanPos)               
+        dirVote ~= dirVote `vadd4` chainAction 100 ToDot        (voteMin  dotMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 50 ToDot        (voteMax  cornerMap lmanPos)         
         dirVote ~= dirVote `vadd4` (5  `vscale4` (voteMax  bd lmanPos) )
         dirVote ~= dirVote `vadd4` (10000 `vscale4` (voteAvoidWall  bd lmanPos) )        
 
         let dir = maxIndex4 dirVote
 
-        trace (c 6677, actionFlags)
-        trace dirVote   
         
+        
+        trace (c $ negate 9988, actionFlags)
+        trace dirVote   
+
         e $ cons (cons bd (cons (1+clk) actionFlags)) dir
 
 arrLength :: Expr (Array a) -> Expr Int
@@ -399,6 +423,7 @@ progn = do
   libDef
 
   stepDef
+  getCornersDef  
   initializeDef
 
   bfsDef
@@ -424,7 +449,7 @@ main = do
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       
       let 
-          body = printf "archive/goodflag-%s-%04d" dateStr2 idx
+          body = printf "archive/madoka-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
