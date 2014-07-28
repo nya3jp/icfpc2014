@@ -41,7 +41,6 @@ data ActionFlag
   | FromPowerDot 
   | ToGhost
   | FromGhost
-  | ToCenterOfDots
   deriving (Eq, Ord, Enum,Bounded)
 
 
@@ -122,8 +121,6 @@ calcDensFrom :: Expr Pos -> Expr [Pos] -> Expr Int
   e $ ite (atom poss) (Const 0) $ comp $
       with (100 - (vnorm $ lhead poss `vsub` origin)) $
       \ r -> e $ (ite (r .< 0) 0 r) + calcDensFrom origin (ltail poss)
-
-
 
 
 paint :: Expr Map -> Expr [Pos] -> Expr Map
@@ -272,8 +269,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         -- [1]
         lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
-        -- lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
-        lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
+        lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
         -- [2]
         lwhen (lnot lmanIsPow)  $ do

@@ -106,4 +106,4 @@ progn = do
 
 main :: IO ()
 main = do
-  writeFile "../LambdaMan/mito-run.gcc" $ compile progn    
+  writeFile "../LambdaMan/mito-g.gcc" $ compile progn    
