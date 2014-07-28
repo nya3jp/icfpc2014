@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import collections
 import datetime
 import json
 import glob
@@ -34,17 +35,27 @@ def load_entry(key, data_dir):
   return entry
 
 
-def flatten_results(entries):
-  evalsets = set()
+def process_results(entries):
+  evalset_score_max = collections.defaultdict(lambda: 10)
   for entry in entries:
     for result in entry['results']:
-      evalsets.add(result['evalset'])
-  evalsets = sorted(evalsets)
+      evalset = result['evalset']
+      evalset_score_max[evalset] = max(evalset_score_max[evalset], result['score'])
+  evalsets = sorted(evalset_score_max)
   for entry in entries:
     results_map = {}
     for result in entry['results']:
       results_map[result['evalset']] = result
     entry['results'] = [results_map.get(evalset) for evalset in evalsets]
+    for result in entry['results']:
+      if result:
+        result['score_ratio'] = 1.0 * result['score'] / evalset_score_max[result['evalset']]
+        result['score_percent'] = int(result['score_ratio'] * 100)
+        result['winner'] = (result['score'] == evalset_score_max[result['evalset']])
+    scores = [result['score_ratio'] for result in entry['results'] if result and result['score'] >= 0]
+    entry['score_ratio'] = sum(scores) / len(scores)
+    entry['score_percent'] = int(100 * entry['score_ratio'])
+  entries.sort(key=lambda entry: entry['score_ratio'], reverse=True)
   return evalsets
 
 
@@ -57,14 +68,14 @@ def handle_index(data_dir, template_name):
       except ValueError:
         continue
       entries.append(entry)
-  evalsets = flatten_results(entries)
+  evalsets = process_results(entries)
   return bottle.template(template_name, entries=entries, evalsets=evalsets)
 
 
 def handle_submit(data_dir):
   key = bottle.request.forms['key']
   code = bottle.request.files['code'].file.read()
-  assert re.search(r'^[a-zA-z0-9_-]+$', key)
+  assert re.search(r'^[a-zA-z0-9_,-]+$', key)
   now = datetime.datetime.now()
   data = {
       'key': key,
