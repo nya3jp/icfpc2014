@@ -30,7 +30,6 @@ import System.Process
 data X = X
 exprX :: Expr X
 exprX = cast (Const 0)
-type Direction = Int
 type Clock = Int
 type Environ = (AIState,World)
 type World = ([[Int]], (ManState, ([GhostState], FruitState)))
@@ -98,6 +97,8 @@ progn = do
   stepDef  
   dirValueTotalDef
   
+
+
   let chizu = toMat $ car (Var (-1) 0 :: Expr World)
       aist :: Expr AIState
       aist = cons chizu (cons (Const 0) exprX) 
@@ -105,4 +106,4 @@ progn = do
 
 main :: IO ()
 main = do
-  writeFile "../LambdaMan/mito.gcc" $ compile progn    
+  writeFile "../LambdaMan/mito-g.gcc" $ compile progn    
