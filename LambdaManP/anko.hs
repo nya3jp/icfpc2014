@@ -7,8 +7,12 @@ import Control.Applicative (Const)
 import DSL
 import Lib
 import Vect
+import System.Random
+import System.Process
+import Text.Printf
 
 import Prelude hiding (even, odd)
+
 
 -----
 
@@ -348,5 +352,19 @@ main = do
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
     _ -> do
-      writeFile "../LambdaMan/anko-tiebreak.gcc" $ compile progn
+      idx <- randomRIO (0,10000:: Integer)
+      dateStr <- readProcess "date" [] ""
+      let 
+          fnGcc :: String
+          fnGcc = printf "archive/anko-%s-%04d.gcc" dateStr2 idx
+          fnDir :: String
+          fnDir = printf "archive/anko-%s-%04d-src" dateStr2 idx
+          dateStr2 = 
+            map (\c -> if c==' ' then '-' else c) $
+            unwords $ words $
+            map (\c -> if c `elem` "0123456789" then c else ' ') dateStr
 
+      writeFile fnGcc $ compile progn
+      system $ "mkdir -p " ++ fnDir
+      system $ printf "cp *.hs %s/" fnDir
+      return ()
