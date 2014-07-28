@@ -26,6 +26,8 @@ data CompState
 initState :: CompState
 initState = CompState 0 0 []
 
+conf_xhl_optimizer = False
+
 addFunc :: String -> Label -> LMan ()
 addFunc name l = do
   s <- get
@@ -156,8 +158,79 @@ isNull = Atom
 tellc :: String -> LMan ()
 tellc s = tell [const s]
 
+nooptCondExpr0 :: Expr Int -> ([Expr Int], [Expr Int])
+nooptCondExpr0 ee = ([ee], [Ceq ee (Const 0)])
+
+optCondExpr0 :: Expr Int -> ([Expr Int], [Expr Int])
+optCondExpr0 ee = case (optExpr (optExpr ee)) of
+  Const n -> ([Const n], [Const (if n == 0 then 1 else 0)])
+  Bin SUB (Const 1) (Ceq a b) -> ([ee], [Ceq a b])
+  Bin SUB (Ceq a b) (Const 1) -> ([ee], [Ceq a b])
+  Ite c a b -> 
+    let (aa,not_aa) = optCondExpr0 a in
+    let (bb,not_bb) = optCondExpr0 b in
+    let (cc,not_cc) = optCondExpr0 c in
+    ([Ite ccc     aaa bbb | ccc     <- cc,     aaa <- aa, bbb <- bb] ++
+     [Ite not_ccc bbb aaa | not_ccc <- not_cc, aaa <- aa, bbb <- bb],
+     [Ite ccc     not_aaa not_bbb | ccc     <- cc,     not_aaa <- not_aa, not_bbb <- not_bb] ++
+     [Ite not_ccc not_bbb not_aaa | not_ccc <- not_cc, not_aaa <- not_aa, not_bbb <- not_bb])
+  Seq a b -> let (bb,not_bb) = optCondExpr0 b in ([Seq a bbb | bbb <- bb], [Seq a not_bbb | not_bbb <- not_bb])
+  _ -> nooptCondExpr0 ee
+
+optCondExpr :: Expr Int -> (Bool, Expr Int)
+optCondExpr cond = if not conf_xhl_optimizer then (False, cond) else
+  let (conds,not_conds) = optCondExpr0 cond in
+  let (cond_best_len,    cond_best)     = minimum $ zip (map (length . codeGen . compileExpr) conds) conds in
+  let (not_cond_best_len,not_cond_best) = minimum $ zip (map (length . codeGen . compileExpr) not_conds) not_conds in
+  if not_cond_best_len < cond_best_len then
+    (True, not_cond_best)
+  else
+    (False, cond_best)
+
+optExpr :: Expr a -> Expr a  -- ()
+optExpr ee = if not conf_xhl_optimizer then ee else case ee of
+  Car (Cons a b) -> optExpr a
+  Cdr (Cons a b) -> optExpr b
+  Bin op a b -> Bin op (optExpr a) (optExpr b)
+  Cons a b -> Cons (optExpr a) (optExpr b)
+  Car a -> Car (optExpr a)
+  Cdr a -> Cdr (optExpr a)
+  Ceq a b -> Ceq (optExpr a) (optExpr b)
+  Cgt a b -> Cgt (optExpr a) (optExpr b)
+  Cgte a b -> Cgte (optExpr a) (optExpr b)
+  Atom a -> Atom (optExpr a)
+  Assign i j a -> Assign i j (optExpr a)
+  Seq a b -> Seq (optExpr a) (optExpr b)
+  Ite cond aa bb ->
+    let (reversed,cond2) = optCondExpr (optExpr cond) in
+    if reversed then
+      Ite cond2 (optExpr bb) (optExpr aa)
+    else
+      Ite cond2 (optExpr aa) (optExpr bb)
+{-
+  While cond body ->
+    let (reversed,cond2) = optCondExpr (optExpr cond) in
+    While2 reversed cond2 (optExpr body)
+  While2 reversed0 cond body ->
+    let (reversed,cond2) = optCondExpr (optExpr cond) in
+    While2 (reversed0 /= reversed) cond2 (optExpr body)
+-}
+  _ -> ee
+
+
+compileTselExpr :: Bool -> Expr Int -> Label -> Label -> LMan ()
+compileTselExpr reversed0 cond tlabel elabel = do
+  let (reversed,cond2) = optCondExpr cond
+  case reversed0 /= reversed of
+    True -> do
+      compileExpr cond2
+      tsel elabel tlabel
+    False -> do
+      compileExpr cond2
+      tsel tlabel elabel
+
 compileExpr :: Expr a -> LMan ()
-compileExpr ee = case ee of
+compileExpr ee = case optExpr ee of
   Nop -> ldc 0
 
   Const n -> ldc n
@@ -215,8 +288,7 @@ compileExpr ee = case ee of
     tlabel <- newLabel
     elabel <- newLabel
     jlabel <- newLabel
-    compileExpr cond
-    tsel tlabel elabel
+    compileTselExpr False cond tlabel elabel
     emitLabel tlabel
     compileExpr t
     jmp jlabel
@@ -243,8 +315,7 @@ compileExpr ee = case ee of
     end <- newLabel
 
     emitLabel beg
-    compileExpr cond
-    tsel bod end
+    compileTselExpr False cond bod end
 
     emitLabel bod
     compileExpr body
