@@ -214,12 +214,17 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd edGhosts) $ \edGhostMap ->
       with (paint bd dots) $ \dotMap ->
       with (paint bd pows) $ \powMap -> do
-
+        let ghostIsNear = peekMap lmanPos ghostMap   .< 4 
+            shouldEatPow = 
+              (peekMap lmanPos edGhostMap .>= inf) 
+                &&& (peekMap lmanPos powMap .< inf)
+                &&& (peekMap lmanPos ghostMap .< 10)
+            shouldEatGhost = (peekMap lmanPos edGhostMap .<  10)
         let dir = comp $
-              cond (peekMap lmanPos ghostMap   .< 4   ) (e $ selectMax ghostMap lmanPos) $
-              cond (peekMap lmanPos edGhostMap .>= inf &&& peekMap lmanPos powMap .< inf) (e $ selectMin powMap lmanPos) $
-              cond (peekMap lmanPos edGhostMap .<  10) (e $ selectMin edGhostMap lmanPos) $
-                                                        (e $ selectMin dotMap lmanPos)
+              cond ghostIsNear (e $ selectMax ghostMap lmanPos) $
+              cond shouldEatPow (e $ selectMin powMap lmanPos) $
+              cond shouldEatGhost (e $ selectMin edGhostMap lmanPos) $
+                (e $ selectMin dotMap lmanPos)
 
         trace (c 10005, ghosts)
         trace (c 10006, edGhosts)

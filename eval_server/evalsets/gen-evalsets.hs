@@ -10,7 +10,7 @@ main :: IO ()
 main = do
   tmpl <- fmap T.pack $ readFile "middle.sh"
   forM_ [1..100::Int] $ \i -> do
-    let con = T.replace (T.pack "eval-2.map") (T.pack $ printf "gen/eval%04d.map" i)  tmpl
-        fn = printf "set-a-%04d.sh" i
+    let con = T.replace (T.pack "eval-2.map") (T.pack $ printf "gen/eval-b-%04d.map" i)  tmpl
+        fn = printf "set-b-%04d.sh" i
     T.writeFile fn con
   
