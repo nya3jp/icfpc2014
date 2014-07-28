@@ -5,9 +5,8 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
-for i in $@; do
-  curl --basic --user einclad:asunyan -F user=$USER -F url= -F comment="$i" -F code=@"$i" http://einclad.coders.jp/submit
-  echo "submitted $i"
-done
+i="$(basename $1 | sed 's/\..*//')"
+curl --basic --user einclad:asunyan -F key="$i" -F code=@"$1" http://einclad.coders.jp/submit
+echo "submitted $i"
 
 echo "check your submission at http://einclad.coders.jp/"
