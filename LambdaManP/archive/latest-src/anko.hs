@@ -414,7 +414,7 @@ initialize :: Expr World -> Expr X -> Expr AIState
           comp $ mat ~= pokeMat x y 1 mat
     let aist0 :: Expr AIState
         aist0 = cons mat $
-                cons (Const 0) $ 
+                cons (ite (w*h .<=400) (Const 1) ninf) $ 
                 arr0
         arr0 = newArray actionFlagSize (Const 0) :: Expr (Array Int)
     e $ aist0
@@ -437,7 +437,9 @@ progn = do
   isJunctionDef
   lmaxDef
 
-  rtn $ cons (initialize (Var (-1) 0) (Var (-1) 1)) (Closure "step")
+  rtn $ comp $ with (initialize (Var (-1) 0) (Var (-1) 1)) $ \aist0 -> 
+    e $ ite (clockOfS aist0 ./=ninf) (cons aist0 (Closure "step")) undef
+    
 
 main :: IO ()
 main = do
