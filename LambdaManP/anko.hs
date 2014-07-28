@@ -299,7 +299,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd pows) $ \powMap -> 
       with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
       with (calcDensFrom lmanPos ghosts) $ \ghostDens -> 
-      with vzero4 $ \dirVote -> do
+      with (vTieBreaker lmanDir) $ \dirVote -> do
             
         -- [1]
         lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
@@ -331,7 +331,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         dirVote ~= dirVote `vadd4` chainAction 20 ToGhost      (voteMin  ghostMap lmanPos)  
         dirVote ~= dirVote `vadd4` chainAction 20 FromPowerDot (voteMax  powMap lmanPos)               
         dirVote ~= dirVote `vadd4` chainAction 10 ToDot        (voteMin  dotMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 1 ToDot         (voteMax  bd lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 5 ToDot         (voteMax  bd lmanPos) 
 
         let dir = maxIndex4 dirVote
 
@@ -399,7 +399,7 @@ main = do
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       
       let 
-          body = printf "archive/mito-%s-%04d" dateStr2 idx
+          body = printf "archive/TB-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
