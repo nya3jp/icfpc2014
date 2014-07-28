@@ -331,7 +331,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         dirVote ~= dirVote `vadd4` chainAction 20 ToGhost      (voteMin  ghostMap lmanPos)  
         dirVote ~= dirVote `vadd4` chainAction 20 FromPowerDot (voteMax  powMap lmanPos)               
         dirVote ~= dirVote `vadd4` chainAction 10 ToDot        (voteMin  dotMap lmanPos) 
-        dirVote ~= dirVote `vadd4` chainAction 5 ToDot         (voteMax  bd lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 2 ToDot         (voteMax  bd lmanPos) 
 
         let dir = maxIndex4 dirVote
 
@@ -399,7 +399,7 @@ main = do
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       
       let 
-          body = printf "archive/TB-%s-%04d" dateStr2 idx
+          body = printf "archive/mito-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
