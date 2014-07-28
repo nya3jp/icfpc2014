@@ -52,15 +52,17 @@ type machine = {
   mutable s: value Stack.t; (* data stack *)
   mutable d: address Stack.t; (* control stack *)
   mutable e: frame list; (* environment stack *)
+  debug_callback: unit -> unit (* will be called when debug *)
 }
 
 type program = instruction array
 
-let make_initial_machine () = {
+let make_initial_machine debug_callback = {
   c = 0;
   s = Stack.create ();
   d = Stack.create ();
   e = [];
+  debug_callback = debug_callback;
 }
 
 let check_int = function
@@ -322,6 +324,7 @@ let rec eval_instruction machine = function
      let x = Stack.pop machine.s in
      print_string "; trace lambdaman: ";
      print_value x;
+     machine.debug_callback ();
      machine.c <- machine.c + 1
   | LBrk ->
      print_endline "DEBUG BREAK";
@@ -331,7 +334,7 @@ let rec eval_instruction machine = function
 ;;
 
 let eval_program program =
-  let machine = make_initial_machine () in
+  let machine = make_initial_machine (fun () -> ()) in
   Stack.push AStop machine.d;
   try
     for i = 0 to 3072000 - 1 do
@@ -344,7 +347,13 @@ let eval_program program =
 ;;
 
 let eval_main show_useful_info program args =
-  let machine = make_initial_machine () in
+  let i = ref 0 in
+  let debug_callback () =
+    if show_useful_info then
+      print_endline ("Current Cycle: " ^ (string_of_int !i))
+  in
+
+  let machine = make_initial_machine debug_callback in
 
   (* make a frame to call main function *)
   let frame = alloc_frame (List.length args) in
@@ -377,7 +386,13 @@ let eval_step show_useful_info program closure args =
     | _ -> failwith "eval_step got non closure."
   in
 
-  let machine = make_initial_machine () in
+  let i = ref 0 in
+  let debug_callback () =
+    if show_useful_info then
+      print_endline ("Current Cycle: " ^ (string_of_int !i))
+  in
+
+  let machine = make_initial_machine debug_callback in
 
   let frame = alloc_frame (List.length args) in
   List.iteri (fun i v ->
@@ -388,7 +403,6 @@ let eval_step show_useful_info program closure args =
   machine.e <- frame :: fp;
   Stack.push AStop machine.d;
 
-  let i = ref 0 in
   try
     let maxSteps = 3072000 in
     while !i < maxSteps do
