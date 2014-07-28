@@ -108,7 +108,6 @@ bfs :: Expr Map -> Expr [Pos] -> Expr Int -> Expr Int
 
       cell ~= peekMat (car pos) (cdr pos) bd
 
-      -- trace (c 10002, dep, pos, cell)
 
       cond (cell .== target)
         ( do
@@ -389,8 +388,6 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         let dir = maxIndex4 dirVote
 
         
-        trace (c 100000, c 1, ghostMap)
-        trace (c 100001, c 1, ghostMap)
         
         trace (c $ negate 9988, actionFlags)
         trace dirVote   
