@@ -465,6 +465,10 @@ ite = Ite
 cond :: Expr Int -> CExpr a () -> CExpr a () -> CExpr a ()
 cond c a b = e $ ite c (comp a) (comp b)
 
+lwhen :: Expr Int -> CExpr a () -> CExpr a ()
+lwhen c a = e $ ite c (comp a) (Const 0)
+
+
 infix 5 ~=
 (~=) :: Expr a -> Expr a -> CExpr () ()
 (Var i j) ~= v = e $ Assign i j v
