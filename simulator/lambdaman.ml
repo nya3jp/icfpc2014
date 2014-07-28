@@ -383,7 +383,7 @@ let eval_main show_useful_info program args =
      Stack.pop machine.s
   | Exception_eval_error reason ->
      Printf.printf "Evaluation Error: %s\n" reason;
-     Printf.printf "Current pc = %d" machine.c;
+     Printf.printf "Current pc = %d\n" machine.c;
      failwith "Eval error in main function"
 ;;
 
@@ -430,7 +430,7 @@ let eval_step show_useful_info program closure args =
      Stack.pop machine.s
   | Exception_eval_error reason ->
      Printf.printf "Evaluation Error: %s\n" reason;
-     Printf.printf "Current pc = %d" machine.c;
+     Printf.printf "Current pc = %d\n" machine.c;
      raise (Exception_eval_error reason)
 ;;
 
