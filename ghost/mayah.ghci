@@ -5,7 +5,7 @@
 ;
 
 ; OK
-INITIALIZE_IF_NECESSARY:
+INITIALIZE_RANDOM_IF_NECESSARY:
         JEQ INITIALIZE, [129], 1
         INT 3
         MOV [128], A
@@ -18,34 +18,62 @@ INITIALIZE:
         MOV [134], B
         INT 3
         MOV [130], A
+        INT 4
+        MOV [135], A
+        MOV [136], B
+        INT 3
         INT 5
         MOV [131], A
         MOV [132], B
 
+        MUL A, 37
+        ADD A, B
+        DIV A, 4
+        AND A, 63
+        MOV [137], A
+
+        INT 3
+        INT 6
+        MOV [143], A
+        MOV [144], B
+
 MAIN:
+        ; If in fright mode, every one escape.
+        JEQ FUNCTION_MAYBE_ESCAPE, [143], 1
+
         ; Check the enemy is in the same row.
         ; In this case, we try to follow the lambdaman.
         JEQ FUNCTION_MAYBE_CHASE_Y, [131], [133]
         JEQ FUNCTION_MAYBE_CHASE_X, [132], [134]
 
+        ; Move randomly in 1/8.
         MOV G, MAIN_AFTER_RANDOM
         MOV PC, FUNCTION_MAKE_RANDOM
 MAIN_AFTER_RANDOM:
         DIV A, 16
-        AND A, 3
+        AND A, 7
         JEQ FUNCTION_RANDOM_MOVE, A, 0
-        MOV PC, FUNCTION_CHASE
 
+CHECK_JUNCTION_PROFIBITION:
+        MOV A, [137]
+        MOV B, [A]
+        ADD B, 138
+        MOV [139], 0
+        MOV [140], 0
+        MOV [141], 0
+        MOV [142], 0
+        MOV [B], 1
+        MOV PC, MAYBE_CHASE
 
-; chase
-FUNCTION_CHASE:
+; ----------------------------------------------------------------------
+
+MAYBE_CHASE:
         MOV G, FC_AFTER_RANDOM
         MOV PC, FUNCTION_MAKE_RANDOM
 FC_AFTER_RANDOM:
         AND A, 1
         JEQ FUNCTION_CHASE_X, A, 0
         MOV PC, FUNCTION_CHASE_Y
-
 
 ; OK
 FUNCTION_MAYBE_CHASE_X:
@@ -54,7 +82,6 @@ FUNCTION_MAYBE_CHASE_X:
 FMCX_RANDOM:
         DIV A, 8
         AND A, 7
-        INT 8
         JEQ FUNCTION_RANDOM_MOVE, A, 0
         MOV PC, FUNCTION_CHASE_X
 
@@ -68,15 +95,58 @@ FMCY_RANDOM:
         JEQ FUNCTION_RANDOM_MOVE, A, 0
         MOV PC, FUNCTION_CHASE_Y
 
+; ----------------------------------------------------------------------
+
+MAYBE_ESCAPE:
+        MOV G, FE_AFTER_RANDOM
+        MOV PC, FUNCTION_MAKE_RANDOM
+FE_AFTER_RANDOM:
+        AND A, 1
+        JEQ FUNCTION_ESCAPE_X, A, 0
+        MOV PC, FUNCTION_ESCAPE_Y
+
+; OK
+FUNCTION_MAYBE_ESCAPE_X:
+        MOV G, FMEX_RANDOM
+        MOV PC, FUNCTION_MAKE_RANDOM
+FMEX_RANDOM:
+        DIV A, 8
+        AND A, 7
+        JEQ FUNCTION_RANDOM_MOVE, A, 0
+        MOV PC, FUNCTION_ESCAPE_X
+
+; OK
+FUNCTION_MAYBE_ESCAPE_Y:
+        MOV G, FMEY_RANDOM
+        MOV PC, FUNCTION_MAKE_RANDOM
+FMEY_RANDOM:
+        DIV A, 8
+        AND A, 7
+        JEQ FUNCTION_RANDOM_MOVE, A, 0
+        MOV PC, FUNCTION_ESCAPE_Y
+
+; ----------------------------------------------------------------------
+
 ; OK
 FUNCTION_CHASE_X:
         JLT FUNCTION_GO_RIGHT, [131], [133]
         MOV PC, FUNCTION_GO_LEFT
 
 ; OK
+FUNCTION_ESCAPE_X:
+        JLT FUNCTION_GO_LEFT, [131], [133]
+        MOV PC, FUNCTION_GO_RIGHT
+
+; OK
 FUNCTION_CHASE_Y:
         JLT FUNCTION_GO_DOWN, [132], [134]
         MOV PC, FUNCTION_GO_UP
+
+FUNCTION_ESCAPE_Y:
+        JLT FUNCTION_GO_UP, [132], [134]
+        MOV PC, FUNCTION_GO_DOWN
+
+; ----------------------------------------------------------------------
 
 ; OK
 FUNCTION_MAKE_RANDOM:
@@ -98,36 +168,45 @@ FUNCTION_MAKE_RANDOM:
         MOV [128], A
         MOV PC, G
 
+; ----------------------------------------------------------------------
+
 ; OK
 FUNCTION_RANDOM_MOVE:
         MOV G, RANDOM_MOVE_AFTER_RANDOM
         MOV PC, FUNCTION_MAKE_RANDOM
 RANDOM_MOVE_AFTER_RANDOM:
         DIV A, 16
-        AND A, 3
-        INT 0
-        HLT
+        JEQ FUNCTION_GO_UP, A, 0
+        JEQ FUNCTION_GO_RIGHT, A, 1
+        JEQ FUNCTION_GO_DOWN, A, 2
+        MOV PC, FUNCTION_GO_LEFT
+
+; ----------------------------------------------------------------------
 
 ; OK
 FUNCTION_GO_UP:
+        MOV [137], 4
         MOV A, 0
         INT 0
         HLT
 
 ; OK
 FUNCTION_GO_RIGHT:
+        MOV [137], 1
         MOV A, 1
         INT 0
         HLT
 
 ; OK
 FUNCTION_GO_DOWN:
+        MOV [137], 2
         MOV A, 2
         INT 0
         HLT
 
 ; OK
 FUNCTION_GO_LEFT:
+        MOV [137], 3
         MOV A, 3
         INT 0
         HLT
