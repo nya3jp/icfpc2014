@@ -353,7 +353,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
         -- [2]
-        lwhen (lnot lmanIsPow &&& ghostDens .>= 200)  $ do
+        lwhen (lnot lmanIsPow &&& ghostDens .>= 100)  $ do
           actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
           actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
@@ -361,7 +361,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
           actionFlags ~= pokeFlag ToGhost 1 actionFlags         
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags 
           actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
-        lwhen (ghostDens .<= 300 &&& peekMap lmanPos powMap .< 2)$ do
+        lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 2)$ do
           actionFlags ~= pokeFlag FromPowerDot 1 actionFlags 
           actionFlags ~= pokeFlag ToPowerDot 0 actionFlags           
           actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
@@ -450,7 +450,7 @@ main = do
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       
       let 
-          body = printf "archive/madoka-%s-%04d" dateStr2 idx
+          body = printf "archive/Madoka-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
@@ -460,11 +460,13 @@ main = do
       forM_ [body, "archive/latest"] $ \body -> do
         let 
           fnGcc = body ++ ".gcc"
+          fnAsm = body ++ ".asm"
           fnDir = body ++ "-src"
 
  
         writeFile "/dev/null" progStr
         writeFile fnGcc $ progStr
+        writeFile fnAsm $ unlines $ compile' progn
         system $ "mkdir -p " ++ fnDir
         system $ printf "cp *.hs %s/" fnDir
 
