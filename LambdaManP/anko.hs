@@ -300,7 +300,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         
         let dir = 
               chainAction FromGhost (selectMax ghostMap lmanPos) $
-              chainAction ToPowerDot (selectMin ghostMap lmanPos) $
+              chainAction ToPowerDot (selectMin powMap lmanPos) $
               chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 
               chainAction ToDot (selectSmall dotMap lmanPos) $ lmanDir
 
