@@ -1,5 +1,6 @@
 {-# LANGUAGE FlexibleInstances, GADTs, RecursiveDo, ScopedTypeVariables, RecordWildCards, RankNTypes, ImpredicativeTypes, NoMonoLocalBinds #-}
 
+import Control.Monad
 import Data.Maybe
 import System.Environment
 import Control.Applicative (Const)
@@ -25,7 +26,7 @@ type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
 type GhostState = (Int, (Pos , Direction))
 type FruitState = Int
 
-type AIState = (Map, ActionFlags)
+type AIState = (Map, (Int, ActionFlags))
 type ActionFlags = Array Int
 
 peekFlag :: ActionFlag -> Expr ActionFlags -> Expr Int
@@ -52,7 +53,9 @@ actionFlagSize = fromIntegral $ 1+fromEnum (maxBound :: ActionFlag)
 mapOfS :: Expr AIState -> Expr Map
 mapOfS = car
 actionFlagsOfS :: Expr AIState -> Expr ActionFlags
-actionFlagsOfS = cdr
+actionFlagsOfS = cdr . cdr
+clockOfS :: Expr AIState -> Expr Int
+clockOfS = car . cdr
 
 getWidth :: Expr Map -> Expr Int
 getWidth e = car $ peek 0 e
@@ -230,6 +233,37 @@ selectSmall bd pos = comp $
     e $ c 3
 
 
+voteMax :: Expr Map -> Expr Pos -> Expr V4
+voteMax bd pos = comp $
+  withVects $ \[v0, v1, v2, v3] ->
+  with (peekMap (vadd pos v0) bd) $ \c0 ->
+  with (peekMap (vadd pos v1) bd) $ \c1 ->
+  with (peekMap (vadd pos v2) bd) $ \c2 ->
+  with (peekMap (vadd pos v3) bd) $ \c3 -> e $
+    let 
+        elem0 = c0 ./= inf &&& c0 .>= c1 &&& c0 .>= c2 &&& c0 .>= c3 
+        elem1 = c1 ./= inf &&& c1 .>= c0 &&& c1 .>= c2 &&& c1 .>= c3
+        elem2 = c2 ./= inf &&& c2 .>= c1 &&& c2 .>= c2 &&& c2 .>= c3 
+        elem3 = c3 ./= inf &&& c3 .>= c0 &&& c3 .>= c1 &&& c3 .>= c2
+    in cons (cons elem0 elem1) (cons elem2 elem3)
+
+
+voteMin :: Expr Map -> Expr Pos -> Expr V4
+voteMin bd pos = comp $
+  withVects $ \[v0, v1, v2, v3] ->
+  with (peekMap (vadd pos v0) bd) $ \c0 ->
+  with (peekMap (vadd pos v1) bd) $ \c1 ->
+  with (peekMap (vadd pos v2) bd) $ \c2 ->
+  with (peekMap (vadd pos v3) bd) $ \c3 -> e $
+    let 
+        elem0 = c0 ./= inf &&& c0 .<= c1 &&& c0 .<= c2 &&& c0 .<= c3 
+        elem1 = c1 ./= inf &&& c1 .<= c0 &&& c1 .<= c2 &&& c1 .<= c3
+        elem2 = c2 ./= inf &&& c2 .<= c1 &&& c2 .<= c2 &&& c2 .<= c3 
+        elem3 = c3 ./= inf &&& c3 .<= c0 &&& c3 .<= c1 &&& c3 .<= c2
+    in cons (cons elem0 elem1) (cons elem2 elem3)
+
+
+
 push :: Expr [a] -> Expr a -> CExpr () ()
 push ls v = ls ~= lcons v ls
 
@@ -254,21 +288,19 @@ getDots :: Expr Map -> Expr ([Pos], [Pos])
 
 step :: Expr AIState -> Expr World -> Expr (AIState, Int)
 (step, stepDef) = def2 "step" $ \aist world -> comp $
-  with4 (cadr world) (cadr $ cadr world)  (mapOfS aist) (actionFlagsOfS aist)$ 
-   \lmanState lmanPos bd actionFlags -> do
-    bd ~= pokeMap lmanPos 1 bd
-    with (mapGhostPos $ caddr world) $ \ghosts ->
+  with5 (cadr world) (cadr $ cadr world)  (mapOfS aist) (clockOfS aist) (actionFlagsOfS aist)$ 
+   \lmanState lmanPos bd0 clk actionFlags -> do
+    with (pokeMap lmanPos (negate clk) bd0) $ \bd -> 
+      with (mapGhostPos $ caddr world) $ \ghosts ->
       with (getDots bd) $ \bothDots ->
       with2 (car bothDots) (cdr bothDots) $ \dots pows ->
       with (paint bd ghosts)   $ \ghostMap ->
       with (paint bd dots) $ \dotMap ->
       with (paint bd pows) $ \powMap -> 
       with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
-      with (calcDensFrom lmanPos ghosts) $ \ghostDens -> do
+      with (calcDensFrom lmanPos ghosts) $ \ghostDens -> 
+      with vzero4 $ \dirVote -> do
             
-        let chainAction :: ActionFlag -> Expr Int -> Expr Int -> Expr Int
-            chainAction f x1 x2 = 
-              ite (peekFlag f actionFlags &&& x1 .>= 0) x1 x2
         -- [1]
         lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
@@ -291,22 +323,27 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         -- [3]
         actionFlags ~= pokeFlag ToDot 1 actionFlags 
         
-        let dir = 
-              chainAction FromGhost    (selectMax   ghostMap lmanPos) $
-              chainAction ToPowerDot   (selectSmall powMap lmanPos) $
-              chainAction ToGhost      (selectMin   ghostMap lmanPos) $ 
-              chainAction FromPowerDot (selectMax   powMap lmanPos) $              
-              chainAction ToDot        (selectSmall dotMap lmanPos) $ lmanDir
-
-        trace (c 20001, selectMax ghostMap lmanPos)
-        trace (c 20002, selectMin powMap lmanPos  )
-        trace (c 20003, selectMin ghostMap lmanPos)
-        trace (c 20004, selectMax powMap lmanPos  )
-        trace (c 20005, selectSmall dotMap lmanPos)
-        trace (c 65536, actionFlags)
-        trace (c 33333,  (selectMin ghostMap lmanPos) )
+        let chainAction :: Expr Int -> ActionFlag -> Expr V4 -> Expr V4
+            chainAction w f v = (peekFlag f actionFlags * w) `vscale4` v
         
-        e $ cons (cons bd actionFlags) dir
+        dirVote ~= dirVote `vadd4` chainAction 40 FromGhost    (voteMax  ghostMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 20 ToPowerDot   (voteMin  powMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 20 ToGhost      (voteMin  ghostMap lmanPos)  
+        dirVote ~= dirVote `vadd4` chainAction 20 FromPowerDot (voteMax  powMap lmanPos)               
+        dirVote ~= dirVote `vadd4` chainAction 10 ToDot        (voteMin  dotMap lmanPos) 
+        dirVote ~= dirVote `vadd4` chainAction 1 ToDot         (voteMax  bd lmanPos) 
+
+        let dir = maxIndex4 dirVote
+
+        trace (c 6677, actionFlags)
+        trace bd
+        trace dotMap        
+        trace dirVote   
+        trace dir        
+        trace actionFlags       
+
+        
+        e $ cons (cons bd (cons (1+clk) actionFlags)) dir
 
 arrLength :: Expr (Array a) -> Expr Int
 arrLength = car
@@ -325,7 +362,12 @@ initialize :: Expr World -> Expr X -> Expr AIState
       for 0 w $ \x -> e $
         ite (peekMat x y mat .<= c 3) (c 0) $
           comp $ mat ~= pokeMat x y 1 mat
-    e $ cons mat (newArray actionFlagSize (Const 0) :: Expr (Array Int))
+    let aist0 :: Expr AIState
+        aist0 = cons mat $
+                cons (Const 0) $ 
+                arr0
+        arr0 = newArray actionFlagSize (Const 1) :: Expr (Array Int)
+    e $ aist0
 
 progn :: LMan ()
 progn = do
@@ -355,21 +397,22 @@ main = do
     _ -> do
       idx <- randomRIO (0,10000:: Integer)
       dateStr <- readProcess "date" ["+%H%M%S"] ""
+      
       let 
-          body = printf "archive/mj-%s-%04d" dateStr2 idx
-          fnGcc :: String
-          fnGcc = body ++ ".gcc"
-          fnDir :: String
-          fnDir = body ++ "-src"
+          body = printf "archive/mito-%s-%04d" dateStr2 idx
           dateStr2 = 
             map (\c -> if c==' ' then '-' else c) $
             unwords $ words $
             map (\c -> if c `elem` "0123456789" then c else ' ') dateStr
 
           progStr = compile progn
+      forM_ [body, "archive/latest"] $ \body -> do
+        let 
+          fnGcc = body ++ ".gcc"
+          fnDir = body ++ "-src"
 
-      writeFile "/dev/null" progStr
-      writeFile fnGcc $ progStr
-      system $ "mkdir -p " ++ fnDir
-      system $ printf "cp *.hs %s/" fnDir
-      return ()
+ 
+        writeFile "/dev/null" progStr
+        writeFile fnGcc $ progStr
+        system $ "mkdir -p " ++ fnDir
+        system $ printf "cp *.hs %s/" fnDir
