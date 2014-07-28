@@ -2,57 +2,26 @@
 
 import Data.Maybe
 import System.Environment
-import Control.Applicative (Const)
+import Control.Applicative
 
 import DSL
 import Lib
-import Vect
-import System.Random
-import System.Process
-import Text.Printf
 
 import Prelude hiding (even, odd)
-
 
 -----
 
 type Map = Mat Int
 
 data X = X
+type Pos = (Int, Int)
 
 type World = ([[Int]], (ManState, ([GhostState], FruitState)))
-type ManState = (Int, (Pos, (Direction, (Int, Int  ))))
-type GhostState = (Int, (Pos , Direction))
+type ManState = (X, (Pos, X))
+type GhostState = (Int, (Pos, Int))
 type FruitState = Int
 
-type AIState = (Map, ActionFlags)
-type ActionFlags = Array Int
-
-peekFlag :: ActionFlag -> Expr ActionFlags -> Expr Int
-peekFlag f = peek (Const $ fromEnum f)
-pokeFlag :: ActionFlag -> Expr Int -> Expr ActionFlags -> Expr ActionFlags 
-pokeFlag f = poke (Const $ fromEnum f)
-
--- lowest array is of highest priority
-data ActionFlag 
-  = ToDot 
-  | FromDot
-  | ToPowerDot 
-  | FromPowerDot 
-  | ToGhost
-  | FromGhost
-  | ToCenterOfDots
-  deriving (Eq, Ord, Enum,Bounded)
-
-
-actionFlagSize :: Num a => a
-actionFlagSize = fromIntegral $ 1+fromEnum (maxBound :: ActionFlag)
-
-
-mapOfS :: Expr AIState -> Expr Map
-mapOfS = car
-actionFlagsOfS :: Expr AIState -> Expr ActionFlags
-actionFlagsOfS = cdr
+type AIState = Mat Int
 
 getWidth :: Expr Map -> Expr Int
 getWidth e = car $ peek 0 e
@@ -68,6 +37,9 @@ pokeMap pos v bd = pokeMat (car pos) (cdr pos) v bd
 
 -- vital: 0: standard:, 1: fright mode, 2: invisible
 -- direction: 0: up, 1: right, 2: down, 3: left
+
+vadd :: Expr Pos -> Expr Pos -> Expr Pos
+vadd a b = cons (car a + car b) (cdr a + cdr b)
 
 toQueue :: Expr [a] -> Expr (Queue (Int, a))
 (toQueue, toQueueDef) = def1 "toQueue" $ \xs -> comp $
@@ -115,16 +87,7 @@ bfs :: Expr Map -> Expr [Pos] -> Expr Int -> Expr Int
     e out
 
 inf :: Expr Int
-inf = Const 999999
-
-calcDensFrom :: Expr Pos -> Expr [Pos] -> Expr Int
-(calcDensFrom , calcDensFromDef) = def2 "calcDensFrom" $ \origin poss -> comp $ do
-  e $ ite (atom poss) (Const 0) $ comp $
-      with (100 - (vnorm $ lhead poss `vsub` origin)) $
-      \ r -> e $ (ite (r .< 0) 0 r) + calcDensFrom origin (ltail poss)
-
-
-
+inf = 999
 
 paint :: Expr Map -> Expr [Pos] -> Expr Map
 (paint, paintDef) = def2 "paint" $ \bd starts -> comp $
@@ -184,12 +147,17 @@ maxJunctionSafety bd ghostMap pos = comp $ withVects $ \[v1, v2, v3, v4] -> e $
   lmax (junctionSafety bd ghostMap pos v3)
        (junctionSafety bd ghostMap pos v4)
 
-
 mapGhostPos :: Expr [GhostState] -> Expr [Pos]
 (mapGhostPos, mapGhostPosDef) = def1 "mapGhostPos" $ \xs ->
   ite (isNull xs) lnull $
-  ite (car (lhead xs) ./= 2) (lcons (cadr $ lhead xs) $ mapGhostPos $ ltail xs) $
+  ite (car (lhead xs) .== 0) (lcons (cadr $ lhead xs) $ mapGhostPos $ ltail xs) $
   (mapGhostPos $ ltail xs)
+
+mapEdGhostPos :: Expr [GhostState] -> Expr [Pos]
+(mapEdGhostPos, mapEdGhostPosDef) = def1 "mapEdGhostPos" $ \xs ->
+  ite (isNull xs) lnull $
+  ite (car (lhead xs) .== 1) (lcons (cadr $ lhead xs) $ mapEdGhostPos $ ltail xs) $
+  (mapEdGhostPos $ ltail xs)
 
 selectMax :: Expr Map -> Expr Pos -> Expr Int
 selectMax bd pos = comp $
@@ -199,10 +167,9 @@ selectMax bd pos = comp $
   with (peekMap (vadd pos v2) bd) $ \c2 ->
   with (peekMap (vadd pos v3) bd) $ \c3 ->
     cond (c0 ./= inf &&& c0 .> c1 &&& c0 .> c2 &&& c0 .> c3) (e $ c 0) $
-    cond (c1 ./= inf &&& c1 .> c2 &&& c1 .> c3 &&& c1 .> c0) (e $ c 1) $
-    cond (c2 ./= inf &&& c2 .> c3 &&& c2 .> c0 &&& c2 .> c1) (e $ c 2) $
-    cond (c3 ./= inf &&& c3 .> c0 &&& c3 .> c1 &&& c3 .> c2) (e $ c 3) $
-    e $ c (-1)
+    cond (c1 ./= inf &&& c1 .> c2 &&& c1 .> c3) (e $ c 1) $
+    cond (c2 ./= inf &&& c2 .> c3) (e $ c 2) $
+    e $ c 3
 
 selectMin :: Expr Map -> Expr Pos -> Expr Int
 selectMin bd pos = comp $
@@ -212,23 +179,9 @@ selectMin bd pos = comp $
   with (peekMap (vadd pos v2) bd) $ \c2 ->
   with (peekMap (vadd pos v3) bd) $ \c3 ->
     cond (c0 ./= inf &&& c0 .< c1 &&& c0 .< c2 &&& c0 .< c3) (e $ c 0) $
-    cond (c1 ./= inf &&& c1 .< c2 &&& c1 .< c3 &&& c1 .< c0) (e $ c 1) $
-    cond (c2 ./= inf &&& c2 .< c3 &&& c2 .< c0 &&& c2 .< c1) (e $ c 2) $
-    cond (c3 ./= inf &&& c3 .< c0 &&& c3 .< c1 &&& c3 .< c2) (e $ c 3) $
-    e $ c (-1)
-
-selectSmall :: Expr Map -> Expr Pos -> Expr Int
-selectSmall bd pos = comp $
-  withVects $ \[v0, v1, v2, v3] ->
-  with (peekMap (vadd pos v0) bd) $ \c0 ->
-  with (peekMap (vadd pos v1) bd) $ \c1 ->
-  with (peekMap (vadd pos v2) bd) $ \c2 ->
-  with (peekMap (vadd pos v3) bd) $ \c3 ->
-    cond (c0 ./= inf &&& c0 .< c1 &&& c0 .< c2 &&& c0 .< c3) (e $ c 0) $
     cond (c1 ./= inf &&& c1 .< c2 &&& c1 .< c3) (e $ c 1) $
     cond (c2 ./= inf &&& c2 .< c3) (e $ c 2) $
     e $ c 3
-
 
 push :: Expr [a] -> Expr a -> CExpr () ()
 push ls v = ls ~= lcons v ls
@@ -246,67 +199,40 @@ getDots :: Expr Map -> Expr ([Pos], [Pos])
 
 -- Strategy:
 -- [1] if NearestGhost<3 then FromGhost+
--- X [1] if MaxJunctionSafety>3 then FromGhost-
--- [2] if NearestGhost>99 then ToPowerDot+
--- [2] if NearestGhost<99 then ToGhost+
+-- [1] if MaxJunctionSafety>3 then FromGhost-
+-- [2] if NearestEdGhost>99 then ToPowerDot+
+-- [2] if NearestEdGhost<99 then ToEdGhost+
 -- [2] if GhostDensity<1.5 and NearestPowerDot<5 then FromPowerDot+
 -- [3] if Constant>0 then ToCenterofDots+
 
 step :: Expr AIState -> Expr World -> Expr (AIState, Int)
-(step, stepDef) = def2 "step" $ \aist world -> comp $
-  with4 (cadr world) (cadr $ cadr world)  (mapOfS aist) (actionFlagsOfS aist)$ 
-   \lmanState lmanPos bd actionFlags -> do
+(step, stepDef) = def2 "step" $ \bd world -> comp $
+  with (cadr $ cadr world) $ \lmanPos -> do
     bd ~= pokeMap lmanPos 1 bd
     with (mapGhostPos $ caddr world) $ \ghosts ->
+      with (mapEdGhostPos $ caddr world) $ \edGhosts ->
       with (getDots bd) $ \bothDots ->
       with2 (car bothDots) (cdr bothDots) $ \dots pows ->
       with (paint bd ghosts)   $ \ghostMap ->
+      with (paint bd edGhosts) $ \edGhostMap ->
       with (paint bd dots) $ \dotMap ->
-      with (paint bd pows) $ \powMap -> 
-      with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
-      with (calcDensFrom lmanPos ghosts) $ \ghostDens -> do
-            
-        let chainAction :: ActionFlag -> Expr Int -> Expr Int -> Expr Int
-            chainAction f x1 x2 = 
-              ite (peekFlag f actionFlags &&& x1 .>= 0) x1 x2
-        -- [1]
-        lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
-          actionFlags ~= pokeFlag FromGhost 1 actionFlags 
-        -- lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
-        lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
-          actionFlags ~= pokeFlag FromGhost 0 actionFlags 
-        -- [2]
-        lwhen (lnot lmanIsPow)  $ do
-          actionFlags ~= pokeFlag ToPowerDot 1 actionFlags 
-          actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
-          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
-        lwhen (lmanIsPow)  $ do
-          actionFlags ~= pokeFlag ToGhost 1 actionFlags         
-          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags 
-          actionFlags ~= pokeFlag FromPowerDot 0 actionFlags           
-        lwhen (ghostDens .<= 150 &&& peekMap lmanPos powMap .< 5)$ do
-          actionFlags ~= pokeFlag FromPowerDot 1 actionFlags 
-          actionFlags ~= pokeFlag ToPowerDot 0 actionFlags           
-          actionFlags ~= pokeFlag ToGhost 0 actionFlags                   
-        -- [3]
-        actionFlags ~= pokeFlag ToDot 1 actionFlags 
-        
-        let dir = 
-              chainAction FromGhost    (selectMax   ghostMap lmanPos) $
-              chainAction ToPowerDot   (selectSmall powMap lmanPos) $
-              chainAction ToGhost      (selectMin   ghostMap lmanPos) $ 
-              chainAction FromPowerDot (selectMax   powMap lmanPos) $              
-              chainAction ToDot        (selectSmall dotMap lmanPos) $ lmanDir
+      with (paint bd pows) $ \powMap -> do
 
-        trace (c 20001, selectMax ghostMap lmanPos)
-        trace (c 20002, selectMin powMap lmanPos  )
-        trace (c 20003, selectMin ghostMap lmanPos)
-        trace (c 20004, selectMax powMap lmanPos  )
-        trace (c 20005, selectSmall dotMap lmanPos)
-        trace (c 65536, actionFlags)
-        trace (c 33333,  (selectMin ghostMap lmanPos) )
-        
-        e $ cons (cons bd actionFlags) dir
+        let dir = comp $
+              cond (peekMap lmanPos ghostMap   .< 3   ) (e $ selectMax ghostMap lmanPos) $
+              cond (peekMap lmanPos edGhostMap .>= inf) (e $ selectMin powMap lmanPos) $
+              cond (peekMap lmanPos edGhostMap .<  inf) (e $ selectMin edGhostMap lmanPos) $
+                                                        (e $ selectMin dotMap lmanPos)
+
+        trace (c 10005, ghosts)
+        trace (c 10006, edGhosts)
+        trace (c 10001, peekMap lmanPos ghostMap)
+        trace (c 10002, peekMap lmanPos edGhostMap)
+        trace (c 10002, peekMap lmanPos edGhostMap)
+
+        -- trace (c 10001, nearestGhost bd ghostPoss lmanPos)
+
+        e $ cons bd dir
 
 arrLength :: Expr (Array a) -> Expr Int
 arrLength = car
@@ -325,7 +251,7 @@ initialize :: Expr World -> Expr X -> Expr AIState
       for 0 w $ \x -> e $
         ite (peekMat x y mat .<= c 3) (c 0) $
           comp $ mat ~= pokeMat x y 1 mat
-    e $ cons mat (newArray actionFlagSize (Const 0) :: Expr (Array Int))
+    e $ mat
 
 progn :: LMan ()
 progn = do
@@ -337,12 +263,9 @@ progn = do
   bfsDef
   paintDef
   mapGhostPosDef
+  mapEdGhostPosDef
   toQueueDef
   getDotsDef
-  calcDensFromDef
-  junctionSafetyDef
-  isJunctionDef
-  lmaxDef
 
   rtn $ cons (initialize (Var (-1) 0) (Var (-1) 1)) (Closure "step")
 
@@ -353,23 +276,53 @@ main = do
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
     _ -> do
-      idx <- randomRIO (0,10000:: Integer)
-      dateStr <- readProcess "date" ["+%H%M%S"] ""
-      let 
-          body = printf "archive/mj-%s-%04d" dateStr2 idx
-          fnGcc :: String
-          fnGcc = body ++ ".gcc"
-          fnDir :: String
-          fnDir = body ++ "-src"
-          dateStr2 = 
-            map (\c -> if c==' ' then '-' else c) $
-            unwords $ words $
-            map (\c -> if c `elem` "0123456789" then c else ' ') dateStr
+      putStrLn $ compile progn
 
-          progStr = compile progn
+{-
+progn :: LMan ()
+progn = do
+  libDef
 
-      writeFile "/dev/null" progStr
-      writeFile fnGcc $ progStr
-      system $ "mkdir -p " ++ fnDir
-      system $ printf "cp *.hs %s/" fnDir
-      return ()
+  -- cexpr $ do
+  --   cwith (mkArray (list $ map fromIntegral [0..9 :: Int] :: Expr [Int])) $ \arr -> do
+  --     debug arr
+
+  --     for 0 10 $ \i -> do
+  --       debug $ cons i $ peek i arr
+
+  --     for 0 10 $ \i -> do
+  --       arr ~= poke i (peek i arr * peek i arr) arr
+
+  --     debug arr
+
+  --     for 0 10 $ \i -> do
+  --       debug $ cons i $ peek i arr
+
+  -- cexpr $ do
+  --   debug $ lreverse $ list [1, 2, 3, 4, 5 :: Expr Int]
+  --   debugn 1234
+
+  --   cwith 123 $ \i -> do
+  --     debugn i
+  --     debugn $ i * 2
+  --     i ~= i * i
+  --     debugn i
+
+  --   cwith 0 $ \i -> do
+  --     while (i .< 10) $ comp $ do
+  --       debugn i
+  --       i ~= i + 1
+
+  -- expr $ do
+  --   with (enqueue 1 emptyQueue :: Expr (Queue Int)) $ \q1 ->
+  --     with (enqueue 2 q1) $ \q2 ->
+  --     with (enqueue 3 q2) $ \q3 ->
+  --     with (dequeue q3) $ \r4 ->
+  --     with (dequeue $ cdr r4) $ \r5 ->
+  --     with (dequeue $ cdr r5) $ \r6 -> comp $ do
+  --       debug q2
+  --       debug q3
+  --       debug r4
+  --       debug r5
+  --       debug r6
+-}
