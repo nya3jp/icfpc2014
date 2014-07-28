@@ -31,9 +31,9 @@ while($line = <STDIN>){
 
 		@arg = split /\s+/, $line;
 		if( $arg[0] eq "LDC" ){ push(@stack,"CONST=$arg[1]"); }
-		elsif( $arg[0] =~ /LD|LDF/ ){ push(@stack,"?"); }
-		elsif( $arg[0] =~ /ADD|SUB|MUL|DIV|CEQ|CGT|CGTE|CONS/ ){ pop(@stack);pop(@stack);push(@stack,"?"); }
-		elsif( $arg[0] =~ /ATOM|CAR|CDR/ ){ pop(@stack);push(@stack,"?"); }
+		elsif( $arg[0] =~ /^LD|LDF$/ ){ push(@stack,"?"); }
+		elsif( $arg[0] =~ /^ADD|SUB|MUL|DIV|CEQ|CGT|CGTE|CONS$/ ){ pop(@stack);pop(@stack);push(@stack,"?"); }
+		elsif( $arg[0] =~ /^ATOM|CAR|CDR$/ ){ pop(@stack);push(@stack,"?"); }
 		else{ @stack = @stack_init; print STDERR  "ERROR: $arg[0]\n"; }
 
 		push(@insts_type, $arg[0]);
@@ -43,6 +43,20 @@ while($line = <STDIN>){
 }
 
 for $i (0...$#insts){
+	if( $insts_type[$i] eq 'label' ){
+		for( $j = $i+1; $j <= $#insts; $j ++ ){
+			@arg = split /\s+/, $insts[$j];
+			if( $arg[0] =~ /^TRAP|TAP|TSEL|RTN|JOIN$/ ){ last; }
+		}
+		if( $j <= $#insts ){
+			# [$i+1,$j], inclusive
+			$len = $j - $i;
+			if( $len < 100 ){
+				$goto_i{$insts[$i]} = $i+1;
+				$goto_j{$insts[$i]} = $j;
+			}
+		}
+	}
 	if( $insts_type[$i] eq 'label' && $insts_type[$i+1] eq 'TSEL' ){
 		@arg = split /\s+/, $insts[$i+1];
 		$goto_then{$insts[$i]} = $arg[1];
@@ -104,12 +118,54 @@ for $i (0...$#insts){
 			print "LDC 0\n";
 			print "TSEL $goto_then{$target} $goto_then{$target}\n";
 			$output = 1;
+			$i += 1;
 		}
-		if( $goto_arg{$target} eq '1' ){
+		elsif( $goto_arg{$target} eq '1' ){
+			print "TSEL $goto_then{$target} $goto_else{$target}\n";
+			$output = 1;
+			$i += 1;
+		}
+		elsif( $goto_i{$target} ne '' ){
+			for( $j = $goto_i{$target}; $j <= $goto_j{$target}; $j ++ ){
+				if( $insts_type[$j] ne 'label' ){
+					print "$insts[$j]\n";
+				}
+			}
+			$output = 1;
+			$i += 1;
+		}
+	}
+
+	elsif( $insts_type[$i] eq 'LDC' && $insts_type[$i+1] eq 'label' && $insts_type[$i+2] eq 'TSEL' ){
+		@ldc = split /\s+/, $insts[$i];
+		@arg = split /\s+/, $insts[$i+2];
+		if( $ldc[1] eq '0' ){
+			$target = $arg[2];
+		}
+		else{
+			$target = $arg[1];
+		}
+		$target .= ":";
+		print STDERR "REPLACE? LDC $ldc[1] / TSEL $arg[1] $arg[2] / TARGET = $target\n";
+		if( $goto_arg{$target} eq '0' ){
+			print "LDC 0\n";
+			print "TSEL $goto_then{$target} $goto_then{$target}\n";
+			$output = 1;
+		}
+		elsif( $goto_arg{$target} eq '1' ){
 			print "TSEL $goto_then{$target} $goto_else{$target}\n";
 			$output = 1;
 		}
+		elsif( $goto_i{$target} ne '' ){
+			for( $j = $goto_i{$target}; $j <= $goto_j{$target}; $j ++ ){
+				if( $insts_type[$j] ne 'label' ){
+					print "$insts[$j]\n";
+				}
+			}
+			$output = 1;
+		}
 	}
+
 	if( $output == 0 ){
 		print "$insts[$i]\n";
 	}
