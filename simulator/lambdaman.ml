@@ -32,6 +32,35 @@ type instruction =
   | LDbug
   | LBrk
 
+let string_of_inst = function
+  | LLdc(i) -> "Ldc " ^ Int32.to_string i
+  | LLd(a,b) -> "Ld " ^ string_of_int a ^ " " ^ string_of_int b
+  | LAdd -> "Add"
+  | LSub -> "Sub"
+  | LMul -> "Mul"
+  | LDiv -> "Div"
+  | LCeq -> "Ceq"
+  | LCgt -> "Cgt"
+  | LCgte -> "Cgte"
+  | LAtom -> "Atom"
+  | LCons -> "Cons"
+  | LCar -> "Car"
+  | LCdr -> "Cdr"
+  | LSel(a,b) -> "Sel " ^ string_of_int a ^ " " ^ string_of_int b
+  | LJoin -> "Join"
+  | LLdf(a) -> "Ldf " ^ string_of_int a
+  | LAp(a) -> "Ap " ^ string_of_int a
+  | LRtn  -> "Rtn"
+  | LDum(a)  -> "Dum " ^ string_of_int a
+  | LRap(a)  -> "Rap " ^ string_of_int a
+  | LTap(a)  -> "Tap " ^ string_of_int a
+  | LTsel(a,b) -> "Tsel " ^ string_of_int a ^ " " ^ string_of_int b
+  | LTrap(a) -> "Trap " ^ string_of_int a
+  | LSt(a,b)   -> "St " ^ string_of_int a ^ " " ^ string_of_int b
+  | LDbug -> "Dbug"
+  | LBrk  -> "Brk"
+
+
 type value =
   | VInt     of int32
   | VCons    of value * value
@@ -350,6 +379,27 @@ let eval_program program =
      print_machine machine
 ;;
 
+let show_profile program profile =
+  let total = Array.fold_left (+) 0 profile in
+  let a2 = (Array.mapi (fun i count -> (-count,i)) profile) in
+  Array.sort Pervasives.compare a2;
+  ignore (Array.fold_left
+    (fun (nth,cum_count) (count,addr) -> 
+      let count = - count in
+      if nth < 100 && count > 0 && count > total * 5 / 100 then
+        Printf.printf "Addr %8d: count=%8d (%5.1f%% cum=%5.1f%%) %s\n"
+          addr
+          count
+          (float_of_int count *. 100.0 /. float_of_int total)
+          (float_of_int (cum_count+count) *. 100.0 /. float_of_int total)
+          (string_of_inst program.(addr))
+      ;
+      (nth+1,cum_count+count)
+    )
+    (0,0)
+    a2
+  )
+
 let eval_main show_useful_info program args =
   let i = ref 0 in
   let debug_callback =
@@ -372,9 +422,11 @@ let eval_main show_useful_info program args =
   ) args;
   Stack.push AStop machine.d;
   machine.e <- frame :: machine.e;
+  let profile = Array.make (Array.length program) 0 in
   try
     let maxSteps = 3072000 * 60 in
     while !i < maxSteps do
+      profile.(machine.c) <- profile.(machine.c) + 1;
       let inst = program.(machine.c) in
       eval_instruction machine inst;
       incr i
@@ -383,8 +435,10 @@ let eval_main show_useful_info program args =
     failwith (Printf.sprintf "Over cycle limit! main function didn't end after %d cycles\n" maxSteps)
   with
   | Exception_exit ->
-     if show_useful_info then
+     if show_useful_info then begin
        Printf.printf "Used %d cycles.\n" !i;
+       show_profile program profile;
+     end;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
   | Exception_eval_error reason ->
@@ -421,10 +475,12 @@ let eval_step show_useful_info program closure args =
   machine.c <- n;
   machine.e <- frame :: fp;
   Stack.push AStop machine.d;
+  let profile = Array.make (Array.length program) 0 in
 
   try
     let maxSteps = 3072000 in
     while !i < maxSteps do
+      profile.(machine.c) <- profile.(machine.c) + 1;
       let inst = program.(machine.c) in
       eval_instruction machine inst;
       incr i
@@ -436,8 +492,10 @@ let eval_step show_useful_info program closure args =
     raise Exception_cycleover
   with
   | Exception_exit ->
-     if show_useful_info then
+     if show_useful_info then begin
        Printf.printf "Used %d cycles.\n" !i;
+       show_profile program profile;
+     end;
      (* Returns the top value of stack. *)
      Stack.pop machine.s
   | Exception_eval_error reason ->

@@ -54,8 +54,7 @@ let score_eat = function
   | _ -> failwith "illegal nth"
 
 (*---- TICK TABLE ----*)
-let tick_EOL field = 10000
-(* 127 * Field.width_of_field field * Field.height_of_field field * 16 *)
+let tick_EOL field = 127 * Field.width_of_field field * Field.height_of_field field * 16
 
 let tick_fruit_appear id (* 0 or 1 *) = 127 * 200 * (id+1)
 let tick_fruit_disappear id (* 0 or 1 *) = 127 * 200 * (id+1) + 127 * 80
