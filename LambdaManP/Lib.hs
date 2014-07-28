@@ -10,10 +10,13 @@ libDef = do
   ldropDef
   ltakeDef
   nthDef
+  nthOptDef
   updDef
+  updOptDef
   getMatDef
   setMatDef
   lreverseDef
+  -- lreplicateDef
 
   dequeueDef
 
@@ -30,6 +33,10 @@ libDef = do
   newMatDef
 
 infixr 3 &&&, |||
+
+undef :: Expr a
+undef = cast (c 0)
+
 
 (&&&) :: Expr Int -> Expr Int -> Expr Int
 a &&& b = ite a b 0
@@ -50,7 +57,7 @@ llength :: Expr [a] -> Expr Int
 
 ltake :: Expr Int -> Expr [a] -> Expr [a]
 (ltake, ltakeDef) = def2 "ltake" $ \i xs ->
-  ite (i .== 0) lnull $ lcons (lhead xs) $ ldrop (i-1) (ltail xs)
+  ite (i .== 0) lnull $ lcons (lhead xs) $ ltake (i-1) (ltail xs)
 
 ldrop :: Expr Int -> Expr [a] -> Expr [a]
 (ldrop, ldropDef) = def2 "ldrop" $ \i xs ->
@@ -103,6 +110,73 @@ isEmptyQueue q = (isNull $ car q) &&& (isNull $ cdr q)
 type Array a = (Int, Node a)
 data Node a = Node
 
+chunkSize = 4 :: Expr Int
+
+nthOpt :: Expr Int -> Expr [a] -> Expr a
+(nthOpt, nthOptDef) = def2 "nthOpt" $ \i xs ->
+  ite (i .== 0) (lhead xs) $
+  ite (i .== 1) (lhead $ ltail xs) $
+  ite (i .== 2) (lhead $ ltail $ ltail xs) $
+  ite (i .== 3) (lhead $ ltail $ ltail $ ltail xs) $
+  ite (i .== 4) (lhead $ ltail $ ltail $ ltail $ ltail xs) $
+  ite (i .== 5) (lhead $ ltail $ ltail $ ltail $ ltail $ ltail xs) $
+  ite (i .== 6) (lhead $ ltail $ ltail $ ltail $ ltail $ ltail $ ltail xs) $
+  (lhead $ ltail $ ltail $ ltail $ ltail $ ltail $ ltail $ ltail xs)
+
+updOpt :: Expr Int -> Expr a -> Expr [a] -> Expr [a]
+(updOpt, updOptDef) = def3 "updOpt" $ \i v xs0 -> comp $
+  with (ltail xs0) $ \xs1 -> e $ ite (i .== 0) (lcons v xs1) $ comp $
+  with (ltail xs1) $ \xs2 -> e $ ite (i .== 1) (lcons (lhead xs0) $ lcons v xs2) $ comp $
+  with (ltail xs2) $ \xs3 -> e $ ite (i .== 2) (lcons (lhead xs0) $ lcons (lhead xs1) $ lcons v xs3) $ comp $
+  with (ltail xs3) $ \xs4 -> e $ lcons (lhead xs0) $ lcons (lhead xs1) $ lcons (lhead xs2) $ lcons v xs4
+
+{-
+newArray :: Expr Int -> Expr a -> Expr (Array a)
+(newArray, newArrayDef) = def2 "newArray" $ \n v -> cons n $ newArrayGo n v
+
+lreplicate :: Expr Int -> Expr a -> Expr [a]
+(lreplicate, lreplicateDef) = def2 "lreplicate" $ \n v ->
+  ite (n .== 0) lnull $ lcons v $ lreplicate (n-1) v
+
+newArrayGo :: Expr Int -> Expr a -> Expr (Node a)
+(newArrayGo, newArrayGoDef) = def2 "newArrayGo" $ \n v ->
+  ite (n .<= chunkSize) (cast $ lreplicate n v) $
+    let m = n `div` 2
+    in gcons (newArrayGo m v) (newArrayGo (n-m) v)
+
+mkArray :: Expr [a] -> Expr (Array a)
+(mkArray, mkArrayDef) = def1 "mkArray" $ \xs -> comp $
+  with (llength xs) $ \len ->
+    e $ cons len $ mkArrayGo len xs
+
+mkArrayGo :: Expr Int -> Expr [a] -> Expr (Node a)
+(mkArrayGo, mkArrayGoDef) = def2 "mkArrayGo" $ \n xs ->
+  ite (n .<= chunkSize) (cast $ ltake n xs) $
+    let m = n `div` 2
+    in gcons (mkArrayGo m xs) (mkArrayGo (n-m) $ ldrop m xs)
+
+peek :: Expr Int -> Expr (Array a) -> Expr a
+(peek, peekDef) = def2 "peek" $ \ix arr -> comp $ do
+  with3 (car arr) (cdr arr) undef $ \n node m -> do
+    while (n .> chunkSize) $ do
+      m ~= n `div` 2
+      cond (ix .< m)
+        (n ~= m >> node ~= gcar node)
+        (n ~= n - m >> ix ~= ix - m >> node ~= gcdr node)
+    e $ nthOpt ix (cast node)
+
+poke :: Expr Int -> Expr a -> Expr (Array a) -> Expr (Array a)
+(poke, pokeDef) = def3 "poke" $ \ix v arr -> cons (car arr) (pokeGo ix (car arr) v (cdr arr))
+
+pokeGo :: Expr Int -> Expr Int -> Expr a -> Expr (Node a) -> Expr (Node a)
+(pokeGo, pokeGoDef) = def4 "pokeGo" $ \ix n v node -> do
+  ite (n .<= chunkSize) (cast $ upd ix v $ cast node) $ comp $ do
+    let m = n `div` 2
+    e $ ite (ix .< m)
+      (gcons (pokeGo ix m v (gcar node)) (gcdr node))
+      (gcons (gcar node) (pokeGo (ix-m) (n-m) v (gcdr node)))
+-}
+
 newArray :: Expr Int -> Expr a -> Expr (Array a)
 (newArray, newArrayDef) = def2 "newArray" $ \n v -> cons n $ newArrayGo 0 n v
 
@@ -131,15 +205,12 @@ peek :: Expr Int -> Expr (Array a) -> Expr a
 
 peekGo :: Expr Int -> Expr Int -> Expr Int -> Expr (Node a) -> Expr a
 (peekGo, peekGoDef) = def4 "peekGo" $ \ix l r node -> comp $ do
-  let m = (l + r) `div` 2
-  e $ite (r - l .== 1) (cast node) $
-       ite (ix .< m)
-         (peekGo ix l m (gcar node))
-         (peekGo ix m r (gcdr node))
+let m = (l + r) `div` 2
+e $ite (r - l .== 1) (cast node) $
+ite (ix .< m)
+(peekGo ix l m (gcar node))
+(peekGo ix m r (gcdr node))
 -}
-
-undef :: Expr a
-undef = cast (c 0)
 
 peek :: Expr Int -> Expr (Array a) -> Expr a
 (peek, peekDef) = def2 "peek" $ \ix arr -> comp $ do
