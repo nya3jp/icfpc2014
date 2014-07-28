@@ -256,8 +256,11 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd edGhosts) $ \edGhostMap ->
       with (paint bd dots) $ \dotMap ->
       with (paint bd pows) $ \powMap -> do
-        let ghostIsNear = peekMap lmanPos ghostMap   .< 4 
+        let shouldRunFromGhost = 
+              peekMap lmanPos ghostMap   .< 4 
+              &&& (peekMap lmanPos powMap .> peekMap lmanPos ghostMap)
             ghostIsFar = peekMap lmanPos ghostMap   .> 10
+              ||| (peekMap lmanPos powMap .< peekMap lmanPos ghostMap-1)
             ghostIsTooFar = peekMap lmanPos ghostMap   .> 20
                             &&& (peekMap lmanPos ghostMap .> 40)
             shouldEatPow = 
@@ -273,7 +276,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
             chainAction f x1 x2 = 
               ite (peekFlag f actionFlags &&& x1 .>= 0) x1 x2
               
-        lwhen ghostIsNear $ 
+        lwhen shouldRunFromGhost $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
         lwhen ghostIsFar $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
@@ -297,7 +300,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         
         let dir = 
               chainAction FromGhost (selectMax ghostMap lmanPos) $
-              chainAction ToPowerDot (selectMin ghostMap lmanPos) $
+              chainAction ToPowerDot (selectMin powMap lmanPos) $
               chainAction ToEdGhost (selectMin edGhostMap lmanPos) $ 
               chainAction ToDot (selectSmall dotMap lmanPos) $ lmanDir
 
@@ -345,5 +348,5 @@ main = do
     ["debug"] -> do
       mapM_ putStrLn $ compile' progn
     _ -> do
-      writeFile "../LambdaMan/anko-stateful.gcc" $ compile progn
+      writeFile "../LambdaMan/anko-tiebreak.gcc" $ compile progn
 
