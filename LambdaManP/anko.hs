@@ -260,7 +260,7 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
       with (paint bd ghosts)   $ \ghostMap ->
       with (paint bd dots) $ \dotMap ->
       with (paint bd pows) $ \powMap -> 
-      with2 (car lmanState .>0) (caddr lmanState) $ \lmanIsPow lmanDir ->
+      with2 (car lmanState .> 0) (caddr lmanState) $ \lmanIsPow lmanDir ->
       with (calcDensFrom lmanPos ghosts) $ \ghostDens -> do
             
         let chainAction :: ActionFlag -> Expr Int -> Expr Int -> Expr Int
@@ -269,7 +269,8 @@ step :: Expr AIState -> Expr World -> Expr (AIState, Int)
         -- [1]
         lwhen (peekMap lmanPos ghostMap .< 3 &&& lnot lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 1 actionFlags 
-        lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
+        -- lwhen (peekMap lmanPos ghostMap .> 5 ||| lmanIsPow) $ 
+        lwhen (maxJunctionSafety bd ghostMap lmanPos .> 3 ||| lmanIsPow) $ 
           actionFlags ~= pokeFlag FromGhost 0 actionFlags 
         -- [2]
         lwhen (lnot lmanIsPow)  $ do
@@ -348,7 +349,7 @@ main = do
       idx <- randomRIO (0,10000:: Integer)
       dateStr <- readProcess "date" ["+%H%M%S"] ""
       let 
-          body = printf "archive/noed-fRB-%s-%04d" dateStr2 idx
+          body = printf "archive/mj-%s-%04d" dateStr2 idx
           fnGcc :: String
           fnGcc = body ++ ".gcc"
           fnDir :: String
