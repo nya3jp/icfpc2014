@@ -7,6 +7,7 @@ exception Game_end of int
 let conf_fright_compatible_mode = true
 let conf_lambdaman_invalid_move_mode = true
 let show_useful_info = true
+let conf_quiet = true
 
 module OrderedEventType = struct
   type t = int * int * int * int
@@ -53,7 +54,9 @@ let score_eat = function
   | _ -> failwith "illegal nth"
 
 (*---- TICK TABLE ----*)
-let tick_EOL field = 127 * Field.width_of_field field * Field.height_of_field field * 16
+let tick_EOL field = 10000
+(* 127 * Field.width_of_field field * Field.height_of_field field * 16 *)
+
 let tick_fruit_appear id (* 0 or 1 *) = 127 * 200 * (id+1)
 let tick_fruit_disappear id (* 0 or 1 *) = 127 * 200 * (id+1) + 127 * 80
 let tick_dur_fright = 127 * 20
@@ -358,13 +361,16 @@ let next_tick world =
 (*       "DEBUG (xhl): tick=%d event=%d arg=%d\n%s" tick event_id event_arg ; *)
   begin match event_id with
   | x when x = eDebug ->
-      print_debug world tick
+      if not conf_quiet then
+        print_debug world tick
   | x when x = eFruitAppear ->
       world.fruit_exists <- true;
-      schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
+      if not conf_quiet then
+        schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x = eFruitDisappear ->
       world.fruit_exists <- false;
-      schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
+      if not conf_quiet then
+        schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | x when x = eEOL ->
       raise (Game_end tick)
   | x when x = eLambdamanMove ->
@@ -481,7 +487,8 @@ let next_tick world =
       if lambdaman.Lambdaman.lives <= 0 then begin
         raise (Game_lose (tick+1));
       end;
-      schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
+      if not conf_quiet then
+        schedule_tick world (tick+1, eDebug, 0, 0); (* FIXME *)
   | _ -> failwith "invalid event_id"
   end
 
